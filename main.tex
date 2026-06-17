@@ -1,0 +1,66 @@
+\documentclass[
+11pt,
+a5paper,
+oneside,
+openany
+]{book}
+
+\input{config/packages}
+\input{config/commandes}
+\input{config/environnements}
+\input{config/style}
+
+\title{Mathématiques Terminale S}
+\author{Votre Nom}
+\date{\today}
+
+\begin{document}
+	
+	\frontmatter
+	
+	\input{frontmatter/couverture}
+	\input{frontmatter/preface}
+	\input{frontmatter/mode_emploi}
+	
+	\tableofcontents
+	
+	\mainmatter
+	
+	\part{Algèbre}
+	
+	\input{parties/algebre/arithmetique.tex}
+	\input{parties/algebre/matrices.tex}
+	\input{parties/algebre/complexes.tex}
+	
+	\part{Analyse}
+	\chapter{Limites}
+	
+	\input{parties/analyse/limites}
+	\input{parties/analyse/continuite}
+	\input{parties/analyse/derivation}
+	\input{parties/analyse/fonctions}
+	\input{parties/analyse/integrales}
+	\input{parties/analyse/logarithme}
+	\input{parties/analyse/exponentielle}
+	\input{parties/analyse/suites}
+	\input{parties/analyse/equadiff}
+	
+	\part{Géométrie}
+	
+	\input{parties/geometrie/barycentre}
+	\input{parties/geometrie/transformations}
+	\input{parties/geometrie/isometries.tex}
+	\input{parties/geometrie/espace}
+	
+	\part{Probabilités}
+	
+	\input{parties/probabilites/probabilites}
+	\input{parties/probabilites/conditionnelles.tex}
+	\input{parties/probabilites/variables_aleatoires}
+	\input{parties/probabilites/binomiale.tex}
+	\input{parties/probabilites/normale}
+	
+	\appendix
+	
+	
+\end{document}
