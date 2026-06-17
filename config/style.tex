@@ -1,0 +1,41 @@
+% ----------------------------------%
+% --------    ESPACEMENT  ----------%
+%-----------------------------------%
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+
+\linespread{1.05}
+
+
+%--------------------------------------------
+%---------------- EN TETES ------------------
+%--------------------------------------------
+\pagestyle{fancy}
+
+\fancyhf{}
+
+\fancyhead[L]{%
+	\footnotesize
+	\sffamily
+	\color{gray}
+	\nouppercase{\leftmark}
+}
+
+\fancyhead[R]{%
+	\footnotesize
+	\bfseries
+	\thepage
+}
+
+\renewcommand{\headrulewidth}{0.3pt}
+\fancyhead[L]{\footnotesize\sffamily\nouppercase{\leftmark}}
+%-------------------------------------------------------
+%------------PERSONALISATION CHAPITRES ----------------%
+%-------------------------------------------------------
+\ChNumVar{\fontsize{60}{62}\selectfont}
+
+\renewcommand{\chaptermark}[1]{%
+	\markboth{#1}{}
+}
+
+
