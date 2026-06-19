@@ -1,6 +1,6 @@
 \chapter{Suite numériques}
 
-\section{La raisonnement par récurrence}
+\section{Le raisonnement par récurrence}
 \subsection{Illustration}
 \begin{minipage}[c]{0.47\textwidth}
 		\textbf{Question :} quelles sont les deux conditions pour que tous les dominos se renversent ?
@@ -102,6 +102,90 @@ Sur le modèle de l'exercice résolu ci-dessus :
 	$w_n=3(1-2^n)$.
 	
 \end{minipage}
+
+
+\exercice{\etoilepleine\etoilevide\etoilevide}
+
+$(u_n)$ est la suite définie par $u_0=0$ et, pour tout entier naturel $n$,
+
+$$
+u_{n+1}=\sqrt{u_n+2}.
+$$
+
+Pour tout entier naturel $n$, on note $P(n)$ la propriété : "
+$0\leq u_n\leq 2".$
+
+\begin{enumerate}[label=\alph*)]
+	\item Vérifier que $P(0)$ est vraie.
+	\item Démontrer que $P(k+1)$ est vraie.
+	\item Que peut-on conclure ?
+\end{enumerate}
+
+
+\exercice{\etoilepleine\etoilevide\etoilevide}
+
+Pour tout entier naturel $n$, on note $P(n)$ la propriété : "
+$4^n+1$	est un multiple de $3$".
+
+\begin{enumerate}[label=\alph*)]
+	\item Démontrer que $P(k+1)$ est vraie.
+	\item La propriété $P(0)$ est-elle vraie ?
+	\item Peut-on conclure ?
+\end{enumerate}
+
+\vspace*{0.5cm}
+
+\textbf{Pour les exercices 4 à 8, démontrer la proposition par récurrence.}
+\exercice{\etoilepleine\etoilevide\etoilevide}
+
+Pour tout entier naturel $n\geq 1$,
+
+$$
+1+2+3+\cdots+n=\frac{n(n+1)}{2}.
+$$
+
+\exercice{\etoilepleine\etoilevide\etoilevide}
+
+Pour tout entier naturel $n\geq 1$,
+
+$$
+1^2+2^2+3^2+\cdots+n^2
+=
+\frac{n(n+1)(2n+1)}{6}.
+$$
+\exercice{\etoilepleine\etoilepleine\etoilevide}
+Pour tout entier naturel $n\geq 1$,
+
+$$
+1+3+5+\cdots+(2n-1)=n^2.
+$$
+
+\exercice{\etoilepleine\etoilepleine\etoilevide}
+
+Pour tout entier naturel $n\geq 1$,
+
+$$
+1^2+3^2+5^2+\cdots+(2n-1)^2
+=
+\frac{1}{3}n(4n^2-1).
+$$
+
+\exercice{\etoilepleine\etoilepleine\etoilepleine}
+
+Pour tout entier naturel $n\geq 2$,
+
+$$
+\left(1-\frac{1}{2^2}\right)
+\left(1-\frac{1}{3^2}\right)
+\cdots
+\left(1-\frac{1}{n^2}\right)
+=
+\frac{n+1}{2n}.
+$$
+
+
+	
+
 
 
 
