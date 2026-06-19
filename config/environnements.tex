@@ -78,3 +78,20 @@
 	borderline west={2mm}{0pt}{black!70}
 }
 
+
+%--------------------EXERCICES -------------------------
+\newcounter{exercice}[chapter]
+%\renewcommand{\theexercice}{\thechapter.\arabic{exercice}}
+\renewcommand{\theexercice}{\arabic{exercice}}
+\newcommand{\exercice}[1]{
+	\refstepcounter{exercice}
+	\bigskip
+	
+	\noindent
+	%	\textbf{Exercice \theexercice \hfill #1}
+	\textbf{\large Exercice \theexercice}
+	\hfill
+	{\small #1}
+	
+	\medskip
+}
