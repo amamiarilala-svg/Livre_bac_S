@@ -1,0 +1,236 @@
+\chapter{Arithmétique dans $\mathbb{Z}$}
+
+\begin{citationchapitre}
+	« Dieu a créé les nombres entiers ; tout le reste est l'œuvre de l'homme. »
+	
+	--- Leopold Kronecker
+\end{citationchapitre}
+
+\begin{objectifs}
+	\begin{itemize}[label=\textbullet]
+		\item Maîtriser la divisibilité dans $\mathbb{Z}$.
+		\item Utiliser le PGCD et le PPCM.
+		\item Résoudre des congruences.
+		\item Appliquer le théorème de Bézout.
+		\item Appliquer le théorème de Gauss.
+		\item Résoudre des équations diophantiennes simples.
+	\end{itemize}
+\end{objectifs}
+
+
+\section{Divisibilité}
+$\mathbb N$ est l'ensemble des entiers naturels
+$\{0;1;2;\ldots\}$ ;
+
+$\mathbb Z$ celui des entiers relatifs
+$\{\ldots;-2;-1;0;1;2;\ldots\}$.
+	\begin{definition}
+		
+		Soient $a$ et $b$ deux entiers relatifs avec $b\neq 0$.
+		
+		On dit que $b$ divise $a$, ou que $b$ est un diviseur de $a$,
+		s'il existe un entier relatif $k$ tel que
+		$$
+		a=bk.
+		$$
+		
+		On dit aussi que $a$ est un multiple de $b$.
+		
+	\end{definition}
+	
+	\begin{remarque}
+		
+		$0$ est un multiple de n'importe quel entier relatif $b$
+		(car $0=b\times 0$).
+		
+		En revanche, $0$ n'est un diviseur d'aucun nombre.
+		
+	\end{remarque}
+	
+	\begin{exemple}
+		
+		$4$ divise $24$ car $24=4\times6$;
+		$-4$ divise aussi $24$ car $24=(-4)\times(-6)$. 		
+		Ainsi, $24$ est un multiple de $4$ et de $-4$.
+		
+	\end{exemple}
+	
+	\begin{propriete}
+		
+		Soient $a$ et $b$ deux entiers relatifs avec $b\neq0$.
+		
+		\begin{itemize}[label=\textbullet]
+			\item Si $b\mid a$, alors tout multiple de $a$ est un multiple de $b$.
+			\item Si $b\mid a$, alors tout diviseur de $b$ est un diviseur de $a$.
+		\end{itemize}
+		
+	\end{propriete}
+		
+	\begin{propriete}
+		
+		Soient $a,b\in\mathbb Z$ avec $b\neq0$.
+		
+		$b\mid a\iff -b\mid a\iff b\mid(-a)\iff -b\mid(-a).$
+		
+	\end{propriete}
+	
+	$a$ et $-a$ ont les mêmes diviseurs dans $\mathbb Z$. Les diviseurs de $-a$ étant les opposés des diviseurs positifs de $a$, on restreindra souvent l'étude à la divisibilité dans $\mathbb N$.
+	
+	\consequence
+	$a$ et $-a$ ont les mêmes diviseurs dans $\mathbb Z$. Les diviseurs de $-a$ étant les opposés des diviseurs positifs de $a$, on restreindra souvent l'étude à la divisibilité dans $\mathbb N$.
+	
+	\begin{propriete}
+		
+		\begin{enumerate}
+			\item $a\mid b$ et $b\mid c \Rightarrow a\mid c$.
+			
+			\item $a\mid b$ et $a\mid c \Rightarrow a\mid(bu+cv)$ pour tous
+			$u,v\in\mathbb Z$.
+			
+		\end{enumerate}
+		
+	\end{propriete}
+	\begin{exemple}
+		
+		Si $a$ divise deux entiers consécutifs $n$ et $n+1$, alors
+		
+		$a\mid((n+1)-n)$.
+		
+		Ainsi, $a\mid1$ et donc $a=1$ ou $a=-1$.
+		
+	\end{exemple}
+	
+	\exerciceresolu
+	\textbf{Caractériser la divisibilité}
+	
+	\begin{enumerate}
+		\item Montrer que $14p^2-35q$ est divisible par $7$ quels que soient les entiers relatifs $p$ et $q$.
+		
+		\item Déterminer les entiers naturels $n$ tels que $4$ divise $n+13$.
+	\end{enumerate}
+	
+	\solution
+	
+	\begin{enumerate}
+		\item Il faut montrer qu'il existe un entier $k$ tel que
+		$$
+		14p^2-35q=7k.
+		$$
+		Or,
+		$$
+		14p^2-35q=7(2p^2-5q).
+		$$
+		Comme $2p^2-5q\in\mathbb Z$, on conclut que $14p^2-35q$ est divisible par $7$.
+		
+		\item Si $4$ divise $n+13$, alors il existe $k\in\mathbb N$ tel que
+		$$
+		n+13=4k.
+		$$
+		Ainsi,
+		$$
+		n=4k-13.
+		$$
+		Comme $n\ge0$, on doit avoir
+		$$
+		4k-13\ge0
+		\quad\Longleftrightarrow\quad
+		k\ge4.
+		$$
+		Les solutions sont donc les entiers de la forme
+		$$
+		n=4k-13,\qquad (k\ge4),
+		$$
+		c'est-à-dire
+		$$
+		\{3,7,11,\ldots\}.
+		$$
+		
+	\end{enumerate}
+	\exerciceresolu
+	
+	\textbf{Utiliser un raisonnement par l'absurde : }
+	Montrer que, quel que soit l'entier relatif $n$, $2n+5$ n'est jamais divisible par $2$.
+	
+	\solution
+	Supposons que $2n+5$ soit divisible par $2$.
+	
+	Il existe alors $k\in\mathbb Z$ tel que
+	$$
+	2n+5=2k.
+	$$
+	D'où
+	$$
+	5=2(k-n).
+	$$
+	Ainsi, $5$ serait divisible par $2$, ce qui est impossible.
+	Donc $2$ ne divise jamais $2n+5$.
+	
+	\exerciceresolu
+	\textbf{Déterminer et utiliser la liste des diviseurs d'un nombre :}
+	
+	Déterminer dans $\mathbb Z$ la liste des diviseurs de $7$ et en déduire les entiers relatifs $n$ tels que $4n+1$ divise $7$.
+	
+	\solution
+	$$
+	D(7)=\{-7,-1,1,7\}.
+	$$
+	
+	Si $4n+1$ divise $7$, alors
+	$$
+	4n+1\in D(7).
+	$$
+	On résout successivement :
+	
+	$4n+1=7 \Longrightarrow n=\frac32$(pas de solution dans $\mathbb Z$),
+	
+	$4n+1=-7 \Longrightarrow n=-2,$
+	$4n+1=1 \Longrightarrow n=0,$
+	
+	$4n+1=-1 \Longrightarrow n=-\frac12$	(pas de solution dans $\mathbb Z$).
+	
+	Les solutions sont donc	$n=-2 \quad\text{ou}\quad n=0.$\\
+
+	
+	\exerciceresolu
+	\textbf{Utiliser une combinaison linéaire :}
+	
+	Déterminer les entiers relatifs $n$ tels que $2n+1$ divise $n+13$.
+	
+	\solution : On cherche une combinaison linéaire de $2n+1$ et de $n+13$ indépendante de $n$ :
+	$$
+	(2n+1)-2(n+13)=-25.
+	$$
+	Ainsi, si $2n+1$ divise $n+13$, alors $2n+1$ divise $25$.
+	
+	Or
+	$$
+	D(25)=\{-25,-5,-1,1,5,25\}.
+	$$
+	On résout :
+	$2n+1=-25 \Longrightarrow n=-13,
+	$ ou $2n+1=-5 \Longrightarrow n=-3,
+	$ ou $2n+1=-1 \Longrightarrow n=-1$ ou $2n+1=1\Longrightarrow n=0,
+	$ ou $2n+1=5 \Longrightarrow n=2,
+	$ ou $2n+1=25 \Longrightarrow n=12.$\\
+	Les solutions sont donc
+	$$
+	\boxed{\{-13,-3,-1,0,2,12\}}.
+	$$
+	
+	
+\section{Division euclidienne}
+
+\section{PGCD et algorithme d'Euclide}
+
+\section{Théorème de Bézout}
+
+\section{Nombres premiers}
+
+\section{Théorème de Gauss}
+
+\section{Congruences}
+
+\section{Équations diophantiennes}
+
+\section{Exercices}
+

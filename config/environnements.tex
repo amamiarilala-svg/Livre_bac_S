@@ -12,12 +12,45 @@
 \theoremstyle{mazavatheoreme}
 \newtheorem{theoreme}{Théorème}[chapter]
 
+
+% -----------------  PROPRIETE ---------------
+\theoremstyle{proprietestyle}
+\newtheoremstyle{proprietestyle}
+{0.5em}      % Espace avant
+{0.5em}      % Espace après
+{\normalfont}% Corps
+{}           % Indentation
+{\bfseries}  % Titre
+{}           % Ponctuation
+{\newline}   % <-- Retour à la ligne
+{}           % Style du titre
+
+\theoremstyle{proprietestyle}
 \newtheorem{propriete}[theoreme]{Propriété}
+
+
+
 \newtheorem{corollaire}[theoreme]{Corollaire}
 
 \theoremstyle{definition}
 \newtheorem{definition}[theoreme]{Définition}
-\newtheorem{exemple}[theoreme]{Exemple}
+
+\newenvironment{exemple}
+{
+	\par
+	\medskip
+	\noindent
+	\textbf{Exemple :}
+	
+	\smallskip
+}
+{
+	\medskip
+}
+
+
+
+% ----------CONSEQUENCES -------------------
 
 
 
@@ -110,3 +143,17 @@
 	
 	\medskip
 }
+
+
+
+
+\newenvironment{citationchapitre}
+{
+	\begin{flushright}
+		\small
+		\itshape
+	}
+	{
+	\end{flushright}
+}
+
