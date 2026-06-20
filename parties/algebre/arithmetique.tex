@@ -220,6 +220,185 @@ $\{\ldots;-2;-1;0;1;2;\ldots\}$.
 	
 \section{Division euclidienne}
 
+\begin{theoreme}
+	Soient $a$ un entier relatif et $b$ un entier naturel non nul.
+	
+	Il existe un unique couple $(q,r)\in\mathbb Z\times\mathbb N$ tel que
+	$$
+	a=bq+r
+	\qquad\text{avec}\qquad
+	0\le r<b.
+	$$
+	Le nombre $q$ est le quotient et $r$ le reste de la division euclidienne de $a$ par $b$.
+\end{theoreme}
+
+\interpretationgraphique
+On encadre $a$ par deux multiples consécutifs de $b$. \\
+\begin{center}
+	\begin{tikzpicture}[scale=0.9]
+		
+		% Axe
+		\draw[thick] (0,0)--(10,0);
+		
+		% Points
+		\fill[red] (0.5,0) circle (1.2pt);
+		\fill[red] (2.5,0) circle (1.2pt);
+		\fill[blue] (6,0) circle (1.2pt);
+		\fill[green!60!black] (7.3,0) circle (1.2pt);
+		\fill[blue] (9,0) circle (1.2pt);
+		
+		% Labels
+		\node[below] at (0.5,0) {$b$};
+		\node[below] at (2.5,0) {$2b$};
+		\node[below] at (6,0) {$qb$};
+		\node[below,green!60!black] at (7.3,0) {$a$};
+		\node[below] at (9,0) {$(q+1)b$};
+		
+		\node at (4,0) {$\cdots$};
+		
+		% Arc r
+		\draw[->,thick]
+		(6,0.25) to[bend left=35] node[above] {$+r$} (7.3,0.25);
+		
+		% Arc b
+		\draw[->,thick]
+		(6,0.7) to[bend left=35] node[above] {$+b$} (9,0.7);
+		
+	\end{tikzpicture}
+\end{center}
+
+
+\begin{exemple}
+	
+	La division euclidienne de $114$ par $8$ est
+	$$
+	114=8\times14+2,
+	$$
+	avec $q=14$ et $r=2$ puisque $0\le2<8$.
+\end{exemple}
+
+\remarque
+	\begin{itemize}[label=\textbullet]
+		\item Dans la division euclidienne par $b$, il y a $b$ restes possibles : $0,1,2,\ldots b-1$.
+		
+		\item Il existe plusieurs écritures de la forme $a=bq+r$, mais une seule vérifie $0\le r<b$.
+		Par exemple :
+		$$
+		56=17\times3+5=17\times2+22.
+		$$
+		Comme $22>17$, la seconde égalité n'est pas une division euclidienne.
+		
+	\end{itemize}
+	
+\begin{propriete}
+	
+	Soient $a\in\mathbb Z$ et $b\in\mathbb N^*$.
+	
+	$b$ divise $a$ si et seulement si le reste de la division euclidienne de $a$ par $b$ est nul.
+\end{propriete}
+
+\begin{exemple}
+	$$
+	-36=6\times(-6)+0
+	$$
+	est la division euclidienne de $-36$ par $6$.
+	Ainsi, $6$ est un diviseur de $-36$.
+\end{exemple}
+\begin{propriete}
+	
+	Soit $b\ge2$ un entier naturel.
+	
+	Tout entier relatif s'écrit sous l'une des formes
+	$$
+	bq,\ bq+1,\ bq+2,\ \ldots,\ bq+(b-1)q
+	$$ 	
+	où $q\in\mathbb Z$.
+\end{propriete}
+\begin{exemple}
+	Montrons que, pour tout entier relatif $n$, le nombre $n^2+1$ n'est jamais divisible par $3$.\\
+	On utilise la propriété précédente pour raisonner par disjonction de cas.\\
+	Tout entier s'écrit sous l'une des formes
+	$3q$, $3q+1$ ou $3q+2$.
+	
+	\begin{itemize}[label=\textbullet]
+		
+		\item Si $n=3q$, $n^2+1=(3q)^2+1=9q^2+1 \neq 3k.$
+		
+		\item Si $n=3q+1$, $n^2+1=(3q+1)^2+1=9q^2+6q+2 \neq 3k.
+		$		
+		\item Si $n=3q+2, n^2+1=(3q+2)^2+1=9q^2+12q+5 \neq 3k.$
+		
+	\end{itemize}
+	
+	Dans les trois cas, $n^2+1$ n'est pas divisible par $3$.
+	
+\end{exemple}
+	
+\exerciceresolu
+\textbf{Raisonner par disjonction des cas :}
+
+Montrer que le produit de trois entiers naturels consécutifs est divisible par $3$.
+
+\solution : Soit $n\in\mathbb N$. On veut montrer que
+$(n-1)n(n+1)$ est divisible par $3$.
+
+Tout entier s'écrit sous l'une des formes $3q$, $3q+1$ ou $3q+2$.
+
+\begin{itemize}[label=\textbullet]
+	
+	\item Si $n=3q$, alors
+	$$
+	(n-1)n(n+1)=(3q-1)\times3q\times(3q+1)
+	=3(3q-1)q(3q+1).
+	$$
+	\item Si $n=3q+1$, alors
+	$$
+	(n-1)n(n+1)=3q(3q+1)(3q+2)
+	=3q(3q+1)(3q+2).
+	$$
+	\item Si $n=3q+2$, alors
+	$$
+	(n-1)n(n+1)=(3q+1)(3q+2)(3q+3)
+	=3(3q+1)(3q+2)(q+1).
+	$$
+	
+\end{itemize}
+
+Dans les trois cas, $(n-1)n(n+1)$ est divisible par $3$.
+	
+\exerciceresolu
+\textbf{Conjecturer une divisibilité :}
+
+Conjecturer les valeurs de l'entier naturel $n$ pour lesquelles $n^2-1$ est divisible par $8$ et démontrer cette conjecture.
+
+\solution : On calcule $n^2-1$ pour quelques valeurs de $n$ : on obtient : $-1,\;0,\;3,\;8,\;15,\;24,\;35,\;48,\ldots$
+
+On conjecture que $n^2-1$ est divisible par $8$ lorsque $n$ est impair.
+
+Si $n=2k$, alors
+$$
+n^2-1=4k^2-1,
+$$
+qui est impair, donc non divisible par $8$.
+
+Si $n=2k+1$, alors
+$$
+n^2-1=(2k+1)^2-1=4k(k+1).
+$$
+Or $k$ et $k+1$ sont consécutifs, donc l'un des deux est pair :
+$$
+k(k+1)=2m.
+$$
+Ainsi,
+$$
+n^2-1=8m.
+$$
+Donc $n^2-1$ est divisible par $8$.
+\[
+\boxed{\;8\mid(n^2-1)\iff n\text{ est impair.}\;}
+\]
+
+
 \section{PGCD et algorithme d'Euclide}
 
 \section{Théorème de Bézout}
