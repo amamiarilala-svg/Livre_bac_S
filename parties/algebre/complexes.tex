@@ -1,0 +1,1339 @@
+% ============================================================
+%   CHAPITRE : Nombres complexes
+%   Niveau   : Terminale S / Terminale C
+%   Mazava Maths
+% ============================================================
+\chapter{L'ensemble des nombres complexes}
+
+\begin{citationchapitre}
+	« Les nombres complexes sont une réalité aussi solide\\
+	que celle des nombres réels, mais leur beauté réside\\
+	dans ce qu'ils révèlent de l'invisible. »\\[0.4em]
+	— Carl Friedrich Gauss
+\end{citationchapitre}
+
+\begin{objectifs}
+	\begin{itemize}[label=\textbullet]
+		\item Connaître la forme algébrique d'un nombre complexe et les opérations associées.
+		\item Calculer le module et l'argument d'un nombre complexe.
+		\item Maîtriser la forme trigonométrique et exponentielle.
+		\item Utiliser les nombres complexes en géométrie plane.
+		\item Résoudre des équations dans $\C$.
+	\end{itemize}
+\end{objectifs}
+
+
+% ============================================================
+\section{Forme algébrique}
+% ============================================================
+
+\begin{definition}
+	L'ensemble des \textbf{nombres complexes}, noté $\C$, est un ensemble contenant $\R$
+	et un élément noté $\ii$ vérifiant $\ii^2 = -1$.
+	
+	Tout nombre complexe $z$ s'écrit de manière unique sous la forme
+	$$
+	z = a + b\ii, \quad a \in \R,\ b \in \R.
+	$$
+	Cette écriture s'appelle la \textbf{forme algébrique} de $z$.
+	\begin{itemize}[label=\textbullet]
+		\item $a = \mathrm{Re}(z)$ est la \textbf{partie réelle} de $z$.
+		\item $b = \mathrm{Im}(z)$ est la \textbf{partie imaginaire} de $z$.
+	\end{itemize}
+\end{definition}
+
+\remarque\\
+$z \in \R \iff \mathrm{Im}(z) = 0$. \quad
+$z$ est dit \textbf{imaginaire pur} si $\mathrm{Re}(z) = 0$ et $z \neq 0$.
+
+\begin{definition}[Égalité de deux complexes]
+	$a + b\ii = c + d\ii \iff a = c \text{ et } b = d$.
+\end{definition}
+
+\begin{propriete}[Opérations en forme algébrique]
+	Soient $z = a + b\ii$ et $z' = c + d\ii$ deux nombres complexes.
+	\begin{itemize}[label=\textbullet]
+		\item \textbf{Addition :} $z + z' = (a+c) + (b+d)\ii$
+		\item \textbf{Multiplication :} $z \times z' = (ac - bd) + (ad + bc)\ii$
+		\item \textbf{Conjugué :} $\bar{z} = a - b\ii$
+	\end{itemize}
+\end{propriete}
+
+\begin{exemple}
+	Soient $z = 3 + 2\ii$ et $z' = 1 - \ii$.
+	\begin{itemize}[label=\textbullet]
+		\item $z + z' = 4 + \ii$
+		\item $z \times z' = (3 \times 1 - 2 \times (-1)) + (3 \times (-1) + 2 \times 1)\ii
+		= 5 - \ii$
+		\item $\bar{z} = 3 - 2\ii$
+	\end{itemize}
+\end{exemple}
+
+\begin{propriete}[Propriétés du conjugué]
+	Pour tous $z, z' \in \C$ :
+	\begin{enumerate}
+		\item $\overline{z + z'} = \bar{z} + \overline{z'}$
+		\item $\overline{z \times z'} = \bar{z} \times \overline{z'}$
+		\item $\overline{\left(\dfrac{z}{z'}\right)} = \dfrac{\bar{z}}{\overline{z'}}$ \quad ($z' \neq 0$)
+		\item $z + \bar{z} = 2\,\mathrm{Re}(z) \in \R$ \quad et \quad
+		$z - \bar{z} = 2\ii\,\mathrm{Im}(z)$
+		\item $z \times \bar{z} = a^2 + b^2 \in \R^+$
+		\item $\bar{\bar{z}} = z$
+	\end{enumerate}
+\end{propriete}
+
+\begin{methode}[Calculer l'inverse ou le quotient d'un complexe]
+	Pour calculer $\dfrac{1}{z}$ ou $\dfrac{z}{z'}$, on multiplie numérateur et dénominateur
+	par le \textbf{conjugué du dénominateur}.
+\end{methode}
+
+\begin{exemple}
+	Calculer $\dfrac{3 + 2\ii}{1 - \ii}$.
+	$$
+	\frac{3 + 2\ii}{1 - \ii}
+	= \frac{(3 + 2\ii)(1 + \ii)}{(1 - \ii)(1 + \ii)}
+	= \frac{3 + 3\ii + 2\ii + 2\ii^2}{1 + 1}
+	= \frac{3 - 2 + 5\ii}{2}
+	= \frac{1}{2} + \frac{5}{2}\ii.
+	$$
+\end{exemple}
+
+
+% ============================================================
+\section{Module et représentation géométrique}
+% ============================================================
+
+\begin{definition}[Plan complexe]
+	On munit le plan d'un repère orthonormé $(O, \vec{\imath}, \vec{\jmath})$.
+	À tout complexe $z = a + b\ii$, on associe le point $M(a\,;\,b)$
+	appelé \textbf{image} de $z$, et le vecteur $\vect{OM}$.
+\end{definition}
+
+\begin{definition}[Module]
+	Le \textbf{module} de $z = a + b\ii$ est le réel positif
+	$$
+	\abs{z} = \sqrt{a^2 + b^2} = \sqrt{z \bar{z}}.
+	$$
+	Géométriquement, $\abs{z} = OM$ est la distance de $M$ à l'origine.
+\end{definition}
+
+\begin{exemple}
+	$z = 3 + 4\ii$ : $\abs{z} = \sqrt{9 + 16} = \sqrt{25} = 5$.
+\end{exemple}
+
+\begin{propriete}[Propriétés du module]
+	Pour tous $z, z' \in \C$ :
+	\begin{enumerate}
+		\item $\abs{z} \geqslant 0$ et $\abs{z} = 0 \iff z = 0$
+		\item $\abs{\bar{z}} = \abs{z}$
+		\item $\abs{z \times z'} = \abs{z} \times \abs{z'}$
+		\item $\abs{\dfrac{z}{z'}} = \dfrac{\abs{z}}{\abs{z'}}$ \quad ($z' \neq 0$)
+		\item $\abs{z^n} = \abs{z}^n$ \quad ($n \in \N$)
+		\item $\abs{z + z'} \leqslant \abs{z} + \abs{z'}$ \quad (\textbf{inégalité triangulaire})
+	\end{enumerate}
+\end{propriete}
+
+\begin{attention}
+	En général, $\abs{z + z'} \neq \abs{z} + \abs{z'}$.
+	Par exemple, $\abs{1 + (-1)} = 0 \neq \abs{1} + \abs{-1} = 2$.
+\end{attention}
+
+\interpretationgraphique
+La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' - z}$.
+
+
+% ============================================================
+\section{Forme trigonométrique et forme exponentielle}
+% ============================================================
+
+\begin{definition}[Argument]
+	Soit $z \neq 0$ de module $r = \abs{z}$.
+	Tout réel $\theta$ tel que
+	$$
+	z = r(\cos\theta + \ii\sin\theta)
+	$$
+	s'appelle un \textbf{argument} de $z$, noté $\theta = \arg(z)$.
+	
+	L'argument est défini \textbf{modulo $2\pi$} : si $\theta$ convient, alors $\theta + 2k\pi$ convient
+	aussi pour tout $k \in \Z$.
+\end{definition}
+
+\begin{definition}[Forme exponentielle]
+	On note $\e^{\ii\theta} = \cos\theta + \ii\sin\theta$ (formule d'Euler).
+	
+	Tout complexe non nul s'écrit donc
+	$$
+	z = r\,\e^{\ii\theta}, \quad r = \abs{z} > 0,\quad \theta = \arg(z).
+	$$
+\end{definition}
+
+\begin{exemple}
+	\begin{itemize}[label=\textbullet]
+		\item $z = 1 + \ii$ : $\abs{z} = \sqrt{2}$, $\arg(z) = \dfrac{\pi}{4}$,
+		donc $z = \sqrt{2}\,\e^{\ii\pi/4}$.
+		\item $z = -2$ : $\abs{z} = 2$, $\arg(z) = \pi$,
+		donc $z = 2\,\e^{\ii\pi}$.
+		\item $z = -\ii$ : $\abs{z} = 1$, $\arg(z) = -\dfrac{\pi}{2}$,
+		donc $z = \e^{-\ii\pi/2}$.
+	\end{itemize}
+\end{exemple}
+
+\begin{propriete}[Propriétés des arguments]
+	Pour tous $z, z' \in \C^*$ :
+	\begin{enumerate}
+		\item $\arg(z \times z') \equiv \arg(z) + \arg(z')\ [2\pi]$
+		\item $\arg\!\left(\dfrac{z}{z'}\right) \equiv \arg(z) - \arg(z')\ [2\pi]$
+		\item $\arg(z^n) \equiv n\,\arg(z)\ [2\pi]$ \quad ($n \in \Z$)
+		\item $\arg(\bar{z}) \equiv -\arg(z)\ [2\pi]$
+	\end{enumerate}
+\end{propriete}
+
+\begin{theoreme}[Formule de Moivre]
+	Pour tout $\theta \in \R$ et tout $n \in \Z$ :
+	$$
+	(\cos\theta + \ii\sin\theta)^n = \cos(n\theta) + \ii\sin(n\theta).
+	$$
+\end{theoreme}
+
+\begin{exemple}
+	Développer $\cos(2\theta)$ et $\sin(2\theta)$ à l'aide de la formule de Moivre.
+	
+	$(\cos\theta + \ii\sin\theta)^2 = \cos^2\theta - \sin^2\theta + 2\ii\cos\theta\sin\theta$,
+	donc en identifiant parties réelle et imaginaire :
+	$$
+	\cos(2\theta) = \cos^2\theta - \sin^2\theta, \qquad \sin(2\theta) = 2\cos\theta\sin\theta.
+	$$
+\end{exemple}
+
+\begin{propriete}[Formules d'Euler]
+	Pour tout $\theta \in \R$ :
+	$$
+	\cos\theta = \frac{\e^{\ii\theta} + \e^{-\ii\theta}}{2},
+	\qquad
+	\sin\theta = \frac{\e^{\ii\theta} - \e^{-\ii\theta}}{2\ii}.
+	$$
+\end{propriete}
+
+\begin{astucebac}
+	Pour linéariser $\cos^n\theta$ ou $\sin^n\theta$, on exprime $\cos\theta$ et $\sin\theta$
+	à l'aide des formules d'Euler, puis on développe avec le binôme de Newton.
+\end{astucebac}
+
+
+% ============================================================
+\section{Équations dans $\C$}
+% ============================================================
+
+\subsection{Équations du second degré}
+
+\begin{theoreme}
+	Soit $az^2 + bz + c = 0$ avec $a, b, c \in \C$, $a \neq 0$, et $\Delta = b^2 - 4ac$.
+	\begin{itemize}[label=\textbullet]
+		\item Si $\Delta \neq 0$ : l'équation admet deux solutions
+		$z = \dfrac{-b \pm \sqrt{\Delta}}{2a}$
+		(où $\sqrt{\Delta}$ désigne une racine carrée de $\Delta$ dans $\C$).
+		\item Si $\Delta = 0$ : l'équation admet une solution double $z = -\dfrac{b}{2a}$.
+	\end{itemize}
+	En particulier, si $a, b, c \in \R$ et $\Delta < 0$, les deux solutions sont conjuguées :
+	$z_1 = \dfrac{-b + \ii\sqrt{-\Delta}}{2a}$ et $z_2 = \bar{z_1}$.
+\end{theoreme}
+
+\begin{methode}[Racine carrée d'un complexe]
+	Pour trouver $\sqrt{a + b\ii}$, on pose $z = x + y\ii$ et on résout le système :
+	$$
+	\begin{cases}
+		x^2 - y^2 = a \\
+		2xy = b \\
+		x^2 + y^2 = \abs{a + b\ii}
+	\end{cases}
+	$$
+\end{methode}
+
+\begin{exemple}
+	Résoudre $z^2 + 2z + 5 = 0$.
+	
+	$\Delta = 4 - 20 = -16 < 0$, donc $\sqrt{\Delta} = 4\ii$.
+	
+	$z_1 = \dfrac{-2 + 4\ii}{2} = -1 + 2\ii$ \quad et \quad $z_2 = -1 - 2\ii = \overline{z_1}$.
+\end{exemple}
+
+\subsection{Racines $n$-ièmes de l'unité}
+
+\begin{definition}
+	Les \textbf{racines $n$-ièmes de l'unité} sont les solutions de $z^n = 1$.
+	Elles sont au nombre de $n$ et valent :
+	$$
+	z_k = \e^{\ii\frac{2k\pi}{n}}, \quad k \in \{0, 1, \ldots, n-1\}.
+	$$
+\end{definition}
+
+\begin{exemple}
+	Les racines cubiques de l'unité ($n = 3$) sont :
+	$$
+	1, \quad \omega = \e^{\ii\frac{2\pi}{3}} = -\frac{1}{2} + \frac{\sqrt{3}}{2}\ii,
+	\quad \omega^2 = \e^{\ii\frac{4\pi}{3}} = -\frac{1}{2} - \frac{\sqrt{3}}{2}\ii.
+	$$
+	On vérifie : $1 + \omega + \omega^2 = 0$.
+\end{exemple}
+
+\begin{propriete}
+	La somme des racines $n$-ièmes de l'unité est nulle :
+	$$
+	\sum_{k=0}^{n-1} \e^{\ii\frac{2k\pi}{n}} = 0.
+	$$
+\end{propriete}
+
+
+% ============================================================
+\section{Nombres complexes et géométrie}
+% ============================================================
+
+\begin{propriete}[Affixe d'un point et d'un vecteur]
+	Dans le plan complexe repéré par $(O, \vec{\imath}, \vec{\jmath})$ :
+	\begin{itemize}[label=\textbullet]
+		\item Le point $M$ d'affixe $z = a + b\ii$ a pour coordonnées $(a\,;\,b)$.
+		\item Le vecteur $\vect{AB}$ a pour affixe $z_B - z_A$.
+		\item La distance $AB = \abs{z_B - z_A}$.
+		\item Le milieu $I$ de $[AB]$ a pour affixe $\dfrac{z_A + z_B}{2}$.
+	\end{itemize}
+\end{propriete}
+
+\begin{propriete}[Argument et angle]
+	Soient $A$, $B$, $C$ trois points d'affixes $z_A$, $z_B$, $z_C$.
+	$$
+	\arg\!\left(\frac{z_C - z_A}{z_B - z_A}\right) \equiv \left(\vect{AB}, \vect{AC}\right)\ [2\pi].
+	$$
+\end{propriete}
+
+\begin{propriete}[Conditions géométriques]
+	Soient $A$, $B$, $C$, $D$ quatre points deux à deux distincts d'affixes respectives
+	$z_A$, $z_B$, $z_C$, $z_D$.
+	\begin{enumerate}
+		\item $A$, $B$, $C$ sont \textbf{alignés} $\iff$
+		$\dfrac{z_C - z_A}{z_B - z_A} \in \R$.
+		\item $(AB) \perp (CD)$ $\iff$
+		$\dfrac{z_D - z_C}{z_B - z_A}$ est imaginaire pur.
+		\item $(AB) \parallel (CD)$ $\iff$
+		$\dfrac{z_D - z_C}{z_B - z_A} \in \R$.
+		\item $ABCD$ est un \textbf{carré} $\iff$ $z_D - z_C = \ii(z_B - z_A)$
+		(ou $-\ii$ selon l'orientation).
+	\end{enumerate}
+\end{propriete}
+
+\begin{exemple}
+	Soient $A$ d'affixe $1 + \ii$ et $B$ d'affixe $3 + 2\ii$.
+	Le milieu $I$ de $[AB]$ a pour affixe
+	$\dfrac{(1+\ii) + (3+2\ii)}{2} = \dfrac{4 + 3\ii}{2} = 2 + \dfrac{3}{2}\ii$.
+	
+	$AB = \abs{(3+2\ii) - (1+\ii)} = \abs{2 + \ii} = \sqrt{5}$.
+\end{exemple}
+
+
+% ============================================================
+\section{Transformations du plan et complexes}
+% ============================================================
+
+\begin{propriete}[Translations]
+	La translation de vecteur $\vect{u}$ d'affixe $b$ est donnée par :
+	$$
+	z' = z + b.
+	$$
+\end{propriete}
+
+\begin{propriete}[Rotation]
+	La rotation de centre $\Omega$ (affixe $\omega$), d'angle $\theta$ est donnée par :
+	$$
+	z' - \omega = \e^{\ii\theta}(z - \omega).
+	$$
+\end{propriete}
+
+\begin{propriete}[Homothétie]
+	L'homothétie de centre $\Omega$ (affixe $\omega$), de rapport $k \in \R^*$ est :
+	$$
+	z' - \omega = k(z - \omega).
+	$$
+\end{propriete}
+
+\begin{propriete}[Similitude directe]
+	Toute similitude directe (non nulle) s'écrit sous la forme
+	$$
+	z' = az + b, \quad a \in \C^*,\ b \in \C.
+	$$
+	\begin{itemize}[label=\textbullet]
+		\item Le \textbf{rapport} de la similitude est $\abs{a}$.
+		\item L'\textbf{angle} de la similitude est $\arg(a)$.
+		\item Si $a = 1$ : c'est une translation.
+		\item Si $a \neq 1$ : le \textbf{centre} est le point fixe $\omega = \dfrac{b}{1 - a}$.
+	\end{itemize}
+\end{propriete}
+
+\begin{exemple}
+	La transformation $f : z \mapsto (1 + \ii)z - 2 + \ii$ est une similitude directe.
+	\begin{itemize}[label=\textbullet]
+		\item Rapport : $\abs{1 + \ii} = \sqrt{2}$.
+		\item Angle : $\arg(1 + \ii) = \dfrac{\pi}{4}$.
+		\item Centre : $\omega = \dfrac{-2 + \ii}{1 - (1 + \ii)} = \dfrac{-2 + \ii}{-\ii}
+		= \dfrac{(-2 + \ii)\ii}{-\ii^2} = \dfrac{-2\ii + \ii^2}{1} = -1 - 2\ii$.
+	\end{itemize}
+\end{exemple}
+
+\begin{astucebac}
+	Pour identifier une transformation à partir de son expression complexe $z' = az + b$ :
+	\begin{enumerate}
+		\item Calculer $a$ : son module donne le rapport, son argument donne l'angle.
+		\item Si $a = 1$ : translation de vecteur d'affixe $b$.
+		\item Si $\abs{a} = 1$ et $a \neq 1$ : rotation pure (rapport $= 1$).
+		\item Si $a \in \R^*$ et $a \neq 1$ : homothétie pure (angle $= 0$ ou $\pi$).
+		\item Sinon : similitude directe de rapport $\abs{a}$ et d'angle $\arg(a)$.
+	\end{enumerate}
+\end{astucebac}
+
+
+
+% ============================================================
+%   EXERCICES RÉSOLUS — Nombres complexes
+%   Mazava Maths
+% ============================================================
+
+
+% ------------------------------------------------------------
+%  NOTION 1 : Forme algébrique — opérations et conjugué
+% ------------------------------------------------------------
+
+
+
+\section{EXERCICES RESOLUS}
+\exerciceresolu
+\textbf{Effectuer des calculs en forme algébrique}
+
+Soient $z_1 = 3 - 2\ii$ et $z_2 = 1 + 4\ii$.
+
+Calculer, sous forme algébrique, $z_1 + z_2$, $z_1 \times z_2$, $\overline{z_1}$
+et $\dfrac{z_1}{z_2}$.
+
+\solution
+
+\textbf{Somme :}
+$$
+z_1 + z_2 = (3+1) + (-2+4)\ii = 4 + 2\ii.
+$$
+
+\textbf{Produit :}
+$$
+z_1 \times z_2 = (3 \times 1 - (-2) \times 4) + (3 \times 4 + (-2) \times 1)\ii
+= (3 + 8) + (12 - 2)\ii = 11 + 10\ii.
+$$
+
+\textbf{Conjugué :}
+$$
+\overline{z_1} = 3 + 2\ii.
+$$
+
+\textbf{Quotient :} on multiplie par le conjugué du dénominateur $\overline{z_2} = 1 - 4\ii$ :
+$$
+\frac{z_1}{z_2}
+= \frac{(3 - 2\ii)(1 - 4\ii)}{(1 + 4\ii)(1 - 4\ii)}
+= \frac{3 - 12\ii - 2\ii + 8\ii^2}{1 + 16}
+= \frac{3 - 8 - 14\ii}{17}
+= \frac{-5}{17} - \frac{14}{17}\ii.
+$$
+
+
+% ------------------------------------------------------------
+%  NOTION 2 : Résoudre une équation à coefficients réels
+% ------------------------------------------------------------
+
+\exerciceresolu
+\textbf{Résoudre une équation et trouver des parties réelle et imaginaire}
+
+Résoudre dans $\C$ l'équation $z + \ii\bar{z} = 3 - \ii$.
+
+\solution
+
+On pose $z = a + b\ii$ avec $a, b \in \R$, donc $\bar{z} = a - b\ii$.
+
+On substitue :
+$$
+(a + b\ii) + \ii(a - b\ii) = 3 - \ii.
+$$
+$$
+a + b\ii + a\ii - b\ii^2 = 3 - \ii.
+$$
+$$
+(a + b) + (a + b)\ii = 3 - \ii.
+$$
+
+En identifiant parties réelle et imaginaire :
+$$
+\begin{cases}
+	a + b = 3 \\
+	a + b = -1
+\end{cases}
+$$
+
+Ce système est contradictoire ($3 \neq -1$), donc \textbf{l'équation n'a pas de solution}.
+
+
+% ------------------------------------------------------------
+%  NOTION 3 : Module
+% ------------------------------------------------------------
+
+\exerciceresolu
+\textbf{Calculer un module et utiliser ses propriétés}
+
+\begin{enumerate}
+	\item Calculer $\abs{z}$ pour $z = \dfrac{(2 + \ii)^2}{1 - \ii\sqrt{3}}$.
+	
+	\item Montrer que si $\abs{z} = 1$, alors $\dfrac{z - 1}{z + 1}$ est imaginaire pur
+	(en supposant $z \neq -1$).
+\end{enumerate}
+
+\solution
+
+\textbf{1.} On utilise les propriétés du module :
+$$
+\abs{z}
+= \frac{\abs{2 + \ii}^2}{\abs{1 - \ii\sqrt{3}}}
+= \frac{\left(\sqrt{4+1}\right)^2}{\sqrt{1 + 3}}
+= \frac{5}{2}.
+$$
+
+\textbf{2.} Posons $w = \dfrac{z-1}{z+1}$. Montrons que $\mathrm{Re}(w) = 0$.
+
+On calcule $w + \bar{w}$ :
+$$
+w + \bar{w} = \frac{z-1}{z+1} + \frac{\bar{z}-1}{\bar{z}+1}
+= \frac{(z-1)(\bar{z}+1) + (\bar{z}-1)(z+1)}{(z+1)(\bar{z}+1)}.
+$$
+
+Développons le numérateur :
+$$
+(z-1)(\bar{z}+1) + (\bar{z}-1)(z+1)
+= z\bar{z} + z - \bar{z} - 1 + \bar{z}z + \bar{z} - z - 1
+= 2\abs{z}^2 - 2.
+$$
+
+Comme $\abs{z} = 1$, on obtient $2 \times 1 - 2 = 0$.
+
+Donc $w + \bar{w} = 0$, ce qui signifie $2\,\mathrm{Re}(w) = 0$, soit $\mathrm{Re}(w) = 0$.
+
+Ainsi $\dfrac{z-1}{z+1}$ est bien imaginaire pur.
+
+
+% ------------------------------------------------------------
+%  NOTION 4 : Forme trigonométrique et argument
+% ------------------------------------------------------------
+
+\exerciceresolu
+\textbf{Mettre sous forme trigonométrique et exponentielle}
+
+Mettre les nombres complexes suivants sous forme exponentielle $r\e^{\ii\theta}$ :
+\begin{enumerate}
+	\item $z_1 = -1 + \ii$
+	\item $z_2 = -2\ii$
+	\item $z_3 = \sqrt{3} - \ii$
+\end{enumerate}
+
+\solution
+
+\textbf{1.} $\abs{z_1} = \sqrt{1+1} = \sqrt{2}$.
+$$
+z_1 = \sqrt{2}\left(-\frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}\ii\right)
+= \sqrt{2}\left(\cos\frac{3\pi}{4} + \ii\sin\frac{3\pi}{4}\right)
+= \sqrt{2}\,\e^{\ii\frac{3\pi}{4}}.
+$$
+
+\textbf{2.} $\abs{z_2} = 2$.
+$$
+z_2 = 2\left(0 - \ii\right) = 2\left(\cos\left(-\frac{\pi}{2}\right)
++ \ii\sin\left(-\frac{\pi}{2}\right)\right) = 2\,\e^{-\ii\frac{\pi}{2}}.
+$$
+
+\textbf{3.} $\abs{z_3} = \sqrt{3+1} = 2$.
+$$
+z_3 = 2\left(\frac{\sqrt{3}}{2} - \frac{1}{2}\ii\right)
+= 2\left(\cos\left(-\frac{\pi}{6}\right) + \ii\sin\left(-\frac{\pi}{6}\right)\right)
+= 2\,\e^{-\ii\frac{\pi}{6}}.
+$$
+
+
+% ------------------------------------------------------------
+%  NOTION 5 : Formule de Moivre — linéarisation
+% ------------------------------------------------------------
+
+\exerciceresolu
+\textbf{Exprimer $\cos(3\theta)$ et $\sin(3\theta)$ en fonction de $\cos\theta$ et $\sin\theta$}
+
+\solution
+
+D'après la formule de Moivre :
+$$
+(\cos\theta + \ii\sin\theta)^3 = \cos(3\theta) + \ii\sin(3\theta).
+$$
+
+On développe le membre gauche par le binôme de Newton :
+$$
+(\cos\theta + \ii\sin\theta)^3
+= \cos^3\theta
++ 3\cos^2\theta\cdot\ii\sin\theta
++ 3\cos\theta\cdot(\ii\sin\theta)^2
++ (\ii\sin\theta)^3.
+$$
+$$
+= \cos^3\theta
++ 3\ii\cos^2\theta\sin\theta
+- 3\cos\theta\sin^2\theta
+- \ii\sin^3\theta.
+$$
+$$
+= \left(\cos^3\theta - 3\cos\theta\sin^2\theta\right)
++ \ii\left(3\cos^2\theta\sin\theta - \sin^3\theta\right).
+$$
+
+En identifiant parties réelle et imaginaire :
+$$
+\boxed{\cos(3\theta) = \cos^3\theta - 3\cos\theta\sin^2\theta = 4\cos^3\theta - 3\cos\theta,}
+$$
+$$
+\boxed{\sin(3\theta) = 3\cos^2\theta\sin\theta - \sin^3\theta = 3\sin\theta - 4\sin^3\theta.}
+$$
+
+(On a utilisé $\sin^2\theta = 1 - \cos^2\theta$ et $\cos^2\theta = 1 - \sin^2\theta$.)
+
+
+% ------------------------------------------------------------
+%  NOTION 6 : Équation du second degré dans C
+% ------------------------------------------------------------
+
+\exerciceresolu
+\textbf{Résoudre une équation du second degré dans $\C$}
+
+Résoudre dans $\C$ l'équation $z^2 - (3 + \ii)z + (2 + 3\ii) = 0$.
+
+\solution
+
+On calcule le discriminant :
+$$
+\Delta = (3+\ii)^2 - 4(2+3\ii) = 9 + 6\ii - 1 - 8 - 12\ii = -6\ii.
+$$
+
+On cherche $\delta = x + y\ii$ tel que $\delta^2 = -6\ii$ :
+$$
+\begin{cases}
+	x^2 - y^2 = 0 \\
+	2xy = -6 \\
+	x^2 + y^2 = \abs{-6\ii} = 6
+\end{cases}
+\implies
+\begin{cases}
+	x^2 = y^2 \\
+	xy = -3 \\
+	x^2 + y^2 = 6
+\end{cases}
+\implies x^2 = 3 \implies x = \sqrt{3}.
+$$
+
+Comme $xy = -3 < 0$, on a $y = -\sqrt{3}$, donc $\delta = \sqrt{3} - \sqrt{3}\,\ii$.
+
+Les solutions sont :
+$$
+z_1 = \frac{(3+\ii) + (\sqrt{3} - \sqrt{3}\,\ii)}{2}
+= \frac{(3+\sqrt{3}) + (1-\sqrt{3})\ii}{2},
+$$
+$$
+z_2 = \frac{(3+\ii) - (\sqrt{3} - \sqrt{3}\,\ii)}{2}
+= \frac{(3-\sqrt{3}) + (1+\sqrt{3})\ii}{2}.
+$$
+
+
+% ------------------------------------------------------------
+%  NOTION 7 : Racines n-ièmes de l'unité
+% ------------------------------------------------------------
+
+\exerciceresolu
+\textbf{Déterminer les racines $4$-ièmes de l'unité et les placer dans le plan}
+
+Résoudre $z^4 = 1$ dans $\C$.
+
+\solution
+
+Les racines $4$-ièmes de l'unité sont $z_k = \e^{\ii\frac{2k\pi}{4}} = \e^{\ii\frac{k\pi}{2}}$
+pour $k \in \{0, 1, 2, 3\}$ :
+
+$$
+z_0 = \e^{0} = 1, \quad
+z_1 = \e^{\ii\frac{\pi}{2}} = \ii, \quad
+z_2 = \e^{\ii\pi} = -1, \quad
+z_3 = \e^{\ii\frac{3\pi}{2}} = -\ii.
+$$
+
+\textbf{Vérification :} $1^4 = 1$ \checkmark, $\ii^4 = (\ii^2)^2 = (-1)^2 = 1$ \checkmark,
+$(-1)^4 = 1$ \checkmark, $(-\ii)^4 = 1$ \checkmark.
+
+Ces quatre points sont les sommets du carré inscrit dans le cercle unité.
+
+\remarque
+La somme des racines $n$-ièmes de l'unité est toujours nulle :
+$1 + \ii + (-1) + (-\ii) = 0$. \checkmark
+
+
+% ------------------------------------------------------------
+%  NOTION 8 : Géométrie — affixe, distance, milieu
+% ------------------------------------------------------------
+
+\exerciceresolu
+\textbf{Utiliser les complexes en géométrie}
+
+On donne $A$ d'affixe $z_A = 2 + 3\ii$, $B$ d'affixe $z_B = -1 + \ii$
+et $C$ d'affixe $z_C = 3 - \ii$.
+
+\begin{enumerate}
+	\item Calculer $AB$, $BC$ et $AC$.
+	\item Déterminer l'affixe du milieu $I$ de $[AC]$.
+	\item Montrer que le triangle $ABC$ est rectangle en $B$.
+\end{enumerate}
+
+\solution
+
+\textbf{1.}
+$$
+AB = \abs{z_B - z_A} = \abs{(-1+\ii)-(2+3\ii)} = \abs{-3-2\ii} = \sqrt{9+4} = \sqrt{13}.
+$$
+$$
+BC = \abs{z_C - z_B} = \abs{(3-\ii)-(-1+\ii)} = \abs{4-2\ii} = \sqrt{16+4} = \sqrt{20} = 2\sqrt{5}.
+$$
+$$
+AC = \abs{z_C - z_A} = \abs{(3-\ii)-(2+3\ii)} = \abs{1-4\ii} = \sqrt{1+16} = \sqrt{17}.
+$$
+
+\textbf{2.} L'affixe du milieu $I$ est :
+$$
+z_I = \frac{z_A + z_C}{2} = \frac{(2+3\ii)+(3-\ii)}{2} = \frac{5+2\ii}{2} = \frac{5}{2} + \ii.
+$$
+
+\textbf{3.} On calcule $\dfrac{z_C - z_B}{z_A - z_B}$ :
+$$
+\frac{z_C - z_B}{z_A - z_B}
+= \frac{4 - 2\ii}{3 + 2\ii}
+= \frac{(4-2\ii)(3-2\ii)}{(3+2\ii)(3-2\ii)}
+= \frac{12 - 8\ii - 6\ii + 4\ii^2}{9+4}
+= \frac{8 - 14\ii}{13}
+= \frac{8}{13} - \frac{14}{13}\ii.
+$$
+
+Ce rapport n'est pas imaginaire pur, donc $(BC)$ n'est pas perpendiculaire à $(BA)$.
+
+Vérifions par le théorème de Pythagore :
+$$
+AB^2 + BC^2 = 13 + 20 = 33 \neq 17 = AC^2.
+$$
+$$
+AB^2 + AC^2 = 13 + 17 = 30 \neq 20 = BC^2.
+$$
+$$
+BC^2 + AC^2 = 20 + 17 = 37 \neq 13 = AB^2.
+$$
+
+Le triangle $ABC$ \textbf{n'est pas rectangle}.
+
+\begin{attention}
+	Pour montrer qu'un triangle est rectangle en $B$, on vérifie que
+	$\dfrac{z_C - z_B}{z_A - z_B}$ est \textbf{imaginaire pur}
+	(partie réelle nulle), ou que $AB^2 + BC^2 = AC^2$.
+\end{attention}
+
+
+% ------------------------------------------------------------
+%  NOTION 9 : Argument — alignement et perpendicularité
+% ------------------------------------------------------------
+
+\exerciceresolu
+\textbf{Utiliser les arguments pour étudier une configuration géométrique}
+
+Soient $A$, $B$, $C$, $D$ d'affixes respectives $\ii$, $2+\ii$, $1+3\ii$, $-1+2\ii$.
+
+\begin{enumerate}
+	\item Montrer que $A$, $B$, $C$ ne sont pas alignés.
+	\item Montrer que $(AB) \perp (AD)$.
+\end{enumerate}
+
+\solution
+
+\textbf{1.} On calcule $\dfrac{z_C - z_A}{z_B - z_A}$ :
+$$
+\frac{z_C - z_A}{z_B - z_A}
+= \frac{(1+3\ii) - \ii}{(2+\ii) - \ii}
+= \frac{1 + 2\ii}{2}
+= \frac{1}{2} + \ii.
+$$
+Ce quotient n'est pas réel (partie imaginaire $= 1 \neq 0$),
+donc $A$, $B$, $C$ \textbf{ne sont pas alignés}.
+
+\textbf{2.} On calcule $\dfrac{z_D - z_A}{z_B - z_A}$ :
+$$
+\frac{z_D - z_A}{z_B - z_A}
+= \frac{(-1+2\ii) - \ii}{(2+\ii) - \ii}
+= \frac{-1 + \ii}{2}
+= -\frac{1}{2} + \frac{1}{2}\ii.
+$$
+Ce quotient est imaginaire pur si et seulement si sa partie réelle est nulle.
+Ici, la partie réelle est $-\dfrac{1}{2} \neq 0$, donc $(AB)$ et $(AD)$ ne sont pas perpendiculaires.
+
+\begin{attention}
+	$(AB) \perp (CD) \iff \dfrac{z_D - z_C}{z_B - z_A}$ est \textbf{imaginaire pur},
+	c'est-à-dire que sa partie réelle est nulle.
+\end{attention}
+
+
+% ------------------------------------------------------------
+%  NOTION 10 : Similitudes directes
+% ------------------------------------------------------------
+
+\exerciceresolu
+\textbf{Identifier et caractériser une similitude directe}
+
+Soit $f$ la transformation du plan d'expression complexe $z' = (1-\ii)z + 2 + 3\ii$.
+
+\begin{enumerate}
+	\item Identifier la nature de $f$.
+	\item Déterminer le rapport et l'angle de $f$.
+	\item Déterminer le centre de $f$.
+\end{enumerate}
+
+\solution
+
+\textbf{1.} $f$ est de la forme $z' = az + b$ avec $a = 1 - \ii \neq 1$ et $b = 2 + 3\ii$.
+C'est une \textbf{similitude directe} (qui n'est ni une translation, ni une rotation pure,
+ni une homothétie pure).
+
+\textbf{2.}
+$$
+\text{Rapport} : r = \abs{a} = \abs{1-\ii} = \sqrt{1+1} = \sqrt{2}.
+$$
+$$
+\text{Angle} : \theta = \arg(1-\ii) = -\frac{\pi}{4}.
+$$
+$f$ est une similitude directe de rapport $\sqrt{2}$ et d'angle $-\dfrac{\pi}{4}$.
+
+\textbf{3.} Le centre $\Omega$ d'affixe $\omega$ est le point fixe de $f$ :
+$$
+\omega = a\omega + b \implies \omega(1-a) = b
+\implies \omega = \frac{b}{1-a} = \frac{2+3\ii}{1-(1-\ii)} = \frac{2+3\ii}{\ii}.
+$$
+
+On simplifie en multipliant par $\dfrac{\bar{\ii}}{\bar{\ii}} = \dfrac{-\ii}{-\ii}$ :
+$$
+\omega = \frac{(2+3\ii)(-\ii)}{(-\ii)(\ii)} = \frac{-2\ii - 3\ii^2}{1} = 3 - 2\ii.
+$$
+
+Le centre de $f$ est le point $\Omega$ d'affixe $3 - 2\ii$.
+
+\begin{astucebac}
+	Pour identifier rapidement $f : z \mapsto az + b$ :
+	\begin{itemize}[label=\textbullet]
+		\item $a = 1$ : translation de vecteur d'affixe $b$.
+		\item $\abs{a} = 1$, $a \neq 1$ : rotation de centre $\dfrac{b}{1-a}$ et d'angle $\arg(a)$.
+		\item $a \in \R^*$, $a \neq 1$ : homothétie de centre $\dfrac{b}{1-a}$ et de rapport $a$.
+		\item Sinon : similitude directe de rapport $\abs{a}$, d'angle $\arg(a)$
+		et de centre $\dfrac{b}{1-a}$.
+	\end{itemize}
+\end{astucebac}
+
+
+
+\section{ENTRAINEMENT}
+% ============================================================
+%   EXERCICES — Nature et éléments caractéristiques
+%                d'une application du plan complexe
+%   Mazava Maths
+% ============================================================
+
+
+% ------------------------------------------------------------
+\exercice{Identifier une translation ou une rotation \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+Pour chacune des applications suivantes, déterminer la nature et les éléments
+caractéristiques.
+
+\begin{enumerate}
+	\item $f_1 : z \mapsto z + 3 - 2\ii$
+	\item $f_2 : z \mapsto \ii z + (1 - \ii)$
+	\item $f_3 : z \mapsto -z + 4 + 2\ii$
+	\item $f_4 : z \mapsto \e^{\ii\frac{\pi}{3}} z + 2$
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Similitude directe — cas général \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+Soit $f$ l'application d'expression complexe
+$$
+z' = (1 + \ii\sqrt{3})\,z - 2 + 2\ii\sqrt{3}.
+$$
+
+\begin{enumerate}
+	\item Montrer que $f$ est une similitude directe.
+	\item Déterminer le rapport $k$ et l'angle $\theta$ de $f$.
+	\item Déterminer l'affixe du centre $\Omega$ de $f$.
+	\item Vérifier que $\Omega$ est bien un point fixe de $f$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Déterminer une application à partir de deux images \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+On cherche une similitude directe $f : z' = az + b$ telle que
+$$
+f(0) = 2 + \ii \quad \text{et} \quad f(1) = 3 + 3\ii.
+$$
+
+\begin{enumerate}
+	\item Déterminer $a$ et $b$.
+	\item Préciser la nature de $f$, son rapport et son angle.
+	\item Déterminer le centre de $f$ si ce n'est pas une translation.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Composition de deux applications \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+On considère les applications
+$$
+f : z \mapsto \ii z + 1 + 2\ii \qquad \text{et} \qquad g : z \mapsto -\ii z + 3.
+$$
+
+\begin{enumerate}
+	\item Préciser la nature de $f$ et de $g$.
+	\item Déterminer l'expression complexe de $g \circ f$.
+	\item Préciser la nature de $g \circ f$ et ses éléments caractéristiques.
+	\item La composition $g \circ f$ est-elle commutative ? Justifier.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Application définie par une condition géométrique \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+On considère la rotation $r$ de centre $\Omega$ d'affixe $1 + \ii$ et d'angle $\dfrac{\pi}{2}$.
+
+\begin{enumerate}
+	\item Écrire l'expression complexe de $r$.
+	\item Calculer les images des points $A(2\,;\,0)$, $B(0\,;\,2)$ et $C(3\,;\,3)$.
+	\item Montrer que $r$ conserve les distances, c'est-à-dire $\abs{r(z) - r(z')} = \abs{z - z'}$
+	pour tous $z, z' \in \C$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Similitude indirecte \hfill \etoilepleine\etoilepleine\etoilepleine}
+% ------------------------------------------------------------
+
+On considère l'application $f : z \mapsto (2 + \ii)\bar{z} - 1 + 3\ii$.
+
+\begin{enumerate}
+	\item Montrer que $f$ n'est pas une similitude directe.
+	\item Montrer que $f$ est une similitude \emph{indirecte} en vérifiant que $f$
+	conserve les distances mais inverse l'orientation.
+	\item Déterminer les points fixes de $f$ (en posant $\bar{z} = \overline{z}$
+	et en séparant parties réelle et imaginaire).
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Retrouver une application à partir de ses éléments \hfill \etoilepleine\etoilepleine\etoilepleine}
+% ------------------------------------------------------------
+
+\begin{enumerate}
+	\item Déterminer l'expression complexe de la rotation de centre $A$ d'affixe
+	$2 - \ii$ et d'angle $\dfrac{3\pi}{4}$.
+	
+	\item Déterminer l'expression complexe de l'homothétie de centre $B$ d'affixe
+	$-1 + 2\ii$ et de rapport $-3$.
+	
+	\item Déterminer l'expression complexe de la similitude directe de centre $C$
+	d'affixe $\ii$, de rapport $\sqrt{2}$ et d'angle $\dfrac{\pi}{4}$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Problème de synthèse \hfill \etoilepleine\etoilepleine\etoilepleine}
+% ------------------------------------------------------------
+
+Dans le plan complexe, on considère le carré $ABCD$ direct de centre $\Omega$
+tel que $A$ a pour affixe $z_A = 0$ et $B$ a pour affixe $z_B = 2$.
+
+\begin{enumerate}
+	\item Déterminer les affixes de $C$, $D$ et $\Omega$.
+	
+	\item Soit $r$ la rotation de centre $\Omega$ et d'angle $\dfrac{\pi}{2}$.
+	Écrire l'expression complexe de $r$ et vérifier que $r(A) = B$.
+	
+	\item Soit $s$ la similitude directe transformant $A$ en $B$ et $B$ en $C$.
+	\begin{enumerate}
+		\item Déterminer l'expression complexe de $s$.
+		\item Préciser la nature, le rapport, l'angle et le centre de $s$.
+		\item Vérifier que le centre de $s$ coïncide avec $\Omega$.
+	\end{enumerate}
+	
+	\item Calculer $s^2$, $s^3$ et $s^4$. Que remarque-t-on ?
+\end{enumerate}
+
+% ============================================================
+%   EXERCICES — Applications du plan complexe
+%   Nature, points images, points invariants
+%   Mazava Maths
+% ============================================================
+
+
+% ------------------------------------------------------------
+\exercice{QCM — Identifier la nature d'une application \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+\textit{Pour chaque question, une seule réponse est correcte.}
+
+\begin{enumerate}
+	\item L'application $f : z \mapsto \ii z + 1 - \ii$ est :
+	\begin{enumerate}
+		\item[(A)] Une translation de vecteur d'affixe $1 - \ii$
+		\item[(B)] Une rotation de centre $\dfrac{1-\ii}{1-\ii}$ et d'angle $\dfrac{\pi}{2}$
+		\item[(C)] Une rotation de centre $\Omega$ d'affixe $1$ et d'angle $\dfrac{\pi}{2}$
+		\item[(D)] Une homothétie de rapport $1$ et de centre $\ii$
+	\end{enumerate}
+	
+	\item L'application $g : z \mapsto 2z - 2 - 4\ii$ est :
+	\begin{enumerate}
+		\item[(A)] Une rotation de rapport $2$ et d'angle $0$
+		\item[(B)] Une homothétie de centre $\Omega$ d'affixe $2 + 4\ii$ et de rapport $2$
+		\item[(C)] Une similitude de rapport $2$ et d'angle $\pi$
+		\item[(D)] Une translation de vecteur d'affixe $-2 - 4\ii$
+	\end{enumerate}
+	
+	\item La similitude $h : z \mapsto (1+\ii)z + 2$ a pour rapport :
+	\begin{enumerate}
+		\item[(A)] $1$
+		\item[(B)] $\sqrt{2}$
+		\item[(C)] $2$
+		\item[(D)] $1 + \ii$
+	\end{enumerate}
+	
+	\item Le point fixe de $f : z \mapsto (2+\ii)z - 1 + 3\ii$ a pour affixe :
+	\begin{enumerate}
+		\item[(A)] $\dfrac{-1+3\ii}{1-2-\ii}$
+		\item[(B)] $\dfrac{1-3\ii}{1+\ii}$
+		\item[(C)] $\dfrac{-1+3\ii}{-1-\ii}$
+		\item[(D)] $1 - 3\ii$
+	\end{enumerate}
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Application laissant un point invariant \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+Soit $f$ une similitude directe telle que :
+$$
+f\text{ laisse invariant le point }A \text{ d'affixe } z_A = 1 + \ii
+\quad \text{et} \quad
+f(B) = C,
+$$
+où $B$ a pour affixe $z_B = 3 + \ii$ et $C$ a pour affixe $z_C = 1 + 3\ii$.
+
+\begin{enumerate}
+	\item Justifier que $f$ est de la forme $z' = a(z - z_A) + z_A$
+	avec $a \in \C^*$.
+	\item En utilisant l'image de $B$, déterminer $a$.
+	\item En déduire la nature de $f$, son rapport et son angle.
+	\item Calculer $f(D)$ où $D$ a pour affixe $z_D = 1 - \ii$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Déterminer $f$ par deux conditions \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+On cherche une similitude directe $f : z' = az + b$ vérifiant :
+$$
+f(A) = B \quad \text{et} \quad f(B) = C,
+$$
+où $z_A = 0$, $z_B = 2$ et $z_C = 2 + 2\ii$.
+
+\begin{enumerate}
+	\item Écrire le système de deux équations vérifié par $a$ et $b$.
+	\item Résoudre ce système pour déterminer $a$ et $b$.
+	\item Préciser la nature, le rapport, l'angle et le centre de $f$.
+	\item Que vaut $f(C)$ ? En déduire le quadrilatère $ABCD$ où $D = f(C)$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{QCM — Points invariants et images \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+\textit{Pour chaque question, une seule réponse est correcte.}
+
+Soit $r$ la rotation de centre $\Omega$ d'affixe $1 + \ii$ et d'angle $\dfrac{\pi}{2}$.
+
+\begin{enumerate}
+	\item L'expression complexe de $r$ est :
+	\begin{enumerate}
+		\item[(A)] $z' = \ii z + 1 + \ii$
+		\item[(B)] $z' = \ii z + 2$
+		\item[(C)] $z' = \ii z - 2$
+		\item[(D)] $z' = \ii z + (1-\ii)(1-\ii)$
+	\end{enumerate}
+	
+	\item L'image du point $A$ d'affixe $3 + \ii$ par $r$ est le point d'affixe :
+	\begin{enumerate}
+		\item[(A)] $3\ii + \ii^2 + 2 = 1 + 3\ii$
+		\item[(B)] $-1 + 3\ii$
+		\item[(C)] $1 + 3\ii$
+		\item[(D)] $3 - \ii$
+	\end{enumerate}
+	
+	\item Le seul point invariant par $r$ est :
+	\begin{enumerate}
+		\item[(A)] L'origine $O$
+		\item[(B)] Le point d'affixe $2$
+		\item[(C)] Le point $\Omega$ d'affixe $1 + \ii$
+		\item[(D)] $r$ n'a pas de point invariant
+	\end{enumerate}
+	
+	\item $r^2$ est :
+	\begin{enumerate}
+		\item[(A)] La rotation de centre $\Omega$ et d'angle $\pi$
+		\item[(B)] La translation de vecteur $2\ii$
+		\item[(C)] L'identité
+		\item[(D)] Une homothétie de rapport $-1$
+	\end{enumerate}
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Application définie par un point fixe et une image \hfill \etoilepleine\etoilepleine\etoilepleine}
+% ------------------------------------------------------------
+
+Soit $f$ une similitude directe qui laisse invariant le point $\Omega$ d'affixe
+$\omega = 2 + \ii$ et qui transforme $A$ d'affixe $z_A = 4 + \ii$ en $B$ d'affixe
+$z_B = 2 + 3\ii$.
+
+\begin{enumerate}
+	\item Montrer que $f$ s'écrit $z' - \omega = a(z - \omega)$ et déterminer $a$.
+	\item Calculer $\abs{a}$ et $\arg(a)$. En déduire la nature exacte de $f$.
+	\item Déterminer l'image du point $C$ d'affixe $z_C = 2 - \ii$.
+	\item Montrer que $\Omega$, $A$ et $C$ sont alignés.
+	En déduire une propriété géométrique de $f$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Trouver $f$ sachant $f^2 = \mathrm{id}$ \hfill \etoilepleine\etoilepleine\etoilepleine}
+% ------------------------------------------------------------
+
+Soit $f : z' = az + b$ une similitude directe telle que $f \circ f = \mathrm{id}$
+(l'application identité) et $f \neq \mathrm{id}$.
+
+\begin{enumerate}
+	\item Montrer que $f \circ f = \mathrm{id}$ implique $a^2 = 1$ et $b(a+1) = 0$.
+	\item En déduire les valeurs possibles de $a$.
+	\item Que se passe-t-il si $a = 1$ ? Si $a = -1$ ?
+	\item On suppose $a = -1$. Déterminer $f$ sachant que $f$ transforme
+	le point $A$ d'affixe $2 + \ii$ en le point $B$ d'affixe $-1 + 3\ii$.
+	\item Quelle est la nature de $f$ ? Déterminer son centre.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Problème de synthèse — triangle et similitude \hfill \etoilepleine\etoilepleine\etoilepleine}
+% ------------------------------------------------------------
+
+Dans le plan complexe, on donne le triangle équilatéral direct $ABC$ avec
+$z_A = 0$ et $z_B = 2$.
+
+\begin{enumerate}
+	\item Rappeler que la rotation $r$ de centre $A$ et d'angle $\dfrac{\pi}{3}$
+	transforme $B$ en $C$. En déduire $z_C$.
+	
+	\item Soit $f$ la similitude directe telle que $f(A) = B$ et $f(B) = C$.
+	\begin{enumerate}
+		\item Déterminer l'expression complexe de $f$.
+		\item Montrer que le centre $\Omega$ de $f$ est le centre du triangle $ABC$.
+		\item Calculer $f(C)$ et interpréter géométriquement.
+	\end{enumerate}
+	
+	\item Soit $g = f \circ f \circ f$. Calculer l'expression complexe de $g$.
+	Quelle est la nature de $g$ ?
+	
+	\item En déduire que $f^3 = \mathrm{id}$. Que représente géométriquement
+	cette propriété ?
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{QCM de synthèse \hfill \etoilepleine\etoilepleine\etoilepleine}
+% ------------------------------------------------------------
+
+\textit{Plusieurs réponses peuvent être correctes.}
+
+\begin{enumerate}
+	\item Une similitude directe $f : z' = az + b$ est une rotation si et seulement si :
+	\begin{enumerate}
+		\item[(A)] $a \in \R$
+		\item[(B)] $\abs{a} = 1$
+		\item[(C)] $\arg(a) = 0$
+		\item[(D)] $a \neq 1$ et $\abs{a} = 1$
+	\end{enumerate}
+	
+	\item Si $f$ laisse invariants deux points distincts $A$ et $B$, alors :
+	\begin{enumerate}
+		\item[(A)] $f$ est nécessairement l'identité
+		\item[(B)] $f$ est une translation
+		\item[(C)] $f$ est une rotation d'angle $2\pi$
+		\item[(D)] $f$ est l'identité ou une symétrie par rapport à $(AB)$
+	\end{enumerate}
+	
+	\item La composition de deux rotations de même centre $\Omega$ et d'angles
+	$\alpha$ et $\beta$ est :
+	\begin{enumerate}
+		\item[(A)] Une rotation de centre $\Omega$ et d'angle $\alpha + \beta$
+		\item[(B)] L'identité si $\alpha + \beta \equiv 0\ [2\pi]$
+		\item[(C)] Une translation si $\alpha + \beta \equiv 0\ [2\pi]$
+		\item[(D)] Une similitude de rapport $2$
+	\end{enumerate}
+	
+	\item Si $f : z \mapsto az + b$ avec $a \neq 0$ et $a \neq 1$, alors le centre de $f$ :
+	\begin{enumerate}
+		\item[(A)] A pour affixe $\dfrac{b}{1-a}$
+		\item[(B)] Est le seul point fixe de $f$
+		\item[(C)] A pour affixe $\dfrac{b}{a-1}$
+		\item[(D)] N'existe pas si $f$ est une translation
+	\end{enumerate}
+\end{enumerate}
+
+
+
+% ============================================================
+%   PROBLÈME — Style BAC américain
+%   Construction d'une spirale de triangles par similitude
+%   Mazava Maths
+% ============================================================
+
+\exercice{La spirale de triangles \hfill \etoilepleine\etoilepleine\etoilepleine}
+
+\textit{Les quatre parties sont liées. Lire l'énoncé en entier avant de commencer.}
+
+\bigskip
+
+Dans le plan complexe rapporté à un repère orthonormé direct $(O, \vec{\imath}, \vec{\jmath})$,
+on considère le point $A_0$ d'affixe $z_0 = 4$ et on définit la similitude directe
+$$
+f : z' = \frac{1+\ii}{2}\,z.
+$$
+
+On pose $A_n$ le point d'affixe $z_n = f^n(z_0)$ pour tout $n \in \N$,
+où $f^n$ désigne la composée $n$ fois de $f$ avec elle-même.
+
+\bigskip
+\noindent\rule{\linewidth}{0.3pt}
+\bigskip
+
+\noindent\textbf{Partie A — Étude de la similitude $f$}
+
+\begin{enumerate}
+	\item Montrer que $f$ est une similitude directe de centre $O$,
+	de rapport $r = \dfrac{\sqrt{2}}{2}$ et d'angle $\theta = \dfrac{\pi}{4}$.
+	
+	\item Justifier que $O$ est le seul point invariant par $f$.
+	
+	\item Calculer $f^2$, $f^4$ et $f^8$.
+	Quelle est la nature de chacune de ces applications ?
+	
+	\item Montrer que $f^8$ est une homothétie. Préciser son centre et son rapport.
+\end{enumerate}
+
+\bigskip
+\noindent\rule{\linewidth}{0.3pt}
+\bigskip
+
+\noindent\textbf{Partie B — La suite de points $(A_n)$}
+
+\begin{enumerate}
+	\item Calculer $z_1$, $z_2$, $z_3$ et $z_4$ sous forme algébrique.
+	Placer les points $O$, $A_0$, $A_1$, $A_2$, $A_3$, $A_4$ dans le plan.
+	
+	\item Montrer que $z_n = 4 \times \left(\dfrac{1+\ii}{2}\right)^n$
+	et mettre $z_n$ sous forme exponentielle $r_n\,\e^{\ii\theta_n}$.
+	
+	\item \begin{enumerate}
+		\item Montrer que $\abs{z_n} = 4 \times \left(\dfrac{\sqrt{2}}{2}\right)^n$.
+		\item Justifier que les points $A_n$ se rapprochent de $O$ quand $n \to +\infty$.
+		\item Calculer l'angle $\left(\vect{OA_0}, \vect{OA_n}\right)$ et interpréter
+		géométriquement la suite $(A_n)$.
+	\end{enumerate}
+	
+	\item Les triangles $OA_nA_{n+1}$ sont-ils tous semblables ?
+	Calculer le rapport $\dfrac{OA_{n+1}}{OA_n}$ et l'angle $\widehat{A_nOA_{n+1}}$.
+\end{enumerate}
+
+\bigskip
+\noindent\rule{\linewidth}{0.3pt}
+\bigskip
+
+\noindent\textbf{Partie C — Construction de la spirale}
+
+\begin{enumerate}
+	\item On relie successivement $A_0 \to A_1 \to A_2 \to \cdots \to A_n \to O$.
+	Calculer la longueur totale
+	$$
+	L_n = \sum_{k=0}^{n} A_k A_{k+1}
+	$$
+	en fonction de $n$, où $A_{n+1} = O$ pour le dernier segment.
+	
+	\textit{Indication : } $A_kA_{k+1} = \abs{z_{k+1} - z_k}$.
+	
+	\item Montrer que la série $\displaystyle\sum_{k=0}^{+\infty} A_k A_{k+1}$ converge
+	et calculer sa somme $L$.
+	
+	\item \begin{enumerate}
+		\item Montrer que les triangles $OA_nA_{n+1}$ sont rectangles isocèles.
+		\item En déduire que tous les points $A_n$ appartiennent à des cercles
+		de centre $O$ dont les rayons forment une suite géométrique.
+		\item Construire soigneusement la spirale pour $n = 0, 1, 2, 3, 4, 5$
+		avec une règle et un compas (ou en calculant les coordonnées).
+	\end{enumerate}
+\end{enumerate}
+
+\bigskip
+\noindent\rule{\linewidth}{0.3pt}
+\bigskip
+
+\noindent\textbf{Partie D — Généralisation}
+
+On remplace $f$ par la similitude directe $g : z' = \rho\,\e^{\ii\alpha}\,z$
+avec $0 < \rho < 1$ et $\alpha \in \left]0\,;\,2\pi\right[$.
+
+\begin{enumerate}
+	\item Montrer que la suite $(B_n)$ définie par $w_n = g^n(w_0)$
+	avec $w_0 \in \C^*$ vérifie $w_n = w_0\,\rho^n\,\e^{\ii n\alpha}$.
+	
+	\item Montrer que les points $B_n$ s'enroulent autour de $O$ en formant
+	une \textbf{spirale logarithmique} en justifiant que :
+	$$
+	\abs{w_n} = \abs{w_0}\,\rho^n \to 0 \quad \text{et} \quad
+	\arg(w_n) = \arg(w_0) + n\alpha \to +\infty.
+	$$
+	
+	\item Pour quelles valeurs de $\rho$ et $\alpha$ la spirale est-elle :
+	\begin{enumerate}
+		\item un cercle ?
+		\item une demi-droite issue de $O$ ?
+		\item une spirale qui se resserre en tournant dans le sens direct ?
+	\end{enumerate}
+	
+	\item \textbf{Question ouverte.} 
+	Si $\rho > 1$, décrire qualitativement le comportement de la suite $(B_n)$.
+	La longueur totale $\displaystyle\sum_{k=0}^{+\infty} B_k B_{k+1}$ converge-t-elle encore ?
+\end{enumerate}
