@@ -857,5 +857,453 @@ Or $42 = 1 \times 39 + 3$ et $39 = 13 \times 3 + 0$, donc $\mathrm{PGCD}(39\,;42
 Comme $3$ ne divise pas $2$, l'équation $(E_2)$ \textbf{n'admet pas de solution}.
 
 
-\section{Exercices}
+
+
+
+
+
+
+% ============================================================
+%   EXERCICES — Arithmétique dans Z
+%   Thèmes : Divisibilité, Congruences, Z/nZ, PGCD, Diophantiennes
+%   Mazava Maths
+% ============================================================
+
+% ------------------------------------------------------------
+\exercice{Divisibilité et congruences \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+\begin{enumerate}
+	\item Montrer que pour tout entier naturel $n$,
+	$$
+	5^{2n+1} + 3^{n+2}
+	$$
+	est divisible par $8$.
+	
+	\item Montrer que pour tout entier naturel $n$,
+	$$
+	7^n + 2 \times 4^n
+	$$
+	est divisible par $3$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Congruences et reste \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+\begin{enumerate}
+	\item Déterminer le reste de la division euclidienne de $7^{2025}$ par $6$.
+	
+	\item Déterminer le reste de la division euclidienne de $3^{100}$ par $8$.
+	
+	\item En déduire le reste de la division euclidienne de $3^{100} + 7^{2025}$ par $8$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Équations dans $\Z/5\Z$ \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+Résoudre dans $\Z/5\Z$ les équations suivantes.
+
+\begin{enumerate}
+	\item $\bar{2}x + \bar{3} = \bar{1}$
+	\item $x^2 + \bar{2}x = \bar{3}$
+	\item $x^2 + \bar{4}x + \bar{4} = \bar{0}$
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Équations dans $\Z/6\Z$ et $\Z/8\Z$ \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+\begin{enumerate}
+	\item Résoudre dans $\Z/6\Z$ l'équation $\bar{3}x = \bar{3}$.
+	
+	\item Résoudre dans $\Z/8\Z$ l'équation $x^2 = \bar{1}$.
+	
+	\item Résoudre dans $\Z/8\Z$ l'équation $x^2 + \bar{2}x = \bar{0}$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{PGCD et algorithme d'Euclide \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+\begin{enumerate}
+	\item Calculer $\mathrm{PGCD}(252\,;\,180)$ à l'aide de l'algorithme d'Euclide.
+	
+	\item En déduire l'ensemble $D(252\,;\,180)$ des diviseurs communs de $252$ et $180$.
+	
+	\item Soit $n$ un entier naturel. On pose $a = 3n + 2$ et $b = 2n + 1$.
+	Montrer que $\mathrm{PGCD}(a\,;b)$ divise $1$, puis en déduire que $a$ et $b$
+	sont premiers entre eux.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Équation diophantienne \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+On considère l'équation $(E) : 7x + 11y = 3$ où $(x\,;y) \in \Z^2$.
+
+\begin{enumerate}
+	\item Justifier que $(E)$ admet des solutions dans $\Z^2$.
+	\item Trouver deux entiers $u$ et $v$ tels que $7u + 11v = 1$.
+	\item En déduire une solution particulière $(x_0\,;y_0)$ de $(E)$.
+	\item Déterminer l'ensemble de toutes les solutions de $(E)$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Problème de divisibilité combinée \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+Soit $n$ un entier naturel. On pose $A = n^5 - n$.
+
+\begin{enumerate}
+	\item Montrer que $A = n(n-1)(n+1)(n^2+1)$.
+	
+	\item
+	\begin{enumerate}
+		\item Montrer que $2 \mid A$.
+		\item Montrer que $3 \mid A$.
+		\item Montrer que $5 \mid A$ en utilisant un tableau de congruences modulo $5$.
+	\end{enumerate}
+	
+	\item Comme $\mathrm{PGCD}(2\,;3) = \mathrm{PGCD}(3\,;5) = \mathrm{PGCD}(2\,;5) = 1$,
+	en déduire que $30 \mid A$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Équation diophantienne et théorème de Gauss \hfill \etoilevide\etoilevide\etoilepleine}
+% ------------------------------------------------------------
+
+On considère l'équation $(E) : 37x - 43y = 1$ où $(x\,;y) \in \Z^2$.
+
+\begin{enumerate}
+	\item En appliquant l'algorithme d'Euclide aux entiers $37$ et $43$,
+	montrer que $\mathrm{PGCD}(37\,;\,43) = 1$.
+	
+	\item En remontant les étapes de l'algorithme, trouver une solution
+	particulière $(x_0\,;y_0)$ de $(E)$.
+	
+	\item Montrer que si $(x\,;y)$ est une solution de $(E)$, alors
+	$37(x - x_0) = 43(y - y_0)$.
+	En déduire, à l'aide du théorème de Gauss, que $43 \mid (x - x_0)$.
+	
+	\item Déterminer l'ensemble de toutes les solutions de $(E)$.
+	
+	\item En déduire toutes les solutions de l'équation $37x - 43y = 5$.
+\end{enumerate}
+
+% ============================================================
+%   EXERCICES — Arithmétique dans Z
+%   Thèmes : Divisibilité, Congruences, Z/nZ, PGCD, Diophantiennes
+%   Mazava Maths
+% ============================================================
+
+% ------------------------------------------------------------
+\exercice{Divisibilité et congruences \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+\begin{enumerate}
+	\item Montrer que pour tout entier naturel $n$,
+	$$
+	5^{2n+1} + 3^{n+2}
+	$$
+	est divisible par $8$.
+	
+	\item Montrer que pour tout entier naturel $n$,
+	$$
+	7^n + 2 \times 4^n
+	$$
+	est divisible par $3$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Congruences et reste \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+\begin{enumerate}
+	\item Déterminer le reste de la division euclidienne de $7^{2025}$ par $6$.
+	
+	\item Déterminer le reste de la division euclidienne de $3^{100}$ par $8$.
+	
+	\item En déduire le reste de la division euclidienne de $3^{100} + 7^{2025}$ par $8$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Équations dans $\Z/5\Z$ \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+Résoudre dans $\Z/5\Z$ les équations suivantes.
+
+\begin{enumerate}
+	\item $\bar{2}x + \bar{3} = \bar{1}$
+	\item $x^2 + \bar{2}x = \bar{3}$
+	\item $x^2 + \bar{4}x + \bar{4} = \bar{0}$
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Équations dans $\Z/6\Z$ et $\Z/8\Z$ \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+\begin{enumerate}
+	\item Résoudre dans $\Z/6\Z$ l'équation $\bar{3}x = \bar{3}$.
+	
+	\item Résoudre dans $\Z/8\Z$ l'équation $x^2 = \bar{1}$.
+	
+	\item Résoudre dans $\Z/8\Z$ l'équation $x^2 + \bar{2}x = \bar{0}$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{PGCD et algorithme d'Euclide \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+\begin{enumerate}
+	\item Calculer $\mathrm{PGCD}(252\,;\,180)$ à l'aide de l'algorithme d'Euclide.
+	
+	\item En déduire l'ensemble $D(252\,;\,180)$ des diviseurs communs de $252$ et $180$.
+	
+	\item Soit $n$ un entier naturel. On pose $a = 3n + 2$ et $b = 2n + 1$.
+	Montrer que $\mathrm{PGCD}(a\,;b)$ divise $1$, puis en déduire que $a$ et $b$
+	sont premiers entre eux.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Équation diophantienne \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+On considère l'équation $(E) : 7x + 11y = 3$ où $(x\,;y) \in \Z^2$.
+
+\begin{enumerate}
+	\item Justifier que $(E)$ admet des solutions dans $\Z^2$.
+	\item Trouver deux entiers $u$ et $v$ tels que $7u + 11v = 1$.
+	\item En déduire une solution particulière $(x_0\,;y_0)$ de $(E)$.
+	\item Déterminer l'ensemble de toutes les solutions de $(E)$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Problème de divisibilité combinée \hfill \etoilepleine\etoilepleine\etoilepleine}
+% ------------------------------------------------------------
+
+Soit $n$ un entier naturel. On pose $A = n^5 - n$.
+
+\begin{enumerate}
+	\item Montrer que $A = n(n-1)(n+1)(n^2+1)$.
+	
+	\item
+	\begin{enumerate}
+		\item Montrer que $2 \mid A$.
+		\item Montrer que $3 \mid A$.
+		\item Montrer que $5 \mid A$ en utilisant un tableau de congruences modulo $5$.
+	\end{enumerate}
+	
+	\item Comme $\mathrm{PGCD}(2\,;3) = \mathrm{PGCD}(3\,;5) = \mathrm{PGCD}(2\,;5) = 1$,
+	en déduire que $30 \mid A$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Équation diophantienne et théorème de Gauss \hfill \etoilepleine\etoilepleine\etoilepleine}
+% ------------------------------------------------------------
+
+On considère l'équation $(E) : 37x - 43y = 1$ où $(x\,;y) \in \Z^2$.
+
+\begin{enumerate}
+	\item En appliquant l'algorithme d'Euclide aux entiers $37$ et $43$,
+	montrer que $\mathrm{PGCD}(37\,;\,43) = 1$.
+	
+	\item En remontant les étapes de l'algorithme, trouver une solution
+	particulière $(x_0\,;y_0)$ de $(E)$.
+	
+	\item Montrer que si $(x\,;y)$ est une solution de $(E)$, alors
+	$37(x - x_0) = 43(y - y_0)$.
+	En déduire, à l'aide du théorème de Gauss, que $43 \mid (x - x_0)$.
+	
+	\item Déterminer l'ensemble de toutes les solutions de $(E)$.
+	
+	\item En déduire toutes les solutions de l'équation $37x - 43y = 5$.
+\end{enumerate}
+
+
+% ============================================================
+%   EXERCICES SUPPLÉMENTAIRES — Congruences
+% ============================================================
+
+% ------------------------------------------------------------
+\exercice{Congruences et parité \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+\begin{enumerate}
+	\item Montrer que pour tout entier $n$, $n^2 \equiv 0\ [4]$ ou $n^2 \equiv 1\ [4]$.
+	\item En déduire que pour tout entier $n$, $n^2 + 2$ n'est jamais divisible par $4$.
+	\item Montrer que la somme de deux carrés impairs ne peut pas être un carré parfait.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Congruences et chiffres \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+On rappelle que tout entier naturel $N$ peut s'écrire
+$N = a_k \times 10^k + \cdots + a_1 \times 10 + a_0$
+où $a_0, a_1, \ldots, a_k$ sont ses chiffres en base $10$.
+
+\begin{enumerate}
+	\item Montrer que $10 \equiv 1\ [9]$, puis que $10^p \equiv 1\ [9]$ pour tout entier $p \geqslant 0$.
+	\item En déduire que $N \equiv a_0 + a_1 + \cdots + a_k\ [9]$.
+	\item Un entier est divisible par $9$ si et seulement si la somme de ses chiffres est divisible par $9$.
+	Vérifier ce résultat pour $N = 123\,408$.
+	\item Montrer de même qu'un entier est divisible par $3$ si et seulement si
+	la somme de ses chiffres est divisible par $3$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Système de congruences \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+Trouver tous les entiers $n$ vérifiant simultanément :
+$$
+n \equiv 2\ [3], \qquad n \equiv 3\ [5], \qquad 0 \leqslant n \leqslant 50.
+$$
+
+\begin{enumerate}
+	\item À l'aide de la première congruence, écrire $n$ sous la forme $n = 3k + 2$ avec $k \in \Z$.
+	\item Substituer dans la deuxième congruence et résoudre en $k$.
+	\item Lister toutes les solutions dans $\{0, 1, \ldots, 50\}$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Congruences et puissances \hfill \etoilepleine\etoilepleine\etoilepleine}
+% ------------------------------------------------------------
+
+\begin{enumerate}
+	\item Montrer que $2^4 \equiv 1\ [5]$, puis déterminer le reste de $2^{2025}$ dans la division par $5$.
+	
+	\item Montrer que $10^2 \equiv -1\ [101]$, puis déterminer le reste de $10^{2024}$
+	dans la division par $101$.
+	
+	\item Montrer que pour tout entier naturel $n$,
+	$$
+	6^n + (-1)^{n+1} \equiv 0\ [7].
+	$$
+	Autrement dit, $6^n + (-1)^{n+1}$ est toujours divisible par $7$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Congruences et équations diophantiennes \hfill \etoilepleine\etoilepleine\etoilepleine}
+% ------------------------------------------------------------
+
+On considère l'équation $(E) : x^2 \equiv 2\ [7]$.
+
+\begin{enumerate}
+	\item Dresser le tableau des valeurs de $x^2\ [7]$ pour $x \equiv 0, 1, 2, 3, 4, 5, 6\ [7]$.
+	\item En déduire que $(E)$ n'a pas de solution dans $\Z$.
+	\item Montrer que l'équation $x^2 - 7y = 2$ n'a pas de solution dans $\Z^2$.
+	\item Plus généralement, montrer que $x^2 - 7y = 2 + 7k$ n'a pas de solution dans $\Z^2$,
+	pour tout $k \in \Z$.
+\end{enumerate}
+
+
+% ============================================================
+%   EXERCICES — Relation entre PPCM et PGCD
+%   Mazava Maths
+% ============================================================
+
+% ------------------------------------------------------------
+\exercice{Calcul de PPCM à l'aide du PGCD \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+On rappelle que pour tous entiers naturels non nuls $a$ et $b$ :
+$$
+\mathrm{PGCD}(a\,;b) \times \mathrm{PPCM}(a\,;b) = a \times b.
+$$
+
+\begin{enumerate}
+	\item Calculer $\mathrm{PGCD}(180\,;\,252)$ par l'algorithme d'Euclide.
+	\item En déduire $\mathrm{PPCM}(180\,;\,252)$.
+	\item Vérifier que $180$ et $252$ divisent bien le résultat obtenu.
+	\item On pose $a = 2^3 \times 3^2 \times 5$ et $b = 2^2 \times 3 \times 5^2 \times 7$.
+	\begin{enumerate}
+		\item Déterminer $\mathrm{PGCD}(a\,;b)$ et $\mathrm{PPCM}(a\,;b)$ par décomposition en facteurs premiers.
+		\item Vérifier la relation $\mathrm{PGCD}(a\,;b) \times \mathrm{PPCM}(a\,;b) = a \times b$.
+	\end{enumerate}
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Propriétés du PPCM et applications \hfill \etoilepleine\etoilepleine\etoilevide}
+% ------------------------------------------------------------
+
+Soient $a$ et $b$ deux entiers naturels non nuls, $d = \mathrm{PGCD}(a\,;b)$
+et $m = \mathrm{PPCM}(a\,;b)$.
+
+\begin{enumerate}
+	\item On sait que $d$ divise $a$ et $b$. En posant $a = da'$ et $b = db'$
+	avec $\mathrm{PGCD}(a'\,;b') = 1$, montrer que
+	$$
+	m = da'b' = \frac{ab}{d}.
+	$$
+	
+	\item Soit $n$ un entier naturel non nul. Montrer que
+	$$
+	\mathrm{PGCD}(na\,;\,nb) = n\,\mathrm{PGCD}(a\,;b)
+	\quad \text{et} \quad
+	\mathrm{PPCM}(na\,;\,nb) = n\,\mathrm{PPCM}(a\,;b).
+	$$
+	
+	\item On donne $\mathrm{PGCD}(a\,;b) = 12$ et $\mathrm{PPCM}(a\,;b) = 360$.
+	\begin{enumerate}
+		\item Calculer $a \times b$.
+		\item Sachant de plus que $a < b$ et que $a$ divise $120$,
+		déterminer les valeurs possibles du couple $(a\,;b)$.
+	\end{enumerate}
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\exercice{Relation PGCD-PPCM et divisibilité \hfill \etoilepleine\etoilepleine\etoilepleine}
+% ------------------------------------------------------------
+
+Soient $a$, $b$ et $c$ trois entiers naturels non nuls.
+
+\begin{enumerate}
+	\item On suppose que $a \mid c$ et $b \mid c$.
+	\begin{enumerate}
+		\item Montrer que si $\mathrm{PGCD}(a\,;b) = 1$, alors $ab \mid c$
+		(utiliser le théorème de Gauss).
+		\item Montrer que dans le cas général, $\mathrm{PPCM}(a\,;b) \mid c$.
+	\end{enumerate}
+	
+	\item On donne trois entiers $a$, $b$, $c$ vérifiant
+	$$
+	\mathrm{PGCD}(a\,;b) = 6, \quad \mathrm{PPCM}(a\,;b) = 180, \quad c = \mathrm{PPCM}(a\,;b\,;36).
+	$$
+	\begin{enumerate}
+		\item Déterminer $a \times b$.
+		\item Montrer que $36 \mid \mathrm{PPCM}(a\,;b)$ ou non, selon les cas.
+		\item En décomposant $180$ et $36$ en facteurs premiers, déterminer
+		$\mathrm{PPCM}(180\,;\,36)$, puis en déduire une valeur possible de $c$.
+	\end{enumerate}
+	
+	\item Soit $n$ un entier naturel non nul. On pose $a = n(n+1)$ et $b = (n+1)(n+2)$.
+	\begin{enumerate}
+		\item Montrer que $\mathrm{PGCD}(a\,;b) = n+1$.
+		\item En déduire $\mathrm{PPCM}(a\,;b)$.
+		\item Vérifier le résultat pour $n = 5$.
+	\end{enumerate}
+\end{enumerate}
 
