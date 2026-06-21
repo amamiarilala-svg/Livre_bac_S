@@ -398,18 +398,464 @@ Donc $n^2-1$ est divisible par $8$.
 \boxed{\;8\mid(n^2-1)\iff n\text{ est impair.}\;}
 \]
 
-
-\section{PGCD et algorithme d'Euclide}
-
-\section{Théorème de Bézout}
-
-\section{Nombres premiers}
-
-\section{Théorème de Gauss}
-
 \section{Congruences}
+% ============================================================
+%   SECTION : Congruences dans Z
+%   Chapitre : Arithmétique dans Z  —  Mazava Maths
+% ============================================================
 
+\section{Congruences dans $\Z$}
+
+\subsection{Définition et premières propriétés}
+
+\begin{definition}
+	Soient $a$ et $b$ deux entiers relatifs et $n$ un entier naturel non nul.
+	
+	On dit que $a$ est \textbf{congru à $b$ modulo $n$}, et on note
+	$$
+	a \equiv b \pmod{n} \quad \text{ou} \quad a \equiv b\ [n],
+	$$
+	lorsque $a - b$ est un multiple de $n$, c'est-à-dire lorsqu'il existe $k \in \Z$ tel que $a - b = kn$.
+\end{definition}
+
+\begin{exemple}
+	\begin{itemize}[label=\textbullet]
+		\item $15 - 7 = 8 = 2 \times 4$, donc $15 \equiv 7\ [2]$ et $15 \equiv 7\ [4]$.
+		\item $-5 - (-1) = -4 = -1 \times 4$, donc $-5 \equiv -1\ [4]$.
+	\end{itemize}
+\end{exemple}
+
+\remarque
+$a \equiv b\ [n] \iff b \equiv a\ [n]$. On dit aussi que $a$ et $b$ sont \textbf{congrus modulo $n$}.
+
+\begin{propriete}
+	Soient $a$ et $b$ deux entiers relatifs et $n$ un entier naturel non nul.
+	
+	$a \equiv b\ [n]$ si et seulement si $a$ et $b$ ont le même reste dans la division euclidienne par $n$.
+\end{propriete}
+
+\begin{exemple}
+	$11 = 4 \times 2 + 3$ et $7 = 4 \times 1 + 3$, avec $0 \leqslant 3 < 4$.
+	
+	Donc $11$ et $7$ ont tous deux le reste $3$ dans la division par $4$, et donc $11 \equiv 7\ [4]$.
+\end{exemple}
+
+\begin{propriete}
+	Soient $a$, $b$, $c$ des entiers relatifs et $n$ un entier naturel non nul.
+	\begin{enumerate}
+		\item $a \equiv 0\ [n]$ si et seulement si $n \mid a$.
+		\item $a \equiv a\ [n]$ \quad (réflexivité).
+		\item $r$ est le reste de la division euclidienne de $a$ par $n$ si et seulement si
+		$a \equiv r\ [n]$ et $0 \leqslant r < n$.
+		\item Si $a \equiv b\ [n]$ et $b \equiv c\ [n]$, alors $a \equiv c\ [n]$ \quad (transitivité).
+	\end{enumerate}
+\end{propriete}
+
+\begin{exemple}
+	\begin{itemize}[label=\textbullet]
+		\item $12 \equiv 0\ [2]$. On a aussi $12 \equiv 0\ [3]$ et $12 \equiv 0\ [6]$.
+		\item $13 \equiv -5\ [2]$ et $-5 \equiv -1\ [2]$, donc $13 \equiv -1\ [2]$ par transitivité.
+	\end{itemize}
+\end{exemple}
+
+%--------------------------------------------------------------
+\subsection{Calculs avec les congruences}
+%--------------------------------------------------------------
+
+\begin{propriete}[Compatibilité avec les opérations]
+	Soient $a$, $b$, $c$, $d$ des entiers relatifs et $n$ un entier naturel non nul.
+	
+	\begin{enumerate}
+		\item Si $a \equiv b\ [n]$, alors $a + c \equiv b + c\ [n]$.
+		
+		\item Si $a \equiv b\ [n]$ et $c \equiv d\ [n]$, alors $a + c \equiv b + d\ [n]$.
+		
+		On dit que \textbf{l'addition est compatible avec les congruences}.
+		
+		\item Si $a \equiv b\ [n]$, alors $ac \equiv bc\ [n]$.
+		
+		\item Si $a \equiv b\ [n]$ et $c \equiv d\ [n]$, alors $ac \equiv bd\ [n]$.
+		
+		On dit que \textbf{la multiplication est compatible avec les congruences}.
+		
+		\item Si $a \equiv b\ [n]$, alors pour tout entier naturel non nul $p$,
+		$$
+		a^p \equiv b^p\ [n].
+		$$
+	\end{enumerate}
+\end{propriete}
+
+\begin{exemple}
+	\begin{itemize}[label=\textbullet]
+		\item $x + 2 \equiv 3\ [4]$ et $-2 \equiv -2\ [4]$, donc $x + 2 - 2 \equiv 3 - 2\ [4]$,
+		d'où $x \equiv 1\ [4]$.
+		\item $10 \equiv 1\ [9]$, donc $10^p \equiv 1^p \equiv 1\ [9]$ pour tout entier naturel non nul $p$.
+	\end{itemize}
+\end{exemple}
+
+\begin{attention}
+	La division n'est pas compatible avec les congruences.
+	
+	Par exemple, $5 \times 4 \equiv 5 \times 6\ [10]$ (car $20 \equiv 30\ [10]$), mais $4 \not\equiv 6\ [10]$.
+\end{attention}
+
+%--------------------------------------------------------------
+\subsection{Méthodes et exercices résolus}
+%--------------------------------------------------------------
+
+\exerciceresolu
+\textbf{Résoudre des équations avec des congruences}
+
+Résoudre les équations suivantes dans $\Z$ :
+\begin{enumerate}
+	\item $x + 3 \equiv 2\ [7]$
+	\item $3x \equiv 2\ [5]$
+	\item $x^2 \equiv 0\ [4]$
+\end{enumerate}
+
+\solution
+
+\begin{enumerate}
+	\item Par compatibilité avec l'addition :
+	$$
+	x + 3 \equiv 2\ [7]
+	\iff x + 3 - 3 \equiv 2 - 3\ [7]
+	\iff x \equiv -1\ [7].
+	$$
+	Les solutions sont donc les entiers de la forme $7k - 1$ avec $k \in \Z$.
+	
+	\item On utilise un tableau de congruences modulo $5$ :
+	\[
+	\begin{array}{|c|c|c|c|c|c|}
+		\hline
+		x \equiv \ldots\ [5] & 0 & 1 & 2 & 3 & 4 \\
+		\hline
+		3x \equiv \ldots\ [5] & 0 & 3 & 1 & 4 & 2 \\
+		\hline
+	\end{array}
+	\]
+	Le seul cas qui convient est $x \equiv 4\ [5]$.
+	
+	Les solutions sont donc les entiers de la forme $5k + 4$ avec $k \in \Z$.
+	
+	\item On raisonne par disjonction des cas modulo $4$ :
+	\[
+	\begin{array}{|c|c|c|c|c|}
+		\hline
+		x \equiv \ldots\ [4] & 0 & 1 & 2 & 3 \\
+		\hline
+		x^2 \equiv \ldots\ [4] & 0 & 1 & 0 & 1 \\
+		\hline
+	\end{array}
+	\]
+	Deux cas conviennent : $x \equiv 0\ [4]$ et $x \equiv 2\ [4]$.
+	
+	Les solutions sont donc les entiers de la forme $4k$ ou $4k + 2$ avec $k \in \Z$.
+\end{enumerate}
+
+
+\exerciceresolu
+\textbf{Montrer une divisibilité à l'aide des congruences}
+
+\begin{enumerate}
+	\item Montrer que pour tout entier naturel $n$ non nul, $2^{3n} - 1$ est un multiple de $7$.
+	\item Déterminer les valeurs de l'entier naturel $n$ pour lesquelles $n^2 - 3n + 6$ est divisible par $4$.
+\end{enumerate}
+
+\solution
+
+\begin{enumerate}
+	\item On a $2^3 = 8$ et $8 = 7 + 1$, donc $8 \equiv 1\ [7]$, c'est-à-dire $2^3 \equiv 1\ [7]$.
+	
+	Par compatibilité avec les puissances :
+	$$
+	2^{3n} = \left(2^3\right)^n \equiv 1^n \equiv 1\ [7].
+	$$
+	Donc $2^{3n} - 1 \equiv 0\ [7]$, ce qui signifie que $2^{3n} - 1$ est bien un multiple de $7$.
+	
+	\item On utilise un tableau de congruences modulo $4$ :
+	\[
+	\begin{array}{|c|c|c|c|c|}
+		\hline
+		n \equiv \ldots\ [4] & 0 & 1 & 2 & 3 \\
+		\hline
+		n^2 \equiv \ldots\ [4] & 0 & 1 & 0 & 1 \\
+		\hline
+		3n \equiv \ldots\ [4] & 0 & 3 & 2 & 1 \\
+		\hline
+		n^2 - 3n + 6 \equiv \ldots\ [4] & 2 & 0 & 0 & 2 \\
+		\hline
+	\end{array}
+	\]
+	Les entiers $n$ qui conviennent sont donc ceux de la forme $4k + 1$ ou $4k + 2$ avec $k \in \N$.
+\end{enumerate}
+
+\exerciceresolu
+\textbf{Déterminer le reste d'une division euclidienne}
+
+Déterminer le reste de la division euclidienne de $11^{2020}$ par $3$.
+
+\solution
+
+On a $11 \equiv 2\ [3]$, puis $11^2 = 121 \equiv 4 \equiv 1\ [3]$.
+
+Donc pour tout entier $q > 0$ :
+$$
+11^{2q} = \left(11^2\right)^q \equiv 1^q \equiv 1\ [3].
+$$
+Or $2020 = 2 \times 1010$ est de la forme $2q$, donc $11^{2020} \equiv 1\ [3]$.
+
+Comme $0 \leqslant 1 < 3$, le reste de la division euclidienne de $11^{2020}$ par $3$ est $\boxed{1}$.
+
+\begin{astucebac}
+	Pour calculer le reste de $a^n$ modulo $p$, on cherche d'abord une petite puissance de $a$
+	congrue à $1$ (ou à une valeur simple) modulo $p$, puis on écrit $n$ sous une forme adaptée.
+	Cette technique s'appelle la \textbf{méthode des puissances successives}.
+\end{astucebac}
+
+% ============================================================
+%  SECTIONS : PGCD — Bézout — Gauss — Équations diophantiennes
+%  Chapitre : Arithmétique dans Z  —  Mazava Maths
+% ============================================================
+
+
+% ------------------------------------------------------------
+\section{PGCD et algorithme d'Euclide}
+% ------------------------------------------------------------
+
+\begin{definition}
+	Soient $a$ et $b$ deux entiers naturels non tous les deux nuls.
+	
+	L'ensemble $D(a\,;b) = D(a) \cap D(b)$ des diviseurs communs de $a$ et $b$ admet
+	un plus grand élément, noté $\mathrm{PGCD}(a\,;b)$, appelé \textbf{plus grand commun diviseur}
+	de $a$ et de $b$.
+	
+	Par convention, si $a \in \N^*$, alors $\mathrm{PGCD}(a\,;0) = a$.
+\end{definition}
+
+\remarque
+Si $a$ et $b$ sont deux entiers \emph{relatifs}, on pose
+$\mathrm{PGCD}(a\,;b) = \mathrm{PGCD}(|a|\,;|b|)$.
+
+\begin{exemple}
+	$D(9\,;15) = \{-3\,;-1\,;1\,;3\}$, donc $\mathrm{PGCD}(9\,;15) = 3$.
+\end{exemple}
+
+\begin{propriete}[Algorithme d'Euclide]
+	Soient $a$ et $b$ deux entiers naturels non nuls et $r$ le reste de la division euclidienne
+	de $a$ par $b$.
+	$$
+	D(a\,;b) = D(b\,;r), \quad \text{donc} \quad \mathrm{PGCD}(a\,;b) = \mathrm{PGCD}(b\,;r).
+	$$
+	On effectue des divisions euclidiennes successives jusqu'à obtenir un reste nul :
+	le \textbf{PGCD} est alors le \textbf{dernier reste non nul}.
+\end{propriete}
+
+\exerciceresolu
+\textbf{Déterminer un PGCD par l'algorithme d'Euclide}
+
+Déterminer $\mathrm{PGCD}(1\,551\,;\,132)$.
+
+\solution
+
+On effectue les divisions euclidiennes successives :
+$$
+1\,551 = 11 \times 132 + 99
+$$
+$$
+132 = 1 \times 99 + 33
+$$
+$$
+99 = 3 \times 33 + 0
+$$
+Le dernier reste non nul est $33$, donc $\mathrm{PGCD}(1\,551\,;\,132) = 33$.
+
+\begin{propriete}[Homogénéité du PGCD]
+	Soient $a$ et $b$ deux entiers relatifs non nuls et $k$ un entier naturel non nul.
+	$$
+	\mathrm{PGCD}(ka\,;kb) = k\,\mathrm{PGCD}(a\,;b).
+	$$
+\end{propriete}
+
+\begin{exemple}
+	$\mathrm{PGCD}(60\,;90) = \mathrm{PGCD}(30 \times 2\,;\,30 \times 3)
+	= 30 \times \mathrm{PGCD}(2\,;3) = 30 \times 1 = 30$.
+\end{exemple}
+
+
+% ------------------------------------------------------------
+\section{Nombres premiers entre eux et théorème de Bézout}
+% ------------------------------------------------------------
+
+\begin{definition}
+	Soient $a$ et $b$ deux entiers relatifs non nuls.
+	
+	On dit que $a$ et $b$ sont \textbf{premiers entre eux} lorsque $\mathrm{PGCD}(a\,;b) = 1$.
+\end{definition}
+
+\remarque
+Les seuls diviseurs communs de deux entiers premiers entre eux sont $-1$ et $1$.
+
+\begin{definition}
+	Soient $a$ un entier relatif et $b$ un entier naturel non nul.
+	
+	La fraction $\dfrac{a}{b}$ est \textbf{irréductible} si $a$ et $b$ sont premiers entre eux.
+\end{definition}
+
+\begin{propriete}
+	Soient $a$ et $b$ deux entiers relatifs non nuls et $d = \mathrm{PGCD}(a\,;b)$.
+	
+	Il existe deux entiers $a'$ et $b'$ tels que $a = da'$, $b = db'$ et $\mathrm{PGCD}(a'\,;b') = 1$.
+\end{propriete}
+
+\begin{theoreme}[Théorème de Bézout]
+	Soient $a$ et $b$ deux entiers relatifs non nuls.
+	
+	$a$ et $b$ sont premiers entre eux si et seulement s'il existe deux entiers relatifs $u$ et $v$ tels que
+	$$
+	au + bv = 1.
+	$$
+\end{theoreme}
+
+\begin{exemple}
+	$1 \times 128 + (-1) \times 127 = 1$, donc $127$ et $128$ sont premiers entre eux.
+\end{exemple}
+
+\remarque
+Le théorème de Bézout assure l'existence de $u$ et $v$, mais ne les fournit pas.
+On peut les calculer en « remontant » les étapes de l'algorithme d'Euclide.
+
+\begin{theoreme}[Bézout généralisé]
+	Soient $a$ et $b$ deux entiers relatifs non nuls.
+	
+	$\mathrm{PGCD}(a\,;b) = d$ si et seulement si $d$ divise $a$ et $b$, et s'il existe deux entiers
+	relatifs $u$ et $v$ tels que $au + bv = d$.
+\end{theoreme}
+
+\remarque
+La condition «$d$ divise $a$ et $b$» est indispensable.
+Par exemple $5 = 3 \times 1 + 2 \times 1$, mais $5$ n'est pas le PGCD de $3$ et $2$.
+
+
+% ------------------------------------------------------------
+\section{Théorème de Gauss}
+% ------------------------------------------------------------
+
+\begin{theoreme}[Théorème de Gauss]
+	Soient $a$, $b$ et $c$ trois entiers relatifs non nuls.
+	
+	Si $a$ divise $bc$ et si $a$ et $b$ sont premiers entre eux, alors $a$ divise $c$.
+\end{theoreme}
+
+\remarque
+La condition «$a$ et $b$ premiers entre eux» est indispensable.
+Par exemple, $4$ divise $12 = 2 \times 6$, mais $4$ ne divise ni $2$ ni $6$.
+
+\begin{corollaire}
+	Soient $a$, $b$ et $c$ trois entiers relatifs non nuls.
+	
+	Si $a$ divise $c$, si $b$ divise $c$, et si $a$ et $b$ sont premiers entre eux,
+	alors $ab$ divise $c$.
+\end{corollaire}
+
+\begin{exemple}
+	Soit $n$ un entier naturel et $N = n(n+1)(n+2)$.
+	\begin{itemize}[label=\textbullet]
+		\item $n$ et $n+1$ sont consécutifs, donc $2 \mid N$.
+		\item $n$, $n+1$ et $n+2$ sont trois consécutifs, donc $3 \mid N$.
+		\item Comme $\mathrm{PGCD}(2\,;3) = 1$, le corollaire donne $6 \mid N$.
+	\end{itemize}
+\end{exemple}
+
+
+% ------------------------------------------------------------
 \section{Équations diophantiennes}
+% ------------------------------------------------------------
+
+\begin{definition}
+	Une \textbf{équation diophantienne} est une équation de la forme
+	$$
+	ax + by = c,
+	$$
+	où $a$, $b$, $c$ sont des entiers relatifs donnés et les inconnues $x$ et $y$ sont cherchées
+	dans $\Z$.
+\end{definition}
+
+\begin{propriete}[Condition d'existence des solutions]
+	Soient $a$, $b$ et $c$ trois entiers relatifs non nuls.
+	
+	L'équation $ax + by = c$ admet des solutions dans $\Z^2$ si et seulement si
+	$\mathrm{PGCD}(a\,;b)$ divise $c$.
+\end{propriete}
+
+\begin{exemple}
+	Comme $\mathrm{PGCD}(2\,;3) = 1$ divise tout entier, l'équation $2x + 3y = 1$ admet toujours
+	des solutions.
+\end{exemple}
+
+\begin{methode}[Résoudre une équation diophantienne $ax + by = c$]
+	\begin{enumerate}
+		\item Vérifier que $\mathrm{PGCD}(a\,;b)$ divise $c$ (sinon, pas de solution).
+		\item Trouver une \textbf{solution particulière} $(x_0\,;y_0)$ par tâtonnement ou en
+		remontant l'algorithme d'Euclide.
+		\item En déduire \textbf{toutes les solutions} : si $(x_0\,;y_0)$ est une solution particulière,
+		alors l'ensemble des solutions est
+		$$
+		S = \left\{\left(x_0 + \frac{b}{d}\,k\ ;\ y_0 - \frac{a}{d}\,k\right),\ k \in \Z\right\},
+		\quad \text{où } d = \mathrm{PGCD}(a\,;b).
+		$$
+	\end{enumerate}
+\end{methode}
+
+\exerciceresolu
+\textbf{Résoudre une équation diophantienne}
+
+Résoudre dans $\Z^2$ l'équation $(E) : 2x + 5y = 4$.
+
+\solution
+
+\textbf{Étape 1 — Existence.}
+$\mathrm{PGCD}(2\,;5) = 1$ divise $4$, donc $(E)$ admet des solutions.
+
+\textbf{Étape 2 — Solution particulière.}
+On cherche $u$ et $v$ tels que $2u + 5v = 1$ :
+$$
+2 \times (-2) + 5 \times 1 = 1.
+$$
+En multipliant par $4$ : $2 \times (-8) + 5 \times 4 = 4$.
+
+Donc $(x_0\,;y_0) = (-8\,;4)$ est une solution particulière de $(E)$.
+
+\textbf{Étape 3 — Solutions générales.}
+$(E)$ s'écrit $2(x - x_0) = 5(y_0 - y)$, soit $2(x+8) = 5(4-y)$.
+
+Comme $\mathrm{PGCD}(2\,;5) = 1$, le théorème de Gauss donne $2 \mid (4-y)$,
+donc $4 - y = 2k$ et $y = 4 - 2k$ pour un certain $k \in \Z$.
+
+En remplaçant : $x + 8 = 5k$, soit $x = -8 + 5k$.
+
+L'ensemble des solutions est :
+$$
+\boxed{S = \{(-8+5k\ ;\ 4-2k),\ k \in \Z\}.}
+$$
+
+\exerciceresolu
+\textbf{Déterminer si une équation diophantienne admet des solutions}
+
+Parmi les équations suivantes, lesquelles admettent des solutions dans $\Z^2$ ?
+$$
+(E_1) : 13x + 14y = 3 \qquad (E_2) : 39x - 42y = 2
+$$
+
+\solution
+
+Pour $(E_1)$ : $14 \times 1 + 13 \times (-1) = 1$, donc $\mathrm{PGCD}(13\,;14) = 1$.
+Comme $1$ divise $3$, l'équation $(E_1)$ \textbf{admet des solutions}.
+
+Pour $(E_2)$ : $\mathrm{PGCD}(39\,;42) = \mathrm{PGCD}(39\,;42)$.
+Or $42 = 1 \times 39 + 3$ et $39 = 13 \times 3 + 0$, donc $\mathrm{PGCD}(39\,;42) = 3$.
+Comme $3$ ne divise pas $2$, l'équation $(E_2)$ \textbf{n'admet pas de solution}.
+
 
 \section{Exercices}
 
