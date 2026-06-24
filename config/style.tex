@@ -13,20 +13,31 @@
 \pagestyle{fancy}
 
 \fancyhf{}
+%
+%\fancyhead[L]{%
+%	\footnotesize
+%	\sffamily
+%	\color{gray}
+%	\nouppercase{\leftmark}
+%}
 
 \fancyhead[L]{%
-	\footnotesize
-	\sffamily
-	\color{gray}
-	\nouppercase{\leftmark}
-}
-
-\fancyhead[R]{%
-	\includegraphics[height=7mm]{logo.png}
+%	\includegraphics[height=1cm]{figures/logo_GPN.jpg}
+	{\small\bfseries École Le Petit Nid}
 }
 
 \renewcommand{\headrulewidth}{0.3pt}
-\fancyhead[L]{\footnotesize\sffamily\nouppercase{\leftmark}}
+\fancyhead[R]{\footnotesize\sffamily\nouppercase{\leftmark}}
+
+
+\fancyfoot[C]{%
+	\textcolor{gray}{\rule{2cm}{0.3pt}}
+	\hspace{0.5em}
+	\thepage
+	\hspace{0.5em}
+	\textcolor{gray}{\rule{2cm}{0.3pt}}
+}
+
 
 %-------------------------------------------------------
 %------------PERSONALISATION CHAPITRES ----------------%
@@ -36,5 +47,7 @@
 \renewcommand{\chaptermark}[1]{%
 	\markboth{#1}{}
 }
+
+
 
 

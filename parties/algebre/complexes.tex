@@ -43,7 +43,7 @@
 \end{definition}
 
 \remarque\\
-$z \in \R \iff \mathrm{Im}(z) = 0$. \quad
+$z$ est dit \textbf{réel} si $\mathrm{Im}(z) = 0$.\\
 $z$ est dit \textbf{imaginaire pur} si $\mathrm{Re}(z) = 0$ et $z \neq 0$.
 
 \begin{definition}[Égalité de deux complexes]
@@ -297,6 +297,67 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 		\item Le milieu $I$ de $[AB]$ a pour affixe $\dfrac{z_A + z_B}{2}$.
 	\end{itemize}
 \end{propriete}
+
+
+\exerciceresolu
+	\begin{figure}[h]
+		\centering
+		\begin{tikzpicture}[>=Stealth, scale=1.1]
+			
+			% --- Grille -----------------------------------------------
+			\draw[gray!30, thin] (0,0) grid (6,3);
+			
+			% --- Axes -------------------------------------------------
+			\draw[->] (-0.3,0) -- (6.5,0) node[right, font=\small] {Axe des réels};
+			\draw[->] (0,-0.3) -- (0,3.5) node[above, font=\small] {Axe des imaginaires};
+			
+			% --- Graduation axe réel ----------------------------------
+			\foreach \x in {1,...,6}{
+				\draw (\x, 2pt) -- (\x, -2pt) node[below, font=\small] {\x};
+			}
+			% zéro
+			\node[below left, font=\small] at (0,0) {$0$};
+			
+			% --- Graduation axe imaginaire ----------------------------
+			\foreach \y in {1,2,3}{
+				\draw (2pt,\y) -- (-2pt,\y) node[left, font=\small] {\y};
+			}
+			
+			% --- Vecteurs de base u et v (en rouge) -------------------
+			\draw[->, red, thick] (0,0) -- (1,0)
+			node[below, midway, font=\small, red] {$\vec{u}$};
+			\draw[->, red, thick] (0,0) -- (0,1)
+			node[midway, left,  font=\small, red] {$\vec{v}$};
+			
+			% --- Tirets pointillés vers M(3,2) -----------------------
+			\draw[black!60, dashed, thin] (3,0) -- (3,2);
+			\draw[black!60, dashed, thin] (0,2) -- (3,2);
+			
+			% --- Vecteur w = affixe 3+2i (en vert) -------------------
+			\draw[->, green!60!black, thick] (0,0) -- (3,2)
+			node[midway, below right, font=\small, green!60!black]
+			{$\vec{w}(3+2i)$};
+			
+			
+			
+			% --- Point M ----------------------------------------------
+			\filldraw[blue] (3,2) circle (2pt)
+			node[above right, font=\small, blue] {$M(3+2i)$};
+			
+		\end{tikzpicture}
+		
+		\smallskip
+		\begin{minipage}{0.85\linewidth}
+			\small
+			Le point $M\!\begin{pmatrix}3\\2\end{pmatrix}$ a pour affixe le nombre complexe
+			$z = 3 + 2i$.\\
+			De même, le vecteur $\vec{w}$ a pour affixe $z = 3 + 2i$.\\
+			La longueur $OM$ est {$OM = |w| =\sqrt{3^2+2^2}=\sqrt{13}$}
+		\end{minipage}
+%		\caption{Affixe d'un point et d'un vecteur dans le plan complexe.}
+%		\label{fig:affixe}
+	\end{figure}
+%\end{exemple}
 
 \begin{propriete}[Argument et angle]
 	Soient $A$, $B$, $C$ trois points d'affixes $z_A$, $z_B$, $z_C$.
@@ -877,7 +938,7 @@ $$
 	\item Montrer que $f$ est une similitude directe.
 	\item Déterminer le rapport $k$ et l'angle $\theta$ de $f$.
 	\item Déterminer l'affixe du centre $\Omega$ de $f$.
-	\item Vérifier que $\Omega$ est bien un point fixe de $f$.
+	\item Vérifier que $\Omega$ est bien un point invariant  de $f$.
 \end{enumerate}
 
 
