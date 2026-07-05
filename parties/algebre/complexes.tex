@@ -50,7 +50,8 @@ $z$ est dit \textbf{imaginaire pur} si $\mathrm{Re}(z) = 0$ et $z \neq 0$.
 	$a + b\ii = c + d\ii \iff a = c \text{ et } b = d$.
 \end{definition}
 
-\begin{propriete}[Opérations en forme algébrique]
+\begin{propriete}{Opérations en forme algébrique}{}
+	
 	Soient $z = a + b\ii$ et $z' = c + d\ii$ deux nombres complexes.
 	\begin{itemize}[label=\textbullet]
 		\item \textbf{Addition :} $z + z' = (a+c) + (b+d)\ii$
@@ -69,7 +70,7 @@ $z$ est dit \textbf{imaginaire pur} si $\mathrm{Re}(z) = 0$ et $z \neq 0$.
 	\end{itemize}
 \end{exemple}
 
-\begin{propriete}[Propriétés du conjugué]
+\begin{propriete}{Propriétés du conjugué}{}
 	Pour tous $z, z' \in \C$ :
 	\begin{enumerate}
 		\item $\overline{z + z'} = \bar{z} + \overline{z'}$
@@ -104,9 +105,9 @@ $z$ est dit \textbf{imaginaire pur} si $\mathrm{Re}(z) = 0$ et $z \neq 0$.
 % ============================================================
 
 \begin{definition}[Plan complexe]
-	On munit le plan d'un repère orthonormé $(O, \vec{\imath}, \vec{\jmath})$.
+	On munit le plan d'un repère orthonormé $(O, \vec{u}, \vec{v})$.
 	À tout complexe $z = a + b\ii$, on associe le point $M(a\,;\,b)$
-	appelé \textbf{image} de $z$, et le vecteur $\vect{OM}$.
+	appelé \textbf{image} de $z$, et on dit que $z=a+ib$ est l'\textbf{affixe} du vecteur $\vect{OM}$.
 \end{definition}
 
 \begin{definition}[Module]
@@ -117,11 +118,85 @@ $z$ est dit \textbf{imaginaire pur} si $\mathrm{Re}(z) = 0$ et $z \neq 0$.
 	Géométriquement, $\abs{z} = OM$ est la distance de $M$ à l'origine.
 \end{definition}
 
+
+% ============================================================
+%  FIGURE : Module d'un nombre complexe
+%  Utilisation de l'option "sloped" pour le label sur le vecteur
+%  Mazava Maths — Chapitre Nombres complexes
+% ============================================================
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[>=Stealth, scale=1.1]
+		
+		% --- Grille -----------------------------------------------
+		\draw[gray!30, thin] (0,0) grid (6,3);
+		
+		% --- Axes -------------------------------------------------
+		\draw[->] (-0.3,0) -- (6.5,0)
+		node[right, font=\small] {Axe des réels};
+		\draw[->] (0,-0.3) -- (0,3.5)
+		node[above, font=\small] {Axe des imaginaires};
+		
+		% --- Graduations axe réel ---------------------------------
+		\foreach \x in {1,...,6}{
+			\draw (\x,2pt) -- (\x,-2pt) node[below, font=\small] {\x};
+		}
+		\node[below left, font=\small] at (0,0) {$0$};
+		
+		% --- Graduations axe imaginaire ---------------------------
+		\foreach \y in {1,2,3}{
+			\draw (2pt,\y) -- (-2pt,\y) node[left, font=\small] {\y};
+		}
+		
+		% --- Vecteurs de base u et v (en rouge) -------------------
+		\draw[->, red, thick] (0,0) -- (1,0)
+		node[below, font=\small, red] {$\vec{u}$};
+		\draw[->, red, thick] (0,0) -- (0,1)
+		node[left,  font=\small, red] {$\vec{v}$};
+		
+		% --- Tirets pointillés ------------------------------------
+		\draw[blue!70, dashed, thin] (3.3,0) -- (3.3,2.2);   % vertical
+		\draw[blue!70, dashed, thin] (0,2.2) -- (3.3,2.2);   % horizontal
+		
+		% --- Label b sur l'axe imaginaire -------------------------
+		\node[left, font=\small, blue] at (0,2.2) {$b$};
+		
+		% --- Label a sur l'axe réel -------------------------------
+		\node[below, font=\small, blue] at (3.3,0) {$a$};
+		
+		% --- Vecteur OM = module, label sloped --------------------
+		\draw[->, red, thick] (0,0) -- (3.3,2.2)
+		node[midway, above, sloped, font=\small, red]
+		{$|z|=\sqrt{a^2+b^2}$};
+		
+		% --- Point M ----------------------------------------------
+		\filldraw[blue] (3.3,2.2) circle (2pt)
+		node[above right, font=\small, blue] {$M(a+ib)$};
+		
+	\end{tikzpicture}
+	
+	\smallskip
+	\begin{minipage}{0.85\linewidth}
+		\small
+		Le \textbf{module} de $z = a+ib$ est la distance $OM=|z| = \sqrt{a^2 + b^2}$.
+	\end{minipage}
+	\caption{Représentation géométrique du module d'un nombre complexe.}
+	\label{fig:module}
+\end{figure}
+
+M est un point d'affixe $z$ . \\
+Alors le module de $z$ est égale à la distance $OM$.
+
+
+
+
+
 \begin{exemple}
 	$z = 3 + 4\ii$ : $\abs{z} = \sqrt{9 + 16} = \sqrt{25} = 5$.
 \end{exemple}
 
-\begin{propriete}[Propriétés du module]
+\begin{propriete}{Propriétés du module}{}
 	Pour tous $z, z' \in \C$ :
 	\begin{enumerate}
 		\item $\abs{z} \geqslant 0$ et $\abs{z} = 0 \iff z = 0$
@@ -146,17 +221,90 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 \section{Forme trigonométrique et forme exponentielle}
 % ============================================================
 
-\begin{definition}[Argument]
-	Soit $z \neq 0$ de module $r = \abs{z}$.
-	Tout réel $\theta$ tel que
-	$$
-	z = r(\cos\theta + \ii\sin\theta)
-	$$
-	s'appelle un \textbf{argument} de $z$, noté $\theta = \arg(z)$.
+\begin{definition}[Argument d'un nombre complexe]
+	Dans le plan complexe $(O, \vec{u}, \vec{v});$ 	
+	Soit $M$ un point d'affixe $z\neq 0$.
 	
-	L'argument est défini \textbf{modulo $2\pi$} : si $\theta$ convient, alors $\theta + 2k\pi$ convient
-	aussi pour tout $k \in \Z$.
+	On appelle \textbf{argument} de $z$, noté $\arg(z)$, toute mesure, en radians, de l'angle orienté $\left(\vec{u},\overrightarrow{OM}\right)$.
 \end{definition}
+% ============================================================
+%  FIGURE : Module et argument d'un nombre complexe
+%  Mazava Maths — Chapitre Nombres complexes
+% ============================================================
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[>=Stealth, scale=1.1]
+		
+		% --- Grille -----------------------------------------------
+		\draw[gray!30, thin] (0,0) grid (5,3);
+		
+		% --- Axes -------------------------------------------------
+		\draw[->] (-0.3,0) -- (5.8,0)
+		node[right, font=\small] {Axe des réels};
+		\draw[->] (0,-0.3) -- (0,3.5)
+		node[above, font=\small] {Axe des imaginaires};
+		
+		% --- Graduations axe réel ---------------------------------
+		\foreach \x in {1,...,5}{
+			\draw (\x,2pt) -- (\x,-2pt) node[below, font=\small] {\x};
+		}
+		\node[below left, font=\small] at (0,0) {$0$};
+		
+		% --- Graduations axe imaginaire ---------------------------
+		\foreach \y in {1,2,3}{
+			\draw (2pt,\y) -- (-2pt,\y) node[left, font=\small] {\y};
+		}
+		
+		% --- Vecteurs de base u et v (en rouge) -------------------
+		\draw[->, red, thick] (0,0) -- (1,0)
+		node[below, midway, font=\small, red] {$\vec{u}$};
+		\draw[->, red, thick] (0,0) -- (0,1)
+		node[left, midway, font=\small, red] {$\vec{v}$};
+		
+		% --- Tirets pointillés ------------------------------------
+		\draw[gray!60, dashed, thin] (3,0) -- (3,2);
+		\draw[gray!60, dashed, thin] (0,2) -- (3,2);
+		
+		% --- Arc de l'argument ------------------------------------
+		% angle = arctan(2/3) ≈ 33.69°
+		\draw[green!60!black, thick]
+		(0.7,0) arc[start angle=0, end angle=33.69, radius=0.7];
+		
+		% --- Label arg(z) -----------------------------------------
+		\node[green!60!black, font=\small] at (1.15,0.25)
+		{$\arg(z)$};
+		
+		% --- Vecteur OM avec label |z| sloped ---------------------
+		\draw[->, red, thick] (0,0) -- (3,2)
+		node[midway, above, sloped, font=\small, red] {$|z|$};
+		
+		% --- Point M ----------------------------------------------
+		\filldraw[blue] (3,2) circle (2pt)
+		node[above right, font=\small, blue] {$M(z)$};
+		
+	\end{tikzpicture}
+	
+	\caption{Module et argument d'un nombre complexe $z$.}
+	\label{fig:argument}
+\end{figure}
+
+	\smallskip
+	\small
+	Soit $z = a + ib$ de module $|z| = \sqrt{a^2+b^2}$. On pose $\theta = arg(z)$ tel que :
+	$$
+	\left\{
+	\begin{array}{l}
+		\cos\theta = \dfrac{a}{|z|}\\
+		\sin\theta = \dfrac{b}{|z|}
+	\end{array}
+	\right.
+	$$
+	
+	
+	On écrit alors la \textbf{forme trigonométrique} :
+	$$z = |z|\!\left(\cos\theta + i\sin\theta\right)$$.
+
 
 \begin{definition}[Forme exponentielle]
 	On note $\e^{\ii\theta} = \cos\theta + \ii\sin\theta$ (formule d'Euler).
@@ -178,7 +326,7 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 	\end{itemize}
 \end{exemple}
 
-\begin{propriete}[Propriétés des arguments]
+\begin{propriete}{Propriétés des arguments}{}
 	Pour tous $z, z' \in \C^*$ :
 	\begin{enumerate}
 		\item $\arg(z \times z') \equiv \arg(z) + \arg(z')\ [2\pi]$
@@ -205,7 +353,7 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 	$$
 \end{exemple}
 
-\begin{propriete}[Formules d'Euler]
+\begin{propriete}{Formules d'Euler}{}
 	Pour tout $\theta \in \R$ :
 	$$
 	\cos\theta = \frac{\e^{\ii\theta} + \e^{-\ii\theta}}{2},
@@ -288,7 +436,7 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 \section{Nombres complexes et géométrie}
 % ============================================================
 
-\begin{propriete}[Affixe d'un point et d'un vecteur]
+\begin{propriete}{Affixe d'un point et d'un vecteur}{}
 	Dans le plan complexe repéré par $(O, \vec{\imath}, \vec{\jmath})$ :
 	\begin{itemize}[label=\textbullet]
 		\item Le point $M$ d'affixe $z = a + b\ii$ a pour coordonnées $(a\,;\,b)$.
@@ -334,8 +482,8 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 			\draw[black!60, dashed, thin] (0,2) -- (3,2);
 			
 			% --- Vecteur w = affixe 3+2i (en vert) -------------------
-			\draw[->, green!60!black, thick] (0,0) -- (3,2)
-			node[midway, below right, font=\small, green!60!black]
+			\draw[->, blue!60!black, thick] (0,0) -- (3,2)
+			node[midway, below right, font=\small, blue!60!black]
 			{$\vec{w}(3+2i)$};
 			
 			
@@ -359,14 +507,14 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 	\end{figure}
 %\end{exemple}
 
-\begin{propriete}[Argument et angle]
+\begin{propriete}{Argument et angle}{}
 	Soient $A$, $B$, $C$ trois points d'affixes $z_A$, $z_B$, $z_C$.
 	$$
 	\arg\!\left(\frac{z_C - z_A}{z_B - z_A}\right) \equiv \left(\vect{AB}, \vect{AC}\right)\ [2\pi].
 	$$
 \end{propriete}
 
-\begin{propriete}[Conditions géométriques]
+\begin{propriete}{Conditions géométriques}{}
 	Soient $A$, $B$, $C$, $D$ quatre points deux à deux distincts d'affixes respectives
 	$z_A$, $z_B$, $z_C$, $z_D$.
 	\begin{enumerate}
@@ -394,28 +542,28 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 \section{Transformations du plan et complexes}
 % ============================================================
 
-\begin{propriete}[Translations]
+\begin{propriete}{Translations}{}
 	La translation de vecteur $\vect{u}$ d'affixe $b$ est donnée par :
 	$$
 	z' = z + b.
 	$$
 \end{propriete}
 
-\begin{propriete}[Rotation]
+\begin{propriete}{Rotation}{}
 	La rotation de centre $\Omega$ (affixe $\omega$), d'angle $\theta$ est donnée par :
 	$$
 	z' - \omega = \e^{\ii\theta}(z - \omega).
 	$$
 \end{propriete}
 
-\begin{propriete}[Homothétie]
+\begin{propriete}{Homothétie}{}
 	L'homothétie de centre $\Omega$ (affixe $\omega$), de rapport $k \in \R^*$ est :
 	$$
 	z' - \omega = k(z - \omega).
 	$$
 \end{propriete}
 
-\begin{propriete}[Similitude directe]
+\begin{propriete}{Similitude directe}{}
 	Toute similitude directe (non nulle) s'écrit sous la forme
 	$$
 	z' = az + b, \quad a \in \C^*,\ b \in \C.

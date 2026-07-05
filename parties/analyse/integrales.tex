@@ -1,0 +1,454 @@
+\chapter{Primitives et Integrale}
+\begin{objectifs}
+	\begin{itemize}
+		\item Calculer une primitive et une intégrale d’une fonction numérique
+		\item Connaître quelques utilisations des intégrales de fonctions.
+	\end{itemize}
+\end{objectifs}
+
+\begin{definition}
+ $f$ est une fonction définie sur un intervalle $I$.\\
+ Dire que une fonction $F$ est une \textbf{ $F$ est une prmitive de $f$} signifie que $F$ est dérivable sur $I$ et \textbf{$F' = f$.}
+\end{definition}
+
+\begin{propriete}{}{}
+	Toute fonction définie sur un interval $I$ admet des primitives sur $I$. 
+\end{propriete}
+
+
+
+
+
+% ============================================================
+%  CHAPITRE : PRIMITIVES ET INTÉGRALE (suite)
+%  Mazava Maths — Terminale S
+%  Environnements : definition, propriete, methode, attention,
+%                   astucebac, exemple, exercice, solution
+% ============================================================
+
+% ----------------------------------------------------------------
+\section{Primitives des fonctions usuelles}
+% ----------------------------------------------------------------
+
+Le tableau suivant donne les primitives des fonctions usuelles
+à connaître en Terminale~S.
+
+\begin{center}
+	\renewcommand{\arraystretch}{2.2}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Fonction} $f(x)$ & \textbf{Primitive} $F(x)$ & \textbf{Conditions} \\
+		\hline
+		$k$ \quad ($k \in \R$) & $kx$ & sur $\R$ \\
+		\hline
+		$x^n$ \quad ($n \in \N^*$) & $\dfrac{x^{n+1}}{n+1}$ & sur $\R$ \\
+		\hline
+		$x^n$ \quad ($n \in \Z,\ n \leq -2$) & $\dfrac{x^{n+1}}{n+1}$ & sur $]0;+\infty[$ ou $]-\infty;0[$ \\
+		\hline
+		$x^\alpha$ \quad ($\alpha \in \R,\ \alpha \neq -1$) & $\dfrac{x^{\alpha+1}}{\alpha+1}$ & sur $]0;+\infty[$ \\
+		\hline
+		$\dfrac{1}{x^2}$ & $-\dfrac{1}{x}$ & sur $]0;+\infty[$ ou $]-\infty;0[$ \\
+		\hline
+		$\dfrac{1}{\sqrt{x}}$ & $2\sqrt{x}$ & sur $]0;+\infty[$ \\
+		\hline
+		$\sqrt{x}$ & $\dfrac{2}{3}x\sqrt{x}$ & sur $]0;+\infty[$ \\
+		\hline
+		$\cos x$ & $\sin x$ & sur $\R$ \\
+		\hline
+		$\sin x$ & $-\cos x$ & sur $\R$ \\
+		\hline
+		$\dfrac{1}{\cos^2 x}$ & $\tan x$ & sur $\left]-\dfrac{\pi}{2};\dfrac{\pi}{2}\right[$ \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{attention}
+	Une primitive n'est \textbf{jamais unique} : si $F$ est une primitive de $f$,
+	alors $F + C$ (avec $C \in \R$) est aussi une primitive de $f$.
+	On dit que les primitives de $f$ forment une \textbf{famille}.
+\end{attention}
+
+% ----------------------------------------------------------------
+\section{Opérations sur les primitives}
+% ----------------------------------------------------------------
+
+\begin{propriete}{Linéarité}{}
+	Soient $f$ et $g$ deux fonctions admettant des primitives $F$ et $G$
+	sur un intervalle $I$, et $\lambda, \mu \in \R$. Alors :
+	\begin{itemize}
+		\item $F + G$ est une primitive de $f + g$ sur $I$.
+		\item $\lambda F$ est une primitive de $\lambda f$ sur $I$.
+		\item $\lambda F + \mu G$ est une primitive de $\lambda f + \mu g$ sur $I$.
+	\end{itemize}
+\end{propriete}
+
+\begin{propriete}{Primitive d'une fonction composée — cas usuels}{}
+	Soient $u$ une fonction dérivable sur $I$ et $n \in \Z \setminus \{-1\}$,
+	$\alpha \in \R \setminus \{-1\}$. On a :
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{2.2}
+		\begin{tabular}{|c|c|}
+			\hline
+			\textbf{Fonction} $f$ & \textbf{Primitive} $F$ \\
+			\hline
+			$u' \cdot u^n$ & $\dfrac{u^{n+1}}{n+1}$ \\
+			\hline
+			$u' \cdot u^\alpha$ & $\dfrac{u^{\alpha+1}}{\alpha+1}$ \\
+			\hline
+			$\dfrac{u'}{u^2}$ & $-\dfrac{1}{u}$ \\
+			\hline
+			$\dfrac{u'}{\sqrt{u}}$ & $2\sqrt{u}$ \\
+			\hline
+			$u' \cos u$ & $\sin u$ \\
+			\hline
+			$u' \sin u$ & $-\cos u$ \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{propriete}
+
+\begin{methode}
+	Pour reconnaître une primitive de la forme $u' \cdot u^n$ :
+	\begin{enumerate}
+		\item Identifier la fonction $u(x)$ à l'intérieur.
+		\item Calculer $u'(x)$.
+		\item Vérifier que la fonction à intégrer est bien du type $u' \cdot u^n$
+		(au coefficient multiplicatif près).
+		\item Appliquer la formule, puis ajuster le coefficient.
+	\end{enumerate}
+\end{methode}
+
+\begin{exemple}
+	Trouver une primitive de $f(x) = 3x^2(x^3+1)^4$.
+	
+	On pose $u(x) = x^3 + 1$, donc $u'(x) = 3x^2$.
+	
+	On reconnaît $f(x) = u'(x) \cdot [u(x)]^4$, donc :
+	\[
+	F(x) = \frac{[u(x)]^5}{5} = \frac{(x^3+1)^5}{5}.
+	\]
+\end{exemple}
+
+\begin{exemple}
+	Trouver une primitive de $g(x) = \dfrac{2x}{\sqrt{x^2+3}}$.
+	
+	On pose $u(x) = x^2 + 3$, donc $u'(x) = 2x$.
+	
+	On reconnaît $g(x) = \dfrac{u'(x)}{\sqrt{u(x)}}$, donc :
+	\[
+	G(x) = 2\sqrt{u(x)} = 2\sqrt{x^2+3}.
+	\]
+\end{exemple}
+
+% ----------------------------------------------------------------
+\section{Primitive prenant une valeur donnée en un point}
+% ----------------------------------------------------------------
+
+\begin{propriete}{Unicité sous condition initiale}{}
+	Soit $f$ une fonction continue sur un intervalle $I$,
+	$x_0 \in I$ et $y_0 \in \R$.
+	Il existe \textbf{une unique primitive} $F$ de $f$ sur $I$
+	telle que $F(x_0) = y_0$.
+\end{propriete}
+
+\begin{methode}
+	Pour trouver la primitive $F$ vérifiant $F(x_0) = y_0$ :
+	\begin{enumerate}
+		\item Calculer la primitive générale $F(x) = \ldots + C$.
+		\item Écrire la condition : $F(x_0) = y_0$.
+		\item Résoudre pour trouver $C$.
+	\end{enumerate}
+\end{methode}
+
+\begin{exemple}
+	Soit $f(x) = 3x^2 - 4x + 1$. Trouver la primitive $F$ de $f$
+	telle que $F(1) = 2$.
+	
+	Primitive générale : $F(x) = x^3 - 2x^2 + x + C$.
+	
+	Condition : $F(1) = 1 - 2 + 1 + C = C = 2$, donc $C = 2$.
+	
+	\[
+	\boxed{F(x) = x^3 - 2x^2 + x + 2.}
+	\]
+\end{exemple}
+
+% ----------------------------------------------------------------
+\section{Intégrale d'une fonction}
+% ----------------------------------------------------------------
+
+\begin{definition}
+	Soit $f$ une fonction \textbf{continue} et \textbf{positive} sur $[a\,;b]$,
+	et $F$ une primitive de $f$ sur $[a\,;b]$.
+	On appelle \textbf{intégrale} de $f$ entre $a$ et $b$ le réel :
+	\[
+	\int_a^b f(x)\,\dd x = \Big[F(x)\Big]_a^b = F(b) - F(a).
+	\]
+	$a$ est la \textbf{borne inférieure}, $b$ la \textbf{borne supérieure}.
+\end{definition}
+
+\begin{remarque}
+	Le résultat $F(b)-F(a)$ est \textbf{indépendant du choix} de la primitive $F$,
+	car deux primitives ne diffèrent que d'une constante qui s'annule dans la soustraction.
+\end{remarque}
+
+\begin{propriete}{Propriétés de l'intégrale}{}
+	Soient $f$ et $g$ continues sur $[a\,;b]$, et $\lambda \in \R$ :
+	\begin{itemize}
+		\item \textbf{Linéarité :}
+		$\displaystyle\int_a^b \bigl(\lambda f(x)+g(x)\bigr)\,\dd x
+		= \lambda\int_a^b f(x)\,\dd x + \int_a^b g(x)\,\dd x.$
+		\item \textbf{Relation de Chasles :}
+		$\displaystyle\int_a^b f(x)\,\dd x
+		= \int_a^c f(x)\,\dd x + \int_c^b f(x)\,\dd x$
+		pour tout $c \in [a\,;b]$.
+		\item \textbf{Inversion des bornes :}
+		$\displaystyle\int_a^b f(x)\,\dd x = -\int_b^a f(x)\,\dd x.$
+		\item \textbf{Intégrale nulle :}
+		$\displaystyle\int_a^a f(x)\,\dd x = 0.$
+		\item \textbf{Positivité :}
+		si $f(x) \geq 0$ sur $[a\,;b]$, alors
+		$\displaystyle\int_a^b f(x)\,\dd x \geq 0.$
+		\item \textbf{Comparaison :}
+		si $f(x) \leq g(x)$ sur $[a\,;b]$, alors
+		$\displaystyle\int_a^b f(x)\,\dd x \leq \int_a^b g(x)\,\dd x.$
+	\end{itemize}
+\end{propriete}
+
+\begin{exemple}
+	Calculer $\displaystyle I = \int_1^3 (2x^2 - 3x + 1)\,\dd x$.
+	
+	\[
+	I = \left[\frac{2x^3}{3} - \frac{3x^2}{2} + x\right]_1^3
+	= \left(\frac{54}{3} - \frac{27}{2} + 3\right)
+	- \left(\frac{2}{3} - \frac{3}{2} + 1\right).
+	\]
+	\[
+	= \left(18 - \frac{27}{2} + 3\right) - \left(\frac{2}{3} - \frac{3}{2} + 1\right)
+	= \frac{21}{2} - \frac{1}{6}
+	= \frac{63 - 1}{6} = \frac{62}{6} = \frac{31}{3}.
+	\]
+\end{exemple}
+
+% ----------------------------------------------------------------
+\section{Interprétation géométrique — Aire}
+% ----------------------------------------------------------------
+
+\begin{propriete}{Aire sous une courbe}{}
+	Soit $f$ continue et \textbf{positive} sur $[a\,;b]$.
+	L'aire (en unités d'aire) du domaine délimité par la courbe
+	$\mathcal{C}_f$, l'axe des abscisses et les droites $x=a$, $x=b$ est :
+	\[
+	\mathcal{A} = \int_a^b f(x)\,\dd x.
+	\]
+\end{propriete}
+
+% Figure TikZ — aire sous une courbe
+\begin{center}
+	\begin{tikzpicture}[>=Stealth, scale=1.0]
+		\begin{scope}
+			\clip (0.5,-0.1) rectangle (3.5,2.5);
+			\fill[gray!25]
+			(1,0) -- plot[domain=1:3, samples=60]
+			(\x, {0.3*\x*\x - 0.2*\x + 0.5}) -- (3,0) -- cycle;
+		\end{scope}
+		\draw[->] (-0.2,0) -- (4.2,0) node[right] {$x$};
+		\draw[->] (0,-0.2) -- (0,2.8) node[above] {$y$};
+		\draw[thick, domain=0.3:3.8, samples=80]
+		plot (\x, {0.3*\x*\x - 0.2*\x + 0.5});
+		\draw[dashed] (1,0) node[below] {$a$} -- (1,{0.3-0.2+0.5});
+		\draw[dashed] (3,0) node[below] {$b$} -- (3,{0.3*9-0.6+0.5});
+		\node at (2, 0.6) {$\mathcal{A}$};
+		\node[right] at (3.8, {0.3*3.8*3.8-0.2*3.8+0.5}) {$\mathcal{C}_f$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{propriete}{Aire entre deux courbes}{}
+	Soient $f$ et $g$ continues sur $[a\,;b]$ avec $f(x) \geq g(x)$.
+	L'aire du domaine compris entre $\mathcal{C}_f$ et $\mathcal{C}_g$ est :
+	\[
+	\mathcal{A} = \int_a^b \bigl[f(x) - g(x)\bigr]\,\dd x.
+	\]
+\end{propriete}
+
+\begin{attention}
+	Si $f$ change de signe sur $[a\,;b]$, il faut \textbf{découper} l'intervalle
+	aux zéros de $f$ et sommer les valeurs absolues de chaque intégrale partielle.
+\end{attention}
+
+% ----------------------------------------------------------------
+\section{Valeur moyenne}
+% ----------------------------------------------------------------
+
+\begin{definition}
+	La \textbf{valeur moyenne} de $f$ continue sur $[a\,;b]$ est :
+	\[
+	\mu = \frac{1}{b-a}\int_a^b f(x)\,\dd x.
+	\]
+\end{definition}
+
+% ----------------------------------------------------------------
+\section{Intégration par parties (IPP)}
+% ----------------------------------------------------------------
+
+\begin{theoreme}{Intégration par parties}
+	Soient $u$ et $v$ deux fonctions dérivables sur $[a\,;b]$,
+	à dérivées continues. Alors :
+	\[
+	\boxed{\int_a^b u(x)\,v'(x)\,\dd x
+		= \Bigl[u(x)\,v(x)\Bigr]_a^b - \int_a^b u'(x)\,v(x)\,\dd x.}
+	\]
+\end{theoreme}
+
+\begin{methode}
+	Pour appliquer une IPP :
+	\begin{enumerate}
+		\item Choisir $u$ et $v'$ de sorte que $u'$ soit \textbf{plus simple} que $u$
+		et que $v$ soit \textbf{facile à calculer} depuis $v'$.
+		\item Calculer $u'$ et $v$.
+		\item Appliquer la formule.
+		\item Calculer l'intégrale restante.
+	\end{enumerate}
+\end{methode}
+
+\begin{astucebac}
+	En pratique au BAC, l'IPP est souvent utilisée avec :
+	$u = $ polynôme (donc $u'$ diminue le degré) et
+	$v' = \cos x$, $\sin x$ ou $x^\alpha$ (donc $v$ reste simple).
+\end{astucebac}
+
+\begin{exemple}
+	Calculer $\displaystyle I = \int_0^{\pi} x\cos x\,\dd x$.
+	
+	On pose $u(x) = x$ et $v'(x) = \cos x$,
+	donc $u'(x) = 1$ et $v(x) = \sin x$.
+	
+	\[
+	I = \Big[x\sin x\Big]_0^{\pi} - \int_0^{\pi} \sin x\,\dd x
+	= 0 - \Big[-\cos x\Big]_0^{\pi}
+	= -\bigl(-\cos\pi + \cos 0\bigr)
+	= -\bigl(1 + 1\bigr) = -2.
+	\]
+\end{exemple}
+
+% ----------------------------------------------------------------
+\section{Volume d'un solide de révolution}
+% ----------------------------------------------------------------
+
+\begin{propriete}{Volume de révolution}{}
+	Soit $f$ continue et positive sur $[a\,;b]$.
+	Le volume du solide engendré par la rotation de $\mathcal{C}_f$
+	autour de l'axe des abscisses est :
+	\[
+	V = \pi \int_a^b \bigl[f(x)\bigr]^2\,\dd x.
+	\]
+\end{propriete}
+
+\begin{exemple}
+	Calculer le volume du solide de révolution engendré par $f(x) = \sqrt{x}$
+	sur $[0\,;4]$ autour de l'axe des abscisses.
+	
+	\[
+	V = \pi\int_0^4 \bigl(\sqrt{x}\bigr)^2\,\dd x
+	= \pi\int_0^4 x\,\dd x
+	= \pi\left[\frac{x^2}{2}\right]_0^4
+	= \pi \cdot \frac{16}{2}
+	= 8\pi.
+	\]
+\end{exemple}
+
+% ----------------------------------------------------------------
+%  EXERCICES RÉSOLUS
+% ----------------------------------------------------------------
+
+\exercice{\etoilepleine\etoilevide\etoilevide}
+Calculer les intégrales suivantes :
+\[
+\text{a)}\quad I_1 = \int_0^2 (3x^2+2x-1)\,\dd x
+\qquad
+\text{b)}\quad I_2 = \int_1^4 \frac{1}{\sqrt{x}}\,\dd x
+\qquad
+\text{c)}\quad I_3 = \int_0^\pi \sin x\,\dd x
+\]
+
+\solution
+
+\textbf{a)}
+\[
+I_1 = \left[x^3 + x^2 - x\right]_0^2
+= (8+4-2) - 0 = 10.
+\]
+
+\textbf{b)}
+\[
+I_2 = \left[2\sqrt{x}\right]_1^4
+= 2\sqrt{4} - 2\sqrt{1} = 4 - 2 = 2.
+\]
+
+\textbf{c)}
+\[
+I_3 = \left[-\cos x\right]_0^\pi
+= -\cos\pi + \cos 0 = 1 + 1 = 2.
+\]
+
+\bigskip
+\exercice{\etoilepleine\etoilepleine\etoilevide}
+\begin{enumerate}
+	\item Trouver la primitive $F$ de $f(x) = 4x(x^2-1)^3$ telle que $F(0)=1$.
+	\item Calculer l'aire du domaine délimité par la courbe $\mathcal{C}_f$
+	où $f(x) = x^2 - x$, l'axe des abscisses et les droites $x=0$, $x=2$.
+\end{enumerate}
+
+\solution
+
+\textbf{1.} On pose $u = x^2-1$, $u'=2x$.
+On écrit $f(x) = 2 \cdot 2x \cdot (x^2-1)^3 = 2u'u^3$, donc :
+\[
+F(x) = 2 \cdot \frac{u^4}{4} + C = \frac{(x^2-1)^4}{2} + C.
+\]
+Condition $F(0)=1$ : $\dfrac{(-1)^4}{2}+C = 1 \Rightarrow C = \dfrac{1}{2}$.
+\[
+\boxed{F(x) = \frac{(x^2-1)^4}{2} + \frac{1}{2}.}
+\]
+
+\textbf{2.} On cherche les zéros de $f(x)=x^2-x=x(x-1)$ sur $[0;2]$ : $x=0$ et $x=1$.
+\begin{itemize}
+	\item Sur $[0;1]$ : $f(x) \leq 0$, donc l'aire partielle est
+	$\displaystyle\mathcal{A}_1 = -\int_0^1(x^2-x)\,\dd x
+	= -\left[\frac{x^3}{3}-\frac{x^2}{2}\right]_0^1
+	= -\left(\frac{1}{3}-\frac{1}{2}\right) = \frac{1}{6}$.
+	\item Sur $[1;2]$ : $f(x) \geq 0$, donc
+	$\displaystyle\mathcal{A}_2 = \int_1^2(x^2-x)\,\dd x
+	= \left[\frac{x^3}{3}-\frac{x^2}{2}\right]_1^2
+	= \left(\frac{8}{3}-2\right)-\left(\frac{1}{3}-\frac{1}{2}\right)
+	= \frac{5}{6}$.
+\end{itemize}
+\[
+\mathcal{A} = \mathcal{A}_1 + \mathcal{A}_2 = \frac{1}{6}+\frac{5}{6} = 1 \text{ u.a.}
+\]
+
+\bigskip
+\exercice{\etoilepleine\etoilepleine\etoilepleine}
+Calculer $\displaystyle I = \int_0^{\frac{\pi}{2}} x\sin x\,\dd x$
+par une intégration par parties, puis en déduire le volume du solide
+de révolution engendré par $f(x)=\sin x$ sur $\left[0;\dfrac{\pi}{2}\right]$.
+
+\solution
+
+\textbf{IPP :} On pose $u=x$, $v'=\sin x$,
+donc $u'=1$, $v=-\cos x$.
+\[
+I = \Big[-x\cos x\Big]_0^{\frac{\pi}{2}} + \int_0^{\frac{\pi}{2}}\cos x\,\dd x
+= 0 + \Big[\sin x\Big]_0^{\frac{\pi}{2}}
+= 1.
+\]
+
+\textbf{Volume :}
+\[
+V = \pi\int_0^{\frac{\pi}{2}}\sin^2 x\,\dd x
+= \pi\int_0^{\frac{\pi}{2}}\frac{1-\cos 2x}{2}\,\dd x
+= \frac{\pi}{2}\left[x - \frac{\sin 2x}{2}\right]_0^{\frac{\pi}{2}}
+= \frac{\pi}{2}\cdot\frac{\pi}{2}
+= \frac{\pi^2}{4}.
+\]

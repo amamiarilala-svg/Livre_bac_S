@@ -14,19 +14,38 @@
 
 
 % -----------------  PROPRIETE ---------------
-\theoremstyle{proprietestyle}
-\newtheoremstyle{proprietestyle}
-{0.5em}      % Espace avant
-{0.5em}      % Espace après
-{\normalfont}% Corps
-{}           % Indentation
-{\bfseries}  % Titre
-{}           % Ponctuation
-{\newline}   % <-- Retour à la ligne
-{}           % Style du titre
+%\theoremstyle{proprietestyle}
+%\newtheoremstyle{proprietestyle}
+%{0.5em}      % Espace avant
+%{0.5em}      % Espace après
+%{\normalfont}% Corps
+%{}           % Indentation
+%{\bfseries}  % Titre
+%{}           % Ponctuation
+%{\newline}   % <-- Retour à la ligne
+%{}           % Style du titre
+%
+%\theoremstyle{proprietestyle}
+%\newtheorem{propriete}[theoreme]{Propriété}
 
-\theoremstyle{proprietestyle}
-\newtheorem{propriete}[theoreme]{Propriété}
+
+
+\newtcbtheorem[
+number within=chapter
+]{propriete}{Propriété}{
+	enhanced,
+	colback=gray!15,
+	frame hidden,
+	sharp corners,
+	fonttitle=\bfseries,
+	coltitle=black,
+	separator sign={.}
+}{prop}
+
+
+
+
+
 
 
 
