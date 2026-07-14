@@ -1,0 +1,578 @@
+% ============================================================
+%  CHAPITRE : GÉNÉRALITÉS SUR LES FONCTIONS
+%  Mazava Maths — Terminale S
+%  Environnements : definition, propriete, theoreme, methode,
+%                   attention, astucebac, exemple, exercice,
+%                   solution, remarque
+% ============================================================
+
+\chapter{Généralités sur les fonctions}
+
+\begin{objectifs}
+	\begin{itemize}
+		\item Maîtriser le vocabulaire et les notations liés aux fonctions.
+		\item Étudier les symétries, monotonie et extrema d'une fonction.
+		\item Déterminer et interpréter les branches infinies d'une courbe.
+		\item Étudier la position relative de deux courbes.
+		\item Conduire une étude complète de fonction.
+	\end{itemize}
+\end{objectifs}
+
+% ----------------------------------------------------------------
+\section{Rappels fondamentaux}
+% ----------------------------------------------------------------
+
+\begin{definition}
+	Une \textbf{fonction numérique} $f$ d'une variable réelle est une
+	application qui à tout réel $x$ d'un ensemble $D_f \subset \R$
+	(appelé \textbf{domaine de définition} ou \textbf{ensemble de définition})
+	associe un unique réel $f(x)$.
+	
+	On note : $f : D_f \to \R$, $x \mapsto f(x)$.
+\end{definition}
+
+\begin{methode}
+	Pour déterminer le domaine de définition $D_f$ :
+	\begin{enumerate}
+		\item Exclure les valeurs annulant un \textbf{dénominateur}.
+		\item Exclure les valeurs rendant négatif l'argument d'une
+		\textbf{racine carrée} (imposer $\geq 0$).
+		\item Intersecter les conditions obtenues.
+	\end{enumerate}
+\end{methode}
+
+\begin{exemple}
+	Déterminer le domaine de définition de :
+	\[
+	f(x)=\frac{1}{x-2}, \qquad
+	g(x)=\sqrt{3x-1}, \qquad
+	h(x)=\frac{\sqrt{x+1}}{x-3}.
+	\]
+	\[
+	D_f = \R\setminus\{2\}.
+	\]
+	\[
+	3x-1\geq 0 \iff x\geq\tfrac{1}{3}, \quad D_g = \left[\tfrac{1}{3}\,;+\infty\right[.
+	\]
+	\[
+	x+1\geq 0 \text{ et } x\neq 3 \iff x\geq -1 \text{ et } x\neq 3,
+	\quad D_h = [-1\,;3[\,\cup\,]3\,;+\infty[.
+	\]
+\end{exemple}
+
+% ----------------------------------------------------------------
+\section{Parité et symétries}
+% ----------------------------------------------------------------
+
+\begin{definition}
+	Soit $f$ une fonction dont le domaine $D_f$ est symétrique par rapport à $0$.
+	\begin{itemize}
+		\item $f$ est \textbf{paire} si $\forall x\in D_f,\; f(-x)=f(x)$.\\
+		La courbe $\mathcal{C}_f$ est symétrique par rapport à l'axe des ordonnées.
+		\item $f$ est \textbf{impaire} si $\forall x\in D_f,\; f(-x)=-f(x)$.\\
+		La courbe $\mathcal{C}_f$ est symétrique par rapport à l'origine $O$.
+	\end{itemize}
+\end{definition}
+
+\begin{methode}
+	Pour tester la parité :
+	\begin{enumerate}
+		\item Vérifier que $D_f$ est symétrique par rapport à $0$.
+		\item Calculer $f(-x)$ et le simplifier.
+		\item Comparer à $f(x)$ et à $-f(x)$.
+	\end{enumerate}
+\end{methode}
+
+\begin{exemple}
+	\[
+	f(x)=x^4-3x^2+1 : \quad f(-x)=x^4-3x^2+1=f(x). \quad \textbf{Paire.}
+	\]
+	\[
+	g(x)=x^3-2x : \quad g(-x)=-x^3+2x=-(x^3-2x)=-g(x). \quad \textbf{Impaire.}
+	\]
+	\[
+	h(x)=x^2+x : \quad h(-x)=x^2-x \neq h(x) \text{ et } \neq -h(x). \quad \textbf{Ni paire, ni impaire.}
+	\]
+\end{exemple}
+
+\begin{astucebac}
+	Si $f$ est paire, on étudie $f$ sur $[0\,;+\infty[$ puis on complète
+	par symétrie. Si $f$ est impaire, on vérifie $f(0)=0$ et on étudie
+	sur $[0\,;+\infty[$ puis on déduit le reste par symétrie centrale.
+\end{astucebac}
+
+% ----------------------------------------------------------------
+\section{Monotonie}
+% ----------------------------------------------------------------
+
+\begin{definition}
+	Soit $f$ définie sur un intervalle $I$.
+	\begin{itemize}
+		\item $f$ est \textbf{croissante} sur $I$ si :
+		$\forall x_1, x_2\in I,\; x_1 < x_2 \implies f(x_1)\leq f(x_2)$.
+		\item $f$ est \textbf{décroissante} sur $I$ si :
+		$\forall x_1, x_2\in I,\; x_1 < x_2 \implies f(x_1)\geq f(x_2)$.
+		\item $f$ est \textbf{strictement croissante} si l'inégalité est stricte.
+		\item $f$ est \textbf{strictement décroissante} si l'inégalité est stricte.
+	\end{itemize}
+\end{definition}
+
+\begin{propriete}{Monotonie et dérivée}{}
+	Soit $f$ dérivable sur $I$.
+	\begin{center}
+		\renewcommand{\arraystretch}{1.8}
+		\begin{tabular}{|c|c|}
+			\hline
+			\textbf{Signe de $f'$} & \textbf{Monotonie de $f$} \\
+			\hline
+			$f'(x) > 0$ sur $I$ & $f$ strictement croissante sur $I$ \\
+			\hline
+			$f'(x) < 0$ sur $I$ & $f$ strictement décroissante sur $I$ \\
+			\hline
+			$f'(x) = 0$ sur $I$ & $f$ constante sur $I$ \\
+			\hline
+			$f'(x) \geq 0$ sur $I$ (nul en des points isolés) & $f$ croissante sur $I$ \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{propriete}
+
+\begin{remarque}
+	La dérivée s'annule en un point isolé sans changer de signe :
+	$f$ reste monotone (pas d'extremum). Exemple : $f(x)=x^3$, $f'(0)=0$
+	mais $f$ est strictement croissante sur $\R$.
+\end{remarque}
+
+% ----------------------------------------------------------------
+\section{Extrema}
+% ----------------------------------------------------------------
+
+\begin{definition}
+	Soit $f$ définie sur $I$ et $a\in I$.
+	\begin{itemize}
+		\item $f(a)$ est un \textbf{maximum local} si $f(x)\leq f(a)$
+		au voisinage de $a$.
+		\item $f(a)$ est un \textbf{minimum local} si $f(x)\geq f(a)$
+		au voisinage de $a$.
+		\item $f(a)$ est un \textbf{extremum global} sur $I$ si l'inégalité
+		vaut pour tout $x\in I$.
+	\end{itemize}
+\end{definition}
+
+\begin{propriete}{Condition nécessaire d'extremum}{}
+	Si $f$ est dérivable en $a$ et admet un extremum local en $a$,
+	alors $f'(a)=0$.
+	
+	\medskip
+	\textbf{Condition suffisante :} si $f'$ change de signe en $a$,
+	alors $f$ admet un extremum en $a$ :
+	\begin{itemize}
+		\item $f'$ passe de $+$ à $-$ : \textbf{maximum local}.
+		\item $f'$ passe de $-$ à $+$ : \textbf{minimum local}.
+	\end{itemize}
+\end{propriete}
+
+\begin{attention}
+	$f'(a)=0$ est nécessaire mais \textbf{pas suffisant} : si $f'$ ne
+	change pas de signe en $a$, il n'y a pas d'extremum
+	(ex. : $f(x)=x^3$ en $a=0$).
+\end{attention}
+
+% ----------------------------------------------------------------
+\section{Concavité, convexité et point d'inflexion}
+% ----------------------------------------------------------------
+
+\begin{definition}
+	Soit $f$ deux fois dérivable sur $I$.
+	\begin{itemize}
+		\item $f$ est \textbf{convexe} sur $I$ si $f''(x)\geq 0$ sur $I$ :
+		la courbe est \textbf{tournée vers le haut} (en dessous des tangentes).
+		\item $f$ est \textbf{concave} sur $I$ si $f''(x)\leq 0$ sur $I$ :
+		la courbe est \textbf{tournée vers le bas} (au-dessus des tangentes).
+		\item Un \textbf{point d'inflexion} est un point où $f''$ change de signe
+		(la courbe change de concavité).
+	\end{itemize}
+\end{definition}
+
+% Figure TikZ — convexité et concavité
+\begin{center}
+	\begin{tikzpicture}[>=Stealth, scale=0.9]
+		% convexe
+		\begin{scope}[xshift=0cm]
+			\draw[->](-0.3,0)--(3.5,0) node[right,font=\small]{$x$};
+			\draw[->](0,-0.2)--(0,2.5) node[above,font=\small]{$y$};
+			\draw[thick,domain=0.1:3.2,samples=60]
+			plot(\x,{0.4*\x*\x-0.2*\x+0.3});
+			\draw[dashed,blue,domain=0.5:2.5]
+			plot(\x,{(0.8*1.5-0.2)*(\x-1.5)+0.4*2.25-0.3+0.3})
+			node[right,font=\tiny,blue]{tangente};
+			\node[font=\small,below] at (1.6,-0.2) {Convexe ($f''>0$)};
+		\end{scope}
+		% concave
+		\begin{scope}[xshift=5cm]
+			\draw[->](-0.3,0)--(3.5,0) node[right,font=\small]{$x$};
+			\draw[->](0,-0.2)--(0,2.5) node[above,font=\small]{$y$};
+			\draw[thick,domain=0.1:3.2,samples=60]
+			plot(\x,{-0.4*\x*\x+1.5*\x+0.1});
+			\draw[dashed,red,domain=0.5:2.5]
+			plot(\x,{(-0.8*1.5+1.5)*(\x-1.5)+(-0.4*2.25+2.25+0.1)})
+			node[right,font=\tiny,red]{tangente};
+			\node[font=\small,below] at (1.6,-0.2) {Concave ($f''<0$)};
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
+
+\begin{exemple}
+	$f(x)=x^3-3x$. $f''(x)=6x$.
+	$f''(x)>0$ pour $x>0$ (convexe) ; $f''(x)<0$ pour $x<0$ (concave).
+	Point d'inflexion en $x=0$ : $f(0)=0$, soit le point $(0\,;0)$.
+\end{exemple}
+
+% ----------------------------------------------------------------
+\section{Branches infinies et asymptotes}
+% ----------------------------------------------------------------
+
+\begin{definition}
+	On appelle \textbf{branche infinie} toute portion de courbe s'éloignant
+	indéfiniment de l'origine quand $x\to\pm\infty$ ou $x\to a$.
+\end{definition}
+
+\begin{propriete}{Types de branches infinies}{}
+	\begin{center}
+		\renewcommand{\arraystretch}{2.0}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{Condition} & \textbf{Type} & \textbf{Interprétation} \\
+			\hline
+			$\displaystyle\lim_{x\to\pm\infty}f(x)=\ell\in\R$
+			& Asymptote horizontale & $y=\ell$ \\
+			\hline
+			$\displaystyle\lim_{x\to a}f(x)=\pm\infty$
+			& Asymptote verticale & $x=a$ \\
+			\hline
+			$\displaystyle\lim_{x\to\pm\infty}\frac{f(x)}{x}=a\neq 0$
+			et $\displaystyle\lim_{x\to\pm\infty}[f(x)-ax]=b\in\R$
+			& Asymptote oblique & $y=ax+b$ \\
+			\hline
+			$\displaystyle\lim_{x\to\pm\infty}\frac{f(x)}{x}=\pm\infty$
+			& Branche parabolique & direction $Oy$ \\
+			\hline
+			$\displaystyle\lim_{x\to\pm\infty}\frac{f(x)}{x}=0$
+			et $\displaystyle\lim_{x\to\pm\infty}f(x)=\pm\infty$
+			& Branche parabolique & direction $Ox$ \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{propriete}
+
+\begin{methode}
+	Pour chercher une asymptote oblique $y=ax+b$ en $\pm\infty$ :
+	\begin{enumerate}
+		\item Calculer $a=\displaystyle\lim_{x\to\pm\infty}\frac{f(x)}{x}$.
+		\item Calculer $b=\displaystyle\lim_{x\to\pm\infty}[f(x)-ax]$.
+		\item Si $a\neq 0$ et $b$ fini : asymptote $y=ax+b$.
+	\end{enumerate}
+\end{methode}
+
+\begin{methode}
+	Pour étudier la \textbf{position} de $\mathcal{C}_f$ par rapport
+	à une asymptote $y=ax+b$ :
+	\begin{enumerate}
+		\item Calculer $f(x)-(ax+b)$.
+		\item Étudier le signe de cette différence.
+		\item Conclure : $\mathcal{C}_f$ est au-dessus ($>0$) ou en dessous ($<0$).
+	\end{enumerate}
+\end{methode}
+
+\begin{exemple}
+	Soit $f(x)=\dfrac{x^2+1}{x}=x+\dfrac{1}{x}$.
+	
+	$\displaystyle\lim_{x\to 0^+}f(x)=+\infty$ et
+	$\displaystyle\lim_{x\to 0^-}f(x)=-\infty$ :
+	asymptote verticale $x=0$.
+	
+	$a=\displaystyle\lim_{x\to+\infty}\frac{f(x)}{x}=1$.
+	$b=\displaystyle\lim_{x\to+\infty}[f(x)-x]=\displaystyle\lim\frac{1}{x}=0$.
+	Asymptote oblique : $y=x$.
+	
+	Position : $f(x)-x=\dfrac{1}{x}$. Pour $x>0$ : $\mathcal{C}_f$ au-dessus.
+	Pour $x<0$ : $\mathcal{C}_f$ en dessous.
+\end{exemple}
+
+% ----------------------------------------------------------------
+\section{Position relative de deux courbes}
+% ----------------------------------------------------------------
+
+\begin{methode}
+	Pour étudier la position relative de $\mathcal{C}_f$ et $\mathcal{C}_g$ :
+	\begin{enumerate}
+		\item Calculer $h(x)=f(x)-g(x)$.
+		\item Étudier le signe de $h(x)$.
+		\item Conclure :
+		\begin{itemize}
+			\item $h(x)>0$ : $\mathcal{C}_f$ est \textbf{au-dessus} de $\mathcal{C}_g$.
+			\item $h(x)<0$ : $\mathcal{C}_f$ est \textbf{en dessous} de $\mathcal{C}_g$.
+			\item $h(x)=0$ : les courbes se \textbf{coupent} ou se \textbf{touchent}.
+		\end{itemize}
+	\end{enumerate}
+\end{methode}
+
+\begin{exemple}
+	Comparer $f(x)=x^2$ et $g(x)=2x-1$.
+	
+	$h(x)=x^2-2x+1=(x-1)^2\geq 0$ pour tout $x$.
+	
+	Donc $\mathcal{C}_f$ est \textbf{au-dessus} de $\mathcal{C}_g$,
+	avec contact en $x=1$ (point de tangence).
+\end{exemple}
+
+% ----------------------------------------------------------------
+\section{Plan d'étude complète d'une fonction}
+% ----------------------------------------------------------------
+
+\begin{methode}
+	L'étude complète d'une fonction $f$ suit ce plan :
+	\begin{enumerate}
+		\item \textbf{Domaine de définition} $D_f$.
+		\item \textbf{Parité} (si $D_f$ symétrique par rapport à $0$).
+		\item \textbf{Limites aux bornes} de $D_f$
+		(branches infinies, asymptotes).
+		\item \textbf{Dérivée} $f'(x)$ : calcul et signe.
+		\item \textbf{Tableau de variation} de $f$.
+		\item \textbf{Concavité} (si demandé) : signe de $f''$.
+		\item \textbf{Points particuliers} : intersections avec les axes,
+		points remarquables.
+		\item \textbf{Tracé} de la courbe.
+	\end{enumerate}
+\end{methode}
+
+% ----------------------------------------------------------------
+\section{Exercices résolus}
+% ----------------------------------------------------------------
+
+\exercice{\etoilepleine\etoilevide\etoilevide}
+Soit $f(x)=\dfrac{x^2-x-2}{x+1}$.
+\begin{enumerate}
+	\item Déterminer $D_f$.
+	\item Étudier les branches infinies.
+	\item Calculer $f'(x)$ et dresser le tableau de variation.
+\end{enumerate}
+
+\solution
+
+\textbf{1.} $x+1\neq 0 \implies D_f=\R\setminus\{-1\}$.
+
+\textbf{2.} Asymptote verticale : $x=-1$.
+
+$a=\displaystyle\lim_{x\to\pm\infty}\frac{f(x)}{x}
+=\lim\frac{x^2-x-2}{x(x+1)}=1$.
+
+$f(x)-x=\frac{x^2-x-2}{x+1}-x=\frac{x^2-x-2-x(x+1)}{x+1}
+=\frac{-2x-2}{x+1}=\frac{-2(x+1)}{x+1}=-2$.
+
+Asymptote oblique : $y=x-2$.
+
+Position : $f(x)-(x-2)=0$ pour tout $x\neq -1$ :
+la courbe est \textbf{confondue} avec $y=x-2$ (sauf en $x=-1$).
+
+\textbf{Remarque :} En fait $f(x)=\dfrac{(x-2)(x+1)}{x+1}=x-2$ pour $x\neq -1$.
+
+\textbf{3.} $f'(x)=1$ pour tout $x\neq -1$ : $f$ est strictement croissante
+sur $]-\infty\,;-1[$ et sur $]-1\,;+\infty[$.
+
+\bigskip
+\exercice{\etoilepleine\etoilepleine\etoilevide}
+Soit $f(x)=\dfrac{x^3-3x+2}{x^2-1}$ sur $D_f=\R\setminus\{-1\,;1\}$.
+
+On admet que $f(x)=\dfrac{(x-1)^2(x+2)}{(x-1)(x+1)}=\dfrac{(x-1)(x+2)}{x+1}$
+pour $x\notin\{-1\,;1\}$.
+\begin{enumerate}
+	\item Étudier les limites en $x=-1$ et en $x=1$.
+	\item Montrer que $y=x+1$ est asymptote oblique.
+	\item Étudier la position de $\mathcal{C}_f$ par rapport à cette asymptote.
+\end{enumerate}
+
+\solution
+
+\textbf{1.} En $x=1$ :
+$\displaystyle\lim_{x\to 1}f(x)=\frac{0\cdot3}{2}=0$
+(limite finie : pas d'asymptote verticale, trou en $x=1$).
+
+En $x=-1$ :
+numérateur $\to(-2)(1)=-2\neq 0$, dénominateur $\to 0$ :
+$x=-1$ est une \textbf{asymptote verticale}.
+
+$\displaystyle\lim_{x\to-1^+}f(x)=\frac{-2}{0^+}=-\infty$, \quad
+$\displaystyle\lim_{x\to-1^-}f(x)=\frac{-2}{0^-}=+\infty$.
+
+\textbf{2.} $a=\displaystyle\lim_{x\to\pm\infty}\frac{f(x)}{x}
+=\lim\frac{x^2+x-2}{x(x+1)}=1$.
+
+$f(x)-x=\frac{(x-1)(x+2)}{x+1}-x=\frac{x^2+x-2-x(x+1)}{x+1}
+=\frac{-2}{x+1}\to 0$.
+
+Donc $y=x$ est asymptote... Recalculons $b$ :
+$b=\displaystyle\lim[f(x)-x]=0$, donc $y=x$.
+
+Vérifions directement :
+$f(x)=\dfrac{(x-1)(x+2)}{x+1}=\dfrac{x^2+x-2}{x+1}$.
+
+Division : $x^2+x-2=(x+1)\cdot x + (-2)$, donc $f(x)=x-\dfrac{2}{x+1}$.
+
+Asymptote oblique : $y=x$, $b=0$.
+
+\textbf{3.} $f(x)-x=-\dfrac{2}{x+1}$.
+Pour $x>-1$ : négatif. $\mathcal{C}_f$ \textbf{en dessous} de $y=x$.
+Pour $x<-1$ : positif. $\mathcal{C}_f$ \textbf{au-dessus} de $y=x$.
+
+\bigskip
+\exercice{\etoilepleine\etoilepleine\etoilepleine}
+Soit $f(x)=x+\dfrac{4}{x^2}$ définie sur $\R^*$.
+\begin{enumerate}
+	\item Étudier la parité de $f$ (après vérification du domaine).
+	\item Étudier les branches infinies.
+	\item Calculer $f'(x)$, dresser le tableau de variation.
+	\item Calculer $f''(x)$ et déterminer les points d'inflexion.
+\end{enumerate}
+
+\solution
+
+\textbf{1.} $D_f=\R^*$ est symétrique par rapport à $0$.
+$f(-x)=-x+\dfrac{4}{x^2}=-\left(x-\dfrac{4}{x^2}\right)\neq f(x)$ et $\neq -f(x)$.
+$f$ n'est \textbf{ni paire, ni impaire}.
+
+\textbf{2.}
+$\displaystyle\lim_{x\to 0^+}f(x)=+\infty$,
+$\displaystyle\lim_{x\to 0^-}f(x)=-\infty$ :
+asymptote verticale $x=0$.
+
+$a=\displaystyle\lim_{x\to\pm\infty}\frac{f(x)}{x}
+=\lim\left(1+\frac{4}{x^3}\right)=1$.
+
+$f(x)-x=\dfrac{4}{x^2}\to 0$ : asymptote oblique $y=x$.
+
+Position : $f(x)-x=\dfrac{4}{x^2}>0$ toujours.
+$\mathcal{C}_f$ est \textbf{au-dessus} de $y=x$.
+
+\textbf{3.}
+$f'(x)=1-\dfrac{8}{x^3}=\dfrac{x^3-8}{x^3}$.
+
+$f'(x)=0 \iff x^3=8 \iff x=2$.
+Signe de $f'$ : $f'(x)>0$ si $x^3>8$, i.e. $x>2$ ou $x<0$.
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.6}
+	\begin{tabular}{|c|ccccccc|}
+		\hline
+		$x$ & $-\infty$ & & $0$ & & $2$ & & $+\infty$ \\
+		\hline
+		$f'(x)$ & & $+$ & \textbf{||} & $-$ & $0$ & $+$ & \\
+		\hline
+		$f(x)$ & $-\infty$ & $\nearrow$ & $\textbf{||}$ & $\searrow$ & $3$ & $\nearrow$ & $+\infty$ \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Minimum local en $x=2$ : $f(2)=2+1=3$.
+
+\textbf{4.} $f''(x)=\dfrac{24}{x^4}>0$ pour tout $x\neq 0$.
+$f$ est \textbf{convexe} sur $\R^*$ : pas de point d'inflexion.
+
+% ----------------------------------------------------------------
+\section{Exercice type BAC}
+% ----------------------------------------------------------------
+
+\exercice{\etoilepleine\etoilepleine\etoilepleine}
+
+\textit{(Style Problème 2 — BAC S Madagascar)}
+
+\medskip
+Soit $f$ la fonction définie sur $\R\setminus\{1\}$ par :
+\[
+f(x) = \frac{x^3 - 2x^2 + 1}{x - 1}.
+\]
+On note $\mathcal{C}$ sa courbe représentative dans un repère orthonormé.
+
+\medskip
+\textbf{Partie A : Étude analytique}
+\begin{enumerate}
+	\item Montrer que $f(x)=x^2-x-1+\dfrac{0}{x-1}$
+	(effectuer la division euclidienne de $x^3-2x^2+1$ par $x-1$).
+	En déduire une asymptote oblique $\Delta$.
+	\item Calculer $\displaystyle\lim_{x\to 1}f(x)$.
+	La droite $x=1$ est-elle asymptote verticale ?
+	\item Calculer $f'(x)$ et dresser le tableau de variation de $f$.
+	\item Calculer $f''(x)$ et déterminer les points d'inflexion de $\mathcal{C}$.
+\end{enumerate}
+
+\textbf{Partie B : Position et intersections}
+\begin{enumerate}
+	\setcounter{enumi}{4}
+	\item Étudier la position de $\mathcal{C}$ par rapport à $\Delta$.
+	\item Déterminer les points d'intersection de $\mathcal{C}$
+	avec l'axe des abscisses.
+\end{enumerate}
+
+\solution
+
+\textbf{1. Division euclidienne.}
+\[
+x^3-2x^2+1 \div (x-1) :
+\]
+$x^3-2x^2+1 = (x-1)(x^2-x-1)+0$.
+
+Vérification : $(x-1)(x^2-x-1)=x^3-x^2-x-x^2+x+1=x^3-2x^2+1$. \checkmark
+
+Donc $f(x)=x^2-x-1$ pour tout $x\neq 1$.
+
+$\Delta : y=x^2-x-1$ est une \textbf{parabole}, pas une droite.
+Recherchons plutôt l'asymptote oblique (branche infinie) :
+
+$a=\displaystyle\lim_{x\to\pm\infty}\frac{f(x)}{x}
+=\lim\frac{x^3-2x^2+1}{x(x-1)}=\lim\frac{x^3}{x^2}=+\infty$ :
+\textbf{branche parabolique} dans la direction de $Oy$.
+
+\begin{remarque}
+	Ici $f(x)=x^2-x-1$ (polynôme de degré 2), donc pas d'asymptote oblique :
+	la courbe est une parabole (sauf en $x=1$ où il y a un trou).
+\end{remarque}
+
+\textbf{2.} $\displaystyle\lim_{x\to 1}f(x)=1-1-1=-1$ (finie).
+$x=1$ n'est \textbf{pas} une asymptote verticale : c'est un
+\textbf{trou} de la courbe, remédiable par prolongement en $f(1)=-1$.
+
+\textbf{3.} $f'(x)=2x-1$ pour $x\neq 1$.
+$f'(x)=0\iff x=\dfrac{1}{2}$.
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.6}
+	\begin{tabular}{|c|ccccccc|}
+		\hline
+		$x$ & $-\infty$ & & $\frac{1}{2}$ & & $1$ & & $+\infty$ \\
+		\hline
+		$f'(x)$ & & $-$ & $0$ & $+$ & \textbf{||} & $+$ & \\
+		\hline
+		$f(x)$ & $+\infty$ & $\searrow$ & $-\frac{5}{4}$ & $\nearrow$ & \textbf{||} & $\nearrow$ & $+\infty$ \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Minimum local en $x=\dfrac{1}{2}$ :
+$f\!\left(\dfrac{1}{2}\right)=\dfrac{1}{4}-\dfrac{1}{2}-1=-\dfrac{5}{4}$.
+
+\textbf{4.} $f''(x)=2>0$ pour tout $x\neq 1$ :
+$f$ est \textbf{convexe} partout, \textbf{pas de point d'inflexion}.
+
+\textbf{5. Position par rapport à $\Delta: y=x^2-x-1$.}
+$f(x)-(x^2-x-1)=0$ pour $x\neq 1$ :
+$\mathcal{C}$ est \textbf{confondue} avec la parabole $\Delta$ (sauf en $x=1$).
+
+\textbf{6. Intersections avec l'axe des abscisses.}
+$f(x)=0 \iff x^2-x-1=0 \iff x=\dfrac{1\pm\sqrt{5}}{2}$ (et $x\neq 1$).
+
+Les deux solutions $\dfrac{1+\sqrt{5}}{2}\approx 1{,}618$ et
+$\dfrac{1-\sqrt{5}}{2}\approx -0{,}618$ sont distinctes de $1$ :
+
+Points d'intersection :
+$\left(\dfrac{1+\sqrt{5}}{2}\,;\,0\right)$ et
+$\left(\dfrac{1-\sqrt{5}}{2}\,;\,0\right)$.

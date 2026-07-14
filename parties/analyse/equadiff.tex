@@ -1,0 +1,263 @@
+\chapter{Équations Différentielles}
+
+\begin{citationchapitre}
+	<< L'étude de la nature ne peut se faire qu'à travers le langage des équations différentielles, car c'est en exprimant les variations que l'on comprend les lois de l'univers. >>
+\end{citationchapitre}
+
+\begin{objectifs}
+	À la fin de ce chapitre, l'élève de Terminale S sera capable de :
+	\begin{itemize}
+		\item Reconnaître et classifier une équation différentielle (ordre $1$ ou $2$).
+		\item Résoudre les équations différentielles linéaires du premier ordre à coefficients constants du type $y' = ky$ et $y' + ay = b$.
+		\item Écrire et résoudre l'équation caractéristique associée à une équation différentielle du second ordre $ay'' + by' + cy = 0$.
+		\item Maîtriser les cas particuliers fondamentaux : $y'' = m^2 y$ et $y'' = -m^2 y$.
+		\item Déterminer la solution unique vérifiant des conditions initiales données (problème de Cauchy).
+		\item Vérifier qu'une fonction donnée est solution d'une équation différentielle.
+	\end{itemize}
+\end{objectifs}
+
+%===========================================================
+\section{Équations différentielles du premier ordre}
+%===========================================================
+
+\begin{definition}
+	Une \textbf{équation différentielle} est une équation dont l'inconnue est une fonction (généralement notée $y$) et dans laquelle interviennent les dérivées successives de cette fonction ($y'$, $y''$, etc.).
+	L'\textbf{ordre} d'une équation différentielle correspond à l'ordre maximal de dérivation qui y apparaît.
+\end{definition}
+
+\begin{propriete}{Équation homogène du premier ordre}{equ_homogene}
+	Soit $a \in \R$. Les solutions sur $\R$ de l'équation différentielle $(E_0) : y' + ay = 0$ (ou $y' = -ay$) sont les fonctions $f$ définies sur $\R$ par :
+	$$f(x) = C \e^{-ax}$$
+	où $C$ est une constante réelle quelconque ($C \in \R$).
+\end{propriete}
+
+\consequence L'ensemble des solutions de $y' + ay = 0$ forme un espace vectoriel de dimension $1$. Pour chaque valeur du réel $C$, on obtient une courbe intégrale différente.
+
+\begin{propriete}{Équation complète $y' + ay = b$}{equ_complete}
+	Soient $a$ et $b$ deux réels avec $a \neq 0$. Les solutions sur $\R$ de l'équation différentielle $(E) : y' + ay = b$ sont les fonctions $f$ définies par :
+	$$f(x) = C \e^{-ax} + \frac{b}{a}$$
+	où $C \in \R$.
+	
+	\remarque La solution générale de $(E)$ est la somme de la solution générale de l'équation sans second membre associée $(E_0) : y' + ay = 0$ et d'une solution particulière constante $y_0 = \frac{b}{a}$.
+\end{propriete}
+
+\begin{methode}
+	Pour trouver la solution unique vérifiant une condition initiale du type $y(x_0) = y_0$ :
+	\begin{enumerate}
+		\item On écrit la forme générale des solutions : $y(x) = C \e^{-ax} + \frac{b}{a}$.
+		\item On remplace $x$ par $x_0$ et $y(x)$ par $y_0$ dans l'expression : $C \e^{-ax_0} + \frac{b}{a} = y_0$.
+		\item On résout cette équation d'inconnue $C$ pour fixer la constante.
+	\end{enumerate}
+\end{methode}
+
+\exerciceresolu
+On considère l'équation différentielle $(E) : 2y' + 3y = 6$.
+\begin{enumerate}
+	\item Déterminer la solution générale de l'équation $(E)$ sur $\R$.
+	\item Déterminer l'unique fonction $f$ solution de $(E)$ vérifiant la condition initiale $f(0) = -1$.
+\end{enumerate}
+
+\solution
+\begin{enumerate}
+	\item On ramène l'équation sous la forme standard en divisant par $2$ :
+	$$2y' + 3y = 6 \iff y' + \frac{3}{2}y = 3$$
+	Ici, $a = \frac{3}{2}$ et $b = 3$. D'après le cours, les solutions générales sont de la forme :
+	$$f(x) = C \e^{-\frac{3}{2}x} + \frac{3}{\frac{3}{2}} = C \e^{-\frac{3}{2}x} + 2 \quad \p{\text{avec } C \in \R}$$
+	\item Exexploitons la condition initiale $f(0) = -1$ pour déterminer la constante $C$ :
+	$$f(0) = -1 \iff C \e^{-\frac{3}{2} \times 0} + 2 = -1 \iff C \times 1 + 2 = -1 \iff C = -3$$
+	L'unique solution vérifiant cette condition est donc la fonction $f$ définie sur $\R$ par :
+	$$f(x) = -3 \e^{-\frac{3}{2}x} + 2$$
+\end{enumerate}
+
+%===========================================================
+\section{Équations différentielles du second ordre}
+%===========================================================
+
+\begin{definition}
+	Une équation différentielle linéaire du second ordre à coefficients constants est une équation de la forme :
+	$$(E) : ay'' + by' + cy = 0$$
+	où $a$, $b$ et $c$ sont des réels avec $a \neq 0$.
+	On appelle \textbf{équation caractéristique} associée à $(E)$ l'équation du second degré :
+	$$(E_c) : ar^2 + br + c = 0 \quad \p{\text{d'inconnue } r \in \C}$$
+\end{definition}
+
+\begin{propriete}{Résolution selon le signe du discriminant}{res_second_ordre}
+	Soit $\Delta = b^2 - 4ac$ le discriminant de l'équation caractéristique $(E_c)$. La forme des solutions sur $\R$ de l'équation $ay'' + by' + cy = 0$ dépend du signe de $\Delta$ :
+	\begin{itemize}
+		\item \textbf{Cas 1 : $\Delta > 0$.} L'équation $(E_c)$ possède deux racines réelles distinctes $r_1$ et $r_2$.
+		Les solutions sont les fonctions :
+		$$y(x) = A \e^{r_1 x} + B \e^{r_2 x} \quad \p{A, B \in \R}$$
+		
+		\item \textbf{Cas 2 : $\Delta = 0$.} L'équation $(E_c)$ possède une racine réelle double $r_0 = -\frac{b}{2a}$.
+		Les solutions sont les fonctions :
+		$$y(x) = \p{Ax + B} \e^{r_0 x} \quad \p{A, B \in \R}$$
+		
+		\item \textbf{Cas 3 : $\Delta < 0$.} L'équation $(E_c)$ possède deux racines complexes conjuguées $r_1 = \alpha + \ii \beta$ et $r_2 = \alpha - \ii \beta$ (avec $\beta \neq 0$).
+		Les solutions sont les fonctions :
+		$$y(x) = \e^{\alpha x} \cro{A \cos\p{\beta x} + B \sin\p{\beta x}} \quad \p{A, B \in \R}$$
+	\end{itemize}
+\end{propriete}
+
+\begin{attention}
+	Dans le cas où $\Delta < 0$, veillez à bien identifier la partie réelle $\alpha$ et la partie imaginaire $\beta$ des solutions de l'équation caractéristique. Ne confondez pas le coefficient de l'exponentielle ($\alpha$) et la pulsation dans le sinus/cosinus ($\beta$).
+\end{attention}
+
+\begin{propriete}{Cas particuliers au programme de Terminale S}{cas_particuliers}
+	Soit $m$ un nombre réel strictement positif ($m > 0$).
+	\begin{itemize}
+		\item L'équation $\mathbf{y'' = m^2 y}$ (soit $y'' - m^2 y = 0$) a pour solutions :
+		$$y(x) = A \e^{mx} + B \e^{-mx} \quad \p{A, B \in \R}$$
+		\item L'équation $\mathbf{y'' = -m^2 y}$ (soit $y'' + m^2 y = 0$) a pour équation caractéristique $r^2 + m^2 = 0$ dont les racines sont $\pm \ii m$. Ses solutions sont les fonctions :
+		$$y(x) = A \cos\p{mx} + B \sin\p{mx} \quad \p{A, B \in \R}$$
+	\end{itemize}
+\end{propriete}
+
+\begin{astucebac}
+	Pour un problème de Cauchy au second ordre, on vous fournira \textbf{deux} conditions initiales (par exemple $y(0) = y_0$ et $y'(0) = y'_0$) afin de déterminer les deux constantes $A$ et $B$.
+	\textbf{Conseil :} Calculez toujours proprement la fonction dérivée $y'(x)$ en fonction de $A$ et $B$ \textit{avant} de remplacer $x$ par la valeur initiale. Soyez très vigilants avec la dérivation d'un produit ou des fonctions composées !
+\end{astucebac}
+
+\exerciceresolu
+Résoudre sur $\R$ l'équation différentielle $(E) : y'' - 4y' + 13y = 0$ vérifiant les conditions initiales $y(0) = 2$ et $y'(0) = 7$.
+
+\solution
+\begin{enumerate}
+	\item L'équation caractéristique associée à $(E)$ est : $r^2 - 4r + 13 = 0$.
+	Calculons son discriminant :
+	$$\Delta = (-4)^2 - 4 \times 1 \times 13 = 16 - 52 = -36$$
+	Comme $\Delta < 0$, l'équation admet deux racines complexes conjuguées :
+	$$r_1 = \frac{4 - \ii \sqrt{36}}{2} = 2 - 3\ii \quad \text{et} \quad r_2 = 2 + 3\ii$$
+	On identifie $\alpha = 2$ (partie réelle) et $\beta = 3$ (partie imaginaire).
+	La solution générale sur $\R$ est donc de la forme :
+	$$y(x) = \e^{2x} \cro{A \cos\p{3x} + B \sin\p{3x}} \quad \p{A, B \in \R}$$
+	
+	\item Pour exploiter la seconde condition initiale, dérivons la fonction $y(x)$ (sous la forme d'un produit $u \times v$) :
+	$$y'(x) = 2\e^{2x} \cro{A \cos\p{3x} + B \sin\p{3x}} + \e^{2x} \cro{-3A \sin\p{3x} + 3B \cos\p{3x}}$$
+	
+	\item Appliquons maintenant les conditions initiales :
+	\begin{itemize}
+		\item $y(0) = 2 \iff \e^0 \cro{A \cos(0) + B \sin(0)} = 2 \iff 1 \times [A \times 1 + B \times 0] = 2 \iff A = 2$.
+		\item $y'(0) = 7 \iff 2\e^0 \cro{A \times 1 + 0} + \e^0 \cro{0 + 3B \times 1} = 7 \iff 2A + 3B = 7$.
+	\end{itemize}
+	Puisque $A = 2$, on substitue dans la seconde équation :
+	$$2(2) + 3B = 7 \iff 4 + 3B = 7 \iff 3B = 3 \iff B = 1$$
+	
+	\item L'unique solution du problème de Cauchy est donc la fonction :
+	$$f(x) = \e^{2x} \cro{2 \cos\p{3x} + \sin\p{3x}}$$
+\end{enumerate}
+
+%===========================================================
+\section{Exercices d'entraînement et Type Bac}
+%===========================================================
+
+% --- NIVEAU 1 : FACILE ---
+
+\exercice{Chauffe qui peut ! \hfill \facile}
+Résoudre sur $\R$ les équations différentielles du premier ordre suivantes (solution générale) :
+\begin{enumerate}
+	\item $y' - 7y = 0$
+	\item $2y' + 5y = 0$
+	\item $y' + 3y = 6$
+	\item $4y' - y = 5$
+\end{enumerate}
+
+\exercice{Cauchy, mon bon ami \hfill \facile}
+Déterminer l'unique fonction $f$, solution de l'équation différentielle donnée, vérifiant la condition initiale proposée :
+\begin{enumerate}
+	\item $y' = -2y$ avec $f(0) = 3$.
+	\item $y' - 4y = 12$ avec $f(0) = -1$.
+	\item $3y' + 2y = 4$ avec $f(3) = 2$.
+\end{enumerate}
+
+% --- NIVEAU 2 : MOYEN ---
+
+\exercice{Le club du second ordre \hfill \moyen}
+Déterminer la solution générale sur $\R$ des équations différentielles du second ordre suivantes (pensez à l'équation caractéristique !) :
+\begin{enumerate}
+	\item $y'' - 5y' + 6y = 0$
+	\item $y'' + 6y' + 9y = 0$
+	\item $y'' - 2y' + 5y = 0$
+	\item $4y'' - y = 0$
+\end{enumerate}
+
+\exercice{Oscillations à Analakely \hfill \moyen}
+Un système mécanique oscillant est régi par l'équation différentielle $(E) : y'' + 16y = 0$.
+\begin{enumerate}
+	\item Déterminer la forme générale des solutions de $(E)$.
+	\item Déterminer l'unique fonction $g$ solution de $(E)$ vérifiant les conditions initiales :
+	$$g(0) = \frac{\sqrt{3}}{2} \quad \text{et} \quad g'(0) = 2$$
+	\item Vérifier que pour tout réel $t$, on peut écrire $g(t) = \cos\p{4t - \frac{\pi}{6}}$.
+\end{enumerate}
+
+% --- NIVEAU 3 : DIFFICILE ---
+
+\exercice{Quand la tangente s'en mêle \hfill \difficile}
+On considère l'équation différentielle $(E) : y'' - 3y' + 2y = 0$.
+\begin{enumerate}
+	\item Résoudre $(E)$ sur $\R$.
+	\item Déterminer la solution $f$ de $(E)$ dont la courbe représentative $\mathcal{C}_f$ passe par le point $A(0; 4)$ et admet en ce point une tangente parallèle à l'axe des abscisses.
+	\item Étudier les variations de la fonction $f$ ainsi obtenue sur $\R$.
+\end{enumerate}
+
+\exercice{Changement d'inconnue, pas de panique ! \hfill \difficile}
+On se propose de résoudre sur l'intervalle $I = ]0 ; +\infty[$ l'équation différentielle :
+$$(E) : x^2 y'' + 3xy' + y = 0$$
+Pour cela, on pose pour tout réel $t$, $z(t) = y\p{\e^t}$.
+\begin{enumerate}
+	\item Exprimer les dérivées $z'(t)$ et $z''(t)$ en fonction de $y'\p{\e^t}$, $y''\p{\e^t}$ et $\e^t$.
+	\item Démontrer que la fonction $y$ est solution de $(E)$ sur $I$ si et seulement si la fonction $z$ est solution d'une équation différentielle linéaire du second à coefficients constants $(E')$ que l'on précisera.
+	\item Résoudre $(E')$ sur $\R$.
+	\item En déduire les expressions des fonctions $y$ solutions de $(E)$ sur $I$.
+\end{enumerate}
+
+% ==========================================================
+% EXERCICES TRIGONOMÉTRIQUES
+% ==========================================================
+
+\exercice{Résonance harmonique \hfill \moyen}
+On considère l'équation différentielle $(E) : y'' + 9y = 0$.
+\begin{enumerate}
+	\item Résoudre $(E)$ sur $\R$.
+	\item Déterminer la solution $f$ telle que $f(0) = 1$ et $f'\p{\frac{\pi}{6}} = 0$.
+	\item Montrer que pour tout réel $x$, $f(x)$ peut se mettre sous la forme $A \cos(3x + \phi)$.
+\end{enumerate}
+
+\exercice{Le pendule simple \hfill \difficile}
+Pour de petites oscillations, l'angle $\theta(t)$ d'un pendule vérifie l'équation différentielle $(E) : \theta''(t) + \omega^2 \theta(t) = 0$ avec $\omega > 0$.
+\begin{enumerate}
+	\item Donner la solution générale de $(E)$.
+	\item Sachant qu'à l'instant $t=0$, le pendule est écarté d'un angle $\theta_0$ et lâché sans vitesse initiale, déterminer l'expression de $\theta(t)$.
+	\item Calculer l'accélération angulaire $\theta''(t)$ et montrer qu'elle est proportionnelle à l'angle $\theta(t)$.
+\end{enumerate}
+
+\exercice{ Équa diff et intégrale trigo \hfill \difficile}
+On considère l'équation différentielle $(E) : y'' + y = \cos(x)$.
+\begin{enumerate}
+	\item Résoudre l'équation homogène associée $(E_0) : y'' + y = 0$.
+	\item Montrer que la fonction $u$ définie par $u(x) = \frac{1}{2} x \sin(x)$ est une solution particulière de $(E)$.
+	\item En déduire la solution générale de $(E)$.
+	\item Déterminer la solution $f$ vérifiant $f(0) = 0$ et $f'(0) = 0$.
+	\item Calculer $\int_{0}^{\pi} f(x) \dd x$.
+\end{enumerate}
+% --- NIVEAU 4 : TYPE BAC / SYNTHÈSE ---
+
+\exercice{Sujet Type Bac : Refroidissement et second membre \hfill \difficile}
+\textbf{Partie A : Une équation auxiliaire}\\
+On considère l'équation différentielle $(E) : y' + 2y = (3x + 1)\e^{-2x}$.
+\begin{enumerate}
+	\item Résoudre sur $\R$ l'équation sans second membre $(E_0) : y' + 2y = 0$.
+	\item Déterminer deux réels $a$ et $b$ tels que la fonction $u$ définie sur $\R$ par $u(x) = (ax^2 + bx)\e^{-2x}$ soit une solution particulière de l'équation $(E)$.
+	\item Démontrer qu'une fonction $f$ est solution de $(E)$ si et seulement si la fonction $f - u$ est solution de $(E_0)$.
+	\item En déduire l'ensemble des solutions de l'équation $(E)$ sur $\R$.
+	\item Déterminer la solution $h$ de $(E)$ qui vérifie la condition $h(0) = 2$.
+\end{enumerate}
+
+\textbf{Partie B : Application à un modèle thermique}\\
+La température $T(t)$ (en degrés Celsius) d'un composant électronique au bout de $t$ minutes de fonctionnement ($t \geqslant 0$) est modélisée par la fonction $T$ définie par :
+$$T(t) = \p{\frac{3}{2}t^2 + t + 25}\e^{-2t} + 20$$
+\begin{enumerate}
+	\item Quelle est la température initiale du composant ?
+	\item Déterminer la limite de la température $T(t)$ lorsque le temps $t$ tend vers $+\infty$. Interpréter physiquement ce résultat.
+	\item On admet que la vitesse de variation de la température à l'instant $t$ est donnée par la dérivée $T'(t)$. Calculer $T'(t)$ et étudier son signe sur $[0 ; +\infty[$.
+	\item Au bout de combien de temps la température du composant atteint-elle son maximum ? Quelle est alors cette température maximale (à $0,1^\circ\text{C}$ près) ?
+\end{enumerate}
