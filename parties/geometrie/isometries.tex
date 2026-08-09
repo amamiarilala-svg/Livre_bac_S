@@ -1,0 +1,149 @@
+\chapter{Les Isométries du Plan}
+
+\begin{objectifs}
+	Maîtriser la définition et les propriétés des isométries. Savoir identifier, construire et composer des réflexions, des rotations et des translations. Utiliser les nombres complexes pour caractériser ces transformations.
+\end{objectifs}
+
+% ==========================================================
+% 1. RÉSUMÉ DU COURS
+% ==========================================================
+
+\section{Résumé du cours}
+
+\begin{definition}
+	Une \textbf{isométrie} est une transformation du plan qui conserve les distances : pour tous points $M$ et $N$, si $M'$ et $N'$ sont leurs images, alors $M'N' = MN$.
+\end{definition}
+
+\begin{propriete}{Propriétés fondamentales}{prop_isometrie}
+	Une isométrie conserve :
+	\begin{itemize}
+		\item L'alignement des points et le milieu d'un segment.
+		\item Les mesures d'angles géométriques.
+		\item L'aire des figures et le barycentre.
+	\end{itemize}
+\end{propriete}
+
+\begin{theoreme}[Classification]
+	Toute isométrie du plan est soit un \textbf{déplacement} (conserve l'orientation), soit un \textbf{antidéplacement} (renverse l'orientation).
+	\begin{itemize}
+		\item \textbf{Déplacements} : Identité, Translations, Rotations.
+		\item \textbf{Antidéplacements} : Réflexions (symétries axiales), Symétries glissées.
+	\end{itemize}
+\end{theoreme}
+
+\begin{attention}
+	L'ensemble des isométries muni de la loi de composition est un groupe. Attention : la composition n'est pas commutative ($s_{\Delta_1} \circ s_{\Delta_2} \neq s_{\Delta_2} \circ s_{\Delta_1}$ en général).
+\end{attention}
+
+% ==========================================================
+% 2. MÉTHODES ET EXERCICE RÉSOLU
+% ==========================================================
+
+\section{Méthodes et exercices résolus}
+
+\begin{methode}
+	Pour prouver qu'une transformation $f$ est une isométrie via les complexes :
+	\begin{enumerate}
+		\item Si $f(z) = az + b$ avec $|a|=1$ : c'est un déplacement (rotation si $a \neq 1$, translation si $a=1$).
+		\item Si $f(z) = a\overline{z} + b$ avec $|a|=1$ : c'est un antidéplacement.
+	\end{enumerate}
+\end{methode}
+
+\exerciceresolu
+Soit $f$ l'application définie par $f(z) = \ii \overline{z} + 1 + \ii$. Quelle est sa nature ?
+
+\solution
+Ici $f(z) = a\overline{z} + b$ avec $a = \ii$ et $b = 1+\ii$. Comme $|a|=|\ii|=1$, c'est un antidéplacement.
+On cherche les points invariants : $z = \ii \overline{z} + 1 + \ii$. En posant $z = x + \ii y$, on résout le système et on identifie une symétrie glissée.
+
+% ==========================================================
+% 3. EXERCICES GRADUÉS
+% ==========================================================
+
+\section{Exercices d'entraînement}
+
+\exercice{La valse des points \hfill \facile}
+Soient $A(1;0)$ et $B(0;1)$.
+\begin{enumerate}
+	\item Donner l'expression complexe de la translation de vecteur $\vec{u}(2;3)$.
+	\item Donner l'expression complexe de la rotation de centre $O$ et d'angle $\pi/2$.
+\end{enumerate}
+
+\exercice{Le miroir de Mada \hfill \moyen}
+On considère la réflexion $s$ d'axe la droite d'équation $y = x$.
+\begin{enumerate}
+	\item Déterminer l'image du point $C(2; 4)$ par $s$.
+	\item Montrer que pour tout point $M(x; y)$, son image $M'(x'; y')$ vérifie $x' = y$ et $y' = x$.
+	\item L'application $s$ est-elle un déplacement ou un antidéplacement ? Justifier.
+\end{enumerate}
+
+\exercice{Le zébu en rotation \hfill \difficile}
+Un zébu se déplace dans un enclos selon une rotation $R$ de centre $O$ et d'angle $\pi/3$. 
+\begin{enumerate}
+	\item Déterminer l'image par $R$ d'un point $M$ d'affixe $z$.
+	\item On compose $R$ avec une symétrie axiale $S$ d'axe $(Ox)$. Quelle est la nature de la transformation $T = S \circ R$ ?
+	\item Déterminer l'expression complexe de $T$.
+\end{enumerate}
+
+
+
+
+% ==========================================================
+% BANQUE D'EXERCICES STYLE CIAM - ISOMÉTRIES
+% ==========================================================
+
+
+
+
+
+\exercice{La danse des complexes \hfill \moyen}
+Soit $f$ l'application du plan dans lui-même qui, à tout point $M$ d'affixe $z$, associe le point $M'$ d'affixe $z'$ définie par :
+$$z' = \ii z + 1 - \ii$$
+\begin{enumerate}
+	\item Montrer que $f$ admet un unique point invariant $\Omega$ dont on précisera l'affixe $\omega$.
+	\item Établir que pour tout $z \neq \omega$, $\frac{z' - \omega}{z - \omega} = \ii$.
+	\item En déduire la nature et les éléments caractéristiques de $f$.
+	\item Déterminer l'image par $f$ de la droite $(D)$ d'équation $x = 1$.
+\end{enumerate}
+
+\exercice{Le puzzle des symétries \hfill \difficile}
+On considère deux droites $\Delta_1$ et $\Delta_2$ sécantes en un point $I$, formant un angle orienté de mesure $\theta = \frac{\pi}{4}$.
+Soient $s_1$ et $s_2$ les réflexions d'axes respectifs $\Delta_1$ et $\Delta_2$.
+\begin{enumerate}
+	\item Rappeler la nature de la composée $r = s_2 \circ s_1$.
+	\item Démontrer que $r$ est une rotation dont on précisera le centre et l'angle.
+	\item Soit $M$ un point du plan. Construire géométriquement l'image $M''$ de $M$ par $s_2 \circ s_1$ à la règle et au compas.
+	\item Que devient la transformation si $\Delta_1$ et $\Delta_2$ sont strictement parallèles ?
+\end{enumerate}
+
+\exercice{Sujet Type Bac : Isométries et configuration \hfill \difficile}
+Le plan est rapporté à un repère orthonormé direct $(O, \vec{u}, \vec{v})$. 
+On considère les points $A, B$ et $C$ d'affixes respectives $a = 1$, $b = \ii$ et $c = 1+\ii$.
+
+\textbf{Partie A : Étude d'une transformation}
+Soit $f$ l'application qui à tout point $M(z)$ associe le point $M'(z')$ tel que :
+$$z' = \bar{z} + 1 + \ii$$
+\begin{enumerate}
+	\item Démontrer que $f$ est une isométrie. Est-ce un déplacement ?
+	\item Déterminer l'ensemble des points invariants par $f$. En déduire la nature géométrique de $f$.
+\end{enumerate}
+
+\textbf{Partie B : Synthèse géométrique}
+\begin{enumerate}
+	\item On note $r$ la rotation de centre $A$ et d'angle $\frac{\pi}{2}$. Déterminer l'expression complexe de $r$.
+	\item Calculer l'image du point $B$ par $r$.
+	\item Montrer que le triangle $ABC$ est un triangle isocèle rectangle.
+	\item Déterminer l'image du triangle $ABC$ par la composée $f \circ r$.
+\end{enumerate}
+
+
+
+\exercice{L'aventure des isométries (Sujet Type Bac) \hfill \difficile}
+\textbf{Partie A : Nature des transformations}
+Soient $f_1(z) = z + 1 + \ii$ et $f_2(z) = \e^{\ii \pi/3} z$.
+\begin{enumerate}
+	\item Identifier $f_1$ et $f_2$.
+	\item Étudier la transformation $g = f_1 \circ f_2$. Est-ce un déplacement ?
+\end{enumerate}
+\textbf{Partie B : Synthèse}
+Démontrer que toute composition de deux réflexions d'axes sécants est une rotation. En préciser le centre et l'angle.
