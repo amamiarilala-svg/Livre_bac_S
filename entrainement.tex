@@ -1,0 +1,144 @@
+\chapter{Entrainement}
+
+	
+\section*{Sujet Type Bacc : Analyse \& Équations Différentielles (Gabon 1996)}
+
+\subsection*{Partie A : Équations Différentielles}
+\begin{enumerate}
+	\item $(E_{0})$ désigne l'équation différentielle : 
+	\begin{equation*}
+		y'' + 2y' + y = 0
+	\end{equation*}
+	Déterminer les solutions générales de $(E_{0})$. \hfill (1,0 pt)
+	
+	\item $(E)$ est l'équation différentielle : 
+	\begin{equation*}
+		y'' + 2y' + y = 2e^{-x}
+	\end{equation*}
+	\begin{enumerate}
+		\item Vérifier que la fonction $h$ définie sur $\mathbb{R}$ par $h(x) = x^2e^{-x}$ est une solution particulière de $(E)$. \hfill (0,5 pt)
+		\item Démontrer que $\varphi$ est une solution de $(E)$ si et seulement si $g = \varphi - h$ est solution de $(E_{0})$. \hfill (0,75 pt)
+		\item Déterminer toutes les solutions de $(E)$. \hfill (0,5 pt)
+		\item Déterminer la solution $f_{0}$ de $(E)$ satisfaisant aux conditions initiales : $f_{0}(0) = 4$ et $f_{0}'(0) = 0$. \hfill (0,75 pt)
+	\end{enumerate}
+\end{enumerate}
+
+\subsection*{Partie B : Étude de fonction}
+On considère la fonction $f$ définie par : 
+\begin{equation*}
+	f(x) = (x+2)^{2}e^{-x}
+\end{equation*}
+On désigne par $(\mathcal{C})$ sa courbe représentative dans le plan muni d'un repère orthonormal (unité : 1 cm).
+\begin{enumerate}
+	\item Étudier les variations de $f$ et tracer $(\mathcal{C})$ avec soin. \hfill (1,5 pts)
+	\item En remarquant que $f$ est une solution de l'équation différentielle $(E)$, déterminer une primitive $F$ de $f$ sur $\mathbb{R}$. \hfill (1,0 pt)
+	\item Pour tout entier naturel $n$, on pose $I_{n} = \int_{0}^{n} f(t)dt$.
+	\begin{enumerate}
+		\item Exprimer $I_{n}$ en fonction de $n$ et en donner une interprétation graphique. \hfill (0,75 pt)
+		\item Étudier la convergence de la suite $(I_{n})$, puis en déduire l'aire de l'ensemble des points $M(x;y)$ tels que $x \le 0$ et $0 \le y \le f(x)$. \hfill (1,0 pt)
+	\end{enumerate}
+\end{enumerate}
+
+\subsection*{Partie C : Convergence de suites}
+On étudie la suite $(u_{n})$ définie pour $n \in \mathbb{N}^*$ par : 
+\begin{equation*}
+	u_{n} = \frac{1}{n^{3}} \sum_{k=1}^{n} (k+2n)^{2} e^{-\frac{k}{n}}
+\end{equation*}
+\begin{enumerate}
+	\item Vérifier que pour tout $n \in \mathbb{N}^*$, on a : 
+	\begin{equation*}
+		u_{n} = \frac{1}{n} \sum_{k=1}^{n} f\left(\frac{k}{n}\right) \quad \text{et} \quad \frac{1}{n} \sum_{k=0}^{n-1} f\left(\frac{k}{n}\right) = u_{n} + \frac{4e-9}{ne}
+	\end{equation*} \hfill (1,0 pt)
+	\item Établir que, pour tout $n \in \mathbb{N}^*$ et tout $k \in \{0, \dots, n-1\}$, on a : 
+	\begin{equation*}
+		\frac{1}{n}f\left(\frac{k+1}{n}\right) \le \int_{\frac{k}{n}}^{\frac{k+1}{n}} f(t)dt \le \frac{1}{n}f\left(\frac{k}{n}\right)
+	\end{equation*} \hfill (1,0 pt)
+	\item Démontrer que pour tout $n \in \mathbb{N}^*$ : 
+	\begin{equation*}
+		u_{n} \le \int_{0}^{1} f(t)dt \le u_{n} + \frac{4e-9}{ne}
+	\end{equation*} \hfill (1,0 pt)
+	\item En déduire que : 
+	\begin{equation*}
+		I_{1} - \frac{4e-9}{ne} \le u_{n} \le I_{1}
+	\end{equation*} \hfill (0,5 pt)
+	\item Étudier la convergence de la suite $(u_{n})$ et préciser sa limite. \hfill (0,5 pt)
+\end{enumerate}
+
+
+
+
+\section*{Sujet Type Bacc : Analyse \& Isométries (Cameroun 1997)}
+
+\subsection*{Partie A : Analyse}
+Soit $f$ la fonction de la variable réelle $x$ définie sur l'intervalle $[0;+\infty[$ par $f(x) = \frac{1}{2\sqrt{x^2+1}}$ et $h$ la fonction définie sur le même intervalle par $h(x) = \ln(\sqrt{x+\sqrt{x^2+1}})$.
+\begin{enumerate}
+	\item Démontrer que $f$ est une bijection de $[0;+\infty[$ vers $]0; 1/2]$. \hfill (1,0 pt)
+	\item Le plan est rapporté à un repère orthonormal $(O, \vec{i}, \vec{j})$, l'unité graphique étant égale à 2 cm. Tracer dans ce repère les courbes représentatives de $f$ et de $f^{-1}$. \hfill (1,5 pts)
+	\item \begin{enumerate}
+		\item Calculer la dérivée de $h$. \hfill (0,5 pt)
+		\item En déduire l'aire de la partie du plan limitée par l'axe des abscisses, l'axe des ordonnées, la droite d'équation $x = 1$ et la courbe représentative de $f$. \hfill (1,0 pt)
+	\end{enumerate}
+\end{enumerate}
+
+\subsection*{Partie B : Géométrie et Isométries}
+Le plan est orienté. $ABC$ est un triangle équilatéral tel que : $AB = BC = CA = 1$ et $\text{Mes}(\overrightarrow{AB}, \overrightarrow{AC}) = \frac{\pi}{3}$. $A'$ désigne le milieu du segment $[BC]$ et $G$ l'isobarycentre des points $A, B$ et $C$.
+\begin{enumerate}
+	\item Construire $G$ et calculer $GA'$. \hfill (1,0 pt)
+	\item \begin{enumerate}
+		\item Déterminer la nature et les éléments caractéristiques de l'ensemble $(E)$ des points $M$ du plan tels que : $MA^2 + MB^2 + MC^2 = 1,25$. \hfill (1,5 pts)
+		\item Tracer $(E)$ sur la figure précédente.
+	\end{enumerate}
+	\textit{Dans toute la suite, $r$ désigne la rotation de centre $G$ qui transforme $C$ en $A$ et $h$ l'application qui, à tout point $M$ du plan, associe le point $M'$ tel que : $\overrightarrow{MM'} = \overrightarrow{MA} + \overrightarrow{MB} + \overrightarrow{MC}$. On pose : $s = h \circ r$.}
+	\item \begin{enumerate}
+		\item Démontrer que $h$ est une homothétie dont on précisera le centre et le rapport. \hfill (1,0 pt)
+		\item Déterminer puis tracer sur la même figure que précédemment l'image de $(E)$ par $h$. \hfill (0,5 pt)
+		\item Préciser la nature et les éléments caractéristiques de $s$. \hfill (1,0 pt)
+	\end{enumerate}
+	\item On note $I$ le symétrique de $A'$ par rapport à $C$, $J$ le point de la demi-droite $[A'A)$ tel que : $A'J = 1$, $\vec{u} = \overrightarrow{A'I}$ et $\vec{v} = \overrightarrow{A'J}$.
+	\begin{enumerate}
+		\item Démontrer que $(A', \vec{u}, \vec{v})$ est un repère orthonormal. \hfill (0,75 pt)
+		\item $M$ étant un point d'affixe $z$ et $M'$ son image par $s$, exprimer l'affixe $z'$ de $M'$ en fonction de celle de $M$. En déduire l'expression analytique de $s$ dans le repère $(A', \vec{u}, \vec{v})$. \hfill (1,25 pts)
+	\end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+\section*{Étude de fonction et Intégrales (Centrafrique 1997)}
+
+\subsection*{Partie A : Étude de fonction}
+On considère la fonction numérique $f$ de la variable réelle $x$ définie par $$f(x) = \frac{e^x}{x+2}$$. On désigne par $(\mathcal{C})$ la courbe représentative de $f$ dans un repère orthonormal $(O, I, J)$, l'unité graphique étant égale à 2 cm.
+\begin{enumerate}
+	\item \begin{enumerate}
+		\item Déterminer l'ensemble de définition $D$ de $f$. Étudier les limites de $f$ aux bornes de $D$. Préciser les asymptotes de la courbe $(\mathcal{C})$. \hfill (1,0 pt)
+		\item Étudier les variations de $f$ ; dresser son tableau de variation. Déterminer une équation de la tangente $(T)$ à $(\mathcal{C})$ au point d'abscisse 0. \hfill (1,5 pts)
+		\item Construire avec soin $(T)$ et la courbe $(\mathcal{C})$. \hfill (1,0 pt)
+	\end{enumerate}
+	\item On se propose de montrer que l'équation $f'(x) = x$ admet sur $[0; 1]$ une solution unique.
+	\begin{enumerate}
+		\item Étudier les variations de la fonction dérivée $f'$ sur $[0; 1]$. Démontrer que pour tout $x$ de l'intervalle $[0; 1]$, on a : $\frac{1}{4} \le f'(x) \le \frac{2}{3}$. \hfill (1,0 pt)
+		\item Étudier les variations de la fonction numérique $g$ définie sur $[0; 1]$ par $g(x) = f(x) - x$. Démontrer que l'équation $f(x) = x$ admet dans $[0; 1]$ une solution unique $\alpha$. Vérifier que $\frac{1}{2} \le \alpha \le \frac{e}{3}$. \hfill (1,5 pts)
+	\end{enumerate}
+	\item On se propose de déterminer une valeur approchée de $\alpha$. Soit $(u_n)$ la suite définie par : $u_0 = \frac{1}{2}$ et pour tout $n \in \mathbb{N}, u_{n+1} = f(u_n)$.
+	\begin{enumerate}
+		\item Démontrer par récurrence que pour tout $n \in \mathbb{N}, \frac{1}{2} \le u_n \le \frac{e}{3}$. \hfill (0,5 pt)
+		\item En utilisant l'inégalité des accroissements finis, démontrer que pour tout $n \in \mathbb{N}, |u_{n+1} - \alpha| \le \frac{2}{3} |u_n - \alpha|$. En déduire que pour tout $n \in \mathbb{N}, |u_n - \alpha| \le (\frac{2}{3})^n |u_0 - \alpha| \le (\frac{2}{3})^{n+1}$. \hfill (1,0 pt)
+		\item Démontrer que la suite $(u_n)$ est convergente. Quelle est sa limite ? \hfill (0,5 pt)
+		\item Déterminer un entier $n_0$ tel que : si $n \ge n_0$, alors $|u_n - \alpha| \le 10^{-2}$. \hfill (0,5 pt)
+	\end{enumerate}
+\end{enumerate}
+
+\subsection*{Partie B : Encadrement d'intégrale}
+Ne connaissant pas de primitive de la fonction $f$ sur $[0; 1/2]$, on se propose de déterminer un encadrement de l'intégrale $I = \int_0^{1/2} f(x) dx$.
+\begin{enumerate}
+	\item \begin{enumerate}
+		\item Justifier l'existence de $I$ et en donner une interprétation graphique. \hfill (0,5 pt)
+		\item On pose $J = \int_0^{1/2} (2-x)e^x dx$ et $K = \int_0^{1/2} x^2 f(x) dx$. \\
+		Vérifier que $4I = J + K$. \hfill (0,75 pt)
+		\item Calculer $J$. \hfill (0,75 pt)
+		\item Quelle est l'image par $f$ du segment $[0; 1/2]$ ? En déduire un encadrement de $K$ par deux intégrales simples que l'on calculera.\hfill(1,0 pt)
+		\item À l'aide des questions précédentes, écrire un encadrement de l'intégrale $I$. En déduire un encadrement de $I$, d'amplitude $10^{-2}$ par des nombres décimaux. \hfill (1,0 pt)
+	\end{enumerate}
+\end{enumerate}
