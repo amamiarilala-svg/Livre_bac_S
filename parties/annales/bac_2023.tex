@@ -1,0 +1,206 @@
+% ============================================================
+%   SESSION 2023
+% ============================================================
+
+\sujetbacheader{2023}
+
+
+% ------------------------------------------------------------
+%   EXERCICE 1
+% ------------------------------------------------------------
+
+\exercice{3 points}
+
+\noindent\textbf{A.} On considère le système $(S)$ :
+$$
+\begin{cases}
+	3y + 2z = 7 \\
+	x + y - z = 2 \\
+	2x + y - 3z = 1
+\end{cases}
+$$
+
+\begin{enumerate}
+	\item Écrire $(S)$ sous la forme matricielle : $AX = B$ où $A$ est une matrice carrée d'ordre $3$ et $X$ et $B$ deux matrices colonnes d'ordre $3$. \hfill (0,25 pt)
+	\item Soit $P = \begin{pmatrix} -2 & 11 & -5 \\ 1 & -4 & 2 \\ -1 & 6 & -3 \end{pmatrix}$
+
+	Calculer $A \times P$ et $P \times A$. Conclure. \hfill (0,75 pt)
+	\item En déduire la matrice $X$. \hfill (0,25 pt)
+\end{enumerate}
+
+\bigskip
+
+\noindent\textbf{B.} On dispose deux urnes $U_1$ et $U_2$. L'urne $U_1$ contient trois boules blanches et une boule noire. L'urne $U_2$ contient une boule blanche et une boule noire. Toutes les boules sont indiscernables au toucher. On appelle $E$ l'épreuve suivante : On tire une boule de $U_1$ et on la met dans $U_2$ puis on tire au hasard et simultanément deux boules de $U_2$.
+
+Soit $A$ l'événement : « obtenir deux boules blanches au deuxième tirage. »
+
+\begin{enumerate}
+	\item Montrer que la probabilité de l'événement $A$ est égale à $\dfrac{1}{4}$. \hfill (0,75 pt)
+	\item On répète trois fois de suite et d'une manière indépendante l'épreuve $E$.
+
+	Soit $X$ la variable aléatoire égale au nombre de réalisations de l'événement $A$.
+	\begin{enumerate}
+		\item Donner la loi de $X$. \hfill (0,75 pt)
+		\item Calculer l'écart-type de $X$. \hfill (0,25 pt)
+	\end{enumerate}
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+%   EXERCICE 2
+% ------------------------------------------------------------
+
+\exercice{2 points}
+
+L'espace est muni d'un repère orthonormé $(O,\vec{\imath},\vec{\jmath},\vec{k})$.
+
+On donne un point $A(2\,;2\,;1)$ et un plan $(\mathscr{P})$ d'équation : $3x + 2y + 6z + 33 = 0$.
+
+\begin{enumerate}
+	\item Vérifier que $(\mathscr{P})$ est strictement parallèle à un plan $(Q)$ contenant $A$ et de vecteur normal $\vec{n}(-3\,;-2\,;-6)$. \hfill (0,25 pt)
+	\item Déterminer la distance qui sépare ces deux plans. \hfill (0,75 pt)
+	\item Soit $H(-1\,;0\,;-5)$.
+
+	Justifier que $H \in (\mathscr{P})$ et que $(AH)$ et $(\mathscr{P})$ sont orthogonaux. \hfill (0,75 pt)
+	\item Calculer $\left\Vert \vect{AH} \right\Vert$. \hfill (0,25 pt)
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+%   PROBLEME 1
+% ------------------------------------------------------------
+
+\probleme{7 points}
+
+Dans le plan orienté $(\mathscr{P})$, on considère un triangle $ABC$, rectangle et isocèle en $A$ tel que $AB = 4\text{cm}$ et $(\vect{AB},\vect{AC}) = \dfrac{\pi}{2}$. On désigne par $O$ le milieu de $[BC]$ et $E$ celui de $[AC]$.
+
+Soient :
+\begin{itemize}[label=\textbullet]
+	\item $r_1$ : la rotation de centre $A$ et d'angle $\dfrac{\pi}{2}$
+	\item $r_2$ : la rotation de centre $O$ et d'angle $\dfrac{\pi}{2}$
+\end{itemize}
+On pose $f = r_1 \circ r_2$.
+
+\medskip
+\noindent\textbf{Partie I}
+
+\begin{enumerate}
+	\item
+	\begin{enumerate}
+		\item Justifier que $f$ est une symétrie centrale. \hfill (0,5 pt)
+		\item En décomposant $r_1$ et $r_2$ en deux symétries orthogonales d'axes convenablement choisis, déterminer le centre de $f$. \hfill (0,75 pt)
+	\end{enumerate}
+	\item Soient $D = bary\{(A,1)\,;(B,-1)\,;(C,-1)\}$ et
+
+	$G = bary\{(B,1-\sqrt{2})\,;(A,\sqrt{2})\}$
+
+	\begin{enumerate}
+		\item Déterminer les points $D$ et $G$. \hfill (0,25 pt $\times$ 2)
+		\item Déterminer et construire l'ensemble $(\Gamma)$ des points $M$ du plan $(\mathscr{P})$
+
+		vérifiant $MA^2 - MB^2 - MC^2 = -12$. \hfill (0,25 pt $\times$ 2)
+	\end{enumerate}
+	\item Soit $\overline{S}$ la similitude plane indirecte qui laisse invariant le point $B$ et
+
+	transforme $A$ en $C$. Notons par $F$ le centre de $[CG]$.
+	\begin{enumerate}
+		\item Vérifier qu'il existe une homothétie $h$ de centre $B$ et transforme
+
+		$A$ en $G$ dont on précisera le rapport. \hfill (0,75 pt)
+		\item En déduire les éléments caractéristiques de $\overline{S}$. \hfill (0,75 pt)
+	\end{enumerate}
+	\item On note par :
+	\begin{itemize}[label=--]
+		\item $(\mathscr{C})$ le cercle de centre $C$ et de rayon $2$
+		\item $I$ le point d'intersection de $(\mathscr{C})$ et $(\Gamma)$ dont $I$ se trouve à l'extérieur du
+
+		carré $ABDC$.
+	\end{itemize}
+	Montrer que $I$ est le centre de la similitude plane directe $S$, de
+
+	rapport $\sqrt{3}$, d'angle $\dfrac{\pi}{2}$ et qui transforme $C$ en $D$. \hfill (0,75 pt)
+\end{enumerate}
+
+\medskip
+\noindent\textbf{Partie II}
+
+Le plan complexe est rapporté à un repère orthonormé direct $(A,\vect{AB},\vect{AC})$. On donne
+$D(1+\ii)$
+
+\begin{enumerate}
+	\item
+	\begin{enumerate}
+		\item Ecrire l'expression complexe de $r_1$ et $r_2$ \hfill (0,5 pt)
+		\item En déduire l'expression complexe, la nature et l'élément caractéristique
+
+		de $f$. \hfill (0,75 pt)
+	\end{enumerate}
+	\item Déterminer l'expression complexe et les éléments caractéristiques
+
+	de $\overline{S}$. \hfill (0,75 pt)
+	\item Déterminer l'expression complexe de $S$ et préciser l'affixe de son
+
+	centre. \hfill (0,5 pt)
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+%   PROBLEME 2
+% ------------------------------------------------------------
+
+\probleme{8 points}
+
+Pour tout entier $n \in \N^*$, On note par $f_n$ la fonction numérique définie sur $\R$ par
+$$
+f_n(x) = \e^{nx}\ln(1+\e^{-nx})
+$$
+
+On désigne par $(\mathscr{C}_n)$ la courbe représentative de $f_n$ dans un plan muni d'un repère orthonormé $(O,\vec{\imath},\vec{\jmath})$ d'unité $2\text{cm}$.
+
+\medskip
+\noindent\textbf{Partie A}
+
+\begin{enumerate}
+	\item Calculer les limites de $f_n$ aux bornes de son ensemble de définition
+
+	(Poser $X = \e^{-nx}$) \hfill (0,25 pt $\times$ 2)
+	\item On considère la fonction numérique $g_n$ ; $n \in \N^*$ définie sur $\R$ par
+	$$
+	g_n(x) = \ln(1+\e^{-nx}) - \frac{1}{1+\e^{nx}}
+	$$
+	\begin{enumerate}
+		\item Vérifier que pour tout $x \in \R$, $g_n$ est strictement décroissante \hfill (0,75 pt)
+		\item En déduire que pour tout $x \in \R$, $g_n(x) > 0$ \hfill (0,75 pt)
+	\end{enumerate}
+	\item
+	\begin{enumerate}
+		\item Montrer que, pour tout $x \in \R$, pour tout $n \in \N^*$ :
+		$$
+		f_n'(x) = n\e^{nx}\cdot g_n(x)
+		$$
+		\hfill (0,75 pt)
+		\item Dresser le tableau de variation de $f_n$ \hfill (0,75 pt)
+	\end{enumerate}
+	\item Construire la courbe $(\mathscr{C}_2)$ \hfill (0,75 pt)
+	\item En utilisant une intégration par parties, calculer, en $\text{cm}^2$, l'aire du domaine
+
+	plan limité par la courbe $(\mathscr{C}_2)$, l'axe des abscisses et les droites d'équations
+
+	$x = 0$ et $x = 1$. \hfill (0,75 pt)
+\end{enumerate}
+
+\medskip
+\noindent\textbf{Partie B}
+
+On considère l'équation différentielle $(E) : y' - 2y = \dfrac{-2}{1+\e^{-2x}}$
+
+\begin{enumerate}
+	\item Vérifier que l'équation $f_2(x) = \e^{2x}\ln(1+\e^{-2x})$ est une solution de $(E)$
+
+	sur $\R$. \hfill (0,75 pt)
+	\item Résoudre dans $\R$, l'équation $(E') : y' - 2y = 0$ \hfill (0,75 pt)
+	\item Montrer qu'une fonction $\varphi$ est solution de $(E)$ si et seulement si $(\varphi - f_2)$
+
+	est solution de $(E')$ \hfill (1 pt)
+	\item En déduire la solution générale de $(E)$. \hfill (0,5 pt)
+\end{enumerate}

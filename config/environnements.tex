@@ -166,6 +166,52 @@ number within=chapter
 
 
 
+\newcounter{probleme}[chapter]
+\renewcommand{\theprobleme}{\arabic{probleme}}
+\newcommand{\probleme}[1]{
+	\refstepcounter{probleme}
+	\bigskip
+
+	\noindent
+	\textbf{\large Problème \theprobleme}
+	\hfill
+	{\small #1}
+
+	\medskip
+}
+
+
+%--------------------------------------------------------
+%   EN-TÊTE DES SUJETS OFFICIELS DE BACCALAURÉAT
+%--------------------------------------------------------
+\newcommand{\sujetbacheader}[1]{
+	\setcounter{exercice}{0}
+	\setcounter{probleme}{0}
+	\phantomsection
+	\addcontentsline{toc}{section}{Sujet Baccalauréat Série S --- Session #1}
+
+	\begin{tcolorbox}[
+		enhanced,
+		colback=gray!5,
+		colframe=black!75,
+		boxrule=0.6pt,
+		arc=1.5mm,
+		left=3mm, right=3mm, top=1.5mm, bottom=2mm,
+		halign=center,
+		fonttitle=\bfseries\sffamily,
+		coltitle=white,
+		colbacktitle=black!75,
+		title={\faGraduationCap\ \ SESSION #1}
+	]
+		{\large\bfseries\sffamily Baccalauréat de l'Enseignement Général --- Série S}\\[3pt]
+		{\normalsize\bfseries\sffamily Épreuve de Mathématiques}\\[2pt]
+		{\normalsize Durée : 4 heures \quad--\quad Coefficient : 6}\\[3pt]
+		{\small\itshape Les exercices et les problèmes sont obligatoires.}
+	\end{tcolorbox}
+	\bigskip
+}
+
+
 \newenvironment{citationchapitre}
 {
 	\begin{flushright}
