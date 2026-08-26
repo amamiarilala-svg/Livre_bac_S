@@ -47,10 +47,6 @@ Analyse, Géométrie, Probabilités, les sujets officiels du Bacc Série S
   Blanc" (examen d'entraînement local/régional) n'est pas un sujet
   officiel MESUPRES — à ne pas mélanger dans `parties/annales/` sauf
   demande explicite d'un emplacement séparé.
-- **`\exercice` vs `\probleme`** : les sujets qui distinguent "Exercice"
-  et "Problème" dans l'énoncé doivent utiliser la bonne macro (compteurs
-  séparés, définis dans `config/environnements.tex`). Un sujet existant
-  ne doit être retouché que si l'utilisateur le demande explicitement.
 - **Nesting LaTeX + a5paper** : les formules longues (grands ensembles,
   inégalités à trois membres) dans un `enumerate` imbriqué à deux niveaux
   débordent facilement de la marge sur ce format de page. Réflexe :
