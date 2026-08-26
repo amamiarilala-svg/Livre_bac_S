@@ -1,0 +1,269 @@
+% ============================================================
+%   CHAPITRE : Lois continues et loi normale
+%   Niveau   : Terminale S
+%   Mazava Maths
+% ============================================================
+\chapter{Lois continues et loi normale}
+
+\begin{objectifs}
+	\begin{itemize}[label=\textbullet]
+		\item Comprendre la notion de densité de probabilité.
+		\item Connaître les lois uniforme et exponentielle.
+		\item Connaître la loi normale centrée réduite et les résultats à retenir.
+	\end{itemize}
+\end{objectifs}
+
+
+% ============================================================
+\section{Variable aléatoire continue et densité}
+% ============================================================
+
+\begin{definition}[Densité de probabilité]
+	Une \textbf{variable aléatoire continue} $X$ peut prendre toute valeur d'un intervalle. Sa loi est décrite par une \textbf{fonction de densité} $f$, continue et positive sur cet intervalle, telle que l'aire sous sa courbe soit égale à $1$. Pour tous réels $a\leqslant b$ :
+	\[
+	\Prob(a\leqslant X\leqslant b) = \int_a^b f(t)\,dt.
+	\]
+\end{definition}
+
+\begin{center}
+	\begin{tikzpicture}[>=stealth, font=\small]
+		\fill[black!15, domain=1.5:3.5, variable=\x] plot ({\x},{2*exp(-(\x-2.5)*(\x-2.5)/1.2)}) -- (3.5,0) -- (1.5,0) -- cycle;
+		\draw[thick, domain=0:6, samples=100, smooth] plot (\x,{2*exp(-(\x-2.5)*(\x-2.5)/1.2)});
+		\draw[->] (-0.3,0) -- (6.3,0) node[right] {$x$};
+		\draw[->] (0,-0.3) -- (0,2.4) node[above] {$f(x)$};
+		\draw[dashed] (1.5,0) -- (1.5,1.55);
+		\draw[dashed] (3.5,0) -- (3.5,1.55);
+		\node[below] at (1.5,0) {$a$};
+		\node[below] at (3.5,0) {$b$};
+		\node at (2.5,0.7) {\scriptsize $\Prob(a\leqslant X\leqslant b)$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{attention}
+	Pour une variable aléatoire continue, la probabilité qu'elle prenne une valeur exacte est nulle : $\Prob(X=a)=0$. Ainsi $\Prob(a\leqslant X\leqslant b) = \Prob(a<X<b)$.
+\end{attention}
+
+
+% ============================================================
+\section{Loi uniforme}
+% ============================================================
+
+\begin{definition}[Loi uniforme]
+	Une variable aléatoire $X$ suit la \textbf{loi uniforme} sur $[a\,;b]$ lorsque sa densité est constante sur cet intervalle :
+	\[
+	f(x) = \frac{1}{b-a}, \qquad x\in[a\,;b].
+	\]
+\end{definition}
+
+\begin{center}
+	\begin{tikzpicture}[>=stealth, font=\small]
+		\draw[->] (-0.5,0) -- (5.5,0) node[right] {$x$};
+		\draw[->] (0,-0.3) -- (0,2.2) node[above] {$f(x)$};
+		\draw[thick] (0,0) -- (1,0) -- (1,1.5) -- (4,1.5) -- (4,0) -- (5,0);
+		\draw[dashed] (0,1.5) -- (4,1.5);
+		\node[left] at (0,1.5) {\small $\dfrac{1}{b-a}$};
+		\node[below] at (1,0) {$a$};
+		\node[below] at (4,0) {$b$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{propriete}{Probabilité pour la loi uniforme}{}
+	Si $X$ suit la loi uniforme sur $[a\,;b]$, alors pour tout $[c\,;d]\subset[a\,;b]$ :
+	\[
+	\Prob(c\leqslant X\leqslant d) = \frac{d-c}{b-a}.
+	\]
+\end{propriete}
+
+
+% ============================================================
+\section{Loi exponentielle}
+% ============================================================
+
+\begin{definition}[Loi exponentielle]
+	Une variable aléatoire $X$ suit la \textbf{loi exponentielle} de paramètre $\lambda>0$ lorsque sa densité est :
+	\[
+	f(t) = \lambda\,\e^{-\lambda t}, \qquad t\in[0\,;+\infty[.
+	\]
+\end{definition}
+
+\begin{center}
+	\begin{tikzpicture}[>=stealth, font=\small]
+		\draw[->] (-0.3,0) -- (5.5,0) node[right] {$t$};
+		\draw[->] (0,-0.3) -- (0,2.5) node[above] {$f(t)$};
+		\draw[thick, domain=0:5, samples=100, smooth] plot (\x,{2*exp(-\x)});
+		\node[left] at (0,2) {$\lambda$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{propriete}{Fonction de répartition}{}
+	Si $X$ suit la loi exponentielle de paramètre $\lambda$, alors pour tout $t\geqslant0$ :
+	\[
+	\Prob(X\leqslant t) = 1-\e^{-\lambda t}, \qquad \Prob(X>t) = \e^{-\lambda t}.
+	\]
+\end{propriete}
+
+\begin{exemple}
+	La durée de vie (en années) d'un composant électronique suit une loi exponentielle de paramètre $\lambda=0,1$. La probabilité qu'il fonctionne encore après $5$ ans est :
+	\[
+	\Prob(X>5) = \e^{-0,1\times5} = \e^{-0,5} \approx 0,607.
+	\]
+\end{exemple}
+
+
+% ============================================================
+\section{Loi normale centrée réduite}
+% ============================================================
+
+\begin{definition}[Loi normale centrée réduite]
+	Une variable aléatoire $X$ suit la \textbf{loi normale centrée réduite}, notée $\mathscr{N}(0,1)$, lorsque sa densité est :
+	\[
+	f(t) = \frac{1}{\sqrt{2\pi}}\,\e^{-t^2/2}, \qquad t\in\R.
+	\]
+\end{definition}
+
+\begin{center}
+	\begin{tikzpicture}[>=stealth, font=\small]
+		\draw[->] (-3.7,0) -- (3.7,0) node[right] {$t$};
+		\draw[->] (0,-0.2) -- (0,2.2) node[above] {$f(t)$};
+		\draw[thick, domain=-3.5:3.5, samples=150, smooth] plot (\x,{1.9*exp(-\x*\x/2)});
+		\node[below] at (0,0) {$0$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{propriete}{Symétrie}{}
+	La courbe de la loi $\mathscr{N}(0,1)$ est symétrique par rapport à l'axe des ordonnées. En particulier, pour tout réel $t$ :
+	\[
+	\Prob(X\leqslant -t) = \Prob(X\geqslant t) = 1-\Prob(X\leqslant t).
+	\]
+\end{propriete}
+
+\begin{astucebac}
+	Les valeurs de $\Prob(X\leqslant t)$ pour la loi $\mathscr{N}(0,1)$ se lisent dans une \textbf{table de la loi normale} (ou se calculent à la calculatrice).
+\end{astucebac}
+
+
+% ============================================================
+\section{Loi normale \texorpdfstring{$\mathscr{N}(m,\sigma^2)$}{N(m,sigma carre)}}
+% ============================================================
+
+\begin{definition}[Loi normale générale]
+	Une variable aléatoire $X$ suit la \textbf{loi normale} de paramètres $m$ et $\sigma^2$ (avec $\sigma>0$), notée $\mathscr{N}(m,\sigma^2)$, lorsque la variable centrée réduite :
+	\[
+	Z = \frac{X-m}{\sigma}
+	\]
+	suit la loi $\mathscr{N}(0,1)$. Le paramètre $m$ est l'espérance de $X$ et $\sigma$ son écart-type.
+\end{definition}
+
+\begin{methode}
+	\textbf{Calculer une probabilité pour $X\sim\mathscr{N}(m,\sigma^2)$ :} se ramener à la loi centrée réduite en posant $Z=\dfrac{X-m}{\sigma}$, puis utiliser la table ou la calculatrice pour $\mathscr{N}(0,1)$.
+\end{methode}
+
+\begin{propriete}{Résultats à retenir}{}
+	Si $X$ suit la loi $\mathscr{N}(m,\sigma^2)$, alors :
+	\[
+	\Prob(m-\sigma\leqslant X\leqslant m+\sigma) \approx 0,6826,
+	\]
+	\[
+	\Prob(m-2\sigma\leqslant X\leqslant m+2\sigma) \approx 0,9544,
+	\]
+	\[
+	\Prob(m-3\sigma\leqslant X\leqslant m+3\sigma) \approx 0,9974.
+	\]
+\end{propriete}
+
+\begin{center}
+	\begin{tikzpicture}[>=stealth, font=\small]
+		\fill[black!10, domain=-3:3, variable=\x] plot ({\x},{1.9*exp(-\x*\x/2)}) -- (3,0) -- (-3,0) -- cycle;
+		\fill[black!20, domain=-2:2, variable=\x] plot ({\x},{1.9*exp(-\x*\x/2)}) -- (2,0) -- (-2,0) -- cycle;
+		\fill[black!35, domain=-1:1, variable=\x] plot ({\x},{1.9*exp(-\x*\x/2)}) -- (1,0) -- (-1,0) -- cycle;
+		\draw[thick, domain=-3.5:3.5, samples=150, smooth] plot (\x,{1.9*exp(-\x*\x/2)});
+		\draw[->] (-3.9,0) -- (3.9,0) node[right] {$x$};
+		\foreach \x in {-3,-2,-1,0,1,2,3}{
+			\draw (\x,0.04) -- (\x,-0.04);
+		}
+		\node[below] at (-3,-0.05) {\tiny $m{-}3\sigma$};
+		\node[below] at (-2,-0.05) {\tiny $m{-}2\sigma$};
+		\node[below] at (-1,-0.05) {\tiny $m{-}\sigma$};
+		\node[below] at (0,-0.05) {\tiny $m$};
+		\node[below] at (1,-0.05) {\tiny $m{+}\sigma$};
+		\node[below] at (2,-0.05) {\tiny $m{+}2\sigma$};
+		\node[below] at (3,-0.05) {\tiny $m{+}3\sigma$};
+		\draw[<->] (-1,2.15) -- (1,2.15);
+		\node at (0,2.35) {\scriptsize $68,26\,\%$};
+		\draw[<->] (-2,2.55) -- (2,2.55);
+		\node at (0,2.75) {\scriptsize $95,44\,\%$};
+		\draw[<->] (-3,2.95) -- (3,2.95);
+		\node at (0,3.15) {\scriptsize $99,74\,\%$};
+	\end{tikzpicture}
+\end{center}
+
+
+% ============================================================
+\section{Exercices résolus}
+% ============================================================
+
+\exerciceresolu
+\textbf{Utiliser la règle des $68$-$95$-$99{,}7$}
+
+Le poids $X$, en kg, des nouveau-nés dans une maternité suit approximativement la loi normale $\mathscr{N}(3{,}2\,;0{,}16)$.
+\begin{enumerate}
+	\item Préciser l'espérance $m$ et l'écart-type $\sigma$ de $X$.
+	\item Calculer $\Prob(2{,}8\leqslant X\leqslant3{,}6)$.
+	\item Calculer $\Prob(X\geqslant3{,}6)$.
+\end{enumerate}
+
+\solution
+
+\textbf{1.} $\mathscr{N}(m\,;\sigma^2)$ avec $m=3{,}2$ et $\sigma^2=0{,}16$, donc $\sigma=\sqrt{0{,}16}=0{,}4$.
+
+\textbf{2.} $2{,}8 = 3{,}2-0{,}4 = m-\sigma$ et $3{,}6=3{,}2+0{,}4=m+\sigma$, donc :
+\[
+\Prob(2{,}8\leqslant X\leqslant3{,}6) = \Prob(m-\sigma\leqslant X\leqslant m+\sigma) \approx 0,6826.
+\]
+
+\textbf{3.} Par symétrie de la courbe autour de $m$ :
+\[
+\Prob(X\geqslant3{,}6) = \frac{1-\Prob(m-\sigma\leqslant X\leqslant m+\sigma)}{2} \approx \frac{1-0,6826}{2} \approx 0,1587.
+\]
+
+
+% ============================================================
+\section{Exercices}
+% ============================================================
+
+\exercice{Loi uniforme \hfill \facile}
+
+Un bus passe toutes les $20$ minutes. On note $X$ le temps d'attente (en minutes) d'un usager arrivant au hasard, qui suit la loi uniforme sur $[0\,;20]$.
+\begin{enumerate}
+	\item Donner la densité de $X$.
+	\item Calculer la probabilité d'attendre moins de $5$ minutes.
+	\item Calculer la probabilité d'attendre entre $8$ et $15$ minutes.
+\end{enumerate}
+
+\exercice{Loi exponentielle \hfill \moyen}
+
+La durée de vie $X$ (en heures) d'une ampoule suit la loi exponentielle de paramètre $\lambda=0,002$.
+\begin{enumerate}
+	\item Calculer la probabilité que l'ampoule dure plus de $500$ heures.
+	\item Calculer la probabilité que l'ampoule dure moins de $200$ heures.
+	\item Sachant qu'elle a déjà fonctionné $300$ heures, calculer la probabilité qu'elle fonctionne encore $200$ heures de plus. (On admettra la propriété d'absence de mémoire : $\Prob_{X\geqslant a}(X\geqslant a+t) = \Prob(X\geqslant t)$.)
+\end{enumerate}
+
+\exercice{Loi normale \hfill \moyen}
+
+Les notes $X$ d'un examen suivent la loi normale $\mathscr{N}(12\,;4)$.
+\begin{enumerate}
+	\item Préciser $m$ et $\sigma$.
+	\item Calculer $\Prob(8\leqslant X\leqslant16)$.
+	\item Calculer $\Prob(X\leqslant6)$, sachant que $6=m-3\sigma$.
+\end{enumerate}
+
+\exercice{Synthèse \hfill \difficile}
+
+Une machine remplit des paquets de riz dont la masse $X$ (en grammes) suit la loi normale $\mathscr{N}(1000\,;100)$.
+\begin{enumerate}
+	\item Préciser $m$ et $\sigma$.
+	\item Un paquet est jugé conforme si sa masse est comprise entre $980$ et $1020$ grammes. Sachant que $980=m-2\sigma$ et $1020=m+2\sigma$, calculer la probabilité qu'un paquet soit conforme.
+	\item En déduire la probabilité qu'un paquet pris au hasard soit non conforme.
+	\item Sur $500$ paquets produits, estimer le nombre de paquets non conformes.
+\end{enumerate}
