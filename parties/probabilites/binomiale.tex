@@ -1,0 +1,207 @@
+% ============================================================
+%   CHAPITRE : Loi binomiale
+%   Niveau   : Terminale S
+%   Mazava Maths
+% ============================================================
+\chapter{Loi binomiale}
+
+\begin{objectifs}
+	\begin{itemize}[label=\textbullet]
+		\item Calculer un coefficient binomial et utiliser le triangle de Pascal.
+		\item Reconnaître une situation relevant de la loi binomiale.
+		\item Calculer une probabilité, l'espérance et la variance d'une loi binomiale.
+	\end{itemize}
+\end{objectifs}
+
+
+% ============================================================
+\section{Coefficients binomiaux}
+% ============================================================
+
+\begin{definition}[Coefficient binomial]
+	Dans un schéma de Bernoulli à $n$ épreuves, le \textbf{coefficient binomial} $\dbinom{n}{k}$ (noté aussi $C_n^k$) est le nombre de chemins de l'arbre pondéré conduisant à exactement $k$ succès. On a :
+	\[
+	\binom{n}{k} = \frac{n!}{k!\,(n-k)!}, \qquad 0\leqslant k\leqslant n.
+	\]
+\end{definition}
+
+\begin{propriete}{Propriétés des coefficients binomiaux}{}
+	\begin{itemize}[label=\textbullet]
+		\item $\dbinom{n}{0} = \dbinom{n}{n} = 1$.
+		\item \textbf{Symétrie} : $\dbinom{n}{k} = \dbinom{n}{n-k}$.
+		\item \textbf{Relation de Pascal} : $\dbinom{n-1}{k-1} + \dbinom{n-1}{k} = \dbinom{n}{k}$.
+	\end{itemize}
+\end{propriete}
+
+La relation de Pascal permet de construire, de proche en proche, le \textbf{triangle de Pascal} : chaque coefficient s'obtient en ajoutant les deux coefficients situés juste au-dessus de lui.
+
+\begin{center}
+	\begin{tikzpicture}[font=\small]
+		\node at (-3.4,0)    {$n=0$};
+		\node at (-3.4,-0.9) {$n=1$};
+		\node at (-3.4,-1.8) {$n=2$};
+		\node at (-3.4,-2.7) {$n=3$};
+		\node at (-3.4,-3.6) {$n=4$};
+		\node at (-3.4,-4.5) {$n=5$};
+
+		\node at (0,0) {$1$};
+
+		\node at (-0.5,-0.9) {$1$}; \node at (0.5,-0.9) {$1$};
+
+		\node at (-1,-1.8) {$1$}; \node at (0,-1.8) {$2$}; \node at (1,-1.8) {$1$};
+
+		\node at (-1.5,-2.7) {$1$}; \node at (-0.5,-2.7) {$3$}; \node at (0.5,-2.7) {$3$}; \node at (1.5,-2.7) {$1$};
+
+		\node at (-2,-3.6) {$1$}; \node at (-1,-3.6) {$4$}; \node at (0,-3.6) {$6$}; \node at (1,-3.6) {$4$}; \node at (2,-3.6) {$1$};
+
+		\node at (-2.5,-4.5) {$1$}; \node at (-1.5,-4.5) {$5$}; \node at (-0.5,-4.5) {$10$}; \node at (0.5,-4.5) {$10$}; \node at (1.5,-4.5) {$5$}; \node at (2.5,-4.5) {$1$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{astucebac}
+	Pour lire $\dbinom{n}{k}$ dans le triangle : $n$ désigne le numéro de la ligne (en partant de $0$) et $k$ le numéro de la colonne (en partant de $0$, depuis la gauche).
+\end{astucebac}
+
+
+% ============================================================
+\section{Formule du binôme de Newton}
+% ============================================================
+
+\begin{theoreme}[Formule du binôme de Newton]
+	Pour tous nombres réels $a$, $b$ et tout entier naturel $n$ :
+	\[
+	(a+b)^n = \sum_{k=0}^{n} \binom{n}{k} a^k b^{n-k}.
+	\]
+\end{theoreme}
+
+\begin{propriete}{Somme des coefficients binomiaux}{}
+	Pour tout entier naturel $n$ :
+	\[
+	\sum_{k=0}^{n} \binom{n}{k} = 2^n.
+	\]
+\end{propriete}
+
+\begin{methode}
+	\textbf{Démonstration :} il suffit d'appliquer la formule du binôme avec $a=b=1$ :
+	\[
+	2^n = (1+1)^n = \sum_{k=0}^{n} \binom{n}{k}\,1^k\,1^{n-k} = \sum_{k=0}^{n} \binom{n}{k}.
+	\]
+\end{methode}
+
+\begin{exemple}
+	Pour $n=4$, la ligne du triangle de Pascal donne $1+4+6+4+1 = 16 = 2^4$.
+\end{exemple}
+
+
+% ============================================================
+\section{Loi binomiale}
+% ============================================================
+
+\begin{definition}[Loi binomiale]
+	On considère un schéma de Bernoulli de paramètres $n$ et $p$ (répétition de $n$ épreuves de Bernoulli identiques et indépendantes, de probabilité de succès $p$). Soit $X$ le nombre de succès obtenus.
+
+	On dit que $X$ suit la \textbf{loi binomiale} de paramètres $n$ et $p$, notée $\mathscr{B}(n,p)$, et :
+	\[
+	\Prob(X=k) = \binom{n}{k}\,p^k\,(1-p)^{n-k}, \qquad k\in\{0,1,\ldots,n\}.
+	\]
+\end{definition}
+
+\begin{methode}
+	\textbf{Reconnaître une loi binomiale :} vérifier que la situation consiste à répéter $n$ fois, de façon \textbf{identique et indépendante}, une épreuve à \textbf{deux issues} (succès/échec) de probabilité de succès $p$ constante, et que $X$ compte le \textbf{nombre de succès}.
+\end{methode}
+
+\begin{exemple}
+	Un QCM comporte $8$ questions indépendantes, chacune avec $4$ réponses possibles dont une seule est correcte. Un candidat répond au hasard à chaque question. Soit $X$ le nombre de bonnes réponses.
+
+	Chaque question est une épreuve de Bernoulli de paramètre $p=\dfrac14$ (succès = bonne réponse), répétée $8$ fois de façon indépendante : $X$ suit la loi $\mathscr{B}\!\left(8\,;\dfrac14\right)$.
+
+	Par exemple : $\Prob(X=2) = \dbinom{8}{2}\left(\dfrac14\right)^2\left(\dfrac34\right)^6 \approx 0,31$.
+\end{exemple}
+
+\begin{center}
+	\begin{tikzpicture}[>=stealth, font=\small]
+		\draw[->] (-0.6,0) -- (9.5,0) node[right] {$k$};
+		\draw[->] (0,-0.3) -- (0,4) node[above] {$\Prob(X=k)$};
+		\foreach \x/\h in {0/1.1, 1/2.9, 2/3.4, 3/2.3, 4/1.0, 5/0.25, 6/0.05, 7/0.01, 8/0.002}{
+			\draw[very thick, black!70] (\x,0) -- (\x,\h);
+			\node[below] at (\x,0) {\scriptsize \x};
+		}
+	\end{tikzpicture}
+\end{center}
+
+\begin{propriete}{Espérance, variance et écart-type de la loi binomiale}{}
+	Si $X$ suit la loi $\mathscr{B}(n,p)$, alors :
+	\[
+	\Esp(X) = np, \qquad \Var(X) = np(1-p), \qquad \sigma(X) = \sqrt{np(1-p)}.
+	\]
+\end{propriete}
+
+\begin{exemple}
+	Pour le QCM précédent : $\Esp(X) = 8\times\dfrac14 = 2$ (en moyenne, un candidat répondant au hasard obtient $2$ bonnes réponses) et $\Var(X) = 8\times\dfrac14\times\dfrac34 = \dfrac32$.
+\end{exemple}
+
+
+% ============================================================
+\section{Exercices résolus}
+% ============================================================
+
+\exerciceresolu
+\textbf{Calculer une probabilité binomiale}
+
+On lance $5$ fois de suite un dé équilibré. On considère comme succès l'obtention d'un $6$. Soit $X$ le nombre de fois où l'on obtient un $6$.
+\begin{enumerate}
+	\item Justifier que $X$ suit une loi binomiale et préciser ses paramètres.
+	\item Calculer $\Prob(X=2)$, arrondie à $10^{-3}$.
+	\item Calculer $\Prob(X\geqslant1)$.
+	\item Calculer $\Esp(X)$.
+\end{enumerate}
+
+\solution
+
+\textbf{1.} Les $5$ lancers sont identiques et indépendants, chacun avec deux issues (« obtenir un $6$ » ou non) de probabilité $p=\dfrac16$ constante : $X$ suit la loi $\mathscr{B}\!\left(5\,;\dfrac16\right)$.
+
+\textbf{2.} $\Prob(X=2) = \dbinom{5}{2}\left(\dfrac16\right)^2\left(\dfrac56\right)^3 = 10\times\dfrac{1}{36}\times\dfrac{125}{216} \approx 0,161$.
+
+\textbf{3.} $\Prob(X\geqslant1) = 1-\Prob(X=0) = 1-\left(\dfrac56\right)^5 \approx 1-0,402 = 0,598$.
+
+\textbf{4.} $\Esp(X) = 5\times\dfrac16 = \dfrac56$.
+
+
+% ============================================================
+\section{Exercices}
+% ============================================================
+
+\exercice{Triangle de Pascal \hfill \facile}
+
+\begin{enumerate}
+	\item Compléter les deux lignes suivantes du triangle de Pascal après celle des $1\ 5\ 10\ 10\ 5\ 1$.
+	\item Vérifier que la somme des coefficients de la ligne $n=6$ vaut $2^6$.
+\end{enumerate}
+
+\exercice{Calculs directs \hfill \facile}
+
+Une variable aléatoire $X$ suit la loi binomiale $\mathscr{B}(6\,;0,3)$.
+\begin{enumerate}
+	\item Calculer $\Prob(X=0)$, $\Prob(X=3)$ et $\Prob(X=6)$.
+	\item Calculer $\Esp(X)$ et $\Var(X)$.
+\end{enumerate}
+
+\exercice{Tir à l'arc \hfill \moyen}
+
+Un archer a une probabilité de $0,8$ d'atteindre sa cible à chaque tir, indépendamment des tirs précédents. Il tire $6$ flèches. Soit $X$ le nombre de flèches qui atteignent la cible.
+\begin{enumerate}
+	\item Justifier que $X$ suit une loi binomiale dont on précisera les paramètres.
+	\item Calculer la probabilité qu'il atteigne exactement $5$ fois la cible.
+	\item Calculer la probabilité qu'il atteigne la cible au moins une fois.
+	\item Calculer $\Esp(X)$ et interpréter le résultat.
+\end{enumerate}
+
+\exercice{QCM et loi binomiale \hfill \difficile}
+
+Un QCM comporte $10$ questions indépendantes à $5$ réponses possibles chacune, une seule étant correcte. Un candidat répond entièrement au hasard. Soit $X$ le nombre de bonnes réponses.
+\begin{enumerate}
+	\item Donner la loi de $X$.
+	\item Calculer la probabilité d'obtenir au moins $2$ bonnes réponses.
+	\item Un candidat est reçu s'il obtient au moins $6$ bonnes réponses. Calculer la probabilité que ce candidat, répondant au hasard, soit reçu.
+	\item Calculer $\Esp(X)$ et $\sigma(X)$.
+\end{enumerate}

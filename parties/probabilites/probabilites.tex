@@ -1,0 +1,260 @@
+% ============================================================
+%   CHAPITRE : Probabilités
+%   Niveau   : Terminale S
+%   Mazava Maths
+% ============================================================
+\chapter{Probabilités}
+
+\begin{objectifs}
+	\begin{itemize}[label=\textbullet]
+		\item Connaître le vocabulaire des probabilités.
+		\item Calculer la probabilité d'un événement dans une situation d'équiprobabilité.
+		\item Calculer la probabilité d'un événement contraire ou d'une réunion d'événements.
+	\end{itemize}
+\end{objectifs}
+
+
+% ============================================================
+\section{Vocabulaire des probabilités}
+% ============================================================
+
+\begin{definition}[Expérience aléatoire]
+	Une \textbf{expérience aléatoire} est une expérience dont on ne peut pas prévoir le résultat avec certitude, mais dont on connaît à l'avance l'ensemble des résultats possibles.
+
+	Cet ensemble des résultats possibles s'appelle l'\textbf{univers} de l'expérience, noté $\Omega$. Chaque élément de $\Omega$ est une \textbf{issue} (ou \textbf{éventualité}).
+\end{definition}
+
+\begin{exemple}
+	On lance un dé cubique équilibré. L'univers est $\Omega = \{1,2,3,4,5,6\}$. Chaque résultat (« obtenir $3$ », par exemple) est une issue.
+\end{exemple}
+
+\begin{definition}[Événement]
+	Un \textbf{événement} est une partie (un sous-ensemble) de $\Omega$.
+	\begin{itemize}[label=\textbullet]
+		\item Un \textbf{événement élémentaire} est un événement réduit à une seule issue $\{\omega\}$.
+		\item L'\textbf{événement certain} est l'univers $\Omega$ tout entier : il est toujours réalisé.
+		\item L'\textbf{événement impossible} est l'ensemble vide $\emptyset$ : il n'est jamais réalisé.
+	\end{itemize}
+\end{definition}
+
+\begin{center}
+	\begin{tikzpicture}[>=stealth, font=\small]
+		\draw (0,0) rectangle (6,3.6);
+		\node[above right] at (0,3.6) {$\Omega$};
+		\draw (4,1.8) circle (1.3);
+		\node at (4,1.8) {$A$};
+		\foreach \p/\lab in {{(1,2.8)/1},{(1.8,1)/2},{(3.2,2.4)/3},{(4.3,1.6)/4},{(4.6,2.5)/5},{(5.2,0.7)/6}}{
+			\fill[black] \p circle (1.4pt);
+		}
+		\node[left] at (1,2.8) {$\omega_1$};
+		\node[left] at (1.8,1) {$\omega_2$};
+		\node[above] at (3.2,2.4) {$\omega_3$};
+		\node[below] at (4.3,1.6) {$\omega_4$};
+		\node[above] at (4.6,2.5) {$\omega_5$};
+		\node[below] at (5.2,0.7) {$\omega_6$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{exemple}
+	Pour le lancer de dé, $A = \{2,4,6\}$ (« obtenir un nombre pair ») est un événement ; $\{5\}$ est un événement élémentaire ; « obtenir un nombre entre $1$ et $6$ » est l'événement certain ; « obtenir $7$ » est l'événement impossible.
+\end{exemple}
+
+
+% ============================================================
+\section{Probabilité d'un événement}
+% ============================================================
+
+\begin{definition}[Probabilité]
+	Définir une \textbf{probabilité} sur $\Omega$, c'est associer à chaque issue $\omega_i$ un nombre $p_i \in [0\,;1]$, appelé \textbf{probabilité} de $\omega_i$, tel que la somme de tous les $p_i$ soit égale à $1$.
+
+	La probabilité d'un événement $A$, notée $\Prob(A)$, est la somme des probabilités des issues qui le composent.
+\end{definition}
+
+\begin{propriete}{Propriétés immédiates}{}
+	\begin{itemize}[label=\textbullet]
+		\item $\Prob(\emptyset) = 0$ et $\Prob(\Omega) = 1$.
+		\item Pour tout événement $A$ : $0 \leqslant \Prob(A) \leqslant 1$.
+	\end{itemize}
+\end{propriete}
+
+\begin{definition}[Situation d'équiprobabilité]
+	On dit qu'il y a \textbf{équiprobabilité} lorsque toutes les issues de $\Omega$ ont la même probabilité. Dans ce cas, pour tout événement $A$ :
+	\[
+	\Prob(A) = \frac{\mathrm{card}(A)}{\mathrm{card}(\Omega)} = \frac{\text{nombre de cas favorables à } A}{\text{nombre de cas possibles}}.
+	\]
+\end{definition}
+
+\begin{methode}
+	\textbf{Calculer une probabilité en situation d'équiprobabilité :}
+	\begin{enumerate}
+		\item Vérifier que la situation est bien équiprobable (dé non pipé, boules indiscernables au toucher, tirage au hasard\ldots).
+		\item Dénombrer le nombre de cas possibles (card($\Omega$)).
+		\item Dénombrer le nombre de cas favorables à l'événement étudié (card($A$)).
+		\item Calculer le quotient $\dfrac{\mathrm{card}(A)}{\mathrm{card}(\Omega)}$.
+	\end{enumerate}
+\end{methode}
+
+\begin{exemple}
+	On tire au hasard une carte dans un jeu de $32$ cartes. Soit $A$ : « la carte tirée est un roi ». On a $\mathrm{card}(\Omega)=32$ et $\mathrm{card}(A)=4$, donc $\Prob(A) = \dfrac{4}{32} = \dfrac{1}{8}$.
+\end{exemple}
+
+
+% ============================================================
+\section{Événement contraire}
+% ============================================================
+
+\begin{definition}[Événement contraire]
+	L'\textbf{événement contraire} d'un événement $A$, noté $\overline{A}$, est l'événement constitué des issues de $\Omega$ qui n'appartiennent pas à $A$.
+\end{definition}
+
+\begin{center}
+	\begin{tikzpicture}[>=stealth, font=\small]
+		\fill[black!12] (0,0) rectangle (5,3);
+		\draw (0,0) rectangle (5,3);
+		\node[above right] at (0,3) {$\Omega$};
+		\fill[white] (1.8,1.5) circle (1.1);
+		\draw (1.8,1.5) circle (1.1);
+		\node at (1.8,1.5) {$A$};
+		\node at (3.6,0.6) {$\overline{A}$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{propriete}{Probabilité de l'événement contraire}{}
+	Pour tout événement $A$ :
+	\[
+	\Prob(\overline{A}) = 1 - \Prob(A).
+	\]
+\end{propriete}
+
+\begin{astucebac}
+	Il est souvent plus rapide de calculer la probabilité de l'événement contraire, en particulier avec des formulations du type « au moins un(e)\ldots », puis d'utiliser $\Prob(A) = 1 - \Prob(\overline{A})$.
+\end{astucebac}
+
+
+% ============================================================
+\section{Réunion et intersection d'événements}
+% ============================================================
+
+\begin{definition}[Événements incompatibles]
+	Deux événements $A$ et $B$ sont \textbf{incompatibles} lorsqu'ils ne peuvent pas se réaliser en même temps, c'est-à-dire lorsque $A \cap B = \emptyset$.
+\end{definition}
+
+\begin{center}
+	\begin{tikzpicture}[>=stealth, font=\small]
+		% Cas incompatible
+		\draw (0,0) rectangle (4,2.6);
+		\node[above right] at (0,2.6) {$\Omega$};
+		\draw (1,1.3) circle (0.8);
+		\node at (1,1.3) {$A$};
+		\draw (3,1.3) circle (0.8);
+		\node at (3,1.3) {$B$};
+		\node at (2,-0.5) {\small $A$ et $B$ incompatibles};
+
+		% Cas général
+		\begin{scope}[xshift=6.5cm]
+			\draw (0,0) rectangle (4,2.6);
+			\node[above right] at (0,2.6) {$\Omega$};
+			\begin{scope}
+				\clip (1.3,1.3) circle (0.9);
+				\fill[black!25] (2.2,1.3) circle (0.9);
+			\end{scope}
+			\draw (1.3,1.3) circle (0.9);
+			\draw (2.2,1.3) circle (0.9);
+			\node at (0.9,1.3) {$A$};
+			\node at (2.6,1.3) {$B$};
+			\node at (2,-0.5) {\small $A$ et $B$ quelconques};
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
+
+\begin{propriete}{Probabilité d'une réunion}{}
+	\begin{itemize}[label=\textbullet]
+		\item Si $A$ et $B$ sont \textbf{incompatibles} :
+		\[
+		\Prob(A \cup B) = \Prob(A) + \Prob(B).
+		\]
+		\item Dans le \textbf{cas général} :
+		\[
+		\Prob(A \cup B) = \Prob(A) + \Prob(B) - \Prob(A \cap B).
+		\]
+	\end{itemize}
+\end{propriete}
+
+\begin{exemple}
+	On tire une carte dans un jeu de $32$ cartes. Soit $A$ : « tirer un roi » et $B$ : « tirer un cœur ». On a $\Prob(A) = \dfrac{4}{32}$, $\Prob(B) = \dfrac{8}{32}$ et $\Prob(A\cap B) = \dfrac{1}{32}$ (le roi de cœur), donc :
+	\[
+	\Prob(A\cup B) = \frac{4}{32} + \frac{8}{32} - \frac{1}{32} = \frac{11}{32}.
+	\]
+\end{exemple}
+
+
+% ============================================================
+\section{Exercices résolus}
+% ============================================================
+
+\exerciceresolu
+\textbf{Calculer des probabilités à l'aide d'un tableau}
+
+Une urne contient $10$ jetons indiscernables au toucher : $3$ rouges, $5$ verts et $2$ bleus. On tire au hasard un jeton.
+\begin{enumerate}
+	\item Calculer la probabilité de tirer un jeton rouge.
+	\item Calculer la probabilité de ne pas tirer de jeton bleu.
+	\item Calculer la probabilité de tirer un jeton rouge ou vert.
+\end{enumerate}
+
+\solution
+
+Il y a équiprobabilité (jetons indiscernables au toucher), avec $\mathrm{card}(\Omega) = 10$.
+
+\textbf{1.} Soit $R$ : « tirer un jeton rouge ». $\mathrm{card}(R) = 3$, donc $\Prob(R) = \dfrac{3}{10}$.
+
+\textbf{2.} Soit $B$ : « tirer un jeton bleu ». $\Prob(B) = \dfrac{2}{10} = \dfrac{1}{5}$, donc :
+\[
+\Prob(\overline{B}) = 1 - \frac{1}{5} = \frac{4}{5}.
+\]
+
+\textbf{3.} Les événements $R$ (rouge) et $V$ (vert) sont incompatibles (un jeton ne peut pas être des deux couleurs), donc :
+\[
+\Prob(R\cup V) = \Prob(R) + \Prob(V) = \frac{3}{10} + \frac{5}{10} = \frac{8}{10} = \frac{4}{5}.
+\]
+
+
+% ============================================================
+\section{Exercices}
+% ============================================================
+
+\exercice{Vocabulaire des probabilités \hfill \facile}
+
+On lance un dé cubique équilibré dont les faces sont numérotées de $1$ à $6$.
+\begin{enumerate}
+	\item Décrire l'univers $\Omega$ de cette expérience.
+	\item Décrire par une phrase, puis en extension, l'événement $A$ : « obtenir un diviseur de $6$ ».
+	\item Donner un exemple d'événement élémentaire, puis de l'événement impossible.
+\end{enumerate}
+
+\exercice{Boules dans une urne \hfill \facile}
+
+Une urne contient $4$ boules blanches et $6$ boules noires, indiscernables au toucher. On tire au hasard une boule.
+\begin{enumerate}
+	\item Calculer la probabilité de tirer une boule blanche.
+	\item Calculer la probabilité de tirer une boule noire, de deux façons différentes.
+\end{enumerate}
+
+\exercice{Jeu de cartes \hfill \moyen}
+
+On tire au hasard une carte dans un jeu de $32$ cartes. On considère les événements $A$ : « tirer un as » et $B$ : « tirer une figure » (valet, dame ou roi).
+\begin{enumerate}
+	\item Calculer $\Prob(A)$ et $\Prob(B)$.
+	\item Les événements $A$ et $B$ sont-ils incompatibles ? Justifier.
+	\item En déduire $\Prob(A\cup B)$.
+\end{enumerate}
+
+\exercice{Deux dés \hfill \difficile}
+
+On lance simultanément deux dés cubiques équilibrés et on note la somme $S$ des deux résultats.
+\begin{enumerate}
+	\item Déterminer $\mathrm{card}(\Omega)$.
+	\item Calculer $\Prob(S=7)$.
+	\item Calculer la probabilité de l'événement « $S \geqslant 10$ ».
+	\item En déduire la probabilité de l'événement « $S \leqslant 9$ ».
+\end{enumerate}
