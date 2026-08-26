@@ -38,9 +38,11 @@
 	
 	De plus :
 	\[
-	\ln x < 0 \iff 0 < x < 1, \qquad
-	\ln x = 0 \iff x = 1, \qquad
-	\ln x > 0 \iff x > 1.
+	\begin{gathered}
+		\ln x < 0 \iff 0 < x < 1, \\
+		\ln x = 0 \iff x = 1, \\
+		\ln x > 0 \iff x > 1.
+	\end{gathered}
 	\]
 \end{propriete}
 
@@ -199,7 +201,7 @@
 \begin{propriete}{Tableau de variation de $\ln$}{}
 	\begin{center}
 		\begin{tikzpicture}
-			\tkzTabInit[lgt=3, espcl=4]{
+			\tkzTabInit[lgt=1.8, espcl=4]{
 				$x$ / 1,
 				$(\ln x)'=\frac{1}{x}$ / 1,
 				$\ln x$ / 2
@@ -363,10 +365,12 @@ $A = \ln\!\dfrac{12}{3} + \ln\!\dfrac{1}{4}
 
 \textbf{2.} Conditions : $x+2>0$ et $x-1>0$, soit $x>1$.
 \[
-\ln[(x+2)(x-1)] = \ln 4
-\implies (x+2)(x-1) = 4
-\implies x^2+x-6 = 0
-\implies (x-2)(x+3)=0.
+\begin{aligned}
+	\ln[(x+2)(x-1)] &= \ln 4 \\
+	\implies (x+2)(x-1) &= 4 \\
+	\implies x^2+x-6 &= 0 \\
+	\implies (x-2)(x+3)&=0.
+\end{aligned}
 \]
 Avec $x>1$ : $\boxed{S = \{2\}}$.
 
@@ -429,10 +433,12 @@ I = \left[\frac{(\ln x)^2}{2}\right]_1^{\e}
 \textbf{Calcul de $J$ par IPP.}
 On pose $u = \ln x$, $v' = 1$, donc $u' = \dfrac{1}{x}$, $v = x$ :
 \[
-J = \Big[x\ln x\Big]_1^{\e} - \int_1^{\e} x \cdot \frac{1}{x}\dd x
-= \Big[x\ln x\Big]_1^{\e} - \int_1^{\e} 1\dd x
-= (\e\ln\e - 1\cdot\ln 1) - [\e - 1]
-= \e - 0 - \e + 1 = 1.
+\begin{aligned}
+	J &= \Big[x\ln x\Big]_1^{\e} - \int_1^{\e} x \cdot \frac{1}{x}\dd x \\
+	&= \Big[x\ln x\Big]_1^{\e} - \int_1^{\e} 1\dd x \\
+	&= (\e\ln\e - 1\cdot\ln 1) - [\e - 1] \\
+	&= \e - 0 - \e + 1 = 1.
+\end{aligned}
 \]
 
 % ----------------------------------------------------------------
