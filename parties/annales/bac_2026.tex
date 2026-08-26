@@ -1,0 +1,220 @@
+% ============================================================
+%   SESSION 2026
+% ============================================================
+
+\sujetbacheader{2026}
+
+
+% ------------------------------------------------------------
+%   EXERCICE 1
+% ------------------------------------------------------------
+
+\exercice{3 points}
+
+\noindent\textbf{I.} Considérons les matrices carrées suivantes :
+$$
+A = \begin{pmatrix} 1 & 0 & 2 \\ 0 & 1 & 3 \\ 0 & 0 & 1 \end{pmatrix}, \quad
+B = \begin{pmatrix} 2 & 3 & 5 \\ 1 & 0 & 2 \\ 0 & 0 & -1 \end{pmatrix}, \quad
+I_3 = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}.
+$$
+
+\begin{enumerate}
+	\item
+	\begin{enumerate}
+		\item Calculer le déterminant de la matrice $A$. Conclure. \hfill (0,5 pt)
+		\item Vérifier que $2A - A^2 = I_3$. En déduire la matrice $P$ tel que $A \times P = I_3$. \hfill (0,5 pt)
+	\end{enumerate}
+	\item On pose $D = ABP$.
+
+	Pour tout $n \in \N^*$, montrer par récurrence que $D^n = AB^nP$. \hfill (0,5 pt)
+\end{enumerate}
+
+\bigskip
+
+\noindent\textbf{II.} Une urne contient dix boules indiscernables au toucher, portant les lettres : A ; A ; A, B, B, B, B, B, C, C.
+
+\begin{enumerate}
+	\item Une épreuve $(E)$ consiste à tirer au hasard une boule de l'urne. On note $P(A)$, $P(B)$, $P(C)$ la probabilité d'obtenir respectivement la lettre A, B, C.
+
+	Calculer $P(A)$, $P(B)$, $P(C)$. \hfill (0,5 pt)
+	\item On répète cinq fois de suite et d'une manière indépendante l'épreuve $(E)$.
+	\begin{enumerate}
+		\item Calculer la probabilité de l'événement :
+
+		$F$ : « la lettre B apparaît exactement deux fois » \hfill (0,5 pt)
+		\item Soit $X$ la variable aléatoire qui détermine le nombre d'apparition de la lettre B à l'issue de cinq épreuves.
+
+		Calculer $P(X \geqslant 1)$. \hfill (0,5 pt)
+	\end{enumerate}
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+%   EXERCICE 2
+% ------------------------------------------------------------
+
+\exercice{2 points}
+
+Dans un espace $(E)$ orienté muni d'un repère orthonormé direct $(O,\vec{\imath},\vec{\jmath},\vec{k})$, on considère un plan $(P)$ contenant le point $A(1\,;-2\,;2)$ et dirigé par les vecteurs $\vec{u}(-1\,;2\,;1)$ et $\vec{v}(-4\,;2\,;-2)$.
+
+\begin{enumerate}
+	\item Montrer que $(P)$ a pour équation cartésienne
+	$$
+	(P) : x + y - z + 3 = 0
+	$$
+	\hfill (0,5 pt)
+	\item Soit $(D)$ une droite de $(E)$ définie par son équation paramétrique
+	$$
+	(D) :
+	\begin{cases}
+		x = -2t+1 \\
+		y = -2t+3 \\
+		z = 2t-5
+	\end{cases}
+	\quad \text{avec } t \in \R.
+	$$
+	\begin{enumerate}
+		\item Vérifier que $(P)$ et $(D)$ sont perpendiculaires. \hfill (0,5 pt)
+		\item Déterminer les coordonnées du point $F$ intersection de $(P)$ et $(D)$. \hfill (0,5 pt)
+	\end{enumerate}
+	\item Soit $(D')$ une droite passant par $A(1\,;-2\,;2)$ et perpendiculaire à $(D)$.
+
+	Déterminer la distance minimale qui sépare la droite $(D)$ et la droite $(D')$. \hfill (0,5 pt)
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+%   PROBLEME 1
+% ------------------------------------------------------------
+
+\probleme{7 points}
+
+Dans un plan $(P)$ orienté, on considère un triangle $ABC$ direct et rectangle en $A$ tel que $AC = 4\text{cm}$ ; $BC = 8\text{cm}$. $O$ étant le milieu du segment $[AC]$ et $D$ celui de $[BC]$.
+
+On désigne par :
+\begin{itemize}[label=\textbullet]
+	\item $S$ la similitude plane directe qui transforme $A$ en $B$ et $O$ en $D$.
+	\item $R_C$ la rotation de centre $C$ et d'angle $\dfrac{\pi}{3}$.
+	\item $R_A$ la rotation de centre $A$ et d'angle $-\dfrac{\pi}{3}$.
+	\item $(L)$ la droite passant par $A$ et perpendiculaire à la droite $(AD)$.
+\end{itemize}
+
+On pose : $g = R_C \circ R_A$ et $f = S \circ R_A$.
+
+\medskip
+\noindent\textbf{I.}
+
+\begin{enumerate}
+	\item
+	\begin{enumerate}
+		\item Prouver que $CAD$ est un triangle équilatéral. \hfill (0,5 pt)
+		\item Déterminer les éléments caractéristiques de $S$. \hfill (0,5 pt)
+	\end{enumerate}
+	\item En décomposant $R_C$ et $R_A$ en deux symétries orthogonales convenablement choisies, identifier $g$. \hfill (0,5 pt)
+	\item
+	\begin{enumerate}
+		\item Montrer que $f$ est une homothétie de rapport $k$ que l'on déterminera. \hfill (0,5 pt)
+		\item Déterminer $f(A)$. En déduire que le centre $\Omega$ de $f$ est le barycentre du système $\{(A,2)\,;(B,-1)\}$. \hfill (0,5 pt)
+	\end{enumerate}
+	\item
+	\begin{enumerate}
+		\item Déterminer et construire le point $G$ barycentre du système
+		$$
+		\{(A,-1)\,;(B,1)\,;(C,1)\}.
+		$$
+		\hfill (0,25 pt)
+		\item Déterminer et construire l'ensemble $(\mathscr{C})$ des points $M$ du plan $(P)$ qui vérifie :
+		$$
+		-MA^2 + MB^2 + MC^2 = 16.
+		$$
+		\hfill (0,5 pt)
+	\end{enumerate}
+\end{enumerate}
+
+\medskip
+\noindent\textbf{II.} Le plan $(P)$ est muni d'un repère complexe orthonormé direct $(O,\vec{u},\vec{v})$ tel que $\vec{v} = \dfrac{1}{2}\vect{OC}$.
+
+\begin{enumerate}
+	\item
+	\begin{enumerate}
+		\item Montre que l'affixe du point $D$ est $z_D = 2\sqrt{3}$. \hfill (0,5 pt)
+		\item En utilisant $S(A) = B$ et $S(O) = D$. Déterminer l'expression complexe de $S$. En déduire ses éléments caractéristiques. \hfill (0,5 pt)
+	\end{enumerate}
+	\item
+	\begin{enumerate}
+		\item Déterminer l'expression complexe de $R_C$, $R_A$ et $g$. \hfill (0,5 pt)
+		\item En déduire l'élément caractéristique de $g$. \hfill (0,75 pt)
+	\end{enumerate}
+	\item
+	\begin{enumerate}
+		\item Déterminer l'expression complexe de $f$. \hfill (0,25 pt)
+		\item En déduire sa nature et ses éléments caractéristiques. \hfill (0,5 pt)
+	\end{enumerate}
+	\item Soit $\overline{S}$ la transformation qui a pour expression complexe
+	$$
+	z' = (1-\ii)\bar{z} + 2 + 4\ii.
+	$$
+	Déterminer la nature et les éléments caractéristiques de $\overline{S}$. \hfill (0,75 pt)
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+%   PROBLEME 2
+% ------------------------------------------------------------
+
+\probleme{8 points}
+
+Pour tout $n \in \N^*$, on considère la fonction numérique $f_n$ définie sur $\R$ par $f_n(x) = (x+1)^n \e^{-x}$. On note $(\mathscr{C}_n)$ ses courbes représentatives dans un repère orthonormé $(O,\vec{\imath},\vec{\jmath})$ d'unité $2\text{cm}$.
+
+\medskip
+\noindent\textbf{Partie A}
+
+\begin{enumerate}
+	\item Calculer les limites de $f$ aux bornes de son ensemble de définition selon la parité de $n$. \hfill (0,5 pt)
+	\item Calculer $f_n'(x)$ dérivée de $f_n(x)$, puis dresser le tableau de variation de la fonction $f_n$ selon la parité de $n$. \hfill (0,5 pt)
+	\item
+	\begin{enumerate}
+		\item Montrer que toutes les courbes $(\mathscr{C}_n)$ passent par deux points fixes indépendants de $n$ que l'on précisera les coordonnées. \hfill (1 pt)
+		\item Étudier les positions relatives de $(\mathscr{C}_1)$ et $(\mathscr{C}_2)$. \hfill (0,5 pt)
+		\item Tracer $(\mathscr{C}_1)$ et $(\mathscr{C}_2)$ dans le repère. \hfill (1 pt)
+	\end{enumerate}
+\end{enumerate}
+
+\medskip
+\noindent\textbf{Partie B}
+
+On considère les deux équations différentielles suivantes :
+$$
+(E_1) : 2y'' - 3y' + y = (ax+b)\e^{-x} \, ; \qquad (E_2) : 2y'' - 3y' + y = 0 \quad \text{où } a \in \R,\ b \in \R.
+$$
+
+\begin{enumerate}
+	\item Déterminer les réels $a$ et $b$ pour que $f_1(x) = (x+1)\e^{-x}$ est une solution de $(E_1)$ dans $\R$. \hfill (0,5 pt)
+	\item Soit $g$ une fonction dérivable sur $\R$.
+	\begin{enumerate}
+		\item Montrer que $f_1 + g$ est solution de $(E_1)$ si et seulement si $g$ est solution de $(E_2)$. \hfill (0,5 pt)
+		\item En déduire la solution générale de $(E_1)$ dans $\R$. \hfill (0,75 pt)
+	\end{enumerate}
+\end{enumerate}
+
+\medskip
+\noindent\textbf{Partie C}
+
+Pour tout $n \in \N^*$, $(I_n)$ est une suite numérique définie par :
+$$
+I_n = \int_{-1}^{0} (x+1)^n \e^{-x}\,dx.
+$$
+
+\begin{enumerate}
+	\item Calculer $I_1$. Interpréter graphiquement ce résultat. \hfill (0,75 pt)
+	\item Pour tout $n \in \N^*$, étudier la variation de la suite $(I_n)$, puis en déduire que $(I_n)$ est convergente. \hfill (1 pt)
+	\item
+	\begin{enumerate}
+		\item Pour tout $n \in \N^*$ et pour $-1 < x < 0$, montrer que
+		$$
+		\frac{1}{n+1} \leqslant I_n \leqslant \frac{\e}{n+1}.
+		$$
+		\hfill (0,75 pt)
+		\item En déduire $\displaystyle\lim_{n\to+\infty} I_n$. \hfill (0,25 pt)
+	\end{enumerate}
+\end{enumerate}

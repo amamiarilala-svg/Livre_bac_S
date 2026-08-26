@@ -1,0 +1,206 @@
+% ============================================================
+%   SESSION 2024
+% ============================================================
+
+\sujetbacheader{2024}
+
+
+% ------------------------------------------------------------
+%   EXERCICE 1
+% ------------------------------------------------------------
+
+\exercice{3 points}
+
+\noindent\textbf{I.}
+\begin{enumerate}
+	\item Résoudre dans $\N^2$ le système
+	$$
+	\begin{cases}
+		\text{pgcd}(x,y) = 12 \\
+		x + y = 120
+	\end{cases}
+	$$
+	\hfill (0,5 pt)
+	\item Effectuer la division euclidienne de $-31$ par $5$. \hfill (0,5 pt)
+	\item Résoudre dans $\Z/5\Z \times \Z/5\Z$ le système
+	$$
+	\begin{cases}
+		2x + 3y = \bar{2} \\
+		3x - y = \bar{0}
+	\end{cases}
+	$$
+	\hfill (0,5 pt)
+\end{enumerate}
+
+\bigskip
+
+\noindent\textbf{II.} Soient $A$ et $B$ deux matrices définies par :
+$$
+A = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 2 & 3 & 1 \end{pmatrix}
+\quad \text{et} \quad
+B = \begin{pmatrix} 8 & 2 & -2 \\ 2 & 5 & 4 \\ -2 & 4 & 5 \end{pmatrix}.
+$$
+
+\begin{enumerate}
+	\item
+	\begin{enumerate}
+		\item Calculer $2A - A^2$. \hfill (0,5 pt)
+		\item En déduire alors la matrice $A^{-1}$ inverse de $A$. \hfill (0,5 pt)
+	\end{enumerate}
+	\item Démontrer par récurrence que pour tout entier naturel $n \geqslant 2$, $B^n = 9^{n-1}B$. \hfill (0,5 pt)
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+%   EXERCICE 2
+% ------------------------------------------------------------
+
+\exercice{2 points}
+
+On considère les points $A(1\,;-1\,;1)$, $B(-2\,;1\,;-1)$ et $C(3\,;2\,;2)$.
+
+\begin{enumerate}
+	\item
+	\begin{enumerate}
+		\item Calculer $\vect{AB} \wedge \vect{AC}$. \hfill (0,25 pt)
+		\item En déduire l'équation cartésienne du plan $(ABC)$. \hfill (0,5 pt)
+	\end{enumerate}
+	\item On considère la sphère $(S)$ d'équation cartésienne : $x^2+y^2+z^2-4x+4y-2z+8 = 0$.
+
+	Déterminer le centre $I$ et le rayon $R$ de $(S)$. \hfill (0,5 pt)
+	\item On considère la droite $(\Delta)$ qui passe par le point $I(2\,;-2\,;1)$ centre de sphère $(S)$ et perpendiculaire au plan $(ABC)$.
+	\begin{enumerate}
+		\item Déterminer une représentation paramétrique de la droite $(\Delta)$. \hfill (0,25 pt)
+		\item Déterminer les coordonnées de $H$ point d'intersection de la droite $(\Delta)$ au plan $(ABC)$. \hfill (0,5 pt)
+	\end{enumerate}
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+%   PROBLEME 1
+% ------------------------------------------------------------
+
+\probleme{7 points}
+
+Dans un plan orienté $(P)$, on considère un triangle équilatéral direct $ABC$ de côté $4\text{cm}$.
+
+On note par :
+\begin{itemize}[label=\textbullet]
+	\item $I$, $J$ et $K$ les milieux respectifs de $[BC]$, $[AC]$ et $[AB]$
+	\item $r_B$ la rotation de centre $B$ et d'angle $\dfrac{\pi}{3}$
+	\item $r_C$ la rotation de centre $C$ et d'angle $\dfrac{\pi}{3}$
+	\item $f = r_B \circ r_C$ et $S$ la similitude plane directe telle que : $S(A) = I$ et $S(I) = C$
+\end{itemize}
+
+\medskip
+\noindent\textbf{PARTIE A}
+
+\begin{enumerate}
+	\item Soit $G$ le barycentre du système $\{(A,2)\,;(B,1)\,;(C,1)\}$.
+	\begin{enumerate}
+		\item Vérifier que $G$ est le milieu du segment $[AI]$. \hfill (0,25 pt)
+		\item Déterminer et construire l'ensemble $(\mathscr{C})$ des points $M$ du plan tels que :
+		$$
+		2\left\Vert \vect{MA} \right\Vert^2 + \left\Vert \vect{MB} \right\Vert^2 + \left\Vert \vect{MC} \right\Vert^2 = 32.
+		$$
+		\hfill (0,5 pt)
+	\end{enumerate}
+	\item
+	\begin{enumerate}
+		\item Quelle est la nature de la transformation $f$ ? \hfill (0,25 pt)
+		\item Donner les éléments caractéristiques de $f$ en décomposant $r_B$ et $r_C$ en produit de deux symétries orthogonales convenablement choisies. On note par $O$ le centre de $f$. \hfill (0,5 pt)
+	\end{enumerate}
+	\item Soit la transformation $g = f \circ S_{(AI)}$ où $S_{(AI)}$ est une réflexion d'axe $(AI)$.
+
+	Caractériser la transformation $g$, en décomposant $f$ en deux réflexions bien choisies. \hfill (1 pt)
+	\item Déterminer le rapport et l'angle de la similitude directe $S$ puis construire son centre $\Omega$. \hfill (0,5 pt)
+\end{enumerate}
+
+\medskip
+\noindent\textbf{PARTIE B}
+
+Le plan $(P)$ est rapporté à un repère orthonormé $(B,\vec{e_1},\vec{e_2})$ avec $\vec{e_1} = \dfrac{1}{4}\vect{BC}$, dans ce repère, on donne le point $A(2\,;2\sqrt{3})$.
+
+\begin{enumerate}
+	\item Donner les affixes des points $B$ et $C$. \hfill (0,5 pt)
+	\item
+	\begin{enumerate}
+		\item Donner les expressions complexes de $r_B$, $r_C$ et $S_{(AI)}$. \hfill (1,5 pts)
+		\item Donner alors les éléments caractéristiques de $f$ et $g$. \hfill (1 pt)
+	\end{enumerate}
+	\item
+	\begin{enumerate}
+		\item En utilisant les hypothèses $S(A) = I$ et $S(I) = C$, déterminer les expressions complexes de $S$. \hfill (0,5 pt)
+		\item Retrouver alors les éléments caractéristiques de $S$. \hfill (0,5 pt)
+	\end{enumerate}
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+%   PROBLEME 2
+% ------------------------------------------------------------
+
+\probleme{8 points}
+
+On considère la fonction $f$ définie sur $\left]0\,;+\infty\right[$ par :
+$$
+f(x) =
+\begin{cases}
+	\dfrac{1}{3}x^3 - \ln x - \dfrac{1}{3}, & \text{si } x \in \left]0\,;1\right[ \\[8pt]
+	(3x-3)\e^{-x}, & \text{si } x \geqslant 1
+\end{cases}
+$$
+On note $(\mathscr{C})$ sa courbe représentative dans un repère orthonormé $(O,\vec{\imath},\vec{\jmath})$ unité $4\text{cm}$.
+
+\medskip
+\noindent\textbf{Partie A}
+
+\begin{enumerate}
+	\item Montrer que $f$ est continue en $x_0 = 1$. \hfill (0,5 pt)
+	\item
+	\begin{enumerate}
+		\item Étudier la dérivabilité de $f$ en $x_0 = 1$. \hfill (0,5 pt)
+		\item Interpréter graphiquement les résultats. \hfill (0,5 pt)
+	\end{enumerate}
+	\item Calculer $\displaystyle\lim_{x\to0^+} f(x)$ et $\displaystyle\lim_{x\to+\infty} f(x)$. \hfill (0,5 pt + 0,5 pt)
+	\item
+	\begin{enumerate}
+		\item Calculer $f'(x)$ pour $x \in \left]0\,;1\right[$ puis étudier son signe. \hfill (0,5 pt)
+		\item Calculer $f'(x)$ pour $x > 1$ puis étudier son signe. \hfill (0,5 pt)
+		\item Dresser le tableau de variation de $f$. \hfill (0,5 pt)
+	\end{enumerate}
+	\item Tracer la courbe $(\mathscr{C})$ en précisant les demi-tangentes en $x_0 = 1$. \hfill (1 pt)
+	\item $\lambda$ est un nombre réel strictement positif. On pose $I(\lambda) = \displaystyle\int_\lambda^1 f(t)\,dt$.
+	\begin{enumerate}
+		\item À l'aide d'une intégration par parties, calculer $I(\lambda)$ en fonction de $\lambda$. \hfill (0,5 pt)
+		\item Déterminer $\displaystyle\lim_{\lambda\to0^+} I(\lambda)$. \hfill (0,5 pt)
+	\end{enumerate}
+\end{enumerate}
+
+\medskip
+\noindent\textbf{Partie B}
+
+\begin{enumerate}
+	\item $n$ est un entier naturel supérieur ou égal à $2$ et $k$ un entier tel que $1 \leqslant k \leqslant n-1$.
+	\begin{enumerate}
+		\item Démontrer qu'en utilisant la variation de $f$ sur l'intervalle $\left[\dfrac{k}{n}\,;\dfrac{k+1}{n}\right]$, on a :
+		$$
+		\frac{1}{n}f\!\left(\frac{k+1}{n}\right) \leqslant \int_{k/n}^{(k+1)/n} f(t)\,dt \leqslant \frac{1}{n}f\!\left(\frac{k}{n}\right).
+		$$
+		\hfill (0,5 pt)
+		\item En déduire que :
+		$$
+		\begin{aligned}
+			&\frac{1}{n}\left[f\!\left(\frac{2}{n}\right)+f\!\left(\frac{3}{n}\right)+\cdots+f\!\left(\frac{n}{n}\right)\right] \\
+			&\leqslant \int_{1/n}^{1} f(t)\,dt \\
+			&\leqslant \frac{1}{n}\left[f\!\left(\frac{1}{n}\right)+f\!\left(\frac{2}{n}\right)+\cdots+f\!\left(\frac{n-1}{n}\right)\right].
+		\end{aligned}
+		$$
+		\hfill (0,5 pt)
+	\end{enumerate}
+	\item Pour $n \geqslant 2$, on pose $S_n = \dfrac{1}{n}\displaystyle\sum_{k=1}^n f\!\left(\frac{k}{n}\right) = \dfrac{1}{n}\left[f\!\left(\frac{1}{n}\right)+f\!\left(\frac{2}{n}\right)+\cdots+f\!\left(\frac{n}{n}\right)\right]$.
+	\begin{enumerate}
+		\item Déduire de la question 1.b. que : $I\!\left(\dfrac{1}{n}\right) \leqslant S_n \leqslant I\!\left(\dfrac{1}{n}\right) + \dfrac{1}{n}f\!\left(\dfrac{1}{n}\right)$. \hfill (0,5 pt)
+		\item Démontrer que alors $\displaystyle\lim_{n\to+\infty} S_n = \dfrac{3}{4}$. \hfill (0,5 pt)
+	\end{enumerate}
+\end{enumerate}

@@ -1,0 +1,212 @@
+% ============================================================
+%   SESSION 2022
+% ============================================================
+
+\sujetbacheader{2022}
+
+
+% ------------------------------------------------------------
+%   EXERCICE 01
+% ------------------------------------------------------------
+
+\exercice{3 points}
+
+\noindent\textbf{I — Arithmétique}
+
+\begin{enumerate}
+	\item Montrer que pour tout entier naturel $n$,
+	$$
+	9^{3n+1} + 4^{6n+1}
+	$$
+	est divisible par $13$.
+
+	\item Résoudre dans $\Z/7\Z$ l'équation $x^2 + \bar{3}x = \bar{4}$.
+
+	\item Soit $(E)$ l'équation dans $\Z \times \Z$ définie par $37x - 43y = 1$.
+
+	En utilisant l'algorithme d'Euclide appliqué aux entiers $37$ et $43$,
+	trouver une solution particulière de $(E)$, puis résoudre $(E)$.
+\end{enumerate}
+
+\bigskip
+
+\noindent\textbf{II — Calcul matriciel}
+
+On considère la matrice
+$$
+A =
+\begin{pmatrix}
+	0  & -1 & -1 \\
+	-1 &  0 & -1 \\
+	-1 & -1 &  0
+\end{pmatrix}.
+$$
+
+\begin{enumerate}
+	\item Calculer $A^2$ et $A^3$.
+	\item Vérifier que $4A + A^2 - A^3 = 4I_3$, où $I_3$ est la matrice identité d'ordre $3$.
+	\item En déduire que $A$ est inversible et donner son inverse $A^{-1}$.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+%   EXERCICE 02
+% ------------------------------------------------------------
+
+\exercice{2 points}
+
+L'espace est rapporté à un repère orthonormé direct $(O,\,\vec{\imath},\,\vec{\jmath},\,\vec{k})$.
+On donne les points
+$$
+A(2\,;\,3\,;\,1),\quad B(-1\,;\,1\,;\,1),\quad C(-3\,;\,1\,;\,0),\quad D(4\,;\,-1\,;\,3).
+$$
+
+\begin{enumerate}
+	\item Calculer $\vec{n} = \vect{AB} \wedge \vect{AC}$.
+	\item Écrire une équation cartésienne du plan $(ABC)$.
+	\item Donner une représentation paramétrique de la droite $(\Delta)$ de vecteur directeur
+	$\vec{u}(1\,;\,2\,;\,-1)$ et passant par le point $D$.
+	\item Montrer que le plan $(ABC)$ et la droite $(\Delta)$ sont parallèles.
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+%   PROBLEME 01
+% ------------------------------------------------------------
+
+\exercice{7 points}
+
+Dans le plan orienté $(\mathscr{P})$, on considère un carré direct $ABCD$ tel que $AB = 4$ cm.
+Soit $(d)$ la médiatrice du segment $[AB]$.
+
+On note :
+\begin{itemize}[label=\textbullet]
+	\item $t$ la translation de vecteur $\vect{AC}$,
+	\item $t_1$ la translation de vecteur $\vect{DC}$,
+	\item $t_2$ la translation de vecteur $\vect{AD}$,
+	\item $s_{(AD)}$ la symétrie orthogonale d'axe $(AD)$,
+	\item $f = t \circ s_{(AD)}$,
+	\item $S$ la similitude plane directe qui laisse invariant le point $A$ et transforme $C$ en $B$.
+\end{itemize}
+
+\medskip
+\noindent\textbf{Partie A}
+
+\begin{enumerate}
+	\item
+	\begin{enumerate}
+		\item Prouver que $C$ est le barycentre du système $\{(A\,;-1)\,;\,(B\,;1)\,;\,(D\,;1)\}$.
+		\item Déterminer et construire l'ensemble $(\Gamma)$ des points $M$ du plan $(\mathscr{P})$ vérifiant
+		$$
+		\left\|\,-\vect{MA} + \vect{MB} + \vect{MD}\,\right\|
+		=
+		\left\|\,-2\vect{MA} + \vect{MB} + \vect{MD}\,\right\|.
+		$$
+	\end{enumerate}
+	\item Justifier que $t = t_1 \circ t_2$.
+	\item Décomposer $t_1$ en deux symétries orthogonales dont l'un des axes est la droite $(AD)$.
+	\item En utilisant les résultats précédents, préciser la nature et les éléments caractéristiques de $f$.
+	\item Déterminer le rapport et l'angle de $S$.
+\end{enumerate}
+
+\medskip
+\noindent\textbf{Partie B} — \textit{Le plan complexe est rapporté au repère orthonormé direct $(A\,;\,\vect{AB},\,\vect{AD})$.}
+
+\begin{enumerate}
+	\item
+	\begin{enumerate}
+		\item Écrire les expressions complexes de $t$ et de $s_{(AD)}$.
+		\item En déduire l'expression complexe de $f$.
+		\item Déterminer la nature et les éléments caractéristiques de $f$ à l'aide de son expression complexe.
+	\end{enumerate}
+	\item
+	\begin{enumerate}
+		\item En utilisant les hypothèses $S(A) = A$ et $S(C) = B$,
+		déterminer l'expression complexe de $S$.
+		\item Retrouver le rapport et l'angle de $S$ à l'aide de son expression complexe.
+	\end{enumerate}
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+%   PROBLEME 02
+% ------------------------------------------------------------
+
+\exercice{8 points}
+
+\noindent\textit{Les deux parties sont indépendantes.}
+
+\bigskip
+\noindent\textbf{Partie A}
+
+Soit $f$ la fonction définie sur $[0\,;+\infty[$ par
+$$
+\begin{cases}
+	f(0) = -2, \\[4pt]
+	f(x) = x - 2 + \e^{-\frac{1}{x}} & \text{si } x > 0.
+\end{cases}
+$$
+On note $(\mathscr{C})$ sa courbe représentative dans un repère orthonormé $(O,\vec{\imath},\vec{\jmath})$
+d'unité $2$ cm.
+
+\begin{enumerate}
+	\item Étudier la continuité et la dérivabilité de $f$ à droite en $x_0 = 0$.
+	\item
+	\begin{enumerate}
+		\item Calculer $f'(x)$ pour tout $x \in \left]0\,;+\infty\right[$.
+		\item Dresser le tableau de variations de $f$.
+	\end{enumerate}
+	\item Montrer que la droite $(\mathscr{D})$ d'équation $y = x - 1$ est asymptote à $(\mathscr{C})$.
+	\item Construire la courbe $(\mathscr{C})$ en précisant la demi-tangente au point d'abscisse $x_0 = 0$.
+\end{enumerate}
+
+\bigskip
+\noindent\textbf{Partie B}
+
+On considère la suite $(I_n)_{n \in \N^*}$ définie par
+$$
+I_n = \int_0^{\frac{1}{4}} \frac{(4x^2)^{n+1}}{1 - 4x^2}\,\mathrm{d}x
+\quad \text{pour tout } n \in \N^*.
+$$
+
+\begin{enumerate}
+	\item Soit $I = \displaystyle\int_0^{\frac{1}{4}} \frac{1}{1 - 4x^2}\,\mathrm{d}x$.
+
+	En remarquant que $\dfrac{1}{1-4x^2} = \dfrac{1}{2(1+2x)} + \dfrac{1}{2(1-2x)}$,
+	calculer l'intégrale $I$.
+
+	\item Pour tout $x \in \left[0\,;\,\dfrac{1}{4}\right]$ et $n \in \N^*$, on pose
+	$$
+	S_n(x) = 1 + 4x^2 + (4x^2)^2 + \cdots + (4x^2)^n.
+	$$
+	Vérifier que
+	$$
+	S_n(x) = \frac{1}{1-4x^2} - \frac{(4x^2)^{n+1}}{1-4x^2}.
+	$$
+
+	\item En intégrant $S_n(x)$ sur l'intervalle $\left[0\,;\,\dfrac{1}{4}\right]$,
+	montrer que pour tout $n \in \N^*$ :
+	$$
+	\frac{1}{4} + \frac{1}{3 \times 4^2} + \frac{1}{5 \times 4^3}
+	+ \cdots + \frac{1}{(2n+1) \times 4^{n+1}}
+	= \frac{1}{4}\ln 3 - I_n.
+	$$
+
+	\item
+	\begin{enumerate}
+		\item Démontrer que pour tout $n \in \N^*$ :
+		$$
+		\frac{1}{(n+2) \times 4^{n+2}} \leqslant I_n \leqslant \frac{1}{3(n+2) \times 4^{n+1}}.
+		$$
+		\item En déduire la limite de la suite $(I_n)_{n \in \N^*}$.
+	\end{enumerate}
+
+	\item Calculer
+	$$
+	\lim_{n \to +\infty}
+	\left(
+	\frac{1}{4} + \frac{1}{3 \times 4^2} + \frac{1}{5 \times 4^3}
+	+ \cdots + \frac{1}{(2n+1) \times 4^{n+1}}
+	\right).
+	$$
+\end{enumerate}

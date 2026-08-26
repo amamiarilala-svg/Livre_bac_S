@@ -1,0 +1,224 @@
+% ============================================================
+%   SESSION 2021
+% ============================================================
+
+\sujetbacheader{2021}
+
+
+% ------------------------------------------------------------
+%   EXERCICE 1
+% ------------------------------------------------------------
+
+\exercice{3 points}
+
+\noindent\textbf{I.} On considère les matrices carrées suivantes :
+$$
+A = \begin{pmatrix} 0 & 1 & 2 \\ 1 & 3 & 0 \\ 1 & 2 & 1 \end{pmatrix}, \quad
+B = \frac{1}{3}\begin{pmatrix} -3 & -3 & 6 \\ 1 & 2 & -2 \\ 1 & -1 & 1 \end{pmatrix}
+\quad \text{et} \quad
+C = \begin{pmatrix} 2 & 2 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 2 \end{pmatrix}.
+$$
+
+\begin{enumerate}
+	\item Montrer que $B$ est l'inverse de $A$. \hfill (0,5 pt)
+	\item Calculer $A + C$. \hfill (0,25 pt)
+	\item Démontrer par récurrence sur $n$ que : $\forall n \in \N^* \setminus \{1\}$
+	$$
+	C^n = \begin{pmatrix} 2^n & n2^n & 0 \\ 0 & 2^n & 0 \\ 0 & 0 & 2^n \end{pmatrix}.
+	$$
+	\hfill (0,75 pt)
+\end{enumerate}
+
+\bigskip
+
+\noindent\textbf{II.} On dispose de quatre trous $T_1$, $T_2$, $T_3$, $T_4$ et quatre billes numérotées 1, 2, 3 et 4. Chaque bille entre dans un trou et chaque trou peut recevoir zéro à quatre billes. On suppose que tous les événements élémentaires sont équiprobables.
+
+\noindent\textbf{A)} On lance une fois les quatre billes en direction vers les quatre trous.
+
+\begin{enumerate}
+	\item Soit $A$ l'événement : « La bille numéro 2 est dans le trou $T_2$ ».
+
+	Montrer que la probabilité de l'événement $A$ est égale à $\dfrac{1}{4}$. \hfill (0,25 pt)
+	\item Soit $X$ la variable aléatoire égale au nombre de billes reçues par le trou $T_3$ lors d'un lancer.
+
+	Donner la loi de probabilité de $X$. \hfill (0,75 pt)
+\end{enumerate}
+
+\noindent\textbf{B)} On lance $n$ fois de suite, $n \in \N^*$, et d'une manière indépendante les quatre billes vers les quatre trous. On désigne par $p_n$ la probabilité de l'événement $A_n$ : « $A$ est réalisée au moins une fois lors de ces $n$ lancers ».
+
+Après avoir calculé $p_n$ en fonction de $n$, déterminer le plus petit entier naturel $n$
+
+pour que $p_n \geqslant 0,99$. \hfill (0,5 pt)
+
+
+% ------------------------------------------------------------
+%   EXERCICE 2
+% ------------------------------------------------------------
+
+\exercice{3 points}
+
+L'espace est rapporté à un repère orthonormé direct $(O,\vec{\imath},\vec{\jmath},\vec{k})$.
+
+On considère les points $A(1\,;-1\,;1)$ ; $B(3\,;2\,;1)$ et $C(2\,;-1\,;0)$.
+
+\begin{enumerate}
+	\item Vérifier que l'équation du plan $(ABC)$ est : $3x - 2y + 3z - 8 = 0$. \hfill (0,25 pt)
+	\item Écrire une équation cartésienne du plan $(P)$ contenant le point $B$, de vecteur normal $\vect{AC}$. \hfill (0,5 pt)
+	\item
+	\begin{enumerate}
+		\item Démontrer que l'intersection des plans $(ABC)$ et $(P)$ est une droite $(D)$ d'équation paramétrique :
+		$$
+		\begin{cases}
+			x = t+2 \\
+			y = 3t-1 \\
+			z = t
+		\end{cases}
+		\quad \text{avec } t \in \R.
+		$$
+		\hfill (0,75 pt)
+		\item Montrer que $C$ est le projeté orthogonal de $A$ sur $(D)$ et en déduire la distance du point $A$ à la droite $(D)$. \hfill (0,75 pt)
+	\end{enumerate}
+	\item Soit $(Q)$ le plan d'équation $x - y + z = 1$.
+
+	Déterminer les coordonnées du point $I$, intersection des trois plans $(ABC)$, $(P)$ et $(Q)$. \hfill (0,75 pt)
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+%   PROBLEME 1
+% ------------------------------------------------------------
+
+\probleme{6 points}
+
+$ABC$ est un triangle rectangle en $A$ tels que $(\vect{AB}\,,\vect{AC}) = \dfrac{\pi}{2}$ et $AB = AC = 3\text{cm}$.
+
+Soient :
+\begin{itemize}[label=\textbullet]
+	\item $I$ le milieu de $[BC]$ et $J$ le milieu de $[AC]$.
+	\item $E$ le point symétrique de $B$ par rapport à $A$.
+	\item $r$ la rotation de centre $C$ et d'angle $\dfrac{\pi}{2}$.
+	\item $t$ la translation de vecteur $\vect{CA}$.
+	\item $h$ l'homothétie de centre $I$ et de rapport $2$.
+\end{itemize}
+
+On pose $f = t \circ r$ et $g = h \circ f$.
+
+\medskip
+\noindent\textbf{Partie A}
+
+\begin{enumerate}
+	\item
+	\begin{enumerate}
+		\item Déterminer et construire le point $D$ barycentre du système
+		$$
+		S = \{(A,1)\,;(B,-1)\,;(C,1)\}
+		$$
+		\hfill (0,25 pt $\times$ 2)
+		\item Discuter suivant les valeurs du paramètre réel $k$ la nature de l'ensemble $(E_k)$ des points
+
+		$M$ du plan vérifiant $MA^2 - MB^2 + MC^2 = k$.(On pourra montrer que $MD^2 = k+18$). \hfill (0,75 pt)
+	\end{enumerate}
+	\item Soit $\mathscr{C}$ le cercle de centre $C$ et de rayon $CB$ dont l'intersection autre que $B$ avec
+
+	$(BC)$ est notée par $F$. Montrer que $\vect{ED} = \dfrac{1}{2}\vect{EF}$. \hfill (0,25 pt)
+	\item
+	\begin{enumerate}
+		\item Donner la nature de $f$. \hfill (0,25 pt)
+		\item On note $K$ le milieu de $[ED]$. En décomposant $t$ et $r$ en deux symétries orthogonales
+
+		convenablement choisies, déterminer les éléments caractéristiques de $f$. \hfill (0,5 pt)
+	\end{enumerate}
+	\item En déduire la nature et les éléments caractéristiques de $g$. \hfill (0,75 pt)
+\end{enumerate}
+
+\medskip
+\noindent\textbf{Partie B}
+
+Le plan est rapporté au repère orthonormé direct $\left(A,\vect{AB},\vect{AC}\right)$.
+
+\begin{enumerate}
+	\item Donner l'affixe du point $I$. \hfill (0,25 pt)
+	\item
+	\begin{enumerate}
+		\item Déterminer les expressions complexes de $t$, $r$ et $h$. \hfill (0,25 pt $\times$ 3)
+		\item En déduire les expressions complexes de $f$ et $g$. \hfill (0,25 pt $\times$ 2)
+		\item À l'aide de l'expression complexe, retrouver les éléments caractéristiques de $g$. \hfill (0,25 pt $\times$ 3)
+	\end{enumerate}
+\end{enumerate}
+
+\medskip
+\noindent\textbf{Partie C}
+
+Dans l'ensemble $\C$ des nombres complexes, on considère le polynôme $P$ défini par :
+$$
+P(z) = z^3 + (3-3\ii)z^2 + (1-6\ii)z - 1 - 3\ii
+$$
+
+Calculer $P(-1)$ et en déduire toutes les solutions dans $\C$ de l'équation $P(z) = 0$. \hfill (0,25 pt + 0,5 pt)
+
+
+% ------------------------------------------------------------
+%   PROBLEME 2
+% ------------------------------------------------------------
+
+\probleme{8 points}
+
+On considère la fonction numérique $f$ définie sur $\R$ par
+$$
+f(x) =
+\begin{cases}
+	1 + x\ln\!\left(1 - \dfrac{1}{x}\right), & \text{si } x < 0 \\[8pt]
+	\dfrac{2}{1+\e^{-x}}, & \text{si } x \geqslant 0
+\end{cases}
+$$
+On désigne par $\mathscr{C}$ sa courbe représentative dans un repère orthonormé d'unité graphique $2\text{cm}$.
+
+\medskip
+\noindent\textbf{Partie A}
+
+\begin{enumerate}
+	\item
+	\begin{enumerate}
+		\item Montrer que $f$ est continue en $x_0 = 0$. \hfill (0,5 pt)
+		\item Montrer que $\displaystyle\lim_{x\to0^-}\frac{f(x)-f(0)}{x} = +\infty$ et $\displaystyle\lim_{x\to0^+}\frac{f(x)-f(0)}{x} = \frac{1}{2}$.
+
+		Que peut-on conclure pour la fonction $f$ ? \hfill (0,5 pt + 0,25 pt)
+	\end{enumerate}
+	\item Pour tout $x \in \left]0\,;+\infty\right[$ ; Calculer $f'(x)$ où $f'$ est la fonction dérivée de $f$. \hfill (0,25 pt)
+	\item
+	\begin{enumerate}
+		\item Soit $g$ la fonction définie sur $\left]-\infty\,,0\right[$ par : $g(x) = \dfrac{1}{x-1} + \ln\!\left(1-\dfrac{1}{x}\right)$
+
+		Étudier la variation de $g$ et en déduire le signe de $g(x)$ sur l'intervalle $\left]-\infty\,,0\right[$. \hfill (0,75 pt + 0,25 pt)
+		\item Pour tout $x \in \left]-\infty\,;0\right[$ ; montrer que $f'(x) = g(x)$. \hfill (0,25 pt)
+	\end{enumerate}
+	\item Dresser le tableau de variation de $f$ sur $\R$. \hfill (1 pt)
+	\item Construire la courbe $\mathscr{C}$ ainsi que sa tangente (ou ses demi-tangentes) au point
+
+	d'abscisse $x_0 = 0$. \hfill (1 pt)
+\end{enumerate}
+
+\medskip
+\noindent\textbf{Partie B}
+
+\begin{enumerate}
+	\item Soit $h$ la fonction définie sur $[0\,;+\infty[$ par : $h(x) = f(x) - x$.
+
+	À l'aide de l'étude de variation de $h$ sur l'intervalle $[1\,;2]$, montrer que l'équation
+
+	$h(x) = 0$ admet une solution unique $\alpha \in [1\,;2]$. \hfill (0,75 pt)
+	\item Démontrer que pour tout $x \in [1\,;2]$ : $f(x) \in [1\,;2]$ et que $\left|f'(x)\right| \leqslant \dfrac{2}{3}$. \hfill (0,25 pt $\times$ 2)
+	\item On considère la suite numérique $(U_n)_{n\in\N}$ définie par :
+	$$
+	\begin{cases}
+		U_0 = 1 \\
+		U_{n+1} = f(U_n) \text{ pour tout } n \in \N
+	\end{cases}
+	$$
+	\begin{enumerate}
+		\item Démontrer par récurrence sur $n$ que pour tout $n \in \N$ : $U_n \in [1\,;2]$. \hfill (0,5 pt)
+		\item Démontrer que pour tout $n \in \N$ : $\left|U_{n+1}-\alpha\right| \leqslant \dfrac{2}{3}\left|U_n-\alpha\right|$ et $\left|U_n-\alpha\right| \leqslant \left(\dfrac{2}{3}\right)^n$. \hfill (0,5 pt $\times$ 2)
+		\item En déduire l'étude de convergence de la suite $(U_n)_{n\in\N}$. \hfill (0,25 pt)
+		\item Déterminer le plus petit entier naturel $n_0$ tel que $U_{n_0}$ soit la valeur approchée de $\alpha$ à $10^{-3}$ près. \hfill (0,25 pt)
+	\end{enumerate}
+\end{enumerate}
