@@ -13,7 +13,11 @@ d'empiler des entrées datées.
 Livre de Terminale S en LaTeX (classe `book`, a5paper) couvrant Algèbre,
 Analyse, Géométrie, Probabilités, les sujets officiels du Bacc Série S
 (2021–2026) et un chapitre Entrainement (19 sujets types + sujets bac
-étrangers). Compile sans erreur avec `latexmk -pdf`.
+étrangers). Compile sans erreur avec `latexmk -pdf`, et une passe de
+relecture globale (2026-08-26) a réduit les débordements de marge
+(`Overfull \hbox`) visibles de 27 à 10 occurrences uniques ; celles qui
+restent sont soit purement internes (`Underfull`, sans effet visuel),
+soit inférieures à ~11pt et vérifiées invisibles au rendu.
 
 ## Chapitres — état
 
@@ -48,11 +52,28 @@ Analyse, Géométrie, Probabilités, les sujets officiels du Bacc Série S
   officiel MESUPRES — à ne pas mélanger dans `parties/annales/` sauf
   demande explicite d'un emplacement séparé.
 - **Nesting LaTeX + a5paper** : les formules longues (grands ensembles,
-  inégalités à trois membres) dans un `enumerate` imbriqué à deux niveaux
-  débordent facilement de la marge sur ce format de page. Réflexe :
-  passer en affichage centré (`$$...$$`) ou couper en plusieurs lignes
-  avec `aligned`, puis vérifier via `latexmk` qu'aucun `Overfull \hbox`
-  significatif (> ~15pt) n'apparaît dans les fichiers touchés.
+  inégalités/égalités à plusieurs membres, plusieurs matrices sur une
+  même ligne) débordent facilement de la marge sur ce format de page,
+  surtout dans un `enumerate` imbriqué. Réflexes qui marchent :
+  - passer en affichage centré (`$$...$$` / `\[...\]`) plutôt que de
+    laisser une longue formule inline en fin de phrase ;
+  - couper une formule multi-lignes en `\begin{aligned}...\end{aligned}`
+    avec des `\\` explicites — un `\[...\]` sur plusieurs lignes sources
+    SANS `\\` est traité comme une seule ligne et déborde silencieusement ;
+  - pour un tableau (`tabular`), remplacer les colonnes `c`/`l` par des
+    colonnes `>{\centering\arraybackslash}p{largeur}` (package `array`,
+    déjà chargé dans `config/packages.tex`) dès que le contenu d'une
+    cellule est long ;
+  - pour un tableau `tkz-tab` trop large, réduire le paramètre `lgt`
+    de `\tkzTabInit`.
+  - ce qui NE marche PAS de façon fiable : forcer un saut de paragraphe
+    (ligne blanche) juste pour raccourcir une phrase — TeX peut quand
+    même produire un `Overfull` sur la ligne isolée résultante. Toujours
+    vérifier via `latexmk` + regarder le contenu exact du warning
+    (`grep -A5` sur le log) plutôt que supposer que le correctif a marché.
+  - Toujours vérifier après coup qu'aucun `Overfull \hbox` significatif
+    (> ~15pt) ne subsiste dans les fichiers touchés, et confirmer
+    visuellement (rendu PNG de la page) que le correctif ne casse rien.
 - **Workflow git** : toujours une branche de fonctionnalité + PR contre
   `main`, jamais de commit direct sur `main` (voir mémoire du projet).
 

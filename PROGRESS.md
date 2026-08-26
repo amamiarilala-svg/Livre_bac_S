@@ -6,6 +6,27 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-26 — Passe de relecture globale (débordements de marge)
+
+- Compilation complète du livre et audit systématique de tous les
+  `Overfull`/`Underfull \hbox` (pas seulement les fichiers des sujets
+  Bacc) : 27 débordements visibles uniques trouvés dans 8 fichiers
+  (`arithmetique.tex`, `matrices.tex`, `limites.tex`, `fonctions.tex`,
+  `integrales.tex`, `logarithme.tex`, `barycentre.tex`,
+  `variables_aleatoires.tex`), en plus de ceux déjà connus dans
+  `entrainement.tex` et les sujets Bacc.
+- Corrigés : formules multi-lignes sans `\\` (traitées à tort comme une
+  seule ligne), grands ensembles/systèmes en `enumerate` imbriqué,
+  plusieurs matrices sur une même ligne, tableaux avec colonnes `c`/`l`
+  non adaptées à du contenu long (passage à `array`'s
+  `p{largeur}`), et un tableau `tkz-tab` trop large (réduction de `lgt`).
+  Ajout du package `array` dans `config/packages.tex`.
+- Résultat : 27 → 10 débordements uniques restants, tous soit internes
+  (`Underfull`, sans effet visuel), soit vérifiés invisibles au rendu
+  (< ~11pt). Vérification visuelle (rendu PNG) de chaque zone corrigée.
+- Non touché : les avertissements `Underfull` liés au `\newline` de fin
+  de la macro `\exerciceresolu` (cosmétiques, pas de défaut visuel).
+
 ## 2026-08-26 — Sujets officiels du Bacc Série S (2021–2026)
 
 - Transcription fidèle des sujets officiels 2021, 2023, 2024, 2025, 2026

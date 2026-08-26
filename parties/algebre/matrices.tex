@@ -72,7 +72,9 @@
 \begin{exemple}
 	\[
 	O_3 = \begin{pmatrix}0&0&0\\0&0&0\\0&0&0\end{pmatrix}, \quad
-	I_3 = \begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}, \quad
+	I_3 = \begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}.
+	\]
+	\[
 	A   = \begin{pmatrix}2&-1&3\\0&4&1\\-2&0&5\end{pmatrix}, \quad
 	{}^tA = \begin{pmatrix}2&0&-2\\-1&4&0\\3&1&5\end{pmatrix}.
 	\]
@@ -413,12 +415,14 @@ A^3 =
 
 \textbf{2. Vérification.}
 \[
-4A + A^2 - A^3
-= \begin{pmatrix}0&-4&-4\\-4&0&-4\\-4&-4&0\end{pmatrix}
-+ \begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix}
-- \begin{pmatrix}-2&-3&-3\\-3&-2&-3\\-3&-3&-2\end{pmatrix}
-= \begin{pmatrix}4&0&0\\0&4&0\\0&0&4\end{pmatrix}
-= 4I_3.
+\begin{aligned}
+	4A + A^2 - A^3
+	&= \begin{pmatrix}0&-4&-4\\-4&0&-4\\-4&-4&0\end{pmatrix}
+	+ \begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix}
+	- \begin{pmatrix}-2&-3&-3\\-3&-2&-3\\-3&-3&-2\end{pmatrix} \\
+	&= \begin{pmatrix}4&0&0\\0&4&0\\0&0&4\end{pmatrix}
+	= 4I_3.
+\end{aligned}
 \]
 
 \textbf{3. Déduction de $A^{-1}$.}
@@ -489,10 +493,12 @@ C^2 = \begin{pmatrix}2&2&0\\0&2&0\\0&0&2\end{pmatrix}^2
 $C^n = \begin{pmatrix}2^n&n\cdot2^n&0\\0&2^n&0\\0&0&2^n\end{pmatrix}$.
 Montrons la propriété au rang $n+1$ :
 \[
-C^{n+1} = C^n \cdot C
-= \begin{pmatrix}2^n&n\cdot2^n&0\\0&2^n&0\\0&0&2^n\end{pmatrix}
-\begin{pmatrix}2&2&0\\0&2&0\\0&0&2\end{pmatrix}
-= \begin{pmatrix}2^{n+1}&(n+1)\cdot2^{n+1}&0\\0&2^{n+1}&0\\0&0&2^{n+1}\end{pmatrix}.
+\begin{aligned}
+	C^{n+1} = C^n \cdot C
+	&= \begin{pmatrix}2^n&n\cdot2^n&0\\0&2^n&0\\0&0&2^n\end{pmatrix}
+	\begin{pmatrix}2&2&0\\0&2&0\\0&0&2\end{pmatrix} \\
+	&= \begin{pmatrix}2^{n+1}&(n+1)\cdot2^{n+1}&0\\0&2^{n+1}&0\\0&0&2^{n+1}\end{pmatrix}.
+\end{aligned}
 \]
 La propriété est vraie au rang $n+1$. Par le principe de récurrence,
 elle est vraie pour tout $n\in\N^*\setminus\{1\}$.
