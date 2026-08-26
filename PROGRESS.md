@@ -1,0 +1,69 @@
+# Journal de progression — Livre Bac S
+
+Ce fichier retrace l'avancement du livre, du plus récent au plus ancien.
+Une entrée = une session de travail ou un lot de changements cohérent.
+Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
+
+---
+
+## 2026-08-26 — Sujets officiels du Bacc Série S (2021–2026)
+
+- Transcription fidèle des sujets officiels 2021, 2023, 2024, 2025, 2026
+  depuis les PDF/photos envoyés par l'utilisateur, chacun dans son propre
+  fichier (`parties/annales/bac_20XX.tex`).
+- Nouvelle commande `\sujetbacheader{année}` (dans `config/environnements.tex`)
+  pour un entête uniforme (année, épreuve, durée, coefficient) sur toutes
+  les sessions.
+- Nouvelle commande `\probleme` (compteur séparé de `\exercice`) pour que
+  les énoncés qui distinguent "Exercice" et "Problème" affichent le bon
+  libellé.
+- `sujet_types.tex` charge désormais les sessions dans l'ordre
+  chronologique via `\input`.
+- Le sujet 2022 déjà présent n'a été touché que dans son entête ; son
+  contenu est resté intact.
+- Travail fait sur la branche `chapitre-bac-officiels`, PR #2, mergée
+  dans `main`.
+
+## 2026-08-26 — Chapitre Probabilités + préface/copyright
+
+- Chapitre Probabilités complet (5 sous-chapitres : probabilités,
+  conditionnelles, variables aléatoires, binomiale, normale).
+- Ajout de la page de copyright et de la préface.
+- Travail fait sur la branche `chapitre-probabilites`, PR #1, mergée
+  dans `main`.
+
+## 2026-08-22 — 15 sujets types supplémentaires
+
+- Ajout des sujets types n°5 à n°19 dans `entrainement.tex`.
+
+## 2026-08-10 — Chapitre Calcul matriciel
+
+- Ajout du chapitre Calcul matriciel (`parties/algebre/matrices.tex`).
+- Ajout de 6 sujets types sur le calcul matriciel dans `entrainement.tex`.
+- Corrections de syntaxe (`\begin{theoreme}{Titre}`, `\begin{methode}[Titre]`
+  mal utilisés à plusieurs endroits).
+
+## 2026-08-09 — Grosse session de nettoyage et mise en page
+
+- Ajout du chapitre Les Isométries du Plan.
+- Ajout du chapitre Entrainement (sujets types + sujets bac étrangers).
+- Amélioration de la mise en page : table des matières, boîtes sécables,
+  entête renommé "Objectif Bac".
+- Corrections diverses : doublons dans Arithmétique, titre du chapitre
+  Intégrales, casse des titres (Complexes), fichiers vides supprimés.
+
+## 2026-06-17 → 2026-07-14 — Structure initiale et premiers chapitres
+
+- Structure initiale du projet (classe `book`, a5paper, style, packages,
+  environnements tcolorbox).
+- Chapitre Arithmétique (divisibilité, récurrence, division euclidienne)
+  + premier sujet type Bac S 2022 dans `sujet_types.tex`.
+- Chapitre Calcul matriciel (première version) et refonte du chapitre
+  Complexes.
+- Chapitres Logarithme/Exponentielle et Équations différentielles.
+
+---
+
+*Pour ajouter une entrée : décrire ce qui a été fait, pas comment (le
+détail technique est dans les commits git). Une phrase par changement
+notable suffit.*
