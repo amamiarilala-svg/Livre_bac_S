@@ -23,7 +23,7 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
 
 | Partie | État |
 |---|---|
-| Algèbre (arithmétique, matrices, complexes) | Terminé. Chapitres Complexes et Arithmétique alignés sur le modèle type le 2026-08-27 (Arithmétique : ajout $\Z/n\Z$, PPCM, systèmes de numération). |
+| Algèbre (arithmétique, matrices, complexes) | Terminé. Chapitres Complexes, Arithmétique et Calcul matriciel alignés sur le modèle type le 2026-08-27 (matriciel : les 6 sujets types matrices ont quitté `entrainement.tex` pour le chapitre). |
 | Analyse (limites → équa diff) | Terminé |
 | Géométrie (barycentre → espace) | Terminé. Chapitres Isométries, Barycentre et Géométrie dans l'espace (créé de zéro) alignés sur le modèle type le 2026-08-27. |
 | Probabilités (5 sous-chapitres) | Terminé |
@@ -39,9 +39,9 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
   Exigences par chapitre : structure type (échauffement figure + Vrai/Faux +
   difficulté progressive), **≥ 5 sujets types Bacc**, couverture de tout le
   programme officiel en privilégiant les notions déjà vues aux annales.
-  - Faits, avec 5 sujets types Bacc chacun : Isométries, Barycentre,
-    Complexes, Géométrie dans l'espace, Arithmétique.
-  - Restent : algèbre (matrices), analyse (limites,
+  - Faits, avec 5+ sujets types Bacc chacun : Isométries, Barycentre,
+    Complexes, Géométrie dans l'espace, Arithmétique, Calcul matriciel.
+  - Restent : analyse (limites,
     continuité, dérivation, étude de fonctions, intégrales, logarithme,
     exponentielle, suites ; équa diff a déjà 2 sujets bac),
     probabilités (5 fichiers).

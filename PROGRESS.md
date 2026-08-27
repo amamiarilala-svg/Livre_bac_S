@@ -6,6 +6,25 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-27 — Chapitre Calcul matriciel aligné sur le modèle type
+
+- `parties/algebre/matrices.tex` : ajout d'une citation, objectifs étoffés,
+  3 blocs `\begin{methode}` (inverse par relation polynomiale ; calcul de
+  $A^n$ par récurrence / décomposition $\lambda I + N$ / relation du 2ᵈ
+  degré ; système $AX = B$).
+- **Nouvelle section « Exercices d'entraînement »** : Échauffement (calculs
+  de base, déterminant/inverse, puissances, **Vrai/Faux**), sous-section
+  « Opérations, déterminant, puissances », et **6 sujets types Bac**
+  (relation polynomiale + récurrence ; opérations/trace/transposée ;
+  système $2\times2$ ; puissance par décomposition ; inverse par relation +
+  système $3\times3$ ; déterminant/trace/inversibilité).
+- **Déplacement demandé** : la section `\section*{Sujets type : Calcul
+  matriciel}` (6 sujets) a été retirée de `entrainement.tex` et intégrée au
+  chapitre (Sujet 1 légèrement modifié pour ne pas dupliquer le sujet
+  officiel 2026).
+- Compile sans erreur (332 pages) ; aucun `Overfull \hbox` visible ajouté.
+- Branche `chapitre-matrices`, PR contre `main`.
+
 ## 2026-08-27 — Chapitre Arithmétique aligné sur le modèle type
 
 - `parties/algebre/arithmetique.tex` complété selon le modèle type et le
