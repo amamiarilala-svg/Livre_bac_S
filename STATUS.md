@@ -41,9 +41,10 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
   programme officiel en privilégiant les notions déjà vues aux annales.
   - Faits, avec 5+ sujets types Bacc chacun : Isométries, Barycentre,
     Complexes, Géométrie dans l'espace, Arithmétique, Calcul matriciel,
-    **Limites et continuité** (fusion + refonte, PR `chapitre-limites-continuite`).
-  - Restent : analyse (dérivation — chapitre désormais « Dérivabilité »,
-    à réaligner ensuite ; étude de fonctions, intégrales, logarithme,
+    **Limites et continuité**, **Dérivabilité** (aligné modèle type le
+    2026-08-27 : ln/exp uniquement + section « familles de fonctions à
+    paramètre » ; 5 sujets types Bac ; PR `chapitre-derivabilite`).
+  - Restent : analyse (étude de fonctions, intégrales, logarithme,
     exponentielle, suites ; équa diff a déjà 2 sujets bac),
     probabilités (5 fichiers).
 - Si l'utilisateur envoie un nouveau sujet officiel (PDF ou photos), il

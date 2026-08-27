@@ -6,6 +6,39 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-27 — Chapitre « Dérivabilité » aligné sur le modèle type
+
+- `parties/analyse/derivation.tex` entièrement refondu selon le modèle type
+  (Isométries) et le programme officiel. **Parti pris : ln et exp
+  uniquement** dans tous les exemples et exercices.
+- Cours : citation + objectifs étoffés ; dérivabilité en un point
+  (point anguleux $|\e^x-1|$, demi-tangente verticale $\sqrt{\ln x}$) ;
+  interprétation géométrique + figure ; fonction dérivée, tables
+  (dérivées usuelles avec $\ln$/$\e^x$, opérations) et **dérivée d'une
+  composée** ; **dérivée de la réciproque d'une bijection** ($\ln$ via
+  $\exp$) ; **dérivées successives** (récurrence $x\e^x$) ; **convexité /
+  concavité / points d'inflexion** + figure + inégalités $\e^x\ge 1+x$,
+  $\ln x\le x-1$ ; **TAF et IAF** (encadrement de $\ln 1{,}2$).
+- **Nouvelle section « Familles de fonctions dépendant d'un paramètre »**
+  (demande utilisateur) : méthode (point fixe commun, lieu des extremums
+  par élimination de $m$, tangentes) + 2 exercices résolus
+  ($\e^x-mx$, $(x-m)\e^x$).
+- Section « Méthodes et exercices résolus » : méthode de raccord + 3
+  exercices résolus (calcul de dérivées, raccord + demi-tangentes,
+  encadrement par IAF).
+- **Section « Exercices d'entraînement »** : échauffement (lecture de
+  courbe + figure, dérivable ou non, **Vrai/Faux** 8 items) ; batteries
+  de calcul de dérivées en colonnes ; tangentes / convexité / réciproque ;
+  **familles à paramètre** ($\e^x+mx$, $x-m\e^x$, $x^n\e^{-x}$) ;
+  **5 sujets types Bac** (point anguleux + réseau ; fonction auxiliaire
+  $\e^x-x^2$ ; réseau $(x+m)\e^{-x}$ ; bijection réciproque + suite avec
+  IAF ; dérivées successives $x^2\e^x$ + discussion selon $m$).
+- La continuité et le TVI restent au chapitre précédent ; une `remarque`
+  d'ouverture y renvoie.
+- `latexmk -pdf main.tex` : **349 pages, 0 erreur**, aucune référence non
+  résolue, aucun `Overfull` dans le chapitre.
+- Branche `chapitre-derivabilite` → PR contre `main`.
+
 ## 2026-08-27 — Fusion « Limites et continuité » + chapitre « Dérivabilité »
 
 - Nouveau fichier `parties/analyse/limites_continuite.tex` : chapitre unique
