@@ -13,9 +13,11 @@
 \begin{objectifs}
 	\begin{itemize}[label=\textbullet]
 		\item Définir et construire le barycentre d'un système de points pondérés.
-		\item Utiliser les propriétés d'associativité et de linéarité du barycentre.
+		\item Utiliser les propriétés d'homogénéité, d'associativité et de
+		réduction vectorielle du barycentre.
 		\item Déterminer et construire les lignes de niveau (ensembles de points).
-		\item Appliquer le barycentre en géométrie analytique et aux centres remarquables.
+		\item Appliquer le barycentre en géométrie analytique et aux centres
+		remarquables.
 	\end{itemize}
 \end{objectifs}
 
@@ -27,7 +29,7 @@
 \begin{definition}
 	Soient $A_1, A_2, \ldots, A_n$ des points du plan et $\alpha_1, \alpha_2, \ldots, \alpha_n$
 	des réels tels que $\alpha_1 + \alpha_2 + \cdots + \alpha_n \neq 0$.
-	
+
 	Il existe un unique point $G$ vérifiant :
 	$$
 	\alpha_1\,\vect{GA_1} + \alpha_2\,\vect{GA_2} + \cdots + \alpha_n\,\vect{GA_n} = \vect{0}.
@@ -36,7 +38,7 @@
 	$$
 	\{(A_1,\alpha_1)\,;\,(A_2,\alpha_2)\,;\,\ldots\,;\,(A_n,\alpha_n)\}.
 	$$
-	
+
 	Les réels $\alpha_i$ s'appellent les \textbf{coefficients} (ou \textbf{poids}) du système.
 \end{definition}
 
@@ -45,7 +47,7 @@
 	Si $\alpha_1 + \alpha_2 + \cdots + \alpha_n = 0$, le système n'admet pas de barycentre.
 \end{attention}
 
-\begin{propriete}{Caractérisation vectorielle}{}
+\begin{propriete}{Caractérisation vectorielle}{bary_carac}
 	$G$ est le barycentre de $\{(A_i, \alpha_i)\}$ si et seulement si pour tout point $M$
 	du plan :
 	$$
@@ -53,18 +55,7 @@
 	$$
 \end{propriete}
 
-\begin{exemple}
-	Soient $A$, $B$ deux points et $\alpha, \beta$ deux réels avec $\alpha + \beta \neq 0$.
-	
-	Le barycentre $G$ de $\{(A,\alpha)\,;\,(B,\beta)\}$ vérifie :
-	$$
-	\alpha\,\vect{GA} + \beta\,\vect{GB} = \vect{0}
-	\iff \vect{AG} = \frac{\beta}{\alpha+\beta}\,\vect{AB}.
-	$$
-	$G$ divise $[AB]$ dans le rapport $\dfrac{\beta}{\alpha}$ à partir de $A$.
-\end{exemple}
-
-\begin{propriete}{Cas de deux points}{}
+\begin{propriete}{Cas de deux points}{bary_deux_points}
 	Le barycentre $G$ de $\{(A,\alpha)\,;\,(B,\beta)\}$ avec $\alpha + \beta \neq 0$
 	vérifie :
 	$$
@@ -72,24 +63,73 @@
 	$$
 	\begin{itemize}[label=\textbullet]
 		\item Si $\alpha = \beta$ : $G$ est le \textbf{milieu} de $[AB]$.
-		\item Si $\alpha + \beta > 0$ et $\alpha, \beta > 0$ : $G$ est entre $A$ et $B$.
-		\item Si les coefficients sont de signes opposés : $G$ est à l'extérieur de $[AB]$.
+		\item Si $\alpha, \beta > 0$ : $G$ est \textbf{entre} $A$ et $B$, plus près
+		du point de plus grand coefficient.
+		\item Si $\alpha$ et $\beta$ sont de signes opposés : $G$ est \textbf{à
+		l'extérieur} de $[AB]$, du côté du point de plus grand coefficient en
+		valeur absolue.
 	\end{itemize}
 \end{propriete}
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	% --- cas 1 : poids positifs, G entre A et B ---
+	\coordinate (A) at (0,0);
+	\coordinate (B) at (4,0);
+	\draw[thick] (A) -- (B);
+	\filldraw (A) circle (1.6pt) node[below,font=\small] {$A$};
+	\filldraw (B) circle (1.6pt) node[below,font=\small] {$B$};
+	% G = bary {(A,1),(B,2)} : AG = 2/3 AB
+	\filldraw[blue!70!black] (2.667,0) circle (1.8pt)
+	  node[above,font=\small,blue!70!black] {$G$};
+	\node[font=\scriptsize,blue!70!black] at (2.667,-0.45)
+	  {$\{(A,1)\,;(B,2)\}$};
+	\node[font=\scriptsize] at (2,0.45) {$\vect{AG}=\tfrac{2}{3}\vect{AB}$};
+	% --- cas 2 : signes opposés, G' à l'extérieur ---
+	\begin{scope}[yshift=-1.7cm]
+	\coordinate (A2) at (0,0);
+	\coordinate (B2) at (4,0);
+	\draw[thick] (-1.6,0) -- (B2);
+	\draw[thick] (A2) -- (B2);
+	\filldraw (A2) circle (1.6pt) node[below,font=\small] {$A$};
+	\filldraw (B2) circle (1.6pt) node[below,font=\small] {$B$};
+	% G' = bary {(A,2),(B,-1)} : AG' = -1 AB  -> à gauche de A
+	\filldraw[red!70!black] (-1.2,0) circle (1.8pt)
+	  node[above,font=\small,red!70!black] {$G'$};
+	\node[font=\scriptsize,red!70!black] at (-0.2,-0.45) {$\{(A,2)\,;(B,-1)\}$};
+	\node[font=\scriptsize] at (-1.3,0.45) {$\vect{AG'}=-\vect{AB}$};
+	\end{scope}
+\end{tikzpicture}
+\end{center}
+
+\begin{exemple}
+	Soit $G$ le barycentre de $\{(A,3)\,;\,(B,1)\}$. Alors
+	$\vect{AG} = \dfrac{1}{4}\vect{AB}$ : $G$ est au quart de $[AB]$ à partir de $A$.
+\end{exemple}
 
 
 % ============================================================
 \section{Propriétés fondamentales}
 % ============================================================
 
-\begin{propriete}{Associativité du barycentre}{}
-	Soient $G_1$ le barycentre de $\{(A_i, \alpha_i)_{i \in I}\}$ et
-	$G_2$ le barycentre de $\{(A_j, \alpha_j)_{j \in J}\}$, avec $I \cap J = \emptyset$.
-	
-	Alors le barycentre de l'ensemble $\{(A_i, \alpha_i)_{i \in I \cup J}\}$
-	est aussi le barycentre de
+\begin{propriete}{Homogénéité}{bary_homogeneite}
+	Si l'on multiplie \textbf{tous} les coefficients par un même réel $\lambda \neq 0$,
+	le barycentre est \textbf{inchangé} :
 	$$
-	\left\{\left(G_1,\ \sum_{i \in I}\alpha_i\right)\,;\,\left(G_2,\ \sum_{j \in J}\alpha_j\right)\right\}.
+	\text{bar}\{(A_i,\alpha_i)\} = \text{bar}\{(A_i,\lambda\alpha_i)\}.
+	$$
+	On peut donc toujours se ramener à des coefficients entiers, ou de somme $1$.
+\end{propriete}
+
+\begin{propriete}{Associativité du barycentre}{bary_associativite}
+	Soient $G_1$ le barycentre de $\{(A_i, \alpha_i)_{i \in I}\}$ (de somme
+	$\sigma_1 \neq 0$) et $G_2$ le barycentre de $\{(A_j, \alpha_j)_{j \in J}\}$
+	(de somme $\sigma_2 \neq 0$), avec $I \cap J = \emptyset$.
+
+	Alors le barycentre du système complet $\{(A_i, \alpha_i)_{i \in I \cup J}\}$
+	est le barycentre de
+	$$
+	\left\{(G_1,\ \sigma_1)\,;\,(G_2,\ \sigma_2)\right\}.
 	$$
 \end{propriete}
 
@@ -97,30 +137,41 @@
 Cette propriété permet de calculer un barycentre \textbf{en plusieurs étapes},
 en regroupant d'abord certains points entre eux.
 
-\begin{exemple}
-	Calculer le barycentre $G$ de $\{(A,1)\,;\,(B,2)\,;\,(C,3)\}$.
-	
-	\textbf{Étape 1 :} On calcule $G_1 = $ barycentre de $\{(A,1)\,;\,(B,2)\}$
-	avec poids total $3$.
-	
-	\textbf{Étape 2 :} Par associativité, $G = $ barycentre de $\{(G_1, 3)\,;\,(C,3)\}$,
-	donc $G$ est le \textbf{milieu} de $[G_1C]$.
-\end{exemple}
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (0,0);
+	\coordinate (B) at (3.4,0.3);
+	\coordinate (C) at (1.2,2.6);
+	\draw[thick] (A)--(B)--(C)--cycle;
+	\filldraw (A) circle (1.5pt) node[below left,font=\small] {$A\,(1)$};
+	\filldraw (B) circle (1.5pt) node[below right,font=\small] {$B\,(2)$};
+	\filldraw (C) circle (1.5pt) node[above,font=\small] {$C\,(3)$};
+	% G1 = bary {(A,1),(B,2)} : AG1 = 2/3 AB
+	\coordinate (G1) at ($ (A)!0.6667!(B) $);
+	\filldraw[blue!70!black] (G1) circle (1.7pt)
+	  node[below,font=\scriptsize,blue!70!black] {$G_1\,(3)$};
+	\draw[blue!60!black,dashed] (C) -- (G1);
+	% G = bary {(G1,3),(C,3)} : milieu de [G1 C]
+	\coordinate (G) at ($ (G1)!0.5!(C) $);
+	\filldraw[red!70!black] (G) circle (1.9pt)
+	  node[right,font=\small,red!70!black] {$G$};
+	\node[font=\scriptsize,align=center] at (3.7,2.1)
+	  {$G=\text{bar}\{(A,1);(B,2);(C,3)\}$\\ $=$ milieu de $[G_1C]$};
+\end{tikzpicture}
+\end{center}
 
-\begin{propriete}{Linéarité — relation de Chasles généralisée}{}
-	Pour tout point $M$ du plan et tout système $\{(A_i, \alpha_i)\}$ de somme
-	$\sigma = \sum \alpha_i \neq 0$ de barycentre $G$ :
-	$$
-	\sum_{i=1}^{n} \alpha_i\,\vect{MA_i} = \sigma\,\vect{MG}.
-	$$
-	En particulier, pour tout vecteur $\vec{u}$ :
-	$$
-	\sum_{i=1}^{n} \alpha_i\,\overrightarrow{A_i} = \sigma\,\overrightarrow{G},
-	$$
-	où les vecteurs positions sont pris depuis une même origine.
+\begin{propriete}{Réduction vectorielle}{bary_reduction_vect}
+	Pour tout point $M$ et tout système $\{(A_i, \alpha_i)\}$ :
+	\begin{itemize}[label=\textbullet]
+		\item si $\sigma = \sum \alpha_i \neq 0$, de barycentre $G$ :
+		$\displaystyle\sum_{i=1}^{n} \alpha_i\,\vect{MA_i} = \sigma\,\vect{MG}$ ;
+		\item si $\sigma = \sum \alpha_i = 0$ : le vecteur
+		$\displaystyle\sum_{i=1}^{n} \alpha_i\,\vect{MA_i}$ est \textbf{constant}
+		(indépendant de $M$).
+	\end{itemize}
 \end{propriete}
 
-\begin{propriete}{Coordonnées du barycentre}{}
+\begin{propriete}{Coordonnées du barycentre}{bary_coord}
 	Dans un repère, si $A_i$ a pour coordonnées $(x_i, y_i)$, alors le barycentre
 	$G$ de $\{(A_i, \alpha_i)\}$ a pour coordonnées :
 	$$
@@ -132,43 +183,63 @@ en regroupant d'abord certains points entre eux.
 
 \begin{exemple}
 	Soient $A(1\,;\,2)$, $B(3\,;\,0)$, $C(-1\,;\,4)$ avec coefficients $2$, $1$, $3$.
-	
 	$$
-	x_G = \frac{2 \times 1 + 1 \times 3 + 3 \times (-1)}{2+1+3}
-	= \frac{2 + 3 - 3}{6} = \frac{2}{6} = \frac{1}{3}.
+	x_G = \frac{2(1) + 1(3) + 3(-1)}{2+1+3} = \frac{2}{6} = \frac{1}{3},
+	\qquad
+	y_G = \frac{2(2) + 1(0) + 3(4)}{6} = \frac{16}{6} = \frac{8}{3}.
 	$$
-	$$
-	y_G = \frac{2 \times 2 + 1 \times 0 + 3 \times 4}{6}
-	= \frac{4 + 0 + 12}{6} = \frac{16}{6} = \frac{8}{3}.
-	$$
-	
 	Donc $G\!\left(\dfrac{1}{3}\,;\,\dfrac{8}{3}\right)$.
 \end{exemple}
+
+\begin{propriete}{Conservation par isométrie}{bary_isometrie}
+	Toute isométrie (et plus généralement toute application affine) conserve le
+	barycentre : l'image du barycentre de $\{(A_i,\alpha_i)\}$ est le barycentre
+	de $\{(A_i',\alpha_i)\}$, où $A_i'$ est l'image de $A_i$.
+\end{propriete}
 
 
 % ============================================================
 \section{Centres remarquables d'un triangle}
 % ============================================================
 
-\begin{propriete}{Centres remarquables comme barycentres}{}
+\begin{propriete}{Centres remarquables comme barycentres}{bary_centres}
 	Soit $ABC$ un triangle.
 	\begin{enumerate}
 		\item Le \textbf{centre de gravité} $G$ est le barycentre de
 		$\{(A,1)\,;\,(B,1)\,;\,(C,1)\}$. Il vérifie $\vect{GA} + \vect{GB} + \vect{GC} = \vect{0}$.
 
 		\item L'\textbf{orthocentre} $H$ est le barycentre de
-		$$
-		\{(A,\tan\hat{A})\,;\,(B,\tan\hat{B})\,;\,(C,\tan\hat{C})\}.
-		$$
-		
+		$$\{(A,\tan\hat{A})\,;\,(B,\tan\hat{B})\,;\,(C,\tan\hat{C})\}.$$
+
 		\item Le \textbf{centre du cercle circonscrit} $O$ est le barycentre de
-		$$
-		\{(A,\sin 2\hat{A})\,;\,(B,\sin 2\hat{B})\,;\,(C,\sin 2\hat{C})\}.
-		$$
+		$$\{(A,\sin 2\hat{A})\,;\,(B,\sin 2\hat{B})\,;\,(C,\sin 2\hat{C})\}.$$
 	\end{enumerate}
 \end{propriete}
 
-\begin{propriete}{Relation d'Euler}{}
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (0,0);
+	\coordinate (B) at (4,0);
+	\coordinate (C) at (1,2.6);
+	\coordinate (I) at ($ (B)!0.5!(C) $);
+	\coordinate (J) at ($ (A)!0.5!(C) $);
+	\coordinate (K) at ($ (A)!0.5!(B) $);
+	\draw[thick] (A)--(B)--(C)--cycle;
+	\draw[gray!60] (A)--(I) (B)--(J) (C)--(K);
+	\filldraw (A) circle (1.4pt) node[below left,font=\small] {$A$};
+	\filldraw (B) circle (1.4pt) node[below right,font=\small] {$B$};
+	\filldraw (C) circle (1.4pt) node[above,font=\small] {$C$};
+	\filldraw (I) circle (1.2pt) node[above right,font=\scriptsize] {$I$};
+	\filldraw (J) circle (1.2pt) node[left,font=\scriptsize] {$J$};
+	\filldraw (K) circle (1.2pt) node[below,font=\scriptsize] {$K$};
+	\filldraw[red!70!black] ($ (A)!0.6667!(I) $) circle (1.8pt)
+	  node[right,font=\small,red!70!black] {$G$};
+	\node[font=\scriptsize] at (3.6,2.2) {$\vect{GA}+\vect{GB}+\vect{GC}=\vect0$};
+	\node[font=\scriptsize] at (3.5,1.75) {$AG=2\,GI$};
+\end{tikzpicture}
+\end{center}
+
+\begin{propriete}{Relation d'Euler}{bary_euler}
 	Dans tout triangle $ABC$, en notant $G$ le centre de gravité,
 	$H$ l'orthocentre et $O$ le centre du cercle circonscrit :
 	$$
@@ -183,274 +254,497 @@ en regroupant d'abord certains points entre eux.
 % ============================================================
 
 \begin{definition}
-	\textbf{Ligne de niveau}\par
-	Soit $\{(A_i, \alpha_i)\}$ un système de points pondérés de barycentre $G$.
-	Pour tout réel $k$, l'\textbf{ensemble de niveau $k$} est :
+	\textbf{Ligne de niveau.}\par
+	Soit $\{(A_i, \alpha_i)\}$ un système de points pondérés. Pour tout réel $k$,
+	l'\textbf{ensemble de niveau $k$} est :
 	$$
 	\mathscr{E}_k = \left\{ M \in \mathscr{P} \;\middle|\;
 	\sum_{i=1}^{n} \alpha_i\,MA_i^2 = k \right\}.
 	$$
 \end{definition}
 
-\begin{theoreme}
-	\textbf{Réduction de la somme pondérée des carrés}\par
-	Soit $G$ le barycentre de $\{(A_i, \alpha_i)\}$ de somme $\sigma = \sum \alpha_i \neq 0$.
-	Pour tout point $M$ :
-	$$
-	\sum_{i=1}^{n} \alpha_i\,MA_i^2
-	= \sigma\,MG^2 + \sum_{i=1}^{n} \alpha_i\,GA_i^2.
-	$$
+\begin{theoreme}[Réduction de la somme pondérée des carrés]
+	Soit $\sigma = \sum \alpha_i$.
+	\begin{itemize}[label=\textbullet]
+		\item \textbf{Si $\sigma \neq 0$}, de barycentre $G$ : pour tout point $M$,
+		$$
+		\sum_{i=1}^{n} \alpha_i\,MA_i^2 = \sigma\,MG^2 + K,
+		\qquad K = \sum_{i=1}^{n} \alpha_i\,GA_i^2 .
+		$$
+		\item \textbf{Si $\sigma = 0$}, en posant $\vec{u} = \sum \alpha_i\,\vect{OA_i}$
+		(vecteur constant) : $\displaystyle\sum \alpha_i\,MA_i^2 = 2\,\vect{OM}\cdot\vec{u} + c$
+		est une fonction \textbf{affine} des coordonnées de $M$.
+	\end{itemize}
 \end{theoreme}
 
-\remarque
-On pose $\displaystyle K = \sum_{i=1}^{n} \alpha_i\,GA_i^2$ (constante indépendante de $M$).
-La formule devient :
-$$
-\sum_{i=1}^{n} \alpha_i\,MA_i^2 = \sigma\,MG^2 + K.
-$$
-
-\begin{propriete}{Nature des lignes de niveau}{}
-	Avec les notations ci-dessus :
-	
+\begin{propriete}{Nature des lignes de niveau}{bary_niveau_nature}
 	\begin{enumerate}
-		\item \textbf{Si $\sigma > 0$} : l'ensemble $\mathscr{E}_k$ est
+		\item \textbf{Si $\sigma > 0$} : $\mathscr{E}_k$ est
 		\begin{itemize}[label=\textbullet]
 			\item un \textbf{cercle} de centre $G$ et de rayon $r = \sqrt{\dfrac{k-K}{\sigma}}$
 			si $k > K$,
-			\item le \textbf{point} $G$ si $k = K$,
-			\item l'\textbf{ensemble vide} si $k < K$.
+			\item le \textbf{point} $G$ si $k = K$, \quad l'\textbf{ensemble vide} si $k < K$.
 		\end{itemize}
-		
-		\item \textbf{Si $\sigma < 0$} : l'ensemble $\mathscr{E}_k$ est
-		\begin{itemize}[label=\textbullet]
-			\item un \textbf{cercle} de centre $G$ et de rayon $r = \sqrt{\dfrac{k-K}{\sigma}}$
-			si $k < K$,
-			\item le \textbf{point} $G$ si $k = K$,
-			\item l'\textbf{ensemble vide} si $k > K$.
-		\end{itemize}
+		\item \textbf{Si $\sigma < 0$} : mêmes conclusions en échangeant les
+		inégalités ($\mathscr{E}_k$ cercle si $k < K$, vide si $k > K$).
+		\item \textbf{Si $\sigma = 0$} : $\mathscr{E}_k$ est une \textbf{droite}
+		(perpendiculaire à $\vec u$), ou $\emptyset$, ou le plan entier.
 	\end{enumerate}
 \end{propriete}
 
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (G) at (0,0);
+	\draw[blue!70!black,thick] (G) circle (1.8);
+	\filldraw (G) circle (1.6pt) node[below right,font=\small] {$G$};
+	\coordinate (M) at (35:1.8);
+	\filldraw (M) circle (1.6pt) node[above right,font=\small] {$M$};
+	\draw[gray!70] (G) -- (M) node[midway,above,font=\scriptsize] {$r$};
+	\node[blue!70!black,font=\scriptsize] at (-1.5,-1.9)
+	  {$\sum \alpha_i\,MA_i^2 = k \iff MG^2 = \dfrac{k-K}{\sigma}$};
+\end{tikzpicture}
+\end{center}
+
 \begin{astucebac}
-	Pour déterminer la nature d'un ensemble de points défini par
-	$\alpha\,MA^2 + \beta\,MB^2 = k$ :
+	Pour déterminer la nature d'un ensemble $\sum \alpha_i\,MA_i^2 = k$ :
 	\begin{enumerate}
-		\item Calculer le barycentre $G$ de $\{(A,\alpha)\,;\,(B,\beta)\}$.
-		\item Appliquer la formule de réduction : $\alpha\,MA^2 + \beta\,MB^2 = (\alpha+\beta)\,MG^2 + K$.
-		\item Conclure selon le signe de $\sigma = \alpha + \beta$ et la valeur de $k - K$.
+		\item Calculer $\sigma = \sum \alpha_i$.
+		\item Si $\sigma \neq 0$ : trouver le barycentre $G$, calculer
+		$K = \sum \alpha_i\,GA_i^2$, réduire en $\sigma\,MG^2 + K = k$, conclure
+		selon le signe de $\dfrac{k-K}{\sigma}$.
+		\item Si $\sigma = 0$ : la relation devient affine $\Rightarrow$
+		\textbf{droite}. On développe $\sum \alpha_i\,MA_i^2$ avec un point fixe
+		bien choisi.
 	\end{enumerate}
 \end{astucebac}
 
-\begin{exemple}
-	Déterminer l'ensemble des points $M$ tels que $MA^2 + 2\,MB^2 = 9$,
-	où $A(0\,;\,0)$ et $B(3\,;\,0)$.
-	
-	\textbf{Étape 1 :} $\sigma = 1 + 2 = 3$. Le barycentre $G$ de $\{(A,1)\,;\,(B,2)\}$ vérifie
-	$\vect{AG} = \dfrac{2}{3}\,\vect{AB}$, donc $G(2\,;\,0)$.
-	
-	\textbf{Étape 2 :} $K = 1 \times GA^2 + 2 \times GB^2 = 4 + 2 \times 1 = 6$.
-	
-	\textbf{Étape 3 :} $MA^2 + 2\,MB^2 = 3\,MG^2 + 6 = 9 \iff MG^2 = 1 \iff MG = 1$.
-	
-	L'ensemble est le \textbf{cercle} de centre $G(2\,;\,0)$ et de rayon $1$.
-\end{exemple}
-
 
 % ============================================================
-\section{Exercices résolus}
+\section{Méthodes et exercices résolus}
 % ============================================================
+
+\begin{methode}
+	\textbf{Construire le barycentre d'un système.}
+	\begin{enumerate}
+		\item Vérifier $\sigma = \sum \alpha_i \neq 0$.
+		\item Regrouper les points par associativité (réduire à deux points
+		partiels $G_1$, $G_2$).
+		\item Placer chaque barycentre partiel avec $\vect{AG} = \dfrac{\beta}{\alpha+\beta}\vect{AB}$.
+		\item Placer $G$ sur $[G_1G_2]$ avec les poids partiels.
+	\end{enumerate}
+\end{methode}
 
 \exerciceresolu
 \textbf{Construire un barycentre par associativité}
 
 Soient $A$, $B$, $C$, $D$ quatre points. Construire le barycentre $G$ de
-$$
-\{(A,3)\,;\,(B,-1)\,;\,(C,2)\,;\,(D,2)\}.
-$$
+$$\{(A,3)\,;\,(B,-1)\,;\,(C,2)\,;\,(D,2)\}.$$
 
 \solution
 
-$\sigma = 3 + (-1) + 2 + 2 = 6 \neq 0$, donc $G$ existe.
+$\sigma = 3 - 1 + 2 + 2 = 6 \neq 0$, donc $G$ existe.
 
 \textbf{Étape 1 :} $G_1 =$ barycentre de $\{(A,3)\,;\,(B,-1)\}$, poids total $2$.
-$$
-\vect{AG_1} = \frac{-1}{2}\,\vect{AB}, \quad \text{donc } G_1 \text{ est à l'extérieur de } [AB].
-$$
+$\vect{AG_1} = \dfrac{-1}{2}\,\vect{AB}$ : $G_1$ est à l'extérieur de $[AB]$, du côté de $A$.
 
-\textbf{Étape 2 :} $G_2 =$ barycentre de $\{(C,2)\,;\,(D,2)\}$, poids total $4$.
-$$
-G_2 = \text{milieu de } [CD].
-$$
+\textbf{Étape 2 :} $G_2 =$ barycentre de $\{(C,2)\,;\,(D,2)\}$, poids total $4$ :
+$G_2 = $ milieu de $[CD]$.
 
 \textbf{Étape 3 :} Par associativité, $G =$ barycentre de $\{(G_1, 2)\,;\,(G_2, 4)\}$ :
 $$
 \vect{G_1 G} = \frac{4}{6}\,\vect{G_1 G_2} = \frac{2}{3}\,\vect{G_1 G_2}.
 $$
 
-
 \exerciceresolu
-\textbf{Démontrer que trois points sont alignés par barycentre}
+\textbf{Médianes et centre de gravité}
 
-Soient $A$, $B$, $C$ trois sommets d'un triangle et $I$, $J$, $K$ les milieux
-respectifs de $[BC]$, $[CA]$, $[AB]$.
-
-Montrer que les médianes $[AI]$, $[BJ]$, $[CK]$ sont concourantes en le centre
-de gravité $G$ de $\{(A,1)\,;\,(B,1)\,;\,(C,1)\}$.
+Soient $A$, $B$, $C$ un triangle et $I$, $J$, $K$ les milieux de $[BC]$, $[CA]$, $[AB]$.
+Montrer que les médianes $[AI]$, $[BJ]$, $[CK]$ sont concourantes.
 
 \solution
 
-Soit $G$ le barycentre de $\{(A,1)\,;\,(B,1)\,;\,(C,1)\}$. On a :
-$$
-\vect{GA} + \vect{GB} + \vect{GC} = \vect{0}.
-$$
+Soit $G$ le barycentre de $\{(A,1)\,;\,(B,1)\,;\,(C,1)\}$ : $\vect{GA} + \vect{GB} + \vect{GC} = \vect{0}$.
 
-$I$ est le milieu de $[BC]$, donc $\vect{GI} = \dfrac{\vect{GB}+\vect{GC}}{2} = -\dfrac{\vect{GA}}{2}$.
+$I$ milieu de $[BC]$ $\Rightarrow$ $\vect{GB}+\vect{GC} = 2\,\vect{GI}$, donc
+$\vect{GA} = -2\,\vect{GI}$ : $G \in (AI)$ avec $AG = 2\,GI$.
 
-Ainsi $\vect{GA} = -2\,\vect{GI}$, ce qui signifie que $G$, $A$ et $I$ sont alignés
-(avec $AG = 2\,GI$), donc $G \in [AI]$.
-
-Par le même raisonnement, $G \in [BJ]$ et $G \in [CK]$.
-
-Les trois médianes se coupent donc en $G$, le centre de gravité.
-
+Par le même raisonnement $G \in (BJ)$ et $G \in (CK)$ : les trois médianes
+se coupent en $G$.
 
 \exerciceresolu
-\textbf{Déterminer un ensemble de points — ligne de niveau}
+\textbf{Ligne de niveau — cercle}
 
-Dans un repère orthonormé, on donne $A(-2\,;\,1)$ et $B(4\,;\,3)$.
-
-Déterminer et construire l'ensemble $\mathscr{E}$ des points $M$ tels que :
-$$
-2\,MA^2 - MB^2 = 10.
-$$
+Dans un repère orthonormé, $A(-2\,;\,1)$ et $B(4\,;\,3)$.
+Déterminer l'ensemble $\mathscr{E}$ des points $M$ tels que $2\,MA^2 - MB^2 = 10$.
 
 \solution
 
-\textbf{Étape 1 — Barycentre.}
-$\sigma = 2 + (-1) = 1 \neq 0$.
+\textbf{Étape 1.} $\sigma = 2 - 1 = 1 \neq 0$. Barycentre $G$ de $\{(A,2)\,;\,(B,-1)\}$ :
+$\vect{AG} = \dfrac{-1}{1}\,\vect{AB} = -\vect{AB}$, donc $G(-8\,;\,-1)$.
 
-Le barycentre $G$ de $\{(A,2)\,;\,(B,-1)\}$ vérifie :
-$$
-\vect{AG} = \frac{-1}{1}\,\vect{AB} = -\vect{AB}.
-$$
-Donc $x_G = x_A + (-1)(x_B - x_A) = -2 + (-1)(6) = -8$ et
-$y_G = 1 + (-1)(2) = -1$.
+\textbf{Étape 2.} $GA^2 = 36 + 4 = 40$ et $GB^2 = 144 + 16 = 160$, donc
+$K = 2(40) - 160 = -80$.
 
-Ainsi $G(-8\,;\,-1)$.
-
-\textbf{Étape 2 — Constante $K$.}
-$$
-K = 2\,GA^2 + (-1)\,GB^2.
-$$
-$GA^2 = (-2-(-8))^2 + (1-(-1))^2 = 36 + 4 = 40$.
-
-$GB^2 = (4-(-8))^2 + (3-(-1))^2 = 144 + 16 = 160$.
-
-$K = 2 \times 40 - 160 = 80 - 160 = -80$.
-
-\textbf{Étape 3 — Conclusion.}
-$$
-2\,MA^2 - MB^2 = 1 \times MG^2 + (-80) = 10
-\iff MG^2 = 90
-\iff MG = 3\sqrt{10}.
-$$
+\textbf{Étape 3.} $2\,MA^2 - MB^2 = MG^2 - 80 = 10 \iff MG^2 = 90 \iff MG = 3\sqrt{10}$.
 
 $\mathscr{E}$ est le \textbf{cercle} de centre $G(-8\,;\,-1)$ et de rayon $3\sqrt{10}$.
 
-
 \exerciceresolu
-\textbf{Barycentre et vecteur nul}
+\textbf{Ligne de niveau — droite (somme des coefficients nulle)}
 
-Soient $A$, $B$, $C$ trois points non alignés. On cherche les réels $\alpha$, $\beta$, $\gamma$
-tels que $\alpha + \beta + \gamma = 0$ et
-$$
-\alpha\,\vect{MA} + \beta\,\vect{MB} + \gamma\,\vect{MC} = \vect{u}
-$$
-pour tout point $M$, où $\vec{u}$ est un vecteur donné.
+$A$ et $B$ sont deux points tels que $AB = 4$. Déterminer l'ensemble des points
+$M$ tels que $MA^2 - MB^2 = 8$.
 
 \solution
 
-Lorsque $\alpha + \beta + \gamma = 0$, on sait que :
-$$
-\alpha\,\vect{MA} + \beta\,\vect{MB} + \gamma\,\vect{MC}
-$$
-est \textbf{indépendant du point} $M$ (c'est une combinaison libre de $\vect{AB}$ et $\vect{AC}$).
+$\sigma = 1 - 1 = 0$ : pas de barycentre, l'ensemble est une droite.
 
-En développant depuis un point $O$ quelconque :
+On introduit $I$ le milieu de $[AB]$ :
 $$
-\alpha\,\vect{OA} + \beta\,\vect{OB} + \gamma\,\vect{OC} = \vec{u}.
+MA^2 - MB^2 = \vect{MA}\cdot\vect{MA} - \vect{MB}\cdot\vect{MB}
+= (\vect{MA}+\vect{MB})\cdot(\vect{MA}-\vect{MB}) = 2\,\vect{MI}\cdot\vect{BA}.
 $$
+Donc $MA^2 - MB^2 = 8 \iff 2\,\vect{MI}\cdot\vect{BA} = 8 \iff \vect{IM}\cdot\vect{BA} = -4$.
 
-Cela revient à décomposer $\vec{u}$ dans la base $(\vect{AB}, \vect{AC})$, ce qui admet
-une solution unique puisque $A$, $B$, $C$ sont non alignés.
-
-\begin{attention}
-	Quand la somme des coefficients est nulle, la combinaison
-	$\sum \alpha_i\,\vect{MA_i}$ ne dépend pas de $M$ : c'est un vecteur fixe,
-	pas forcément $\vect{0}$. Il ne faut pas confondre avec la définition du barycentre.
-\end{attention}
+L'ensemble est la \textbf{droite perpendiculaire à $(AB)$} passant par le point
+$H$ de $[AB]$ tel que $\vect{IH}\cdot\vect{BA} = -4$, soit $\overline{IH} = \dfrac{-4}{AB} = -1$
+(mesure algébrique sur l'axe $(\,\vect{BA}\,)$).
 
 
 % ============================================================
-\section{Exercices}
+\section{Exercices d'entraînement}
 % ============================================================
 
-\exercice{Barycentre de deux points \hfill \etoilepleine\etoilepleine\etoilevide}
+\subsection{Échauffement : lire une figure}
 
-Soient $A(1\,;\,3)$ et $B(5\,;\,-1)$.
+\exercice{Le segment \hfill \facile}
+$A$ et $B$ sont deux points avec $AB = 6\,$cm. $I$ est le milieu de $[AB]$ et
+$G$ le point tel que $\vect{AG} = \dfrac{2}{3}\,\vect{AB}$.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (0,0); \coordinate (B) at (6,0);
+	\draw[thick] (A) -- (B);
+	\foreach \p/\n/\pos in {A/A/below, B/B/below} {
+		\filldraw (\p) circle (1.6pt) node[\pos,font=\small] {$\n$};}
+	\filldraw (3,0) circle (1.4pt) node[below,font=\small] {$I$};
+	\filldraw[blue!70!black] (4,0) circle (1.7pt) node[above,font=\small,blue!70!black] {$G$};
+\end{tikzpicture}
+\end{center}
 
 \begin{enumerate}
-	\item Déterminer le barycentre $G_1$ de $\{(A,3)\,;\,(B,1)\}$.
-	\item Déterminer le barycentre $G_2$ de $\{(A,2)\,;\,(B,-2)\}$.
-	Ce point existe-t-il ? Justifier.
-	\item Déterminer le barycentre $G_3$ de $\{(A,1)\,;\,(B,4)\}$
-	et vérifier que $G_3$ est bien entre $A$ et $B$.
+	\item De quel système de deux points pondérés $G$ est-il le barycentre ?
+	\item De quel système $I$ est-il le barycentre ?
+	\item Le système $\{(A,2)\,;\,(B,-2)\}$ admet-il un barycentre ? Justifier.
+	\item Où se trouve le barycentre de $\{(A,-1)\,;\,(B,3)\}$ : entre $A$ et $B$,
+	ou à l'extérieur ? De quel côté ?
 \end{enumerate}
 
+\exercice{Le triangle \hfill \facile}
+$ABC$ est un triangle, $G$ son centre de gravité, et $I$, $J$, $K$ les milieux
+respectifs de $[BC]$, $[CA]$, $[AB]$.
 
-\exercice{Barycentre de trois points et centre de gravité \hfill \etoilepleine\etoilepleine\etoilevide}
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (0,0); \coordinate (B) at (4,0); \coordinate (C) at (1.3,2.6);
+	\coordinate (I) at ($ (B)!0.5!(C) $);
+	\coordinate (J) at ($ (A)!0.5!(C) $);
+	\coordinate (K) at ($ (A)!0.5!(B) $);
+	\draw[thick] (A)--(B)--(C)--cycle;
+	\draw[gray!60] (A)--(I) (B)--(J) (C)--(K);
+	\filldraw (A) circle (1.4pt) node[below left,font=\small] {$A$};
+	\filldraw (B) circle (1.4pt) node[below right,font=\small] {$B$};
+	\filldraw (C) circle (1.4pt) node[above,font=\small] {$C$};
+	\filldraw (I) circle (1.1pt) node[right,font=\scriptsize] {$I$};
+	\filldraw (J) circle (1.1pt) node[left,font=\scriptsize] {$J$};
+	\filldraw (K) circle (1.1pt) node[below,font=\scriptsize] {$K$};
+	\filldraw[red!70!black] ($ (A)!0.6667!(I) $) circle (1.7pt)
+	  node[above right,font=\small,red!70!black] {$G$};
+\end{tikzpicture}
+\end{center}
 
+\begin{enumerate}
+	\item Simplifier $\vect{GA} + \vect{GB} + \vect{GC}$.
+	\item Exprimer $\vect{AG}$ en fonction de $\vect{AI}$.
+	\item $G$ est-il le barycentre de $\{(A,1)\,;\,(I,2)\}$ ? Justifier par
+	l'associativité.
+	\item De quel système de trois points pondérés le point $I$ est-il le
+	barycentre ?
+\end{enumerate}
+
+\exercice{Le parallélogramme \hfill \facile}
+$ABCD$ est un parallélogramme de centre $O$.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (0,0); \coordinate (B) at (3.4,0);
+	\coordinate (C) at (4.4,2.2); \coordinate (D) at (1,2.2);
+	\coordinate (O) at ($ (A)!0.5!(C) $);
+	\draw[thick] (A)--(B)--(C)--(D)--cycle;
+	\draw[gray!55,dashed] (A)--(C) (B)--(D);
+	\filldraw (A) circle (1.4pt) node[below left,font=\small] {$A$};
+	\filldraw (B) circle (1.4pt) node[below right,font=\small] {$B$};
+	\filldraw (C) circle (1.4pt) node[above right,font=\small] {$C$};
+	\filldraw (D) circle (1.4pt) node[above left,font=\small] {$D$};
+	\filldraw[blue!70!black] (O) circle (1.6pt) node[below right,font=\small,blue!70!black] {$O$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Justifier que $O$ est le milieu de $[AC]$ et de $[BD]$ ; autrement dit
+	que $O$ est le barycentre de $\{(A,1)\,;(C,1)\}$ comme de $\{(B,1)\,;(D,1)\}$.
+	\item En déduire, par associativité, que $O$ est le barycentre du système
+	$$\{(A,1)\,;\,(B,1)\,;\,(C,1)\,;\,(D,1)\}.$$
+	\item Le point $A$ est-il le barycentre de $\{(B,1)\,;(D,1)\,;(C,-1)\}$ ?
+	(On pourra utiliser $\vect{AB}+\vect{AD}=\vect{AC}$.)
+\end{enumerate}
+
+\exercice{Lire une ligne de niveau \hfill \moyen}
+$A$ et $B$ sont deux points, $I$ le milieu de $[AB]$, avec $AB = 4$. On note
+$\mathscr{E}_k$ l'ensemble des points $M$ tels que $MA^2 + MB^2 = k$.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (-2,0); \coordinate (B) at (2,0); \coordinate (I) at (0,0);
+	\draw[thick] (A)--(B);
+	\draw[blue!70!black,thick] (I) circle (1.5);
+	\filldraw (A) circle (1.5pt) node[below,font=\small] {$A$};
+	\filldraw (B) circle (1.5pt) node[below,font=\small] {$B$};
+	\filldraw (I) circle (1.4pt) node[below right,font=\small] {$I$};
+	\filldraw (55:1.5) circle (1.5pt) node[above right,font=\small] {$M$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Montrer que $MA^2 + MB^2 = 2\,MI^2 + \dfrac{AB^2}{2}$.
+	\item Pour quelles valeurs de $k$ l'ensemble $\mathscr{E}_k$ est-il un
+	cercle ? un point ? vide ?
+	\item Décrire $\mathscr{E}_{20}$.
+\end{enumerate}
+
+\exercice{Vrai ou faux \hfill \facile}
+Répondre par \emph{vrai} ou \emph{faux} en justifiant brièvement.
+\begin{enumerate}
+	\item Le barycentre de $\{(A,\alpha)\,;\,(B,\beta)\}$ existe pour tous réels
+	$\alpha$, $\beta$.
+	\item Si l'on multiplie tous les coefficients par $-3$, le barycentre est
+	inchangé.
+	\item Le barycentre de $\{(A,1)\,;\,(B,1)\,;\,(C,1)\}$ est le centre de
+	gravité du triangle $ABC$.
+	\item Si $\alpha + \beta + \gamma = 0$, alors $\alpha\vect{MA} + \beta\vect{MB}
+	+ \gamma\vect{MC}$ dépend du point $M$.
+	\item L'ensemble des points $M$ tels que $MA^2 - MB^2 = k$ est toujours un
+	cercle.
+	\item Une isométrie transforme le barycentre d'un système en le barycentre
+	du système des images.
+	\item Le barycentre de $\{(A,2)\,;\,(B,3)\}$ est plus proche de $B$ que de $A$.
+\end{enumerate}
+
+\subsection{Barycentre et lignes de niveau}
+
+\exercice{Coordonnées d'un barycentre \hfill \facile}
+Dans un repère orthonormé, $A(1\,;\,3)$, $B(5\,;\,-1)$, $C(-2\,;\,0)$.
+\begin{enumerate}
+	\item Calculer les coordonnées du barycentre $G$ de $\{(A,2)\,;\,(B,1)\,;\,(C,1)\}$.
+	\item Calculer celles du barycentre $H$ de $\{(A,1)\,;\,(B,-1)\,;\,(C,1)\}$.
+	\item Vérifier que $\vect{GH}$ est colinéaire à un vecteur simple.
+\end{enumerate}
+
+\exercice{Barycentre de deux points \hfill \facile}
+Soient $A(1\,;\,3)$ et $B(5\,;\,-1)$.
+\begin{enumerate}
+	\item Déterminer le barycentre $G_1$ de $\{(A,3)\,;\,(B,1)\}$.
+	\item Le barycentre $G_2$ de $\{(A,2)\,;\,(B,-2)\}$ existe-t-il ? Justifier.
+	\item Déterminer le barycentre $G_3$ de $\{(A,1)\,;\,(B,4)\}$ et vérifier
+	qu'il est entre $A$ et $B$.
+\end{enumerate}
+
+\exercice{Centre de gravité et alignements \hfill \moyen}
 Soient $A(0\,;\,0)$, $B(6\,;\,0)$, $C(0\,;\,4)$.
-
 \begin{enumerate}
 	\item Calculer les coordonnées du centre de gravité $G$ du triangle $ABC$.
 	\item Vérifier que $\vect{GA} + \vect{GB} + \vect{GC} = \vect{0}$.
 	\item Déterminer le barycentre $H$ de $\{(A,4)\,;\,(B,1)\,;\,(C,-2)\}$.
-	\item Montrer que $G$, $H$ et $C$ sont-ils alignés ?
+	\item Les points $G$, $H$ et $C$ sont-ils alignés ?
 \end{enumerate}
 
-
-\exercice{Ligne de niveau — cercle ou vide \hfill \etoilepleine\etoilepleine\etoilevide}
-
-On donne $A(1\,;\,0)$ et $B(-1\,;\,0)$.
-
-Déterminer la nature de l'ensemble des points $M$ vérifiant :
+\exercice{Nature d'un ensemble de points \hfill \moyen}
+On donne $A(1\,;\,0)$ et $B(-1\,;\,0)$. Déterminer la nature de l'ensemble des
+points $M$ vérifiant :
 \begin{enumerate}
 	\item $MA^2 + MB^2 = 6$
 	\item $MA^2 + MB^2 = 1$
 	\item $3\,MA^2 + MB^2 = 12$
 	\item $MA^2 - 3\,MB^2 = 4$
+	\item $MA^2 - MB^2 = 2$
+\end{enumerate}
+
+\exercice{Ensemble de points et associativité \hfill \moyen}
+$ABC$ est un triangle. $G$ est le barycentre de $\{(A,1)\,;\,(B,1)\,;\,(C,2)\}$.
+\begin{enumerate}
+	\item Construire $G$ (on introduira le milieu $K$ de $[AB]$).
+	\item Montrer que pour tout point $M$ :
+	$\vect{MA} + \vect{MB} + 2\,\vect{MC} = 4\,\vect{MG}$.
+	\item Déterminer et construire l'ensemble des points $M$ tels que
+	$$
+	\left\| \vect{MA} + \vect{MB} + 2\,\vect{MC} \right\| = \left\| \vect{MA} + \vect{MB} \right\|.
+	$$
+\end{enumerate}
+
+\exercice{Problème de synthèse \hfill \difficile}
+Dans un repère orthonormé, $A(2\,;\,1)$, $B(-1\,;\,3)$, $C(4\,;\,-2)$.
+\begin{enumerate}
+	\item Déterminer le barycentre $G$ de $\{(A,1)\,;\,(B,2)\,;\,(C,3)\}$.
+	\item Montrer que pour tout point $M$ :
+	$MA^2 + 2\,MB^2 + 3\,MC^2 = 6\,MG^2 + K$, où $K$ est une constante à calculer.
+	\item En déduire la nature et les éléments de l'ensemble $\mathscr{E}$ des
+	points $M$ tels que $MA^2 + 2\,MB^2 + 3\,MC^2 = 30$.
+	\item Déterminer le point $M_0$ de l'axe des abscisses appartenant à $\mathscr{E}$.
+	\item Montrer que $G$ minimise $MA^2 + 2\,MB^2 + 3\,MC^2$ ; donner ce minimum.
+\end{enumerate}
+
+\exercice{Sujet type Bac — barycentre et discussion \hfill \difficile}
+Dans le plan orienté, $ABC$ est un triangle rectangle isocèle direct en $A$ tel
+que $AB = AC = 4\,$cm et $(\vect{AB},\vect{AC}) = \dfrac{\pi}{2}$.
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Déterminer et construire le point $D$ barycentre du système
+	$$\{(A,1)\,;\,(B,-1)\,;\,(C,1)\}.$$
+	\hfill (0,25 pt $\times$ 2)
+	\item Montrer que pour tout point $M$ du plan :
+	$$
+	MA^2 - MB^2 + MC^2 = MD^2 + K,
+	$$
+	où $K$ est une constante que l'on déterminera. \hfill (0,75 pt)
+	\item Discuter, suivant les valeurs du réel $k$, la nature de l'ensemble
+	$(E_k)$ des points $M$ vérifiant $MA^2 - MB^2 + MC^2 = k$. \hfill (0,75 pt)
+	\item Vérifier que $A \in (E_0)$, puis construire $(E_0)$. \hfill (0,25 pt)
+\end{enumerate}
+
+\textbf{Partie B} — \textit{le plan est rapporté au repère orthonormé direct
+$(A\,;\,\frac14\vect{AB},\frac14\vect{AC})$.}
+\begin{enumerate}
+	\item Donner les coordonnées de $A$, $B$, $C$ et $D$. \hfill (0,5 pt)
+	\item Retrouver par le calcul la constante $K$ et l'équation de $(E_k)$. \hfill (0,5 pt)
+	\item Déterminer les coordonnées des points d'intersection de $(E_0)$ avec
+	l'axe des ordonnées $(AC)$. \hfill (0,5 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — norme et ensemble de points \hfill \difficile}
+$ABCD$ est un rectangle direct tel que $AB = 6\,$cm et $AD = 4\,$cm.
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Prouver que $C$ est le barycentre du système
+	$\{(A,-1)\,;\,(B,1)\,;\,(D,1)\}$. \hfill (0,5 pt)
+	\item Soit $\vec{w} = -2\vect{MA} + \vect{MB} + \vect{MD}$. Montrer que
+	$\vec{w}$ ne dépend pas de $M$ et l'exprimer à l'aide de $\vect{AB}$ et
+	$\vect{AD}$. \hfill (0,5 pt)
+	\item Déterminer et construire l'ensemble $(\Gamma)$ des points $M$ du plan
+	vérifiant
+	$$
+	\left\| -\vect{MA} + \vect{MB} + \vect{MD} \right\|
+	= \left\| -2\vect{MA} + \vect{MB} + \vect{MD} \right\|.
+	$$
+	\hfill (1 pt)
+\end{enumerate}
+
+\textbf{Partie B} — \textit{repère orthonormé direct $(A\,;\,\frac16\vect{AB},\frac14\vect{AD})$.}
+\begin{enumerate}
+	\item Donner les coordonnées de $A$, $B$, $C$, $D$. \hfill (0,5 pt)
+	\item Retrouver que $(\Gamma)$ est un cercle dont on précisera le centre et
+	le rayon. \hfill (0,75 pt)
+	\item $(\Gamma)$ coupe-t-il le segment $[AC]$ ? Justifier. \hfill (0,5 pt)
 \end{enumerate}
 
 
-\exercice{Problème de synthèse \hfill \etoilepleine\etoilepleine\etoilepleine}
+\exercice{Sujet type Bac — fonctions de Leibniz \hfill \difficile}
+Dans le plan orienté, $ABC$ est un triangle équilatéral direct de côté
+$6\,$cm ; $I$ désigne le milieu de $[BC]$.
 
-Dans un repère orthonormé, on donne $A(2\,;\,1)$, $B(-1\,;\,3)$, $C(4\,;\,-2)$.
-
+\textbf{Partie A}
 \begin{enumerate}
-	\item Déterminer le barycentre $G$ de $\{(A,1)\,;\,(B,2)\,;\,(C,3)\}$.
-	
-	\item Montrer que pour tout point $M$ :
+	\item Soit $G$ le barycentre du système $\{(A,2)\,;\,(B,1)\,;\,(C,1)\}$.
+	Montrer que $G$ est le milieu de $[AI]$. \hfill (0,5 pt)
+	\item Montrer que, pour tout point $M$ du plan,
 	$$
-	MA^2 + 2\,MB^2 + 3\,MC^2 = 6\,MG^2 + K,
+	2\,\vect{MA} + \vect{MB} + \vect{MC} = 4\,\vect{MG}.
 	$$
-	où $K$ est une constante que l'on calculera.
-	
-	\item En déduire la nature et les éléments caractéristiques de l'ensemble $\mathscr{E}$
-	des points $M$ tels que $MA^2 + 2\,MB^2 + 3\,MC^2 = 30$.
-	
-	\item Déterminer le point $M_0$ de l'axe des abscisses appartenant à $\mathscr{E}$.
-	
-	\item Montrer que parmi tous les points du plan, c'est $G$ qui minimise
-	$MA^2 + 2\,MB^2 + 3\,MC^2$. Quelle est cette valeur minimale ?
+	En déduire l'ensemble $(\Delta)$ des points $M$ tels que
+	$\left\| 2\,\vect{MA} + \vect{MB} + \vect{MC} \right\| = 12$. \hfill (0,5 pt + 0,25 pt)
+	\item Montrer que, pour tout point $M$,
+	$$
+	2\,MA^2 + MB^2 + MC^2 = 4\,MG^2 + K,
+	$$
+	où $K$ est une constante que l'on calculera. \hfill (0,75 pt)
+	\item Discuter, suivant les valeurs du réel $k$, la nature de l'ensemble
+	$(E_k)$ des points $M$ vérifiant $2\,MA^2 + MB^2 + MC^2 = k$. \hfill (0,75 pt)
+	\item Construire $(E_{81})$. \hfill (0,25 pt)
+\end{enumerate}
+
+\textbf{Partie B} — \textit{le plan est muni du repère orthonormé
+$(I\,;\,\vec{\imath},\vec{\jmath})$ où $\vec{\imath}$ dirige $\vect{IC}$ et
+$\vec{\jmath}$ dirige $\vect{IA}$.}
+\begin{enumerate}
+	\item Donner les coordonnées de $A$, $B$, $C$, puis celles de $G$. \hfill (0,5 pt)
+	\item Retrouver la valeur de $K$ par le calcul. \hfill (0,5 pt)
+	\item Déterminer les coordonnées des points d'intersection de $(E_{81})$
+	avec la droite $(BC)$. \hfill (0,5 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — cercle d'Apollonius \hfill \difficile}
+$ABC$ est un triangle tel que $AB = 3\,$cm. $I$ désigne le milieu de $[AB]$.
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Soit $G$ le barycentre de $\{(A,1)\,;\,(B,-4)\}$. Construire $G$ et
+	préciser $\vect{AG}$ en fonction de $\vect{AB}$. \hfill (0,25 pt $\times$ 2)
+	\item Montrer que, pour tout point $M$,
+	$$
+	MA^2 - 4\,MB^2 = -3\,MG^2 + K,
+	$$
+	où $K$ est une constante que l'on déterminera. \hfill (0,75 pt)
+	\item En déduire que l'ensemble $(\Gamma_1)$ des points $M$ tels que
+	$MA = 2\,MB$ est un cercle dont on précisera le centre et le rayon. \hfill (0,75 pt)
+	\item Déterminer l'ensemble $(\Gamma_2)$ des points $M$ tels que
+	$\vect{MA}\cdot\vect{MB} = 0$. \hfill (0,5 pt)
+\end{enumerate}
+
+\textbf{Partie B} — \textit{repère orthonormé $(A\,;\,\frac13\vect{AB},\vec{\jmath})$.}
+\begin{enumerate}
+	\item Donner les coordonnées de $A$, $B$, $I$ et $G$. \hfill (0,5 pt)
+	\item Écrire une équation de $(\Gamma_1)$ et une équation de $(\Gamma_2)$. \hfill (0,5 pt)
+	\item Déterminer les coordonnées des points communs à $(\Gamma_1)$ et
+	$(\Gamma_2)$. \hfill (0,75 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — isobarycentre et affixes \hfill \difficile}
+$ABCD$ est un carré direct de centre $O$ et de côté $4\,$cm.
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Montrer que $O$ est l'isobarycentre de $\{(A,1)\,;\,(B,1)\,;\,(C,1)\,;\,(D,1)\}$. \hfill (0,5 pt)
+	\item Montrer que, pour tout point $M$,
+	$$
+	MA^2 + MB^2 + MC^2 + MD^2 = 4\,MO^2 + K,
+	$$
+	où $K$ est une constante que l'on calculera. \hfill (0,75 pt)
+	\item En déduire et construire l'ensemble $(\mathscr{C})$ des points $M$
+	tels que $MA^2 + MB^2 + MC^2 + MD^2 = 64$. Que remarque-t-on ? \hfill (0,5 pt + 0,25 pt)
+	\item Déterminer et construire l'ensemble $(\Delta)$ des points $M$ tels
+	que $MA^2 - MC^2 = 8$. \hfill (0,75 pt)
+\end{enumerate}
+
+\textbf{Partie B} — \textit{le plan complexe est rapporté au repère orthonormé
+direct $(O\,;\,\vec{u},\vec{v})$ avec $\vec{u} = \frac14\vect{AB}$ et
+$\vec{v} = \frac14\vect{AD}$.}
+\begin{enumerate}
+	\item Donner les affixes de $A$, $B$, $C$ et $D$, et vérifier que
+	$z_O = \dfrac{z_A + z_B + z_C + z_D}{4}$. \hfill (0,5 pt)
+	\item Retrouver une équation de $(\mathscr{C})$ et une équation de
+	$(\Delta)$. \hfill (0,5 pt)
+	\item En comparant la distance de $O$ à $(\Delta)$ au rayon de
+	$(\mathscr{C})$, justifier que $(\Delta)$ coupe $(\mathscr{C})$ en deux
+	points. \hfill (0,75 pt)
 \end{enumerate}
