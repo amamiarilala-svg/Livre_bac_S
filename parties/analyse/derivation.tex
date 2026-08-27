@@ -1,6 +1,10 @@
 % ============================================================
 %  CHAPITRE : DÉRIVABILITÉ
-%  Mazava Maths — Terminale S
+%  Mazava Maths — Terminale S (Bacc Série S, Madagascar)
+%  Aligné sur le modèle type (Isométries) — 2026-08-27.
+%  Parti pris : tous les exemples et exercices utilisent les
+%  fonctions ln et exp. Un accent particulier est mis sur les
+%  familles de fonctions dépendant d'un paramètre.
 %  (La continuité et le TVI sont traités au chapitre précédent
 %   « Limites et continuité » ; ils ne sont ici que réutilisés.)
 %  Environnements : definition, propriete, theoreme, methode,
@@ -10,13 +14,27 @@
 
 \chapter{Dérivabilité}
 
+\begin{citationchapitre}
+	« Pour connaître une courbe, il suffit d'en connaître les tangentes. »\\[0.4em]
+	— d'après Gottfried Wilhelm Leibniz
+\end{citationchapitre}
+
 \begin{objectifs}
-	\begin{itemize}
-		\item Étudier la dérivabilité d'une fonction en un point, à gauche et à droite.
-		\item Relier continuité et dérivabilité (dérivable $\Rightarrow$ continue).
-		\item Interpréter géométriquement tangente, demi-tangentes et point anguleux.
-		\item Calculer une fonction dérivée (dérivées usuelles, opérations, composée).
-		\item Appliquer le théorème des accroissements finis (TAF) pour encadrer.
+	\begin{itemize}[label=\textbullet]
+		\item Étudier la \textbf{dérivabilité} d'une fonction en un point, à gauche
+		et à droite ; interpréter tangente, demi-tangentes, point anguleux,
+		tangente verticale.
+		\item Relier continuité et dérivabilité (dérivable $\Rightarrow$ continue,
+		réciproque fausse).
+		\item Calculer une fonction dérivée : dérivées usuelles, opérations,
+		\textbf{dérivée d'une composée} $(g\circ u)'=(g'\circ u)\,u'$.
+		\item Dériver la \textbf{réciproque} d'une bijection ; calculer des
+		\textbf{dérivées successives} (récurrence).
+		\item Étudier la \textbf{convexité}, la concavité, les points d'inflexion.
+		\item Appliquer le \textbf{théorème} et l'\textbf{inégalité des
+		accroissements finis} (TAF, IAF) pour encadrer une fonction ou une suite.
+		\item Étudier une \textbf{famille de fonctions} $(f_m)$ dépendant d'un
+		paramètre : points fixes communs, lieu des extremums, tangentes.
 	\end{itemize}
 \end{objectifs}
 
@@ -25,430 +43,883 @@
 	\textbf{théorème des valeurs intermédiaires} ont été étudiés au chapitre
 	précédent (\og Limites et continuité \fg). On les utilise librement ici,
 	notamment pour le préalable \og continuité d'abord \fg\ de l'étude de la
-	dérivabilité.
+	dérivabilité. Les dérivées de $\ln$ et de $\exp$ ($\ln' x=\tfrac1x$,
+	$(\e^x)'=\e^x$) sont admises ici et établies dans les chapitres dédiés.
 \end{remarque}
 
-% ----------------------------------------------------------------
+
+% ================================================================
 \section{Dérivabilité en un point}
-% ----------------------------------------------------------------
+% ================================================================
 
 \begin{definition}
-	Soit $f$ une fonction définie sur un intervalle $I$ et $a\in I$.
-	
-	$f$ est \textbf{dérivable en $a$} si la limite suivante existe et est finie :
+	Soit $f$ définie sur un intervalle $I$ et $a\in I$.
+	$f$ est \textbf{dérivable en $a$} si le taux d'accroissement admet une
+	limite finie en $a$ :
 	\[
-	f'(a) = \lim_{x\to a}\frac{f(x)-f(a)}{x-a}
-	= \lim_{h\to 0}\frac{f(a+h)-f(a)}{h}.
+	f'(a)=\lim_{x\to a}\frac{f(x)-f(a)}{x-a}
+	     =\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}.
 	\]
-	Ce réel $f'(a)$ est appelé le \textbf{nombre dérivé} de $f$ en $a$.
+	Ce réel $f'(a)$ est le \textbf{nombre dérivé} de $f$ en $a$.
 \end{definition}
 
 \begin{definition}
-	\textbf{Dérivabilité à gauche et à droite.}
-	
-	$f$ est \textbf{dérivable à gauche} en $a$ si
-	$\displaystyle\lim_{x\to a^-}\frac{f(x)-f(a)}{x-a}$ existe et est finie
-	(on note $f'_g(a)$).
-	
-	$f$ est \textbf{dérivable à droite} en $a$ si
-	$\displaystyle\lim_{x\to a^+}\frac{f(x)-f(a)}{x-a}$ existe et est finie
-	(on note $f'_d(a)$).
-	
-	$f$ est dérivable en $a$ si et seulement si $f'_g(a)=f'_d(a)$.
+	\textbf{Dérivabilité à gauche / à droite.} $f$ est dérivable à gauche
+	(resp.\ à droite) en $a$ si
+	$\displaystyle\lim_{x\to a^-}\frac{f(x)-f(a)}{x-a}=f'_g(a)$
+	(resp.\ $\displaystyle\lim_{x\to a^+}\dots=f'_d(a)$) existe et est finie.
+
+	$f$ est dérivable en $a$ \textbf{si et seulement si} $f'_g(a)=f'_d(a)$.
 \end{definition}
 
 \begin{methode}
-	Pour étudier la dérivabilité de $f$ en $a$ :
+	Pour étudier la dérivabilité de $f$ en $a$ (souvent une fonction définie
+	par morceaux) :
 	\begin{enumerate}
-		\item Vérifier d'abord que $f$ est \textbf{continue} en $a$
-		(condition nécessaire).
-		\item Calculer le taux d'accroissement
-		$\tau(x)=\dfrac{f(x)-f(a)}{x-a}$.
-		\item Calculer $\displaystyle\lim_{x\to a^-}\tau(x)$
-		et $\displaystyle\lim_{x\to a^+}\tau(x)$.
-		\item Comparer les deux limites :
-		\begin{itemize}
-			\item égales et finies $\Rightarrow$ $f$ dérivable en $a$,
-			tangente de pente $f'(a)$.
-			\item différentes et finies $\Rightarrow$ \textbf{point anguleux}.
-			\item une limite infinie $\Rightarrow$ \textbf{tangente verticale}.
+		\item vérifier d'abord que $f$ est \textbf{continue} en $a$
+		(sinon $f$ n'est pas dérivable en $a$) ;
+		\item former le taux $\tau(x)=\dfrac{f(x)-f(a)}{x-a}$ ;
+		\item calculer $\displaystyle\lim_{x\to a^-}\tau(x)$ et
+		$\displaystyle\lim_{x\to a^+}\tau(x)$ ;
+		\item conclure :
+		\begin{itemize}[label=\textbullet]
+			\item limites égales et finies $\Rightarrow$ $f$ dérivable, tangente
+			de pente $f'(a)$ ;
+			\item limites finies différentes $\Rightarrow$ \textbf{point anguleux}
+			(deux demi-tangentes) ;
+			\item une limite infinie $\Rightarrow$ \textbf{demi-tangente verticale}.
 		\end{itemize}
 	\end{enumerate}
 \end{methode}
 
-\begin{theoreme}[Dérivabilité implique continuité]
+\begin{theoreme}[Dérivable $\Rightarrow$ continue]
 	Si $f$ est dérivable en $a$, alors $f$ est continue en $a$.
-	
-	\medskip
-	\textbf{La réciproque est fausse :}
-	une fonction peut être continue en $a$ sans y être dérivable.
+
+	\textbf{La réciproque est fausse} : une fonction peut être continue en $a$
+	sans y être dérivable.
 \end{theoreme}
 
 \begin{exemple}
-	$f(x)=|x|$ est continue en $0$ mais pas dérivable en $0$ :
+	Soit $f(x)=\bigl|\e^x-1\bigr|$, c'est-à-dire
 	\[
-	\lim_{x\to 0^-}\frac{|x|-0}{x-0}=\lim_{x\to 0^-}\frac{-x}{x}=-1,
-	\qquad
-	\lim_{x\to 0^+}\frac{|x|}{x}=1.
+	f(x)=
+	\begin{cases}
+		\e^x-1 & \text{si } x\geq 0,\\
+		1-\e^x & \text{si } x<0.
+	\end{cases}
 	\]
-	$f'_g(0)=-1\neq f'_d(0)=1$ : \textbf{point anguleux} en $x=0$.
+	$f$ est continue en $0$ ($f(0)=0$ et les deux morceaux tendent vers $0$).
+	Taux d'accroissement en $0$ :
+	\[
+	\lim_{x\to 0^+}\frac{\e^x-1}{x}=1,\qquad
+	\lim_{x\to 0^-}\frac{1-\e^x}{x}
+	=-\lim_{x\to 0^-}\frac{\e^x-1}{x}=-1.
+	\]
+	$f'_d(0)=1\neq f'_g(0)=-1$ : $f$ n'est \textbf{pas dérivable} en $0$, la
+	courbe présente un \textbf{point anguleux} d'équations de demi-tangentes
+	$y=x$ (à droite) et $y=-x$ (à gauche).
 \end{exemple}
 
-% ----------------------------------------------------------------
-\section{Interprétation géométrique}
-% ----------------------------------------------------------------
-
-\begin{propriete}{Tangente en un point}{}
-	Si $f$ est dérivable en $a$, la \textbf{tangente} à $\mathcal{C}_f$
-	au point d'abscisse $a$ a pour équation :
+\begin{exemple}
+	Soit $g(x)=\sqrt{\ln x}$, définie pour $x\geq 1$. En $1$, $g(1)=0$ et
 	\[
-	\boxed{y = f'(a)(x-a) + f(a).}
+	\tau(x)=\frac{\sqrt{\ln x}}{x-1}
+	=\sqrt{\frac{\ln x}{x-1}}\times\frac{1}{\sqrt{x-1}}.
+	\]
+	Or $\dfrac{\ln x}{x-1}\to 1$ et $\dfrac{1}{\sqrt{x-1}}\to+\infty$ quand
+	$x\to 1^+$, donc $\tau(x)\to+\infty$ : $g$ n'est pas dérivable en $1$, la
+	courbe admet une \textbf{demi-tangente verticale} au point $(1\,;0)$.
+\end{exemple}
+
+
+% ================================================================
+\section{Interprétation géométrique}
+% ================================================================
+
+\begin{propriete}{Tangente}{prop_tangente}
+	Si $f$ est dérivable en $a$, la \textbf{tangente} à $\mathcal C_f$ au point
+	d'abscisse $a$ a pour équation
+	\[
+	\boxed{\,y=f'(a)(x-a)+f(a).\,}
 	\]
 \end{propriete}
 
-\begin{propriete}{Demi-tangentes et point anguleux}{}
-	Si $f'_g(a)\neq f'_d(a)$ (tous deux finis), la courbe admet
-	deux \textbf{demi-tangentes} en $a$ :
-	\begin{itemize}
-		\item Demi-tangente à \textbf{gauche} : pente $f'_g(a)$.
-		\item Demi-tangente à \textbf{droite} : pente $f'_d(a)$.
-	\end{itemize}
-	Le point $A\bigl(a\,;\,f(a)\bigr)$ est un \textbf{point anguleux}.
+\begin{propriete}{Demi-tangentes et point anguleux}{prop_demitangentes}
+	Si $f'_g(a)$ et $f'_d(a)$ existent, sont finis et \textbf{différents}, la
+	courbe admet deux \textbf{demi-tangentes} en $A\bigl(a\,;f(a)\bigr)$, de
+	pentes respectives $f'_g(a)$ et $f'_d(a)$ : $A$ est un \textbf{point
+	anguleux}. Si $\tau(x)\to\pm\infty$, la demi-tangente est verticale.
 \end{propriete}
 
-% Figure TikZ — tangente et demi-tangentes
 \begin{center}
-	\begin{tikzpicture}[>=Stealth, scale=1.1]
-		\draw[->](-0.3,0)--(4.5,0) node[right,font=\small]{$x$};
-		\draw[->](0,-0.3)--(0,3.2) node[above,font=\small]{$y$};
-		% courbe avec point anguleux en x=2
-		\draw[thick,domain=0.2:2]   plot(\x,{\x*\x/2});
-		\draw[thick,domain=2:4.2]   plot(\x,{0.5*\x+1});
-		% tangente gauche en x=2 (pente=2)
-		\draw[blue,dashed,domain=0.5:2.5]
-		plot(\x,{2*(\x-2)+2}) node[right,font=\tiny,blue]{pente $f'_g$};
-		% tangente droite en x=2 (pente=0.5)
-		\draw[red,dashed,domain=1.5:3.5]
-		plot(\x,{0.5*(\x-2)+2}) node[right,font=\tiny,red]{pente $f'_d$};
-		% point anguleux
-		\filldraw(2,2) circle(2pt) node[above left,font=\small]{$A$};
-		\draw[dashed,gray](2,0) node[below,font=\small]{$a$}--(2,2);
-		\node[below left,font=\small] at(0,0){$O$};
-	\end{tikzpicture}
+\begin{tikzpicture}[>=Stealth, scale=1.15]
+	\draw[->] (-2.9,0) -- (2.4,0) node[right,font=\small] {$x$};
+	\draw[->] (0,-0.4) -- (0,2.7) node[above,font=\small] {$y$};
+	\draw[gray!55,dashed] (-2.7,1) -- (2.1,1);
+	\node[above,font=\scriptsize,gray] at (-2.1,1) {$y=1$};
+	% demi-tangentes (prolongées en pointillés)
+	\draw[blue,dashed,domain=-1.5:0]  plot (\x,{-\x});
+	\draw[red,dashed,domain=0:1.5]    plot (\x,{\x});
+	\node[font=\scriptsize,blue] at (-1.75,1.5) {$y=-x$};
+	\node[font=\scriptsize,red]  at (1.75,1.5)  {$y=x$};
+	% f(x) = |e^x - 1|
+	\draw[very thick,domain=0:0.9,samples=60]   plot (\x,{exp(\x)-1});
+	\draw[very thick,domain=-2.7:0,samples=80]  plot (\x,{1-exp(\x)});
+	\filldraw (0,0) circle (1.8pt) node[below right,font=\small] {$A$};
+	\node[font=\scriptsize] at (0.95,1.7) {$y=\bigl|\e^x-1\bigr|$};
+\end{tikzpicture}
 \end{center}
 
 \begin{astucebac}
-	Au BAC, l'étude de la dérivabilité en $x_0$ porte souvent sur une
-	fonction définie par \textbf{deux expressions} (type $f(0)=k$ et $f(x)=\ldots$ pour $x>0$).
-	La méthode est toujours la même : continuité d'abord, taux d'accroissement ensuite.
+	Au Bac, l'étude de la dérivabilité en $x_0$ porte presque toujours sur une
+	fonction définie par \textbf{deux expressions} (type $f(x_0)=k$ et
+	$f(x)=\ldots$). Méthode invariable : \textbf{continuité d'abord}, taux
+	d'accroissement ensuite, puis interprétation graphique (tangente ou
+	demi-tangentes).
 \end{astucebac}
 
-% ----------------------------------------------------------------
-\section{Fonction dérivée sur un intervalle}
-% ----------------------------------------------------------------
+
+% ================================================================
+\section{Fonction dérivée. Dérivée d'une composée}
+% ================================================================
 
 \begin{definition}
-	$f$ est \textbf{dérivable sur $I$} si elle est dérivable en tout point de $I$.
-	La fonction $f'$ qui à tout $x\in I$ associe $f'(x)$ est appelée
-	la \textbf{fonction dérivée} de $f$.
+	$f$ est \textbf{dérivable sur $I$} si elle l'est en tout point de $I$. La
+	fonction $f'$ qui à $x$ associe $f'(x)$ est la \textbf{fonction dérivée}
+	de $f$.
 \end{definition}
 
-\begin{propriete}{Dérivées usuelles}{}
+\begin{propriete}{Dérivées usuelles}{prop_derivees_usuelles}
 	\begin{center}
-		\renewcommand{\arraystretch}{2.0}
-		\begin{tabular}{|c|c|c|}
-			\hline
-			\textbf{Fonction} $f$ & \textbf{Dérivée} $f'$ & \textbf{Domaine} \\
-			\hline
-			$k$ (constante) & $0$ & $\R$ \\
-			\hline
-			$x^n$ ($n\in\N^*$) & $nx^{n-1}$ & $\R$ \\
-			\hline
-			$\dfrac{1}{x}$ & $-\dfrac{1}{x^2}$ & $\R\setminus\{0\}$ \\
-			\hline
-			$\sqrt{x}$ & $\dfrac{1}{2\sqrt{x}}$ & $]0\,;+\infty[$ \\
-			\hline
-			$x^\alpha$ ($\alpha\in\R$) & $\alpha x^{\alpha-1}$ & $]0\,;+\infty[$ \\
-			\hline
-			$\cos x$ & $-\sin x$ & $\R$ \\
-			\hline
-			$\sin x$ & $\cos x$ & $\R$ \\
-			\hline
-		\end{tabular}
+	\renewcommand{\arraystretch}{1.7}
+	\begin{tabular}{>{\centering\arraybackslash}p{2.6cm}
+	                >{\centering\arraybackslash}p{2.6cm}
+	                >{\centering\arraybackslash}p{2.7cm}}
+	\hline
+	$f(x)$ & $f'(x)$ & sur \\
+	\hline
+	$k$                 & $0$                    & $\R$ \\
+	$x^{n}$ ($n\in\Z^*$) & $n\,x^{n-1}$          & $\R$ ou $\R^*$ \\
+	$\sqrt{x}$          & $\dfrac{1}{2\sqrt{x}}$ & $]0\,;+\infty[$ \\
+	$\e^{x}$            & $\e^{x}$               & $\R$ \\
+	$\ln x$             & $\dfrac{1}{x}$         & $]0\,;+\infty[$ \\
+	$x^{\alpha}$ ($\alpha\in\R$) & $\alpha\,x^{\alpha-1}$ & $]0\,;+\infty[$ \\
+	\hline
+	\end{tabular}
 	\end{center}
 \end{propriete}
 
-\begin{propriete}{Opérations sur les dérivées}{}
+\begin{propriete}{Opérations}{prop_operations_derivees}
 	\begin{center}
-		\renewcommand{\arraystretch}{2.0}
-		\begin{tabular}{|c|c|}
-			\hline
-			\textbf{Fonction} & \textbf{Dérivée} \\
-			\hline
-			$\lambda f$ & $\lambda f'$ \\
-			\hline
-			$f + g$ & $f' + g'$ \\
-			\hline
-			$f \cdot g$ & $f'g + fg'$ \\
-			\hline
-			$\dfrac{f}{g}$ & $\dfrac{f'g - fg'}{g^2}$ \\
-			\hline
-			$f\circ g$ (composée) & $(f'\circ g)\cdot g'$ \\
-			\hline
-			$u^n$ & $nu'u^{n-1}$ \\
-			\hline
-			$\dfrac{1}{u}$ & $-\dfrac{u'}{u^2}$ \\
-			\hline
-			$\sqrt{u}$ & $\dfrac{u'}{2\sqrt{u}}$ \\
-			\hline
-		\end{tabular}
+	\renewcommand{\arraystretch}{1.7}
+	\setlength{\tabcolsep}{5pt}
+	\begin{tabular}{>{\centering\arraybackslash}p{3.4cm}
+	                >{\centering\arraybackslash}p{4.6cm}}
+	\hline
+	Fonction & Dérivée \\
+	\hline
+	$\lambda f$        & $\lambda f'$ \\
+	$f+g$              & $f'+g'$ \\
+	$f\,g$             & $f'g+fg'$ \\
+	$\dfrac{f}{g}$     & $\dfrac{f'g-fg'}{g^{2}}$ \\
+	$g\circ u$         & $(g'\circ u)\times u'$ \\
+	$\e^{u}$           & $u'\,\e^{u}$ \\
+	$\ln u$ \; ($u>0$) & $\dfrac{u'}{u}$ \\
+	$u^{n}$            & $n\,u'\,u^{n-1}$ \\
+	\hline
+	\end{tabular}
 	\end{center}
 \end{propriete}
 
-% ----------------------------------------------------------------
-\section{Théorème des accroissements finis}
-% ----------------------------------------------------------------
+\begin{theoreme}[Dérivée d'une composée]
+	Si $u$ est dérivable en $a$ et $g$ dérivable en $u(a)$, alors $g\circ u$ est
+	dérivable en $a$ et
+	\[
+	(g\circ u)'(a)=g'\bigl(u(a)\bigr)\times u'(a).
+	\]
+\end{theoreme}
+
+\begin{methode}
+	Pour dériver $x\mapsto g\bigl(u(x)\bigr)$ :
+	\begin{enumerate}
+		\item identifier la fonction intérieure $u$ et la fonction extérieure $g$ ;
+		\item écrire $g'$, puis $\bigl(g\circ u\bigr)'=(g'\circ u)\times u'$ ;
+		\item ne pas oublier de multiplier par $u'$.
+	\end{enumerate}
+\end{methode}
+
+\begin{exemple}
+	\[
+	\begin{aligned}
+		\bigl(\e^{-x^{2}}\bigr)' &= (-2x)\,\e^{-x^{2}}, \\
+		\bigl(\ln(x^{2}+1)\bigr)' &= \frac{2x}{x^{2}+1}, \\
+		\bigl((2x-1)\e^{x}\bigr)' &= 2\e^{x}+(2x-1)\e^{x}=(2x+1)\e^{x}, \\
+		\left(\frac{\ln x}{x}\right)' &= \frac{\frac1x\cdot x-\ln x}{x^{2}}
+		=\frac{1-\ln x}{x^{2}}.
+	\end{aligned}
+	\]
+\end{exemple}
+
+
+% ================================================================
+\section{Dérivée de la réciproque d'une bijection}
+% ================================================================
+
+\begin{theoreme}[Dérivée d'une bijection réciproque]
+	Soit $f$ une bijection dérivable d'un intervalle $I$ sur $J=f(I)$. Si
+	$f'(a)\neq 0$ (avec $b=f(a)$), alors $f^{-1}$ est dérivable en $b$ et
+	\[
+	\bigl(f^{-1}\bigr)'(b)=\frac{1}{f'(a)}=\frac{1}{f'\!\bigl(f^{-1}(b)\bigr)}.
+	\]
+	Graphiquement, $\mathcal C_{f^{-1}}$ est la symétrique de $\mathcal C_f$ par
+	rapport à la droite $y=x$ ; les tangentes se correspondent par cette
+	symétrie (les pentes sont inverses l'une de l'autre).
+\end{theoreme}
+
+\begin{exemple}
+	$\exp$ est une bijection dérivable de $\R$ sur $]0\,;+\infty[$, de dérivée
+	$\exp$ qui ne s'annule pas. Sa réciproque est $\ln$, donc pour $x>0$ :
+	\[
+	\ln'(x)=\frac{1}{\exp\bigl(\ln x\bigr)}=\frac{1}{x}.
+	\]
+\end{exemple}
+
+\begin{exemple}
+	Soit $f(x)=x+\e^{x}$. On a $f'(x)=1+\e^{x}>0$, donc $f$ est une bijection
+	de $\R$ sur $\R$. Comme $f(0)=1$,
+	\[
+	\bigl(f^{-1}\bigr)'(1)=\frac{1}{f'(0)}=\frac{1}{1+\e^{0}}=\frac12.
+	\]
+\end{exemple}
+
+
+% ================================================================
+\section{Dérivées successives}
+% ================================================================
+
+\begin{definition}
+	Si $f'$ est elle-même dérivable, sa dérivée est la \textbf{dérivée seconde}
+	$f''$. Plus généralement, $f^{(n)}$ désigne la dérivée $n$-ième :
+	$f^{(0)}=f$ et $f^{(n+1)}=\bigl(f^{(n)}\bigr)'$.
+\end{definition}
+
+\begin{propriete}{Quelques dérivées $n$-ièmes}{prop_derivees_niemes}
+	\begin{center}
+	\renewcommand{\arraystretch}{1.8}
+	\begin{tabular}{>{\centering\arraybackslash}p{2.6cm}
+	                >{\centering\arraybackslash}p{5.4cm}}
+	\hline
+	$f(x)$ & $f^{(n)}(x)$ \\
+	\hline
+	$\e^{x}$   & $\e^{x}$ \\
+	$\e^{ax}$  & $a^{n}\,\e^{ax}$ \\
+	$\ln x$    & $(-1)^{n-1}\dfrac{(n-1)!}{x^{n}}$ \quad ($n\geq 1$) \\
+	\hline
+	\end{tabular}
+	\end{center}
+\end{propriete}
+
+\begin{exemple}
+	Soit $f(x)=x\,\e^{x}$. Alors $f'(x)=(x+1)\e^{x}$, $f''(x)=(x+2)\e^{x}$, et
+	l'on démontre par récurrence que
+	\[
+	\forall n\geq 1,\qquad f^{(n)}(x)=(x+n)\,\e^{x}.
+	\]
+	\emph{Hérédité :} si $f^{(n)}(x)=(x+n)\e^{x}$, alors
+	$f^{(n+1)}(x)=\e^{x}+(x+n)\e^{x}=(x+n+1)\e^{x}$.
+\end{exemple}
+
+
+% ================================================================
+\section{Convexité, concavité, points d'inflexion}
+% ================================================================
+
+\begin{definition}
+	$f$ (dérivable sur $I$) est \textbf{convexe} sur $I$ si sa courbe est
+	entièrement \textbf{au-dessus de chacune de ses tangentes} ; elle est
+	\textbf{concave} si sa courbe est en dessous de chacune de ses tangentes.
+\end{definition}
+
+\begin{theoreme}[Caractérisation par la dérivée seconde]
+	Soit $f$ deux fois dérivable sur $I$.
+	\[
+	f \text{ convexe sur } I
+	\iff f'' \geq 0 \text{ sur } I
+	\iff f' \text{ croissante sur } I.
+	\]
+	($f$ concave $\iff f''\leq 0$.) Un \textbf{point d'inflexion} est un point
+	où $\mathcal C_f$ \textbf{traverse} sa tangente : $f''$ s'y annule \textbf{en
+	changeant de signe}.
+\end{theoreme}
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=0.95]
+	\draw[->] (-2.9,0) -- (3.1,0) node[right,font=\small] {$x$};
+	\draw[->] (0,-0.6) -- (0,3.0) node[above,font=\small] {$y$};
+	\draw[thick,domain=-2.7:1.15,samples=100] plot (\x,{exp(\x)});
+	\node[font=\scriptsize] at (1.5,2.5) {$y=\e^x$ (convexe)};
+	\draw[thick,domain=0.08:3.0,samples=100] plot (\x,{ln(\x)});
+	\node[font=\scriptsize] at (2.1,1.35) {$y=\ln x$ (concave)};
+\end{tikzpicture}
+\end{center}
+
+\begin{exemple}
+	$\bigl(\e^{x}\bigr)''=\e^{x}>0$ : $\exp$ est \textbf{convexe} sur $\R$.
+	$\bigl(\ln x\bigr)''=-\dfrac{1}{x^{2}}<0$ : $\ln$ est \textbf{concave} sur
+	$]0\,;+\infty[$.
+\end{exemple}
+
+\begin{exemple}
+	Soit $f(x)=x\,\e^{x}$. On a $f''(x)=(x+2)\e^{x}$, du signe de $x+2$.
+	Donc $f$ est concave sur $]-\infty\,;-2]$, convexe sur $[-2\,;+\infty[$, et
+	le point $\bigl(-2\,;-2\e^{-2}\bigr)$ est un \textbf{point d'inflexion}.
+\end{exemple}
+
+\begin{astucebac}
+	La convexité fournit des inégalités très utiles : la courbe de $\exp$ étant
+	au-dessus de sa tangente en $0$ ($y=1+x$), on retrouve
+	$\e^{x}\geq 1+x$ pour tout $x$ ; la courbe de $\ln$ étant en dessous de sa
+	tangente en $1$ ($y=x-1$), on retrouve $\ln x\leq x-1$ pour tout $x>0$.
+\end{astucebac}
+
+
+% ================================================================
+\section{Accroissements finis : TAF et IAF}
+% ================================================================
 
 \begin{theoreme}[Théorème des accroissements finis (TAF)]
-	Soit $f$ continue sur $[a\,;b]$ et dérivable sur $]a\,;b[$.
-	S'il existe $M\geq 0$ tel que $|f'(x)|\leq M$ pour tout $x\in]a\,;b[$,
-	alors :
+	Soit $f$ continue sur $[a\,;b]$ et dérivable sur $]a\,;b[$. Alors il existe
+	au moins un réel $c\in\,]a\,;b[$ tel que
 	\[
-	\forall x\in[a\,;b],\; \forall y\in[a\,;b] : \quad
-	|f(y)-f(x)| \leq M|y-x|.
+	f(b)-f(a)=f'(c)\,(b-a).
+	\]
+	Géométriquement : il existe un point de la courbe où la tangente est
+	parallèle à la corde $[AB]$.
+\end{theoreme}
+
+\begin{theoreme}[Inégalité des accroissements finis (IAF)]
+	Soit $f$ dérivable sur $I$. S'il existe deux réels $m$ et $M$ tels que
+	$m\leq f'(x)\leq M$ pour tout $x\in I$, alors pour tous $a<b$ de $I$ :
+	\[
+	m\,(b-a)\;\leq\; f(b)-f(a)\;\leq\; M\,(b-a).
+	\]
+	(Conséquence directe du TAF : $f'(c)\in[m\,;M]$.)
+\end{theoreme}
+
+\begin{theoreme}[Version « contraction »]
+	Si $|f'(x)|\leq k$ pour tout $x\in I$, alors
+	\[
+	\forall a,b\in I,\qquad \bigl|f(b)-f(a)\bigr|\leq k\,|b-a|.
 	\]
 \end{theoreme}
 
 \begin{astucebac}
-	Le TAF est utilisé au BAC pour :
-	\begin{itemize}
-		\item \textbf{Encadrer} une valeur de $f$ (ex. approcher $\sqrt{2}$).
-		\item Montrer qu'une suite récurrente $U_{n+1}=f(U_n)$ converge
-		(via le critère de contraction).
+	Emplois classiques au Bac :
+	\begin{itemize}[label=\textbullet]
+		\item \textbf{encadrer} une valeur (ex.\ $\ln(1{,}2)$, $\e^{0{,}1}$) ;
+		\item pour une suite $u_{n+1}=f(u_n)$ de limite $\ell$ (point fixe) avec
+		$|f'|\leq k$ sur un intervalle stable : $|u_{n+1}-\ell|\leq k\,|u_n-\ell|$,
+		d'où $|u_n-\ell|\leq k^{n}\,|u_0-\ell|$ et la convergence si $0\leq k<1$.
 	\end{itemize}
 \end{astucebac}
 
 \begin{exemple}
-	Soit $f(x)=x^3-x$ sur $[0\,;2]$.
-	$f'(x)=3x^2-1$, donc $|f'(x)|\leq 3\cdot4-1=11$ sur $[0\,;2]$.
-	
-	Par le TAF : $|f(y)-f(x)|\leq 11|y-x|$ pour tous $x,y\in[0\,;2]$.
+	Encadrons $\ln(1{,}2)$. Sur $[1\,;1{,}2]$, $f=\ln$, $f'(x)=\dfrac1x$ avec
+	$\dfrac{1}{1{,}2}\leq f'(x)\leq 1$, soit $\dfrac{5}{6}\leq f'(x)\leq 1$.
+	L'IAF donne
+	\[
+	\frac{5}{6}\times 0{,}2 \;\leq\; \ln(1{,}2)-\ln 1 \;\leq\; 1\times 0{,}2,
+	\qquad\text{soit}\qquad
+	0{,}166\ldots \leq \ln(1{,}2)\leq 0{,}2.
+	\]
 \end{exemple}
 
-% ----------------------------------------------------------------
-\section{Exercices résolus}
-% ----------------------------------------------------------------
 
-\exercice{\etoilepleine\etoilevide\etoilevide}
-Soit $f$ définie sur $\R$ par :
-\[
-f(x)=\begin{cases} 2x+1 & \text{si } x\leq 1 \\ x^2 & \text{si } x>1. \end{cases}
-\]
+% ================================================================
+\section{Familles de fonctions dépendant d'un paramètre}
+% ================================================================
+
+Beaucoup de sujets d'analyse étudient non pas une fonction isolée, mais toute
+une \textbf{famille} $(f_m)$ (ou $(f_n)$) et le \textbf{réseau} de courbes
+$\mathcal C_m$ associé.
+
+\begin{methode}
+	\textbf{Étudier une famille $(f_m)$.}
+	\begin{enumerate}
+		\item \textbf{Domaine} : dépend-il de $m$ ?
+		\item \textbf{Points fixes communs} : chercher les points par lesquels
+		passent \emph{toutes} les courbes. On isole la partie qui contient $m$ :
+		si $f_m(x)=A(x)+m\,B(x)$, un point commun correspond à $B(x)=0$
+		(alors $f_m(x)=A(x)$ ne dépend plus de $m$).
+		\item \textbf{Dérivée} $f_m'(x)$ : étudier son signe en \textbf{discutant
+		selon $m$}.
+		\item \textbf{Extremums} : donner l'abscisse et l'ordonnée en fonction
+		de $m$.
+		\item \textbf{Lieu des extremums} : quand $m$ varie, le point
+		$S_m\bigl(\varphi(m)\,;\psi(m)\bigr)$ décrit une courbe ; on
+		\textbf{élimine $m$} entre $x=\varphi(m)$ et $y=\psi(m)$.
+		\item \textbf{Tangentes} : en un point commun, ou de pente imposée.
+	\end{enumerate}
+\end{methode}
+
+\exerciceresolu
+\textbf{La famille $f_m(x)=\e^{x}-m x$}
+
+Pour $m\in\R$, on pose $f_m(x)=\e^{x}-mx$, de courbe $\mathcal C_m$.
 \begin{enumerate}
-	\item $f$ est-elle continue en $x_0=1$ ?
-	\item $f$ est-elle dérivable en $x_0=1$ ?
+	\item Montrer que toutes les courbes $\mathcal C_m$ passent par un même point.
+	\item Étudier le sens de variation de $f_m$ en discutant selon $m$.
+	\item Lorsque $f_m$ admet un minimum, en donner les coordonnées, puis
+	déterminer le lieu de ce minimum quand $m$ décrit $]0\,;+\infty[$.
 \end{enumerate}
 
 \solution
 
-\textbf{1. Continuité.}
-$\displaystyle\lim_{x\to 1^-}f(x)=2+1=3$. \quad
-$\displaystyle\lim_{x\to 1^+}f(x)=1$. \quad
-$f(1)=3$.
+\textbf{1.} $f_m(x)=\e^{x}-mx$ : pour $x=0$, $f_m(0)=\e^{0}=1$ \emph{quel que
+soit} $m$. Toutes les courbes passent par $A(0\,;1)$.
 
-Les limites à gauche et à droite sont différentes ($3\neq 1$),
-donc $f$ est \textbf{discontinue} en $x_0=1$.
+\textbf{2.} $f_m'(x)=\e^{x}-m$.
+\begin{itemize}[label=\textbullet]
+	\item Si $m\leq 0$ : $f_m'(x)=\e^{x}-m>0$, $f_m$ est strictement croissante
+	sur $\R$.
+	\item Si $m>0$ : $f_m'(x)>0\iff \e^{x}>m\iff x>\ln m$. Donc $f_m$ est
+	décroissante sur $]-\infty\,;\ln m]$, croissante sur $[\ln m\,;+\infty[$.
+\end{itemize}
 
-\textbf{2.} $f$ n'est pas continue en $1$, donc elle n'est
-\textbf{pas dérivable} en $1$ (la dérivabilité implique la continuité).
+\textbf{3.} Pour $m>0$, $f_m$ admet un minimum en $x=\ln m$ :
+\[
+f_m(\ln m)=\e^{\ln m}-m\ln m=m-m\ln m=m\,(1-\ln m).
+\]
+Le minimum est le point $S_m\bigl(\ln m\,;\,m(1-\ln m)\bigr)$. Posons
+$X=\ln m$, donc $m=\e^{X}$ et
+\[
+Y=m(1-\ln m)=\e^{X}\,(1-X).
+\]
+Quand $m$ décrit $]0\,;+\infty[$, $X$ décrit $\R$ : le lieu de $S_m$ est la
+courbe d'équation $y=\e^{x}(1-x)$.
+
+\exerciceresolu
+\textbf{La famille $f_m(x)=(x-m)\,\e^{x}$}
+
+\begin{enumerate}
+	\item Calculer $f_m'(x)$ et en déduire que $f_m$ admet un minimum, dont on
+	donnera les coordonnées.
+	\item Déterminer le lieu de ce minimum quand $m$ décrit $\R$.
+	\item Montrer que chaque courbe $\mathcal C_m$ coupe l'axe des abscisses en
+	un seul point, que l'on précisera.
+\end{enumerate}
+
+\solution
+
+\textbf{1.} $f_m'(x)=\e^{x}+(x-m)\e^{x}=(x-m+1)\,\e^{x}$, du signe de
+$x-m+1$. Donc $f_m$ décroît sur $]-\infty\,;m-1]$ puis croît : minimum en
+$x=m-1$, de valeur
+\[
+f_m(m-1)=(m-1-m)\,\e^{m-1}=-\e^{m-1}.
+\]
+Minimum $S_m\bigl(m-1\,;-\e^{m-1}\bigr)$.
+
+\textbf{2.} $X=m-1$, $Y=-\e^{m-1}=-\e^{X}$ : le lieu est la courbe
+$y=-\e^{x}$.
+
+\textbf{3.} $\e^{x}>0$, donc $f_m(x)=0\iff x-m=0\iff x=m$. Chaque courbe
+coupe l'axe $(Ox)$ au seul point d'abscisse $m$.
+
+
+% ================================================================
+\section{Méthodes et exercices résolus}
+% ================================================================
+
+\begin{methode}
+	\textbf{Raccord d'une fonction par morceaux en $x_0$.}
+	\begin{enumerate}
+		\item \textbf{Continuité} : $\lim_{x\to x_0^-}f=\lim_{x\to x_0^+}f=f(x_0)$
+		(donne une équation sur les paramètres).
+		\item \textbf{Dérivabilité} : $f'_g(x_0)=f'_d(x_0)$ via les taux
+		d'accroissement (donne une seconde équation).
+		\item Interprétation : tangente (si dérivable) ou demi-tangentes
+		(point anguleux).
+	\end{enumerate}
+\end{methode}
+
+\exerciceresolu
+\textbf{Calcul de dérivées}
+
+Dériver sur l'intervalle indiqué :
+\[
+\text{a) } f(x)=x\ln x-x \;\;(x>0)
+\qquad
+\text{b) } g(x)=\frac{\e^{x}}{\e^{x}+1}
+\qquad
+\text{c) } h(x)=\ln\!\bigl(1+\e^{x}\bigr)
+\]
+
+\solution
+
+\textbf{a)} $f'(x)=\ln x+x\cdot\dfrac1x-1=\ln x+1-1=\ln x$.
+
+\textbf{b)} Avec $u=\e^{x}$ : $g=\dfrac{u}{u+1}$,
+$g'=\dfrac{u'(u+1)-u\,u'}{(u+1)^{2}}=\dfrac{u'}{(u+1)^{2}}
+=\dfrac{\e^{x}}{(\e^{x}+1)^{2}}$.
+
+\textbf{c)} $h'(x)=\dfrac{(1+\e^{x})'}{1+\e^{x}}=\dfrac{\e^{x}}{1+\e^{x}}
+=\dfrac{1}{1+\e^{-x}}$.
 
 \bigskip
-\exercice{\etoilepleine\etoilepleine\etoilevide}
-Soit $g$ définie sur $\R$ par :
+\exerciceresolu
+\textbf{Raccord et demi-tangentes}
+
+Soit $a\in\R$ et
 \[
-g(x)=\begin{cases} x^2+2x & \text{si } x\leq 0 \\ 2x & \text{si } x>0. \end{cases}
-\]
-\begin{enumerate}
-	\item Étudier la continuité de $g$ en $0$.
-	\item Étudier la dérivabilité de $g$ en $0$.
-	\item Donner l'interprétation géométrique.
-\end{enumerate}
-
-\solution
-
-\textbf{1. Continuité.}
-$\displaystyle\lim_{x\to 0^-}g(x)=0$. \quad
-$\displaystyle\lim_{x\to 0^+}g(x)=0$. \quad
-$g(0)=0$.
-$g$ est \textbf{continue} en $0$.
-
-\textbf{2. Dérivabilité.}
-\[
-\tau_g(x)=\frac{g(x)-g(0)}{x-0}=\frac{g(x)}{x}.
-\]
-\[
-\lim_{x\to 0^-}\frac{x^2+2x}{x}=\lim_{x\to 0^-}(x+2)=2.
-\]
-\[
-\lim_{x\to 0^+}\frac{2x}{x}=2.
-\]
-$g'_g(0)=g'_d(0)=2$, donc $g$ est \textbf{dérivable en $0$} et $g'(0)=2$.
-
-\textbf{3.} La courbe admet une \textbf{tangente} en $x_0=0$
-d'équation $y=2x$.
-
-\bigskip
-\exercice{\etoilepleine\etoilepleine\etoilepleine}
-
-\textit{(Style BAC — Problème 2, sujet 2021--2022)}
-
-Soit $f$ définie sur $[0\,;+\infty[$ par :
-\[
-f(0)=1 \qquad \text{et} \qquad f(x)=\frac{x^3+x^2-x+1}{x+1} \text{ pour } x>0.
-\]
-\begin{enumerate}
-	\item Étudier la continuité de $f$ en $x_0=0$.
-	\item Étudier la dérivabilité de $f$ à droite en $x_0=0$.
-	\item Donner l'équation de la demi-tangente à $\mathcal{C}_f$ en $x_0=0$.
-	\item Montrer que $f(x)=x^2+1-\dfrac{x}{x+1}$ pour $x>0$,
-	puis calculer $f'(x)$.
-\end{enumerate}
-
-\solution
-
-\textbf{1. Continuité à droite.}
-\[
-\lim_{x\to 0^+}f(x)
-=\frac{0+0-0+1}{0+1}=1=f(0).
-\]
-$f$ est \textbf{continue à droite en $0$}.
-
-\textbf{2. Dérivabilité à droite.}
-\[
-\tau(x)=\frac{f(x)-f(0)}{x-0}
-=\frac{\frac{x^3+x^2-x+1}{x+1}-1}{x}
-=\frac{x^3+x^2-x+1-(x+1)}{x(x+1)}
-=\frac{x^3+x^2-2x}{x(x+1)}.
-\]
-\[
-=\frac{x(x^2+x-2)}{x(x+1)}
-=\frac{x^2+x-2}{x+1}
-=\frac{(x+2)(x-1)}{x+1}.
-\]
-\[
-\lim_{x\to 0^+}\tau(x)
-=\frac{(2)(-1)}{1}=-2.
-\]
-$f$ est \textbf{dérivable à droite en $0$} et $f'_d(0)=-2$.
-
-\textbf{3. Demi-tangente.}
-Pente $-2$, passe par $(0\,;1)$ :
-\[
-y = -2x+1.
-\]
-
-\textbf{4. Division euclidienne.}
-\[
-x^3+x^2-x+1 = (x+1)(x^2)+(-x+1) = (x+1)(x^2+1-\tfrac{x}{x+1}).
-\]
-Vérifions directement :
-$(x^2+1)(x+1)-x = x^3+x^2+x+1-x = x^3+x^2+1$... Recommençons :
-\[
-x^3+x^2-x+1 \div (x+1) :
-\]
-$x^3+x^2-x+1 = (x+1)(x^2) + (-x+1)$,
-puis $-x+1 = (x+1)(-1)+2$,
-donc :
-\[
-\frac{x^3+x^2-x+1}{x+1}=x^2-1+\frac{2}{x+1}.
-\]
-\textbf{Correction :} $f(x)=x^2-1+\dfrac{2}{x+1}$ pour $x>0$.
-
-Dérivée :
-\[
-f'(x)=2x-\frac{2}{(x+1)^2}.
-\]
-
-% ----------------------------------------------------------------
-\section{Exercice type BAC}
-% ----------------------------------------------------------------
-
-\exercice{\etoilepleine\etoilepleine\etoilepleine}
-
-\textit{(D'après sujets BAC S Madagascar 2021--2023)}
-
-\medskip
-Soit $f$ la fonction numérique définie sur $\R$ par :
-\[
-f(x)=\begin{cases}
-	\dfrac{x^3-x}{x-1} & \text{si } x < 1 \\[8pt]
-	ax^2+b             & \text{si } x \geq 1,
+f(x)=
+\begin{cases}
+	\e^{x}-1 & \text{si } x\leq 0,\\[0.3em]
+	a\,x+x^{2} & \text{si } x>0.
 \end{cases}
 \]
-où $a$ et $b$ sont des réels.
-
-\medskip
-\textbf{Partie A}
 \begin{enumerate}
-	\item Simplifier $\dfrac{x^3-x}{x-1}$ pour $x\neq 1$ en factorisant le numérateur.
-	\item Déterminer $a$ et $b$ pour que $f$ soit \textbf{continue} en $x_0=1$.
-\end{enumerate}
-
-\textbf{Partie B} \quad (avec les valeurs de $a$ et $b$ trouvées)
-\begin{enumerate}
-	\setcounter{enumi}{2}
-	\item $f$ est-elle dérivable en $x_0=1$ ?
-	Donner l'interprétation géométrique.
-	\item Montrer que l'équation $f(x)=0$ admet une solution unique
-	sur $[-1\,;0]$.
+	\item Montrer que $f$ est continue en $0$ quel que soit $a$.
+	\item Déterminer $a$ pour que $f$ soit dérivable en $0$. Donner alors
+	l'équation de la tangente en $O$.
 \end{enumerate}
 
 \solution
 
-\textbf{1.} $x^3-x=x(x^2-1)=x(x-1)(x+1)$, donc pour $x\neq 1$ :
+\textbf{1.} $\displaystyle\lim_{x\to 0^-}(\e^{x}-1)=0$,
+$\displaystyle\lim_{x\to 0^+}(ax+x^{2})=0$ et $f(0)=\e^{0}-1=0$. $f$ est
+continue en $0$ pour tout $a$.
+
+\textbf{2.} Taux d'accroissement en $0$ :
 \[
-\frac{x^3-x}{x-1}=\frac{x(x-1)(x+1)}{x-1}=x(x+1)=x^2+x.
+\lim_{x\to 0^-}\frac{\e^{x}-1}{x}=1,\qquad
+\lim_{x\to 0^+}\frac{ax+x^{2}}{x}=\lim_{x\to 0^+}(a+x)=a.
 \]
+$f$ dérivable en $0$ $\iff a=1$. La tangente en $O$ a alors pour pente
+$f'(0)=1$ : $y=x$.
 
-\textbf{2. Continuité en $1$.}
+\bigskip
+\exerciceresolu
+\textbf{Encadrement par l'IAF}
+
+Montrer que pour tout $x\geq 0$, $\;1+x\leq \e^{x}\leq 1+x\,\e^{x}$.
+
+\solution
+
+Soit $\varphi(t)=\e^{t}$ sur $[0\,;x]$ ($x\geq 0$). Pour $t\in[0\,;x]$,
+$\varphi'(t)=\e^{t}$ et $1\leq \e^{t}\leq \e^{x}$. L'IAF entre $0$ et $x$
+donne
 \[
-\lim_{x\to 1^-}f(x)=1^2+1=2.
+1\cdot(x-0)\;\leq\; \e^{x}-\e^{0}\;\leq\; \e^{x}\cdot(x-0),
 \]
-\[
-\lim_{x\to 1^+}f(x)=a+b. \qquad f(1)=a+b.
-\]
-Pour la continuité : $a+b=2$.
+soit $x\leq \e^{x}-1\leq x\,\e^{x}$, d'où $1+x\leq \e^{x}\leq 1+x\e^{x}$.
 
-\textbf{Dérivabilité en $1$} (Partie B, question 3) impose une seconde condition.
 
-Taux à gauche : $\displaystyle\lim_{x\to 1^-}\frac{(x^2+x)-2}{x-1}
-=\lim_{x\to 1^-}\frac{(x-1)(x+2)}{x-1}=3$.
+% ================================================================
+\section{Exercices d'entraînement}
+% ================================================================
 
-Taux à droite : $\displaystyle\lim_{x\to 1^+}\frac{ax^2+b-2}{x-1}$.
+% --------------------------------------------------
+\subsection{Échauffement : lire une figure}
+% --------------------------------------------------
 
-Si $f$ est dérivable : ce taux vaut $2a\cdot 1=2a$ (dérivée de $ax^2+b$ en $1$).
-Pour $f'_g(1)=f'_d(1)$ : $2a=3$, soit $a=\dfrac{3}{2}$ et $b=2-\dfrac{3}{2}=\dfrac{1}{2}$.
+\exercice{Lecture d'une courbe \hfill \facile}
+La courbe $\mathcal C$ ci-dessous représente une fonction $f$ dérivable sur
+$\R$. La droite $T$ est la tangente à $\mathcal C$ au point $A(0\,;1)$ ; elle
+passe aussi par le point $(-1\,;0)$. La droite $y=0$ est asymptote à
+$\mathcal C$ en $-\infty$, et $\mathcal C$ est \textbf{au-dessus} de $T$
+(sauf en $A$).
 
-\textbf{3.} Avec $a=\frac{3}{2}$, $b=\frac{1}{2}$ :
-$f'_g(1)=3=f'_d(1)$, donc $f$ est \textbf{dérivable en $1$}.
-La courbe admet une tangente de pente $3$ en $(1\,;2)$,
-d'équation $y=3(x-1)+2=3x-1$.
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=0.95]
+	\draw[->] (-3.4,0) -- (2.6,0) node[right,font=\small] {$x$};
+	\draw[->] (0,-1.2) -- (0,3.4) node[above,font=\small] {$y$};
+	\draw[thick,domain=-3.3:1.15,samples=120] plot (\x,{exp(\x)});
+	\draw[blue,dashed,domain=-1.9:1.1] plot (\x,{\x+1})
+	  node[right,font=\scriptsize,blue] {$T$};
+	\filldraw (0,1) circle (1.6pt) node[above left,font=\small] {$A$};
+	\filldraw (-1,0) circle (1.4pt) node[below,font=\scriptsize] {$(-1\,;0)$};
+	\node[font=\scriptsize] at (1.55,2.7) {$\mathcal C$};
+\end{tikzpicture}
+\end{center}
 
-\textbf{4. TVI sur $[-1\,;0]$.}
+\begin{enumerate}
+	\item Lire $f(0)$ et $f'(0)$.
+	\item Donner l'équation de $T$.
+	\item Que vaut $\displaystyle\lim_{x\to-\infty}f(x)$ ? En déduire une
+	asymptote.
+	\item De la position de $\mathcal C$ par rapport à $T$, que peut-on
+	déduire pour la convexité de $f$ et le signe de $f''$ ?
+	\item Résoudre graphiquement $f(x)\leq 1$.
+\end{enumerate}
 
-Sur $[-1\,;0]$, $x<1$ donc $f(x)=x^2+x$.
-$f$ est continue (polynôme).
+\exercice{Dérivable ou non ? \hfill \facile}
+Pour chacune, étudier la dérivabilité en $x_0$ et préciser l'interprétation
+géométrique.
+\begin{enumerate}
+	\item $f(x)=\bigl|\ln x\bigr|$ en $x_0=1$.
+	\item $g(x)=\e^{x}$ si $x\leq 0$, $g(x)=1+x+x^{2}$ si $x>0$, en $x_0=0$.
+	\item $h(x)=x+\sqrt{\,\e^{x}-1\,}$ (pour $x\geq 0$) en $x_0=0$.
+\end{enumerate}
 
-$f(-1)=1-1=0$. Hmm, $f(-1)=0$ donc $x=-1$ est déjà solution.
-Cherchons sur $]-1\,;0]$ : $f(0)=0$.
+\exercice{Vrai ou faux \hfill \facile}
+Répondre par \emph{vrai} ou \emph{faux} en justifiant brièvement.
+\begin{enumerate}
+	\item Si $f$ est continue en $a$, alors $f$ est dérivable en $a$.
+	\item Si $f$ est dérivable en $a$, alors $f$ est continue en $a$.
+	\item Une fonction dont la courbe admet une tangente verticale en $a$ est
+	dérivable en $a$.
+	\item $\exp$ est convexe sur $\R$.
+	\item Si $f''(a)=0$, alors $\mathcal C_f$ a un point d'inflexion en $a$.
+	\item $(g\circ u)'=g'\circ u'$.
+	\item Si $|f'|\leq \tfrac12$ sur $\R$, alors $|f(3)-f(1)|\leq 1$.
+	\item La réciproque d'une bijection dérivable est toujours dérivable.
+\end{enumerate}
 
-En fait $f(x)=x^2+x=x(x+1)=0$ pour $x=0$ ou $x=-1$.
+% --------------------------------------------------
+\subsection{Calcul de dérivées}
+% --------------------------------------------------
 
-Conclusion : $f(x)=0$ admet \textbf{deux solutions} sur $[-1\,;0]$ :
-$x=-1$ et $x=0$.
+\exercice{Dérivées simples \hfill \facile}
+Dériver (préciser l'ensemble de dérivabilité).
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $f(x)=x\,\e^{x}$
+	\item $f(x)=(x^{2}-1)\e^{x}$
+	\item $f(x)=\dfrac{\e^{x}}{x}$
+	\item $f(x)=x^{2}\ln x$
+	\item $f(x)=\dfrac{\ln x}{x^{2}}$
+	\item $f(x)=\e^{x}-x-\ln x$
+\end{enumerate}
+\end{multicols}
 
-\begin{remarque}
-	Cet exemple illustre l'importance de bien vérifier les calculs
-	avant d'appliquer le TVI : si $f(a)=0$ ou $f(b)=0$,
-	la solution est déjà aux bornes.
-\end{remarque}
+\exercice{Dérivées de composées \hfill \moyen}
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $f(x)=\e^{3x-1}$
+	\item $f(x)=\e^{-x^{2}}$
+	\item $f(x)=\ln(x^{2}+x+1)$
+	\item $f(x)=\ln\!\Bigl(\dfrac{x}{x+1}\Bigr)$ \; ($x>0$)
+	\item $f(x)=\bigl(\e^{x}+1\bigr)^{3}$
+	\item $f(x)=\sqrt{\,\e^{x}+1\,}$
+	\item $f(x)=\dfrac{1}{\e^{x}+1}$
+	\item $f(x)=\e^{\,\ln x+1}$ \; ($x>0$)
+\end{enumerate}
+\end{multicols}
+
+\exercice{Dérivées successives \hfill \moyen}
+\begin{enumerate}
+	\item Pour $f(x)=\e^{-2x}$, donner $f'$, $f''$ puis $f^{(n)}$.
+	\item Pour $f(x)=x^{2}\e^{x}$, calculer $f'$ et $f''$, puis montrer par
+	récurrence que $f^{(n)}(x)=\bigl(x^{2}+2nx+n(n-1)\bigr)\e^{x}$.
+	\item En déduire $f^{(n)}(0)$.
+\end{enumerate}
+
+% --------------------------------------------------
+\subsection{Tangentes, convexité, réciproque}
+% --------------------------------------------------
+
+\exercice{Tangentes \hfill \facile}
+Soit $f(x)=(x-1)\e^{x}$.
+\begin{enumerate}
+	\item Calculer $f'(x)$.
+	\item Équation de la tangente $T_0$ à $\mathcal C_f$ au point d'abscisse $0$.
+	\item Montrer qu'il existe un unique point de $\mathcal C_f$ où la tangente
+	est horizontale ; le préciser.
+\end{enumerate}
+
+\exercice{Convexité et inflexion \hfill \moyen}
+Soit $f(x)=(x^{2}-2)\,\e^{x}$.
+\begin{enumerate}
+	\item Calculer $f'(x)$ et $f''(x)$.
+	\item Étudier la convexité de $f$ et déterminer les points d'inflexion
+	de $\mathcal C_f$.
+	\item Déterminer $\displaystyle\lim_{x\to-\infty}f(x)$ et
+	$\displaystyle\lim_{x\to+\infty}f(x)$.
+\end{enumerate}
+
+\exercice{Une fonction et sa réciproque \hfill \moyen}
+Soit $f(x)=\e^{x}+x$ sur $\R$.
+\begin{enumerate}
+	\item Montrer que $f$ est une bijection de $\R$ sur $\R$.
+	\item Calculer $\bigl(f^{-1}\bigr)'(1)$ et $\bigl(f^{-1}\bigr)'(1+\e)$.
+	\item Étudier la convexité de $f$, puis celle de $f^{-1}$.
+	\item Donner l'équation de la tangente à $\mathcal C_{f^{-1}}$ au point
+	d'abscisse $1$.
+\end{enumerate}
+
+\exercice{Inégalités par convexité et IAF \hfill \moyen}
+\begin{enumerate}
+	\item À l'aide de la convexité de $\exp$, retrouver $\e^{x}\geq 1+x$ pour
+	tout $x$.
+	\item À l'aide de l'IAF appliquée à $\ln$ sur $[1\,;1+x]$ ($x>0$), montrer
+	que $\dfrac{x}{1+x}\leq \ln(1+x)\leq x$.
+	\item En déduire un encadrement de $\ln(1{,}05)$.
+\end{enumerate}
+
+% --------------------------------------------------
+\subsection{Familles de fonctions à paramètre}
+% --------------------------------------------------
+
+\exercice{Le réseau $f_m(x)=\e^{x}+m x$ \hfill \moyen}
+\begin{enumerate}
+	\item Montrer que toutes les courbes $\mathcal C_m$ passent par un point
+	fixe $A$.
+	\item Étudier le sens de variation de $f_m$ selon le signe de $m$.
+	\item Pour $m<0$, déterminer les coordonnées du minimum de $f_m$, puis le
+	lieu de ce minimum quand $m$ décrit $]-\infty\,;0[$.
+	\item Donner l'équation de la tangente commune en $A$ en fonction de $m$.
+\end{enumerate}
+
+\exercice{Le réseau $f_m(x)=x-m\,\e^{x}$ \hfill \moyen}
+\begin{enumerate}
+	\item Étudier $f_m$ selon le signe de $m$ ; préciser l'éventuel extremum.
+	\item Pour $m>0$, montrer que le maximum de $f_m$ a pour ordonnée
+	$-\ln m-1$ ; en déduire le lieu de ce maximum.
+	\item Discuter, selon $m>0$, le nombre de solutions de l'équation
+	$f_m(x)=0$.
+\end{enumerate}
+
+\exercice{Le réseau $f_n(x)=x^{n}\,\e^{-x}$ \hfill \difficile}
+Pour $n\in\N^*$, on pose $f_n(x)=x^{n}\e^{-x}$ sur $[0\,;+\infty[$.
+\begin{enumerate}
+	\item Calculer $f_n'(x)$ et dresser le tableau de variations de $f_n$.
+	\item Montrer que $\displaystyle\lim_{x\to+\infty}f_n(x)=0$ ; interpréter.
+	\item Montrer que le maximum de $f_n$ vaut $n^{n}\e^{-n}$, atteint en
+	$x=n$.
+	\item Déterminer le lieu des maximums $S_n$ quand $n$ décrit $\N^*$.
+\end{enumerate}
+
+% --------------------------------------------------
+\subsection{Sujets types Bac}
+% --------------------------------------------------
+
+\exercice{Sujet type Bac — point anguleux et réseau \hfill \difficile}
+On considère la fonction $f$ définie sur $\R$ par $f(x)=\bigl|\e^{x}-1\bigr|$,
+de courbe $\mathcal C$.
+
+\textbf{Partie A — Étude de $f$}
+\begin{enumerate}
+	\item Écrire $f(x)$ sans valeur absolue sur $]-\infty\,;0[$ et sur
+	$[0\,;+\infty[$. \hfill \mbox{(0,5~pt)}
+	\item Étudier la dérivabilité de $f$ en $0$. Préciser les demi-tangentes ;
+	que peut-on dire du point $A(0\,;0)$ ? \hfill \mbox{(1~pt)}
+	\item Déterminer $\displaystyle\lim_{x\to-\infty}f(x)$ et
+	$\displaystyle\lim_{x\to+\infty}f(x)$ ; en déduire une asymptote. \hfill \mbox{(0,5~pt)}
+	\item Dresser le tableau de variations de $f$ sur $\R$. \hfill \mbox{(0,5~pt)}
+	\item Étudier la convexité de $f$ sur $]-\infty\,;0[$ puis sur
+	$]0\,;+\infty[$. \hfill \mbox{(0,5~pt)}
+\end{enumerate}
+
+\textbf{Partie B — Nombre de solutions selon un paramètre}
+\begin{enumerate}
+	\setcounter{enumi}{5}
+	\item Soit $m>0$. Résoudre $f(x)=m$ sur $[0\,;+\infty[$. \hfill \mbox{(0,5~pt)}
+	\item Résoudre $f(x)=m$ sur $]-\infty\,;0[$ en discutant selon $m$. \hfill \mbox{(0,75~pt)}
+	\item En déduire, suivant $m>0$, le nombre de solutions de l'équation
+	$f(x)=m$. \hfill \mbox{(0,5~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — fonction auxiliaire \hfill \difficile}
+Soit $f$ la fonction définie sur $\R$ par $f(x)=\e^{x}-x^{2}$, de courbe
+$\mathcal C$.
+
+\textbf{Partie A — Une fonction auxiliaire}
+\begin{enumerate}
+	\item Soit $g(x)=\e^{x}-2x$. Étudier les variations de $g$ et montrer que
+	$g$ admet un minimum strictement positif. \hfill \mbox{(1~pt)}
+	\item En déduire que $f'(x)>0$ pour tout $x\in\R$, puis le sens de
+	variation de $f$. \hfill \mbox{(0,5~pt)}
+	\item Déterminer $\displaystyle\lim_{x\to-\infty}f(x)$ et
+	$\displaystyle\lim_{x\to+\infty}f(x)$. \hfill \mbox{(0,5~pt)}
+\end{enumerate}
+
+\textbf{Partie B — Racine et convexité}
+\begin{enumerate}
+	\setcounter{enumi}{3}
+	\item Montrer que l'équation $f(x)=0$ admet une unique solution $\alpha$,
+	et que $-1<\alpha<0$. \hfill \mbox{(0,75~pt)}
+	\item Étudier la convexité de $f$ et déterminer le point d'inflexion de
+	$\mathcal C$. \hfill \mbox{(0,5~pt)}
+	\item Donner l'équation de la tangente à $\mathcal C$ au point d'abscisse
+	$0$, et préciser la position de $\mathcal C$ par rapport à cette tangente
+	au voisinage de $0$. \hfill \mbox{(0,75~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — réseau de courbes $(x+m)\e^{-x}$ \hfill \difficile}
+Pour $m\in\R$, on pose $f_m(x)=(x+m)\,\e^{-x}$, de courbe $\mathcal C_m$.
+
+\textbf{Partie A — Étude de la famille}
+\begin{enumerate}
+	\item Calculer $f_m'(x)$ et montrer que $f_m$ admet un maximum en
+	$x=1-m$, d'ordonnée $\e^{m-1}$. \hfill \mbox{(1~pt)}
+	\item Déterminer $\displaystyle\lim_{x\to+\infty}f_m(x)$ et
+	$\displaystyle\lim_{x\to-\infty}f_m(x)$ ; en déduire une asymptote
+	commune à toutes les $\mathcal C_m$. \hfill \mbox{(0,75~pt)}
+	\item Montrer que $\mathcal C_m$ coupe l'axe $(Ox)$ au seul point
+	d'abscisse $-m$. \hfill \mbox{(0,5~pt)}
+	\item Montrer que le maximum $S_m$ décrit, quand $m$ varie, la courbe
+	d'équation $y=\e^{-x}$. \hfill \mbox{(0,75~pt)}
+\end{enumerate}
+
+\textbf{Partie B — Le cas $m=0$}
+\begin{enumerate}
+	\setcounter{enumi}{4}
+	\item Étudier $f_0(x)=x\,\e^{-x}$ : variations, convexité, point
+	d'inflexion. \hfill \mbox{(1~pt)}
+	\item Donner l'équation de la tangente à $\mathcal C_0$ en $O$. \hfill \mbox{(0,5~pt)}
+	\item Montrer que pour tout $x\in[0\,;1]$, $0\leq f_0'(x)\leq 1$, puis que
+	$0\leq f_0(x)\leq x$ sur $[0\,;1]$. \hfill \mbox{(0,75~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — bijection réciproque et suite \hfill \difficile}
+Soit $f$ définie sur $\R$ par $f(x)=x+\e^{x}$.
+
+\textbf{Partie A — La réciproque}
+\begin{enumerate}
+	\item Montrer que $f$ est une bijection strictement croissante de $\R$
+	sur $\R$. \hfill \mbox{(0,75~pt)}
+	\item On note $g=f^{-1}$. Montrer que $g$ est dérivable sur $\R$ et que,
+	en posant $y=g(x)$, $\;g'(x)=\dfrac{1}{1+x-y}$. \hfill \mbox{(1~pt)}
+	\item Calculer $g(1)$ et $g'(1)$. Donner la tangente à $\mathcal C_g$ au
+	point d'abscisse $1$. \hfill \mbox{(0,5~pt)}
+	\item Étudier la convexité de $f$ ; en déduire celle de $g$. \hfill \mbox{(0,5~pt)}
+\end{enumerate}
+
+\textbf{Partie B — Approximation de $\alpha=g(2)$}
+On pose $\alpha=g(2)$, de sorte que $\alpha+\e^{\alpha}=2$.
+\begin{enumerate}
+	\setcounter{enumi}{4}
+	\item Montrer que $\alpha\in\,]0\,;1[$ et que $\alpha=\ln(2-\alpha)$. \hfill \mbox{(0,5~pt)}
+	\item Soit $h(x)=\ln(2-x)$ sur $]-\infty\,;2[$. On définit $(u_n)$ par
+	$u_0=0$ et $u_{n+1}=h(u_n)$. Montrer que pour tout $n$,
+	$u_n\in[0\,;0{,}7]$. \hfill \mbox{(0,75~pt)}
+	\item Montrer que pour tout $x\in[0\,;0{,}7]$,
+	$\bigl|h'(x)\bigr|\leq \dfrac{10}{13}$. \hfill \mbox{(0,5~pt)}
+	\item En déduire que $\bigl|u_{n+1}-\alpha\bigr|\leq
+	\dfrac{10}{13}\bigl|u_n-\alpha\bigr|$, puis que $(u_n)$ converge vers
+	$\alpha$. \hfill \mbox{(0,75~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — dérivées successives et paramètre \hfill \difficile}
+Soit $f$ la fonction définie sur $\R$ par $f(x)=x^{2}\,\e^{x}$.
+
+\textbf{Partie A — Dérivées successives}
+\begin{enumerate}
+	\item Calculer $f'(x)$ et $f''(x)$. \hfill \mbox{(0,5~pt)}
+	\item Montrer par récurrence que, pour tout $n\geq 1$,
+	$f^{(n)}(x)=\bigl(x^{2}+2nx+n(n-1)\bigr)\,\e^{x}$. \hfill \mbox{(1~pt)}
+	\item En déduire $f^{(n)}(0)$. \hfill \mbox{(0,25~pt)}
+	\item Montrer que l'équation $f^{(n)}(x)=0$ admet exactement deux
+	solutions réelles pour tout $n\geq 1$. \hfill \mbox{(0,75~pt)}
+\end{enumerate}
+
+\textbf{Partie B — Étude et paramètre}
+\begin{enumerate}
+	\setcounter{enumi}{4}
+	\item Étudier les variations de $f$ et sa convexité (on montrera qu'il y a
+	deux points d'inflexion). \hfill \mbox{(1~pt)}
+	\item Déterminer $\displaystyle\lim_{x\to-\infty}f(x)$ et
+	$\displaystyle\lim_{x\to+\infty}f(x)$. \hfill \mbox{(0,5~pt)}
+	\item Pour $m\in\R$, discuter selon $m$ le nombre de solutions de
+	l'équation $x^{2}\,\e^{x}=m$. \hfill \mbox{(1~pt)}
+\end{enumerate}
