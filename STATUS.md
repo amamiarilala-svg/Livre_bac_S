@@ -23,7 +23,7 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
 
 | Partie | État |
 |---|---|
-| Algèbre (arithmétique, matrices, complexes) | Terminé |
+| Algèbre (arithmétique, matrices, complexes) | Terminé. Chapitre Complexes refondu sur le modèle type le 2026-08-27 (formes, équations 2-3-4, systèmes, ensembles de points). |
 | Analyse (limites → équa diff) | Terminé |
 | Géométrie (barycentre → espace) | Terminé. Chapitres Isométries (2026-08-27) et Barycentre (2026-08-27) refondus sur le modèle type. Espace : fichier encore vide. |
 | Probabilités (5 sous-chapitres) | Terminé |
@@ -39,9 +39,10 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
   Exigences par chapitre : structure type (échauffement figure + Vrai/Faux +
   difficulté progressive), **≥ 5 sujets types Bacc**, couverture de tout le
   programme officiel en privilégiant les notions déjà vues aux annales.
-  - Faits (mais seulement 2 sujets bacc chacun → +3 à ajouter) : Isométries,
-    Barycentre.
-  - Restent : algèbre (arithmétique, matrices, complexes), analyse (limites,
+  - Faits, avec 5 sujets types Bacc chacun : Isométries, Barycentre,
+    Complexes (Complexes recentré sur formes / équations 2-3-4 / systèmes /
+    ensembles de points, accent géométrie).
+  - Restent : algèbre (arithmétique, matrices), analyse (limites,
     continuité, dérivation, étude de fonctions, intégrales, logarithme,
     exponentielle, suites ; équa diff a déjà 2 sujets bac), géométrie
     (`espace.tex` = VIDE, à écrire entièrement), probabilités (5 fichiers).
