@@ -6,6 +6,29 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-27 — Chapitre Arithmétique aligné sur le modèle type
+
+- `parties/algebre/arithmetique.tex` complété selon le modèle type et le
+  programme officiel.
+- Cours : ajout du **petit théorème de Fermat** (restes de puissances) ;
+  nouvelle section **$\Z/n\Z$** (classes, opérations, table de $\Z/5\Z$,
+  méthode de résolution des équations et systèmes) ; nouvelle section
+  **PPCM** (relation $\mathrm{PGCD}\times\mathrm{PPCM} = |ab|$, décomposition
+  en facteurs premiers, astuce « système $\{\mathrm{PGCD} = d\ ;\ x+y=s\}$ »
+  + exercice résolu) ; nouvelle section **Systèmes de numération** (écriture
+  en base $b$, conversions, hexadécimal, critères de divisibilité).
+- Exercices restructurés : « Exercices d'entraînement » avec Échauffement
+  (divisibilité/bases, PGCD-PPCM, calculs dans $\Z/n\Z$, Vrai/Faux) puis
+  deux sous-sections thématiques, et **5 sujets types Bac** calqués sur
+  l'Exercice 1 (arithmétique) des sessions : divisibilité + $\Z/5\Z$ +
+  Bézout ; systèmes PGCD-somme + système dans $\Z/5\Z$ ; restes de
+  puissances + équation diophantienne ; systèmes de numération ; PGCD de
+  deux expressions + Gauss.
+- Corrigé au passage : un `\\` de fin de ligne perdu dans un `\begin{cases}`
+  du 5e sujet type Bac de `complexes.tex` (PR de correctif séparée).
+- Compile sans erreur (328 pages) ; aucun `Overfull \hbox` visible ajouté.
+- Branche `chapitre-arithmetique`, PR contre `main`.
+
 ## 2026-08-27 — Chapitre Géométrie dans l'espace (création)
 
 - `parties/geometrie/espace.tex` était vide : rédaction complète du chapitre
