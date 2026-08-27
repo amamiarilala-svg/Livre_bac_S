@@ -1,15 +1,36 @@
 % ============================================================
-%   CHAPITRE : Loi binomiale
-%   Niveau   : Terminale S
-%   Mazava Maths
+%  CHAPITRE : LOI BINOMIALE
+%  Mazava Maths — Terminale S (Bacc Série S, Madagascar)
+%  Aligné sur le modèle type et le programme officiel MESUPRES
+%  (coefficients binomiaux, triangle de Pascal, relation de
+%  Pascal ; formule du binôme de Newton, somme = 2^n ; loi
+%  binomiale B(n,p) ; P(X=k), P(a<=X<=b), au moins un ; espérance,
+%  variance, écart-type ; seuil n).
+%  Environnements : definition, propriete, theoreme, methode,
+%                   attention, astucebac, exemple, exercice,
+%                   solution, remarque
 % ============================================================
 \chapter{Loi binomiale}
 
+\begin{citationchapitre}
+	« L'art de conjecturer consiste à mesurer aussi exactement que possible
+	les probabilités des choses. »\\[0.4em]
+	— Jacques Bernoulli, \emph{Ars Conjectandi}
+\end{citationchapitre}
+
 \begin{objectifs}
 	\begin{itemize}[label=\textbullet]
-		\item Calculer un coefficient binomial et utiliser le triangle de Pascal.
-		\item Reconnaître une situation relevant de la loi binomiale.
-		\item Calculer une probabilité, l'espérance et la variance d'une loi binomiale.
+		\item Calculer un \textbf{coefficient binomial} et utiliser le
+		\textbf{triangle de Pascal}.
+		\item Démontrer une identité à l'aide de la \textbf{formule du binôme
+		de Newton}.
+		\item Reconnaître une situation relevant de la \textbf{loi
+		binomiale} $\mathscr{B}(n,p)$.
+		\item Calculer $\Prob(X=k)$, $\Prob(a\leqslant X\leqslant b)$,
+		$\Prob(X\geqslant 1)$.
+		\item Calculer $\Esp(X)$, $\Var(X)$, $\sigma(X)$.
+		\item Déterminer un \textbf{seuil} : plus petit $n$ tel que
+		$\Prob(X\geqslant 1)\geqslant \alpha$.
 	\end{itemize}
 \end{objectifs}
 
@@ -19,21 +40,26 @@
 % ============================================================
 
 \begin{definition}[Coefficient binomial]
-	Dans un schéma de Bernoulli à $n$ épreuves, le \textbf{coefficient binomial} $\dbinom{n}{k}$ (noté aussi $C_n^k$) est le nombre de chemins de l'arbre pondéré conduisant à exactement $k$ succès. On a :
+	Dans un schéma de Bernoulli à $n$ épreuves, le \textbf{coefficient
+	binomial} $\dbinom{n}{k}$ (noté aussi $C_n^k$) est le nombre de chemins de
+	l'arbre conduisant à exactement $k$ succès :
 	\[
 	\binom{n}{k} = \frac{n!}{k!\,(n-k)!}, \qquad 0\leqslant k\leqslant n.
 	\]
 \end{definition}
 
-\begin{propriete}{Propriétés des coefficients binomiaux}{}
+\begin{propriete}{Propriétés}{prop_binom}
 	\begin{itemize}[label=\textbullet]
-		\item $\dbinom{n}{0} = \dbinom{n}{n} = 1$.
+		\item $\dbinom{n}{0} = \dbinom{n}{n} = 1$ \ et \
+		$\dbinom{n}{1} = \dbinom{n}{n-1} = n$.
 		\item \textbf{Symétrie} : $\dbinom{n}{k} = \dbinom{n}{n-k}$.
-		\item \textbf{Relation de Pascal} : $\dbinom{n-1}{k-1} + \dbinom{n-1}{k} = \dbinom{n}{k}$.
+		\item \textbf{Relation de Pascal} :
+		$\dbinom{n-1}{k-1} + \dbinom{n-1}{k} = \dbinom{n}{k}$.
 	\end{itemize}
 \end{propriete}
 
-La relation de Pascal permet de construire, de proche en proche, le \textbf{triangle de Pascal} : chaque coefficient s'obtient en ajoutant les deux coefficients situés juste au-dessus de lui.
+La relation de Pascal permet de construire le \textbf{triangle de Pascal} :
+chaque coefficient est la somme des deux situés juste au-dessus.
 
 \begin{center}
 	\begin{tikzpicture}[font=\small]
@@ -43,23 +69,19 @@ La relation de Pascal permet de construire, de proche en proche, le \textbf{tria
 		\node at (-3.4,-2.7) {$n=3$};
 		\node at (-3.4,-3.6) {$n=4$};
 		\node at (-3.4,-4.5) {$n=5$};
-
 		\node at (0,0) {$1$};
-
 		\node at (-0.5,-0.9) {$1$}; \node at (0.5,-0.9) {$1$};
-
 		\node at (-1,-1.8) {$1$}; \node at (0,-1.8) {$2$}; \node at (1,-1.8) {$1$};
-
 		\node at (-1.5,-2.7) {$1$}; \node at (-0.5,-2.7) {$3$}; \node at (0.5,-2.7) {$3$}; \node at (1.5,-2.7) {$1$};
-
 		\node at (-2,-3.6) {$1$}; \node at (-1,-3.6) {$4$}; \node at (0,-3.6) {$6$}; \node at (1,-3.6) {$4$}; \node at (2,-3.6) {$1$};
-
 		\node at (-2.5,-4.5) {$1$}; \node at (-1.5,-4.5) {$5$}; \node at (-0.5,-4.5) {$10$}; \node at (0.5,-4.5) {$10$}; \node at (1.5,-4.5) {$5$}; \node at (2.5,-4.5) {$1$};
 	\end{tikzpicture}
 \end{center}
 
 \begin{astucebac}
-	Pour lire $\dbinom{n}{k}$ dans le triangle : $n$ désigne le numéro de la ligne (en partant de $0$) et $k$ le numéro de la colonne (en partant de $0$, depuis la gauche).
+	Pour lire $\dbinom{n}{k}$ dans le triangle : $n$ = numéro de la ligne
+	(à partir de $0$), $k$ = numéro de la colonne (à partir de $0$, depuis la
+	gauche). À la calculatrice : touche \texttt{nCr} ou $C_n^k$.
 \end{astucebac}
 
 
@@ -68,28 +90,28 @@ La relation de Pascal permet de construire, de proche en proche, le \textbf{tria
 % ============================================================
 
 \begin{theoreme}[Formule du binôme de Newton]
-	Pour tous nombres réels $a$, $b$ et tout entier naturel $n$ :
+	Pour tous réels $a$, $b$ et tout entier naturel $n$ :
 	\[
 	(a+b)^n = \sum_{k=0}^{n} \binom{n}{k} a^k b^{n-k}.
 	\]
 \end{theoreme}
 
-\begin{propriete}{Somme des coefficients binomiaux}{}
-	Pour tout entier naturel $n$ :
-	\[
-	\sum_{k=0}^{n} \binom{n}{k} = 2^n.
-	\]
+\begin{propriete}{Somme des coefficients binomiaux}{prop_somme}
+	Pour tout $n\in\N$ : $\displaystyle\sum_{k=0}^{n} \binom{n}{k} = 2^n$.
 \end{propriete}
 
 \begin{methode}
-	\textbf{Démonstration :} il suffit d'appliquer la formule du binôme avec $a=b=1$ :
+	\textbf{Démonstration :} appliquer le binôme avec $a=b=1$ :
 	\[
-	2^n = (1+1)^n = \sum_{k=0}^{n} \binom{n}{k}\,1^k\,1^{n-k} = \sum_{k=0}^{n} \binom{n}{k}.
+	2^n = (1+1)^n = \sum_{k=0}^{n} \binom{n}{k}\,1^k\,1^{n-k}
+	= \sum_{k=0}^{n} \binom{n}{k}.
 	\]
+	De même, avec $a=1$, $b=-1$ :
+	$\displaystyle\sum_{k=0}^{n} (-1)^k\binom{n}{k} = 0$.
 \end{methode}
 
 \begin{exemple}
-	Pour $n=4$, la ligne du triangle de Pascal donne $1+4+6+4+1 = 16 = 2^4$.
+	Pour $n=4$ : $1+4+6+4+1 = 16 = 2^4$, et $1-4+6-4+1 = 0$.
 \end{exemple}
 
 
@@ -98,24 +120,40 @@ La relation de Pascal permet de construire, de proche en proche, le \textbf{tria
 % ============================================================
 
 \begin{definition}[Loi binomiale]
-	On considère un schéma de Bernoulli de paramètres $n$ et $p$ (répétition de $n$ épreuves de Bernoulli identiques et indépendantes, de probabilité de succès $p$). Soit $X$ le nombre de succès obtenus.
-
-	On dit que $X$ suit la \textbf{loi binomiale} de paramètres $n$ et $p$, notée $\mathscr{B}(n,p)$, et :
+	On considère un schéma de Bernoulli de paramètres $n$ et $p$. Soit $X$ le
+	nombre de succès obtenus. On dit que $X$ suit la \textbf{loi binomiale}
+	$\mathscr{B}(n,p)$, et
 	\[
 	\Prob(X=k) = \binom{n}{k}\,p^k\,(1-p)^{n-k}, \qquad k\in\{0,1,\ldots,n\}.
 	\]
 \end{definition}
 
 \begin{methode}
-	\textbf{Reconnaître une loi binomiale :} vérifier que la situation consiste à répéter $n$ fois, de façon \textbf{identique et indépendante}, une épreuve à \textbf{deux issues} (succès/échec) de probabilité de succès $p$ constante, et que $X$ compte le \textbf{nombre de succès}.
+	\textbf{Reconnaître une loi binomiale :} vérifier que la situation
+	consiste à répéter $n$ fois, de façon \textbf{identique et indépendante},
+	une épreuve à \textbf{deux issues} (succès / échec) de probabilité de
+	succès $p$ \textbf{constante}, et que $X$ compte le \textbf{nombre de
+	succès}.
 \end{methode}
 
+\begin{astucebac}
+	Calculs fréquents :
+	\[
+	\Prob(X\geqslant 1) = 1-\Prob(X=0) = 1-(1-p)^n,
+	\]
+	\[
+	\Prob(a\leqslant X\leqslant b) = \sum_{k=a}^{b}\Prob(X=k),
+	\qquad
+	\Prob(X\leqslant b) \text{ à la calculatrice (loi cumulée).}
+	\]
+\end{astucebac}
+
 \begin{exemple}
-	Un QCM comporte $8$ questions indépendantes, chacune avec $4$ réponses possibles dont une seule est correcte. Un candidat répond au hasard à chaque question. Soit $X$ le nombre de bonnes réponses.
-
-	Chaque question est une épreuve de Bernoulli de paramètre $p=\dfrac14$ (succès = bonne réponse), répétée $8$ fois de façon indépendante : $X$ suit la loi $\mathscr{B}\!\left(8\,;\dfrac14\right)$.
-
-	Par exemple : $\Prob(X=2) = \dbinom{8}{2}\left(\dfrac14\right)^2\left(\dfrac34\right)^6 \approx 0,31$.
+	Un QCM comporte $8$ questions indépendantes, chacune à $4$ réponses dont
+	une seule correcte ; le candidat répond au hasard. $X$ = nombre de bonnes
+	réponses suit $\mathscr{B}\!\left(8\,;\dfrac14\right)$, et
+	$\Prob(X=2) = \dbinom{8}{2}\left(\dfrac14\right)^2\left(\dfrac34\right)^6
+	\approx 0{,}31$.
 \end{exemple}
 
 \begin{center}
@@ -129,79 +167,280 @@ La relation de Pascal permet de construire, de proche en proche, le \textbf{tria
 	\end{tikzpicture}
 \end{center}
 
-\begin{propriete}{Espérance, variance et écart-type de la loi binomiale}{}
-	Si $X$ suit la loi $\mathscr{B}(n,p)$, alors :
+\begin{propriete}{Espérance, variance, écart-type}{prop_esp_bin}
+	Si $X\sim\mathscr{B}(n,p)$, alors
 	\[
-	\Esp(X) = np, \qquad \Var(X) = np(1-p), \qquad \sigma(X) = \sqrt{np(1-p)}.
+	\Esp(X) = np, \qquad \Var(X) = np(1-p), \qquad
+	\sigma(X) = \sqrt{np(1-p)}.
 	\]
 \end{propriete}
 
 \begin{exemple}
-	Pour le QCM précédent : $\Esp(X) = 8\times\dfrac14 = 2$ (en moyenne, un candidat répondant au hasard obtient $2$ bonnes réponses) et $\Var(X) = 8\times\dfrac14\times\dfrac34 = \dfrac32$.
+	Pour le QCM : $\Esp(X) = 8\times\dfrac14 = 2$ et
+	$\Var(X) = 8\times\dfrac14\times\dfrac34 = \dfrac32$.
 \end{exemple}
 
 
 % ============================================================
-\section{Exercices résolus}
+\section{Méthodes et exercices résolus}
 % ============================================================
+
+\begin{methode}
+	\textbf{Déterminer un seuil $n$} tel que $\Prob(X\geqslant 1)\geqslant
+	\alpha$ (avec $X\sim\mathscr{B}(n,p)$) :
+	\begin{enumerate}
+		\item $\Prob(X\geqslant 1)\geqslant\alpha \iff 1-(1-p)^n\geqslant\alpha
+		\iff (1-p)^n\leqslant 1-\alpha$ ;
+		\item passer au logarithme : $n\ln(1-p)\leqslant\ln(1-\alpha)$ ;
+		\item comme $\ln(1-p)<0$, on divise en changeant le sens :
+		$n\geqslant\dfrac{\ln(1-\alpha)}{\ln(1-p)}$ ;
+		\item conclure avec le plus petit entier convenable.
+	\end{enumerate}
+\end{methode}
 
 \exerciceresolu
 \textbf{Calculer une probabilité binomiale}
 
-On lance $5$ fois de suite un dé équilibré. On considère comme succès l'obtention d'un $6$. Soit $X$ le nombre de fois où l'on obtient un $6$.
+On lance $5$ fois un dé équilibré ; succès = obtenir un $6$. $X$ = nombre
+de $6$.
 \begin{enumerate}
 	\item Justifier que $X$ suit une loi binomiale et préciser ses paramètres.
-	\item Calculer $\Prob(X=2)$, arrondie à $10^{-3}$.
+	\item Calculer $\Prob(X=2)$ à $10^{-3}$ près.
 	\item Calculer $\Prob(X\geqslant1)$.
-	\item Calculer $\Esp(X)$.
+	\item Calculer $\Esp(X)$ et $\sigma(X)$.
 \end{enumerate}
 
 \solution
 
-\textbf{1.} Les $5$ lancers sont identiques et indépendants, chacun avec deux issues (« obtenir un $6$ » ou non) de probabilité $p=\dfrac16$ constante : $X$ suit la loi $\mathscr{B}\!\left(5\,;\dfrac16\right)$.
+\textbf{1.} $5$ lancers identiques, indépendants, deux issues, $p=\dfrac16$
+constante : $X\sim\mathscr{B}\!\left(5\,;\dfrac16\right)$.
 
-\textbf{2.} $\Prob(X=2) = \dbinom{5}{2}\left(\dfrac16\right)^2\left(\dfrac56\right)^3 = 10\times\dfrac{1}{36}\times\dfrac{125}{216} \approx 0,161$.
+\textbf{2.} $\Prob(X=2) = \dbinom{5}{2}\left(\dfrac16\right)^2
+\left(\dfrac56\right)^3 = 10\times\dfrac{1}{36}\times\dfrac{125}{216}
+\approx 0{,}161$.
 
-\textbf{3.} $\Prob(X\geqslant1) = 1-\Prob(X=0) = 1-\left(\dfrac56\right)^5 \approx 1-0,402 = 0,598$.
+\textbf{3.} $\Prob(X\geqslant1) = 1-\left(\dfrac56\right)^5
+\approx 1-0{,}402 = 0{,}598$.
 
-\textbf{4.} $\Esp(X) = 5\times\dfrac16 = \dfrac56$.
+\textbf{4.} $\Esp(X) = \dfrac56$ ;
+$\Var(X)=5\times\dfrac16\times\dfrac56=\dfrac{25}{36}$, donc
+$\sigma(X)=\dfrac56\approx0{,}83$.
+
+\exerciceresolu
+\textbf{Un seuil}
+
+Une machine produit $4\,\%$ de pièces défectueuses. On prélève $n$ pièces au
+hasard (production assez grande pour assimiler à des tirages indépendants).
+Combien faut-il en prélever pour être sûr à au moins $99\,\%$ d'obtenir au
+moins une pièce défectueuse ?
+
+\solution
+
+Soit $X\sim\mathscr{B}(n\,;0{,}04)$ le nombre de défectueuses. On veut
+$\Prob(X\geqslant 1)\geqslant 0{,}99$, soit $(0{,}96)^n\leqslant 0{,}01$.
+\[
+n\ln(0{,}96)\leqslant\ln(0{,}01)
+\ \Longrightarrow\
+n\geqslant\frac{\ln(0{,}01)}{\ln(0{,}96)}\approx\frac{-4{,}605}{-0{,}0408}
+\approx 112{,}8.
+\]
+Il faut donc prélever au moins $\boxed{113}$ pièces.
+
+\exerciceresolu
+\textbf{Une identité par le binôme}
+
+Montrer que pour tout $n\geqslant 1$ :
+$\displaystyle\sum_{k=0}^{n} k\binom{n}{k} = n\,2^{n-1}$.
+
+\solution
+
+On part de $(1+x)^n = \displaystyle\sum_{k=0}^{n}\binom{n}{k}x^k$. En dérivant
+par rapport à $x$ :
+\[
+n(1+x)^{n-1} = \sum_{k=1}^{n} k\binom{n}{k}x^{k-1}.
+\]
+Pour $x=1$ : $n\,2^{n-1} = \displaystyle\sum_{k=1}^{n} k\binom{n}{k}
+= \sum_{k=0}^{n} k\binom{n}{k}$ (le terme $k=0$ est nul).
 
 
 % ============================================================
-\section{Exercices}
+\section{Exercices d'entraînement}
 % ============================================================
+
+% --------------------------------------------------
+\subsection{Échauffement}
+% --------------------------------------------------
 
 \exercice{Triangle de Pascal \hfill \facile}
-
 \begin{enumerate}
-	\item Compléter les deux lignes suivantes du triangle de Pascal après celle des $1\ 5\ 10\ 10\ 5\ 1$.
-	\item Vérifier que la somme des coefficients de la ligne $n=6$ vaut $2^6$.
+	\item Écrire les lignes $n=6$ et $n=7$ du triangle de Pascal.
+	\item Vérifier que la somme de la ligne $n=6$ vaut $2^6$.
+	\item Lire $\dbinom{6}{2}$, $\dbinom{7}{3}$ et vérifier
+	$\dbinom{6}{2}+\dbinom{6}{3}=\dbinom{7}{3}$.
 \end{enumerate}
+
+\exercice{Lire un diagramme binomial \hfill \facile}
+Le diagramme ci-dessous représente la loi de $X\sim\mathscr{B}(6\,;0{,}5)$.
+\begin{center}
+	\begin{tikzpicture}[>=stealth, font=\small]
+		\draw[->] (-0.5,0) -- (7,0) node[right] {$k$};
+		\draw[->] (0,-0.3) -- (0,3.4) node[above] {$\Prob(X=k)$};
+		\foreach \x/\h in {0/0.15, 1/0.9, 2/2.25, 3/3.0, 4/2.25, 5/0.9, 6/0.15}{
+			\draw[very thick, black!70] (\x,0) -- (\x,\h);
+			\node[below] at (\x,0) {\scriptsize \x};
+		}
+	\end{tikzpicture}
+\end{center}
+\begin{enumerate}
+	\item Pourquoi le diagramme est-il symétrique ?
+	\item Où l'espérance $\Esp(X)$ se lit-elle ? La calculer.
+	\item Calculer $\Prob(X=3)$ et $\Prob(X\leqslant 1)$.
+\end{enumerate}
+
+\exercice{Vrai ou faux \hfill \facile}
+Répondre par \emph{vrai} ou \emph{faux} en justifiant.
+\begin{enumerate}
+	\item $\dbinom{10}{3} = \dbinom{10}{7}$.
+	\item Si $X\sim\mathscr{B}(n,p)$ alors $\Prob(X=0)=(1-p)^n$.
+	\item Tirer successivement \emph{sans remise} $3$ boules dans une urne
+	donne une loi binomiale pour le nombre de boules rouges.
+	\item Pour $X\sim\mathscr{B}(n,p)$, $\Esp(X)=np$ est toujours un entier.
+	\item $\Prob(X\geqslant 1) = 1-\Prob(X=0)$.
+	\item $\displaystyle\sum_{k=0}^{n}\dbinom{n}{k} = 2^n$.
+	\item La variance de $\mathscr{B}(n,p)$ est maximale, à $n$ fixé, pour
+	$p=\dfrac12$.
+\end{enumerate}
+
+% --------------------------------------------------
+\subsection{Coefficients binomiaux et binôme}
+% --------------------------------------------------
+
+\exercice{Calculs \hfill \facile}
+\begin{multicols}{2}
+\begin{enumerate}
+	\item Calculer $\dbinom{5}{2}$, $\dbinom{8}{3}$, $\dbinom{10}{0}$.
+	\item Développer $(a+b)^4$.
+	\item Développer $(2x-1)^3$.
+	\item Calculer $\displaystyle\sum_{k=0}^{9}\dbinom{9}{k}$.
+\end{enumerate}
+\end{multicols}
+
+\exercice{Identités \hfill \moyen}
+\begin{enumerate}
+	\item Retrouver $\dbinom{n}{k}=\dbinom{n}{n-k}$ par le calcul.
+	\item Démontrer la relation de Pascal
+	$\dbinom{n-1}{k-1}+\dbinom{n-1}{k}=\dbinom{n}{k}$.
+	\item En déduire, par récurrence, que $\dbinom{n}{k}$ est un entier.
+\end{enumerate}
+
+% --------------------------------------------------
+\subsection{Calculs de lois binomiales}
+% --------------------------------------------------
 
 \exercice{Calculs directs \hfill \facile}
-
-Une variable aléatoire $X$ suit la loi binomiale $\mathscr{B}(6\,;0,3)$.
+$X\sim\mathscr{B}(6\,;0{,}3)$.
+\begin{multicols}{2}
 \begin{enumerate}
-	\item Calculer $\Prob(X=0)$, $\Prob(X=3)$ et $\Prob(X=6)$.
-	\item Calculer $\Esp(X)$ et $\Var(X)$.
+	\item $\Prob(X=0)$, $\Prob(X=2)$.
+	\item $\Prob(X\geqslant 1)$.
+	\item $\Prob(X\leqslant 2)$.
+	\item $\Esp(X)$, $\Var(X)$, $\sigma(X)$.
 \end{enumerate}
+\end{multicols}
 
 \exercice{Tir à l'arc \hfill \moyen}
-
-Un archer a une probabilité de $0,8$ d'atteindre sa cible à chaque tir, indépendamment des tirs précédents. Il tire $6$ flèches. Soit $X$ le nombre de flèches qui atteignent la cible.
+Un archer atteint sa cible avec probabilité $0{,}8$ à chaque tir,
+indépendamment. Il tire $6$ flèches ; $X$ = nombre de flèches au but.
 \begin{enumerate}
-	\item Justifier que $X$ suit une loi binomiale dont on précisera les paramètres.
-	\item Calculer la probabilité qu'il atteigne exactement $5$ fois la cible.
-	\item Calculer la probabilité qu'il atteigne la cible au moins une fois.
-	\item Calculer $\Esp(X)$ et interpréter le résultat.
+	\item Justifier que $X$ suit une loi binomiale à préciser.
+	\item Calculer $\Prob(X=5)$ et $\Prob(X\geqslant 1)$.
+	\item Calculer $\Prob(X\geqslant 4)$.
+	\item Calculer $\Esp(X)$ et interpréter.
 \end{enumerate}
 
-\exercice{QCM et loi binomiale \hfill \difficile}
+% --------------------------------------------------
+\subsection{Sujets types Bac}
+% --------------------------------------------------
 
-Un QCM comporte $10$ questions indépendantes à $5$ réponses possibles chacune, une seule étant correcte. Un candidat répond entièrement au hasard. Soit $X$ le nombre de bonnes réponses.
+\exercice{Sujet type Bac — contrôle de qualité et seuil \hfill \difficile}
+Une chaîne produit des ampoules dont $5\,\%$ sont défectueuses. On prélève au
+hasard un lot de $n$ ampoules, assimilé à $n$ tirages indépendants. On note
+$X$ le nombre d'ampoules défectueuses du lot.
+
+\textbf{Partie A — $n = 20$}
 \begin{enumerate}
-	\item Donner la loi de $X$.
+	\item Donner la loi de $X$. \hfill \mbox{(0,5~pt)}
+	\item Calculer $\Prob(X=0)$ et $\Prob(X=1)$ à $10^{-3}$ près.
+	\hfill \mbox{(1~pt)}
+	\item Calculer $\Prob(X\geqslant 2)$. \hfill \mbox{(0,75~pt)}
+	\item Calculer $\Esp(X)$ et $\sigma(X)$. \hfill \mbox{(0,75~pt)}
+\end{enumerate}
+
+\textbf{Partie B — seuil}
+\begin{enumerate}
+	\setcounter{enumi}{4}
+	\item On veut que la probabilité d'avoir au moins une ampoule défectueuse
+	dans le lot dépasse $0{,}95$. Montrer que cela équivaut à
+	$(0{,}95)^n\leqslant 0{,}05$. \hfill \mbox{(1~pt)}
+	\item Résoudre cette inéquation et donner le plus petit lot convenable.
+	\hfill \mbox{(1~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — QCM \hfill \difficile}
+Un QCM comporte $10$ questions indépendantes à $5$ réponses chacune, une
+seule correcte. Un candidat répond entièrement au hasard ; $X$ = nombre de
+bonnes réponses.
+\begin{enumerate}
+	\item Donner la loi de $X$. \hfill \mbox{(0,5~pt)}
+	\item Calculer $\Prob(X=0)$ et $\Prob(X\geqslant 1)$. \hfill \mbox{(1~pt)}
 	\item Calculer la probabilité d'obtenir au moins $2$ bonnes réponses.
-	\item Un candidat est reçu s'il obtient au moins $6$ bonnes réponses. Calculer la probabilité que ce candidat, répondant au hasard, soit reçu.
-	\item Calculer $\Esp(X)$ et $\sigma(X)$.
+	\hfill \mbox{(1~pt)}
+	\item Le candidat est reçu s'il obtient au moins $6$ bonnes réponses.
+	Calculer la probabilité qu'il soit reçu en répondant au hasard.
+	Commenter. \hfill \mbox{(1~pt)}
+	\item Calculer $\Esp(X)$ et $\sigma(X)$. \hfill \mbox{(0,5~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — jeu répété \hfill \difficile}
+À chaque partie d'un jeu, un joueur gagne avec probabilité $p=0{,}4$,
+indépendamment des autres parties. Il joue $n$ parties. On note $X_n$ le
+nombre de parties gagnées.
+\begin{enumerate}
+	\item Donner la loi de $X_n$. \hfill \mbox{(0,5~pt)}
+	\item Pour $n=5$, calculer $\Prob(X_5=3)$ et $\Prob(X_5\geqslant 3)$.
+	\hfill \mbox{(1,25~pt)}
+	\item On pose $u_n = \Prob(X_n\geqslant 1)$. Exprimer $u_n$ en fonction de
+	$n$ et montrer que $(u_n)$ est croissante. \hfill \mbox{(1~pt)}
+	\item Déterminer $\displaystyle\lim_{n\to+\infty}u_n$. \hfill \mbox{(0,5~pt)}
+	\item Déterminer le plus petit $n$ tel que $u_n\geqslant 0{,}999$.
+	\hfill \mbox{(1~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — binôme de Newton \hfill \difficile}
+\begin{enumerate}
+	\item Rappeler la formule du binôme de Newton et en déduire
+	$\displaystyle\sum_{k=0}^{n}\dbinom{n}{k}=2^n$ et
+	$\displaystyle\sum_{k=0}^{n}(-1)^k\dbinom{n}{k}=0$. \hfill \mbox{(1~pt)}
+	\item En dérivant $x\mapsto(1+x)^n$, démontrer que
+	$\displaystyle\sum_{k=0}^{n}k\,\dbinom{n}{k}=n\,2^{n-1}$.
+	\hfill \mbox{(1,25~pt)}
+	\item Interpréter ce résultat pour $X\sim\mathscr{B}\!\left(n\,;\dfrac12\right)$
+	en retrouvant $\Esp(X)=\dfrac n2$. \hfill \mbox{(1~pt)}
+	\item Calculer $\displaystyle\sum_{k=0}^{n}\dbinom{n}{k}\,3^k$ en
+	utilisant le binôme. \hfill \mbox{(0,75~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — dépistage sur un échantillon \hfill \difficile}
+Dans une population, $12\,\%$ des personnes sont porteuses d'un gène. On
+prélève un échantillon de $15$ personnes au hasard (population très grande) ;
+$X$ = nombre de porteuses.
+\begin{enumerate}
+	\item Justifier que $X$ suit une loi binomiale à préciser.
+	\hfill \mbox{(0,5~pt)}
+	\item Calculer $\Prob(X=0)$, $\Prob(X=1)$, $\Prob(X=2)$ à $10^{-3}$ près.
+	\hfill \mbox{(1,5~pt)}
+	\item En déduire $\Prob(X\leqslant 2)$ puis $\Prob(X\geqslant 3)$.
+	\hfill \mbox{(1~pt)}
+	\item Calculer $\Esp(X)$. En moyenne, sur $100$ échantillons de $15$
+	personnes, combien de porteuses attend-on au total ? \hfill \mbox{(0,75~pt)}
 \end{enumerate}

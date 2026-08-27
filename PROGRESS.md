@@ -6,6 +6,40 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-27 — Les 5 chapitres de probabilités alignés
+
+- Fin du chantier « modèle type » : `parties/probabilites/probabilites.tex`,
+  `conditionnelles.tex`, `variables_aleatoires.tex`, `binomiale.tex`,
+  `normale.tex` refondus selon le modèle type et le programme officiel.
+- Ajouts de cours : **dénombrement** (principe multiplicatif, $p$-listes,
+  arrangements, permutations, combinaisons, tableau des 3 modèles) et
+  système complet dans « Probabilités » ; **probabilités totales
+  généralisées + formule de Bayes** dans « Probabilités conditionnelles » ;
+  linéarité $\Var(aX+b)$, $\sigma(aX+b)=|a|\sigma$, notion de jeu
+  équitable / favorable dans « Variables aléatoires » ; **méthode de seuil**
+  ($(1-p)^n\le\alpha$ par le logarithme) + identités du binôme par
+  dérivation dans « Loi binomiale » ; **espérances** des lois continues,
+  **absence de mémoire** de la loi exponentielle, **standardisation** et
+  méthode du quantile, table courte de $\Phi$ dans « Loi normale ».
+- Chaque chapitre : citation, objectifs étoffés, section « Méthodes et
+  exercices résolus » (3 exercices résolus), section « Exercices
+  d'entraînement » en sous-sections — Échauffement (lecture d'arbre / de
+  diagramme + **Vrai/Faux** 7 items), batteries `multicols`, et **5 sujets
+  types Bac** au format officiel (Partie A / Partie B, sous-questions
+  cotées 0,25–1,25 pt, « Montrer que … » avec cible fournie). Sujets phares :
+  urne + tirage simultané, dé pipé, digicode, comité mixte, sondage
+  (Poincaré) ; test de dépistage (Bayes), chaîne de production, **marche
+  aléatoire** $p_{n+1}=\frac{7}{12}p_n+\frac14$ ; roue de loterie,
+  assurance, comparaison de deux jeux ; contrôle qualité + seuil, QCM,
+  jeu répété + suite $u_n$, binôme de Newton ; masse de paquets, durée de
+  vie exponentielle, temps d'attente, notes d'examen (quantile), réglage
+  d'une machine.
+- Figures TikZ conservées + nouvelle figure « système complet » pour les
+  probabilités totales, diagrammes en bâtons pour les échauffements.
+- `latexmk -pdf main.tex` : **389 pages**, 0 erreur, aucune référence non
+  résolue, **aucun `Overfull`** dans tout le livre.
+- Branche `chapitres-probabilites-alignement` → PR contre `main`.
+
 ## 2026-08-27 — Chapitre « Équations différentielles » aligné
 
 - `parties/analyse/equadiff.tex` : le cours mathématique était déjà
