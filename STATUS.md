@@ -41,9 +41,17 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
   programme officiel en privilégiant les notions déjà vues aux annales.
   - Faits, avec 5+ sujets types Bacc chacun : Isométries, Barycentre,
     Complexes, Géométrie dans l'espace, Arithmétique, Calcul matriciel.
-  - Restent : analyse (limites,
-    continuité, dérivation, étude de fonctions, intégrales, logarithme,
-    exponentielle, suites ; équa diff a déjà 2 sujets bac),
+  - **En cours de validation : « Limites et continuité »** — brouillon
+    complet dans `parties/analyse/limites_continuite.tex` (fusion de
+    `limites.tex` + partie continuité de `derivation.tex` ; exemples et
+    exercices uniquement sur $\ln$/$\exp$ ; 5 batteries de calcul de
+    limites en colonnes + 5 sujets types Bac). PDF isolé envoyé via
+    `apercu_limites_continuite.tex`. **À faire après feu vert :** intégrer
+    dans `main.tex` à la place de `limites.tex` + `continuite.tex`, retirer
+    la section Continuité de `derivation.tex` (→ chapitre « Dérivabilité »),
+    puis branche + PR.
+  - Restent : analyse (dérivation, étude de fonctions, intégrales,
+    logarithme, exponentielle, suites ; équa diff a déjà 2 sujets bac),
     probabilités (5 fichiers).
 - Si l'utilisateur envoie un nouveau sujet officiel (PDF ou photos), il
   s'ajoute dans `parties/annales/bac_20XX.tex` + une ligne `\input` dans

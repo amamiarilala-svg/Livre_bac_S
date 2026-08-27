@@ -6,6 +6,32 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-27 — Fusion « Limites et continuité » (brouillon, PDF séparé)
+
+- Nouveau fichier `parties/analyse/limites_continuite.tex` : chapitre unique
+  regroupant les limites (ancien `limites.tex`) et la continuité (partie
+  détachée de `derivation.tex`). **Parti pris** : tous les exemples et
+  exercices s'appuient sur $\ln$ et $\exp$ ; les puissances n'apparaissent
+  que comme terme de comparaison (croissances comparées).
+- Cours : limites de référence $\ln$/$\exp$ + croissances comparées +
+  limites usuelles ; 4 techniques de levée d'indétermination (terme
+  dominant, division, limite usuelle, changement de variable) ; composée ;
+  comparaison / gendarmes ; continuité + prolongement ; TVI + corollaire +
+  image d'un intervalle ; asymptotes. Figures TikZ : courbes $\ln$/$\exp$,
+  schéma TVI, lecture graphique.
+- Exercices : échauffement (lecture graphique, continuité, Vrai/Faux) ;
+  **5 batteries de calcul de limites en 2–3 colonnes** (`multicols`) avec
+  clé de réponses ; continuité/prolongement/TVI ; **5 sujets types Bac**
+  (fonction par morceaux, $\frac{\ln x}{x}$, suite implicite $\e^x+x=n$,
+  fonction auxiliaire + TVI, symétrie et asymptotes).
+- Prévisualisation isolée : `apercu_limites_continuite.tex`
+  (`latexmk -pdf`, 25 p., compile sans erreur, aucun `Overfull`).
+  **Non encore intégré à `main.tex`** — en attente de validation de
+  l'utilisateur avant la refonte définitive (remplacer `limites.tex` +
+  `continuite.tex`, retirer la section Continuité de `derivation.tex`,
+  renommer le chapitre 5 en « Dérivabilité »).
+- Branche `chapitre-limites-continuite` (pas encore de PR).
+
 ## 2026-08-27 — Chapitre Calcul matriciel aligné sur le modèle type
 
 - `parties/algebre/matrices.tex` : ajout d'une citation, objectifs étoffés,
