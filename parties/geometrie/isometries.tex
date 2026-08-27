@@ -754,6 +754,138 @@ rotation de centre $O$, angle $\dfrac{\pi}{3}$. \checkmark
 \section{Exercices d'entraînement}
 % ==========================================================
 
+\subsection{Échauffement : lire une figure}
+
+\exercice{Le carré \hfill \facile}
+$ABCD$ est un carré direct de centre $O$ et de côté $c$.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (0,0); \coordinate (B) at (2.4,0);
+	\coordinate (C) at (2.4,2.4); \coordinate (D) at (0,2.4);
+	\coordinate (O) at (1.2,1.2);
+	\draw[thick] (A)--(B)--(C)--(D)--cycle;
+	\draw[gray!55,dashed] (A)--(C) (B)--(D);
+	\filldraw (O) circle (1.4pt);
+	\node[below left,font=\small] at (A) {$A$};
+	\node[below right,font=\small] at (B) {$B$};
+	\node[above right,font=\small] at (C) {$C$};
+	\node[above left,font=\small] at (D) {$D$};
+	\node[below right,font=\small] at (O) {$O$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Quelle est la nature de $s_{(AB)}\circ s_{(DC)}$ ? Préciser son
+	vecteur.
+	\item Quelle est la nature de $s_{(AC)}\circ s_{(BD)}$ ?
+	\item Simplifier $r_{\left(O,\frac{\pi}{2}\right)}\circ r_{\left(O,\frac{\pi}{2}\right)}$.
+	\item Décomposer $s_O$ en produit de deux réflexions dont l'un des axes
+	est $(AC)$.
+	\item Simplifier $t_{\vect{AB}}\circ t_{\vect{BC}}$.
+\end{enumerate}
+
+\exercice{Le rectangle \hfill \facile}
+$ABCD$ est un rectangle direct de centre $O$ tel que $AB = 6$ et $BC = 4$.
+On note $(d)$ la médiatrice de $[AB]$ et $(d')$ la médiatrice de $[BC]$.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=0.9]
+	\coordinate (A) at (0,0); \coordinate (B) at (3.6,0);
+	\coordinate (C) at (3.6,2.4); \coordinate (D) at (0,2.4);
+	\coordinate (O) at (1.8,1.2);
+	\draw[thick] (A)--(B)--(C)--(D)--cycle;
+	\draw[blue!60!black,dashed] (1.8,-0.5)--(1.8,2.9) node[above,font=\scriptsize]{$(d)$};
+	\draw[red!70!black,dashed] (-0.5,1.2)--(4.1,1.2) node[right,font=\scriptsize]{$(d')$};
+	\filldraw (O) circle (1.4pt) node[below right,font=\small] {$O$};
+	\node[below left,font=\small] at (A) {$A$};
+	\node[below right,font=\small] at (B) {$B$};
+	\node[above right,font=\small] at (C) {$C$};
+	\node[above left,font=\small] at (D) {$D$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Quelle est la nature de $s_{(d')}\circ s_{(d)}$ ?
+	\item Quelle est la nature de $s_{(d)}\circ s_{(AD)}$ ? Préciser son
+	vecteur.
+	\item Donner une isométrie simple qui transforme le rectangle en lui-même
+	et qui échange $A$ et $C$.
+	\item Que vaut $s_{(AB)}\circ s_{(AB)}$ ? Comment appelle-t-on une telle
+	propriété ?
+\end{enumerate}
+
+\exercice{Le triangle équilatéral \hfill \facile}
+$ABC$ est un triangle équilatéral direct de centre $O$. On note $r$ la
+rotation de centre $O$ et d'angle $\dfrac{2\pi}{3}$, et $\Delta_A$, $\Delta_B$,
+$\Delta_C$ les trois axes de symétrie du triangle (passant respectivement par
+$A$, $B$, $C$).
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (90:1.5); \coordinate (B) at (210:1.5);
+	\coordinate (C) at (330:1.5); \coordinate (O) at (0,0);
+	\coordinate (Mbc) at (0,-0.75);
+	\coordinate (Mac) at (0.6495,0.375);
+	\coordinate (Mab) at (-0.6495,0.375);
+	\draw[thick] (A)--(B)--(C)--cycle;
+	\draw[gray!55,dashed] (A)--(Mbc) (B)--(Mac) (C)--(Mab);
+	\filldraw (O) circle (1.4pt) node[below right,font=\small] {$O$};
+	\node[above,font=\small] at (A) {$A$};
+	\node[below left,font=\small] at (B) {$B$};
+	\node[below right,font=\small] at (C) {$C$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Donner l'image de $A$, puis de $B$, par $r$.
+	\item Quelle est la nature de $r\circ r$ ? de $r\circ r\circ r$ ?
+	\item Sachant que $(\Delta_B,\Delta_A) = \dfrac{\pi}{3}$, identifier
+	$s_{\Delta_A}\circ s_{\Delta_B}$.
+	\item Décomposer $r$ en deux réflexions dont l'un des axes est $\Delta_A$.
+\end{enumerate}
+
+\exercice{Le triangle rectangle isocèle \hfill \moyen}
+$ABC$ est un triangle rectangle isocèle direct en $A$ tel que $AB = AC$ et
+$(\vect{AB},\vect{AC}) = \dfrac{\pi}{2}$.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (0,0); \coordinate (B) at (2.4,0); \coordinate (C) at (0,2.4);
+	\draw[thick] (A)--(B)--(C)--cycle;
+	\draw (0,0.28)--(0.28,0.28)--(0.28,0);
+	\node[below left,font=\small] at (A) {$A$};
+	\node[below right,font=\small] at (B) {$B$};
+	\node[above left,font=\small] at (C) {$C$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Donner l'image de $B$ par la rotation $r_{\left(A,\frac{\pi}{2}\right)}$.
+	\item Quelle est la nature de $t_{\vect{AB}}\circ s_{(AB)}$ ? Préciser son
+	axe et son vecteur.
+	\item Quelle est la nature de $s_{(AB)}\circ s_{(AC)}$ ?
+	\item \textbf{Vrai ou faux} : $s_{(AC)}\circ s_{(AB)} = s_{(AB)}\circ s_{(AC)}$.
+	Justifier.
+\end{enumerate}
+
+\exercice{Vrai ou faux \hfill \facile}
+Répondre par \emph{vrai} ou \emph{faux} en justifiant brièvement.
+\begin{enumerate}
+	\item La composée de deux translations est toujours une translation.
+	\item La composée de deux rotations est toujours une rotation.
+	\item Pour toute droite $\Delta$, $s_\Delta\circ s_\Delta = \mathrm{Id}$.
+	\item Une rotation d'angle $\pi$ est une symétrie centrale.
+	\item La composée de deux réflexions possède toujours au moins un point
+	fixe.
+	\item Une isométrie qui fixe deux points distincts est l'identité ou une
+	réflexion.
+	\item $t_{\vec u}\circ r_{(I,\alpha)}$ a le même angle que $r_{(I,\alpha)}$
+	(pour $\alpha\not\equiv 0$).
+\end{enumerate}
+
+\subsection{Composition et décomposition}
+
 \exercice{Composer deux réflexions \hfill \facile}
 Dans un repère orthonormé, on note $s_1$ la réflexion d'axe la droite
 $x=1$ et $s_2$ la réflexion d'axe la droite $x=4$.
