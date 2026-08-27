@@ -44,10 +44,13 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 - Section « Exercices d'entraînement » restructurée en deux sous-sections :
   « Échauffement : lire une figure » (segment, triangle, parallélogramme,
   lecture d'une ligne de niveau, Vrai/Faux à 7 items) puis « Barycentre et
-  lignes de niveau » à difficulté progressive, terminée par **2 sujets
-  types Bac** (barycentre + discussion de $(E_k)$ ; norme = norme donnant
-  un cercle), chacun en Partie A synthétique / Partie B analytique, calqués
-  sur les Problèmes 1 des sessions 2021–2026.
+  lignes de niveau » à difficulté progressive, terminée par **5 sujets
+  types Bac**, chacun en Partie A synthétique / Partie B analytique, calqués
+  sur les Problèmes 1 des sessions 2021–2026 : barycentre + discussion de
+  $(E_k)$ ; norme = norme donnant un cercle ; fonctions vectorielle et
+  scalaire de Leibniz ; cercle d'Apollonius + cercle de diamètre ;
+  isobarycentre de 4 points + affixes (couvre aussi la ligne de niveau
+  droite, σ = 0).
 - `calc`, `angles`, `quotes` ajoutés aux librairies TikZ dans
   `config/packages.tex`.
 - Compile sans erreur ; aucun `Overfull \hbox` visible ajouté ; figures
