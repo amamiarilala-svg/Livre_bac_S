@@ -30,7 +30,18 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
   produit de trois réflexions en symétrie glissée ; composée à paramètre
   et lieu du centre).
 - Compile sans erreur ; aucun `Overfull \hbox` visible (> ~10pt) ajouté.
-- Branche `chapitre-isometries-composition`, PR contre `main`.
+- Branche `chapitre-isometries-composition`, PR #7, mergée dans `main`.
+
+## 2026-08-27 — Calcul matriciel : exercice résolu d'inversion polynomiale
+
+- Dans `parties/algebre/matrices.tex`, l'exercice résolu « Utiliser une
+  relation polynomiale pour inverser une matrice » utilisait la matrice
+  $A$ du sujet Bacc 2022 (Exercice 1.II) — doublon cours/annale.
+- Remplacée par $C = (1\,2\,2\,/\,2\,1\,2\,/\,2\,2\,1)$, avec la relation
+  $C^3 - 21C - 20\,I_3 = O_3$ d'où
+  $C^{-1} = \tfrac15(-3\,2\,2\,/\,2\,-3\,2\,/\,2\,2\,-3)$.
+- Même méthode pédagogique, matrice différente. Compile sans erreur.
+- Branche `matrices-exercice-inverse-polynomiale`, PR #8, mergée dans `main`.
 
 ## 2026-08-26 — Passe de relecture globale (débordements de marge)
 
