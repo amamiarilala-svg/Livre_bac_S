@@ -1,454 +1,668 @@
-\chapter{Primitives et Intégrale}
+% ============================================================
+%  CHAPITRE : PRIMITIVES ET INTÉGRALE
+%  Mazava Maths — Terminale S (Bacc Série S, Madagascar)
+%  Aligné sur le modèle type et le programme officiel MESUPRES
+%  (primitives usuelles/opérations/condition initiale ; intégrale,
+%  linéarité, Chasles ; fonction définie par une intégrale ;
+%  IPP ; changement de variable affine ; aire, valeur moyenne,
+%  volume de révolution, moments d'inertie).
+%  Environnements : definition, propriete, theoreme, methode,
+%                   attention, astucebac, exemple, exercice,
+%                   solution, remarque
+% ============================================================
+
+\chapter{Primitives et intégrale}
+
+\begin{citationchapitre}
+	« Le signe $\displaystyle\int$ n'est autre qu'un $S$ allongé : il
+	représente une somme. »\\[0.4em]
+	— d'après Gottfried Wilhelm Leibniz
+\end{citationchapitre}
+
 \begin{objectifs}
-	\begin{itemize}
-		\item Calculer une primitive et une intégrale d’une fonction numérique
-		\item Connaître quelques utilisations des intégrales de fonctions.
+	\begin{itemize}[label=\textbullet]
+		\item Déterminer une \textbf{primitive} : primitives usuelles,
+		opérations, forme $u'\times f(u)$ ; primitive vérifiant une condition.
+		\item Calculer une \textbf{intégrale} ; utiliser linéarité, relation de
+		Chasles, positivité, comparaison ; \textbf{valeur moyenne}.
+		\item Étudier une \textbf{fonction définie par une intégrale}.
+		\item Intégrer \textbf{par parties} ; effectuer un \textbf{changement de
+		variable affine}.
+		\item Calculer une \textbf{aire}, un \textbf{volume de révolution}, un
+		\textbf{moment d'inertie}.
 	\end{itemize}
 \end{objectifs}
 
+
+% ================================================================
+\section{Primitives — définition et fonctions usuelles}
+% ================================================================
+
 \begin{definition}
- $f$ est une fonction définie sur un intervalle $I$.\\
- Dire que $F$ est une \textbf{primitive} de $f$ signifie que $F$ est dérivable sur $I$ et \textbf{$F' = f$.}
+	Soit $f$ définie sur un intervalle $I$. Une \textbf{primitive} de $f$
+	sur $I$ est une fonction $F$ dérivable sur $I$ telle que $F'=f$.
 \end{definition}
 
-\begin{propriete}{}{}
-	Toute fonction définie sur un interval $I$ admet des primitives sur $I$. 
-\end{propriete}
+\begin{theoreme}[Existence et unicité à une constante près]
+	Soit $f$ une fonction définie sur $I$.
+	\begin{itemize}[label=\textbullet]
+		\item Si $f$ est \textbf{continue} sur $I$, alors $f$ admet des
+		primitives sur $I$.
+		\item Si $F$ est une primitive de $f$ sur $I$, les primitives de $f$ sont
+		exactement les fonctions $F+C$, $C\in\R$.
+	\end{itemize}
+\end{theoreme}
 
-
-
-
-
-% ============================================================
-%  CHAPITRE : PRIMITIVES ET INTÉGRALE (suite)
-%  Mazava Maths — Terminale S
-%  Environnements : definition, propriete, methode, attention,
-%                   astucebac, exemple, exercice, solution
-% ============================================================
-
-% ----------------------------------------------------------------
-\section{Primitives des fonctions usuelles}
-% ----------------------------------------------------------------
-
-Le tableau suivant donne les primitives des fonctions usuelles
-à connaître en Terminale~S.
-
-\begin{center}
-	\renewcommand{\arraystretch}{2.2}
-	\begin{tabular}{|c|c|c|}
-		\hline
-		\textbf{Fonction} $f(x)$ & \textbf{Primitive} $F(x)$ & \textbf{Conditions} \\
-		\hline
-		$k$ \quad ($k \in \R$) & $kx$ & sur $\R$ \\
-		\hline
-		$x^n$ \quad ($n \in \N^*$) & $\dfrac{x^{n+1}}{n+1}$ & sur $\R$ \\
-		\hline
-		$x^n$ \quad ($n \in \Z,\ n \leq -2$) & $\dfrac{x^{n+1}}{n+1}$ & sur $]0;+\infty[$ ou $]-\infty;0[$ \\
-		\hline
-		$x^\alpha$ \quad ($\alpha \in \R,\ \alpha \neq -1$) & $\dfrac{x^{\alpha+1}}{\alpha+1}$ & sur $]0;+\infty[$ \\
-		\hline
-		$\dfrac{1}{x^2}$ & $-\dfrac{1}{x}$ & sur $]0;+\infty[$ ou $]-\infty;0[$ \\
-		\hline
-		$\dfrac{1}{\sqrt{x}}$ & $2\sqrt{x}$ & sur $]0;+\infty[$ \\
-		\hline
-		$\sqrt{x}$ & $\dfrac{2}{3}x\sqrt{x}$ & sur $]0;+\infty[$ \\
-		\hline
-		$\cos x$ & $\sin x$ & sur $\R$ \\
-		\hline
-		$\sin x$ & $-\cos x$ & sur $\R$ \\
-		\hline
-		$\dfrac{1}{\cos^2 x}$ & $\tan x$ & sur $\left]-\dfrac{\pi}{2};\dfrac{\pi}{2}\right[$ \\
-		\hline
+\begin{propriete}{Primitives usuelles}{prop_prim_usuelles}
+	\begin{center}
+	\renewcommand{\arraystretch}{2.0}
+	\setlength{\tabcolsep}{5pt}
+	\begin{tabular}{>{\centering\arraybackslash}p{2.9cm}
+	                >{\centering\arraybackslash}p{2.6cm}
+	                >{\centering\arraybackslash}p{2.7cm}}
+	\hline
+	$f(x)$ & une primitive $F(x)$ & sur \\
+	\hline
+	$k$ \ ($k\in\R$)                & $kx$                       & $\R$ \\
+	$x^{n}$ \ ($n\in\N$)           & $\dfrac{x^{n+1}}{n+1}$     & $\R$ \\
+	$x^{n}$ \ ($n\leq-2$)          & $\dfrac{x^{n+1}}{n+1}$     & $\R^*$ \\
+	$x^{\alpha}$ \ ($\alpha\neq-1$) & $\dfrac{x^{\alpha+1}}{\alpha+1}$ & $]0\,;+\infty[$ \\
+	$\dfrac{1}{x}$                 & $\ln|x|$                   & $\R^*$ \\
+	$\dfrac{1}{\sqrt{x}}$          & $2\sqrt{x}$                & $]0\,;+\infty[$ \\
+	$\e^{x}$                       & $\e^{x}$                   & $\R$ \\
+	$\cos x$                       & $\sin x$                   & $\R$ \\
+	$\sin x$                       & $-\cos x$                  & $\R$ \\
+	$\dfrac{1}{\cos^{2}x}$         & $\tan x$                   & $\left]-\tfrac{\pi}{2}\,;\tfrac{\pi}{2}\right[$ \\
+	\hline
 	\end{tabular}
-\end{center}
+	\end{center}
+\end{propriete}
 
 \begin{attention}
-	Une primitive n'est \textbf{jamais unique} : si $F$ est une primitive de $f$,
-	alors $F + C$ (avec $C \in \R$) est aussi une primitive de $f$.
-	On dit que les primitives de $f$ forment une \textbf{famille}.
+	Une primitive n'est \textbf{jamais unique} : on écrit toujours \og $+C$ \fg\
+	tant qu'aucune condition n'est imposée.
 \end{attention}
 
-% ----------------------------------------------------------------
-\section{Opérations sur les primitives}
-% ----------------------------------------------------------------
 
-\begin{propriete}{Linéarité}{}
-	Soient $f$ et $g$ deux fonctions admettant des primitives $F$ et $G$
-	sur un intervalle $I$, et $\lambda, \mu \in \R$. Alors :
-	\begin{itemize}
-		\item $F + G$ est une primitive de $f + g$ sur $I$.
-		\item $\lambda F$ est une primitive de $\lambda f$ sur $I$.
-		\item $\lambda F + \mu G$ est une primitive de $\lambda f + \mu g$ sur $I$.
-	\end{itemize}
+% ================================================================
+\section{Opérations. Primitives de la forme \texorpdfstring{$u'\times f(u)$}{u' f(u)}}
+% ================================================================
+
+\begin{propriete}{Linéarité}{prop_prim_lin}
+	Si $F$, $G$ sont des primitives de $f$, $g$ sur $I$ et $\lambda,\mu\in\R$,
+	alors $\lambda F+\mu G$ est une primitive de $\lambda f+\mu g$ sur $I$.
 \end{propriete}
 
-\begin{propriete}{Primitive d'une fonction composée — cas usuels}{}
-	Soient $u$ une fonction dérivable sur $I$ et $n \in \Z \setminus \{-1\}$,
-	$\alpha \in \R \setminus \{-1\}$. On a :
-	
+\begin{propriete}{Primitives composées (\og inverse des dérivées \fg)}{prop_prim_comp}
+	Soit $u$ dérivable sur $I$ :
 	\begin{center}
-		\renewcommand{\arraystretch}{2.2}
-		\begin{tabular}{|c|c|}
-			\hline
-			\textbf{Fonction} $f$ & \textbf{Primitive} $F$ \\
-			\hline
-			$u' \cdot u^n$ & $\dfrac{u^{n+1}}{n+1}$ \\
-			\hline
-			$u' \cdot u^\alpha$ & $\dfrac{u^{\alpha+1}}{\alpha+1}$ \\
-			\hline
-			$\dfrac{u'}{u^2}$ & $-\dfrac{1}{u}$ \\
-			\hline
-			$\dfrac{u'}{\sqrt{u}}$ & $2\sqrt{u}$ \\
-			\hline
-			$u' \cos u$ & $\sin u$ \\
-			\hline
-			$u' \sin u$ & $-\cos u$ \\
-			\hline
-		\end{tabular}
+	\renewcommand{\arraystretch}{2.1}
+	\setlength{\tabcolsep}{6pt}
+	\begin{tabular}{>{\centering\arraybackslash}p{3.4cm}
+	                >{\centering\arraybackslash}p{4.0cm}}
+	\hline
+	$f$ & une primitive $F$ \\
+	\hline
+	$u'\,u^{n}$ \ ($n\neq-1$)     & $\dfrac{u^{n+1}}{n+1}$ \\
+	$\dfrac{u'}{u^{2}}$           & $-\dfrac{1}{u}$ \\
+	$\dfrac{u'}{\sqrt{u}}$        & $2\sqrt{u}$ \\
+	$\dfrac{u'}{u}$               & $\ln|u|$ \\
+	$u'\,\e^{u}$                  & $\e^{u}$ \\
+	$u'\cos u$                    & $\sin u$ \\
+	$u'\sin u$                    & $-\cos u$ \\
+	\hline
+	\end{tabular}
 	\end{center}
 \end{propriete}
 
 \begin{methode}
-	Pour reconnaître une primitive de la forme $u' \cdot u^n$ :
-	\begin{enumerate}
-		\item Identifier la fonction $u(x)$ à l'intérieur.
-		\item Calculer $u'(x)$.
-		\item Vérifier que la fonction à intégrer est bien du type $u' \cdot u^n$
-		(au coefficient multiplicatif près).
-		\item Appliquer la formule, puis ajuster le coefficient.
-	\end{enumerate}
+	Pour primitiver une expression : repérer une fonction intérieure $u$,
+	calculer $u'$, écrire l'expression sous la forme
+	$\lambda\times\bigl(u'\times f(u)\bigr)$, puis appliquer le tableau et
+	ajuster le coefficient.
 \end{methode}
 
 \begin{exemple}
-	Trouver une primitive de $f(x) = 3x^2(x^3+1)^4$.
-	
-	On pose $u(x) = x^3 + 1$, donc $u'(x) = 3x^2$.
-	
-	On reconnaît $f(x) = u'(x) \cdot [u(x)]^4$, donc :
 	\[
-	F(x) = \frac{[u(x)]^5}{5} = \frac{(x^3+1)^5}{5}.
+	\begin{aligned}
+	3x^{2}(x^{3}+1)^{4} &\ \longrightarrow\ \frac{(x^{3}+1)^{5}}{5}
+	&&(u=x^{3}+1),\\[0.3em]
+	\frac{2x}{x^{2}+1} &\ \longrightarrow\ \ln(x^{2}+1)
+	&&(u=x^{2}+1),\\[0.3em]
+	(2x+1)\,\e^{x^{2}+x} &\ \longrightarrow\ \e^{x^{2}+x}
+	&&(u=x^{2}+x),\\[0.3em]
+	\frac{x}{\sqrt{x^{2}+3}} &\ \longrightarrow\ \sqrt{x^{2}+3}
+	&&\left(\tfrac12\cdot\dfrac{2x}{\sqrt{x^{2}+3}}\right).
+	\end{aligned}
 	\]
 \end{exemple}
 
-\begin{exemple}
-	Trouver une primitive de $g(x) = \dfrac{2x}{\sqrt{x^2+3}}$.
-	
-	On pose $u(x) = x^2 + 3$, donc $u'(x) = 2x$.
-	
-	On reconnaît $g(x) = \dfrac{u'(x)}{\sqrt{u(x)}}$, donc :
-	\[
-	G(x) = 2\sqrt{u(x)} = 2\sqrt{x^2+3}.
-	\]
-\end{exemple}
 
-% ----------------------------------------------------------------
-\section{Primitive prenant une valeur donnée en un point}
-% ----------------------------------------------------------------
+% ================================================================
+\section{Primitive vérifiant une condition}
+% ================================================================
 
-\begin{propriete}{Unicité sous condition initiale}{}
-	Soit $f$ une fonction continue sur un intervalle $I$,
-	$x_0 \in I$ et $y_0 \in \R$.
-	Il existe \textbf{une unique primitive} $F$ de $f$ sur $I$
-	telle que $F(x_0) = y_0$.
+\begin{propriete}{Unicité sous condition}{prop_prim_cond}
+	Si $f$ est continue sur $I$, $x_0\in I$ et $y_0\in\R$, il existe une
+	\textbf{unique} primitive $F$ de $f$ sur $I$ telle que $F(x_0)=y_0$.
 \end{propriete}
 
-\begin{methode}
-	Pour trouver la primitive $F$ vérifiant $F(x_0) = y_0$ :
-	\begin{enumerate}
-		\item Calculer la primitive générale $F(x) = \ldots + C$.
-		\item Écrire la condition : $F(x_0) = y_0$.
-		\item Résoudre pour trouver $C$.
-	\end{enumerate}
-\end{methode}
-
 \begin{exemple}
-	Soit $f(x) = 3x^2 - 4x + 1$. Trouver la primitive $F$ de $f$
-	telle que $F(1) = 2$.
-	
-	Primitive générale : $F(x) = x^3 - 2x^2 + x + C$.
-	
-	Condition : $F(1) = 1 - 2 + 1 + C = C = 2$, donc $C = 2$.
-	
-	\[
-	\boxed{F(x) = x^3 - 2x^2 + x + 2.}
-	\]
+	Primitive $F$ de $f(x)=\e^{x}-\dfrac{1}{x}$ sur $]0\,;+\infty[$ telle que
+	$F(1)=\e$.
+
+	$F(x)=\e^{x}-\ln x+C$ ; \ $F(1)=\e-0+C=\e\Rightarrow C=0$ ;
+	donc $F(x)=\e^{x}-\ln x$.
 \end{exemple}
 
-% ----------------------------------------------------------------
-\section{Intégrale d'une fonction}
-% ----------------------------------------------------------------
+
+% ================================================================
+\section{Intégrale d'une fonction continue}
+% ================================================================
 
 \begin{definition}
-	Soit $f$ une fonction \textbf{continue} et \textbf{positive} sur $[a\,;b]$,
-	et $F$ une primitive de $f$ sur $[a\,;b]$.
-	On appelle \textbf{intégrale} de $f$ entre $a$ et $b$ le réel :
+	Soit $f$ \textbf{continue} sur $[a\,;b]$ et $F$ une primitive de $f$.
+	L'\textbf{intégrale} de $f$ de $a$ à $b$ est le réel
 	\[
-	\int_a^b f(x)\,\dd x = \Big[F(x)\Big]_a^b = F(b) - F(a).
+	\int_a^b f(x)\dd x=\Bigl[F(x)\Bigr]_a^b=F(b)-F(a).
 	\]
-	$a$ est la \textbf{borne inférieure}, $b$ la \textbf{borne supérieure}.
+	Ce résultat ne dépend pas de la primitive choisie.
 \end{definition}
 
-\begin{remarque}
-	Le résultat $F(b)-F(a)$ est \textbf{indépendant du choix} de la primitive $F$,
-	car deux primitives ne diffèrent que d'une constante qui s'annule dans la soustraction.
-\end{remarque}
-
-\begin{propriete}{Propriétés de l'intégrale}{}
-	Soient $f$ et $g$ continues sur $[a\,;b]$, et $\lambda \in \R$ :
-	\begin{itemize}
+\begin{propriete}{Règles de calcul}{prop_int_regles}
+	Pour $f$, $g$ continues sur un intervalle contenant $a$, $b$, $c$ et
+	$\lambda\in\R$ :
+	\begin{itemize}[label=\textbullet]
 		\item \textbf{Linéarité :}
-		$\displaystyle\int_a^b \bigl(\lambda f(x)+g(x)\bigr)\,\dd x
-		= \lambda\int_a^b f(x)\,\dd x + \int_a^b g(x)\,\dd x.$
-		\item \textbf{Relation de Chasles :}
-		$\displaystyle\int_a^b f(x)\,\dd x
-		= \int_a^c f(x)\,\dd x + \int_c^b f(x)\,\dd x$
-		pour tout $c \in [a\,;b]$.
-		\item \textbf{Inversion des bornes :}
-		$\displaystyle\int_a^b f(x)\,\dd x = -\int_b^a f(x)\,\dd x.$
-		\item \textbf{Intégrale nulle :}
-		$\displaystyle\int_a^a f(x)\,\dd x = 0.$
-		\item \textbf{Positivité :}
-		si $f(x) \geq 0$ sur $[a\,;b]$, alors
-		$\displaystyle\int_a^b f(x)\,\dd x \geq 0.$
-		\item \textbf{Comparaison :}
-		si $f(x) \leq g(x)$ sur $[a\,;b]$, alors
-		$\displaystyle\int_a^b f(x)\,\dd x \leq \int_a^b g(x)\,\dd x.$
+		$\displaystyle\int_a^b(\lambda f+g)=\lambda\int_a^b f+\int_a^b g$ ;
+		\item \textbf{Chasles :}
+		$\displaystyle\int_a^b f=\int_a^c f+\int_c^b f$ ;
+		\item \textbf{Bornes :}
+		$\displaystyle\int_a^a f=0$, \quad
+		$\displaystyle\int_b^a f=-\int_a^b f$ ;
+		\item \textbf{Positivité :} si $a\leq b$ et $f\geq 0$ sur $[a\,;b]$, alors
+		$\displaystyle\int_a^b f\geq 0$ ;
+		\item \textbf{Comparaison :} si $a\leq b$ et $f\leq g$ sur $[a\,;b]$, alors
+		$\displaystyle\int_a^b f\leq\int_a^b g$ ;
+		\item \textbf{Inégalité de la moyenne :} si $m\leq f\leq M$ sur $[a\,;b]$,
+		alors $m(b-a)\leq\displaystyle\int_a^b f\leq M(b-a)$.
 	\end{itemize}
 \end{propriete}
 
 \begin{exemple}
-	Calculer $\displaystyle I = \int_1^3 (2x^2 - 3x + 1)\,\dd x$.
-	
 	\[
-	I = \left[\frac{2x^3}{3} - \frac{3x^2}{2} + x\right]_1^3
-	= \left(\frac{54}{3} - \frac{27}{2} + 3\right)
-	- \left(\frac{2}{3} - \frac{3}{2} + 1\right).
-	\]
-	\[
-	= \left(18 - \frac{27}{2} + 3\right) - \left(\frac{2}{3} - \frac{3}{2} + 1\right)
-	= \frac{21}{2} - \frac{1}{6}
-	= \frac{63 - 1}{6} = \frac{62}{6} = \frac{31}{3}.
+	\int_1^{\e}\frac{\dd x}{x}=\bigl[\ln x\bigr]_1^{\e}=1,
+	\qquad
+	\int_0^1\e^{x}\dd x=\bigl[\e^{x}\bigr]_0^1=\e-1.
 	\]
 \end{exemple}
 
-% ----------------------------------------------------------------
-\section{Interprétation géométrique — Aire}
-% ----------------------------------------------------------------
 
-\begin{propriete}{Aire sous une courbe}{}
-	Soit $f$ continue et \textbf{positive} sur $[a\,;b]$.
-	L'aire (en unités d'aire) du domaine délimité par la courbe
-	$\mathcal{C}_f$, l'axe des abscisses et les droites $x=a$, $x=b$ est :
+% ================================================================
+\section{Fonction définie par une intégrale}
+% ================================================================
+
+\begin{theoreme}[Théorème fondamental]
+	Si $f$ est continue sur $I$ et $a\in I$, la fonction
 	\[
-	\mathcal{A} = \int_a^b f(x)\,\dd x.
+	\Phi:x\longmapsto\int_a^x f(t)\dd t
+	\]
+	est \textbf{la} primitive de $f$ sur $I$ qui s'annule en $a$. En
+	particulier $\Phi$ est dérivable et $\Phi'(x)=f(x)$.
+\end{theoreme}
+
+\begin{propriete}{Bornes variables}{prop_bornes_var}
+	Si $u$, $v$ sont dérivables à valeurs dans $I$ et $f$ continue sur $I$,
+	alors $\displaystyle G(x)=\int_{u(x)}^{v(x)}f(t)\dd t$ est dérivable et
+	\[
+	G'(x)=v'(x)\,f\bigl(v(x)\bigr)-u'(x)\,f\bigl(u(x)\bigr).
 	\]
 \end{propriete}
 
-% Figure TikZ — aire sous une courbe
-\begin{center}
-	\begin{tikzpicture}[>=Stealth, scale=1.0]
-		\begin{scope}
-			\clip (0.5,-0.1) rectangle (3.5,2.5);
-			\fill[gray!25]
-			(1,0) -- plot[domain=1:3, samples=60]
-			(\x, {0.3*\x*\x - 0.2*\x + 0.5}) -- (3,0) -- cycle;
-		\end{scope}
-		\draw[->] (-0.2,0) -- (4.2,0) node[right] {$x$};
-		\draw[->] (0,-0.2) -- (0,2.8) node[above] {$y$};
-		\draw[thick, domain=0.3:3.8, samples=80]
-		plot (\x, {0.3*\x*\x - 0.2*\x + 0.5});
-		\draw[dashed] (1,0) node[below] {$a$} -- (1,{0.3-0.2+0.5});
-		\draw[dashed] (3,0) node[below] {$b$} -- (3,{0.3*9-0.6+0.5});
-		\node at (2, 0.6) {$\mathcal{A}$};
-		\node[right] at (3.8, {0.3*3.8*3.8-0.2*3.8+0.5}) {$\mathcal{C}_f$};
-	\end{tikzpicture}
-\end{center}
+\begin{exemple}
+	\textbf{a)} $\Phi(x)=\displaystyle\int_1^{x}\frac{\ln t}{t}\dd t$ :
+	$\Phi'(x)=\dfrac{\ln x}{x}$, et
+	$\Phi(x)=\left[\dfrac{(\ln t)^{2}}{2}\right]_1^{x}=\dfrac{(\ln x)^{2}}{2}$.
 
-\begin{propriete}{Aire entre deux courbes}{}
-	Soient $f$ et $g$ continues sur $[a\,;b]$ avec $f(x) \geq g(x)$.
-	L'aire du domaine compris entre $\mathcal{C}_f$ et $\mathcal{C}_g$ est :
+	\textbf{b)} $G(x)=\displaystyle\int_{x}^{x^{2}}\frac{\dd t}{t}$ ($x>1$) :
+	$G'(x)=2x\cdot\dfrac{1}{x^{2}}-1\cdot\dfrac{1}{x}=\dfrac{1}{x}$
+	(on retrouve $G(x)=\ln(x^{2})-\ln x=\ln x$).
+\end{exemple}
+
+
+% ================================================================
+\section{Intégration par parties}
+% ================================================================
+
+\begin{theoreme}[Intégration par parties (IPP)]
+	Si $u$, $v$ sont dérivables sur $[a\,;b]$, à dérivées continues :
 	\[
-	\mathcal{A} = \int_a^b \bigl[f(x) - g(x)\bigr]\,\dd x.
-	\]
-\end{propriete}
-
-\begin{attention}
-	Si $f$ change de signe sur $[a\,;b]$, il faut \textbf{découper} l'intervalle
-	aux zéros de $f$ et sommer les valeurs absolues de chaque intégrale partielle.
-\end{attention}
-
-% ----------------------------------------------------------------
-\section{Valeur moyenne}
-% ----------------------------------------------------------------
-
-\begin{definition}
-	La \textbf{valeur moyenne} de $f$ continue sur $[a\,;b]$ est :
-	\[
-	\mu = \frac{1}{b-a}\int_a^b f(x)\,\dd x.
-	\]
-\end{definition}
-
-% ----------------------------------------------------------------
-\section{Intégration par parties (IPP)}
-% ----------------------------------------------------------------
-
-\begin{theoreme}[Intégration par parties]
-	Soient $u$ et $v$ deux fonctions dérivables sur $[a\,;b]$,
-	à dérivées continues. Alors :
-	\[
-	\boxed{\int_a^b u(x)\,v'(x)\,\dd x
-		= \Bigl[u(x)\,v(x)\Bigr]_a^b - \int_a^b u'(x)\,v(x)\,\dd x.}
+	\int_a^b u(x)\,v'(x)\dd x
+	=\Bigl[u(x)\,v(x)\Bigr]_a^b-\int_a^b u'(x)\,v(x)\dd x.
 	\]
 \end{theoreme}
 
 \begin{methode}
-	Pour appliquer une IPP :
-	\begin{enumerate}
-		\item Choisir $u$ et $v'$ de sorte que $u'$ soit \textbf{plus simple} que $u$
-		et que $v$ soit \textbf{facile à calculer} depuis $v'$.
-		\item Calculer $u'$ et $v$.
-		\item Appliquer la formule.
-		\item Calculer l'intégrale restante.
-	\end{enumerate}
+	Choisir $u$ et $v'$ pour que $u'$ soit \textbf{plus simple} que $u$ et $v$
+	\textbf{facile} à obtenir. Cas classiques : $u=$ polynôme ou $u=\ln x$ ;
+	$v'=\e^{x}$, $\cos x$, $\sin x$, $x^{\alpha}$.
 \end{methode}
 
-\begin{astucebac}
-	En pratique au BAC, l'IPP est souvent utilisée avec :
-	$u = $ polynôme (donc $u'$ diminue le degré) et
-	$v' = \cos x$, $\sin x$ ou $x^\alpha$ (donc $v$ reste simple).
-\end{astucebac}
-
 \begin{exemple}
-	Calculer $\displaystyle I = \int_0^{\pi} x\cos x\,\dd x$.
-	
-	On pose $u(x) = x$ et $v'(x) = \cos x$,
-	donc $u'(x) = 1$ et $v(x) = \sin x$.
-	
+	\textbf{a)} $\displaystyle\int_1^{\e}\ln x\dd x$ : $u=\ln x$, $v'=1$,
+	$u'=\tfrac1x$, $v=x$.
 	\[
-	I = \Big[x\sin x\Big]_0^{\pi} - \int_0^{\pi} \sin x\,\dd x
-	= 0 - \Big[-\cos x\Big]_0^{\pi}
-	= -\bigl(-\cos\pi + \cos 0\bigr)
-	= -\bigl(1 + 1\bigr) = -2.
+	\int_1^{\e}\ln x\dd x=\bigl[x\ln x\bigr]_1^{\e}-\int_1^{\e}1\dd x
+	=\e-(\e-1)=1.
+	\]
+
+	\textbf{b)} $\displaystyle\int_0^1 x\,\e^{x}\dd x$ : $u=x$, $v'=\e^{x}$.
+	\[
+	\int_0^1 x\,\e^{x}\dd x=\bigl[x\e^{x}\bigr]_0^1-\int_0^1\e^{x}\dd x
+	=\e-(\e-1)=1.
 	\]
 \end{exemple}
 
-% ----------------------------------------------------------------
-\section{Volume d'un solide de révolution}
-% ----------------------------------------------------------------
 
-\begin{propriete}{Volume de révolution}{}
-	Soit $f$ continue et positive sur $[a\,;b]$.
-	Le volume du solide engendré par la rotation de $\mathcal{C}_f$
-	autour de l'axe des abscisses est :
+% ================================================================
+\section{Changement de variable affine}
+% ================================================================
+
+\begin{propriete}{Intégrale de $x\mapsto f(\alpha x+\beta)$}{prop_cvaffine}
+	Si $F$ est une primitive de $f$ et $\alpha\neq 0$, alors une primitive de
+	$x\mapsto f(\alpha x+\beta)$ est $x\mapsto\dfrac{1}{\alpha}F(\alpha x+\beta)$.
+	Par suite
 	\[
-	V = \pi \int_a^b \bigl[f(x)\bigr]^2\,\dd x.
+	\int_a^b f(\alpha x+\beta)\dd x
+	=\frac{1}{\alpha}\Bigl[F(\alpha x+\beta)\Bigr]_a^b .
+	\]
+	(Cela revient à poser $t=\alpha x+\beta$, d'où $\mathrm{d}t=\alpha\,\mathrm{d}x$.)
+\end{propriete}
+
+\begin{exemple}
+	\[
+	\int_0^1\e^{2x+1}\dd x=\frac12\bigl[\e^{2x+1}\bigr]_0^1=\frac{\e^{3}-\e}{2},
+	\qquad
+	\int (3x-1)^{5}\dd x=\frac{(3x-1)^{6}}{18}+C.
+	\]
+\end{exemple}
+
+
+% ================================================================
+\section{Aire, valeur moyenne, volume, moments d'inertie}
+% ================================================================
+
+\begin{propriete}{Aire}{prop_aire}
+	Si $f$ est continue \textbf{positive} sur $[a\,;b]$, l'aire (en unités
+	d'aire) du domaine délimité par $\mathcal C_f$, l'axe $(Ox)$ et les droites
+	$x=a$, $x=b$ vaut $\displaystyle\mathcal A=\int_a^b f(x)\dd x$.
+
+	Si $f\geq g$ sur $[a\,;b]$, l'aire entre $\mathcal C_f$ et $\mathcal C_g$
+	vaut $\displaystyle\int_a^b\bigl[f(x)-g(x)\bigr]\dd x$.
+\end{propriete}
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\begin{scope}
+		\clip (1,-0.1) rectangle (3,2.6);
+		\fill[gray!22] (1,0) -- plot[domain=1:3,samples=60]
+		  (\x,{0.7*exp(0.35*\x)}) -- (3,0) -- cycle;
+	\end{scope}
+	\draw[->] (-0.2,0) -- (4.3,0) node[right,font=\small] {$x$};
+	\draw[->] (0,-0.2) -- (0,2.9) node[above,font=\small] {$y$};
+	\draw[thick,domain=0.2:3.9,samples=90] plot (\x,{0.7*exp(0.35*\x)});
+	\draw[dashed] (1,0) node[below,font=\small] {$a$} -- (1,{0.7*exp(0.35)});
+	\draw[dashed] (3,0) node[below,font=\small] {$b$} -- (3,{0.7*exp(1.05)});
+	\node[font=\small] at (2,0.7) {$\mathcal A$};
+	\node[font=\scriptsize] at (3.75,{0.7*exp(0.35*3.75)-0.25}) {$\mathcal C_f$};
+\end{tikzpicture}
+\end{center}
+
+\begin{attention}
+	Si $f$ change de signe sur $[a\,;b]$, l'aire géométrique s'obtient en
+	\textbf{découpant} aux zéros de $f$ et en sommant les $\bigl|\int\bigr|$
+	partielles.
+\end{attention}
+
+\begin{definition}
+	La \textbf{valeur moyenne} de $f$ continue sur $[a\,;b]$ ($a<b$) est
+	\[
+	\mu=\frac{1}{b-a}\int_a^b f(x)\dd x.
+	\]
+\end{definition}
+
+\begin{propriete}{Volume d'un solide de révolution}{prop_volume}
+	Si $f$ est continue positive sur $[a\,;b]$, le volume du solide engendré
+	par la rotation de $\mathcal C_f$ autour de $(Ox)$ vaut
+	\[
+	V=\pi\int_a^b\bigl[f(x)\bigr]^{2}\dd x.
+	\]
+\end{propriete}
+
+\begin{propriete}{Moments d'inertie d'une plaque}{prop_inertie}
+	Pour la plaque homogène (masse surfacique $1$) délimitée par
+	$\mathcal C_f$ ($f\geq 0$), l'axe $(Ox)$ et $x=a$, $x=b$ :
+	\[
+	I_{(Oy)}=\int_a^b x^{2}\,f(x)\dd x,
+	\qquad
+	I_{(Ox)}=\int_a^b\frac{\bigl[f(x)\bigr]^{3}}{3}\dd x.
 	\]
 \end{propriete}
 
 \begin{exemple}
-	Calculer le volume du solide de révolution engendré par $f(x) = \sqrt{x}$
-	sur $[0\,;4]$ autour de l'axe des abscisses.
-	
+	$f(x)=\e^{x}$ sur $[0\,;1]$ :
 	\[
-	V = \pi\int_0^4 \bigl(\sqrt{x}\bigr)^2\,\dd x
-	= \pi\int_0^4 x\,\dd x
-	= \pi\left[\frac{x^2}{2}\right]_0^4
-	= \pi \cdot \frac{16}{2}
-	= 8\pi.
+	V=\pi\int_0^1\e^{2x}\dd x=\pi\left[\frac{\e^{2x}}{2}\right]_0^1
+	=\frac{\pi(\e^{2}-1)}{2}.
 	\]
 \end{exemple}
 
-% ----------------------------------------------------------------
-%  EXERCICES RÉSOLUS
-% ----------------------------------------------------------------
 
-\exercice{\etoilepleine\etoilevide\etoilevide}
-Calculer les intégrales suivantes :
+% ================================================================
+\section{Méthodes et exercices résolus}
+% ================================================================
+
+\begin{methode}
+	\textbf{Quelle technique ?}
+	\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{>{\raggedright\arraybackslash}p{4.4cm}
+	                >{\raggedright\arraybackslash}p{3.8cm}}
+	\hline
+	\textbf{Forme} & \textbf{Méthode} \\
+	\hline
+	$u'\times f(u)$ visible & tableau des primitives composées \\
+	$\dfrac{\text{num.}}{\text{dénom.}}$, num.\ $\propto$ dérivée du dénom.
+	& $\dfrac{u'}{u}\to\ln|u|$ \\
+	$f(\alpha x+\beta)$ & changement de variable affine \\
+	produit polynôme\,$\times\,\e^{x}$ (ou $\cos$, $\sin$) & IPP \\
+	$\ln x$ seul & IPP avec $v'=1$ \\
+	dérivée d'une intégrale à bornes variables & théorème fondamental \\
+	\hline
+	\end{tabular}
+	\end{center}
+\end{methode}
+
+\exerciceresolu
+\textbf{Calculs variés}
+
 \[
-\text{a)}\quad I_1 = \int_0^2 (3x^2+2x-1)\,\dd x
+\text{a) } \int_0^1\bigl(3x^{2}+\e^{x}\bigr)\dd x
 \qquad
-\text{b)}\quad I_2 = \int_1^4 \frac{1}{\sqrt{x}}\,\dd x
+\text{b) } \int_1^{2}\frac{2x}{x^{2}+1}\dd x
 \qquad
-\text{c)}\quad I_3 = \int_0^\pi \sin x\,\dd x
+\text{c) } \int_0^{1}(x+1)\e^{x}\dd x
 \]
 
 \solution
 
-\textbf{a)}
-\[
-I_1 = \left[x^3 + x^2 - x\right]_0^2
-= (8+4-2) - 0 = 10.
-\]
+\textbf{a)} $\bigl[x^{3}+\e^{x}\bigr]_0^1=(1+\e)-(0+1)=\e$.
 
-\textbf{b)}
-\[
-I_2 = \left[2\sqrt{x}\right]_1^4
-= 2\sqrt{4} - 2\sqrt{1} = 4 - 2 = 2.
-\]
+\textbf{b)} $\bigl[\ln(x^{2}+1)\bigr]_1^{2}=\ln 5-\ln 2=\ln\dfrac52$.
 
-\textbf{c)}
+\textbf{c)} IPP : $u=x+1$, $v'=\e^{x}$, $u'=1$, $v=\e^{x}$ :
 \[
-I_3 = \left[-\cos x\right]_0^\pi
-= -\cos\pi + \cos 0 = 1 + 1 = 2.
+\int_0^1(x+1)\e^{x}\dd x=\bigl[(x+1)\e^{x}\bigr]_0^1-\int_0^1\e^{x}\dd x
+=2\e-1-(\e-1)=\e.
 \]
 
 \bigskip
-\exercice{\etoilepleine\etoilepleine\etoilevide}
+\exerciceresolu
+\textbf{Aire et volume sous $\mathcal C_{\ln}$}
+
+Soit le domaine $D$ délimité par $y=\ln x$, l'axe $(Ox)$ et $x=\e$.
 \begin{enumerate}
-	\item Trouver la primitive $F$ de $f(x) = 4x(x^2-1)^3$ telle que $F(0)=1$.
-	\item Calculer l'aire du domaine délimité par la courbe $\mathcal{C}_f$
-	où $f(x) = x^2 - x$, l'axe des abscisses et les droites $x=0$, $x=2$.
+	\item Calculer l'aire de $D$.
+	\item Calculer le volume engendré par la rotation de $D$ autour de $(Ox)$.
 \end{enumerate}
 
 \solution
 
-\textbf{1.} On pose $u = x^2-1$, $u'=2x$.
-On écrit $f(x) = 2 \cdot 2x \cdot (x^2-1)^3 = 2u'u^3$, donc :
-\[
-F(x) = 2 \cdot \frac{u^4}{4} + C = \frac{(x^2-1)^4}{2} + C.
-\]
-Condition $F(0)=1$ : $\dfrac{(-1)^4}{2}+C = 1 \Rightarrow C = \dfrac{1}{2}$.
-\[
-\boxed{F(x) = \frac{(x^2-1)^4}{2} + \frac{1}{2}.}
-\]
+\textbf{1.} $\ln x\geq 0$ sur $[1\,;\e]$, donc
+$\mathcal A=\displaystyle\int_1^{\e}\ln x\dd x=1$ (IPP, voir plus haut).
 
-\textbf{2.} On cherche les zéros de $f(x)=x^2-x=x(x-1)$ sur $[0;2]$ : $x=0$ et $x=1$.
-\begin{itemize}
-	\item Sur $[0;1]$ : $f(x) \leq 0$, donc l'aire partielle est
-	$\displaystyle\mathcal{A}_1 = -\int_0^1(x^2-x)\,\dd x
-	= -\left[\frac{x^3}{3}-\frac{x^2}{2}\right]_0^1
-	= -\left(\frac{1}{3}-\frac{1}{2}\right) = \frac{1}{6}$.
-	\item Sur $[1;2]$ : $f(x) \geq 0$, donc
-	$\displaystyle\mathcal{A}_2 = \int_1^2(x^2-x)\,\dd x
-	= \left[\frac{x^3}{3}-\frac{x^2}{2}\right]_1^2
-	= \left(\frac{8}{3}-2\right)-\left(\frac{1}{3}-\frac{1}{2}\right)
-	= \frac{5}{6}$.
-\end{itemize}
+\textbf{2.} $V=\pi\displaystyle\int_1^{\e}(\ln x)^{2}\dd x$. Par IPP
+($u=(\ln x)^{2}$, $v'=1$) :
 \[
-\mathcal{A} = \mathcal{A}_1 + \mathcal{A}_2 = \frac{1}{6}+\frac{5}{6} = 1 \text{ u.a.}
+\int_1^{\e}(\ln x)^{2}\dd x
+=\bigl[x(\ln x)^{2}\bigr]_1^{\e}-2\int_1^{\e}\ln x\dd x
+=\e-2.
 \]
+Donc $V=\pi(\e-2)$.
 
 \bigskip
-\exercice{\etoilepleine\etoilepleine\etoilepleine}
-Calculer $\displaystyle I = \int_0^{\frac{\pi}{2}} x\sin x\,\dd x$
-par une intégration par parties, puis en déduire le volume du solide
-de révolution engendré par $f(x)=\sin x$ sur $\left[0;\dfrac{\pi}{2}\right]$.
+\exerciceresolu
+\textbf{Fonction définie par une intégrale}
+
+Soit $F(x)=\displaystyle\int_0^{x}t\,\e^{-t}\dd t$ pour $x\geq 0$.
+\begin{enumerate}
+	\item Justifier que $F$ est dérivable et calculer $F'(x)$ ; en déduire les
+	variations de $F$.
+	\item Calculer $F(x)$ explicitement, puis $\displaystyle\lim_{x\to+\infty}F(x)$.
+\end{enumerate}
 
 \solution
 
-\textbf{IPP :} On pose $u=x$, $v'=\sin x$,
-donc $u'=1$, $v=-\cos x$.
-\[
-I = \Big[-x\cos x\Big]_0^{\frac{\pi}{2}} + \int_0^{\frac{\pi}{2}}\cos x\,\dd x
-= 0 + \Big[\sin x\Big]_0^{\frac{\pi}{2}}
-= 1.
-\]
+\textbf{1.} $t\mapsto t\e^{-t}$ est continue, donc $F$ est dérivable avec
+$F'(x)=x\,\e^{-x}\geq 0$ : $F$ est croissante sur $[0\,;+\infty[$.
 
-\textbf{Volume :}
+\textbf{2.} IPP ($u=t$, $v'=\e^{-t}$, $v=-\e^{-t}$) :
 \[
-V = \pi\int_0^{\frac{\pi}{2}}\sin^2 x\,\dd x
-= \pi\int_0^{\frac{\pi}{2}}\frac{1-\cos 2x}{2}\,\dd x
-= \frac{\pi}{2}\left[x - \frac{\sin 2x}{2}\right]_0^{\frac{\pi}{2}}
-= \frac{\pi}{2}\cdot\frac{\pi}{2}
-= \frac{\pi^2}{4}.
+F(x)=\bigl[-t\e^{-t}\bigr]_0^{x}+\int_0^{x}\e^{-t}\dd t
+=-x\e^{-x}+\bigl(1-\e^{-x}\bigr)=1-(x+1)\e^{-x}.
 \]
+Comme $(x+1)\e^{-x}\to 0$, $\displaystyle\lim_{x\to+\infty}F(x)=1$.
+
+
+% ================================================================
+\section{Exercices d'entraînement}
+% ================================================================
+
+\subsection{Échauffement}
+
+\exercice{Vrai ou faux \hfill \facile}
+Répondre par \emph{vrai} ou \emph{faux} en justifiant.
+\begin{enumerate}
+	\item Une fonction continue sur $[a\,;b]$ admet une infinité de primitives.
+	\item $\displaystyle\int_a^b f(x)\dd x$ est toujours positive.
+	\item Une primitive de $\dfrac{1}{x}$ sur $\R^*$ est $\ln x$.
+	\item $\displaystyle\int_2^{2} f(x)\dd x=0$.
+	\item $\displaystyle\left(\int_0^{x}\e^{-t^{2}}\dd t\right)'=\e^{-x^{2}}$.
+	\item Si $F'=f$ alors $\displaystyle\int_a^b f=F(a)-F(b)$.
+	\item La valeur moyenne de $x\mapsto x$ sur $[0\,;2]$ vaut $1$.
+\end{enumerate}
+
+\subsection{Calculs directs}
+
+\exercice{Primitives usuelles \hfill \facile}
+Donner une primitive (préciser l'intervalle).
+\begin{multicols}{3}
+\begin{enumerate}
+	\item $f(x)=x^{4}$
+	\item $f(x)=\dfrac{1}{x^{2}}$
+	\item $f(x)=\dfrac{1}{\sqrt{x}}$
+	\item $f(x)=\e^{x}$
+	\item $f(x)=\dfrac{1}{x}$
+	\item $f(x)=3x^{2}-2x+5$
+	\item $f(x)=\sqrt{x}$
+	\item $f(x)=\cos x$
+	\item $f(x)=\dfrac{2}{x^{3}}$
+\end{enumerate}
+\end{multicols}
+
+\exercice{Primitives composées \hfill \moyen}
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $f(x)=2x(x^{2}+1)^{3}$
+	\item $f(x)=\dfrac{2x}{x^{2}+5}$
+	\item $f(x)=x\,\e^{x^{2}}$
+	\item $f(x)=\dfrac{\e^{x}}{\e^{x}+1}$
+	\item $f(x)=\dfrac{x}{\sqrt{x^{2}+1}}$
+	\item $f(x)=\dfrac{\ln x}{x}$
+	\item $f(x)=(3x-2)^{4}$
+	\item $f(x)=\dfrac{1}{2x+1}$
+\end{enumerate}
+\end{multicols}
+
+\exercice{Intégrales directes \hfill \facile}
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\displaystyle\int_0^{2}(3x^{2}+2x-1)\dd x$
+	\item $\displaystyle\int_1^{4}\frac{\dd x}{\sqrt{x}}$
+	\item $\displaystyle\int_0^{1}\e^{x}\dd x$
+	\item $\displaystyle\int_1^{\e}\frac{\dd x}{x}$
+	\item $\displaystyle\int_0^{\pi}\sin x\dd x$
+	\item $\displaystyle\int_{-1}^{1}x^{3}\dd x$
+	\item $\displaystyle\int_0^{1}\frac{2x}{x^{2}+1}\dd x$
+	\item $\displaystyle\int_0^{1}(x+1)^{4}\dd x$
+\end{enumerate}
+\end{multicols}
+
+\exercice{Changement de variable affine \hfill \moyen}
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\displaystyle\int_0^{1}\e^{3x}\dd x$
+	\item $\displaystyle\int_0^{1}\e^{-2x+1}\dd x$
+	\item $\displaystyle\int_0^{\frac{\pi}{2}}\cos(2x)\dd x$
+	\item $\displaystyle\int_1^{2}(2x-1)^{5}\dd x$
+	\item $\displaystyle\int_0^{1}\frac{\dd x}{3x+2}$
+	\item $\displaystyle\int_{-1}^{0}\sqrt{2x+3}\dd x$
+\end{enumerate}
+\end{multicols}
+
+\exercice{Intégration par parties \hfill \moyen}
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\displaystyle\int_0^{1}x\,\e^{x}\dd x$
+	\item $\displaystyle\int_1^{\e}\ln x\dd x$
+	\item $\displaystyle\int_0^{\pi}x\cos x\dd x$
+	\item $\displaystyle\int_0^{1}x\,\e^{-x}\dd x$
+	\item $\displaystyle\int_1^{2}x\ln x\dd x$
+	\item $\displaystyle\int_0^{1}(2x+1)\e^{x}\dd x$
+\end{enumerate}
+\end{multicols}
+
+\exercice{Dérivée d'une fonction définie par une intégrale \hfill \moyen}
+Calculer $G'(x)$.
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $G(x)=\displaystyle\int_0^{x}\e^{-t^{2}}\dd t$
+	\item $G(x)=\displaystyle\int_1^{x}\frac{\ln t}{t}\dd t$
+	\item $G(x)=\displaystyle\int_{x}^{2x}\frac{\dd t}{t}$ \; ($x>0$)
+	\item $G(x)=\displaystyle\int_0^{x^{2}}\e^{-t}\dd t$
+\end{enumerate}
+\end{multicols}
+
+\subsection{Applications}
+
+\exercice{Aire \hfill \moyen}
+\begin{enumerate}
+	\item Calculer l'aire du domaine délimité par $\mathcal C_f$, $f(x)=x^{2}-x$,
+	l'axe $(Ox)$ et les droites $x=0$, $x=2$.
+	\item Calculer l'aire entre les courbes $y=\e^{x}$ et $y=x+1$ sur $[0\,;1]$.
+\end{enumerate}
+
+\exercice{Valeur moyenne et volume \hfill \moyen}
+Soit $f(x)=\sqrt{x}$ sur $[0\,;4]$.
+\begin{enumerate}
+	\item Calculer la valeur moyenne de $f$ sur $[0\,;4]$.
+	\item Calculer le volume engendré par la rotation de $\mathcal C_f$ autour
+	de $(Ox)$ sur $[0\,;4]$.
+\end{enumerate}
+
+\exercice{Moment d'inertie \hfill \difficile}
+Soit la plaque homogène (masse surfacique $1$) délimitée par $y=\e^{-x}$,
+l'axe $(Ox)$, $x=0$ et $x=1$.
+\begin{enumerate}
+	\item Rappeler l'expression de $I_{(Oy)}$ et la calculer (une IPP).
+	\item Calculer $I_{(Ox)}$.
+\end{enumerate}
+
+\subsection{Sujets types Bac}
+
+\exercice{Sujet type Bac — suite d'intégrales \hfill \difficile}
+Pour $n\in\N$, on pose $I_n=\displaystyle\int_0^{1}x^{n}\,\e^{-x}\dd x$.
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Calculer $I_0$. \hfill \mbox{(0,5~pt)}
+	\item À l'aide d'une intégration par parties, montrer que pour tout $n$,
+	$I_{n+1}=(n+1)\,I_n-\e^{-1}$. \hfill \mbox{(1~pt)}
+	\item En déduire $I_1$ et $I_2$. \hfill \mbox{(0,5~pt)}
+\end{enumerate}
+
+\textbf{Partie B}
+\begin{enumerate}
+	\setcounter{enumi}{3}
+	\item Montrer que $0\leq I_n\leq\dfrac{1}{n+1}$ pour tout $n$. \hfill \mbox{(0,75~pt)}
+	\item En déduire $\displaystyle\lim_{n\to+\infty}I_n$. \hfill \mbox{(0,5~pt)}
+	\item Montrer que la suite $(I_n)$ est décroissante. \hfill \mbox{(0,75~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — fonction définie par une intégrale \hfill \difficile}
+Soit $F(x)=\displaystyle\int_1^{x}\frac{\ln t}{t^{2}}\dd t$ pour $x>0$.
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Justifier que $F$ est dérivable sur $]0\,;+\infty[$ et calculer
+	$F'(x)$. \hfill \mbox{(0,5~pt)}
+	\item Dresser le tableau de variations de $F$ (on précisera le signe de
+	$F'$). \hfill \mbox{(0,75~pt)}
+	\item À l'aide d'une IPP, montrer que
+	$F(x)=1-\dfrac{1+\ln x}{x}$. \hfill \mbox{(1~pt)}
+\end{enumerate}
+
+\textbf{Partie B}
+\begin{enumerate}
+	\setcounter{enumi}{3}
+	\item Déterminer $\displaystyle\lim_{x\to 0^{+}}F(x)$ et
+	$\displaystyle\lim_{x\to+\infty}F(x)$. \hfill \mbox{(0,75~pt)}
+	\item En déduire que $F(x)\geq 0$ pour tout $x>0$, l'égalité n'ayant lieu
+	que pour $x=1$. \hfill \mbox{(0,5~pt)}
+	\item Montrer que l'équation $F(x)=\dfrac{1}{2}$ admet exactement deux
+	solutions. \hfill \mbox{(0,5~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — aire, volume, encadrement \hfill \difficile}
+Soit $f(x)=\dfrac{1}{x+1}$ sur $[0\,;1]$, de courbe $\mathcal C$.
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Déterminer une primitive de $f$ et calculer
+	$A=\displaystyle\int_0^{1}f(x)\dd x$. \hfill \mbox{(0,5~pt)}
+	\item Calculer le volume $V$ engendré par la rotation de $\mathcal C$ autour
+	de $(Ox)$. \hfill \mbox{(0,75~pt)}
+	\item Calculer la valeur moyenne de $f$ sur $[0\,;1]$. \hfill \mbox{(0,5~pt)}
+\end{enumerate}
+
+\textbf{Partie B}
+\begin{enumerate}
+	\setcounter{enumi}{3}
+	\item Montrer que pour tout $x\in[0\,;1]$,
+	$1-x\leq\dfrac{1}{x+1}\leq 1$. \hfill \mbox{(0,5~pt)}
+	\item En intégrant, en déduire un encadrement de $\ln 2$. \hfill \mbox{(0,75~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — somme de Riemann \hfill \difficile}
+Pour $n\geq 1$, on pose
+$S_n=\dfrac{1}{n}\displaystyle\sum_{k=1}^{n}\e^{k/n}$.
+\begin{enumerate}
+	\item Interpréter $S_n$ comme une somme d'aires de rectangles sous
+	$\mathcal C_{\exp}$ sur $[0\,;1]$. \hfill \mbox{(0,75~pt)}
+	\item Admettant que $\displaystyle\lim_{n\to+\infty}S_n=\int_0^{1}\e^{x}\dd x$,
+	déterminer cette limite. \hfill \mbox{(0,5~pt)}
+	\item De même, déterminer $\displaystyle\lim_{n\to+\infty}
+	\sum_{k=1}^{n}\frac{1}{n+k}$. \hfill \mbox{(0,75~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — IPP itérée et récurrence \hfill \difficile}
+Pour $n\in\N$, on pose $J_n=\displaystyle\int_0^{1}(1-x)^{n}\,\e^{x}\dd x$.
+\begin{enumerate}
+	\item Calculer $J_0$. \hfill \mbox{(0,5~pt)}
+	\item À l'aide d'une IPP, montrer que $J_{n+1}=(n+1)\,J_n-1$ pour tout
+	$n$. \hfill \mbox{(1~pt)}
+	\item Montrer par récurrence que
+	$J_n=n!\left(\e-\displaystyle\sum_{k=0}^{n}\frac{1}{k!}\right)$. \hfill \mbox{(1~pt)}
+	\item Montrer que $0\leq J_n\leq\dfrac{\e}{n+1}$, puis en déduire que
+	$\displaystyle\sum_{k=0}^{n}\frac{1}{k!}\longrightarrow\e$. \hfill \mbox{(1~pt)}
+\end{enumerate}
