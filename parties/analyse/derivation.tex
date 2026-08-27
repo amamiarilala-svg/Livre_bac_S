@@ -1,174 +1,32 @@
 % ============================================================
-%  CHAPITRE : CONTINUITÉ ET DÉRIVABILITÉ
+%  CHAPITRE : DÉRIVABILITÉ
 %  Mazava Maths — Terminale S
+%  (La continuité et le TVI sont traités au chapitre précédent
+%   « Limites et continuité » ; ils ne sont ici que réutilisés.)
 %  Environnements : definition, propriete, theoreme, methode,
 %                   attention, astucebac, exemple, exercice,
 %                   solution, remarque
 % ============================================================
 
-\chapter{Continuité et dérivabilité}
+\chapter{Dérivabilité}
 
 \begin{objectifs}
 	\begin{itemize}
-		\item Étudier la continuité d'une fonction en un point et sur un intervalle.
-		\item Appliquer le théorème des valeurs intermédiaires (TVI).
-		\item Étudier la dérivabilité d'une fonction en un point.
-		\item Relier continuité et dérivabilité.
-		\item Interpréter géométriquement tangente et demi-tangente.
+		\item Étudier la dérivabilité d'une fonction en un point, à gauche et à droite.
+		\item Relier continuité et dérivabilité (dérivable $\Rightarrow$ continue).
+		\item Interpréter géométriquement tangente, demi-tangentes et point anguleux.
+		\item Calculer une fonction dérivée (dérivées usuelles, opérations, composée).
+		\item Appliquer le théorème des accroissements finis (TAF) pour encadrer.
 	\end{itemize}
 \end{objectifs}
 
-% ----------------------------------------------------------------
-\section{Continuité}
-% ----------------------------------------------------------------
-
-\begin{definition}
-	Soit $f$ une fonction définie sur un intervalle $I$ et $a \in I$.
-	
-	$f$ est \textbf{continue en $a$} si :
-	\[
-	\lim_{x \to a} f(x) = f(a).
-	\]
-	Autrement dit : la limite existe, est finie, et est égale à la valeur de $f$ en $a$.
-	
-	$f$ est \textbf{continue sur $I$} si elle est continue en tout point de $I$.
-\end{definition}
-
-\begin{propriete}{Fonctions continues usuelles}{}
-	Les fonctions suivantes sont continues sur leur domaine de définition :
-	\begin{itemize}
-		\item Les fonctions \textbf{polynômes} sur $\R$.
-		\item Les fonctions \textbf{rationnelles} (quotient de polynômes) sur leur domaine.
-		\item Les fonctions $x\mapsto\sqrt{x}$, $x\mapsto|x|$, $\cos x$, $\sin x$ sur $\R$.
-		\item Toute \textbf{somme, produit, quotient} (dénominateur $\neq 0$)
-		et \textbf{composée} de fonctions continues est continue.
-	\end{itemize}
-\end{propriete}
-
-\begin{methode}
-	Pour étudier la continuité de $f$ en $a$ :
-	\begin{enumerate}
-		\item Calculer $\displaystyle\lim_{x\to a^-}f(x)$ et
-		$\displaystyle\lim_{x\to a^+}f(x)$.
-		\item Vérifier que ces deux limites sont égales à $f(a)$.
-		\item Si oui : $f$ est continue en $a$. Sinon : $f$ est discontinue en $a$.
-	\end{enumerate}
-\end{methode}
-
-\begin{exemple}
-	Soit $f$ définie par :
-	\[
-	f(x) = \begin{cases} x^2 - 1 & \text{si } x < 2 \\ 3x - 4 & \text{si } x \geq 2. \end{cases}
-	\]
-	Étudier la continuité de $f$ en $x_0 = 2$.
-	
-	$\displaystyle\lim_{x\to 2^-}f(x) = 4-1 = 3$. \quad
-	$\displaystyle\lim_{x\to 2^+}f(x) = 6-4 = 2$. \quad
-	$f(2) = 2$.
-	
-	Les limites à gauche et à droite sont différentes ($3\neq 2$),
-	donc $f$ est \textbf{discontinue} en $x_0=2$.
-\end{exemple}
-
-\begin{exemple}
-	Soit $g$ définie par :
-	\[
-	g(x) = \begin{cases} x^2 + 1 & \text{si } x \leq 1 \\ 3x - 1 & \text{si } x > 1. \end{cases}
-	\]
-	$\displaystyle\lim_{x\to 1^-}g(x) = 2$. \quad
-	$\displaystyle\lim_{x\to 1^+}g(x) = 2$. \quad
-	$g(1) = 2$.
-	
-	Les deux limites et $g(1)$ coïncident, donc $g$ est \textbf{continue} en $x_0=1$.
-\end{exemple}
-
-% --------------------------------
-\subsection{Prolongement par continuité}
-% --------------------------------
-
-\begin{definition}
-	Si $f$ est définie sur $I\setminus\{a\}$ et si
-	$\displaystyle\lim_{x\to a}f(x)=\ell\in\R$,
-	on peut \textbf{prolonger $f$ par continuité} en $a$ en posant $f(a)=\ell$.
-\end{definition}
-
-\begin{exemple}
-	Soit $f(x)=\dfrac{x^2-4}{x-2}$ définie sur $\R\setminus\{2\}$.
-	
-	$f(x)=\dfrac{(x-2)(x+2)}{x-2}=x+2$ pour $x\neq 2$.
-	$\displaystyle\lim_{x\to 2}f(x)=4$.
-	
-	On prolonge par continuité en posant $f(2)=4$.
-\end{exemple}
-
-% ----------------------------------------------------------------
-\section{Théorème des valeurs intermédiaires}
-% ----------------------------------------------------------------
-
-\begin{theoreme}[TVI — Théorème des valeurs intermédiaires]
-	Soit $f$ une fonction \textbf{continue} sur $[a\,;b]$ et $k$ un réel
-	tel que $f(a) \leq k \leq f(b)$ (ou $f(b)\leq k\leq f(a)$).
-	
-	Alors il existe \textbf{au moins un} réel $c\in[a\,;b]$ tel que $f(c)=k$.
-\end{theoreme}
-
-\begin{theoreme}[TVI — Corollaire (unicité)]
-	Si de plus $f$ est \textbf{strictement monotone} sur $[a\,;b]$,
-	alors il existe un \textbf{unique} réel $c\in[a\,;b]$ tel que $f(c)=k$.
-\end{theoreme}
-
-\begin{attention}
-	Le TVI donne l'\textbf{existence} d'une solution, pas sa valeur exacte.
-	Pour montrer l'existence d'une solution à $f(x)=0$, il suffit de trouver
-	$a$ et $b$ tels que $f(a)$ et $f(b)$ soient de \textbf{signes opposés}
-	(i.e. $f(a)\cdot f(b)<0$).
-\end{attention}
-
-\begin{methode}
-	Pour montrer qu'une équation $f(x)=k$ admet une solution sur $[a\,;b]$ :
-	\begin{enumerate}
-		\item Vérifier que $f$ est \textbf{continue} sur $[a\,;b]$.
-		\item Vérifier que $k$ est \textbf{compris entre} $f(a)$ et $f(b)$.
-		\item Conclure par le TVI.
-		\item (Facultatif) Si $f$ est strictement monotone, ajouter l'\textbf{unicité}.
-	\end{enumerate}
-\end{methode}
-
-\begin{exemple}
-	Montrer que $f(x)=x^3-3x+1$ admet au moins une racine sur $[1\,;2]$.
-	
-	$f$ est continue sur $\R$ (polynôme).
-	$f(1)=1-3+1=-1<0$ et $f(2)=8-6+1=3>0$.
-	
-	$f(1)\cdot f(2)<0$, donc par le TVI, il existe $c\in]1\,;2[$ tel que $f(c)=0$.
-	
-	De plus $f'(x)=3x^2-3=3(x^2-1)>0$ pour $x>1$ :
-	$f$ est strictement croissante sur $[1\,;2]$, donc $c$ est \textbf{unique}.
-\end{exemple}
-
-% Figure TikZ — illustration du TVI
-\begin{center}
-	\begin{tikzpicture}[>=Stealth, scale=1.1]
-		\draw[->](-0.3,0)--(4.5,0) node[right,font=\small]{$x$};
-		\draw[->](0,-0.5)--(0,3.5) node[above,font=\small]{$y$};
-		% courbe schématique
-		\draw[thick, domain=0.3:4.0, samples=60]
-		plot(\x,{0.3*\x*\x - 0.5*\x + 0.8});
-		% points a, b
-		\draw[dashed](1,0) node[below,font=\small]{$a$}--(1,{0.3-0.5+0.8});
-		\draw[dashed](3.5,0) node[below,font=\small]{$b$}--(3.5,{0.3*12.25-1.75+0.8});
-		% niveau k
-		\draw[dashed,gray](0,1.5) node[left,font=\small]{$k$}--(2.5,1.5);
-		\draw[dashed,gray](2.5,0) node[below,font=\small]{$c$}--(2.5,1.5);
-		\filldraw[red](2.5,1.5) circle(2pt);
-		% f(a) f(b)
-		\filldraw(1,{0.3-0.5+0.8}) circle(1.5pt)
-		node[left,font=\tiny]{$f(a)$};
-		\filldraw(3.5,{0.3*12.25-1.75+0.8}) circle(1.5pt)
-		node[right,font=\tiny]{$f(b)$};
-		\node[below left,font=\small] at(0,0){$O$};
-	\end{tikzpicture}
-\end{center}
+\begin{remarque}
+	La \textbf{continuité} en un point, le prolongement par continuité et le
+	\textbf{théorème des valeurs intermédiaires} ont été étudiés au chapitre
+	précédent (\og Limites et continuité \fg). On les utilise librement ici,
+	notamment pour le préalable \og continuité d'abord \fg\ de l'étude de la
+	dérivabilité.
+\end{remarque}
 
 % ----------------------------------------------------------------
 \section{Dérivabilité en un point}

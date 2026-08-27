@@ -6,6 +6,40 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-27 — Fusion « Limites et continuité » + chapitre « Dérivabilité »
+
+- Nouveau fichier `parties/analyse/limites_continuite.tex` : chapitre unique
+  regroupant les limites (ancien `limites.tex`) et la continuité (partie
+  détachée de `derivation.tex`). **Parti pris** : tous les exemples et
+  exercices s'appuient sur $\ln$ et $\exp$ ; les puissances n'apparaissent
+  que comme terme de comparaison (croissances comparées).
+- Cours : limites de référence $\ln$/$\exp$ + croissances comparées +
+  limites usuelles ; 4 techniques de levée d'indétermination (terme
+  dominant, division, limite usuelle, changement de variable) ; composée ;
+  comparaison / gendarmes ; continuité + prolongement ; TVI + corollaire +
+  image d'un intervalle ; asymptotes. Figures TikZ : courbes $\ln$/$\exp$,
+  schéma TVI, lecture graphique.
+- Exercices : échauffement (lecture graphique, continuité, Vrai/Faux) ;
+  **5 batteries de calcul de limites en 2–3 colonnes** (`multicols`) avec
+  clé de réponses ; continuité/prolongement/TVI ; **5 sujets types Bac**
+  (fonction par morceaux, $\frac{\ln x}{x}$, suite implicite $\e^x+x=n$,
+  fonction auxiliaire + TVI, symétrie et asymptotes).
+- **Intégration dans `main.tex`** : `\input{parties/analyse/limites}` et
+  `\input{parties/analyse/continuite}` remplacés par
+  `\input{parties/analyse/limites_continuite}`. Fichiers `limites.tex` et
+  `continuite.tex` (ce dernier était vide) supprimés (`git rm`).
+- **`derivation.tex` devient le chapitre « Dérivabilité »** : titre changé,
+  objectifs recentrés sur la dérivation, sections « Continuité » et
+  « Théorème des valeurs intermédiaires » retirées (désormais dans le
+  chapitre précédent), `\begin{remarque}` d'ouverture renvoyant vers lui.
+  Le reste (dérivabilité en un point, interprétation géométrique, fonction
+  dérivée, TAF, exercices) est inchangé.
+- Prévisualisation isolée conservée : `apercu_limites_continuite.tex`
+  (non incluse dans `main.tex`).
+- `latexmk -pdf main.tex` : **339 pages, 0 erreur**, pas de référence
+  non résolue, aucun `Overfull` ajouté dans les fichiers touchés.
+- Branche `chapitre-limites-continuite` → PR contre `main`.
+
 ## 2026-08-27 — Chapitre Calcul matriciel aligné sur le modèle type
 
 - `parties/algebre/matrices.tex` : ajout d'une citation, objectifs étoffés,
