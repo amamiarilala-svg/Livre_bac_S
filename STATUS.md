@@ -46,16 +46,26 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
     plan d'étude, diagramme des branches infinies, convexité, position
     courbe/droite, identification f/f'/f'' sur figure ; ln/exp uniquement ;
     5 sujets types Bac ; PR `chapitre-etude-fonctions`).
-  - Restent : analyse (intégrales, suites ; équa diff a déjà 2 sujets bac
-    mais ni citation ni échauffement/V-F), probabilités (5 fichiers).
+  - Restent : analyse (suites ; équa diff a déjà 2 sujets bac mais ni
+    citation ni échauffement/V-F), probabilités (5 fichiers).
     NB : `logarithme.tex` / `exponentielle.tex` volontairement resserrés
     en chapitres-référence (PR #21) — pas de 5 sujets types (couverts par
     « Limites et continuité », « Dérivabilité », « Étude d'une fonction »).
+    `integrales.tex` aligné le 2026-08-27 (PR #22) : primitives (ln|x|,
+    e^x, u'/u, u'e^u ajoutés), fonction définie par une intégrale, IPP,
+    changement de variable affine, aire/moyenne/volume/moments d'inertie,
+    5 batteries 2-3 colonnes + 5 sujets types.
 - Si l'utilisateur envoie un nouveau sujet officiel (PDF ou photos), il
   s'ajoute dans `parties/annales/bac_20XX.tex` + une ligne `\input` dans
   `sujet_types.tex`, à la bonne place chronologique.
 
 ## Points de vigilance (pour éviter de refaire les mêmes erreurs)
+
+- **Macro `\dd`** : corrigée le 2026-08-27 en `\,\mathrm{d}` (espace fine)
+  au lieu de `,\mathrm{d}` (virgule visible). Impacte tout le livre —
+  toutes les intégrales étaient rendues « $f(x)$ , $\mathrm{d}x$ ». Ne pas
+  remettre la virgule. Éviter `\frac{\dd x}{\ldots}` : préférer
+  `\frac{\mathrm{d}x}{\ldots}` ou `\frac1x\dd x`.
 
 - **Transcription depuis PDF/photo** : toujours passer par une lecture
   visuelle nette (rendre les pages PDF en image à haute résolution avec

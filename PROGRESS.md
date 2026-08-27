@@ -6,6 +6,35 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-27 — Chapitre « Primitives et intégrale » aligné + correctif `\dd`
+
+- `parties/analyse/integrales.tex` refondu selon le modèle type et le
+  programme officiel. Ajouts / affinages :
+  - primitives usuelles : ajout de **1/x → ln|x|** et **e^x → e^x**
+    (absents) ; primitives composées : ajout de **u'/u → ln|u|** et
+    **u'e^u → e^u** (c'est ici que renvoient les chapitres ln/exp) ;
+  - **section « Fonction définie par une intégrale »** (théorème
+    fondamental + dérivée à bornes variables `∫_{u(x)}^{v(x)}`) — était
+    absente, au programme ;
+  - **section « Changement de variable affine »** — était absente ;
+  - **moments d'inertie d'une plaque** (I_{Oy}, I_{Ox}) ajoutés aux
+    applications (aire / valeur moyenne / volume déjà présents) ;
+  - exemples réécrits avec ln/exp (cohérence bloc analyse) ;
+  - méthode « quelle technique ? » + 3 exercices résolus.
+- Exercices : Vrai/Faux + **5 batteries `multicols` 2–3 colonnes**
+  (primitives usuelles en 3 col, primitives composées, intégrales
+  directes, changement de variable affine, IPP, dérivée d'une fonction
+  intégrale) + applications + **5 sujets types Bac** (suite I_n=∫x^n e^{-x},
+  fonction ∫ ln t/t², aire/volume/encadrement de ln 2, sommes de Riemann,
+  IPP itérée → Σ 1/k! → e).
+- **Correctif global** : `config/commandes.tex`, macro `\dd` passée de
+  `,\mathrm{d}` (virgule visible) à `\,\mathrm{d}` (espace fine). Toutes
+  les intégrales du livre étaient rendues « f(x) , dx ». Voir
+  vigilance dans STATUS.md.
+- `latexmk -pdf main.tex` : **351 pages**, 0 erreur, aucune référence non
+  résolue, aucun `Overfull`.
+- Branche `chapitre-integrales` → PR contre `main`.
+
 ## 2026-08-27 — Chapitres « Logarithme » et « Exponentielle » resserrés
 
 - Demande utilisateur : revoir les contenus (définition, propriétés,
