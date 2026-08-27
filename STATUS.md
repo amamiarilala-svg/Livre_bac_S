@@ -25,7 +25,7 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
 |---|---|
 | Algèbre (arithmétique, matrices, complexes) | Terminé |
 | Analyse (limites → équa diff) | Terminé |
-| Géométrie (barycentre → espace) | Terminé. Chapitre Isométries refondu (composition/décomposition, axe commun, symétrie glissée, similitudes) le 2026-08-27. |
+| Géométrie (barycentre → espace) | Terminé. Chapitres Isométries (2026-08-27) et Barycentre (2026-08-27) refondus sur le modèle type. Espace : fichier encore vide. |
 | Probabilités (5 sous-chapitres) | Terminé |
 | Sujets officiels Bacc Série S | 2021, 2022, 2023, 2024, 2025, 2026 transcrits. À compléter au fil des sessions envoyées par l'utilisateur (années manquantes : 2027+ à venir, années < 2021 non demandées pour l'instant). |
 | Entrainement (sujets types) | 19 sujets types présents. |
@@ -33,6 +33,11 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
 ## En attente / prochaine étape
 
 - Aucun blocage actif en ce moment.
+- **Chantier en cours : aligner tous les chapitres sur le modèle type**
+  (voir mémoire `feedback_chapter_template`). Un chapitre à la fois, choisi
+  par l'utilisateur. Faits : Isométries, Barycentre. Restent : algèbre
+  (arithmétique, matrices, complexes), analyse (limites → suites ; équa
+  diff a déjà 2 sujets bac), géométrie (espace = vide), probabilités (5).
 - Si l'utilisateur envoie un nouveau sujet officiel (PDF ou photos), il
   s'ajoute dans `parties/annales/bac_20XX.tex` + une ligne `\input` dans
   `sujet_types.tex`, à la bonne place chronologique.

@@ -32,6 +32,28 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 - Compile sans erreur ; aucun `Overfull \hbox` visible (> ~10pt) ajouté.
 - Branche `chapitre-isometries-composition`, PR #7, mergée dans `main`.
 
+## 2026-08-27 — Chapitre Barycentre aligné sur le modèle type
+
+- Refonte de `parties/geometrie/barycentre.tex` selon la structure de
+  référence (cf. modèle du chapitre Isométries) : cours enrichi de
+  **6 figures TikZ** (barycentre de 2 points, associativité, centre de
+  gravité, ligne de niveau…), homogénéité + conservation par isométrie
+  ajoutées, section renommée « Méthodes et exercices résolus » avec un
+  `\begin{methode}` et un 4ᵉ exercice résolu (ligne de niveau *droite*,
+  σ = 0).
+- Section « Exercices d'entraînement » restructurée en deux sous-sections :
+  « Échauffement : lire une figure » (segment, triangle, parallélogramme,
+  lecture d'une ligne de niveau, Vrai/Faux à 7 items) puis « Barycentre et
+  lignes de niveau » à difficulté progressive, terminée par **2 sujets
+  types Bac** (barycentre + discussion de $(E_k)$ ; norme = norme donnant
+  un cercle), chacun en Partie A synthétique / Partie B analytique, calqués
+  sur les Problèmes 1 des sessions 2021–2026.
+- `calc`, `angles`, `quotes` ajoutés aux librairies TikZ dans
+  `config/packages.tex`.
+- Compile sans erreur ; aucun `Overfull \hbox` visible ajouté ; figures
+  vérifiées au rendu.
+- Branche `chapitre-barycentre-refonte`, PR contre `main`.
+
 ## 2026-08-27 — Calcul matriciel : exercice résolu d'inversion polynomiale
 
 - Dans `parties/algebre/matrices.tex`, l'exercice résolu « Utiliser une
