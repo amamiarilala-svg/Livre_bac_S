@@ -387,61 +387,61 @@
 \exerciceresolu
 \textbf{Utiliser une relation polynomiale pour inverser une matrice}
 
-Soit $A = \begin{pmatrix}0&-1&-1\\-1&0&-1\\-1&-1&0\end{pmatrix}$.
+Soit $C = \begin{pmatrix}1&2&2\\2&1&2\\2&2&1\end{pmatrix}$.
 \begin{enumerate}
-	\item Calculer $A^2$ et $A^3$.
-	\item Vérifier que $4A + A^2 - A^3 = 4I_3$.
-	\item En déduire que $A$ est inversible et donner $A^{-1}$.
+	\item Calculer $C^2$ et $C^3$.
+	\item Vérifier que $C^3 - 21C - 20I_3 = O_3$.
+	\item En déduire que $C$ est inversible et donner $C^{-1}$.
 \end{enumerate}
 
 \solution
 
-\textbf{1. Calcul de $A^2$.}
+\textbf{1. Calcul de $C^2$.}
 \[
-A^2 = A\cdot A =
-\begin{pmatrix}0&-1&-1\\-1&0&-1\\-1&-1&0\end{pmatrix}
-\begin{pmatrix}0&-1&-1\\-1&0&-1\\-1&-1&0\end{pmatrix}
-= \begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix}
+C^2 = C\cdot C =
+\begin{pmatrix}1&2&2\\2&1&2\\2&2&1\end{pmatrix}
+\begin{pmatrix}1&2&2\\2&1&2\\2&2&1\end{pmatrix}
+= \begin{pmatrix}9&8&8\\8&9&8\\8&8&9\end{pmatrix}
 \]
-(en calculant chaque coefficient $c_{ij}=\sum_k a_{ik}a_{kj}$, et en utilisant la symétrie de $A$).
+(en calculant chaque coefficient $c_{ij}=\sum_k a_{ik}a_{kj}$, et en utilisant la symétrie de $C$).
 
-\textbf{Calcul de $A^3 = A^2 \cdot A$.}
+\textbf{Calcul de $C^3 = C^2 \cdot C$.}
 \[
-A^3 =
-\begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix}
-\begin{pmatrix}0&-1&-1\\-1&0&-1\\-1&-1&0\end{pmatrix}
-= \begin{pmatrix}-2&-3&-3\\-3&-2&-3\\-3&-3&-2\end{pmatrix}.
+C^3 =
+\begin{pmatrix}9&8&8\\8&9&8\\8&8&9\end{pmatrix}
+\begin{pmatrix}1&2&2\\2&1&2\\2&2&1\end{pmatrix}
+= \begin{pmatrix}41&42&42\\42&41&42\\42&42&41\end{pmatrix}.
 \]
 
 \textbf{2. Vérification.}
 \[
 \begin{aligned}
-	4A + A^2 - A^3
-	&= \begin{pmatrix}0&-4&-4\\-4&0&-4\\-4&-4&0\end{pmatrix}
-	+ \begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix}
-	- \begin{pmatrix}-2&-3&-3\\-3&-2&-3\\-3&-3&-2\end{pmatrix} \\
-	&= \begin{pmatrix}4&0&0\\0&4&0\\0&0&4\end{pmatrix}
-	= 4I_3.
+	21C + 20I_3
+	&= \begin{pmatrix}21&42&42\\42&21&42\\42&42&21\end{pmatrix}
+	+ \begin{pmatrix}20&0&0\\0&20&0\\0&0&20\end{pmatrix} \\
+	&= \begin{pmatrix}41&42&42\\42&41&42\\42&42&41\end{pmatrix}
+	= C^3,
 \end{aligned}
 \]
+donc $C^3 - 21C - 20I_3 = O_3$.
 
-\textbf{3. Déduction de $A^{-1}$.}
+\textbf{3. Déduction de $C^{-1}$.}
 
-De $4A + A^2 - A^3 = 4I_3$, on factorise le membre gauche par $A$ :
+De $C^3 - 21C = 20I_3$, on factorise le membre gauche par $C$ :
 \[
-A\bigl(4I_3 + A - A^2\bigr) = 4I_3.
+C\bigl(C^2 - 21I_3\bigr) = 20I_3.
 \]
-On divise par $4$ :
+On divise par $20$ :
 \[
-A \cdot \frac{1}{4}\bigl(4I_3 + A - A^2\bigr) = I_3.
+C \cdot \frac{1}{20}\bigl(C^2 - 21I_3\bigr) = I_3.
 \]
-Donc $A$ est inversible et :
+Donc $C$ est inversible et :
 \[
-A^{-1} = \frac{1}{4}(4I_3 + A - A^2)
-= \frac{1}{4}\begin{pmatrix}2&-2&-2\\-2&2&-2\\-2&-2&2\end{pmatrix}.
+C^{-1} = \frac{1}{20}(C^2 - 21I_3)
+= \frac{1}{20}\begin{pmatrix}-12&8&8\\8&-12&8\\8&8&-12\end{pmatrix}.
 \]
 \[
-\boxed{A^{-1} = \frac{1}{2}\begin{pmatrix}1&-1&-1\\-1&1&-1\\-1&-1&1\end{pmatrix}.}
+\boxed{C^{-1} = \frac{1}{5}\begin{pmatrix}-3&2&2\\2&-3&2\\2&2&-3\end{pmatrix}.}
 \]
 
 \exerciceresolu
