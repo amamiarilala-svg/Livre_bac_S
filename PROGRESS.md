@@ -6,6 +6,32 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-27 — Refonte du chapitre Nombres complexes
+
+- `parties/algebre/complexes.tex` recentré sur le contenu demandé : quatre
+  formes (algébrique, trigonométrique, exponentielle, **polaire** — ajout
+  d'une définition + tableau récapitulatif), équations polynomiales de
+  degré **2, 3 et 4** (racine évidente/donnée, factorisation, bicarrée,
+  racines $n$-ièmes d'un complexe), **systèmes de deux équations à deux
+  inconnues** (somme–produit et linéaire à coefficients complexes),
+  applications trigonométriques (linéarisation, Moivre, réduction
+  $a\cos x + b\sin x$).
+- **Accent géométrie + ensembles de points** : section « Nombres complexes
+  et géométrie » enrichie (quotient d'affixes, conditions d'alignement /
+  orthogonalité / cocyclicité, nature d'un triangle) ; nouvelle section
+  « Ensembles de points » (module, argument, quotient, partie réelle /
+  imaginaire) avec 3 figures TikZ et un tableau récapitulatif.
+- Section exercices restructurée : « Méthodes et exercices résolus »
+  (2 blocs méthode + 3 exercices résolus neufs : degré 3, système
+  somme–produit, ensemble de points) puis « Exercices d'entraînement » en
+  sous-sections — Échauffement (5 exercices figure + Vrai/Faux),
+  Formes/équations/systèmes, Géométrie et ensembles de points,
+  Transformations (exercices existants regroupés), et **5 sujets types
+  Bac** centrés sur équations + configuration + ensembles de points.
+- Compile sans erreur ; aucun `Overfull \hbox` visible ajouté ; figures
+  vérifiées au rendu.
+- Branche `chapitre-complexes-refonte`, PR contre `main`.
+
 ## 2026-08-27 — Refonte du chapitre Isométries du Plan
 
 - Réécriture complète de `parties/geometrie/isometries.tex` autour de la

@@ -14,11 +14,16 @@
 
 \begin{objectifs}
 	\begin{itemize}[label=\textbullet]
-		\item Connaître la forme algébrique d'un nombre complexe et les opérations associées.
-		\item Calculer le module et l'argument d'un nombre complexe.
-		\item Maîtriser la forme trigonométrique et exponentielle.
-		\item Utiliser les nombres complexes en géométrie plane.
-		\item Résoudre des équations dans $\C$.
+		\item Passer d'une forme à l'autre : algébrique, trigonométrique,
+		exponentielle, polaire.
+		\item Résoudre dans $\C$ les équations polynomiales de degré $2$, $3$
+		et $4$, ainsi que les systèmes de deux équations à deux inconnues.
+		\item \textbf{Interpréter géométriquement} module, argument, quotient
+		d'affixes ; caractériser alignement, orthogonalité, cocyclicité,
+		nature d'un triangle.
+		\item \textbf{Déterminer et construire des ensembles de points} définis
+		par une condition portant sur les affixes.
+		\item Reconnaître l'écriture complexe des transformations usuelles.
 	\end{itemize}
 \end{objectifs}
 
@@ -327,6 +332,43 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 	\end{itemize}
 \end{exemple}
 
+\begin{definition}[Forme polaire]
+	La \textbf{forme polaire} de $z \neq 0$ est la donnée du couple
+	$\bigl(r\,;\,\theta\bigr)$ où $r = \abs{z}$ et $\theta = \arg(z)$ ; on note
+	$$
+	z = [\,r\,;\,\theta\,].
+	$$
+	C'est une simple notation abrégée de $z = r(\cos\theta + \ii\sin\theta) = r\,\e^{\ii\theta}$.
+\end{definition}
+
+\begin{propriete}{Produit et quotient en forme polaire}{cplx_polaire}
+	$$
+	[\,r\,;\,\theta\,]\times[\,r'\,;\,\theta'\,] = [\,rr'\,;\,\theta+\theta'\,],
+	\qquad
+	\frac{[\,r\,;\,\theta\,]}{[\,r'\,;\,\theta'\,]} = \left[\,\frac{r}{r'}\,;\,\theta-\theta'\,\right].
+	$$
+	\emph{On multiplie les modules et on ajoute les arguments.}
+\end{propriete}
+
+\begin{propriete}{Récapitulatif des quatre formes}{cplx_formes}
+	\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{>{\raggedright\arraybackslash}p{2.6cm}
+	                >{\raggedright\arraybackslash}p{5.2cm}}
+	\hline
+	\textbf{Forme} & \textbf{Écriture de $z$} \\
+	\hline
+	Algébrique & $z = a + b\ii$ \\
+	Trigonométrique & $z = r(\cos\theta + \ii\sin\theta)$ \\
+	Exponentielle & $z = r\,\e^{\ii\theta}$ \\
+	Polaire & $z = [\,r\,;\,\theta\,]$ \\
+	\hline
+	\end{tabular}
+	\end{center}
+	avec $r = \sqrt{a^2+b^2}$, $\cos\theta = \dfrac{a}{r}$, $\sin\theta = \dfrac{b}{r}$,
+	et réciproquement $a = r\cos\theta$, $b = r\sin\theta$.
+\end{propriete}
+
 \begin{propriete}{Propriétés des arguments}{}
 	Pour tous $z, z' \in \C^*$ :
 	\begin{enumerate}
@@ -364,74 +406,203 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 \end{propriete}
 
 \begin{astucebac}
-	Pour linéariser $\cos^n\theta$ ou $\sin^n\theta$, on exprime $\cos\theta$ et $\sin\theta$
-	à l'aide des formules d'Euler, puis on développe avec le binôme de Newton.
+	\textbf{Applications des formules d'Euler et de Moivre.}
+	\begin{itemize}[label=\textbullet]
+		\item \textbf{Linéariser} $\cos^n\theta$, $\sin^n\theta$ : remplacer
+		$\cos\theta$, $\sin\theta$ par les formules d'Euler, développer au
+		binôme, regrouper les termes conjugués.
+		\item \textbf{Développer} $\cos(n\theta)$, $\sin(n\theta)$ en fonction
+		de $\cos\theta$, $\sin\theta$ : partir de la formule de Moivre
+		$(\cos\theta + \ii\sin\theta)^n$ et identifier parties réelle et
+		imaginaire.
+		\item \textbf{Transformer un produit en somme} :
+		$2\cos a\cos b = \cos(a-b) + \cos(a+b)$, etc.
+	\end{itemize}
 \end{astucebac}
 
+\begin{propriete}{Réduction de $a\cos x + b\sin x$ sous la forme $R\cos(x-\varphi)$}{cplx_reduction}
+	Pour $(a,b) \neq (0,0)$, il existe $R > 0$ et $\varphi \in \R$ tels que,
+	pour tout $x$,
+	$$
+	a\cos x + b\sin x = R\cos(x - \varphi),
+	$$
+	avec $R = \sqrt{a^2 + b^2}$, $\cos\varphi = \dfrac{a}{R}$,
+	$\sin\varphi = \dfrac{b}{R}$.
+
+	\emph{Preuve :} $a\cos x + b\sin x = \mathrm{Re}\bigl((a - b\ii)\,\e^{\ii x}\bigr)$
+	et $a - b\ii = R\,\e^{-\ii\varphi}$.
+\end{propriete}
+
 
 % ============================================================
-\section{Équations dans $\C$}
+\section{Équations polynomiales dans $\C$}
 % ============================================================
+
+\subsection{Racine carrée d'un nombre complexe}
+
+\begin{methode}
+	Pour déterminer les racines carrées de $Z = \alpha + \beta\ii$, on cherche
+	$z = x + y\ii$ tel que $z^2 = Z$ en résolvant
+	$$
+	\begin{cases}
+		x^2 - y^2 = \alpha & \text{(partie réelle)}\\
+		2xy = \beta & \text{(partie imaginaire)}\\
+		x^2 + y^2 = \sqrt{\alpha^2 + \beta^2} & \text{(modules)}
+	\end{cases}
+	$$
+	Les deux premières équations donnent $x^2$ et $y^2$ ; le signe de $\beta$
+	fixe le signe de $xy$. Il y a deux racines opposées.
+\end{methode}
+
+\begin{exemple}
+	Racines carrées de $Z = 3 + 4\ii$ : $x^2 - y^2 = 3$, $2xy = 4 > 0$,
+	$x^2 + y^2 = 5$. D'où $x^2 = 4$, $y^2 = 1$, $xy > 0$ :
+	$z = 2 + \ii$ ou $z = -2 - \ii$.
+\end{exemple}
 
 \subsection{Équations du second degré}
 
 \begin{theoreme}
-	Soit $az^2 + bz + c = 0$ avec $a, b, c \in \C$, $a \neq 0$, et $\Delta = b^2 - 4ac$.
+	Soit $(E) : az^2 + bz + c = 0$ avec $a, b, c \in \C$, $a \neq 0$, et
+	$\Delta = b^2 - 4ac$. On note $\delta$ \emph{une} racine carrée de $\Delta$
+	dans $\C$.
 	\begin{itemize}[label=\textbullet]
-		\item Si $\Delta \neq 0$ : l'équation admet deux solutions
-		$z = \dfrac{-b \pm \sqrt{\Delta}}{2a}$
-		(où $\sqrt{\Delta}$ désigne une racine carrée de $\Delta$ dans $\C$).
-		\item Si $\Delta = 0$ : l'équation admet une solution double $z = -\dfrac{b}{2a}$.
+		\item Si $\Delta \neq 0$ : deux solutions
+		$z = \dfrac{-b + \delta}{2a}$ et $z = \dfrac{-b - \delta}{2a}$.
+		\item Si $\Delta = 0$ : une solution double $z = -\dfrac{b}{2a}$.
 	\end{itemize}
-	En particulier, si $a, b, c \in \R$ et $\Delta < 0$, les deux solutions sont conjuguées :
-	$z_1 = \dfrac{-b + \ii\sqrt{-\Delta}}{2a}$ et $z_2 = \bar{z_1}$.
+	Dans tous les cas $z_1 + z_2 = -\dfrac{b}{a}$ et $z_1 z_2 = \dfrac{c}{a}$
+	(relations coefficients–racines), et $az^2 + bz + c = a(z - z_1)(z - z_2)$.
+
+	\textbf{Cas des coefficients réels} : si $a,b,c \in \R$ et $\Delta < 0$,
+	les solutions sont \textbf{conjuguées} :
+	$z_1 = \dfrac{-b + \ii\sqrt{-\Delta}}{2a}$, $z_2 = \overline{z_1}$.
 \end{theoreme}
 
+\begin{exemple}
+	$z^2 + 2z + 5 = 0$ : $\Delta = -16$, $\delta = 4\ii$,
+	$z_1 = -1 + 2\ii$, $z_2 = \overline{z_1} = -1 - 2\ii$.
+\end{exemple}
+
+\subsection{Équations de degré $3$}
+
 \begin{methode}
-	\textbf{Racine carrée d'un complexe :}
-	Pour trouver $\sqrt{a + b\ii}$, on pose $z = x + y\ii$ et on résout le système :
-	$$
-	\begin{cases}
-		x^2 - y^2 = a \\
-		2xy = b \\
-		x^2 + y^2 = \abs{a + b\ii}
-	\end{cases}
-	$$
+	Pour résoudre $P(z) = 0$ avec $P$ de degré $3$ :
+	\begin{enumerate}
+		\item \textbf{Trouver une racine} $z_0$ : soit elle est donnée par
+		l'énoncé (« vérifier que $z_0$ est solution »), soit on cherche une
+		racine évidente (réelle : $0$, $\pm1$, $\pm2$… ; ou imaginaire pure).
+		\item \textbf{Factoriser} : $P(z) = (z - z_0)\,Q(z)$ où $Q$ est de
+		degré $2$, obtenu par identification ou division euclidienne :
+		$$
+		P(z) = (z - z_0)(a z^2 + \beta z + \gamma).
+		$$
+		\item \textbf{Résoudre} $Q(z) = 0$ (second degré).
+	\end{enumerate}
 \end{methode}
 
 \begin{exemple}
-	Résoudre $z^2 + 2z + 5 = 0$.
-	
-	$\Delta = 4 - 20 = -16 < 0$, donc $\sqrt{\Delta} = 4\ii$.
-	
-	$z_1 = \dfrac{-2 + 4\ii}{2} = -1 + 2\ii$ \quad et \quad $z_2 = -1 - 2\ii = \overline{z_1}$.
+	$P(z) = z^3 - 3z^2 + 4z - 2$. $P(1) = 1 - 3 + 4 - 2 = 0$, donc
+	$P(z) = (z - 1)(z^2 - 2z + 2)$. Le facteur $z^2 - 2z + 2$ a pour
+	discriminant $\Delta = -4$, racines $1 \pm \ii$.
+	Solutions : $\{\,1\,;\,1+\ii\,;\,1-\ii\,\}$.
 \end{exemple}
 
-\subsection{Racines $n$-ièmes de l'unité}
+\subsection{Équations de degré $4$}
 
-\begin{definition}
-	Les \textbf{racines $n$-ièmes de l'unité} sont les solutions de $z^n = 1$.
-	Elles sont au nombre de $n$ et valent :
-	$$
-	z_k = \e^{\ii\frac{2k\pi}{n}}, \quad k \in \{0, 1, \ldots, n-1\}.
-	$$
-\end{definition}
+\begin{methode}
+	\begin{itemize}[label=\textbullet]
+		\item \textbf{Équation bicarrée} $z^4 + p z^2 + q = 0$ : poser
+		$Z = z^2$, résoudre $Z^2 + pZ + q = 0$, puis extraire les racines
+		carrées de chaque valeur de $Z$.
+		\item \textbf{Deux racines connues} (souvent conjuguées $z_0$,
+		$\overline{z_0}$) : $P(z) = (z - z_0)(z - \overline{z_0})\,(z^2 + \beta z + \gamma)$,
+		on identifie $\beta$, $\gamma$.
+		\item \textbf{Factorisation en deux trinômes réels} : chercher
+		$z^4 + \cdots = (z^2 + \alpha z + \beta)(z^2 + \alpha' z + \beta')$
+		par identification.
+	\end{itemize}
+\end{methode}
 
 \begin{exemple}
-	Les racines cubiques de l'unité ($n = 3$) sont :
-	$$
-	1, \quad \omega = \e^{\ii\frac{2\pi}{3}} = -\frac{1}{2} + \frac{\sqrt{3}}{2}\ii,
-	\quad \omega^2 = \e^{\ii\frac{4\pi}{3}} = -\frac{1}{2} - \frac{\sqrt{3}}{2}\ii.
-	$$
-	On vérifie : $1 + \omega + \omega^2 = 0$.
+	$z^4 + 4 = 0 \iff z^4 = -4 = 4\,\e^{\ii\pi}$. Les solutions sont
+	$z_k = \sqrt{2}\,\e^{\ii\left(\frac{\pi}{4} + \frac{k\pi}{2}\right)}$,
+	$k \in \{0,1,2,3\}$, soit $\pm(1 + \ii)$ et $\pm(1 - \ii)$.
 \end{exemple}
 
-\begin{propriete}{}{}
-	La somme des racines $n$-ièmes de l'unité est nulle :
+\subsection{Racines $n$-ièmes}
+
+\begin{theoreme}[Racines $n$-ièmes de l'unité]
+	Les solutions de $z^n = 1$ sont les $n$ nombres
 	$$
-	\sum_{k=0}^{n-1} \e^{\ii\frac{2k\pi}{n}} = 0.
+	\omega_k = \e^{\ii\frac{2k\pi}{n}}, \quad k \in \{0, 1, \ldots, n-1\}.
 	$$
+	Leurs images sont les sommets d'un polygone régulier à $n$ côtés inscrit
+	dans le cercle unité, et $\displaystyle\sum_{k=0}^{n-1}\omega_k = 0$.
+\end{theoreme}
+
+\begin{propriete}{Racines $n$-ièmes d'un complexe non nul}{cplx_racines_n}
+	Soit $Z = \rho\,\e^{\ii\varphi}$ avec $\rho > 0$. Les solutions de $z^n = Z$
+	sont les $n$ nombres
+	$$
+	z_k = \rho^{1/n}\,\e^{\ii\left(\frac{\varphi}{n} + \frac{2k\pi}{n}\right)},
+	\quad k \in \{0,1,\ldots,n-1\}.
+	$$
+	On les obtient à partir d'une solution particulière en multipliant
+	successivement par les racines $n$-ièmes de l'unité.
 \end{propriete}
+
+\begin{exemple}
+	Les racines cubiques de l'unité sont
+	$1$, $\;j = \e^{\ii\frac{2\pi}{3}} = -\dfrac{1}{2} + \dfrac{\sqrt3}{2}\ii$,
+	$\;j^2 = \overline{j}$, avec $1 + j + j^2 = 0$.
+\end{exemple}
+
+
+% ============================================================
+\section{Systèmes de deux équations à deux inconnues}
+% ============================================================
+
+\subsection{Système somme–produit}
+
+\begin{theoreme}
+	Deux complexes $z$ et $z'$ vérifient
+	$$
+	\begin{cases}
+		z + z' = S \\
+		z\,z' = P
+	\end{cases}
+	$$
+	si et seulement si $z$ et $z'$ sont les deux solutions (éventuellement
+	confondues) de l'équation
+	$$
+	X^2 - S\,X + P = 0.
+	$$
+\end{theoreme}
+
+\begin{exemple}
+	$\begin{cases} z + z' = 4 \\ z\,z' = 5 \end{cases}$ : $X^2 - 4X + 5 = 0$,
+	$\Delta = -4$, donc $\{z, z'\} = \{\,2 + \ii\,;\,2 - \ii\,\}$.
+\end{exemple}
+
+\subsection{Système linéaire à coefficients complexes}
+
+\begin{methode}
+	Pour $\begin{cases} a z + b z' = c \\ a' z + b' z' = c' \end{cases}$
+	($a,b,\ldots \in \C$) : on résout comme dans $\R$ (combinaisons linéaires,
+	substitution), en veillant à ne diviser que par un complexe non nul.
+
+	\textbf{Systèmes faisant intervenir $\bar z$} : quand une équation porte
+	sur $z$ et $\bar z$, on prend le \textbf{conjugué} de l'équation pour
+	obtenir un second lien, puis on résout le système en $(z, \bar z)$.
+\end{methode}
+
+\begin{exemple}
+	$\begin{cases} z + \ii z' = 1 + \ii \\ \ii z + z' = 2 \end{cases}$.
+	En multipliant la première ligne par $\ii$ : $\ii z - z' = \ii - 1$.
+	En soustrayant la seconde : $-2z' = -1 + \ii - 2 = -3 + \ii$, d'où
+	$z' = \dfrac{3 - \ii}{2}$, puis $z = 2 - z' = \dfrac{1 + \ii}{2}$.
+\end{exemple}
 
 
 % ============================================================
@@ -509,35 +680,179 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 	\end{figure}
 %\end{exemple}
 
-\begin{propriete}{Argument et angle}{}
-	Soient $A$, $B$, $C$ trois points d'affixes $z_A$, $z_B$, $z_C$.
+\begin{propriete}{Le quotient $\dfrac{z_C - z_A}{z_B - z_A}$}{cplx_quotient}
+	Soient $A$, $B$, $C$ trois points distincts. En posant
+	$Z = \dfrac{z_C - z_A}{z_B - z_A}$ :
 	$$
-	\arg\!\left(\frac{z_C - z_A}{z_B - z_A}\right) \equiv \left(\vect{AB}, \vect{AC}\right)\ [2\pi].
+	\abs{Z} = \frac{AC}{AB},
+	\qquad
+	\arg(Z) \equiv \bigl(\vect{AB},\,\vect{AC}\bigr)\ [2\pi].
 	$$
 \end{propriete}
 
-\begin{propriete}{Conditions géométriques}{}
-	Soient $A$, $B$, $C$, $D$ quatre points deux à deux distincts d'affixes respectives
-	$z_A$, $z_B$, $z_C$, $z_D$.
+\begin{propriete}{Conditions géométriques}{cplx_conditions}
+	Soient $A$, $B$, $C$, $D$ des points deux à deux distincts.
 	\begin{enumerate}
-		\item $A$, $B$, $C$ sont \textbf{alignés} $\iff$
-		$\dfrac{z_C - z_A}{z_B - z_A} \in \R$.
-		\item $(AB) \perp (CD)$ $\iff$
-		$\dfrac{z_D - z_C}{z_B - z_A}$ est imaginaire pur.
-		\item $(AB) \parallel (CD)$ $\iff$
-		$\dfrac{z_D - z_C}{z_B - z_A} \in \R$.
-		\item $ABCD$ est un \textbf{carré} $\iff$ $z_D - z_C = \ii(z_B - z_A)$
-		(ou $-\ii$ selon l'orientation).
+		\item $A$, $B$, $C$ \textbf{alignés} $\iff \dfrac{z_C - z_A}{z_B - z_A} \in \R$.
+		\item $(AB) \perp (CD) \iff \dfrac{z_D - z_C}{z_B - z_A} \in \ii\R$
+		(imaginaire pur).
+		\item $(AB) \parallel (CD) \iff \dfrac{z_D - z_C}{z_B - z_A} \in \R$.
+		\item $ABDC$ \textbf{parallélogramme} $\iff z_D - z_C = z_B - z_A$.
+		\item $A$, $B$, $C$, $D$ \textbf{cocycliques} (ou alignés) $\iff$
+		$\dfrac{z_C - z_A}{z_D - z_A} \times \dfrac{z_D - z_B}{z_C - z_B} \in \R$.
 	\end{enumerate}
 \end{propriete}
 
+\begin{propriete}{Nature d'un triangle $ABC$}{cplx_triangle}
+	En posant $Z = \dfrac{z_C - z_A}{z_B - z_A}$ :
+	\begin{itemize}[label=\textbullet]
+		\item $ABC$ \textbf{isocèle en $A$} $\iff \abs{Z} = 1$ ;
+		\item $ABC$ \textbf{rectangle en $A$} $\iff Z \in \ii\R$ ;
+		\item $ABC$ \textbf{rectangle isocèle en $A$} $\iff Z = \pm\ii$ ;
+		\item $ABC$ \textbf{équilatéral} $\iff Z = \e^{\pm\ii\pi/3}$, ce qui
+		équivaut à $z_A^2 + z_B^2 + z_C^2 = z_A z_B + z_B z_C + z_C z_A$.
+	\end{itemize}
+\end{propriete}
+
 \begin{exemple}
-	Soient $A$ d'affixe $1 + \ii$ et $B$ d'affixe $3 + 2\ii$.
-	Le milieu $I$ de $[AB]$ a pour affixe
-	$\dfrac{(1+\ii) + (3+2\ii)}{2} = \dfrac{4 + 3\ii}{2} = 2 + \dfrac{3}{2}\ii$.
-	
-	$AB = \abs{(3+2\ii) - (1+\ii)} = \abs{2 + \ii} = \sqrt{5}$.
+	$A(1+\ii)$, $B(3+2\ii)$ : milieu $I$ d'affixe $\dfrac{4 + 3\ii}{2}$ ;
+	$AB = \abs{2 + \ii} = \sqrt{5}$.
 \end{exemple}
+
+
+% ============================================================
+\section{Ensembles de points}
+% ============================================================
+
+Le plan complexe est rapporté à un repère orthonormé direct
+$(O,\vec u,\vec v)$. On cherche l'ensemble des points $M$ d'affixe $z$
+vérifiant une condition donnée. On note $A$, $B$ les points d'affixes $a$, $b$.
+
+\subsection{Conditions de module (distances)}
+
+\begin{propriete}{}{cplx_ens_module}
+	\begin{enumerate}
+		\item $\abs{z - a} = r$ \; ($r > 0$) : \textbf{cercle} de centre $A$,
+		de rayon $r$. \\ ($\abs{z-a} \leqslant r$ : disque fermé.)
+		\item $\abs{z - a} = \abs{z - b}$ : \textbf{médiatrice} de $[AB]$.
+		\item $\abs{z - a} = k\,\abs{z - b}$ \; ($k > 0$, $k \neq 1$) :
+		\textbf{cercle} (dit d'Apollonius) ; si $k = 1$ : la médiatrice de $[AB]$.
+		\item $\abs{z} = \abs{z - a}$, plus généralement toute égalité de deux
+		modules, se ramène à l'un des cas ci-dessus.
+	\end{enumerate}
+\end{propriete}
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=0.95]
+	% cercle |z-a| = r
+	\begin{scope}
+		\draw[->] (-1.4,0)--(2.2,0); \draw[->] (0,-1.4)--(0,1.7);
+		\filldraw (0.8,0.4) circle (1.3pt) node[above right,font=\scriptsize] {$A$};
+		\draw[blue!70!black,thick] (0.8,0.4) circle (1);
+		\node[font=\scriptsize] at (0.4,-1.7) {$\abs{z-a}=r$};
+	\end{scope}
+	% médiatrice
+	\begin{scope}[xshift=4.2cm]
+		\draw[->] (-1.4,0)--(2.2,0); \draw[->] (0,-1.4)--(0,1.7);
+		\filldraw (-0.7,-0.4) circle (1.3pt) node[below left,font=\scriptsize] {$A$};
+		\filldraw (1.1,0.6) circle (1.3pt) node[above right,font=\scriptsize] {$B$};
+		\draw[gray!60,dashed] (-0.7,-0.4)--(1.1,0.6);
+		\draw[blue!70!black,thick] (-0.6,1.7) -- (1.0,-1.5);
+		\node[font=\scriptsize] at (0.2,-1.9) {$\abs{z-a}=\abs{z-b}$};
+	\end{scope}
+\end{tikzpicture}
+\end{center}
+
+\subsection{Conditions d'argument}
+
+\begin{propriete}{}{cplx_ens_arg}
+	\begin{enumerate}
+		\item $\arg(z - a) \equiv \theta\ [2\pi]$ : \textbf{demi-droite}
+		d'origine $A$ (exclue), dirigée par l'angle $\theta$. \\
+		($\arg(z-a) \equiv \theta\ [\pi]$ : la \textbf{droite} passant par $A$
+		privée de $A$.)
+		\item $\arg\!\left(\dfrac{z - a}{z - b}\right) \equiv \theta\ [2\pi]$
+		(avec $\theta \not\equiv 0\ [\pi]$) : \textbf{arc de cercle} passant
+		par $A$ et $B$ (extrémités exclues).
+		\item $\dfrac{z - a}{z - b} \in \R^*$ : la \textbf{droite} $(AB)$
+		privée de $A$ et $B$.
+		\item $\dfrac{z - a}{z - b} \in \ii\R^*$ : le \textbf{cercle} de
+		diamètre $[AB]$ privé de $A$ et $B$.
+	\end{enumerate}
+\end{propriete}
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=0.95]
+	% demi-droite arg(z-a) = theta
+	\begin{scope}
+		\draw[->] (-1.4,0)--(2.2,0); \draw[->] (0,-1.4)--(0,1.7);
+		\filldraw (-0.4,-0.3) circle (1.3pt) node[below,font=\scriptsize] {$A$};
+		\draw[blue!70!black,thick,->] (-0.4,-0.3) -- (1.8,1.35);
+		\draw[red] (-0.4,-0.3)++(0:0.55) arc (0:36:0.55);
+		\node[red,font=\scriptsize] at (0.45,-0.15) {$\theta$};
+		\node[font=\scriptsize] at (0.4,-1.75) {$\arg(z-a)=\theta$};
+	\end{scope}
+	% cercle de diamètre [AB]
+	\begin{scope}[xshift=4.2cm]
+		\draw[->] (-1.6,0)--(2.0,0); \draw[->] (0,-1.5)--(0,1.6);
+		\filldraw (-0.9,-0.2) circle (1.3pt) node[left,font=\scriptsize] {$A$};
+		\filldraw (0.9,0.4) circle (1.3pt) node[right,font=\scriptsize] {$B$};
+		\draw[blue!70!black,thick] (0,0.1) circle ({sqrt(0.9*0.9+0.3*0.3)});
+		\draw[gray!60,dashed] (-0.9,-0.2)--(0.9,0.4);
+		\node[font=\scriptsize] at (0.1,-1.9) {$\frac{z-a}{z-b}\in\ii\R$};
+	\end{scope}
+\end{tikzpicture}
+\end{center}
+
+\subsection{Conditions sur la partie réelle ou imaginaire}
+
+\begin{propriete}{}{cplx_ens_reim}
+	\begin{enumerate}
+		\item $\mathrm{Re}(z) = k$ : droite \textbf{verticale} $x = k$ ;
+		\quad $\mathrm{Im}(z) = k$ : droite \textbf{horizontale} $y = k$.
+		\item $z + \bar z = k \iff \mathrm{Re}(z) = \frac{k}{2}$ ;
+		\quad $z - \bar z = k\ii \iff \mathrm{Im}(z) = \frac{k}{2}$.
+		\item $\mathrm{Re}\!\left(\dfrac{z - a}{z - b}\right) = 0$ : cercle de
+		diamètre $[AB]$ (privé de $A$, $B$) ;
+		$\;\mathrm{Im}\!\left(\dfrac{z - a}{z - b}\right) = 0$ : droite $(AB)$
+		(privée de $A$, $B$).
+		\item $z\bar z + \bar\alpha z + \alpha\bar z + \beta = 0$
+		($\beta \in \R$) : cercle (ou point, ou $\emptyset$), car cela s'écrit
+		$\abs{z + \alpha}^2 = \abs{\alpha}^2 - \beta$.
+	\end{enumerate}
+\end{propriete}
+
+\begin{astucebac}
+	\textbf{Méthode générale.}
+	\begin{enumerate}
+		\item Traduire la condition avec $z = x + \ii y$ \emph{ou} l'interpréter
+		directement (distance $\abs{z - a} = AM$, angle
+		$\arg\frac{z-c}{z-d} = (\vect{DC},\ldots)$).
+		\item Reconnaître : distance constante $\to$ cercle ; distances égales
+		$\to$ médiatrice ; angle droit $\to$ cercle de diamètre ; angle
+		constant $\to$ arc ; quotient réel $\to$ droite.
+		\item Préciser les \textbf{éléments} (centre, rayon, points exclus) et
+		\textbf{construire}.
+	\end{enumerate}
+\end{astucebac}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{>{\raggedright\arraybackslash}p{4.0cm}
+                >{\raggedright\arraybackslash}p{4.2cm}}
+\hline
+\textbf{Condition} & \textbf{Ensemble} \\
+\hline
+$\abs{z - a} = r$ & cercle $C(A, r)$ \\
+$\abs{z - a} = \abs{z - b}$ & médiatrice de $[AB]$ \\
+$\abs{z - a} = k\abs{z - b}$, $k \neq 1$ & cercle (Apollonius) \\
+$\arg(z - a) = \theta\ [2\pi]$ & demi-droite d'origine $A$ \\
+$\dfrac{z - a}{z - b} \in \R$ & droite $(AB)$ privée de $A$, $B$ \\
+$\dfrac{z - a}{z - b} \in \ii\R$ & cercle de diamètre $[AB]$ \\
+$\mathrm{Re}(z) = k$ / $\mathrm{Im}(z) = k$ & droite verticale / horizontale \\
+\hline
+\end{tabular}
+\end{center}
 
 
 % ============================================================
@@ -613,7 +928,94 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 
 
 
-\section{Exercices résolus}
+\section{Méthodes et exercices résolus}
+
+\begin{methode}
+	\textbf{Résoudre une équation polynomiale de degré $\geqslant 3$.}
+	\begin{enumerate}
+		\item Utiliser (ou chercher) une racine $z_0$.
+		\item Factoriser $P(z) = (z - z_0)\,Q(z)$ par identification.
+		\item Résoudre $Q(z) = 0$. Pour un degré $4$ : deux racines connues, ou
+		poser $Z = z^2$ si l'équation est bicarrée.
+	\end{enumerate}
+\end{methode}
+
+\begin{methode}
+	\textbf{Déterminer un ensemble de points.}
+	Interpréter la condition en termes de \emph{distance} ($\abs{z - a} = AM$)
+	ou d'\emph{angle} ($\arg\frac{z - a}{z - b}$) ; sinon poser $z = x + \ii y$
+	et traduire. Reconnaître : cercle, médiatrice, droite, demi-droite, arc,
+	cercle de diamètre. Préciser les éléments et \textbf{construire}.
+\end{methode}
+
+\exerciceresolu
+\textbf{Équation de degré $3$}
+
+Résoudre dans $\C$ : $z^3 - (4 + \ii)z^2 + (5 + 4\ii)z - 5\ii = 0$, sachant
+qu'elle admet une racine imaginaire pure.
+
+\solution
+
+Soit $z = \ii y$ ($y \in \R$) une racine. En reportant :
+$-\ii y^3 + (4 + \ii)y^2 + (5 + 4\ii)\ii y - 5\ii = 0$, soit après regroupement
+$$
+\bigl(4y^2 - 4y\bigr) + \ii\bigl(-y^3 + y^2 + 5y - 5\bigr) = 0.
+$$
+La partie réelle donne $4y(y - 1) = 0$ ; $y = 1$ annule aussi la partie
+imaginaire. Donc $z_0 = \ii$ est racine.
+
+Factorisation : $z^3 - (4+\ii)z^2 + (5+4\ii)z - 5\ii = (z - \ii)(z^2 - 4z + 5)$.
+
+$z^2 - 4z + 5 = 0$ : $\Delta = -4$, $z = 2 \pm \ii$.
+
+\textbf{Solutions :} $\{\,\ii\,;\,2 + \ii\,;\,2 - \ii\,\}$.
+
+\exerciceresolu
+\textbf{Système somme–produit}
+
+Déterminer les complexes $z$ et $z'$ tels que $z + z' = 2 - 2\ii$ et
+$z\,z' = -2\ii$.
+
+\solution
+
+$z$ et $z'$ sont les solutions de $X^2 - (2 - 2\ii)X - 2\ii = 0$.
+
+$\Delta = (2 - 2\ii)^2 + 8\ii = (4 - 8\ii - 4) + 8\ii = 0$.
+
+Racine double : $X = \dfrac{2 - 2\ii}{2} = 1 - \ii$. Donc $z = z' = 1 - \ii$.
+
+\exerciceresolu
+\textbf{Ensemble de points}
+
+Le plan complexe est rapporté à un repère orthonormé direct. On note $A$ le
+point d'affixe $\ii$ et $B$ celui d'affixe $2$. Déterminer et construire
+l'ensemble $(\Gamma)$ des points $M$ d'affixe $z$ ($z \neq \ii$) tels que
+$$
+Z = \frac{z - 2}{z - \ii} \quad \text{soit un imaginaire pur.}
+$$
+
+\solution
+
+\textbf{Interprétation.} $\arg(Z) = \arg(z - 2) - \arg(z - \ii)
+\equiv \bigl(\vect{AM},\,\vect{BM}\bigr)\ [2\pi]$ n'est défini que si
+$M \neq A, B$. $Z \in \ii\R^*$ signifie
+$\bigl(\vect{MA},\,\vect{MB}\bigr) \equiv \dfrac{\pi}{2}\ [\pi]$, c'est-à-dire
+$\vect{MA} \perp \vect{MB}$.
+
+$(\Gamma)$ est donc le \textbf{cercle de diamètre $[AB]$}, privé des points $A$
+et $B$. (Le cas $Z = 0$, soit $M = B$, est exclu ; $M = A$ est exclu car
+$z \neq \ii$.)
+
+\textbf{Contrôle analytique.} Avec $z = x + \ii y$ :
+$$
+Z = \frac{(x - 2) + \ii y}{x + \ii(y - 1)}
+= \frac{\bigl[(x-2) + \ii y\bigr]\bigl[x - \ii(y-1)\bigr]}{x^2 + (y-1)^2}.
+$$
+$Z$ est imaginaire pur $\iff \mathrm{Re}(Z) = 0 \iff x(x - 2) + y(y - 1) = 0$,
+soit $\left(x - 1\right)^2 + \left(y - \dfrac12\right)^2 = \dfrac54$ : cercle de
+centre $\Omega\!\left(1\,;\dfrac12\right)$ (milieu de $[AB]$) et de rayon
+$\dfrac{\sqrt5}{2} = \dfrac{AB}{2}$.
+
 \exerciceresolu
 \textbf{Effectuer des calculs en forme algébrique}
 
@@ -1052,7 +1454,149 @@ Le centre de $f$ est le point $\Omega$ d'affixe $3 - 2\ii$.
 
 
 
-\section{Entraînement}
+\section{Exercices d'entraînement}
+
+\subsection{Échauffement : lire une figure}
+
+\exercice{Placer, lire, calculer \hfill \facile}
+Dans le plan complexe, on donne $A$ d'affixe $2 + \ii$, $B$ d'affixe
+$-1 + 3\ii$ et $C$ d'affixe $3 - 2\ii$.
+\begin{enumerate}
+	\item Placer $A$, $B$, $C$.
+	\item Calculer l'affixe de $\vect{AB}$ et la distance $AB$.
+	\item Déterminer l'affixe du milieu $I$ de $[BC]$ et celle du point $D$ tel
+	que $ABCD$ soit un parallélogramme.
+\end{enumerate}
+
+\exercice{Module et argument sur la figure \hfill \facile}
+On considère les points d'affixes $z_1 = 1 + \ii$, $z_2 = -2$, $z_3 = -\ii$,
+$z_4 = \sqrt3 + \ii$.
+\begin{enumerate}
+	\item Sans calcul écrit, placer ces quatre points et lire graphiquement
+	leur module et un argument.
+	\item Écrire chacun sous forme exponentielle.
+	\item Placer le point d'affixe $z_1 z_4$ ; que constate-t-on pour son
+	argument ?
+\end{enumerate}
+
+\exercice{Reconnaître un ensemble simple \hfill \facile}
+Associer chaque condition à sa représentation (cercle, droite, médiatrice,
+demi-droite, cercle de diamètre) :
+\begin{enumerate}
+	\item $\abs{z - 1 + \ii} = 3$
+	\item $\abs{z - 2} = \abs{z + \ii}$
+	\item $\mathrm{Re}(z) = -1$
+	\item $\arg(z - \ii) \equiv \dfrac{\pi}{4}\ [2\pi]$
+	\item $\dfrac{z - 1}{z + 1} \in \ii\R$
+\end{enumerate}
+
+\exercice{Nature d'un triangle \hfill \moyen}
+$A$, $B$, $C$ ont pour affixes $z_A = 1$, $z_B = 1 + \ii$, $z_C = 2 + \ii$.
+\begin{enumerate}
+	\item Calculer $Z = \dfrac{z_C - z_A}{z_B - z_A}$.
+	\item En déduire la nature du triangle $ABC$.
+	\item Retrouver le résultat en calculant les longueurs $AB$, $AC$, $BC$.
+\end{enumerate}
+
+\exercice{Vrai ou faux \hfill \facile}
+Répondre par \emph{vrai} ou \emph{faux} en justifiant brièvement.
+\begin{enumerate}
+	\item Si $\abs{z} = \abs{z'}$ alors $z = z'$ ou $z = -z'$.
+	\item $\arg(z\,z') \equiv \arg(z) + \arg(z')\ [2\pi]$ pour tous $z, z'$ non nuls.
+	\item Une équation de degré $3$ à coefficients réels a toujours au moins une
+	racine réelle.
+	\item L'ensemble des points $M$ tels que $\abs{z - a} = \abs{z - b}$ est un
+	cercle.
+	\item $\dfrac{z - a}{z - b}$ est réel si et seulement si $M$ appartient à la
+	droite $(AB)$.
+	\item Si $z$ et $\bar z$ sont solutions de $z^2 + bz + c = 0$ alors $b$ et
+	$c$ sont réels.
+	\item Les images des racines $n$-ièmes de l'unité forment un polygone
+	régulier.
+\end{enumerate}
+
+\subsection{Formes, équations et systèmes}
+
+\exercice{Calculs et formes \hfill \facile}
+\begin{enumerate}
+	\item Écrire $\dfrac{(1 + \ii)^3}{2 - \ii}$ sous forme algébrique.
+	\item Écrire $z = -\sqrt3 + \ii$ sous forme exponentielle, puis calculer
+	$z^{6}$.
+	\item Résoudre dans $\C$ : $\bar z = 2\ii z - 1$.
+\end{enumerate}
+
+\exercice{Second degré et racine carrée \hfill \moyen}
+\begin{enumerate}
+	\item Déterminer les racines carrées de $-3 + 4\ii$.
+	\item Résoudre $z^2 - (3 + 2\ii)z + (1 + 3\ii) = 0$.
+	\item Résoudre $z^2 - 2z\cos\theta + 1 = 0$ ($\theta \in \R$) et interpréter
+	les solutions sur le cercle unité.
+\end{enumerate}
+
+\exercice{Degré 3 et 4 \hfill \moyen}
+\begin{enumerate}
+	\item Résoudre $z^3 - 1 = 0$, puis $z^3 = 8\ii$.
+	\item Résoudre $z^4 + z^2 + 1 = 0$ (poser $Z = z^2$).
+	\item Soit $P(z) = z^4 - 2z^3 + 2z^2 + 2z - 3$. Vérifier que $\ii$ et
+	$-\ii$ sont racines, puis résoudre $P(z) = 0$.
+\end{enumerate}
+
+\exercice{Systèmes \hfill \moyen}
+\begin{enumerate}
+	\item Résoudre $\begin{cases} z + z' = 1 + 3\ii \\ z\,z' = -2 + 2\ii \end{cases}$.
+	\item Résoudre $\begin{cases} 2z + \ii z' = 3 \\ z - z' = 1 - \ii \end{cases}$.
+	\item Déterminer $z$ tel que $z + 2\bar z = 3 - 6\ii$.
+\end{enumerate}
+
+\exercice{Trigonométrie \hfill \difficile}
+\begin{enumerate}
+	\item Linéariser $\cos^3 x$ et $\sin^4 x$.
+	\item Exprimer $\cos(3x)$ en fonction de $\cos x$.
+	\item Écrire $\cos x + \sqrt3\,\sin x$ sous la forme $R\cos(x - \varphi)$,
+	puis résoudre $\cos x + \sqrt3\,\sin x = 1$.
+\end{enumerate}
+
+\subsection{Géométrie et ensembles de points}
+
+\exercice{Alignement et orthogonalité \hfill \moyen}
+$A$, $B$, $C$, $D$ ont pour affixes $1 + 2\ii$, $3 - \ii$, $-\ii$, $4 + 4\ii$.
+\begin{enumerate}
+	\item Les points $A$, $B$, $C$ sont-ils alignés ?
+	\item Les droites $(AB)$ et $(CD)$ sont-elles perpendiculaires ?
+	\item Calculer une mesure de l'angle $\bigl(\vect{CA},\,\vect{CB}\bigr)$.
+\end{enumerate}
+
+\exercice{Ensembles définis par un module \hfill \moyen}
+On note $A(1 - \ii)$ et $B(3 + \ii)$. Déterminer et construire l'ensemble des
+points $M$ d'affixe $z$ tels que :
+\begin{enumerate}
+	\item $\abs{z - 1 + \ii} = 2$
+	\item $\abs{z - 1 + \ii} = \abs{z - 3 - \ii}$
+	\item $\abs{z - 1 + \ii} = 2\,\abs{z - 3 - \ii}$
+	\item $\abs{2z - 4} = \abs{z - 3 - \ii}$
+\end{enumerate}
+
+\exercice{Ensembles définis par un argument ou un quotient \hfill \difficile}
+On note $A$ le point d'affixe $1$ et $B$ celui d'affixe $\ii$. Pour
+$z \notin \{1, \ii\}$, on pose $Z = \dfrac{z - 1}{z - \ii}$.
+\begin{enumerate}
+	\item Déterminer l'ensemble $(E_1)$ des points $M$ tels que $Z \in \R$.
+	\item Déterminer l'ensemble $(E_2)$ des points $M$ tels que $Z \in \ii\R$.
+	\item Déterminer l'ensemble $(E_3)$ des points $M$ tels que $\abs{Z} = 1$.
+	\item Déterminer l'ensemble $(E_4)$ des points $M$ tels que
+	$\arg(Z) \equiv \dfrac{\pi}{2}\ [2\pi]$ et le comparer à $(E_2)$.
+\end{enumerate}
+
+\exercice{Un ensemble par la partie réelle \hfill \difficile}
+Pour $z \neq -\ii$, on pose $Z = \dfrac{z - 1}{z + \ii}$.
+\begin{enumerate}
+	\item Écrire $Z$ sous forme algébrique en posant $z = x + \ii y$.
+	\item Déterminer l'ensemble des points $M$ tels que $Z$ soit réel.
+	\item Déterminer l'ensemble des points $M$ tels que $\abs{Z} = 1$.
+	\item Déterminer l'ensemble des points $M$ tels que $\mathrm{Re}(Z) = 1$.
+\end{enumerate}
+
+\subsection{Transformations}
 % ============================================================
 %   EXERCICES — Nature et éléments caractéristiques
 %                d'une application du plan complexe
@@ -1547,4 +2091,123 @@ avec $0 < \rho < 1$ et $\alpha \in \left]0\,;\,2\pi\right[$.
 	\item \textbf{Question ouverte.} 
 	Si $\rho > 1$, décrire qualitativement le comportement de la suite $(B_n)$.
 	La longueur totale $\displaystyle\sum_{k=0}^{+\infty} B_k B_{k+1}$ converge-t-elle encore ?
+\end{enumerate}
+
+
+\subsection{Sujets types Bac}
+
+\exercice{Sujet type Bac — équation de degré 3 et configuration \hfill \difficile}
+Dans l'ensemble $\C$, on considère le polynôme $P(z) = z^3 + z - 10$.
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Calculer $P(2)$. \hfill (0,25 pt)
+	\item Déterminer les réels $a$, $b$ tels que
+	$P(z) = (z - 2)(z^2 + az + b)$. \hfill (0,5 pt)
+	\item Résoudre dans $\C$ l'équation $P(z) = 0$. \hfill (0,75 pt)
+\end{enumerate}
+
+\textbf{Partie B} — \textit{le plan complexe est rapporté à un repère
+orthonormé direct. $A$, $B$, $C$ sont les points d'affixes les solutions de
+$P(z) = 0$, $z_A = 2$ étant réel.}
+\begin{enumerate}
+	\item Placer $A$, $B$, $C$. \hfill (0,5 pt)
+	\item Calculer $\dfrac{z_C - z_A}{z_B - z_A}$ et en déduire la nature du
+	triangle $ABC$. \hfill (0,5 pt)
+	\item Déterminer et construire l'ensemble des points $M$ tels que
+	$\abs{z - z_B} = \abs{z - z_C}$. \hfill (0,5 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — forme exponentielle et ensemble de points \hfill \difficile}
+On donne les points $A$ et $B$ d'affixes $z_A = \ii$ et $z_B = -\ii$. Pour tout
+point $M$ d'affixe $z \neq \ii$, on pose
+$$
+Z = \frac{z + \ii}{z - \ii}.
+$$
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Interpréter géométriquement $\abs{Z}$ et $\arg(Z)$. \hfill (0,5 pt)
+	\item Déterminer et construire l'ensemble $(\Gamma_1)$ des points $M$ tels
+	que $\abs{Z} = 1$. \hfill (0,75 pt)
+	\item Déterminer et construire l'ensemble $(\Gamma_2)$ des points $M$ tels
+	que $Z$ soit un réel strictement négatif. \hfill (0,75 pt)
+	\item Déterminer l'ensemble $(\Gamma_3)$ des points $M$ tels que $Z$ soit
+	un imaginaire pur. \hfill (0,5 pt)
+\end{enumerate}
+
+\textbf{Partie B}
+\begin{enumerate}
+	\item On pose $z = x + \ii y$. Écrire $\mathrm{Re}(Z)$ et $\mathrm{Im}(Z)$
+	en fonction de $x$ et $y$. \hfill (0,75 pt)
+	\item Retrouver la nature de $(\Gamma_1)$ et $(\Gamma_3)$ par le calcul. \hfill (0,5 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — module, argument et lieu \hfill \difficile}
+Le plan complexe est rapporté à un repère orthonormé direct. On considère
+l'application $f$ qui à tout point $M$ d'affixe $z \neq 1$ associe le point
+$M'$ d'affixe $z' = \dfrac{z + 1}{z - 1}$.
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Déterminer les points invariants de $f$. \hfill (0,5 pt)
+	\item Montrer que $z'$ est réel si et seulement si $M$ appartient à une
+	droite à préciser. \hfill (0,75 pt)
+	\item Montrer que $z'$ est imaginaire pur si et seulement si $M$ appartient
+	à un cercle privé de deux points, à préciser. \hfill (0,75 pt)
+\end{enumerate}
+
+\textbf{Partie B}
+\begin{enumerate}
+	\item Déterminer l'ensemble des points $M$ tels que $\abs{z'} = 1$. \hfill (0,75 pt)
+	\item Déterminer l'ensemble des points $M$ tels que $\abs{z'} = 2$. \hfill (0,75 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — équation de degré 4 \hfill \difficile}
+On considère l'équation $(E) : z^4 - 4z^3 + 12z^2 - 16z + 16 = 0$.
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Vérifier que $(E)$ s'écrit $(z^2 - 2z + 4)^2 = 0$. \hfill (0,5 pt)
+	\item En déduire les solutions de $(E)$ et les mettre sous forme
+	exponentielle. \hfill (0,75 pt)
+\end{enumerate}
+
+\textbf{Partie B} — \textit{$A$ et $B$ sont les points d'affixes
+$z_A = 1 + \ii\sqrt3$ et $z_B = 1 - \ii\sqrt3$ ; $O$ est l'origine.}
+\begin{enumerate}
+	\item Calculer $OA$, $OB$, $AB$ et une mesure de l'angle
+	$\bigl(\vect{OA},\vect{OB}\bigr)$. En déduire la nature de $OAB$. \hfill (0,75 pt)
+	\item Déterminer l'affixe du point $C$ tel que $OACB$ soit un losange.
+	Ce losange est-il un carré ? Justifier. \hfill (0,75 pt)
+	\item Déterminer et construire l'ensemble des points $M$ d'affixe $z$ tels
+	que $\abs{z - z_A} = \abs{z - z_B}$. \hfill (0,5 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — système, rotation et ensemble \hfill \difficile}
+Le plan complexe est rapporté à un repère orthonormé direct. On note $A$, $B$
+les points d'affixes $z_A = 1 + \ii$ et $z_B = -1 + 3\ii$.
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Déterminer les complexes $z$ et $z'$ vérifiant
+	$$
+	\begin{cases}
+		z + z' = 2\ii \
+		z\,z' = -2
+	\end{cases}
+	$$
+	\hfill (0,75 pt)
+	\item Soit $r$ la rotation de centre $A$ et d'angle $\dfrac{\pi}{2}$.
+	Déterminer l'écriture complexe de $r$, puis l'affixe de $B' = r(B)$. \hfill (0,75 pt)
+	\item Montrer que le triangle $ABB'$ est rectangle isocèle en $A$. \hfill (0,5 pt)
+\end{enumerate}
+
+\textbf{Partie B}
+\begin{enumerate}
+	\item Déterminer et construire l'ensemble $(\mathscr{C})$ des points $M$
+	d'affixe $z$ tels que $\abs{z - 1 - \ii} = \abs{z + 1 - 3\ii}$. \hfill (0,75 pt)
+	\item Déterminer et construire l'ensemble $(\mathscr{D})$ des points $M$
+	tels que $\dfrac{z - z_A}{z - z_B}$ soit un imaginaire pur. \hfill (0,75 pt)
+	\item Préciser l'intersection de $(\mathscr{C})$ et $(\mathscr{D})$. \hfill (0,5 pt)
 \end{enumerate}
