@@ -1,20 +1,41 @@
 % ============================================================
-%   CHAPITRE : Variables aléatoires
-%   Niveau   : Terminale S
-%   Mazava Maths
+%  CHAPITRE : VARIABLES ALÉATOIRES
+%  Mazava Maths — Terminale S (Bacc Série S, Madagascar)
+%  Aligné sur le modèle type et le programme officiel MESUPRES
+%  (variable aléatoire, loi de probabilité ; fonction de
+%  répartition ; espérance, variance, écart-type — König-Huygens ;
+%  linéarité E(aX+b), V(aX+b) ; jeu équitable / favorable ;
+%  épreuve et schéma de Bernoulli ; loi de Bernoulli).
+%  Environnements : definition, propriete, theoreme, methode,
+%                   attention, astucebac, exemple, exercice,
+%                   solution, remarque
 % ============================================================
 \chapter{Variables aléatoires}
 
+\begin{citationchapitre}
+	« L'espérance mathématique est la somme de chaque gain multiplié par la
+	probabilité de l'obtenir. »\\[0.4em]
+	— Christiaan Huygens, \emph{De ratiociniis in ludo aleae}
+\end{citationchapitre}
+
 \begin{objectifs}
 	\begin{itemize}[label=\textbullet]
-		\item Déterminer la loi de probabilité d'une variable aléatoire.
-		\item Déterminer et représenter une fonction de répartition.
-		\item Calculer et interpréter l'espérance, la variance et l'écart-type d'une variable aléatoire.
-		\item Reconnaître une épreuve de Bernoulli et un schéma de Bernoulli.
+		\item Déterminer la \textbf{loi de probabilité} d'une variable
+		aléatoire.
+		\item Déterminer et représenter une \textbf{fonction de répartition}.
+		\item Calculer et interpréter l'\textbf{espérance}, la
+		\textbf{variance} et l'\textbf{écart-type} (formule de
+		König-Huygens).
+		\item Utiliser la linéarité : $\Esp(aX+b)$, $\Var(aX+b)$.
+		\item Décider si un \textbf{jeu} est équitable, favorable ou
+		défavorable.
+		\item Reconnaître une \textbf{épreuve} et un \textbf{schéma de
+		Bernoulli}.
 	\end{itemize}
 \end{objectifs}
 
-On considère, tout au long de ce chapitre, l'exemple suivant : on lance deux pièces de monnaie équilibrées et on note $X$ le nombre de « Pile » obtenus.
+On considère, comme fil rouge, l'expérience suivante : on lance deux pièces
+équilibrées et on note $X$ le nombre de « Pile » obtenus.
 
 
 % ============================================================
@@ -22,20 +43,19 @@ On considère, tout au long de ce chapitre, l'exemple suivant : on lance deux pi
 % ============================================================
 
 \begin{definition}[Variable aléatoire]
-	Définir une \textbf{variable aléatoire} $X$ sur un univers $\Omega$, c'est associer un nombre réel à chaque issue de $\Omega$.
-
-	L'ensemble des valeurs prises par $X$ est noté $X(\Omega)$.
+	Définir une \textbf{variable aléatoire} $X$ sur un univers $\Omega$, c'est
+	associer un nombre réel à chaque issue de $\Omega$. L'ensemble des valeurs
+	prises par $X$ est noté $X(\Omega)$.
 \end{definition}
 
 \begin{exemple}
-	Pour le lancer des deux pièces, $\Omega = \{PP,\,PF,\,FP,\,FF\}$ et $X(\Omega) = \{0,1,2\}$ : $X=0$ si aucun Pile, $X=1$ si un seul Pile ($PF$ ou $FP$), $X=2$ si deux Piles.
+	Ici $\Omega = \{PP,\,PF,\,FP,\,FF\}$ et $X(\Omega) = \{0,1,2\}$.
 \end{exemple}
 
 \begin{definition}[Loi de probabilité]
-	La \textbf{loi de probabilité} de $X$ associe à chaque valeur $x_i$ de $X(\Omega)$ la probabilité $p_i = \Prob(X=x_i)$. On la présente souvent sous forme d'un tableau, et on a toujours :
-	\[
-	\sum_i p_i = 1.
-	\]
+	La \textbf{loi de probabilité} de $X$ associe à chaque valeur $x_i$ de
+	$X(\Omega)$ la probabilité $p_i = \Prob(X=x_i)$. On a toujours
+	$\sum_i p_i = 1$.
 \end{definition}
 
 \begin{exemple}
@@ -72,15 +92,16 @@ On considère, tout au long de ce chapitre, l'exemple suivant : on lance deux pi
 % ============================================================
 
 \begin{definition}[Fonction de répartition]
-	La \textbf{fonction de répartition} de $X$ est la fonction $F$ définie sur $\R$ par :
-	\[
-	F(x) = \Prob(X \leqslant x).
-	\]
-	C'est une fonction \textbf{croissante}, en escalier, qui vaut $0$ pour $x$ assez petit et $1$ pour $x$ assez grand.
+	La \textbf{fonction de répartition} de $X$ est la fonction $F$ définie sur
+	$\R$ par $F(x) = \Prob(X \leqslant x)$. C'est une fonction
+	\textbf{croissante}, en escalier, nulle pour $x$ assez petit et égale à
+	$1$ pour $x$ assez grand.
 \end{definition}
 
 \begin{exemple}
-	Pour l'exemple précédent : $F(x) = 0$ si $x<0$ ; $F(x) = \dfrac14$ si $0\leqslant x<1$ ; $F(x)=\dfrac34$ si $1\leqslant x<2$ ; $F(x)=1$ si $x\geqslant2$.
+	Pour le fil rouge : $F(x) = 0$ si $x<0$ ; $F(x) = \dfrac14$ si
+	$0\leqslant x<1$ ; $F(x)=\dfrac34$ si $1\leqslant x<2$ ; $F(x)=1$ si
+	$x\geqslant2$.
 \end{exemple}
 
 \begin{center}
@@ -107,7 +128,10 @@ On considère, tout au long de ce chapitre, l'exemple suivant : on lance deux pi
 \end{center}
 
 \begin{astucebac}
-	Sur chaque intervalle, $F$ est constante et égale à la somme des probabilités déjà « rencontrées » ; elle « saute » de $p_i$ exactement en $x=x_i$, et le point plein (inclus) est toujours à droite du saut.
+	$F$ « saute » de $p_i$ exactement en $x=x_i$, et le point plein (valeur
+	incluse) est toujours \emph{à droite} du saut. Réciproquement,
+	$\Prob(X=x_i)$ est la hauteur du saut de $F$ en $x_i$, et
+	$\Prob(a<X\leqslant b)=F(b)-F(a)$.
 \end{astucebac}
 
 
@@ -116,52 +140,64 @@ On considère, tout au long de ce chapitre, l'exemple suivant : on lance deux pi
 % ============================================================
 
 \begin{definition}[Espérance mathématique]
-	L'\textbf{espérance mathématique} de $X$ est le nombre :
+	L'\textbf{espérance} de $X$ est le nombre
 	\[
 	\Esp(X) = \sum_i p_i\,x_i.
 	\]
-	Elle représente la valeur moyenne de $X$ que l'on peut espérer obtenir en répétant un grand nombre de fois l'expérience.
+	Elle représente la valeur \textbf{moyenne} de $X$ obtenue en répétant un
+	grand nombre de fois l'expérience.
 \end{definition}
 
 \begin{definition}[Variance et écart-type]
-	La \textbf{variance} de $X$ est le nombre :
+	La \textbf{variance} de $X$ est
 	\[
-	\Var(X) = \sum_i p_i\bigl(x_i-\Esp(X)\bigr)^2 = \left(\sum_i p_i x_i^2\right) - \bigl[\Esp(X)\bigr]^2.
+	\Var(X) = \sum_i p_i\bigl(x_i-\Esp(X)\bigr)^2
+	= \left(\sum_i p_i x_i^2\right) - \bigl[\Esp(X)\bigr]^2
+	\qquad\text{(formule de König-Huygens).}
 	\]
-	L'\textbf{écart-type} de $X$ est $\sigma(X) = \sqrt{\Var(X)}$. Ce sont des indicateurs de la \textbf{dispersion} de $X$ autour de son espérance.
+	L'\textbf{écart-type} est $\sigma(X) = \sqrt{\Var(X)}$. Tous deux mesurent
+	la \textbf{dispersion} de $X$ autour de $\Esp(X)$.
 \end{definition}
 
 \begin{methode}
-	\textbf{Calculer $\Esp(X)$, $\Var(X)$ et $\sigma(X)$ :}
+	\textbf{Calculer $\Esp(X)$, $\Var(X)$, $\sigma(X)$ :}
 	\begin{enumerate}
-		\item Dresser le tableau de la loi de probabilité de $X$.
-		\item Calculer $\Esp(X) = \sum p_i x_i$.
-		\item Calculer $\sum p_i x_i^2$, puis $\Var(X) = \sum p_i x_i^2 - [\Esp(X)]^2$ (formule de König-Huygens).
-		\item Calculer $\sigma(X) = \sqrt{\Var(X)}$.
+		\item dresser le tableau de la loi de $X$ ;
+		\item $\Esp(X) = \sum p_i x_i$ ;
+		\item $\sum p_i x_i^2$, puis $\Var(X) = \sum p_i x_i^2 - [\Esp(X)]^2$ ;
+		\item $\sigma(X) = \sqrt{\Var(X)}$.
 	\end{enumerate}
 \end{methode}
 
 \begin{exemple}
-	Pour l'exemple précédent :
-	\[
-	\Esp(X) = \frac14\times0 + \frac12\times1 + \frac14\times2 = 1.
-	\]
-	\[
-	\sum p_i x_i^2 = \frac14\times0 + \frac12\times1 + \frac14\times4 = \frac32,
-	\qquad
-	\Var(X) = \frac32 - 1^2 = \frac12,
-	\]
-	\[
-	\sigma(X) = \sqrt{\frac12} = \frac{\sqrt2}{2}.
-	\]
+	Pour le fil rouge : $\Esp(X) = \dfrac14\cdot0 + \dfrac12\cdot1 +
+	\dfrac14\cdot2 = 1$ ;
+	$\sum p_i x_i^2 = \dfrac12\cdot1 + \dfrac14\cdot4 = \dfrac32$ ;
+	$\Var(X) = \dfrac32 - 1 = \dfrac12$ ; $\sigma(X) = \dfrac{\sqrt2}{2}$.
 \end{exemple}
 
-\begin{propriete}{Linéarité de l'espérance}{}
+\begin{propriete}{Linéarité}{prop_lin}
 	Pour tous réels $a$ et $b$ :
 	\[
-	\Esp(aX+b) = a\,\Esp(X)+b, \qquad \Var(aX+b) = a^2\,\Var(X).
+	\Esp(aX+b) = a\,\Esp(X)+b, \qquad
+	\Var(aX+b) = a^2\,\Var(X), \qquad
+	\sigma(aX+b) = |a|\,\sigma(X).
 	\]
+	De plus, pour toute fonction $g$ :
+	$\Esp\bigl(g(X)\bigr)=\sum_i p_i\,g(x_i)$.
 \end{propriete}
+
+\begin{definition}[Jeu équitable]
+	Dans un jeu où $X$ désigne le gain algébrique d'un joueur, le jeu est dit
+	\textbf{équitable} si $\Esp(X)=0$, \textbf{favorable} au joueur si
+	$\Esp(X)>0$, \textbf{défavorable} si $\Esp(X)<0$.
+\end{definition}
+
+\begin{astucebac}
+	Pour rendre un jeu équitable, on cherche souvent la \textbf{mise} $m$ ou
+	le \textbf{gain} $g$ tel que $\Esp(X)=0$, où $X$ contient un terme
+	$-m$ (mise payée) ou $+g$.
+\end{astucebac}
 
 
 % ============================================================
@@ -169,9 +205,10 @@ On considère, tout au long de ce chapitre, l'exemple suivant : on lance deux pi
 % ============================================================
 
 \begin{definition}[Épreuve de Bernoulli]
-	Une \textbf{épreuve de Bernoulli} est une expérience aléatoire n'ayant que deux issues : un \textbf{succès} (de probabilité $p$) et un \textbf{échec} (de probabilité $1-p$).
-
-	La variable aléatoire $X$ qui vaut $1$ en cas de succès et $0$ en cas d'échec suit la \textbf{loi de Bernoulli} de paramètre $p$, notée $\mathscr{B}(p)$.
+	Une \textbf{épreuve de Bernoulli} est une expérience à deux issues : un
+	\textbf{succès} (probabilité $p$) et un \textbf{échec} (probabilité
+	$1-p$). La variable $X$ valant $1$ en cas de succès et $0$ sinon suit la
+	\textbf{loi de Bernoulli} de paramètre $p$, notée $\mathscr{B}(p)$.
 \end{definition}
 
 \begin{center}
@@ -182,40 +219,56 @@ On considère, tout au long de ce chapitre, l'exemple suivant : on lance deux pi
 	\end{tikzpicture}
 \end{center}
 
-\begin{propriete}{Espérance et variance d'une loi de Bernoulli}{}
-	Si $X$ suit la loi $\mathscr{B}(p)$, alors :
-	\[
-	\Esp(X) = p \qquad \text{et} \qquad \Var(X) = p(1-p).
-	\]
+\begin{propriete}{Espérance et variance d'une loi de Bernoulli}{prop_bern}
+	Si $X\sim\mathscr{B}(p)$, alors $\Esp(X) = p$ et $\Var(X) = p(1-p)$.
 \end{propriete}
 
 \begin{definition}[Schéma de Bernoulli]
-	Un \textbf{schéma de Bernoulli} consiste à répéter $n$ fois, de façon \textbf{identique et indépendante}, la même épreuve de Bernoulli de paramètre $p$.
+	Un \textbf{schéma de Bernoulli} de paramètres $n$ et $p$ consiste à
+	répéter $n$ fois, de façon \textbf{identique et indépendante}, la même
+	épreuve de Bernoulli de paramètre $p$.
 \end{definition}
 
 \begin{exemple}
-	On lance $n$ fois un dé équilibré et on considère comme succès l'événement « obtenir un $6$ » ($p=\frac16$). Répéter ce lancer $n$ fois de façon indépendante constitue un schéma de Bernoulli de paramètres $n$ et $\frac16$. Le nombre de succès obtenus sur les $n$ répétitions suivra une \textbf{loi binomiale} (chapitre suivant).
+	On lance $n$ fois un dé équilibré, succès = « obtenir un $6$ »
+	($p=\frac16$). Le nombre total de succès suivra une \textbf{loi
+	binomiale} (chapitre suivant).
 \end{exemple}
 
 
 % ============================================================
-\section{Exercices résolus}
+\section{Méthodes et exercices résolus}
 % ============================================================
 
-\exerciceresolu
-\textbf{Déterminer une loi de probabilité et calculer $\Esp$, $\Var$, $\sigma$}
+\begin{methode}
+	\textbf{Étudier un jeu :}
+	\begin{enumerate}
+		\item identifier la variable $X$ (gain \emph{algébrique} : compter la
+		mise en négatif) ;
+		\item déterminer $X(\Omega)$ et la loi (arbre, dénombrement,
+		équiprobabilité) ;
+		\item calculer $\Esp(X)$ et conclure (équitable / favorable) ;
+		\item si demandé, calculer $\Var(X)$, $\sigma(X)$, ou résoudre
+		$\Esp(X)=0$ en la mise.
+	\end{enumerate}
+\end{methode}
 
-Un jeu consiste à lancer un dé équilibré à six faces. Si le joueur obtient $6$, il gagne $10$ points ; s'il obtient un multiple de $3$ autre que $6$ (c'est-à-dire $3$), il gagne $2$ points ; sinon il perd $1$ point. On note $X$ le gain algébrique du joueur.
+\exerciceresolu
+\textbf{Loi d'un gain, espérance, variance}
+
+Un jeu consiste à lancer un dé équilibré à six faces. Obtenir $6$ rapporte
+$10$ points ; obtenir $3$ rapporte $2$ points ; tout autre résultat fait
+perdre $1$ point. On note $X$ le gain algébrique.
 \begin{enumerate}
-	\item Déterminer la loi de probabilité de $X$.
+	\item Déterminer la loi de $X$.
 	\item Calculer $\Esp(X)$. Le jeu est-il favorable au joueur ?
 	\item Calculer $\Var(X)$ et $\sigma(X)$.
 \end{enumerate}
 
 \solution
 
-\textbf{1.} $X(\Omega) = \{-1,2,10\}$ avec $\Prob(X=10)=\dfrac16$, $\Prob(X=2)=\dfrac16$ et $\Prob(X=-1)=\dfrac46=\dfrac23$ (les résultats $1,2,4,5$).
-
+\textbf{1.} $X(\Omega) = \{-1,2,10\}$ avec $\Prob(X=10)=\dfrac16$,
+$\Prob(X=2)=\dfrac16$, $\Prob(X=-1)=\dfrac46=\dfrac23$.
 \begin{center}
 	\begin{tabular}{|c|c|c|c|}
 		\hline
@@ -226,53 +279,264 @@ Un jeu consiste à lancer un dé équilibré à six faces. Si le joueur obtient 
 	\end{tabular}
 \end{center}
 
-\textbf{2.} $\Esp(X) = \dfrac23\times(-1) + \dfrac16\times2 + \dfrac16\times10 = -\dfrac23+\dfrac13+\dfrac53 = \dfrac43$.
+\textbf{2.} $\Esp(X) = \dfrac23(-1) + \dfrac16\cdot2 + \dfrac16\cdot10
+= -\dfrac23+\dfrac13+\dfrac53 = \dfrac43 > 0$ : jeu favorable au joueur.
 
-Comme $\Esp(X) > 0$, le jeu est en moyenne favorable au joueur.
-
-\textbf{3.} $\displaystyle\sum p_i x_i^2 = \frac23\times1 + \frac16\times4 + \frac16\times100 = \frac23+\frac23+\frac{100}{6} = \frac{4+4+100}{6} = 18$.
-
+\textbf{3.} $\displaystyle\sum p_i x_i^2 = \dfrac23\cdot1 + \dfrac16\cdot4 +
+\dfrac16\cdot100 = \dfrac{4+4+100}{6} = 18$, donc
 \[
-\Var(X) = 18 - \left(\frac43\right)^2 = 18-\frac{16}{9} = \frac{162-16}{9} = \frac{146}{9}, \qquad
-\sigma(X) = \sqrt{\frac{146}{9}} = \frac{\sqrt{146}}{3}.
+\Var(X) = 18 - \left(\frac43\right)^2 = 18-\frac{16}{9} = \frac{146}{9},
+\qquad \sigma(X) = \frac{\sqrt{146}}{3}\approx 4{,}03.
 \]
 
+\exerciceresolu
+\textbf{Déterminer une mise équitable}
 
-% ============================================================
-\section{Exercices}
-% ============================================================
-
-\exercice{Loi de probabilité simple \hfill \facile}
-
-On lance un dé équilibré et on note $X$ le nombre obtenu si celui-ci est pair, et $0$ sinon.
+À une loterie, un billet coûte $m$ ariary. Sur $100$ billets, $1$ rapporte
+$500$~Ar, $9$ rapportent $100$~Ar, les autres ne rapportent rien. On note $X$
+le gain algébrique de l'acheteur d'un billet.
 \begin{enumerate}
-	\item Déterminer $X(\Omega)$ et la loi de probabilité de $X$.
-	\item Représenter cette loi par un diagramme en bâtons.
+	\item Exprimer la loi de $X$ en fonction de $m$.
+	\item Déterminer $m$ pour que le jeu soit équitable.
+\end{enumerate}
+
+\solution
+
+\textbf{1.} $X$ prend les valeurs $500-m$ (proba $\frac{1}{100}$),
+$100-m$ (proba $\frac{9}{100}$) et $-m$ (proba $\frac{90}{100}$).
+
+\textbf{2.}
+\[
+\Esp(X) = \frac{500-m}{100} + \frac{9(100-m)}{100} + \frac{90(-m)}{100}
+= \frac{500 + 900 - 100m}{100} = \frac{1400}{100} - m = 14 - m.
+\]
+Le jeu est équitable pour $\Esp(X)=0$, soit $m = 14$~Ar.
+
+\exerciceresolu
+\textbf{Fonction de répartition}
+
+$X$ prend les valeurs $-2$, $0$, $3$ avec les probabilités $0{,}2$ ; $0{,}5$ ;
+$0{,}3$.
+\begin{enumerate}
+	\item Déterminer $F$, fonction de répartition de $X$.
+	\item Calculer $\Prob(-2 < X \leqslant 3)$ à l'aide de $F$.
+	\item Calculer $\Esp(X)$ et $\sigma(X)$.
+\end{enumerate}
+
+\solution
+
+\textbf{1.} $F(x)=0$ si $x<-2$ ; $0{,}2$ si $-2\leqslant x<0$ ; $0{,}7$ si
+$0\leqslant x<3$ ; $1$ si $x\geqslant3$.
+
+\textbf{2.} $\Prob(-2<X\leqslant3) = F(3)-F(-2) = 1 - 0{,}2 = 0{,}8$.
+
+\textbf{3.} $\Esp(X) = 0{,}2(-2)+0{,}5\cdot0+0{,}3\cdot3 = -0{,}4+0{,}9
+= 0{,}5$.
+$\sum p_i x_i^2 = 0{,}2\cdot4 + 0{,}3\cdot9 = 0{,}8+2{,}7 = 3{,}5$, donc
+$\Var(X)=3{,}5-0{,}25 = 3{,}25$ et $\sigma(X)=\sqrt{3{,}25}\approx1{,}80$.
+
+
+% ============================================================
+\section{Exercices d'entraînement}
+% ============================================================
+
+% --------------------------------------------------
+\subsection{Échauffement}
+% --------------------------------------------------
+
+\exercice{Lire un diagramme en bâtons \hfill \facile}
+La loi d'une variable $X$ est donnée par le diagramme suivant.
+\begin{center}
+	\begin{tikzpicture}[>=stealth, font=\small]
+		\draw[->] (-0.5,0) -- (4.5,0) node[right] {$x_i$};
+		\draw[->] (0,-0.3) -- (0,2.8) node[above] {$\Prob(X=x_i)$};
+		\foreach \x/\h in {1/1, 2/2.5, 3/1.5, 4/1}{
+			\draw[very thick] (\x,0) -- (\x,\h);
+			\fill (\x,\h) circle (1.6pt);
+			\node[below] at (\x,0) {$\x$};
+		}
+		\node[left] at (0,1) {\scriptsize $0{,}1$};
+		\node[left] at (0,2.5) {\scriptsize $0{,}25$};
+		\draw[dashed,gray] (0,1)--(1,1) (0,2.5)--(2,2.5) (0,1.5)--(3,1.5);
+	\end{tikzpicture}
+\end{center}
+\begin{enumerate}
+	\item Lire $\Prob(X=1)$, $\Prob(X=2)$, $\Prob(X=3)$ et en déduire
+	$\Prob(X=4)$.
+	\item Calculer $\Prob(X\geqslant 3)$.
 	\item Calculer $\Esp(X)$.
 \end{enumerate}
 
-\exercice{Fonction de répartition \hfill \moyen}
-
-Une variable aléatoire $X$ prend les valeurs $-2$, $0$ et $3$ avec les probabilités respectives $0,2$ ; $0,5$ et $0,3$.
+\exercice{Vrai ou faux \hfill \facile}
+Répondre par \emph{vrai} ou \emph{faux} en justifiant.
 \begin{enumerate}
-	\item Vérifier que ces données définissent bien une loi de probabilité.
-	\item Déterminer et représenter la fonction de répartition $F$ de $X$.
-	\item Calculer $\Esp(X)$, $\Var(X)$ et $\sigma(X)$.
+	\item L'espérance d'une variable aléatoire est toujours une valeur prise
+	par cette variable.
+	\item Si $\Esp(X)=0$, alors $X$ est la variable nulle.
+	\item $\Var(X)\geqslant 0$ pour toute variable aléatoire $X$.
+	\item $\Esp(2X+3)=2\Esp(X)+3$.
+	\item $\Var(2X+3)=2\Var(X)+3$.
+	\item Une fonction de répartition est croissante et à valeurs dans
+	$[0\,;1]$.
+	\item Si $X\sim\mathscr{B}(p)$, alors $\Var(X)=p(1-p)$ est maximale pour
+	$p=\dfrac12$.
 \end{enumerate}
 
-\exercice{Jeu de hasard \hfill \moyen}
+% --------------------------------------------------
+\subsection{Lois, espérance, variance}
+% --------------------------------------------------
 
-On tire une boule dans une urne contenant $2$ boules rouges, $3$ boules vertes et $5$ boules jaunes. Une boule rouge fait gagner $5$ points, une boule verte fait gagner $1$ point, une boule jaune fait perdre $2$ points. Soit $X$ le gain obtenu.
+\exercice{Loi et espérance \hfill \facile}
+On lance un dé équilibré ; $X$ vaut le numéro obtenu s'il est pair, et $0$
+sinon.
+\begin{multicols}{2}
 \begin{enumerate}
-	\item Déterminer la loi de probabilité de $X$.
-	\item Calculer l'espérance de gain. Le jeu est-il équitable ?
+	\item Déterminer $X(\Omega)$ et la loi de $X$.
+	\item Représenter la loi par un diagramme en bâtons.
+	\item Calculer $\Esp(X)$.
+	\item Calculer $\Var(X)$ et $\sigma(X)$.
+\end{enumerate}
+\end{multicols}
+
+\exercice{Urne et gain \hfill \moyen}
+Une urne contient $2$ boules rouges, $3$ vertes et $5$ jaunes. Une rouge
+rapporte $5$ points, une verte $1$ point, une jaune fait perdre $2$ points.
+$X$ = gain.
+\begin{enumerate}
+	\item Déterminer la loi de $X$.
+	\item Calculer $\Esp(X)$. Le jeu est-il équitable ?
+	\item Calculer $\Var(X)$ et $\sigma(X)$.
 \end{enumerate}
 
-\exercice{Épreuve de Bernoulli \hfill \difficile}
-
-Une urne contient $8$ boules indiscernables au toucher : $5$ blanches et $3$ noires. On tire une boule et on considère un succès si elle est blanche.
+\exercice{Transformation affine \hfill \moyen}
+Une variable $X$ vérifie $\Esp(X)=4$ et $\Var(X)=9$. On pose $Y=3X-5$ et
+$Z=\dfrac{X-4}{3}$.
+\begin{multicols}{2}
 \begin{enumerate}
-	\item Justifier qu'il s'agit d'une épreuve de Bernoulli et donner son paramètre $p$.
-	\item Soit $X$ la variable de Bernoulli associée. Donner $\Esp(X)$ et $\Var(X)$.
-	\item On répète cette épreuve $5$ fois, en remettant la boule tirée à chaque fois. S'agit-il d'un schéma de Bernoulli ? Justifier et préciser ses paramètres.
+	\item Calculer $\Esp(Y)$ et $\sigma(Y)$.
+	\item Calculer $\Esp(Z)$ et $\Var(Z)$.
+\end{enumerate}
+\end{multicols}
+
+\exercice{Tirage sans remise et loi \hfill \difficile}
+Une urne contient $6$ jetons : $4$ marqués $0$ et $2$ marqués $1$. On tire
+$3$ jetons simultanément et $X$ désigne la somme des numéros tirés.
+\begin{enumerate}
+	\item Déterminer $X(\Omega)$ et la loi de $X$.
+	\item Déterminer la fonction de répartition de $X$.
+	\item Calculer $\Esp(X)$ et $\Var(X)$.
+\end{enumerate}
+
+% --------------------------------------------------
+\subsection{Sujets types Bac}
+% --------------------------------------------------
+
+\exercice{Sujet type Bac — roue de loterie \hfill \difficile}
+Une roue est partagée en $8$ secteurs identiques : $1$ secteur rapporte
+$20$ points, $2$ secteurs rapportent $5$ points, $5$ secteurs ne rapportent
+rien. Pour jouer, on mise $3$ points. On note $X$ le gain algébrique du
+joueur (gain obtenu moins la mise).
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Déterminer $X(\Omega)$. \hfill \mbox{(0,5~pt)}
+	\item Établir la loi de probabilité de $X$. \hfill \mbox{(1~pt)}
+	\item Calculer $\Esp(X)$. Le jeu est-il favorable au joueur ?
+	\hfill \mbox{(0,75~pt)}
+\end{enumerate}
+
+\textbf{Partie B}
+\begin{enumerate}
+	\setcounter{enumi}{3}
+	\item Calculer $\Var(X)$ et $\sigma(X)$ (arrondir à $10^{-2}$).
+	\hfill \mbox{(1~pt)}
+	\item L'organisateur souhaite un jeu équitable en modifiant seulement la
+	mise $m$. Exprimer $\Esp(X)$ en fonction de $m$ et déterminer $m$.
+	\hfill \mbox{(1~pt)}
+	\item Avec la mise initiale de $3$ points, un joueur joue $50$ parties
+	indépendantes. Estimer son gain algébrique total moyen. \hfill \mbox{(0,5~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — contrat d'assurance \hfill \difficile}
+Une compagnie assure un objet contre le vol. La probabilité de vol dans
+l'année est $0{,}03$. En cas de vol, la compagnie verse $2\,000\,000$~Ar. La
+prime annuelle payée par le client est $P$. On note $Y$ le résultat
+algébrique de la compagnie pour un contrat (recette moins dépense).
+\begin{enumerate}
+	\item Déterminer la loi de $Y$ en fonction de $P$. \hfill \mbox{(0,75~pt)}
+	\item Exprimer $\Esp(Y)$ en fonction de $P$. \hfill \mbox{(0,75~pt)}
+	\item Déterminer la prime $P_0$ rendant le contrat équitable.
+	\hfill \mbox{(0,5~pt)}
+	\item La compagnie fixe $P = 90\,000$~Ar. Calculer son bénéfice moyen par
+	contrat. \hfill \mbox{(0,5~pt)}
+	\item La compagnie a $10\,000$ contrats identiques et indépendants.
+	Estimer son bénéfice annuel moyen total. \hfill \mbox{(0,75~pt)}
+	\item Calculer $\sigma(Y)$ pour un contrat (arrondir à $10^{3}$~Ar près).
+	\hfill \mbox{(1~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — deux dés et une variable \hfill \difficile}
+On lance deux dés équilibrés et on note $X$ la valeur absolue de la
+différence des deux résultats.
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Déterminer $X(\Omega)$. \hfill \mbox{(0,5~pt)}
+	\item Montrer que $\Prob(X=0)=\dfrac16$ et calculer $\Prob(X=1)$.
+	\hfill \mbox{(1~pt)}
+	\item Établir la loi de probabilité complète de $X$. \hfill \mbox{(1~pt)}
+\end{enumerate}
+
+\textbf{Partie B}
+\begin{enumerate}
+	\setcounter{enumi}{3}
+	\item Calculer $\Esp(X)$. \hfill \mbox{(0,75~pt)}
+	\item Déterminer et représenter la fonction de répartition de $X$.
+	\hfill \mbox{(1~pt)}
+	\item On gagne $100$~Ar si $X\leqslant 1$, on perd $50$~Ar sinon. Ce jeu
+	est-il favorable au joueur ? \hfill \mbox{(0,75~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — comparer deux jeux \hfill \difficile}
+Deux jeux proposent les gains algébriques suivants.
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		$x_i$ (jeu $A$) & $-10$ & $0$ & $20$ \\ \hline
+		$\Prob$ & $0{,}5$ & $0{,}3$ & $0{,}2$ \\ \hline
+	\end{tabular}
+	\qquad
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		$y_i$ (jeu $B$) & $-5$ & $0$ & $5$ \\ \hline
+		$\Prob$ & $0{,}3$ & $0{,}6$ & $0{,}1$ \\ \hline
+	\end{tabular}
+\end{center}
+\begin{enumerate}
+	\item Calculer $\Esp(A)$ et $\Esp(B)$. Que constate-t-on ?
+	\hfill \mbox{(1~pt)}
+	\item Calculer $\Var(A)$, $\Var(B)$, puis $\sigma(A)$ et $\sigma(B)$.
+	\hfill \mbox{(1,5~pt)}
+	\item Un joueur veut limiter le risque de grosses pertes : quel jeu lui
+	conseiller ? Justifier avec $\sigma$. \hfill \mbox{(0,75~pt)}
+	\item Pour rendre le jeu $A$ équitable, on ajoute une prime $c$ à chaque
+	gain. Déterminer $c$, puis donner l'espérance et la variance du jeu ainsi
+	modifié. \hfill \mbox{(1~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — épreuve de Bernoulli et répétition \hfill \difficile}
+Une urne contient $8$ boules : $5$ blanches et $3$ noires, indiscernables au
+toucher. On tire une boule, succès = « blanche », et on note $Y$ la variable
+de Bernoulli associée.
+\begin{enumerate}
+	\item Justifier qu'il s'agit d'une épreuve de Bernoulli et donner son
+	paramètre $p$. \hfill \mbox{(0,5~pt)}
+	\item Donner $\Esp(Y)$ et $\Var(Y)$. \hfill \mbox{(0,5~pt)}
+	\item On répète l'épreuve $4$ fois \emph{avec remise}. Justifier qu'il
+	s'agit d'un schéma de Bernoulli et préciser ses paramètres.
+	\hfill \mbox{(0,75~pt)}
+	\item À l'aide d'un arbre, calculer la probabilité d'obtenir exactement
+	$2$ boules blanches sur les $4$ tirages. \hfill \mbox{(1,25~pt)}
+	\item On répète maintenant l'épreuve $4$ fois \emph{sans remise}.
+	Est-ce encore un schéma de Bernoulli ? Justifier. \hfill \mbox{(0,5~pt)}
 \end{enumerate}

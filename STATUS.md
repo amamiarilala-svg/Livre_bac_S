@@ -26,28 +26,25 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
 | Algèbre (arithmétique, matrices, complexes) | Terminé. Chapitres Complexes, Arithmétique et Calcul matriciel alignés sur le modèle type le 2026-08-27 (matriciel : les 6 sujets types matrices ont quitté `entrainement.tex` pour le chapitre). |
 | Analyse (limites → équa diff) | **Terminé et aligné sur le modèle type (2026-08-27).** Fusion « Limites » + Continuité → `limites_continuite.tex` ; ancien ch.5 → « Dérivabilité » ; `fonctions.tex` → « Étude d'une fonction » ; `logarithme.tex` / `exponentielle.tex` resserrés en chapitres-référence ; `integrales.tex` aligné (+ correctif macro `\dd`) ; `suites.tex` aligné (n'était que la récurrence) ; `equadiff.tex` aligné (citation, méthode « vérifier une solution », méthode « second membre », échauffement figure + Vrai/Faux, 6 sujets types). `limites.tex` et `continuite.tex` supprimés. |
 | Géométrie (barycentre → espace) | Terminé. Chapitres Isométries, Barycentre et Géométrie dans l'espace (créé de zéro) alignés sur le modèle type le 2026-08-27. |
-| Probabilités (5 sous-chapitres) | Terminé |
+| Probabilités (5 sous-chapitres) | **Terminé et aligné sur le modèle type (2026-08-27).** `probabilites`, `conditionnelles`, `variables_aleatoires`, `binomiale`, `normale` : citation, objectifs étoffés, dénombrement / Bayes / absence de mémoire / seuils ajoutés, section « Méthodes et exercices résolus », échauffement (lecture de figure + Vrai/Faux 7 items), batteries `multicols`, **5 sujets types Bac** par chapitre au format officiel (Partie A/B, points par question). |
 | Sujets officiels Bacc Série S | 2021, 2022, 2023, 2024, 2025, 2026 transcrits. À compléter au fil des sessions envoyées par l'utilisateur (années manquantes : 2027+ à venir, années < 2021 non demandées pour l'instant). |
 | Entrainement (sujets types) | 19 sujets types présents. |
 
 ## En attente / prochaine étape
 
 - Aucun blocage actif en ce moment.
-- **Chantier en cours : aligner tous les chapitres sur le modèle type**
-  (voir mémoires `feedback_chapter_template`, `reference_programme_officiel_ts`).
-  Un chapitre à la fois, choisi par l'utilisateur au coup par coup.
-  Exigences par chapitre : structure type (échauffement figure + Vrai/Faux +
-  difficulté progressive), **≥ 5 sujets types Bacc**, couverture de tout le
-  programme officiel en privilégiant les notions déjà vues aux annales.
+- **Chantier « aligner tous les chapitres sur le modèle type » : TERMINÉ.**
+  Tous les chapitres du livre (algèbre, analyse, géométrie, probabilités)
+  suivent le modèle type (voir `feedback_chapter_template`).
   - Faits, avec 5+ sujets types Bacc chacun : Isométries, Barycentre,
     Complexes, Géométrie dans l'espace, Arithmétique, Calcul matriciel,
-    **Limites et continuité**, **Dérivabilité**, **Étude d'une fonction**
-    (ex-« Généralités sur les fonctions », recentré le 2026-08-27 sur :
-    plan d'étude, diagramme des branches infinies, convexité, position
-    courbe/droite, identification f/f'/f'' sur figure ; ln/exp uniquement ;
-    5 sujets types Bac ; PR `chapitre-etude-fonctions`).
-  - **Restent : probabilités (5 fichiers).** Tout le reste (algèbre,
-    analyse, géométrie) est aligné sur le modèle type.
+    Limites et continuité, Dérivabilité, Étude d'une fonction,
+    Primitives et intégrale, Suites numériques, Équations différentielles,
+    **Probabilités, Probabilités conditionnelles, Variables aléatoires,
+    Loi binomiale, Lois continues et loi normale** (les 5 chapitres proba
+    alignés le 2026-08-27, branche `chapitres-probabilites-alignement`).
+  - Traités en mode resserré (chapitres-référence) : Logarithme,
+    Exponentielle.
     `equadiff.tex` aligné le 2026-08-27 (PR #24).
     `suites.tex` aligné le 2026-08-27 (PR #23) : récurrence, sens de
     variation (4 méthodes), majorées/minorées/bornées, convergence /
