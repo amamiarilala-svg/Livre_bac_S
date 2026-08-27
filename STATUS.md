@@ -15,9 +15,17 @@ Analyse, Géométrie, Probabilités, les sujets officiels du Bacc Série S
 (2021–2026) et un chapitre Entrainement (19 sujets types + sujets bac
 étrangers). Compile sans erreur avec `latexmk -pdf`, et une passe de
 relecture globale (2026-08-26) a réduit les débordements de marge
-(`Overfull \hbox`) visibles de 27 à 10 occurrences uniques ; celles qui
-restent sont soit purement internes (`Underfull`, sans effet visuel),
-soit inférieures à ~11pt et vérifiées invisibles au rendu.
+(`Overfull \hbox`) visibles de 27 à 13 occurrences uniques. Le livre fait
+**394 pages** et est organisé en **5 parties** (Algèbre, Analyse,
+Géométrie, Probabilités, Sujets et entraînement).
+
+⚠️ Correction du 2026-08-27 : la note précédente affirmait que tous les
+`Overfull` restants étaient « inférieurs à ~11pt et invisibles ». C'est
+faux — il en reste **trois significatifs**, à traiter un jour :
+`parties/algebre/arithmetique.tex` l. 1031–1035 (39,3pt),
+`parties/probabilites/conditionnelles.tex` l. 364–367 (31,5pt),
+`parties/probabilites/variables_aleatoires.tex` l. 185 (26,4pt).
+Les dix autres sont bien < 13pt.
 
 ## Chapitres — état
 
@@ -33,6 +41,46 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
 ## En attente / prochaine étape
 
 - Aucun blocage actif en ce moment.
+
+- **Structure en parties : FAIT** (branche `structure-parties`). Les cinq
+  `\part{}` de `main.tex` sont actifs — Algèbre, Analyse, Géométrie,
+  Probabilités, et une nouvelle partie « Sujets et entraînement » devant
+  `sujet_types` / `entrainement`. Ordre des parties conservé (voir PROGRESS
+  pour le raisonnement sur les dépendances).
+
+- **Incohérences de progression repérées le 2026-08-27, PAS encore
+  corrigées** (chantier « PR 2 » proposé à l'utilisateur) :
+  1. **Circularité ln / primitives.** `integrales.tex` donne `1/x → ln|x|`
+     et `e^x → e^x` dans le tableau des primitives usuelles
+     (`integrales.tex:70` et `:72`), alors que `ln` est *défini* comme
+     « la primitive de 1/x nulle en 1 » deux chapitres plus loin
+     (`logarithme.tex:40`). Correctif retenu : garder dans Intégrales les
+     primitives algébriques/trigo seules, et déplacer les lignes `ln|u|`,
+     `u'/u`, `e^u`, `u'e^u` **dans les chapitres ln et exp eux-mêmes** —
+     c'est d'ailleurs là que le programme officiel les range.
+  2. **Section « Limites de référence : ln et exp »** (`limites_continuite.tex:82`)
+     placée trois chapitres avant la définition de ln/exp. À encadrer en
+     « Admis — démontré au ch. Logarithme / Exponentielle », sur le modèle
+     déjà appliqué dans `derivation.tex:46`.
+  3. **Récurrence utilisée avant d'être enseignée** : `derivation.tex:324`,
+     `integrales.tex:664`, `binomiale.tex:333` s'en servent, mais elle
+     n'est introduite qu'au ch. Suites (`suites.tex:39`). Piste : en faire
+     un court chapitre-outil en tête de livre.
+
+- **Déplacement des Complexes (optionnel, « PR 3 »)** : les placer dans
+  l'Analyse entre Suites et Équations différentielles, comme le programme
+  officiel qui les classe en ANALYSE. Réglerait le `e^{iθ}`
+  (`complexes.tex:315`) employé avant l'exponentielle. Vérifié sans risque :
+  seuls `equadiff.tex` et `isometries.tex` dépendent des complexes, tous
+  deux resteraient après. Décision non tranchée par l'utilisateur.
+
+- **`annexes/formulaire.tex` est vide (0 octet)** et n'est inclus nulle
+  part ; le `\appendix` de `main.tex` est donc sans contenu. À écrire, ou à
+  supprimer si le formulaire n'est plus voulu.
+
+- **Frontmatter inutilisés** : `page_garde.tex`, `avant_propos.tex`,
+  `table_matieres.tex` existent mais ne sont `\input` nulle part
+  (`main.tex` charge `couverture`, `copyright`, `preface`, `mode_emploi`).
 - **Chantier « aligner tous les chapitres sur le modèle type » : TERMINÉ.**
   Tous les chapitres du livre (algèbre, analyse, géométrie, probabilités)
   suivent le modèle type (voir `feedback_chapter_template`).
