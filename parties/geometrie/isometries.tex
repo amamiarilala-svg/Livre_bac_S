@@ -922,3 +922,100 @@ Soient $f_1(z) = z + 1 + \ii$ et $f_2(z) = \e^{\ii\pi/3}z$.
 	parallèles est une translation, en précisant le vecteur.
 	\item En déduire que le carré d'une symétrie glissée est une translation.
 \end{enumerate}
+
+
+\exercice{Triangle équilatéral et double décomposition \hfill \difficile}
+$ABC$ est un triangle équilatéral direct de côté $a$, de centre $O$. On note
+$r_A$, $r_B$, $r_C$ les rotations de centres respectifs $A$, $B$, $C$ et de
+même angle $\dfrac{2\pi}{3}$.
+
+\textbf{Partie A — Étude synthétique}
+\begin{enumerate}
+	\item Justifier que $r_A\circ r_B$ est une rotation et préciser son angle.
+	\item Décomposer $r_B$ puis $r_A$ en deux réflexions en prenant la droite
+	$(AB)$ comme \textbf{axe commun} :
+	$$
+	r_B = s_{(AB)}\circ s_{\Delta},\qquad r_A = s_{\Delta'}\circ s_{(AB)}.
+	$$
+	Préciser $\Delta$ (par $B$) et $\Delta'$ (par $A$) à l'aide de leur angle
+	avec $(AB)$.
+	\item En déduire que $r_A\circ r_B = s_{\Delta'}\circ s_{\Delta}$, puis
+	construire le centre $\Omega$ de $r_A\circ r_B$. Montrer que $\Omega=C$.
+	\item Montrer que $r_C\circ r_B\circ r_A = \mathrm{Id}$.
+	\item Soit $t$ la translation de vecteur $\vect{AB}$ et $f = t\circ r_A$.
+	En choisissant comme axe commun la droite passant par $A$ et orthogonale à
+	$\vect{AB}$, construire le centre $\omega$ de $f$ et montrer qu'il
+	appartient à la médiatrice de $[AB]$.
+\end{enumerate}
+
+\textbf{Partie B — Étude complexe} \emph{(repère orthonormé direct
+$\left(A\,;\dfrac1a\vect{AB},\vec v\right)$, $B$ d'affixe $1$).}
+\begin{enumerate}
+	\item Donner l'affixe de $C$, puis les écritures complexes de $r_A$, $r_B$
+	et $t$.
+	\item Retrouver l'écriture complexe de $r_A\circ r_B$ et vérifier que son
+	centre a pour affixe celle de $C$.
+	\item Retrouver l'écriture complexe de $f=t\circ r_A$ et les éléments
+	obtenus à la question A.5.
+\end{enumerate}
+
+
+\exercice{Réduction d'un produit de trois réflexions \hfill \difficile}
+Le plan est rapporté à un repère orthonormé direct $(O,\vec\imath,\vec\jmath)$.
+On considère les droites
+$$
+\Delta_1 : y = 0,\qquad \Delta_2 : y = x,\qquad \Delta_3 : x = 1,
+$$
+et la transformation $f = s_{\Delta_3}\circ s_{\Delta_2}\circ s_{\Delta_1}$.
+\begin{enumerate}
+	\item Sans calcul, préciser si $f$ est un déplacement ou un
+	antidéplacement.
+	\item Montrer que $s_{\Delta_2}\circ s_{\Delta_1} = r_{\left(O,\;\frac{\pi}{2}\right)}$.
+	\item Décomposer cette rotation sous la forme
+	$r_{\left(O,\frac{\pi}{2}\right)} = s_{b}\circ s_{a}$ où $b$ est la droite
+	\textbf{passant par $O$ et parallèle à $\Delta_3$}. Préciser $a$.
+	\item En déduire que $f = \bigl(s_{\Delta_3}\circ s_{b}\bigr)\circ s_{a}$,
+	puis que $s_{\Delta_3}\circ s_{b}$ est une translation dont on donnera le
+	vecteur.
+	\item Le vecteur obtenu n'est pas directeur de $a$. En le décomposant en
+	une composante parallèle à $a$ et une composante orthogonale à $a$, mettre
+	$f$ sous forme réduite $t_{\vec u}\circ s_{a'}$ (symétrie glissée) : donner
+	l'axe $a'$ et le vecteur $\vec u$.
+	\item Contrôler le résultat en établissant que $f(z) = \ii\bar z + 2$.
+\end{enumerate}
+
+
+\exercice{Composée à paramètre et lieu du centre \hfill \difficile}
+$ABC$ est un triangle rectangle isocèle direct en $A$ tel que $AB = AC = 4$
+et $(\vect{AB},\vect{AC}) = \dfrac{\pi}{2}$ ; $O$ désigne le milieu de $[BC]$.
+Pour tout réel $\lambda$, on note $t_\lambda$ la translation de vecteur
+$\lambda\,\vect{AB}$ et
+$$
+f_\lambda = t_\lambda\circ r,\qquad \text{où } r = r_{\left(A,\;\frac{\pi}{2}\right)}.
+$$
+
+\textbf{Partie A — Étude synthétique}
+\begin{enumerate}
+	\item Montrer que pour tout $\lambda$, $f_\lambda$ est une rotation
+	d'angle $\dfrac{\pi}{2}$.
+	\item En prenant la droite $(AC)$ comme axe commun, décomposer $r$ et
+	$t_\lambda$ en deux réflexions, puis construire le centre $\Omega_\lambda$
+	de $f_\lambda$.
+	\item Donner les coordonnées de $\Omega_\lambda$ dans le repère
+	$(A\,;\vect{AB},\vect{AC})$ (unité $4$).
+	\item En déduire que, lorsque $\lambda$ décrit $\R$, le point
+	$\Omega_\lambda$ décrit une droite $\mathscr D$ que l'on identifiera
+	précisément.
+	\item Déterminer la valeur de $\lambda$ pour laquelle $\Omega_\lambda$
+	appartient à la droite $(BC)$. Que représente alors $\Omega_\lambda$ ?
+\end{enumerate}
+
+\textbf{Partie B — Étude complexe} \emph{(repère $(A\,;\vec u,\vec v)$ avec
+$\vec u = \frac14\vect{AB}$, $\vec v = \frac14\vect{AC}$).}
+\begin{enumerate}
+	\item Donner les écritures complexes de $r$ et de $t_\lambda$, puis celle
+	de $f_\lambda$.
+	\item Retrouver l'affixe de $\Omega_\lambda$ et conclure sur le lieu
+	$\mathscr D$.
+	\item Vérifier la réponse à la question A.5 par le calcul.
+\end{enumerate}

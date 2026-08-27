@@ -20,7 +20,10 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
   (composées, cas particuliers).
 - 6 figures TikZ + 1 arbre de décision + 3 tableaux récapitulatifs.
 - 3 exercices résolus (méthode géométrique + contrôle complexe) et
-  13 exercices gradués, dont 2 sujets types Bac.
+  16 exercices gradués, dont 2 sujets types Bac et 3 exercices difficiles
+  entièrement centrés sur la décomposition (double décomposition sur un
+  triangle équilatéral ; réduction d'un produit de trois réflexions en
+  symétrie glissée ; composée à paramètre et lieu du centre).
 - Compile sans erreur ; aucun `Overfull \hbox` visible (> ~10pt) ajouté.
 - Branche `chapitre-isometries-composition`, PR contre `main`.
 
