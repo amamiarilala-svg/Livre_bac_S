@@ -86,6 +86,12 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
   - Toujours vérifier après coup qu'aucun `Overfull \hbox` significatif
     (> ~15pt) ne subsiste dans les fichiers touchés, et confirmer
     visuellement (rendu PNG de la page) que le correctif ne casse rien.
+- **Ne pas ajouter du LaTeX avec un heredoc shell** (`cat >> f << 'EOF'`) :
+  dans cet environnement, les `\\` (fin de ligne dans `pmatrix`, `cases`,
+  `aligned`, systèmes…) sont réduits à un seul `\`, ce qui colle tout sur
+  une ligne. Utiliser l'outil Write/Edit, ou un script Python qui écrit le
+  fichier (chaîne `r'''...'''`). Vérifier ensuite : aucun `\` suivi d'un
+  chiffre ou d'un `&` hors `\\`.
 - **Workflow git** : toujours une branche de fonctionnalité + PR contre
   `main`, jamais de commit direct sur `main` (voir mémoire du projet).
 
