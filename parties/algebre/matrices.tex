@@ -5,12 +5,21 @@
 % ============================================================
 \chapter{Calcul matriciel}
 
+\begin{citationchapitre}
+	« Une matrice, c'est une machine à transformer des vecteurs\\
+	— et une table de nombres qu'on apprend à faire parler. »
+\end{citationchapitre}
+
 \begin{objectifs}
 	\begin{itemize}[label=\textbullet]
-		\item Manipuler les matrices carrées : addition, produit par un scalaire, produit.
-		\item Calculer déterminant, trace et puissance d'une matrice carrée.
-		\item Déterminer si une matrice est inversible et calculer son inverse.
-		\item Utiliser le calcul matriciel pour résoudre un système linéaire.
+		\item Manipuler les matrices carrées d'ordre $n \leqslant 4$ : somme,
+		produit par un scalaire, produit (non commutatif), transposition.
+		\item Calculer déterminant, trace et \textbf{puissance $n$-ième}
+		(dont la puissance par récurrence).
+		\item Déterminer si une matrice est inversible et calculer son inverse,
+		notamment à l'aide d'une \textbf{relation polynomiale}.
+		\item Résoudre un \textbf{système linéaire} (jusqu'à $4$ équations,
+		$4$ inconnues) par la méthode matricielle $AX = B$.
 	\end{itemize}
 \end{objectifs}
 
@@ -381,8 +390,34 @@
 
 
 % ============================================================
-\section{Exercices résolus}
+\section{Méthodes et exercices résolus}
 % ============================================================
+
+\begin{methode}
+	\textbf{Inverser une matrice à l'aide d'une relation polynomiale.}
+	Si $A$ vérifie $\alpha_p A^p + \cdots + \alpha_1 A + \alpha_0 I = O$ avec
+	$\alpha_0 \neq 0$, on isole $A\bigl(\cdots\bigr) = -\alpha_0 I$, d'où
+	$A^{-1} = -\dfrac{1}{\alpha_0}\bigl(\alpha_p A^{p-1} + \cdots + \alpha_1 I\bigr)$.
+\end{methode}
+
+\begin{methode}
+	\textbf{Calculer $A^n$.}
+	\begin{itemize}[label=\textbullet]
+		\item \textbf{Conjecture + récurrence} : calculer $A^2$, $A^3$,
+		conjecturer une forme de $A^n$, la démontrer par récurrence.
+		\item \textbf{Décomposition $A = \lambda I + N$} avec $N$ nilpotente
+		($N^k = O$) : développer $A^n = (\lambda I + N)^n$ par le binôme (les
+		$I$ et $N$ commutent), la somme s'arrête à $N^{k-1}$.
+		\item \textbf{Relation $A^2 = a A + b I$} : alors $A^n = u_n A + v_n I$
+		avec des suites $(u_n)$, $(v_n)$.
+	\end{itemize}
+\end{methode}
+
+\begin{methode}
+	\textbf{Résoudre un système $AX = B$.} Si $A$ est inversible,
+	$X = A^{-1}B$. On vérifie l'inversibilité par $\det A \neq 0$ ou en
+	exhibant $P$ tel que $AP = PA = I$.
+\end{methode}
 
 \exerciceresolu
 \textbf{Utiliser une relation polynomiale pour inverser une matrice}
@@ -551,3 +586,179 @@ X = A^{-1}B = P\cdot B
 \[
 \boxed{x = 3, \quad y = 1, \quad z = 2.}
 \]
+
+
+% ============================================================
+\section{Exercices d'entraînement}
+% ============================================================
+
+\subsection{Échauffement}
+
+\exercice{Calculs de base \hfill \facile}
+On donne $A = \begin{pmatrix}2&1\\0&3\end{pmatrix}$ et
+$B = \begin{pmatrix}1&-1\\2&0\end{pmatrix}$.
+\begin{enumerate}
+	\item Calculer $A + B$ et $2A - 3B$.
+	\item Calculer $AB$ et $BA$. Que remarque-t-on ?
+	\item Calculer $\det A$, $\det B$, $\operatorname{tr}(A)$, $\operatorname{tr}(B)$.
+	\item Déterminer ${}^{t}\!A$ et vérifier que $\operatorname{tr}({}^{t}\!A) = \operatorname{tr}(A)$.
+\end{enumerate}
+
+\exercice{Déterminant et inverse \hfill \facile}
+\begin{enumerate}
+	\item La matrice $\begin{pmatrix}2&4\\1&2\end{pmatrix}$ est-elle inversible ?
+	\item Calculer l'inverse de $\begin{pmatrix}3&5\\1&2\end{pmatrix}$.
+	\item Calculer le déterminant de
+	$\begin{pmatrix}1&2&0\\0&3&1\\2&0&1\end{pmatrix}$ (règle de Sarrus).
+\end{enumerate}
+
+\exercice{Puissances \hfill \facile}
+Soit $A = \begin{pmatrix}1&1\\0&1\end{pmatrix}$.
+\begin{enumerate}
+	\item Calculer $A^2$ et $A^3$.
+	\item Conjecturer une expression de $A^n$ pour $n \in \N^*$.
+	\item Démontrer la conjecture par récurrence.
+\end{enumerate}
+
+\exercice{Vrai ou faux \hfill \facile}
+Répondre par \emph{vrai} ou \emph{faux} en justifiant brièvement.
+\begin{enumerate}
+	\item Pour toutes matrices carrées $A$ et $B$ de même ordre, $AB = BA$.
+	\item $\operatorname{tr}(AB) = \operatorname{tr}(BA)$.
+	\item Si $\det A = 0$ alors $A$ n'est pas inversible.
+	\item $\det(AB) = \det A \times \det B$.
+	\item Si $A^2 = O$ alors $A = O$.
+	\item Si $AB = I$ (matrices carrées de même ordre) alors $BA = I$.
+	\item $(A + B)^2 = A^2 + 2AB + B^2$ pour toutes matrices carrées $A$, $B$.
+\end{enumerate}
+
+\subsection{Opérations, déterminant, puissances}
+
+\exercice{Produit et non-commutativité \hfill \moyen}
+$A = \begin{pmatrix}1&2&0\\0&1&1\\1&0&1\end{pmatrix}$,
+$B = \begin{pmatrix}1&0&1\\1&1&0\\0&1&1\end{pmatrix}$.
+\begin{enumerate}
+	\item Calculer $AB$ et $BA$.
+	\item Vérifier que $\operatorname{tr}(AB) = \operatorname{tr}(BA)$.
+	\item Calculer $\det(AB)$ de deux façons.
+\end{enumerate}
+
+\exercice{Matrice nilpotente \hfill \moyen}
+Soit $N = \begin{pmatrix}0&1&2\\0&0&3\\0&0&0\end{pmatrix}$.
+\begin{enumerate}
+	\item Calculer $N^2$ et $N^3$.
+	\item En déduire $(I_3 + N)^n$ pour tout $n \in \N^*$.
+	\item Calculer $(I_3 + N)^{-1}$.
+\end{enumerate}
+
+\exercice{Relation du second degré \hfill \moyen}
+Soit $A = \begin{pmatrix}2&-1\\1&4\end{pmatrix}$.
+\begin{enumerate}
+	\item Vérifier que $A^2 - 6A + 9\,I_2 = O_2$.
+	\item En déduire que $A$ est inversible et donner $A^{-1}$.
+	\item Montrer que pour tout $n \in \N^*$, il existe des réels $u_n$, $v_n$
+	tels que $A^n = u_n A + v_n I_2$, et donner des relations de récurrence
+	sur $(u_n)$ et $(v_n)$.
+\end{enumerate}
+
+\exercice{Système $3\times 3$ par la matrice inverse \hfill \moyen}
+Soit $A = \begin{pmatrix}1&1&1\\1&2&3\\1&4&9\end{pmatrix}$.
+\begin{enumerate}
+	\item Calculer $\det A$. $A$ est-elle inversible ?
+	\item On donne $P = \dfrac{1}{2}\begin{pmatrix}6&-5&1\\-6&8&-2\\2&-3&1\end{pmatrix}$.
+	Calculer $AP$ et conclure.
+	\item Résoudre le système
+	$$
+	\begin{cases}
+		x + y + z = 6 \\
+		x + 2y + 3z = 14 \\
+		x + 4y + 9z = 36
+	\end{cases}
+	$$
+\end{enumerate}
+
+\subsection{Sujets types Bac}
+
+\exercice{Sujet type Bac — relation polynomiale et récurrence \hfill \difficile}
+On considère les matrices
+$$
+A = \begin{pmatrix}1&0&-1\\0&1&4\\0&0&1\end{pmatrix}, \qquad
+B = \begin{pmatrix}3&1&2\\2&0&1\\0&0&-1\end{pmatrix}, \qquad
+I_3 = \begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}.
+$$
+\begin{enumerate}
+	\item
+	\begin{enumerate}
+		\item Calculer $\det A$. Conclure. \hfill (0,5 pt)
+		\item Vérifier que $2A - A^2 = I_3$. En déduire la matrice $P$ telle que
+		$A \times P = I_3$. \hfill (0,5 pt)
+	\end{enumerate}
+	\item On pose $D = ABP$. Montrer par récurrence que, pour tout
+	$n \in \N^*$, $D^n = AB^nP$. \hfill (1 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — opérations, trace et transposée \hfill \difficile}
+On considère $A = \begin{pmatrix}2&1\\0&3\end{pmatrix}$ et
+$B = \begin{pmatrix}1&-1\\2&0\end{pmatrix}$.
+\begin{enumerate}
+	\item Calculer $A + B$ et $2A - 3B$. \hfill (0,75 pt)
+	\item Calculer $AB$ et $BA$. Que remarque-t-on ? \hfill (1 pt)
+	\item Calculer $\operatorname{tr}(A)$, $\operatorname{tr}(B)$,
+	$\operatorname{tr}(AB)$ et $\operatorname{tr}(BA)$. Vérifier que
+	$\operatorname{tr}(AB) = \operatorname{tr}(BA)$ bien que $AB \neq BA$. \hfill (1 pt)
+	\item Déterminer ${}^{t}\!A$ et vérifier que
+	$\operatorname{tr}({}^{t}\!A) = \operatorname{tr}(A)$. \hfill (0,5 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — système $2\times 2$ par la matrice inverse \hfill \difficile}
+On considère la matrice $A = \begin{pmatrix}3&2\\4&3\end{pmatrix}$ et le
+système
+$$
+(S) : \begin{cases} 3x + 2y = 7 \\ 4x + 3y = 10 \end{cases}
+$$
+\begin{enumerate}
+	\item Calculer $\det A$. La matrice $A$ est-elle inversible ? \hfill (0,5 pt)
+	\item Déterminer $A^{-1}$. \hfill (1 pt)
+	\item Écrire $(S)$ sous la forme matricielle $AX = B$. \hfill (0,5 pt)
+	\item En utilisant $A^{-1}$, résoudre $(S)$. \hfill (1 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — puissance par décomposition \hfill \difficile}
+On considère la matrice $A = \begin{pmatrix}3&-1\\1&1\end{pmatrix}$.
+\begin{enumerate}
+	\item Calculer $A^2$ et vérifier que $A^2 = 4A - 4\,I_2$. \hfill (1 pt)
+	\item On pose $N = A - 2\,I_2$. Calculer $N^2$. \hfill (0,75 pt)
+	\item Démontrer par récurrence que, pour tout entier $n \geqslant 1$,
+	$$
+	A^n = 2^n I_2 + n\,2^{n-1} N.
+	$$
+	\hfill (1,5 pt)
+	\item Calculer $A^3$ à l'aide de la formule, puis vérifier directement. \hfill (0,75 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — inverse par relation et système $3\times 3$ \hfill \difficile}
+On considère la matrice $C = \begin{pmatrix}0&1&1\\1&0&1\\1&1&0\end{pmatrix}$.
+\begin{enumerate}
+	\item Calculer $C^2$. \hfill (1 pt)
+	\item Vérifier que $C^2 - C = 2\,I_3$. \hfill (0,5 pt)
+	\item En déduire que $C$ est inversible et déterminer $C^{-1}$. \hfill (1 pt)
+	\item En déduire les solutions du système
+	$$
+	(S) : \begin{cases} y + z = 2 \\ x + z = 0 \\ x + y = 4 \end{cases}
+	$$
+	\hfill (1 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — déterminant, trace et inversibilité \hfill \difficile}
+On donne deux matrices carrées d'ordre $3$, $M$ et $N$, telles que
+$\det(M) = 3$ et $\det(N) = -2$, ainsi que deux matrices carrées d'ordre $2$,
+$A$ et $B$, telles que $\operatorname{tr}(A) = 5$ et $\operatorname{tr}(B) = -1$.
+\begin{enumerate}
+	\item Calculer $\det(MN)$, $\det(M^2 N^3)$ et $\det({}^{t}\!M)$. \hfill (1 pt)
+	\item La matrice $M$ est-elle inversible ? Justifier. \hfill (0,5 pt)
+	\item Peut-on avoir $MN = NM = I_3$ (c'est-à-dire $N = M^{-1}$) ? Justifier
+	à l'aide des déterminants. \hfill (1 pt)
+	\item Calculer $\operatorname{tr}(A + B)$ et $\operatorname{tr}(2A - 3B)$. \hfill (0,75 pt)
+	\item On donne $AB = \begin{pmatrix}2&1\\0&3\end{pmatrix}$. Donner
+	$\operatorname{tr}(BA)$ sans calculer $BA$. \hfill (0,5 pt)
+\end{enumerate}
