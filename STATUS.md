@@ -24,7 +24,7 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
 | Partie | État |
 |---|---|
 | Algèbre (arithmétique, matrices, complexes) | Terminé. Chapitres Complexes, Arithmétique et Calcul matriciel alignés sur le modèle type le 2026-08-27 (matriciel : les 6 sujets types matrices ont quitté `entrainement.tex` pour le chapitre). |
-| Analyse (limites → équa diff) | Terminé. **2026-08-27 :** fusion de « Limites » et de la partie Continuité de « Continuité et dérivabilité » en un chapitre unique `limites_continuite.tex` (exemples/exercices sur $\ln$/$\exp$, aligné modèle type, 5 sujets types Bac) ; l'ancien chapitre 5 devient « Dérivabilité » ; `fonctions.tex` recentré en « Étude d'une fonction » (plan d'étude, diagramme branches infinies, convexité, position courbe/droite, identification f/f'/f''). `limites.tex` et `continuite.tex` supprimés. |
+| Analyse (limites → équa diff) | Terminé. **2026-08-27 :** fusion de « Limites » et de la partie Continuité de « Continuité et dérivabilité » en un chapitre unique `limites_continuite.tex` (exemples/exercices sur $\ln$/$\exp$, aligné modèle type, 5 sujets types Bac) ; l'ancien chapitre 5 devient « Dérivabilité » ; `fonctions.tex` recentré en « Étude d'une fonction » ; `logarithme.tex` et `exponentielle.tex` resserrés en chapitres-référence (def/propriétés/théorème/dérivée $\ln u$ et $\e^u$ + batteries de calcul direct en 2 colonnes ; section équa-diff retirée de `exponentielle.tex`, doublons FI/études renvoyés aux chapitres concernés). `limites.tex` et `continuite.tex` supprimés. |
 | Géométrie (barycentre → espace) | Terminé. Chapitres Isométries, Barycentre et Géométrie dans l'espace (créé de zéro) alignés sur le modèle type le 2026-08-27. |
 | Probabilités (5 sous-chapitres) | Terminé |
 | Sujets officiels Bacc Série S | 2021, 2022, 2023, 2024, 2025, 2026 transcrits. À compléter au fil des sessions envoyées par l'utilisateur (années manquantes : 2027+ à venir, années < 2021 non demandées pour l'instant). |
@@ -46,8 +46,11 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
     plan d'étude, diagramme des branches infinies, convexité, position
     courbe/droite, identification f/f'/f'' sur figure ; ln/exp uniquement ;
     5 sujets types Bac ; PR `chapitre-etude-fonctions`).
-  - Restent : analyse (intégrales, logarithme, exponentielle, suites ;
-    équa diff a déjà 2 sujets bac), probabilités (5 fichiers).
+  - Restent : analyse (intégrales, suites ; équa diff a déjà 2 sujets bac
+    mais ni citation ni échauffement/V-F), probabilités (5 fichiers).
+    NB : `logarithme.tex` / `exponentielle.tex` volontairement resserrés
+    en chapitres-référence (PR #21) — pas de 5 sujets types (couverts par
+    « Limites et continuité », « Dérivabilité », « Étude d'une fonction »).
 - Si l'utilisateur envoie un nouveau sujet officiel (PDF ou photos), il
   s'ajoute dans `parties/annales/bac_20XX.tex` + une ligne `\input` dans
   `sujet_types.tex`, à la bonne place chronologique.

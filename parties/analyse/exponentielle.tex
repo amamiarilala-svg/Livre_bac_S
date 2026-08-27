@@ -1,617 +1,364 @@
 % ============================================================
-%  CHAPITRE : FONCTION EXPONENTIELLE NÉPÉRIENNE
-%  Mazava Maths — Terminale S
-%  Calibré sur les sujets BAC S Madagascar 2021–2023
+%  CHAPITRE : FONCTION EXPONENTIELLE
+%  Mazava Maths — Terminale S (Bacc Série S, Madagascar)
+%  Chapitre-référence resserré (demande utilisateur 2026-08-27) :
+%  définition, propriétés, théorèmes, dérivée de e^u, fonction
+%  puissance, et l'essentiel des exercices de calcul direct en
+%  deux colonnes.
+%  Les FI, l'étude complète de fonctions et les équations
+%  différentielles sont traitées aux chapitres « Limites et
+%  continuité », « Étude d'une fonction » et « Équations
+%  différentielles » (on évite les doublons).
+%  Environnements : definition, propriete, theoreme, methode,
+%                   attention, astucebac, exemple, exercice,
+%                   solution, remarque
 % ============================================================
 
-\chapter{Fonction exponentielle népérienne}
+\chapter{Fonction exponentielle}
+
+\begin{citationchapitre}
+	« La fonction exponentielle est la seule, à un coefficient près, qui soit
+	égale à sa propre dérivée : elle se reproduit elle-même. »\\[0.4em]
+	— adage d'analyse
+\end{citationchapitre}
 
 \begin{objectifs}
-	\begin{itemize}
-		\item Connaître la définition et les propriétés algébriques de $\e^x$.
-		\item Résoudre des équations, inéquations et systèmes avec $\e^x$.
-		\item Calculer des limites classiques avec $\e^x$.
-		\item Étudier des fonctions construites à partir de $\e^x$.
-		\item Calculer des primitives du type $u'\e^u$.
-		\item Résoudre des équations différentielles du premier ordre.
+	\begin{itemize}[label=\textbullet]
+		\item Connaître $\exp$ comme \textbf{réciproque} de $\ln$ et ses
+		\textbf{propriétés algébriques}.
+		\item Connaître les \textbf{limites usuelles} et \textbf{dériver} $\e^{u}$.
+		\item Résoudre \textbf{équations, inéquations et systèmes} avec $\e^{x}$.
+		\item Connaître les fonctions $x\mapsto a^{x}$ et $x\mapsto u(x)^{v(x)}$.
 	\end{itemize}
 \end{objectifs}
 
-% ----------------------------------------------------------------
+
+% ================================================================
 \section{Définition}
-% ----------------------------------------------------------------
+% ================================================================
 
 \begin{definition}
-	La fonction \textbf{exponentielle népérienne}, notée $\exp$ ou $x\mapsto\e^x$,
-	est la bijection réciproque de la fonction $\ln$ sur $\R$ :
+	La fonction \textbf{exponentielle}, notée $\exp$ ou $x\mapsto\e^{x}$, est la
+	bijection \textbf{réciproque} de $\ln$ :
 	\[
-	\forall x \in \R,\; \forall y > 0 : \quad
-	y = \e^x \iff x = \ln y.
+	\forall x\in\R,\ \forall y>0:\qquad
+	y=\e^{x}\iff x=\ln y.
 	\]
-	En particulier : $\e^0 = 1$, $\e^1 = \e \approx 2{,}718$ et
-	$\ln(\e^x) = x$ pour tout $x\in\R$, $\e^{\ln x} = x$ pour tout $x>0$.
+	Ainsi $\e^{0}=1$, $\e^{1}=\e$, et
+	\[
+	\ln(\e^{x})=x \ \ (x\in\R),\qquad
+	\e^{\ln x}=x \ \ (x>0).
+	\]
 \end{definition}
 
 \begin{attention}
-	$\e^x > 0$ pour tout $x \in \R$ : l'exponentielle ne s'annule jamais
-	et ne prend que des valeurs \textbf{strictement positives}.
+	$\e^{x}>0$ pour tout $x\in\R$ : l'exponentielle ne s'annule jamais.
 \end{attention}
 
-% ----------------------------------------------------------------
-\section{Propriétés algébriques}
-% ----------------------------------------------------------------
-
-\begin{propriete}{Règles de calcul}{}
-	Pour tous réels $a$ et $b$ :
-	\begin{center}
-		\renewcommand{\arraystretch}{2.0}
-		\begin{tabular}{|c|c|}
-			\hline
-			\textbf{Propriété} & \textbf{Formule} \\
-			\hline
-			Produit & $\e^{a+b} = \e^a \cdot \e^b$ \\
-			\hline
-			Quotient & $\e^{a-b} = \dfrac{\e^a}{\e^b}$ \\
-			\hline
-			Inverse & $\e^{-a} = \dfrac{1}{\e^a}$ \\
-			\hline
-			Puissance & $\left(\e^a\right)^n = \e^{na}$, \quad $n\in\Z$ \\
-			\hline
-			Puissance réelle & $\left(\e^a\right)^\alpha = \e^{\alpha a}$, \quad $\alpha\in\R$ \\
-			\hline
-			Valeur en 0 & $\e^0 = 1$ \\
-			\hline
-		\end{tabular}
-	\end{center}
+\begin{propriete}{Variation}{prop_exp_var}
+	$\exp$ est dérivable sur $\R$, $(\e^{x})'=\e^{x}>0$ : elle est
+	\textbf{strictement croissante} sur $\R$, de $0$ (en $-\infty$) à $+\infty$.
+	Sa courbe est la symétrique de $\mathcal C_{\ln}$ par rapport à la droite
+	$y=x$.
 \end{propriete}
 
-\begin{attention}
-	$\e^{a+b} \neq \e^a + \e^b$ \quad et \quad $\e^{a \times b} \neq \e^a \times \e^b$.
-\end{attention}
-
-\begin{exemple}
-	Simplifier les expressions suivantes :
-	\[
-	A = \e^3 \cdot \e^{-1}, \qquad
-	B = \frac{\e^{2x+1}}{\e^{x-1}}, \qquad
-	C = \left(\e^{3x}\right)^2 \cdot \e^{-4x}.
-	\]
-	\[
-	A = \e^{3-1} = \e^2.
-	\]
-	\[
-	B = \e^{(2x+1)-(x-1)} = \e^{x+2}.
-	\]
-	\[
-	C = \e^{6x} \cdot \e^{-4x} = \e^{2x}.
-	\]
-\end{exemple}
-
-% ----------------------------------------------------------------
-\section{Limites usuelles}
-% ----------------------------------------------------------------
-
-\begin{propriete}{Limites aux bornes et limites classiques}{}
-	\begin{center}
-		\renewcommand{\arraystretch}{2.2}
-		\begin{tabular}{|c|c|}
-			\hline
-			\textbf{Limite} & \textbf{Résultat} \\
-			\hline
-			$\displaystyle\lim_{x\to-\infty}\e^x$ & $0$ \\
-			\hline
-			$\displaystyle\lim_{x\to+\infty}\e^x$ & $+\infty$ \\
-			\hline
-			$\displaystyle\lim_{x\to-\infty} x\e^x$ & $0$ \quad ($\e^x$ écrase $x$) \\
-			\hline
-			$\displaystyle\lim_{x\to+\infty} \dfrac{\e^x}{x^n}$ \quad ($n\geq 1$) & $+\infty$ \quad ($\e^x$ domine $x^n$) \\
-			\hline
-			$\displaystyle\lim_{x\to-\infty} x^n\e^x$ \quad ($n\geq 1$) & $0$ \quad ($\e^x$ écrase $x^n$) \\
-			\hline
-			$\displaystyle\lim_{x\to 0}\dfrac{\e^x - 1}{x}$ & $1$ \\
-			\hline
-		\end{tabular}
-	\end{center}
-\end{propriete}
-
-\begin{astucebac}
-	La limite $\displaystyle\lim_{x\to 0}\frac{\e^x-1}{x}=1$ est utilisée au BAC
-	pour lever des formes indéterminées $\frac{0}{0}$
-	et pour étudier la dérivabilité en $x_0=0$.
-	Retenir également : $\e^x$ \textbf{l'emporte toujours} sur toute puissance de $x$.
-\end{astucebac}
-
-\begin{exemple}
-	Calculer $\displaystyle L = \lim_{x\to+\infty}\frac{x^2+3}{2\e^x}$.
-	
-	On écrit $\dfrac{x^2+3}{2\e^x} = \dfrac{1}{2}\cdot\dfrac{x^2}{\e^x} + \dfrac{3}{2\e^x}$.
-	Or $\displaystyle\lim_{x\to+\infty}\frac{x^2}{\e^x}=0$ et
-	$\displaystyle\lim_{x\to+\infty}\frac{1}{\e^x}=0$, donc $L = 0$.
-\end{exemple}
-
-% ----------------------------------------------------------------
-\section{Dérivée et fonctions composées}
-% ----------------------------------------------------------------
-
-\begin{propriete}{Dérivées avec $\e^x$}{}
-	\begin{center}
-		\renewcommand{\arraystretch}{2.2}
-		\begin{tabular}{|c|c|c|}
-			\hline
-			\textbf{Fonction} & \textbf{Dérivée} & \textbf{Domaine} \\
-			\hline
-			$\e^x$ & $\e^x$ & $\R$ \\
-			\hline
-			$\e^{u(x)}$ & $u'(x)\cdot\e^{u(x)}$ & $\R$ \\
-			\hline
-			$\e^{ax+b}$ & $a\,\e^{ax+b}$ & $\R$ \\
-			\hline
-			$\e^{-x}$ & $-\e^{-x}$ & $\R$ \\
-			\hline
-		\end{tabular}
-	\end{center}
-\end{propriete}
-
-\begin{methode}
-	Pour dériver $\e^{u(x)}$ :
-	\begin{enumerate}
-		\item Identifier $u(x)$.
-		\item Calculer $u'(x)$.
-		\item Appliquer : $\bigl(\e^u\bigr)' = u' \cdot \e^u$.
-	\end{enumerate}
-\end{methode}
-
-\begin{exemple}
-	Calculer les dérivées des fonctions suivantes :
-	\[
-	f(x) = \e^{3x^2-1}, \qquad
-	g(x) = x^2\e^{-x}, \qquad
-	h(x) = \frac{\e^x - 1}{\e^x + 1}.
-	\]
-	\[
-	f'(x) = 6x\,\e^{3x^2-1}.
-	\]
-	\[
-	g'(x) = 2x\e^{-x} + x^2(-1)\e^{-x} = x(2-x)\e^{-x}.
-	\]
-	\[
-	h'(x) = \frac{\e^x(\e^x+1) - \e^x(\e^x-1)}{(\e^x+1)^2}
-	= \frac{2\e^x}{(\e^x+1)^2}.
-	\]
-\end{exemple}
-
-% ----------------------------------------------------------------
-\section{Étude complète de $x\mapsto\e^x$}
-% ----------------------------------------------------------------
-
-\begin{propriete}{Tableau de variation de $\e^x$}{}
-	\begin{center}
-		\renewcommand{\arraystretch}{1.6}
-		\begin{tabular}{|c|ccc|}
-			\hline
-			$x$ & $-\infty$ & & $+\infty$ \\
-			\hline
-			$(\e^x)' = \e^x$ & \multicolumn{3}{c|}{$+$} \\
-			\hline
-			$\e^x$ & $0$ & $\nearrow$ & $+\infty$ \\
-			\hline
-		\end{tabular}
-	\end{center}
-	La fonction $\e^x$ est \textbf{strictement croissante} sur $\R$,
-	positive, sans extremum.
-\end{propriete}
-
-% Figure TikZ — courbe de exp
 \begin{center}
-	\begin{tikzpicture}[>=Stealth, scale=1.0]
-		\draw[->] (-3.2,0) -- (3.2,0) node[right,font=\small]{$x$};
-		\draw[->] (0,-0.3) -- (0,5.0) node[above,font=\small]{$y$};
-		% graduations x
-		\foreach \x in {-3,-2,-1,1,2,3}{
-			\draw(\x,2pt)--(\x,-2pt) node[below,font=\tiny]{\x};
-		}
-		% graduations y
-		\foreach \y in {1,2,3,4}{
-			\draw(2pt,\y)--(-2pt,\y) node[left,font=\tiny]{\y};
-		}
-		% courbe exp
-		\draw[thick, domain=-3.1:1.6, samples=80]
-		plot(\x,{exp(\x)});
-		% tangente en x=0 (pente 1, y=x+1)
-		\draw[dashed,gray,domain=-2:2]
-		plot(\x,{\x+1}) node[right,font=\tiny,gray]{$y=x+1$};
-		% point (0,1)
-		\filldraw (0,1) circle(2pt) node[above right,font=\small]{$(0,1)$};
-		% asymptote
-		\draw[dashed,gray!60] (-3.1,0)--(3.1,0);
-		\node[right,font=\small] at (1.5,{exp(1.5)}){$\mathcal{C}_{\exp}$};
-		\node[below left,font=\small] at(0,0){$O$};
-	\end{tikzpicture}
+\begin{tikzpicture}[>=Stealth, scale=0.95]
+	\draw[->] (-3.2,0) -- (2.4,0) node[right,font=\small] {$x$};
+	\draw[->] (0,-0.4) -- (0,4.4) node[above,font=\small] {$y$};
+	\foreach \x in {-3,-2,-1,1,2} \draw (\x,0.06)--(\x,-0.06) node[below,font=\tiny]{$\x$};
+	\foreach \y in {1,2,3,4} \draw (0.06,\y)--(-0.06,\y) node[left,font=\tiny]{$\y$};
+	\draw[thick,domain=-3.1:1.5,samples=120] plot (\x,{exp(\x)});
+	\draw[gray!55,dashed,domain=-2.2:1.9] plot (\x,{\x+1});
+	\node[gray,font=\scriptsize] at (1.9,2.6) {$y=x+1$};
+	\filldraw (0,1) circle (1.6pt);
+	\node[font=\scriptsize] at (-0.5,1.15) {$(0\,;1)$};
+	\node[font=\small] at (0.55,3.6) {$\mathcal C_{\exp}$};
+\end{tikzpicture}
 \end{center}
 
-\begin{remarque}
-	Les courbes de $\ln$ et de $\e^x$ sont \textbf{symétriques}
-	par rapport à la droite $y=x$
-	(ce sont des fonctions réciproques l'une de l'autre).
-\end{remarque}
 
-% ----------------------------------------------------------------
-\section{Équations et inéquations avec $\e^x$}
-% ----------------------------------------------------------------
+% ================================================================
+\section{Propriétés algébriques}
+% ================================================================
 
-\begin{methode}
-	\textbf{Équations :}
-	\begin{itemize}
-		\item $\e^{u(x)} = a$ avec $a>0$ : $u(x) = \ln a$.
-		\item $\e^{u(x)} = \e^{v(x)}$ : $u(x) = v(x)$ \quad (bijectivité).
-		\item $\e^{u(x)} = 0$ : \textbf{impossible} (pas de solution).
-	\end{itemize}
-	\textbf{Inéquations :} $\e^x$ est croissante, donc :
-	\[
-	\e^{u(x)} \leq \e^{v(x)} \iff u(x) \leq v(x).
-	\]
-\end{methode}
-
-\begin{exemple}
-	Résoudre dans $\R$ :
-	\[
-	\text{a)}\quad \e^{2x-1} = \e^{x+3}
-	\qquad
-	\text{b)}\quad \e^{x^2} \leq \e^{2x}
-	\qquad
-	\text{c)}\quad \e^{2x} - 3\e^x + 2 = 0
-	\]
-	
-	\textbf{a)} $2x-1 = x+3 \implies x = 4$. \quad $S=\{4\}$.
-	
-	\textbf{b)} $x^2 \leq 2x \implies x^2-2x\leq 0
-	\implies x(x-2)\leq 0 \implies x\in[0\,;2]$.
-	
-	\textbf{c)} On pose $X = \e^x > 0$ :
-	$X^2 - 3X + 2 = 0 \implies (X-1)(X-2)=0$.
-	$X=1 \implies \e^x=1 \implies x=0$ ;
-	$X=2 \implies \e^x=2 \implies x=\ln 2$.
-	$S = \{0\,;\,\ln 2\}$.
-\end{exemple}
-
-% ----------------------------------------------------------------
-\section{Primitives avec $\e^x$}
-% ----------------------------------------------------------------
-
-\begin{propriete}{Primitives faisant intervenir $\e^x$}{}
+\begin{propriete}{Règles de calcul}{prop_exp_algebre}
+	Pour tous réels $a$, $b$ et tout $\alpha\in\R$ :
 	\begin{center}
-		\renewcommand{\arraystretch}{2.2}
-		\begin{tabular}{|c|c|}
-			\hline
-			\textbf{Fonction} & \textbf{Primitive} \\
-			\hline
-			$\e^x$ & $\e^x + C$ \\
-			\hline
-			$\e^{ax+b}$ & $\dfrac{1}{a}\e^{ax+b} + C$ \\
-			\hline
-			$u'(x)\,\e^{u(x)}$ & $\e^{u(x)} + C$ \\
-			\hline
-			$\e^{-x}$ & $-\e^{-x} + C$ \\
-			\hline
-		\end{tabular}
+	\renewcommand{\arraystretch}{1.9}
+	\begin{tabular}{>{\raggedright\arraybackslash}p{3.2cm}
+	                >{\centering\arraybackslash}p{4.6cm}}
+	\hline
+	Produit     & $\e^{a+b}=\e^{a}\,\e^{b}$ \\
+	Quotient    & $\e^{a-b}=\dfrac{\e^{a}}{\e^{b}}$ \\
+	Inverse     & $\e^{-a}=\dfrac{1}{\e^{a}}$ \\
+	Puissance   & $\bigl(\e^{a}\bigr)^{\alpha}=\e^{\alpha a}$ \\
+	\hline
+	\end{tabular}
 	\end{center}
 \end{propriete}
 
-\begin{astucebac}
-	Dès que vous voyez $u'\e^u$, la primitive est $\e^u$.
-	Si le coefficient n'est pas exactement $u'$, ajustez par un facteur.
-\end{astucebac}
+\begin{attention}
+	$\e^{a+b}\neq\e^{a}+\e^{b}$ \quad et \quad $\e^{ab}\neq\e^{a}\times\e^{b}$.
+\end{attention}
 
 \begin{exemple}
-	Calculer :
-	$\displaystyle\int_0^1 (2x+1)\e^{x^2+x}\dd x$.
-	
-	On pose $u = x^2+x$, $u' = 2x+1$.
-	On reconnaît $u'\e^u$, donc :
-	\[
-	\int_0^1 (2x+1)\e^{x^2+x}\dd x
-	= \Big[\e^{x^2+x}\Big]_0^1
-	= \e^2 - \e^0 = \e^2 - 1.
-	\]
+	$A=\e^{3}\,\e^{-1}=\e^{2}$ ;
+	\quad
+	$B=\dfrac{\e^{2x+1}}{\e^{x-1}}=\e^{x+2}$ ;
+	\quad
+	$C=\bigl(\e^{3x}\bigr)^{2}\,\e^{-4x}=\e^{6x-4x}=\e^{2x}$.
 \end{exemple}
 
-% ----------------------------------------------------------------
-\section{Fonction puissance $x\mapsto a^x$}
-% ----------------------------------------------------------------
 
-\begin{definition}
-	Pour tout réel $a>0$ et tout réel $x$ :
-	\[
-	a^x = \e^{x\ln a}.
-	\]
-\end{definition}
+% ================================================================
+\section{Limites usuelles}
+% ================================================================
 
-\begin{propriete}{Dérivée de $a^x$}{}
-	\[
-	\left(a^x\right)' = \ln(a)\cdot a^x.
-	\]
-	En particulier, si $u$ est dérivable :
-	$\left(a^{u(x)}\right)' = u'(x)\ln(a)\cdot a^{u(x)}$.
+\begin{propriete}{Limites à connaître}{prop_exp_limites}
+	\begin{center}
+	\renewcommand{\arraystretch}{2.0}
+	\begin{tabular}{>{\raggedright\arraybackslash}p{5.4cm}
+	                >{\centering\arraybackslash}p{2.0cm}}
+	\hline
+	$\displaystyle\lim_{x\to-\infty}\e^{x}$                    & $0$ \\
+	$\displaystyle\lim_{x\to+\infty}\e^{x}$                    & $+\infty$ \\
+	$\displaystyle\lim_{x\to+\infty}\dfrac{\e^{x}}{x^{n}}$ \ ($n\geq 1$) & $+\infty$ \\
+	$\displaystyle\lim_{x\to-\infty}x^{n}\,\e^{x}$ \ ($n\geq 1$) & $0$ \\
+	$\displaystyle\lim_{x\to 0}\dfrac{\e^{x}-1}{x}$            & $1$ \\
+	\hline
+	\end{tabular}
+	\end{center}
 \end{propriete}
 
-% ----------------------------------------------------------------
-\section{Équations différentielles du premier ordre}
-% ----------------------------------------------------------------
+\begin{remarque}
+	$\displaystyle\lim_{x\to 0}\frac{\e^{x}-1}{x}=1$ est le nombre dérivé
+	$(\e^{x})'_{x=0}$. La hiérarchie \og l'exponentielle l'emporte sur toute
+	puissance \fg\ et l'usage de ces limites pour lever les formes
+	indéterminées sont traités au chapitre \og Limites et continuité \fg.
+\end{remarque}
 
-\begin{definition}
-	Une \textbf{équation différentielle} est une équation dont l'inconnue
-	est une \textbf{fonction} et qui fait intervenir cette fonction
-	et ses dérivées.
-\end{definition}
 
-\begin{theoreme}[Solution de $y' + ay = 0$]
-	L'équation différentielle $y' + ay = 0$ ($a\in\R$) a pour
-	\textbf{solution générale} sur $\R$ :
-	\[
-	\boxed{y(x) = C\,\e^{-ax}, \quad C \in \R.}
-	\]
+% ================================================================
+\section{Dérivée de \texorpdfstring{$\e^{u}$}{e^u}}
+% ================================================================
+
+\begin{theoreme}[Dérivée de l'exponentielle]
+	$\exp$ est dérivable sur $\R$ et $(\e^{x})'=\e^{x}$.
 \end{theoreme}
 
+\begin{propriete}{Dérivée d'une composée avec $\exp$}{prop_exp_derivee}
+	Si $u$ est dérivable sur $\R$ :
+	\begin{center}
+	\renewcommand{\arraystretch}{2.0}
+	\begin{tabular}{>{\centering\arraybackslash}p{3.0cm}
+	                >{\centering\arraybackslash}p{3.0cm}}
+	\hline
+	Fonction & Dérivée \\
+	\hline
+	$\e^{u}$        & $u'\,\e^{u}$ \\
+	$\e^{ax+b}$     & $a\,\e^{ax+b}$ \\
+	\hline
+	\end{tabular}
+	\end{center}
+\end{propriete}
+
 \begin{methode}
-	Pour résoudre $y' = ky$ (ou $y' - ky = 0$) :
-	\begin{enumerate}
-		\item Reconnaître la forme $y' + ay = 0$ avec $a = -k$.
-		\item Écrire la solution générale $y = C\e^{-ax} = C\e^{kx}$.
-		\item Si une condition initiale $y(x_0)=y_0$ est donnée,
-		substituer pour trouver $C$.
-	\end{enumerate}
+	Pour dériver $x\mapsto\e^{u(x)}$ : identifier $u$, calculer $u'$, écrire
+	$u'\,\e^{u}$.
 \end{methode}
 
 \begin{exemple}
-	Résoudre $y' - 2y = 0$ avec $y(0) = 3$.
-	
-	Solution générale : $y = C\e^{2x}$.
-	Condition : $y(0) = C = 3$.
 	\[
-	\boxed{y(x) = 3\e^{2x}.}
+	\bigl(\e^{3x^{2}-1}\bigr)'=6x\,\e^{3x^{2}-1},
+	\qquad
+	\bigl(x^{2}\e^{-x}\bigr)'=(2x-x^{2})\e^{-x}=x(2-x)\e^{-x},
+	\]
+	\[
+	\left(\frac{\e^{x}-1}{\e^{x}+1}\right)'
+	=\frac{\e^{x}(\e^{x}+1)-\e^{x}(\e^{x}-1)}{(\e^{x}+1)^{2}}
+	=\frac{2\e^{x}}{(\e^{x}+1)^{2}}.
 	\]
 \end{exemple}
 
-% ----------------------------------------------------------------
-\section{Exercices résolus}
-% ----------------------------------------------------------------
-
-\exercice{\etoilepleine\etoilevide\etoilevide}
-\begin{enumerate}
-	\item Simplifier : $A = \dfrac{\e^{3x}\cdot\e^{-x}}{\e^{x+1}}$.
-	\item Résoudre dans $\R$ : $\e^{2x} - 5\e^x + 6 = 0$.
-	\item Calculer $f'(x)$ pour $f(x) = (x^2+1)\e^{-2x}$.
-\end{enumerate}
-
-\solution
-
-\textbf{1.}
-$A = \dfrac{\e^{3x-x}}{\e^{x+1}} = \dfrac{\e^{2x}}{\e^{x+1}} = \e^{2x-(x+1)} = \e^{x-1}.$
-
-\textbf{2.} On pose $X=\e^x>0$ : $X^2-5X+6=0 \implies (X-2)(X-3)=0$.
-$X=2 \implies x=\ln 2$ ; $X=3 \implies x=\ln 3$. \quad $S=\{\ln 2\,;\,\ln 3\}$.
-
-\textbf{3.}
-$f'(x) = 2x\,\e^{-2x} + (x^2+1)(-2)\e^{-2x} = \e^{-2x}(2x - 2x^2 - 2) = -2\e^{-2x}(x^2-x+1).$
-
-\bigskip
-\exercice{\etoilepleine\etoilepleine\etoilevide}
-Soit $f$ définie sur $\R$ par $f(x) = (x-1)\e^x + 2$.
-\begin{enumerate}
-	\item Calculer $\displaystyle\lim_{x\to-\infty}f(x)$ et
-	$\displaystyle\lim_{x\to+\infty}f(x)$.
-	\item Calculer $f'(x)$ et dresser le tableau de variation de $f$.
-	\item Montrer que l'équation $f(x)=0$ admet une unique solution $\alpha$
-	sur $\R$, et préciser un encadrement de $\alpha$.
-\end{enumerate}
-
-\solution
-
-\textbf{1.}
-$\displaystyle\lim_{x\to-\infty}(x-1)\e^x = 0$
-(car $x\e^x\to 0$), donc $\displaystyle\lim_{x\to-\infty}f(x) = 0+2 = 2$.
-
-$\displaystyle\lim_{x\to+\infty}(x-1)\e^x = +\infty$,
-donc $\displaystyle\lim_{x\to+\infty}f(x) = +\infty$.
-
-\textbf{2.}
-$f'(x) = \e^x + (x-1)\e^x = x\e^x$.
-
-$\e^x > 0$ toujours, donc $f'(x)$ a le signe de $x$ :
-
-\begin{center}
-	\renewcommand{\arraystretch}{1.6}
-	\begin{tabular}{|c|ccccc|}
-		\hline
-		$x$ & $-\infty$ & & $0$ & & $+\infty$ \\
-		\hline
-		$f'(x)$ & & $-$ & $0$ & $+$ & \\
-		\hline
-		$f(x)$ & $2$ & $\searrow$ & $1$ & $\nearrow$ & $+\infty$ \\
-		\hline
-	\end{tabular}
-\end{center}
-
-\textbf{3.} $f$ admet un minimum de $1>0$ en $x=0$.
-Or $\displaystyle\lim_{x\to-\infty}f(x)=2>0$ et $f$ est toujours $\geq 1$.
-\textbf{Attention :} $f(x)\geq 1 > 0$ pour tout $x$, donc $f(x)=0$
-n'admet \textbf{aucune solution} sur $\R$.
-
 \begin{remarque}
-	Cet exercice illustre l'importance du minimum : avant d'invoquer le TVI,
-	vérifier que la fonction change de signe.
+	Réciproquement, $u'\,\e^{u}$ admet $\e^{u}$ pour primitive : voir le
+	chapitre \og Primitives et intégrale \fg. Les équations différentielles
+	$y'=ky$ et $y'+ay=b$ sont traitées au chapitre \og Équations
+	différentielles \fg.
 \end{remarque}
 
-\bigskip
-\exercice{\etoilepleine\etoilepleine\etoilepleine}
-Soit $f$ définie sur $[0\,;+\infty[$ par :
-$f(0)=-2$ et $f(x)=x-2+\e^{-\frac{1}{x}}$ pour $x>0$.
 
+% ================================================================
+\section{Équations, inéquations et systèmes}
+% ================================================================
+
+\begin{methode}
+	\begin{itemize}[label=\textbullet]
+		\item $\e^{u(x)}=a$ \ ($a>0$) $\iff u(x)=\ln a$ ; \ si $a\leq 0$ : pas de
+		solution ;
+		\item $\e^{u(x)}=\e^{v(x)} \iff u(x)=v(x)$ ;
+		\item $\e^{u(x)}\leq\e^{v(x)} \iff u(x)\leq v(x)$ ($\exp$ croissante) ;
+		\item équation en $\e^{2x}$, $\e^{x}$ : poser $X=\e^{x}$ (\textbf{avec}
+		$X>0$) ;
+		\item système $\{a\,\e^{x}+b\,\e^{y}=c\}$ : poser $X=\e^{x}$, $Y=\e^{y}$
+		($X,Y>0$).
+	\end{itemize}
+\end{methode}
+
+\begin{exemple}
+	\textbf{a)} $\e^{2x}-3\e^{x}+2=0$ : on pose $X=\e^{x}>0$,
+	$X^{2}-3X+2=0\Rightarrow X=1$ ou $X=2$, d'où $x=0$ ou $x=\ln 2$.
+
+	\textbf{b)} $\e^{x^{2}}\leq\e^{2x}\iff x^{2}\leq 2x\iff x(x-2)\leq 0
+	\iff x\in[0\,;2]$.
+
+	\textbf{c)} Système
+	$\begin{cases}\e^{x}+\e^{y}=5\\ \e^{x}\,\e^{y}=6\end{cases}$ :
+	$X=\e^{x}$, $Y=\e^{y}$ sont les solutions de $t^{2}-5t+6=0$, soit
+	$\{2\,;3\}$. D'où $(x\,;y)=(\ln 2\,;\ln 3)$ ou $(\ln 3\,;\ln 2)$.
+\end{exemple}
+
+
+% ================================================================
+\section{Fonctions \texorpdfstring{$x\mapsto a^{x}$}{a^x} et \texorpdfstring{$x\mapsto u^{v}$}{u^v}}
+% ================================================================
+
+\begin{definition}
+	Pour $a>0$ et pour $u(x)>0$ :
+	\[
+	a^{x}=\e^{x\ln a},
+	\qquad
+	u(x)^{v(x)}=\e^{\,v(x)\ln u(x)}.
+	\]
+\end{definition}
+
+\begin{propriete}{Dérivée de $a^{x}$}{prop_puissance}
+	\[
+	\bigl(a^{x}\bigr)'=\ln a\cdot a^{x},
+	\qquad
+	\bigl(a^{u}\bigr)'=u'\ln a\cdot a^{u}.
+	\]
+\end{propriete}
+
+\begin{exemple}
+	$\bigl(2^{x}\bigr)'=\ln 2\cdot 2^{x}$.
+	\quad
+	$\displaystyle\lim_{x\to 0^+}x^{x}=\lim_{x\to 0^+}\e^{x\ln x}=\e^{0}=1$
+	(car $x\ln x\to 0$).
+\end{exemple}
+
+
+% ================================================================
+\section{Exercices d'entraînement}
+% ================================================================
+
+\subsection{Échauffement}
+
+\exercice{Vrai ou faux \hfill \facile}
+Répondre par \emph{vrai} ou \emph{faux} en justifiant.
 \begin{enumerate}
-	\item Étudier la continuité et la dérivabilité de $f$ à droite en $x_0=0$.
-	\item Calculer $f'(x)$ pour $x>0$ et dresser le tableau de variation.
-	\item Montrer que $\Delta : y=x-1$ est asymptote à $\mathcal{C}$ en $+\infty$.
-	Étudier la position de $\mathcal{C}$ par rapport à $\Delta$.
+	\item $\e^{x}$ peut être négatif pour $x<0$.
+	\item $\e^{a+b}=\e^{a}\,\e^{b}$ pour tous réels $a$, $b$.
+	\item $\e^{x}=2\iff x=\ln 2$.
+	\item $\displaystyle\lim_{x\to-\infty}\e^{x}=-\infty$.
+	\item $(\e^{-x})'=\e^{-x}$.
+	\item $\e^{\ln 5}=5$ et $\ln(\e^{5})=5$.
+	\item $2^{x}=\e^{x\ln 2}$.
 \end{enumerate}
 
-\solution
+\subsection{Calculs directs}
 
-\textbf{1. Continuité à droite en 0.}
-
-Quand $x\to 0^+$ : $\dfrac{1}{x}\to+\infty$, donc $\e^{-1/x}\to 0$.
-\[
-\lim_{x\to 0^+}f(x) = 0-2+0 = -2 = f(0). \quad \text{Donc $f$ est continue à droite en 0.}
-\]
-
-Dérivabilité à droite :
-\[
-\lim_{x\to 0^+}\frac{f(x)-f(0)}{x-0}
-= \lim_{x\to 0^+}\frac{x-2+\e^{-1/x}+2}{x}
-= \lim_{x\to 0^+}\left(1 + \frac{\e^{-1/x}}{x}\right).
-\]
-Or $\dfrac{\e^{-1/x}}{x} = \dfrac{1/x}{\e^{1/x}} \to 0$ quand $x\to 0^+$
-(car $\e^t/t\to+\infty$). Donc le taux est $1$ : $f$ admet une demi-tangente
-de pente $1$ en $x_0=0$.
-
-\textbf{2. Dérivée pour $x>0$.}
-\[
-f'(x) = 1 + \frac{1}{x^2}\e^{-1/x}.
-\]
-$f'(x)>0$ pour tout $x>0$ ($\e^{-1/x}>0$), donc $f$ est
-\textbf{strictement croissante} sur $]0\,;+\infty[$.
-
-\begin{center}
-	\renewcommand{\arraystretch}{1.6}
-	\begin{tabular}{|c|ccc|}
-		\hline
-		$x$ & $0$ & & $+\infty$ \\
-		\hline
-		$f'(x)$ & \multicolumn{3}{c|}{$+$} \\
-		\hline
-		$f(x)$ & $-2$ & $\nearrow$ & $+\infty$ \\
-		\hline
-	\end{tabular}
-\end{center}
-
-\textbf{3. Asymptote.}
-\[
-f(x)-(x-1) = x-2+\e^{-1/x} - x + 1 = -1+\e^{-1/x}
-\xrightarrow[x\to+\infty]{} -1+0 = -1 \neq 0.
-\]
-
-Donc $\Delta: y=x-1$ n'est \textbf{pas} asymptote.
-Testons $y=x-2$ :
-\[
-f(x)-(x-2) = \e^{-1/x} \xrightarrow[x\to+\infty]{} 0.
-\]
-Donc $\Delta: y=x-2$ est l'asymptote oblique de $\mathcal{C}$ en $+\infty$.
-
-Position : $f(x)-(x-2) = \e^{-1/x} > 0$ pour $x>0$,
-donc $\mathcal{C}$ est \textbf{au-dessus} de $\Delta$.
-
-% ----------------------------------------------------------------
-\exercice{ Extrait sujet Bac TS  2022 \hfill \difficile}
-% ----------------------------------------------------------------
-
-
-Soit $f$ la fonction définie sur $\R$ par :
-\[
-f_n(x) = \e^{nx}\ln(1+\e^{-nx}), \quad n\in\N^*.
-\]
-On désigne par $(\mathcal{C}_n)$ sa courbe représentative dans un repère
-orthonormé d'unité $2$\,cm.
-
-\medskip
-\textbf{Partie A : Étude de $f_n$}
+\exercice{Simplifier \hfill \facile}
+\begin{multicols}{2}
 \begin{enumerate}
-	\item Calculer $\displaystyle\lim_{x\to-\infty}f_n(x)$ et
-	$\displaystyle\lim_{x\to+\infty}f_n(x)$ (poser $X=\e^{-nx}$).
-	\item On considère $g_n(x) = \ln(1+\e^{-nx}) - \dfrac{1}{1+\e^{nx}}$.
-	\begin{enumerate}
-		\item Vérifier que $g_n$ est strictement décroissante sur $\R$.
-		\item En déduire que $g_n(x)>0$ pour tout $x\in\R$.
-	\end{enumerate}
-	\item Montrer que $f_n'(x) = n\e^{nx}\cdot g_n(x)$, puis dresser
-	le tableau de variation de $f_n$.
-	\item Construire $(\mathcal{C}_2)$.
+	\item $\e^{2}\,\e^{-3}$
+	\item $\dfrac{\e^{5x}}{\e^{2x}}$
+	\item $\bigl(\e^{x}\bigr)^{3}\,\e^{-2x}$
+	\item $\e^{\ln 4}$
+	\item $\e^{2\ln 3}$
+	\item $\bigl(\e^{-x}\bigr)^{2}\,\e^{3x}$
+	\item $\dfrac{\e^{x+1}}{\e}$
+	\item $\e^{\ln x+1}$ \; ($x>0$)
+\end{enumerate}
+\end{multicols}
+
+\exercice{Résoudre les équations \hfill \facile}
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\e^{x}=1$
+	\item $\e^{2x-1}=\e^{x+2}$
+	\item $\e^{x}=5$
+	\item $\e^{2x}-4\e^{x}+3=0$
+	\item $\e^{2x}+\e^{x}-6=0$
+	\item $(\e^{x}-1)(\e^{x}-\e)=0$
+	\item $\e^{x^{2}}=\e^{3x-2}$
+	\item $\e^{2x}=2\,\e^{x}$
+\end{enumerate}
+\end{multicols}
+
+\exercice{Résoudre les inéquations \hfill \moyen}
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\e^{x}<1$
+	\item $\e^{x-2}\geq 1$
+	\item $\e^{2x}\leq\e^{x+1}$
+	\item $\e^{x}>3$
+	\item $\e^{x^{2}-1}\leq 1$
+	\item $\e^{2x}-3\e^{x}+2\leq 0$
+\end{enumerate}
+\end{multicols}
+
+\exercice{Dériver \hfill \moyen}
+Préciser l'ensemble de dérivabilité.
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $f(x)=\e^{3x}$
+	\item $f(x)=\e^{-x^{2}}$
+	\item $f(x)=x\,\e^{x}$
+	\item $f(x)=\dfrac{\e^{x}}{x}$
+	\item $f(x)=(x^{2}-1)\e^{x}$
+	\item $f(x)=\dfrac{\e^{x}}{\e^{x}+1}$
+	\item $f(x)=\e^{\sqrt{x}}$ \; ($x>0$)
+	\item $f(x)=\dfrac{\e^{x}+\e^{-x}}{2}$
+\end{enumerate}
+\end{multicols}
+
+\exercice{Limites directes \hfill \moyen}
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\displaystyle\lim_{x\to-\infty}\e^{x}$
+	\item $\displaystyle\lim_{x\to+\infty}x\,\e^{-x}$
+	\item $\displaystyle\lim_{x\to-\infty}x^{2}\,\e^{x}$
+	\item $\displaystyle\lim_{x\to 0}\dfrac{\e^{x}-1}{x}$
+\end{enumerate}
+\end{multicols}
+\emph{(Formes indéterminées plus élaborées : voir chapitre
+\og Limites et continuité \fg.)}
+
+\subsection{Synthèse}
+
+\exercice{Système \hfill \moyen}
+Résoudre dans $\R^{2}$ :
+\[
+\begin{cases}
+	\e^{x}+\e^{y}=\e^{2}+1,\\[0.3em]
+	\e^{x}-\e^{y}=\e^{2}-1.
+\end{cases}
+\]
+
+\exercice{Une inégalité fondamentale \hfill \moyen}
+Soit $g(x)=\e^{x}-x-1$ sur $\R$.
+\begin{enumerate}
+	\item Calculer $g'(x)$ et dresser le tableau de variations.
+	\item En déduire que $\e^{x}\geq 1+x$ pour tout $x$, avec égalité si et
+	seulement si $x=0$.
 \end{enumerate}
 
-\textbf{Partie B : Équation différentielle}
-
-On considère l'équation différentielle $(E)$ :
-\[
-y' - 2y = \frac{-2}{1+\e^{-2x}}.
-\]
+\exercice{Fonction puissance \hfill \moyen}
 \begin{enumerate}
-	\item Vérifier que $f_2(x)=\e^{2x}\ln(1+\e^{-2x})$ est solution de $(E)$.
-	\item Résoudre dans $\R$ l'équation homogène $(E')$ : $y'-2y=0$.
-	\item Montrer qu'une fonction $\varphi$ est solution de $(E)$
-	si et seulement si $\varphi - f_2$ est solution de $(E')$.
-	\item En déduire la solution générale de $(E)$.
+	\item Écrire $3^{x}$ et $x^{x}$ ($x>0$) sous la forme $\e^{\ldots}$, puis
+	calculer leur dérivée.
+	\item Résoudre $3^{x}=5$ ; donner la valeur exacte puis une valeur
+	approchée.
 \end{enumerate}
-
-\solution
-
-\textbf{Partie A.}
-
-\textbf{1.} Posons $X=\e^{-nx}$.
-Quand $x\to-\infty$ : $X\to+\infty$ et $\e^{nx}=1/X\to 0$,
-donc $f_n(x) = \dfrac{\ln(1+X)}{X}\cdot X\cdot\e^{nx}\to 0\cdot +\infty$...
-Plus précisément : $f_n(x)=\dfrac{\ln(1+X)}{X}$ avec $X\to+\infty$,
-donc $f_n\to 0$ (ln négligeable devant $X$). Ainsi $\displaystyle\lim_{x\to-\infty}f_n(x)=0$.
-
-Quand $x\to+\infty$ : $X=\e^{-nx}\to 0^+$, $\ln(1+X)\sim X$,
-donc $f_n(x)\sim \e^{nx}\cdot\e^{-nx}=1$... Plus précisément :
-$\ln(1+X)\to\ln 1=0$ et $\e^{nx}\to+\infty$, donc forme $\infty\cdot 0$.
-On écrit $f_n(x)=\dfrac{\ln(1+\e^{-nx})}{\e^{-nx}}$; quand $x\to+\infty$
-et $X\to 0$ : $\dfrac{\ln(1+X)}{X}\to 1$, donc $f_n(x)\to 1$.
-Ainsi $\displaystyle\lim_{x\to+\infty}f_n(x)=1$ (en utilisant $\lim_{X\to 0}\frac{\ln(1+X)}{X}=1$).
-
-\textbf{2a.}
-$g_n'(x) = \dfrac{-n\e^{-nx}}{1+\e^{-nx}} + \dfrac{n\e^{nx}}{(1+\e^{nx})^2}$.
-
-On peut vérifier (après calcul) que $g_n'(x)<0$ pour tout $x$,
-donc $g_n$ est strictement décroissante.
-
-\textbf{2b.} $g_n(0)=\ln 2 - \dfrac{1}{2} > 0$ (car $\ln 2\approx 0{,}693>0{,}5$).
-Comme $g_n$ est décroissante et $\displaystyle\lim_{x\to+\infty}g_n(x)=0^+$,
-on a $g_n(x)>0$ pour tout $x\in\R$.
-
-\textbf{3.} $f_n'(x)=n\e^{nx}g_n(x)>0$ pour tout $x$ (car $\e^{nx}>0$ et $g_n>0$).
-Donc $f_n$ est \textbf{strictement croissante} sur $\R$.
-
-\begin{center}
-	\renewcommand{\arraystretch}{1.6}
-	\begin{tabular}{|c|ccc|}
-		\hline
-		$x$ & $-\infty$ & & $+\infty$ \\
-		\hline
-		$f_n'$ & \multicolumn{3}{c|}{$+$} \\
-		\hline
-		$f_n$ & $0$ & $\nearrow$ & $1$ \\
-		\hline
-	\end{tabular}
-\end{center}
-
-\textbf{Partie B.}
-
-\textbf{1. Vérification.} $f_2(x)=\e^{2x}\ln(1+\e^{-2x})$.
-\[
-f_2'(x) = 2\e^{2x}\ln(1+\e^{-2x}) + \e^{2x}\cdot\frac{-2\e^{-2x}}{1+\e^{-2x}}
-= 2f_2(x) - \frac{2}{1+\e^{2x}}
-= 2f_2(x) + \frac{-2}{1+\e^{2x}}.
-\]
-Or $\dfrac{-2}{1+\e^{2x}} = \dfrac{-2}{1+\e^{2x}}$
-et $(E)$ s'écrit $y'-2y=\dfrac{-2}{1+\e^{2x}}$ (en multipliant numérateur et dénominateur de $\dfrac{-2}{1+\e^{-2x}}$ par $\e^{2x}$).
-Donc $f_2'-2f_2 = \dfrac{-2}{1+\e^{2x}}$ : $f_2$ est bien solution de $(E)$. \checkmark
-
-\textbf{2.} $(E')$ : $y'-2y=0$ : solution générale $y=C\e^{2x}$, $C\in\R$.
-
-\textbf{3.} Soit $\varphi$ solution de $(E)$ et $w=\varphi-f_2$. Alors :
-$w'-2w = (\varphi'-2\varphi)-(f_2'-2f_2) = \dfrac{-2}{1+\e^{2x}}-\dfrac{-2}{1+\e^{2x}} = 0$.
-Donc $w$ est solution de $(E')$. La réciproque est immédiate.
-
-\textbf{4.} $\varphi - f_2 = C\e^{2x}$, donc la solution générale de $(E)$ est :
-\[
-\boxed{\varphi(x) = C\e^{2x} + \e^{2x}\ln(1+\e^{-2x}), \quad C\in\R.}
-\]
