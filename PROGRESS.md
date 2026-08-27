@@ -6,7 +6,7 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
-## 2026-08-27 — Fusion « Limites et continuité » (brouillon, PDF séparé)
+## 2026-08-27 — Fusion « Limites et continuité » + chapitre « Dérivabilité »
 
 - Nouveau fichier `parties/analyse/limites_continuite.tex` : chapitre unique
   regroupant les limites (ancien `limites.tex`) et la continuité (partie
@@ -24,13 +24,21 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
   clé de réponses ; continuité/prolongement/TVI ; **5 sujets types Bac**
   (fonction par morceaux, $\frac{\ln x}{x}$, suite implicite $\e^x+x=n$,
   fonction auxiliaire + TVI, symétrie et asymptotes).
-- Prévisualisation isolée : `apercu_limites_continuite.tex`
-  (`latexmk -pdf`, 25 p., compile sans erreur, aucun `Overfull`).
-  **Non encore intégré à `main.tex`** — en attente de validation de
-  l'utilisateur avant la refonte définitive (remplacer `limites.tex` +
-  `continuite.tex`, retirer la section Continuité de `derivation.tex`,
-  renommer le chapitre 5 en « Dérivabilité »).
-- Branche `chapitre-limites-continuite` (pas encore de PR).
+- **Intégration dans `main.tex`** : `\input{parties/analyse/limites}` et
+  `\input{parties/analyse/continuite}` remplacés par
+  `\input{parties/analyse/limites_continuite}`. Fichiers `limites.tex` et
+  `continuite.tex` (ce dernier était vide) supprimés (`git rm`).
+- **`derivation.tex` devient le chapitre « Dérivabilité »** : titre changé,
+  objectifs recentrés sur la dérivation, sections « Continuité » et
+  « Théorème des valeurs intermédiaires » retirées (désormais dans le
+  chapitre précédent), `\begin{remarque}` d'ouverture renvoyant vers lui.
+  Le reste (dérivabilité en un point, interprétation géométrique, fonction
+  dérivée, TAF, exercices) est inchangé.
+- Prévisualisation isolée conservée : `apercu_limites_continuite.tex`
+  (non incluse dans `main.tex`).
+- `latexmk -pdf main.tex` : **339 pages, 0 erreur**, pas de référence
+  non résolue, aucun `Overfull` ajouté dans les fichiers touchés.
+- Branche `chapitre-limites-continuite` → PR contre `main`.
 
 ## 2026-08-27 — Chapitre Calcul matriciel aligné sur le modèle type
 

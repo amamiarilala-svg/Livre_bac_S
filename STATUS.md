@@ -24,7 +24,7 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
 | Partie | État |
 |---|---|
 | Algèbre (arithmétique, matrices, complexes) | Terminé. Chapitres Complexes, Arithmétique et Calcul matriciel alignés sur le modèle type le 2026-08-27 (matriciel : les 6 sujets types matrices ont quitté `entrainement.tex` pour le chapitre). |
-| Analyse (limites → équa diff) | Terminé |
+| Analyse (limites → équa diff) | Terminé. **2026-08-27 :** fusion de « Limites » et de la partie Continuité de « Continuité et dérivabilité » en un chapitre unique `limites_continuite.tex` (exemples/exercices sur $\ln$/$\exp$, aligné modèle type, 5 sujets types Bac) ; l'ancien chapitre 5 devient « Dérivabilité ». `limites.tex` et `continuite.tex` supprimés. |
 | Géométrie (barycentre → espace) | Terminé. Chapitres Isométries, Barycentre et Géométrie dans l'espace (créé de zéro) alignés sur le modèle type le 2026-08-27. |
 | Probabilités (5 sous-chapitres) | Terminé |
 | Sujets officiels Bacc Série S | 2021, 2022, 2023, 2024, 2025, 2026 transcrits. À compléter au fil des sessions envoyées par l'utilisateur (années manquantes : 2027+ à venir, années < 2021 non demandées pour l'instant). |
@@ -40,18 +40,11 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
   difficulté progressive), **≥ 5 sujets types Bacc**, couverture de tout le
   programme officiel en privilégiant les notions déjà vues aux annales.
   - Faits, avec 5+ sujets types Bacc chacun : Isométries, Barycentre,
-    Complexes, Géométrie dans l'espace, Arithmétique, Calcul matriciel.
-  - **En cours de validation : « Limites et continuité »** — brouillon
-    complet dans `parties/analyse/limites_continuite.tex` (fusion de
-    `limites.tex` + partie continuité de `derivation.tex` ; exemples et
-    exercices uniquement sur $\ln$/$\exp$ ; 5 batteries de calcul de
-    limites en colonnes + 5 sujets types Bac). PDF isolé envoyé via
-    `apercu_limites_continuite.tex`. **À faire après feu vert :** intégrer
-    dans `main.tex` à la place de `limites.tex` + `continuite.tex`, retirer
-    la section Continuité de `derivation.tex` (→ chapitre « Dérivabilité »),
-    puis branche + PR.
-  - Restent : analyse (dérivation, étude de fonctions, intégrales,
-    logarithme, exponentielle, suites ; équa diff a déjà 2 sujets bac),
+    Complexes, Géométrie dans l'espace, Arithmétique, Calcul matriciel,
+    **Limites et continuité** (fusion + refonte, PR `chapitre-limites-continuite`).
+  - Restent : analyse (dérivation — chapitre désormais « Dérivabilité »,
+    à réaligner ensuite ; étude de fonctions, intégrales, logarithme,
+    exponentielle, suites ; équa diff a déjà 2 sujets bac),
     probabilités (5 fichiers).
 - Si l'utilisateur envoie un nouveau sujet officiel (PDF ou photos), il
   s'ajoute dans `parties/annales/bac_20XX.tex` + une ligne `\input` dans
