@@ -1,215 +1,716 @@
-\chapter{Suite numériques}
+% ============================================================
+%  CHAPITRE : SUITES NUMÉRIQUES
+%  Mazava Maths — Terminale S (Bacc Série S, Madagascar)
+%  Aligné sur le modèle type et le programme officiel MESUPRES
+%  (récurrence ; sens de variation ; suites majorées/minorées/
+%  bornées ; convergence, divergence, unicité ; th. de la limite
+%  monotone, comparaison, gendarmes ; u_n=f(n), u_{n+1}=g(u_n) ;
+%  n->a^n, n->n^alpha ; arithmético-géométrique, adjacentes).
+%  Environnements : definition, propriete, theoreme, methode,
+%                   attention, astucebac, exemple, exercice,
+%                   solution, remarque
+% ============================================================
 
-\section{Le raisonnement par récurrence}
-\subsection{Illustration}
-\begin{minipage}[c]{0.47\textwidth}
-		\textbf{Question :} quelles sont les deux conditions pour que tous les dominos se renversent ?
-		
-		\textbf{Réponse :} on renverse le premier domino et on s'assure que chaque domino renverse le suivant.
-	
+\chapter{Suites numériques}
+
+\begin{citationchapitre}
+	« Le raisonnement par récurrence est l'instrument qui permet de passer
+	du fini à l'infini. »\\[0.4em]
+	— d'après Henri Poincaré
+\end{citationchapitre}
+
+\begin{objectifs}
+	\begin{itemize}[label=\textbullet]
+		\item Démontrer une propriété par \textbf{récurrence} (simple ou double).
+		\item Étudier le \textbf{sens de variation} d'une suite (différence,
+		quotient, fonction associée, récurrence).
+		\item Étudier si une suite est \textbf{majorée, minorée, bornée}.
+		\item Déterminer une limite ; distinguer \textbf{convergence} et
+		\textbf{divergence} ; unicité de la limite.
+		\item Appliquer les théorèmes : \textbf{limite monotone},
+		\textbf{comparaison}, \textbf{gendarmes}.
+		\item Étudier les suites $u_n=f(n)$, $u_{n+1}=g(u_n)$,
+		\textbf{arithmético-géométriques}, \textbf{adjacentes}.
+	\end{itemize}
+\end{objectifs}
+
+
+% ================================================================
+\section{Raisonnement par récurrence}
+% ================================================================
+
+\begin{center}
+\begin{minipage}[c]{0.5\textwidth}
+	\textbf{Les dominos.} Pour être sûr que \emph{tous} les dominos tombent,
+	deux conditions suffisent :
+	\begin{itemize}[label=\textbullet]
+		\item on fait tomber le \textbf{premier} ;
+		\item chaque domino qui tombe fait tomber le \textbf{suivant}.
+	\end{itemize}
 \end{minipage}
 \hfill
-\begin{minipage}[c]{0.47\textwidth}
-	\includegraphics[width=\linewidth]{figures/analyse/domino}	
+\begin{minipage}[c]{0.42\textwidth}
+	\includegraphics[width=\linewidth]{analyse/domino}
 \end{minipage}
-\subsection{Principe du raisonnement par récurrence}
+\end{center}
+
 \begin{theoreme}[Principe de récurrence]
-	
-Soit $P(n)$ une propriété qui dépend d'un nombre naturel $n$ et
-$n_0$ un entier naturel fixé.
-
-Si la propriété $P(n)$ vérifie les deux conditions suivantes :
-
-\begin{enumerate}
-	\item \textbf{Initialisation :} $P(n_0)$ est vraie ;
-	
-	\item \textbf{Hérédité :} si $P(k)$ est vraie pour un entier naturel
-	$k \geq n_0$, alors $P(k+1)$ est vraie
-\end{enumerate}
-
-alors, \textbf{pour tout entier naturel $n \geq n_0$},
-$P(n)$ est vraie.
+	Soit $P(n)$ une propriété dépendant de l'entier $n$ et $n_0$ un entier
+	fixé. Si :
+	\begin{enumerate}
+		\item \textbf{Initialisation :} $P(n_0)$ est vraie ;
+		\item \textbf{Hérédité :} pour tout $k\geq n_0$, $P(k)\Rightarrow P(k+1)$ ;
+	\end{enumerate}
+	alors $P(n)$ est vraie pour tout entier $n\geq n_0$.
 \end{theoreme}
 
-\remarque 
-\begin{itemize}
-	
-	\item La propriété $P(n)$ peut être une égalité, une inégalité, une propriété exprimée par une phrase, \ldots
-	
-	\item La condition d'hérédité est une implication : on suppose que
-	$P(k)$ est vraie pour un nombre entier naturel $k$ supérieur ou égal à
-	$n_0$ (c'est \textbf{l'hypothèse de récurrence}) et on montre qu'alors
-	$P(k+1)$ est vraie elle aussi.
-	
-	Une propriété $P(n)$ qui vérifie cette deuxième condition est dite
-	héréditaire à partir du rang $n_0$ ; en effet, elle se transmet du nombre entier
-	$k$ à son « successeur » $k+1$.
-	
-\end{itemize}
+\begin{methode}
+	Rédaction d'une récurrence :
+	\begin{enumerate}
+		\item Énoncer clairement $P(n)$.
+		\item \textbf{Initialisation} : vérifier $P(n_0)$ (calcul explicite).
+		\item \textbf{Hérédité} : \og Supposons $P(k)$ vraie pour un $k\geq n_0$
+		\fg\ (\textbf{hypothèse de récurrence}), puis démontrer $P(k+1)$ en
+		\textbf{utilisant} cette hypothèse.
+		\item \textbf{Conclusion} : \og d'après le principe de récurrence,
+		$P(n)$ est vraie pour tout $n\geq n_0$ \fg.
+	\end{enumerate}
+\end{methode}
 
 \begin{center}
 	\includegraphics[width=\textwidth]{analyse/resume_recurrence}
 \end{center}
 
-\exerciceresolu 
-$(u_n)$ est la suite définie par $u_0=0$ et pour tout entier naturel $n, u_{n+1}=2u_n+1 $
-
-Démontrer par récurrence que, pour tout entier naturel $u_n=2^n-1.$
+\exerciceresolu
+Soit $(u_n)$ définie par $u_0=0$ et $u_{n+1}=2u_n+1$.
+Démontrer que $u_n=2^{n}-1$ pour tout entier $n$.
 
 \solution
-\begin{itemize}[label=\textbullet]
-	
-	\item \textbf{Initialisation :} Pour $n=0$, $u_0=0$ et $2^0-1=0$. Ainsi $P(0)$ est vraie.
-	
-	\item \textbf{Hérédité :} Supposons $P(k)$ vraie, c'est-à-dire $u_k=2^k-1$ (hypothèse de récurrence).\\
-	Démontrons qu'alors que $P(k+1)$ est vraie, c'est-à-dire que $u_{k+1}=2^{k+1}-1.$ \\
-	Or, $u_{k+1}=2u_k+1$. Ainsi, d'après l'hypothèse de récurrence,
-	$u_{k+1}=2(2^k-1)+1=2^{k+1}-1$.
-	
-	Alors
-	$$
-	u_{k+1}=2u_k+1
-	=2(2^k-1)+1
-	=2^{k+1}-1.
-	$$
-	
-	Donc $P(k+1)$ est vraie.
-	
-	\item \textbf{Conclusion :} La propriété est vraie pour tout entier naturel $n$.
-	
-\end{itemize}
+
+\textbf{Initialisation.} $u_0=0$ et $2^{0}-1=0$ : $P(0)$ est vraie.
+
+\textbf{Hérédité.} Supposons $u_k=2^{k}-1$ pour un $k\geq 0$. Alors
+\[
+u_{k+1}=2u_k+1=2\bigl(2^{k}-1\bigr)+1=2^{k+1}-1,
+\]
+donc $P(k+1)$ est vraie.
+
+\textbf{Conclusion.} Pour tout entier $n$, $u_n=2^{n}-1$.
+
+\begin{attention}
+	L'hérédité \textbf{seule} ne suffit pas. Soit $P(n)$ : \og $4^{n}+1$ est
+	multiple de $3$ \fg. Si $4^{k}+1=3m$, alors
+	$4^{k+1}+1=4\cdot 4^{k}+1=4(4^{k}+1)-3=3(4m-1)$ : $P(k)\Rightarrow P(k+1)$.
+	Pourtant $P(0)$ est fausse ($4^{0}+1=2$), et $P(n)$ est fausse pour
+	\textbf{tout} $n$.
+\end{attention}
 
 
-Sur le modèle de l'exercice résolu ci-dessus :
-\exercice{\etoilepleine\etoilevide\etoilevide}
-\begin{minipage}[t]{0.46\textwidth}
-	
-	\textbf{1)} $(v_n)$ est la suite définie par $v_0=0$ et
-	$v_{n+1}=v_n+2n+2$.
-	
-	Démontrer par récurrence que, pour tout entier naturel $n$,
-	$v_n=n(n+1)$.
-	
-\end{minipage}
-\hfill
-\vrule width 1pt
-\hfill
-\begin{minipage}[t]{0.46\textwidth}
-	\textbf{2)} $(w_n)$ est la suite définie par $w_0=0$ et
-	$w_{n+1}=2w_n-3$.
-	
-	Démontrer par récurrence que, pour tout entier naturel $n$,
-	$w_n=3(1-2^n)$.
-	
-\end{minipage}
+% ================================================================
+\section{Sens de variation d'une suite}
+% ================================================================
+
+\begin{definition}
+	$(u_n)$ est \textbf{croissante} (à partir de $n_0$) si $u_{n+1}\geq u_n$
+	pour tout $n\geq n_0$ ; \textbf{décroissante} si $u_{n+1}\leq u_n$ ;
+	\textbf{stationnaire} si $u_{n+1}=u_n$ à partir d'un rang ;
+	\textbf{monotone} si elle est croissante ou décroissante.
+\end{definition}
+
+\begin{methode}
+	\textbf{Quatre méthodes pour étudier la monotonie de $(u_n)$.}
+	\begin{enumerate}
+		\item \textbf{Différence} $u_{n+1}-u_n$ : étudier son signe.
+		$(u_n)$ croissante $\iff u_{n+1}-u_n\geq 0$ pour tout $n$.
+		\item \textbf{Quotient} $\dfrac{u_{n+1}}{u_n}$, \textbf{si $u_n>0$ pour
+		tout $n$} : comparer à $1$.
+		$(u_n)$ croissante $\iff \dfrac{u_{n+1}}{u_n}\geq 1$.
+		\item \textbf{Fonction associée} : si $u_n=f(n)$ et $f$ est monotone sur
+		$[n_0\,;+\infty[$, alors $(u_n)$ a le \textbf{même} sens de variation
+		que $f$. \emph{(Attention : la réciproque est fausse.)}
+		\item \textbf{Récurrence} : surtout pour $u_{n+1}=g(u_n)$. On montre par
+		récurrence que $u_{n+1}-u_n$ garde un signe constant, ou on exploite la
+		monotonie de $g$.
+	\end{enumerate}
+\end{methode}
+
+\begin{exemple}
+	\textbf{1.} $u_n=n^{2}-3n$ : \ $u_{n+1}-u_n=2n-2=2(n-1)\geq 0$ pour
+	$n\geq 1$ : $(u_n)$ est croissante à partir de $n=1$.
+
+	\textbf{2.} $u_n=\dfrac{2^{n}}{n!}$ ($u_n>0$) : \
+	$\dfrac{u_{n+1}}{u_n}=\dfrac{2^{n+1}}{(n+1)!}\cdot\dfrac{n!}{2^{n}}
+	=\dfrac{2}{n+1}\leq 1$ pour $n\geq 1$ : décroissante à partir de $n=1$.
+
+	\textbf{3.} $u_n=\dfrac{n}{n+1}$ : avec $f(x)=\dfrac{x}{x+1}$,
+	$f'(x)=\dfrac{1}{(x+1)^{2}}>0$, donc $f$ croît et $(u_n)$ croît.
+
+	\textbf{4.} $u_0=0$, $u_{n+1}=\sqrt{u_n+2}$ : la fonction
+	$g(x)=\sqrt{x+2}$ est croissante, donc $u_{n+1}-u_n$ et $u_n-u_{n-1}$
+	ont le même signe ; comme $u_1-u_0=\sqrt2>0$, $(u_n)$ est croissante.
+\end{exemple}
 
 
-\exercice{\etoilepleine\etoilevide\etoilevide}
+% ================================================================
+\section{Suites majorées, minorées, bornées}
+% ================================================================
 
-$(u_n)$ est la suite définie par $u_0=0$ et, pour tout entier naturel $n$,
+\begin{definition}
+	$(u_n)$ est \textbf{majorée} s'il existe $M$ tel que $u_n\leq M$ pour tout
+	$n$ ; \textbf{minorée} s'il existe $m$ tel que $u_n\geq m$ ; \textbf{bornée}
+	si elle est majorée et minorée.
+\end{definition}
 
-$$
-u_{n+1}=\sqrt{u_n+2}.
-$$
+\begin{methode}
+	Pour montrer que $(u_n)$ est majorée / minorée : le plus souvent par
+	\textbf{récurrence} (surtout si $u_{n+1}=g(u_n)$), ou par étude de la
+	fonction associée, ou par une majoration directe.
+\end{methode}
 
-Pour tout entier naturel $n$, on note $P(n)$ la propriété : "
-$0\leq u_n\leq 2".$
+\begin{exemple}
+	$u_0=0$, $u_{n+1}=\sqrt{u_n+2}$. Montrons $0\leq u_n\leq 2$ par récurrence.
 
-\begin{enumerate}[label=\alph*)]
-	\item Vérifier que $P(0)$ est vraie.
-	\item Démontrer que $P(k+1)$ est vraie.
-	\item Que peut-on conclure ?
+	$P(0)$ : $0\leq 0\leq 2$. \ Si $0\leq u_k\leq 2$, alors
+	$2\leq u_k+2\leq 4$, donc $\sqrt 2\leq u_{k+1}\leq 2$, et
+	$0\leq u_{k+1}\leq 2$. Donc $(u_n)$ est bornée.
+\end{exemple}
+
+
+% ================================================================
+\section{Limite d'une suite : convergence et divergence}
+% ================================================================
+
+\begin{definition}
+	$(u_n)$ \textbf{converge vers $\ell$} ($\ell\in\R$) si tout intervalle
+	ouvert contenant $\ell$ contient tous les termes $u_n$ \textbf{à partir
+	d'un certain rang}. On écrit $\displaystyle\lim_{n\to+\infty}u_n=\ell$.
+
+	Une suite qui ne converge pas est \textbf{divergente} : soit
+	$\displaystyle\lim u_n=\pm\infty$, soit $(u_n)$ n'a pas de limite
+	(ex.\ $u_n=(-1)^{n}$).
+\end{definition}
+
+\begin{theoreme}[Unicité de la limite]
+	Si $(u_n)$ converge, sa limite est \textbf{unique}.
+\end{theoreme}
+
+\begin{propriete}{Limites de référence}{prop_suites_ref}
+	\begin{center}
+	\renewcommand{\arraystretch}{1.9}
+	\setlength{\tabcolsep}{6pt}
+	\begin{tabular}{>{\raggedright\arraybackslash}p{5.6cm}
+	                >{\centering\arraybackslash}p{2.4cm}}
+	\hline
+	$\displaystyle\lim\frac{1}{n},\ \frac{1}{n^{2}},\ \frac{1}{\sqrt{n}},\
+	\frac{1}{n^{\alpha}}\ (\alpha>0)$ & $0$ \\
+	$\displaystyle\lim n,\ n^{2},\ \sqrt{n},\ n^{\alpha}\ (\alpha>0)$ & $+\infty$ \\
+	$\displaystyle\lim q^{n}$ \ si $q>1$          & $+\infty$ \\
+	$\displaystyle\lim q^{n}$ \ si $q=1$          & $1$ \\
+	$\displaystyle\lim q^{n}$ \ si $-1<q<1$       & $0$ \\
+	$\displaystyle\lim q^{n}$ \ si $q\leq-1$      & pas de limite \\
+	$\displaystyle\lim\frac{q^{n}}{n^{\alpha}}$ \ ($q>1$) & $+\infty$ \\
+	$\displaystyle\lim\frac{n^{\alpha}}{q^{n}}$ \ ($q>1$) & $0$ \\
+	\hline
+	\end{tabular}
+	\end{center}
+\end{propriete}
+
+\begin{propriete}{Opérations sur les limites}{prop_suites_op}
+	Les règles sont \textbf{les mêmes} que pour les limites de fonctions
+	(somme, produit, quotient), avec les mêmes \textbf{formes indéterminées}
+	$\dfrac{0}{0}$, $\dfrac{\infty}{\infty}$, $\infty-\infty$, $0\times\infty$
+	(voir chapitre \og Limites et continuité \fg).
+\end{propriete}
+
+\begin{exemple}
+	$u_n=\dfrac{3n^{2}-n+1}{n^{2}+2}$ : on factorise par $n^{2}$,
+	$u_n=\dfrac{3-\frac1n+\frac{1}{n^{2}}}{1+\frac{2}{n^{2}}}\to 3$.
+	\qquad
+	$v_n=n-\sqrt{n}=\sqrt{n}(\sqrt{n}-1)\to+\infty$.
+\end{exemple}
+
+
+% ================================================================
+\section{Théorèmes de convergence et de divergence}
+% ================================================================
+
+\begin{theoreme}[Théorème de la limite monotone]
+	Soit $(u_n)$ une suite.
+	\begin{itemize}[label=\textbullet]
+		\item Si $(u_n)$ est \textbf{croissante et majorée}, elle converge ;
+		si elle est \textbf{décroissante et minorée}, elle converge.
+		\item Si $(u_n)$ est \textbf{croissante non majorée}, alors
+		$\displaystyle\lim u_n=+\infty$ ;
+		si elle est \textbf{décroissante non minorée}, alors
+		$\displaystyle\lim u_n=-\infty$.
+	\end{itemize}
+\end{theoreme}
+
+\begin{attention}
+	Une suite croissante majorée par $M$ converge vers une limite
+	$\ell\leq M$ — \textbf{pas nécessairement vers $M$}.
+\end{attention}
+
+\begin{theoreme}[Comparaison (divergence)]
+	On suppose $u_n\leq v_n$ à partir d'un certain rang.
+	\begin{itemize}[label=\textbullet]
+		\item Si $\displaystyle\lim u_n=+\infty$, alors $\displaystyle\lim v_n=+\infty$.
+		\item Si $\displaystyle\lim v_n=-\infty$, alors $\displaystyle\lim u_n=-\infty$.
+	\end{itemize}
+\end{theoreme}
+
+\begin{theoreme}[Théorème des gendarmes (encadrement)]
+	Si $u_n\leq v_n\leq w_n$ à partir d'un certain rang et si
+	$\displaystyle\lim u_n=\lim w_n=\ell$, alors $\displaystyle\lim v_n=\ell$.
+\end{theoreme}
+
+\begin{theoreme}[Comparaison (limite finie)]
+	Si $\bigl|u_n-\ell\bigr|\leq v_n$ à partir d'un certain rang et si
+	$\displaystyle\lim v_n=0$, alors $\displaystyle\lim u_n=\ell$.
+\end{theoreme}
+
+\begin{propriete}{Passage à la limite dans une inégalité}{prop_passage_lim}
+	Si $u_n\leq v_n$ à partir d'un rang et si $(u_n)$, $(v_n)$ convergent
+	respectivement vers $\ell$ et $\ell'$, alors $\ell\leq\ell'$.
+
+	\emph{Attention : une inégalité \textbf{stricte} devient large à la limite.}
+\end{propriete}
+
+\begin{astucebac}
+	Le théorème des gendarmes s'applique très souvent avec un terme
+	\textbf{borné} : $u_n=\dfrac{\sin n}{n}$ vérifie
+	$-\dfrac{1}{n}\leq u_n\leq\dfrac{1}{n}$, donc $u_n\to 0$.
+\end{astucebac}
+
+\begin{exemple}
+	$u_n=1+\dfrac{(-1)^{n}}{n}$ : \ $\bigl|u_n-1\bigr|=\dfrac{1}{n}\to 0$,
+	donc $u_n\to 1$.
+\end{exemple}
+
+
+% ================================================================
+\section{Suites définies par \texorpdfstring{$u_{n+1}=f(u_n)$}{u(n+1)=f(u(n))}}
+% ================================================================
+
+\begin{methode}
+	Étude d'une suite $u_{n+1}=f(u_n)$ :
+	\begin{enumerate}
+		\item \textbf{Stabilité} : montrer par récurrence que $u_n\in I$ pour
+		un intervalle $I$ stable par $f$ ($f(I)\subset I$).
+		\item \textbf{Monotonie} : signe de $u_{n+1}-u_n$ (souvent par
+		récurrence, via la monotonie de $f$).
+		\item \textbf{Convergence} : conclure par le théorème de la limite
+		monotone.
+		\item \textbf{Valeur de la limite} : si $(u_n)$ converge vers $\ell$ et
+		si $f$ est continue en $\ell$, alors $\ell$ vérifie
+		$\boxed{f(\ell)=\ell}$ (point fixe). On résout cette équation.
+	\end{enumerate}
+\end{methode}
+
+\begin{theoreme}[Point fixe]
+	Si $u_{n+1}=f(u_n)$, si $(u_n)$ converge vers $\ell$ et si $f$ est continue
+	en $\ell$, alors $f(\ell)=\ell$.
+\end{theoreme}
+
+\begin{attention}
+	Le point fixe donne les \textbf{limites possibles} : il faut d'abord
+	prouver que $(u_n)$ \textbf{converge} (monotone + bornée), sinon
+	l'équation $f(\ell)=\ell$ ne prouve rien.
+\end{attention}
+
+\exerciceresolu
+$u_0=0$ et $u_{n+1}=\sqrt{u_n+2}$.
+\begin{enumerate}
+	\item Montrer que $0\leq u_n\leq 2$ et que $(u_n)$ est croissante.
+	\item En déduire que $(u_n)$ converge et déterminer sa limite.
 \end{enumerate}
 
+\solution
 
-\exercice{\etoilepleine\etoilevide\etoilevide}
+\textbf{1.} \emph{Bornée} : par récurrence (voir plus haut), $0\leq u_n\leq 2$.
+\emph{Croissante} : $g(x)=\sqrt{x+2}$ est croissante et $u_1-u_0=\sqrt2>0$,
+donc $u_{n+1}-u_n\geq 0$ pour tout $n$ (récurrence).
 
-Pour tout entier naturel $n$, on note $P(n)$ la propriété : "
-$4^n+1$	est un multiple de $3$".
+\textbf{2.} $(u_n)$ est croissante et majorée par $2$, donc elle
+\textbf{converge} vers un réel $\ell\leq 2$. Comme $g$ est continue,
+$\ell=\sqrt{\ell+2}$, d'où $\ell^{2}=\ell+2$, soit $\ell=2$ ou $\ell=-1$.
+Comme $\ell\geq u_0=0$, $\ell=2$.
 
-\begin{enumerate}[label=\alph*)]
-	\item Démontrer que $P(k+1)$ est vraie.
-	\item La propriété $P(0)$ est-elle vraie ?
-	\item Peut-on conclure ?
+
+% ================================================================
+\section{Suites particulières}
+% ================================================================
+
+\begin{propriete}{Suites arithmétiques et géométriques}{prop_arith_geo}
+	\begin{center}
+	\renewcommand{\arraystretch}{1.7}
+	\begin{tabular}{>{\raggedright\arraybackslash}p{2.3cm}
+	                >{\centering\arraybackslash}p{2.6cm}
+	                >{\raggedright\arraybackslash}p{3.4cm}}
+	\hline
+	& \textbf{Arithmétique} & \textbf{Géométrique} \\
+	\hline
+	Récurrence  & $u_{n+1}=u_n+r$      & $u_{n+1}=q\,u_n$ \\
+	Terme général & $u_n=u_0+nr$       & $u_n=u_0\,q^{n}$ \\
+	Somme
+	& $\displaystyle\sum_{k=0}^{n}u_k=(n+1)\dfrac{u_0+u_n}{2}$
+	& $\displaystyle\sum_{k=0}^{n}u_k=u_0\dfrac{1-q^{n+1}}{1-q}$ \ ($q\neq1$) \\
+	Limite
+	& $\pm\infty$ si $r\neq0$
+	& selon $q$ (voir Propriété~\ref{prop:prop_suites_ref}) \\
+	\hline
+	\end{tabular}
+	\end{center}
+\end{propriete}
+
+\begin{methode}
+	\textbf{Suite arithmético-géométrique} $u_{n+1}=a\,u_n+b$ ($a\neq 1$) :
+	\begin{enumerate}
+		\item chercher le \textbf{point fixe} $\ell=\dfrac{b}{1-a}$ ;
+		\item poser $v_n=u_n-\ell$ : alors $v_{n+1}=a\,v_n$, donc $(v_n)$ est
+		\textbf{géométrique} de raison $a$ ;
+		\item $v_n=v_0\,a^{n}$, d'où $u_n=\ell+(u_0-\ell)\,a^{n}$ ;
+		\item conclure sur la limite ($|a|<1\Rightarrow u_n\to\ell$).
+	\end{enumerate}
+\end{methode}
+
+\begin{exemple}
+	$u_0=5$, $u_{n+1}=\dfrac13 u_n+2$. Point fixe : $\ell=\dfrac{2}{1-\frac13}=3$.
+	$v_n=u_n-3$ vérifie $v_{n+1}=\dfrac13 v_n$, $v_0=2$, donc
+	$v_n=2\left(\dfrac13\right)^{n}$ et $u_n=3+2\left(\dfrac13\right)^{n}\to 3$.
+\end{exemple}
+
+\begin{definition}
+	Deux suites $(u_n)$ et $(v_n)$ sont \textbf{adjacentes} si l'une est
+	croissante, l'autre décroissante, et $\displaystyle\lim(v_n-u_n)=0$.
+\end{definition}
+
+\begin{theoreme}[Suites adjacentes]
+	Si $(u_n)$ et $(v_n)$ sont adjacentes (avec $(u_n)$ croissante,
+	$(v_n)$ décroissante), alors elles \textbf{convergent vers la même
+	limite} $\ell$, et pour tout $n$ : $u_n\leq\ell\leq v_n$.
+\end{theoreme}
+
+
+% ================================================================
+\section{Méthodes et exercices résolus}
+% ================================================================
+
+\begin{methode}
+	\textbf{Comment prouver qu'une suite converge / diverge ?}
+	\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{>{\raggedright\arraybackslash}p{4.4cm}
+	                >{\raggedright\arraybackslash}p{3.8cm}}
+	\hline
+	\textbf{Situation} & \textbf{Outil} \\
+	\hline
+	$u_n=f(n)$, $f$ a une limite en $+\infty$ & limite de $f$ \\
+	quotient / différence de puissances de $n$ & terme dominant \\
+	$u_n$ contient $q^{n}$ & limite de $q^{n}$ / croissances comparées \\
+	terme borné ou oscillant & gendarmes \\
+	$\bigl|u_n-\ell\bigr|\leq v_n\to 0$ & comparaison \\
+	$u_n\leq v_n$, $\lim v_n=-\infty$ & comparaison (divergence) \\
+	$(u_n)$ monotone et bornée & limite monotone \\
+	$u_{n+1}=g(u_n)$ & stabilité + monotonie + point fixe \\
+	deux suites adjacentes & théorème des suites adjacentes \\
+	\hline
+	\end{tabular}
+	\end{center}
+\end{methode}
+
+\exerciceresolu
+\textbf{Limites variées}
+
+Déterminer la limite de :
+\[
+\text{a) } u_n=\frac{2n^{2}+n}{n^{2}-3}
+\qquad
+\text{b) } v_n=\frac{n^{2}}{2^{n}}
+\qquad
+\text{c) } w_n=\frac{\cos n}{n+1}
+\]
+
+\solution
+
+\textbf{a)} $u_n=\dfrac{2+\frac1n}{1-\frac{3}{n^{2}}}\to 2$.
+
+\textbf{b)} Croissance comparée : $\dfrac{n^{2}}{2^{n}}\to 0$.
+
+\textbf{c)} $\bigl|w_n\bigr|\leq\dfrac{1}{n+1}\to 0$, donc $w_n\to 0$
+(gendarmes).
+
+\bigskip
+\exerciceresolu
+\textbf{Arithmético-géométrique}
+
+$u_0=1$ et $u_{n+1}=3u_n-4$.
+\begin{enumerate}
+	\item Déterminer le point fixe $\ell$, puis montrer que $v_n=u_n-\ell$ est
+	géométrique.
+	\item Exprimer $u_n$ en fonction de $n$ ; la suite converge-t-elle ?
 \end{enumerate}
 
-\vspace*{0.5cm}
+\solution
 
-\textbf{Pour les exercices 4 à 8, démontrer la proposition par récurrence.}
-\exercice{\etoilepleine\etoilevide\etoilevide}
+\textbf{1.} $\ell=3\ell-4\Rightarrow \ell=2$. \
+$v_{n+1}=u_{n+1}-2=3u_n-6=3(u_n-2)=3v_n$ : $(v_n)$ est géométrique de
+raison $3$, $v_0=-1$.
 
-Pour tout entier naturel $n\geq 1$,
+\textbf{2.} $v_n=-3^{n}$, donc $u_n=2-3^{n}$. Comme $3^{n}\to+\infty$,
+$u_n\to-\infty$ : $(u_n)$ \textbf{diverge}.
 
-$$
-1+2+3+\cdots+n=\frac{n(n+1)}{2}.
-$$
+\bigskip
+\exerciceresolu
+\textbf{Gendarmes}
 
-\exercice{\etoilepleine\etoilevide\etoilevide}
+Soit $u_n=\displaystyle\sum_{k=1}^{n}\frac{1}{n^{2}+k}$.
+Montrer que $(u_n)$ converge et donner sa limite.
 
-Pour tout entier naturel $n\geq 1$,
+\solution
 
-$$
-1^2+2^2+3^2+\cdots+n^2
-=
-\frac{n(n+1)(2n+1)}{6}.
-$$
+Pour $1\leq k\leq n$ : $\dfrac{1}{n^{2}+n}\leq\dfrac{1}{n^{2}+k}\leq\dfrac{1}{n^{2}+1}$.
+En sommant les $n$ termes :
+\[
+\frac{n}{n^{2}+n}\leq u_n\leq\frac{n}{n^{2}+1}.
+\]
+Or $\dfrac{n}{n^{2}+n}=\dfrac{1}{n+1}\to 0$ et $\dfrac{n}{n^{2}+1}\to 0$.
+Par le théorème des gendarmes, $\displaystyle\lim u_n=0$.
 
-\exercice{\etoilepleine\etoilepleine\etoilevide}
-Pour tout entier naturel $n\geq 1$,
 
-$$
-1+3+5+\cdots+(2n-1)=n^2.
-$$
+% ================================================================
+\section{Exercices d'entraînement}
+% ================================================================
 
-\exercice{\etoilepleine\etoilepleine\etoilepleine}
+\subsection{Échauffement}
 
-Pour tout entier naturel $n\geq 1$,
-
-$$
-1^2+3^2+5^2+\cdots+(2n-1)^2
-=
-\frac{1}{3}n(4n^2-1).
-$$
-
-\exercice{\etoilepleine\etoilepleine\etoilepleine}
-
-Pour tout entier naturel $n\geq 2$,
-
-$$
-\left(1-\frac{1}{2^2}\right)
-\left(1-\frac{1}{3^2}\right)
-\cdots
-\left(1-\frac{1}{n^2}\right)
-=
-\frac{n+1}{2n}.
-$$
-
-\exercice{\etoilepleine\etoilepleine\etoilepleine}
-
-$(F_n)$ est la suite de Fibonacci définie par $F_0=1$, $F_1=1$ et
-$F_{n+2}=F_{n+1}+F_n$.
-
-\begin{enumerate}[label=\alph*)]
-	
-	\item Calculer $F_2$ et $F_3$.
-	
-	\item Démontrer par récurrence double que, pour tout entier naturel $n$,
-	
-	$$
-	F_n\leq \left(\frac{5}{3}\right)^n.
-	$$
-	
-	\item Démontrer par récurrence que, pour tout entier naturel $n$,
-	
-	$$
-	F_0^2+F_1^2+\cdots+F_n^2=F_nF_{n+1}.
-	$$
-	
+\exercice{Vrai ou faux \hfill \facile}
+Répondre par \emph{vrai} ou \emph{faux} en justifiant.
+\begin{enumerate}
+	\item Toute suite majorée converge.
+	\item Toute suite croissante et majorée converge.
+	\item Si $(u_n)$ diverge, alors $\lim u_n=+\infty$ ou $-\infty$.
+	\item Si $u_n<v_n$ pour tout $n$ et si les deux convergent, alors
+	$\lim u_n<\lim v_n$.
+	\item $\lim\left(-\dfrac12\right)^{n}=0$.
+	\item Si $u_{n+1}=f(u_n)$ et $f(\ell)=\ell$, alors $u_n\to\ell$.
+	\item Si $(u_n)$ est croissante et $(v_n)$ décroissante avec
+	$v_n-u_n\to 0$, elles ont la même limite.
+	\item Une suite géométrique de raison $-1$ converge.
 \end{enumerate}
-	
 
+\exercice{Premiers termes et conjecture \hfill \facile}
+Pour chaque suite, calculer $u_0,\dots,u_3$ et conjecturer le sens de
+variation.
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $u_n=\dfrac{n}{n+1}$
+	\item $u_n=\dfrac{(-1)^{n}}{n+1}$
+	\item $u_0=1$, $u_{n+1}=\dfrac{u_n+3}{2}$
+	\item $u_0=2$, $u_{n+1}=u_n^{2}-1$
+\end{enumerate}
+\end{multicols}
 
+\subsection{Récurrence}
 
+\exercice{Égalités par récurrence \hfill \facile}
+Démontrer par récurrence, pour tout $n\geq 1$ :
+\begin{enumerate}
+	\item $1+2+\cdots+n=\dfrac{n(n+1)}{2}$
+	\item $1^{2}+2^{2}+\cdots+n^{2}=\dfrac{n(n+1)(2n+1)}{6}$
+	\item $1+3+5+\cdots+(2n-1)=n^{2}$
+	\item $1+2+2^{2}+\cdots+2^{n-1}=2^{n}-1$
+\end{enumerate}
 
+\exercice{Suites et récurrence \hfill \moyen}
+\begin{enumerate}
+	\item $v_0=0$, $v_{n+1}=v_n+2n+2$. Montrer que $v_n=n(n+1)$.
+	\item $w_0=0$, $w_{n+1}=2w_n-3$. Montrer que $w_n=3(1-2^{n})$.
+	\item $u_0=1$, $u_{n+1}=\dfrac{u_n}{1+u_n}$. Montrer que
+	$u_n=\dfrac{1}{n+1}$.
+\end{enumerate}
 
+\exercice{Inégalités par récurrence \hfill \moyen}
+\begin{enumerate}
+	\item Montrer que pour tout $n\geq 4$, $2^{n}\geq n^{2}$.
+	\item Montrer que pour tout $n\geq 0$, $(1+a)^{n}\geq 1+na$
+	(avec $a\geq -1$ fixé) \emph{(inégalité de Bernoulli)}.
+	\item $u_0=3$, $u_{n+1}=\sqrt{2u_n+3}$. Montrer que $u_n\geq 3$ pour
+	tout $n$.
+\end{enumerate}
 
+\subsection{Sens de variation}
+
+\exercice{Étudier la monotonie \hfill \moyen}
+Préciser la méthode utilisée.
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $u_n=n^{2}-5n$
+	\item $u_n=\dfrac{n+1}{n+2}$
+	\item $u_n=\dfrac{3^{n}}{n!}$
+	\item $u_n=n-\sqrt{n}$
+	\item $u_n=\dfrac{2^{n}}{n+1}$
+	\item $u_n=\dfrac{n}{2^{n}}$
+	\item $u_0=0$, $u_{n+1}=\dfrac{u_n+4}{2}$
+	\item $u_0=10$, $u_{n+1}=0{,}8\,u_n$
+\end{enumerate}
+\end{multicols}
+
+\subsection{Limites directes}
+
+\exercice{Calculer la limite \hfill \moyen}
+\begin{multicols}{3}
+\begin{enumerate}
+	\item $u_n=\dfrac{3n-1}{n+2}$
+	\item $u_n=\dfrac{n^{2}+1}{2n^{2}-n}$
+	\item $u_n=\dfrac{n+1}{n^{2}+3}$
+	\item $u_n=2n^{2}-n$
+	\item $u_n=\left(\dfrac23\right)^{n}$
+	\item $u_n=\dfrac{5^{n}}{3^{n}}$
+	\item $u_n=\dfrac{n^{3}}{2^{n}}$
+	\item $u_n=\sqrt{n+1}-\sqrt{n}$
+	\item $u_n=\dfrac{(-1)^{n}}{n^{2}}$
+\end{enumerate}
+\end{multicols}
+
+\subsection{Convergence et divergence}
+
+\exercice{Convergente ou divergente ? \hfill \moyen}
+Étudier la nature de chaque suite (convergence, divergence vers
+$\pm\infty$, ou pas de limite) et justifier.
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $u_n=\dfrac{n^{2}-3}{n+1}$
+	\item $u_n=1+\dfrac{(-1)^{n}}{\sqrt{n}}$
+	\item $u_n=(-1)^{n}\dfrac{n}{n+1}$
+	\item $u_n=\dfrac{\sin n+2n}{n+1}$
+	\item $u_n=\left(-\dfrac34\right)^{n}$
+	\item $u_n=n+(-1)^{n}n$
+	\item $u_n=\dfrac{2^{n}-3^{n}}{2^{n}+3^{n}}$
+	\item $u_n=\cos(n\pi)$
+\end{enumerate}
+\end{multicols}
+
+\exercice{Par les gendarmes \hfill \moyen}
+Montrer que chaque suite converge et donner sa limite.
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $u_n=\dfrac{\cos n}{n}$
+	\item $u_n=\dfrac{(-1)^{n}+n}{n^{2}}$
+	\item $u_n=\dfrac{E(n\sqrt2)}{n}$ \; ($E$ : partie entière)
+	\item $u_n=\displaystyle\sum_{k=1}^{n}\frac{1}{n^{2}+k^{2}}$
+	\item $u_n=\dfrac{n+\sin(2n)}{2n-1}$
+	\item $u_n=\dfrac{1}{n}\cos\!\left(\dfrac{1}{n}\right)$
+\end{enumerate}
+\end{multicols}
+
+\exercice{Limite monotone \hfill \moyen}
+Montrer que chaque suite converge (sans forcément calculer la limite).
+\begin{enumerate}
+	\item $u_n=\displaystyle\sum_{k=1}^{n}\frac{1}{k^{2}}$ \; (majorer par
+	$2-\dfrac1n$).
+	\item $u_0=1$, $u_{n+1}=\dfrac{1}{2}\left(u_n+\dfrac{2}{u_n}\right)$
+	(montrer $u_n\geq\sqrt2$ et $(u_n)$ décroissante).
+	\item $u_0=0{,}5$, $u_{n+1}=\dfrac{2u_n}{u_n+1}$ (montrer
+	$0<u_n<1$ et $(u_n)$ croissante).
+\end{enumerate}
+
+\exercice{Arithmético-géométrique \hfill \moyen}
+Dans chaque cas : point fixe $\ell$, suite $v_n=u_n-\ell$, expression de
+$u_n$, limite.
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $u_0=0$, $u_{n+1}=2u_n+1$
+	\item $u_0=0$, $u_{n+1}=\dfrac14 u_n+3$
+	\item $u_0=1$, $u_{n+1}=-\dfrac12 u_n+3$
+	\item $u_0=10$, $u_{n+1}=0{,}9\,u_n+1$
+\end{enumerate}
+\end{multicols}
+
+\subsection{Sujets types Bac}
+
+\exercice{Sujet type Bac — suite récurrente et vitesse de convergence \hfill \difficile}
+Soit $(u_n)$ définie par $u_0=0$ et $u_{n+1}=\sqrt{u_n+2}$.
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Montrer que pour tout $n$, $0\leq u_n\leq 2$. \hfill \mbox{(0,75~pt)}
+	\item Montrer que $(u_n)$ est croissante. \hfill \mbox{(0,75~pt)}
+	\item En déduire que $(u_n)$ converge et déterminer sa limite $\ell$. \hfill \mbox{(0,75~pt)}
+\end{enumerate}
+
+\textbf{Partie B}
+\begin{enumerate}
+	\setcounter{enumi}{3}
+	\item Montrer que pour tout $n$,
+	$\bigl|u_{n+1}-2\bigr|\leq\dfrac12\bigl|u_n-2\bigr|$. \hfill \mbox{(1~pt)}
+	\item En déduire que $\bigl|u_n-2\bigr|\leq 2\left(\dfrac12\right)^{n}$. \hfill \mbox{(0,5~pt)}
+	\item Déterminer un rang $n_0$ à partir duquel $\bigl|u_n-2\bigr|\leq 10^{-3}$. \hfill \mbox{(0,5~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — arithmético-géométrique et somme \hfill \difficile}
+Soit $(u_n)$ définie par $u_0=1$ et $u_{n+1}=\dfrac12 u_n+3$.
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Calculer $u_1$, $u_2$. \hfill \mbox{(0,5~pt)}
+	\item Soit $v_n=u_n-6$. Montrer que $(v_n)$ est géométrique ; préciser
+	raison et premier terme. \hfill \mbox{(1~pt)}
+	\item Exprimer $u_n$ en fonction de $n$ ; en déduire
+	$\displaystyle\lim_{n\to+\infty}u_n$. \hfill \mbox{(0,75~pt)}
+\end{enumerate}
+
+\textbf{Partie B}
+\begin{enumerate}
+	\setcounter{enumi}{3}
+	\item On pose $S_n=\displaystyle\sum_{k=0}^{n}u_k$. Exprimer $S_n$ en
+	fonction de $n$. \hfill \mbox{(1~pt)}
+	\item Déterminer $\displaystyle\lim_{n\to+\infty}\dfrac{S_n}{n}$. \hfill \mbox{(0,5~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — suites adjacentes \hfill \difficile}
+Pour $n\geq 1$, on pose
+\[
+u_n=\sum_{k=1}^{n}\frac{1}{k^{2}}
+\qquad\text{et}\qquad
+v_n=u_n+\frac{1}{n}.
+\]
+\begin{enumerate}
+	\item Montrer que $(u_n)$ est strictement croissante. \hfill \mbox{(0,5~pt)}
+	\item Montrer que $(v_n)$ est strictement décroissante. \hfill \mbox{(1~pt)}
+	\item Montrer que $\displaystyle\lim_{n\to+\infty}(v_n-u_n)=0$. \hfill \mbox{(0,5~pt)}
+	\item En déduire que $(u_n)$ et $(v_n)$ convergent vers une même limite
+	$\ell$, et que $\dfrac{5}{4}\leq\ell\leq 2$
+	(on utilisera $u_2$ et $v_1$). \hfill \mbox{(1~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — étude d'une suite récurrente \hfill \difficile}
+Soit $f(x)=\dfrac{1}{2}\left(x+\dfrac{3}{x}\right)$ pour $x>0$, et $(u_n)$
+définie par $u_0=2$ et $u_{n+1}=f(u_n)$.
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Étudier les variations de $f$ sur $]0\,;+\infty[$ ; montrer que
+	$f(x)\geq\sqrt{3}$ pour tout $x>0$. \hfill \mbox{(1~pt)}
+	\item En déduire que $u_n\geq\sqrt{3}$ pour tout $n\geq 1$. \hfill \mbox{(0,5~pt)}
+	\item Montrer que $(u_n)$ est décroissante à partir de $n=1$. \hfill \mbox{(1~pt)}
+\end{enumerate}
+
+\textbf{Partie B}
+\begin{enumerate}
+	\setcounter{enumi}{3}
+	\item En déduire que $(u_n)$ converge. \hfill \mbox{(0,5~pt)}
+	\item Déterminer sa limite. \hfill \mbox{(0,75~pt)}
+\end{enumerate}
+
+\exercice{Sujet type Bac — comparaison et croissances comparées \hfill \difficile}
+Soit $(u_n)$ définie pour $n\geq 1$ par $u_n=\dfrac{n!}{n^{n}}$.
+\begin{enumerate}
+	\item Calculer $\dfrac{u_{n+1}}{u_n}$ et montrer que
+	$\dfrac{u_{n+1}}{u_n}\leq\dfrac{1}{2}$ pour tout $n\geq 1$. \hfill \mbox{(1~pt)}
+	\item En déduire que $0<u_n\leq\left(\dfrac12\right)^{n-1}$ pour tout
+	$n\geq 1$. \hfill \mbox{(0,75~pt)}
+	\item En déduire $\displaystyle\lim_{n\to+\infty}u_n$. \hfill \mbox{(0,5~pt)}
+	\item La série $\displaystyle\sum_{k=1}^{n}u_k$ est-elle majorée ?
+	Justifier. \hfill \mbox{(0,75~pt)}
+\end{enumerate}
