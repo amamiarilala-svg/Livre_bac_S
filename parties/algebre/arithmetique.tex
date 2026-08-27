@@ -8,12 +8,17 @@
 
 \begin{objectifs}
 	\begin{itemize}[label=\textbullet]
-		\item Maîtriser la divisibilité dans $\mathbb{Z}$.
-		\item Utiliser le PGCD et le PPCM.
-		\item Résoudre des congruences.
-		\item Appliquer le théorème de Bézout.
-		\item Appliquer le théorème de Gauss.
-		\item Résoudre des équations diophantiennes simples.
+		\item Maîtriser la divisibilité, la division euclidienne et les
+		congruences dans $\mathbb{Z}$ ; calculer dans $\Z/n\Z$.
+		\item Déterminer un \textbf{PGCD} et un \textbf{PPCM} (algorithme
+		d'Euclide, décomposition en facteurs premiers) et utiliser la relation
+		$\mathrm{PGCD}\times\mathrm{PPCM} = |ab|$.
+		\item Appliquer les théorèmes de \textbf{Bézout} et de \textbf{Gauss} ;
+		résoudre des \textbf{équations diophantiennes} $ax + by = c$.
+		\item Résoudre des équations et des systèmes dans $\Z/n\Z$, ainsi que
+		des systèmes portant sur le PGCD et le PPCM.
+		\item Écrire un entier dans une \textbf{base} quelconque et convertir
+		d'une base à une autre (dont la base hexadécimale).
 	\end{itemize}
 \end{objectifs}
 
@@ -607,8 +612,86 @@ Comme $0 \leqslant 1 < 3$, le reste de la division euclidienne de $11^{2020}$ pa
 	Cette technique s'appelle la \textbf{méthode des puissances successives}.
 \end{astucebac}
 
+\begin{theoreme}[Petit théorème de Fermat]
+	Si $p$ est un nombre premier et $a$ un entier non divisible par $p$, alors
+	$$
+	a^{p-1} \equiv 1\ [p].
+	$$
+	Pour tout entier $a$ : $a^p \equiv a\ [p]$.
+\end{theoreme}
+
+\begin{exemple}
+	Reste de $7 \times 3^{100}$ par $11$ : $11$ est premier et $11 \nmid 3$, donc
+	$3^{10} \equiv 1\ [11]$. Comme $100 = 10 \times 10$, $3^{100} \equiv 1\ [11]$,
+	d'où $7 \times 3^{100} \equiv 7\ [11]$ : le reste est $7$.
+\end{exemple}
+
+
+% ------------------------------------------------------------
+\section{L'ensemble $\Z/n\Z$}
+% ------------------------------------------------------------
+
+\begin{definition}
+	Soit $n$ un entier naturel non nul. On note $\bar a$ (ou $\dot a$) la
+	\textbf{classe} de l'entier $a$ modulo $n$ : l'ensemble de tous les entiers
+	congrus à $a$ modulo $n$. L'ensemble des classes est
+	$$
+	\Z/n\Z = \{\,\bar 0\,;\,\bar 1\,;\,\ldots\,;\,\overline{n-1}\,\}.
+	$$
+	Il possède exactement $n$ éléments et
+	$$
+	\bar x = \bar y \iff x \equiv y\ [n].
+	$$
+\end{definition}
+
+\begin{propriete}{Opérations dans $\Z/n\Z$}{arith_znz}
+	On définit l'addition et la multiplication par
+	$$
+	\bar a + \bar b = \overline{a + b},
+	\qquad
+	\bar a \times \bar b = \overline{a\,b}.
+	$$
+	Ces opérations sont bien définies (elles ne dépendent pas du représentant
+	choisi), grâce à la compatibilité des congruences avec les opérations.
+\end{propriete}
+
+\begin{exemple}
+	Table de multiplication dans $\Z/5\Z$ :
+	\begin{center}
+	\renewcommand{\arraystretch}{1.15}
+	\begin{tabular}{c|ccccc}
+	$\times$ & $\bar0$ & $\bar1$ & $\bar2$ & $\bar3$ & $\bar4$ \\
+	\hline
+	$\bar0$ & $\bar0$ & $\bar0$ & $\bar0$ & $\bar0$ & $\bar0$ \\
+	$\bar1$ & $\bar0$ & $\bar1$ & $\bar2$ & $\bar3$ & $\bar4$ \\
+	$\bar2$ & $\bar0$ & $\bar2$ & $\bar4$ & $\bar1$ & $\bar3$ \\
+	$\bar3$ & $\bar0$ & $\bar3$ & $\bar1$ & $\bar4$ & $\bar2$ \\
+	$\bar4$ & $\bar0$ & $\bar4$ & $\bar3$ & $\bar2$ & $\bar1$ \\
+	\end{tabular}
+	\end{center}
+	Chaque élément non nul possède un inverse : $\Z/5\Z$ est un \textbf{corps}
+	(car $5$ est premier).
+\end{exemple}
+
+\begin{methode}
+	\textbf{Résoudre une équation dans $\Z/n\Z$} (par exemple $\bar a\,\bar x = \bar b$) :
+	on teste \textbf{les $n$ classes} $\bar x = \bar 0,\bar 1,\ldots,\overline{n-1}$
+	et on retient celles qui conviennent. Un tableau de valeurs de $\bar x$ et de
+	l'expression suffit.
+
+	Pour un \textbf{système}, on peut aussi combiner les équations (comme dans
+	$\R$) tant qu'on ne divise pas.
+\end{methode}
+
+\begin{exemple}
+	$\bar 3\,\bar x = \bar 4$ dans $\Z/7\Z$. On dresse le tableau :
+	$\bar x$ : $\bar0,\bar1,\ldots,\bar6$ donne $3\bar x$ :
+	$\bar0,\bar3,\bar6,\bar2,\bar5,\bar1,\bar4$. Donc $\bar x = \bar 6$.
+\end{exemple}
+
+
 % ============================================================
-%  SECTIONS : PGCD — Bézout — Gauss — Équations diophantiennes
+%  SECTIONS : PGCD — PPCM — Bézout — Gauss — Équations diophantiennes
 %  Chapitre : Arithmétique dans Z  —  Mazava Maths
 % ============================================================
 
@@ -675,6 +758,86 @@ Le dernier reste non nul est $33$, donc $\mathrm{PGCD}(1\,551\,;\,132) = 33$.
 	$\mathrm{PGCD}(60\,;90) = \mathrm{PGCD}(30 \times 2\,;\,30 \times 3)
 	= 30 \times \mathrm{PGCD}(2\,;3) = 30 \times 1 = 30$.
 \end{exemple}
+
+
+% ------------------------------------------------------------
+\section{PPCM}
+% ------------------------------------------------------------
+
+\begin{definition}
+	Soient $a$ et $b$ deux entiers naturels non nuls. L'ensemble des multiples
+	strictement positifs communs à $a$ et $b$ admet un plus petit élément, noté
+	$\mathrm{PPCM}(a\,;b)$, le \textbf{plus petit commun multiple} de $a$ et $b$.
+\end{definition}
+
+\begin{propriete}{Relation fondamentale PGCD–PPCM}{arith_pgcd_ppcm}
+	Pour tous entiers naturels non nuls $a$ et $b$ :
+	$$
+	\mathrm{PGCD}(a\,;b) \times \mathrm{PPCM}(a\,;b) = a\,b.
+	$$
+	(Pour des entiers relatifs : $\mathrm{PGCD}(a;b)\times\mathrm{PPCM}(a;b) = |ab|$.)
+\end{propriete}
+
+\begin{propriete}{Autres propriétés}{arith_ppcm_prop}
+	\begin{itemize}[label=\textbullet]
+		\item $\mathrm{PPCM}(a\,;b)$ est un multiple de $a$ et de $b$, et
+		\textbf{tout} multiple commun de $a$ et $b$ est un multiple de
+		$\mathrm{PPCM}(a\,;b)$.
+		\item $\mathrm{PPCM}(ka\,;kb) = k\,\mathrm{PPCM}(a\,;b)$ \quad ($k \in \N^*$).
+		\item Si $a$ et $b$ sont \textbf{premiers entre eux}, alors
+		$\mathrm{PPCM}(a\,;b) = ab$.
+		\item \textbf{Par décomposition en facteurs premiers} : le PGCD prend
+		chaque facteur premier à la \emph{plus petite} puissance, le PPCM à la
+		\emph{plus grande}.
+	\end{itemize}
+\end{propriete}
+
+\begin{exemple}
+	$a = 60 = 2^2 \times 3 \times 5$, $b = 90 = 2 \times 3^2 \times 5$.
+	$$
+	\mathrm{PGCD} = 2^1 \times 3^1 \times 5 = 30,
+	\qquad
+	\mathrm{PPCM} = 2^2 \times 3^2 \times 5 = 180.
+	$$
+	Contrôle : $30 \times 180 = 5\,400 = 60 \times 90$.
+\end{exemple}
+
+\begin{astucebac}
+	\textbf{Système $\{\mathrm{PGCD}(x;y) = d\ ;\ x + y = s\}$ (ou $xy = p$,
+	ou $\mathrm{PPCM} = m$).} On pose $x = d\,x'$, $y = d\,y'$ avec
+	$\mathrm{PGCD}(x'\,;y') = 1$. La condition se traduit alors sur $(x',y')$
+	(par exemple $x' + y' = \dfrac{s}{d}$), et l'on cherche les couples
+	d'entiers \textbf{premiers entre eux} qui conviennent.
+\end{astucebac}
+
+\exerciceresolu
+\textbf{Système avec PGCD et somme}
+
+Déterminer les couples $(x\,;y)$ d'entiers naturels tels que
+$$
+\begin{cases}
+	\mathrm{PGCD}(x\,;y) = 12 \\
+	x + y = 120
+\end{cases}
+$$
+
+\solution
+
+Posons $x = 12x'$ et $y = 12y'$ avec $\mathrm{PGCD}(x'\,;y') = 1$.
+
+La seconde équation devient $12x' + 12y' = 120$, soit $x' + y' = 10$.
+
+On cherche les couples $(x'\,;y')$ d'entiers naturels premiers entre eux de
+somme $10$ :
+$$
+(1\,;9),\ (3\,;7),\ (7\,;3),\ (9\,;1)
+$$
+($(2;8)$, $(4;6)$, $(5;5)$, $(6;4)$, $(8;2)$ sont exclus : PGCD $\neq 1$).
+
+Les couples solutions sont :
+$$
+\boxed{(12\,;108),\ (36\,;84),\ (84\,;36),\ (108\,;12).}
+$$
 
 
 % ------------------------------------------------------------
@@ -847,9 +1010,104 @@ $$
 Pour $(E_1)$ : $14 \times 1 + 13 \times (-1) = 1$, donc $\mathrm{PGCD}(13\,;14) = 1$.
 Comme $1$ divise $3$, l'équation $(E_1)$ \textbf{admet des solutions}.
 
-Pour $(E_2)$ : $\mathrm{PGCD}(39\,;42) = \mathrm{PGCD}(39\,;42)$.
-Or $42 = 1 \times 39 + 3$ et $39 = 13 \times 3 + 0$, donc $\mathrm{PGCD}(39\,;42) = 3$.
-Comme $3$ ne divise pas $2$, l'équation $(E_2)$ \textbf{n'admet pas de solution}.
+Pour $(E_2)$ : $42 = 1 \times 39 + 3$ et $39 = 13 \times 3 + 0$, donc
+$\mathrm{PGCD}(39\,;42) = 3$. Comme $3$ ne divise pas $2$, $(E_2)$
+\textbf{n'admet pas de solution}.
+
+% ------------------------------------------------------------
+\section{Systèmes de numération}
+% ------------------------------------------------------------
+
+\begin{definition}
+	Soit $b$ un entier, $b \geqslant 2$. Tout entier naturel $N$ s'écrit de
+	manière unique
+	$$
+	N = a_k\,b^k + a_{k-1}\,b^{k-1} + \cdots + a_1\,b + a_0,
+	$$
+	où les \textbf{chiffres} $a_i$ vérifient $0 \leqslant a_i < b$ et
+	$a_k \neq 0$. On note $N = \overline{a_k a_{k-1} \ldots a_1 a_0}^{\,b}$.
+\end{definition}
+
+\remarque
+En base $16$ (\textbf{hexadécimale}), les chiffres sont
+$0,1,\ldots,9,\mathrm{A},\mathrm{B},\mathrm{C},\mathrm{D},\mathrm{E},\mathrm{F}$
+avec $\mathrm{A} = 10$, …, $\mathrm{F} = 15$.
+
+\begin{methode}
+	\textbf{Conversions.}
+	\begin{itemize}[label=\textbullet]
+		\item \textbf{Base $b \to$ base $10$} : développer $\sum a_i\,b^i$.
+		\item \textbf{Base $10 \to$ base $b$} : divisions euclidiennes
+		successives par $b$ ; les restes, lus \textbf{de bas en haut}, donnent
+		les chiffres.
+		\item \textbf{Base $2 \leftrightarrow$ base $16$} : regrouper les bits
+		par paquets de $4$.
+	\end{itemize}
+\end{methode}
+
+\begin{exemple}
+	$\overline{2\,\mathrm{A}\,3}^{\,16} = 2\times16^2 + 10\times16 + 3
+	= 512 + 160 + 3 = 675$.
+
+	$675$ en base $8$ : $675 = 84\times 8 + 3$ ; $84 = 10\times 8 + 4$ ;
+	$10 = 1\times 8 + 2$ ; $1 = 0\times 8 + 1$. Donc $675 = \overline{1243}^{\,8}$.
+\end{exemple}
+
+\begin{propriete}{Critères de divisibilité (base 10)}{arith_criteres}
+	En utilisant $10 \equiv 1\ [3\text{ et }9]$ et $10 \equiv -1\ [11]$, pour
+	$N = \overline{a_k \ldots a_0}^{\,10}$ :
+	\begin{itemize}[label=\textbullet]
+		\item $3 \mid N$ (resp. $9 \mid N$) $\iff$ $3$ (resp. $9$) divise la
+		somme des chiffres ;
+		\item $11 \mid N \iff 11$ divise la somme alternée des chiffres.
+	\end{itemize}
+\end{propriete}
+
+
+\section{Exercices d'entraînement}
+
+\subsection{Échauffement}
+
+\exercice{Divisibilité, division euclidienne, bases \hfill \facile}
+\begin{enumerate}
+	\item Donner tous les diviseurs positifs de $36$, puis $D(36) \cap D(24)$.
+	\item Effectuer la division euclidienne de $-31$ par $5$, puis de $2026$
+	par $7$.
+	\item Écrire $429$ en base $2$ et en base $16$.
+	\item Convertir $\overline{1\,\mathrm{B}\,4}^{\,16}$ en base $10$.
+\end{enumerate}
+
+\exercice{PGCD, PPCM \hfill \facile}
+\begin{enumerate}
+	\item Calculer $\mathrm{PGCD}(84\,;30)$ par l'algorithme d'Euclide.
+	\item Décomposer $84$ et $30$ en facteurs premiers ; en déduire le PGCD et
+	le PPCM.
+	\item Vérifier la relation $\mathrm{PGCD}\times\mathrm{PPCM} = 84\times30$.
+	\item $a$ et $b$ sont premiers entre eux et $ab = 2040$. Que vaut
+	$\mathrm{PPCM}(a\,;b)$ ?
+\end{enumerate}
+
+\exercice{Calculs dans $\Z/n\Z$ \hfill \facile}
+\begin{enumerate}
+	\item Dresser la table d'addition de $\Z/4\Z$.
+	\item Résoudre $\bar 2\,\bar x = \bar 0$ dans $\Z/6\Z$. Combien de solutions ?
+	\item $\bar 3$ est-il inversible dans $\Z/10\Z$ ? Si oui, donner son inverse.
+\end{enumerate}
+
+\exercice{Vrai ou faux \hfill \facile}
+Répondre par \emph{vrai} ou \emph{faux} en justifiant brièvement.
+\begin{enumerate}
+	\item Si $a \mid b$ et $a \mid c$ alors $a \mid (b - c)$.
+	\item Si $a \equiv b\ [n]$ alors $a^2 \equiv b^2\ [n]$.
+	\item $\mathrm{PGCD}(a\,;b) \times \mathrm{PPCM}(a\,;b) = a + b$.
+	\item Si $\mathrm{PGCD}(a\,;b) = 1$ alors $\mathrm{PPCM}(a\,;b) = ab$.
+	\item L'équation $6x + 9y = 5$ admet des solutions dans $\Z^2$.
+	\item Dans $\Z/n\Z$, tout élément non nul est inversible.
+	\item Le reste de $N$ dans la division par $9$ est celui de la somme de ses
+	chiffres.
+\end{enumerate}
+
+\subsection{Divisibilité, congruences et $\Z/n\Z$}
 
 
 
@@ -921,6 +1179,8 @@ Résoudre dans $\Z/5\Z$ les équations suivantes.
 	\item Résoudre dans $\Z/8\Z$ l'équation $x^2 + \bar{2}x = \bar{0}$.
 \end{enumerate}
 
+
+\subsection{PGCD, PPCM et équations diophantiennes}
 
 % ------------------------------------------------------------
 \exercice{PGCD et algorithme d'Euclide \hfill \etoilepleine\etoilepleine\etoilevide}
@@ -1173,3 +1433,82 @@ Soient $a$, $b$ et $c$ trois entiers naturels non nuls.
 
 
 
+
+
+\subsection{Sujets types Bac}
+
+\exercice{Sujet type Bac — divisibilité, $\Z/n\Z$ et Bézout \hfill \difficile}
+\begin{enumerate}
+	\item Montrer que, pour tout entier naturel $n$,
+	$$
+	7^{2n+1} + 4^{2n+1}
+	$$
+	est divisible par $11$. \hfill (1 pt)
+	\item Résoudre dans $\Z/5\Z$ l'équation $x^2 + \bar{2}\,x = \bar{3}$. \hfill (0,75 pt)
+	\item Soit $(E)$ l'équation dans $\Z \times \Z$ : $29x - 11y = 1$.
+	\begin{enumerate}
+		\item En utilisant l'algorithme d'Euclide appliqué à $29$ et $11$,
+		trouver une solution particulière de $(E)$. \hfill (0,75 pt)
+		\item Résoudre $(E)$ dans $\Z \times \Z$. \hfill (0,75 pt)
+	\end{enumerate}
+\end{enumerate}
+
+\exercice{Sujet type Bac — systèmes PGCD et $\Z/5\Z$ \hfill \difficile}
+\begin{enumerate}
+	\item Résoudre dans $\N^2$ le système
+	$$
+	\begin{cases}
+		\mathrm{PGCD}(x\,;y) = 15 \\
+		x + y = 150
+	\end{cases}
+	$$
+	\hfill (1 pt)
+	\item Effectuer la division euclidienne de $-47$ par $6$. \hfill (0,5 pt)
+	\item Résoudre dans $\Z/5\Z \times \Z/5\Z$ le système
+	$$
+	\begin{cases}
+		2x + 3y = \bar{1} \\
+		3x - y = \bar{0}
+	\end{cases}
+	$$
+	\hfill (1 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — restes de puissances et diophantienne \hfill \difficile}
+\begin{enumerate}
+	\item Déterminer le reste de la division euclidienne de $5 \times 2^{2024}$
+	par $7$. \hfill (0,75 pt)
+	\item
+	\begin{enumerate}
+		\item Donner une solution particulière de l'équation $19x - 8y = 1$. \hfill (0,5 pt)
+		\item En déduire la résolution dans $\Z \times \Z$ de l'équation
+		$19x - 8y = 3$. \hfill (1 pt)
+	\end{enumerate}
+	\item Déterminer l'ensemble des entiers relatifs $n$ tels que
+	$2n + 3 \equiv 0\ [7]$. \hfill (0,5 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — systèmes de numération \hfill \difficile}
+Un entier naturel $N$ s'écrit $\overline{ab}^{\,7}$ en base $7$ et
+$\overline{ba}^{\,5}$ en base $5$ (les chiffres $a$ et $b$ étant échangés).
+\begin{enumerate}
+	\item Écrire $N$ en base $10$ de deux manières et en déduire la relation
+	$3a = 2b$. \hfill (0,75 pt)
+	\item Déterminer les chiffres $a$ et $b$, puis la valeur de $N$. \hfill (0,75 pt)
+	\item Écrire $N$ en base $2$ et en base $16$. \hfill (0,5 pt)
+	\item Quel est le reste de la division euclidienne de $N^{2026}$ par $9$ ? \hfill (0,5 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — PGCD de deux expressions et Gauss \hfill \difficile}
+Pour tout entier naturel $n$, on pose $a_n = 2n + 3$ et $b_n = 5n + 7$.
+\begin{enumerate}
+	\item Vérifier que $5\,a_n - 2\,b_n = 1$. \hfill (0,5 pt)
+	\item En déduire que $a_n$ et $b_n$ sont premiers entre eux pour tout $n$. \hfill (0,5 pt)
+	\item
+	\begin{enumerate}
+		\item Montrer que $\mathrm{PGCD}(2n + 3\,;\,n + 1) = 1$. \hfill (0,5 pt)
+		\item Montrer que $n^2 + 1 = (n + 1)(n - 1) + 2$, puis que
+		$\mathrm{PGCD}(n^2 + 1\,;\,n + 1)$ vaut $1$ ou $2$ selon la parité de $n$. \hfill (1 pt)
+	\end{enumerate}
+	\item Résoudre dans $\Z^2$ l'équation $a_n\,x + b_n\,y = 4$ pour $n = 1$. \hfill (0,5 pt)
+\end{enumerate}
