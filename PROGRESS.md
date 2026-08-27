@@ -6,6 +6,37 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-27 — Chapitre « Étude d'une fonction » (ex-« Généralités »)
+
+- `parties/analyse/fonctions.tex` **entièrement recentré** (demande
+  utilisateur). Le chapitre ne traite plus que :
+  - le **plan d'étude** d'une fonction (méthode 8 étapes + propriété
+    signe de f' / variations + étude complète résolue de (x−1)eˣ) ;
+  - le **diagramme d'étude des branches infinies** (schéma TikZ en
+    escalier : limite → f/x → f−ax ; asymptote H/V/oblique, direction
+    asymptotique, branche parabolique) ;
+  - **convexité / concavité / point d'inflexion** : théorème
+    (f″ ≥ 0 ⟺ convexe), propriété (inégalités eˣ ≥ 1+x, ln x ≤ x−1),
+    figure, application résolue ;
+  - **position relative d'une courbe et d'une droite** (asymptote /
+    tangente / sécante ; résolution graphique) ;
+  - **identification de f, f', f″ sur une même figure** (méthode +
+    exercice résolu sur e^{−x²}).
+- Ancien contenu « généralités » (domaine, parité, monotonie, extrema
+  détaillés) : replié dans les étapes du plan / la propriété signe de f'.
+  Titre du chapitre : « Étude d'une fonction ».
+- Tous les exemples et exercices sur ln/exp.
+- Exercices : échauffement (lire courbe + dérivée, diagramme branches
+  infinies, \textbf{Vrai/Faux} 8 items) ; batteries (branches infinies,
+  convexité, inégalités, position) ; \textbf{identification $f/f'/f''$}
+  (2 exercices avec figure) ; \textbf{5 sujets types Bac} (étude complète
+  $(x+1)\e^{-x}$ ; $\tfrac{\ln x}{x}$ ; asymptote oblique
+  $x-2+\tfrac{\ln x}{x}$ ; identification sur $\ln(1+x^2)$ ; famille
+  $x+m\e^{-x}$).
+- `latexmk -pdf main.tex` : **354 pages, 0 erreur**, aucune référence non
+  résolue, aucun `Overfull`.
+- Branche `chapitre-etude-fonctions` → PR contre `main`.
+
 ## 2026-08-27 — Chapitre « Dérivabilité » aligné sur le modèle type
 
 - `parties/analyse/derivation.tex` entièrement refondu selon le modèle type
