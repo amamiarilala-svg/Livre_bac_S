@@ -6,6 +6,32 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-27 — Chapitre Géométrie dans l'espace (création)
+
+- `parties/geometrie/espace.tex` était vide : rédaction complète du chapitre
+  sur le modèle type, en couvrant tout le programme officiel.
+- Cours : repérage et vecteurs de l'espace ; colinéarité / coplanarité /
+  décomposition dans une base ; **produit scalaire** (analytique +
+  géométrique, orthogonalité) ; **produit vectoriel** (analytique +
+  géométrique, aire, volume par produit mixte) ; le plan (représentation
+  paramétrique, vecteur normal, équation cartésienne, plan $(ABC)$) ; la
+  droite (paramétrique, intersection de deux plans) ; positions relatives
+  (2 plans / plan-droite / 2 droites, avec tableau) ; distances
+  (point-plan, point-droite, plans parallèles) et projeté orthogonal ; la
+  sphère (équation, intersection sphère-plan).
+- 3 figures TikZ (repère 3D, plan + vecteur normal, cube) + tableau
+  récapitulatif des positions relatives.
+- 4 exercices résolus (plan $(ABC)$ + position d'une droite ; distance et
+  projeté ; sphère et plan ; deux droites non coplanaires).
+- Exercices d'entraînement : Échauffement (cube, tétraèdre, Vrai/Faux),
+  « Vecteurs, produit scalaire et produit vectoriel », « Droites et
+  plans », et **5 sujets types Bac** calqués sur l'Exercice 2 des sessions
+  2021–2026 (plan + droite + distance ; produit vectoriel + parallélisme ;
+  deux plans parallèles ; sphère + droite perpendiculaire à un plan ; deux
+  droites orthogonales + plan commun).
+- Compile sans erreur (320 pages) ; aucun `Overfull \hbox` visible ajouté.
+- Branche `chapitre-espace`, PR contre `main`.
+
 ## 2026-08-27 — Refonte du chapitre Nombres complexes
 
 - `parties/algebre/complexes.tex` recentré sur le contenu demandé : quatre

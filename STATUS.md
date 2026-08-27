@@ -25,7 +25,7 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
 |---|---|
 | Algèbre (arithmétique, matrices, complexes) | Terminé. Chapitre Complexes refondu sur le modèle type le 2026-08-27 (formes, équations 2-3-4, systèmes, ensembles de points). |
 | Analyse (limites → équa diff) | Terminé |
-| Géométrie (barycentre → espace) | Terminé. Chapitres Isométries (2026-08-27) et Barycentre (2026-08-27) refondus sur le modèle type. Espace : fichier encore vide. |
+| Géométrie (barycentre → espace) | Terminé. Chapitres Isométries, Barycentre et Géométrie dans l'espace (créé de zéro) alignés sur le modèle type le 2026-08-27. |
 | Probabilités (5 sous-chapitres) | Terminé |
 | Sujets officiels Bacc Série S | 2021, 2022, 2023, 2024, 2025, 2026 transcrits. À compléter au fil des sessions envoyées par l'utilisateur (années manquantes : 2027+ à venir, années < 2021 non demandées pour l'instant). |
 | Entrainement (sujets types) | 19 sujets types présents. |
@@ -40,12 +40,11 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
   difficulté progressive), **≥ 5 sujets types Bacc**, couverture de tout le
   programme officiel en privilégiant les notions déjà vues aux annales.
   - Faits, avec 5 sujets types Bacc chacun : Isométries, Barycentre,
-    Complexes (Complexes recentré sur formes / équations 2-3-4 / systèmes /
-    ensembles de points, accent géométrie).
+    Complexes, Géométrie dans l'espace.
   - Restent : algèbre (arithmétique, matrices), analyse (limites,
     continuité, dérivation, étude de fonctions, intégrales, logarithme,
-    exponentielle, suites ; équa diff a déjà 2 sujets bac), géométrie
-    (`espace.tex` = VIDE, à écrire entièrement), probabilités (5 fichiers).
+    exponentielle, suites ; équa diff a déjà 2 sujets bac),
+    probabilités (5 fichiers).
 - Si l'utilisateur envoie un nouveau sujet officiel (PDF ou photos), il
   s'ajoute dans `parties/annales/bac_20XX.tex` + une ligne `\input` dans
   `sujet_types.tex`, à la bonne place chronologique.
