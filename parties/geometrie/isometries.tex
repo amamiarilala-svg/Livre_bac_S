@@ -1,149 +1,1153 @@
 \chapter{Les Isométries du Plan}
 
+\begin{citationchapitre}
+	« Une figure et huit vers de raisonnement valent mieux\\
+	que huit figures et deux vers. »\\[0.4em]
+	— d'après Blaise Pascal
+\end{citationchapitre}
+
 \begin{objectifs}
-	Maîtriser la définition et les propriétés des isométries. Savoir identifier, construire et composer des réflexions, des rotations et des translations. Utiliser les nombres complexes pour caractériser ces transformations.
+	\begin{itemize}[label=\textbullet]
+		\item Connaître les isométries du plan et les classer par leurs points fixes.
+		\item Composer deux réflexions : reconnaître une translation ou une rotation.
+		\item \textbf{Décomposer} une translation ou une rotation en deux réflexions
+		d'axes bien choisis.
+		\item Déterminer la nature et les éléments caractéristiques d'une composée
+		$t\circ r$, $r\circ t$, $r_1\circ r_2$ par la méthode de l'\emph{axe commun}.
+		\item Reconnaître et réduire une symétrie glissée.
+		\item Retrouver ces résultats à l'aide des nombres complexes.
+		\item Étendre l'étude aux homothéties et aux similitudes directes.
+	\end{itemize}
 \end{objectifs}
 
-% ==========================================================
-% 1. RÉSUMÉ DU COURS
-% ==========================================================
 
-\section{Résumé du cours}
+% ==========================================================
+\section{Rappels et vocabulaire}
+% ==========================================================
 
 \begin{definition}
-	Une \textbf{isométrie} est une transformation du plan qui conserve les distances : pour tous points $M$ et $N$, si $M'$ et $N'$ sont leurs images, alors $M'N' = MN$.
+	Une \textbf{isométrie} du plan est une transformation $f$ qui conserve les
+	distances : pour tous points $M$ et $N$ d'images $M'=f(M)$ et $N'=f(N)$,
+	$$
+	M'N' = MN.
+	$$
 \end{definition}
 
-\begin{propriete}{Propriétés fondamentales}{prop_isometrie}
-	Une isométrie conserve :
-	\begin{itemize}
-		\item L'alignement des points et le milieu d'un segment.
-		\item Les mesures d'angles géométriques.
-		\item L'aire des figures et le barycentre.
-	\end{itemize}
+\begin{propriete}{Ce qu'une isométrie conserve}{prop_isom_conserve}
+	Une isométrie conserve l'alignement, le parallélisme, les milieux, les
+	barycentres, les mesures d'angles géométriques, les longueurs et les aires.
+	Elle transforme une droite en droite, un cercle en cercle de même rayon.
 \end{propriete}
 
-\begin{theoreme}[Classification]
-	Toute isométrie du plan est soit un \textbf{déplacement} (conserve l'orientation), soit un \textbf{antidéplacement} (renverse l'orientation).
-	\begin{itemize}
-		\item \textbf{Déplacements} : Identité, Translations, Rotations.
-		\item \textbf{Antidéplacements} : Réflexions (symétries axiales), Symétries glissées.
+\begin{definition}
+	\begin{itemize}[label=\textbullet]
+		\item Une isométrie qui \textbf{conserve} l'orientation (les angles
+		orientés) est un \textbf{déplacement}.
+		\item Une isométrie qui \textbf{renverse} l'orientation est un
+		\textbf{antidéplacement}.
 	\end{itemize}
+\end{definition}
+
+\begin{theoreme}[Les cinq isométries du plan]
+	Toute isométrie du plan est de l'un des types suivants :
+
+	\begin{center}
+	\renewcommand{\arraystretch}{1.35}
+	\begin{tabular}{>{\raggedright\arraybackslash}p{2.9cm}
+	                >{\centering\arraybackslash}p{2.9cm}
+	                >{\centering\arraybackslash}p{2.6cm}}
+	\hline
+	\textbf{Isométrie} & \textbf{Points invariants} & \textbf{Type} \\
+	\hline
+	Identité & tout le plan & déplacement \\
+	Réflexion $s_\Delta$ & la droite $\Delta$ & antidéplacement \\
+	Rotation $r_{(O,\alpha)}$, $\alpha\not\equiv 0$ & le seul point $O$ & déplacement \\
+	Translation $t_{\vec u}$, $\vec u\neq\vec 0$ & aucun & déplacement \\
+	Symétrie glissée & aucun & antidéplacement \\
+	\hline
+	\end{tabular}
+	\end{center}
 \end{theoreme}
 
 \begin{attention}
-	L'ensemble des isométries muni de la loi de composition est un groupe. Attention : la composition n'est pas commutative ($s_{\Delta_1} \circ s_{\Delta_2} \neq s_{\Delta_2} \circ s_{\Delta_1}$ en général).
+	Muni de la composition~$\circ$, l'ensemble des isométries est un
+	\textbf{groupe} (non commutatif). Les déplacements en forment un
+	sous-groupe ; les antidéplacements, non (la composée de deux
+	antidéplacements est un déplacement).
 \end{attention}
 
+
 % ==========================================================
-% 2. MÉTHODES ET EXERCICE RÉSOLU
+\section{Les réflexions : briques de base}
 % ==========================================================
 
-\section{Méthodes et exercices résolus}
+\begin{definition}
+	La \textbf{réflexion} (ou symétrie orthogonale) d'axe $\Delta$, notée
+	$s_\Delta$, associe à tout point $M$ le point $M'$ tel que $\Delta$ soit la
+	médiatrice de $[MM']$ (et $M'=M$ si $M\in\Delta$).
+\end{definition}
+
+\begin{propriete}{Propriétés immédiates}{prop_reflexion}
+	\begin{itemize}[label=\textbullet]
+		\item $s_\Delta$ est un antidéplacement.
+		\item $s_\Delta\circ s_\Delta = \mathrm{Id}$ : une réflexion est une
+		\textbf{involution}, elle est sa propre réciproque.
+		\item Les points invariants de $s_\Delta$ sont exactement ceux de $\Delta$.
+	\end{itemize}
+\end{propriete}
+
+\begin{theoreme}[Génération des isométries]
+	Toute isométrie du plan est la composée d'\textbf{au plus trois réflexions}.
+	Plus précisément :
+	\begin{itemize}[label=\textbullet]
+		\item un \textbf{déplacement} est la composée d'un nombre \textbf{pair}
+		de réflexions ($0$ ou $2$) ;
+		\item un \textbf{antidéplacement} est la composée d'un nombre
+		\textbf{impair} de réflexions ($1$ ou $3$).
+	\end{itemize}
+\end{theoreme}
+
+\begin{astucebac}
+	C'est l'idée directrice de tout le chapitre : pour comprendre une composée
+	compliquée, on remplace chaque translation et chaque rotation par un
+	produit de \emph{deux} réflexions, en s'arrangeant pour qu'une réflexion en
+	annule une autre ($s_\Delta\circ s_\Delta=\mathrm{Id}$).
+\end{astucebac}
+
+
+% ==========================================================
+\section{Composée de deux réflexions}
+% ==========================================================
+
+Tout dépend de la position relative des deux axes.
+
+\subsection{Axes parallèles : une translation}
+
+\begin{theoreme}[Deux axes parallèles]
+	Si $\Delta_1\parallel\Delta_2$, alors
+	$$
+	s_{\Delta_2}\circ s_{\Delta_1} = t_{2\vec u},
+	$$
+	où $\vec u$ est le vecteur orthogonal aux deux droites qui va de
+	$\Delta_1$ vers $\Delta_2$ (si $H_1\in\Delta_1$ et $H_2\in\Delta_2$ avec
+	$(H_1H_2)\perp\Delta_1$, alors $\vec u=\vect{H_1H_2}$).
+
+	En particulier, si $\Delta_1=\Delta_2$ : $s_{\Delta_2}\circ s_{\Delta_1}=\mathrm{Id}$.
+\end{theoreme}
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	% axes
+	\draw[thick] (1,-0.6) -- (1,3.2) node[above,font=\small] {$\Delta_1$};
+	\draw[thick] (3,-0.6) -- (3,3.2) node[above,font=\small] {$\Delta_2$};
+	% point M et images
+	\filldraw (0,2) circle (1.6pt) node[left,font=\small] {$M$};
+	\filldraw (2,2) circle (1.6pt) node[above,font=\small] {$M_1$};
+	\filldraw (5,2) circle (1.6pt) node[right,font=\small] {$M'$};
+	% traits de construction
+	\draw[gray!60,dashed] (0,2) -- (5,2);
+	% vecteur u : de Delta1 vers Delta2
+	\draw[->,red,thick] (1,-0.3) -- (3,-0.3)
+	  node[midway,below,font=\small,red] {$\vec u$};
+	% vecteur MM'
+	\draw[->,blue!70!black,thick] (0,2.55) -- (5,2.55)
+	  node[midway,above,font=\small,blue!70!black] {$\vect{MM'}=2\vec u$};
+	\node[font=\scriptsize,gray] at (2,-0.95) {$d(\Delta_1,\Delta_2)=\|\vec u\|$};
+\end{tikzpicture}
+\end{center}
+
+\begin{attention}
+	L'ordre compte : $s_{\Delta_1}\circ s_{\Delta_2}=t_{-2\vec u}$ est la
+	translation \emph{opposée}. Une composée de deux réflexions d'axes
+	parallèles n'a \textbf{aucun} point fixe (sauf si les axes sont confondus).
+\end{attention}
+
+\subsection{Axes sécants : une rotation}
+
+\begin{theoreme}[Deux axes sécants]
+	Si $\Delta_1$ et $\Delta_2$ se coupent en $I$ en formant l'angle orienté de
+	droites $\theta=(\Delta_1,\Delta_2)$, alors
+	$$
+	s_{\Delta_2}\circ s_{\Delta_1} = r_{(I,\;2\theta)}.
+	$$
+	En particulier, si $\Delta_1\perp\Delta_2$ :
+	$s_{\Delta_2}\circ s_{\Delta_1}=r_{(I,\pi)}=s_I$ (symétrie centrale).
+\end{theoreme}
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	% centre
+	\coordinate (I) at (0,0);
+	\filldraw (I) circle (1.6pt) node[below left,font=\small] {$I$};
+	% axes : Delta1 horizontal, Delta2 a 30 degres
+	\draw[thick] (-2.6,0) -- (2.6,0) node[right,font=\small] {$\Delta_1$};
+	\draw[thick] (-2.4,{-2.4*tan(30)}) -- (2.4,{2.4*tan(30)})
+	  node[right,font=\small] {$\Delta_2$};
+	% angle theta
+	\draw[red] (0.9,0) arc (0:30:0.9);
+	\node[red,font=\small] at (1.25,0.28) {$\theta$};
+	% M a 50 degres, M1 a -50, M' a 110
+	\filldraw (50:2) circle (1.6pt) node[above right,font=\small] {$M$};
+	\filldraw (-50:2) circle (1.6pt) node[below right,font=\small] {$M_1$};
+	\filldraw (110:2) circle (1.6pt) node[above left,font=\small] {$M'$};
+	\draw[gray!55,dashed] (I) -- (50:2);
+	\draw[gray!55,dashed] (I) -- (-50:2);
+	\draw[gray!55,dashed] (I) -- (110:2);
+	% arc rotation 2theta de M a M'
+	\draw[->,blue!70!black,thick] (50:2.35) arc (50:110:2.35);
+	\node[blue!70!black,font=\small] at (80:2.75) {$2\theta$};
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{>{\centering\arraybackslash}p{3.0cm}
+                >{\centering\arraybackslash}p{4.7cm}}
+\hline
+\textbf{Position des axes} & \textbf{Nature de $s_{\Delta_2}\circ s_{\Delta_1}$} \\
+\hline
+Confondus & Identité \\
+Strictement parallèles & Translation $t_{2\vec u}$ \\
+Sécants en $I$, angle $\theta$ & Rotation $r_{(I,2\theta)}$ \\
+Perpendiculaires en $I$ & Symétrie centrale $s_I$ \\
+\hline
+\end{tabular}
+\end{center}
+
+
+% ==========================================================
+\section{Décomposer une translation ou une rotation}
+% ==========================================================
+
+On lit maintenant les deux théorèmes précédents \emph{à l'envers}. Le point
+essentiel est qu'il reste à chaque fois \textbf{un axe libre}.
+
+\begin{theoreme}[Décomposition d'une translation]
+	Soit $t_{\vec u}$ une translation de vecteur $\vec u\neq\vec 0$.
+
+	Pour toute droite $\Delta_1$ \textbf{orthogonale à $\vec u$}, il existe une
+	unique droite $\Delta_2$ telle que
+	$$
+	t_{\vec u} = s_{\Delta_2}\circ s_{\Delta_1}.
+	$$
+	$\Delta_2$ est l'image de $\Delta_1$ par la translation $t_{\frac12\vec u}$
+	(elle est donc parallèle à $\Delta_1$, à la distance $\tfrac12\|\vec u\|$,
+	du côté de $\vec u$).
+\end{theoreme}
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\draw[thick] (0,-0.4) -- (0,3) node[above,font=\small] {$\Delta_1$};
+	\draw[thick] (1.5,-0.4) -- (1.5,3) node[above,font=\small] {$\Delta_2$};
+	\draw[->,red,thick] (0,0.4) -- (3,0.4)
+	  node[midway,above,font=\small,red] {$\vec u$};
+	\draw[<->,gray] (0,-0.15) -- (1.5,-0.15)
+	  node[midway,below,font=\scriptsize,gray] {$\tfrac12\|\vec u\|$};
+	\node[font=\small] at (0.75,2.5) {$\Delta_1\perp\vec u$};
+	\node[font=\scriptsize,gray] at (2.2,1.4)
+	  {$\Delta_2 = t_{\frac12\vec u}(\Delta_1)$};
+\end{tikzpicture}
+\end{center}
+
+\begin{theoreme}[Décomposition d'une rotation]
+	Soit $r_{(I,\alpha)}$ une rotation de centre $I$ et d'angle $\alpha\not\equiv 0\ [2\pi]$.
+
+	Pour toute droite $\Delta_1$ \textbf{passant par $I$}, il existe une unique
+	droite $\Delta_2$ telle que
+	$$
+	r_{(I,\alpha)} = s_{\Delta_2}\circ s_{\Delta_1}.
+	$$
+	$\Delta_2$ passe par $I$ et $(\Delta_1,\Delta_2)=\dfrac{\alpha}{2}$
+	(on obtient $\Delta_2$ en faisant tourner $\Delta_1$ de $\tfrac{\alpha}{2}$
+	autour de $I$).
+\end{theoreme}
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (I) at (0,0);
+	\filldraw (I) circle (1.6pt) node[below,font=\small] {$I$};
+	% Delta1 libre a 20 deg, Delta2 a 60 deg  (alpha/2 = 40 deg, alpha = 80)
+	\draw[thick] (200:2.6) -- (20:2.6) node[right,font=\small] {$\Delta_1$ (libre)};
+	\draw[thick] (240:2.6) -- (60:2.6) node[above right,font=\small] {$\Delta_2$};
+	\draw[red] (20:1) arc (20:60:1);
+	\node[red,font=\small] at (40:1.35) {$\dfrac{\alpha}{2}$};
+	\node[font=\scriptsize,gray,align=center] at (0,-2)
+	  {$r_{(I,\alpha)} = s_{\Delta_2}\circ s_{\Delta_1}$};
+\end{tikzpicture}
+\end{center}
+
+\begin{astucebac}
+	Cette liberté est ce qui rend la méthode efficace : quand on doit composer
+	deux transformations, on \textbf{choisit l'axe libre commun} aux deux
+	décompositions, de sorte que les deux réflexions du milieu se simplifient.
+\end{astucebac}
+
+
+% ==========================================================
+\section{Composées classiques : la méthode de l'axe commun}
+% ==========================================================
+
+\subsection{Translation suivie d'une rotation}
+
+\begin{theoreme}[Nature de $t_{\vec u}\circ r_{(I,\alpha)}$]
+	Si $\alpha\not\equiv 0\ [2\pi]$, la composée $t_{\vec u}\circ r_{(I,\alpha)}$
+	(comme $r_{(I,\alpha)}\circ t_{\vec u}$) est une \textbf{rotation d'angle
+	$\alpha$}, de centre un point $I'$ à déterminer.
+
+	Si $\alpha\equiv 0\ [2\pi]$, c'est une translation.
+\end{theoreme}
+
+\textbf{Méthode (axe commun).} Pour $f=t_{\vec u}\circ r_{(I,\alpha)}$ :
+\begin{enumerate}
+	\item Soit $\Delta$ la droite passant par $I$ \textbf{orthogonale à $\vec u$}.
+	\item Décomposer la rotation en \emph{finissant} par $\Delta$ :
+	$r_{(I,\alpha)} = s_{\Delta}\circ s_{\Delta_1}$, avec $\Delta_1$ passant par
+	$I$ et $(\Delta_1,\Delta)=\tfrac{\alpha}{2}$.
+	\item Décomposer la translation en \emph{commençant} par $\Delta$ :
+	$t_{\vec u} = s_{\Delta_3}\circ s_{\Delta}$, avec $\Delta_3 = t_{\frac12\vec u}(\Delta)$.
+	\item Simplifier :
+	$$
+	f = s_{\Delta_3}\circ \underbrace{s_{\Delta}\circ s_{\Delta}}_{\mathrm{Id}}\circ s_{\Delta_1}
+	  = s_{\Delta_3}\circ s_{\Delta_1}.
+	$$
+	\item $\Delta_1$ et $\Delta_3$ sont sécantes (car $\alpha\neq 0$) en $I'$ :
+	$f$ est la rotation de centre $I'$ et d'angle $2(\Delta_1,\Delta_3)=\alpha$.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.05]
+	\coordinate (I) at (0,0);
+	\filldraw (I) circle (1.6pt) node[below left,font=\small] {$I$};
+	% Delta : verticale (perp a u) ; u horizontal
+	\draw[thick] (0,-1.2) -- (0,2.6) node[above,font=\small] {$\Delta$};
+	\draw[->,red,thick] (0,-1.5) -- (2,-1.5)
+	  node[midway,below,font=\small,red] {$\vec u$};
+	% Delta1 a 45 deg par I  (alpha=90, alpha/2=45 ; (Delta1,Delta)=45 => Delta1 a 45deg)
+	\draw[thick] (-1.9,-1.9) -- (2.4,2.4) node[right,font=\small] {$\Delta_1$};
+	% Delta3 : verticale x=1.5
+	\draw[thick] (1.5,-1.2) -- (1.5,2.6) node[above,font=\small] {$\Delta_3$};
+	% nouveau centre I' = (1.5,1.5)
+	\filldraw[blue!70!black] (1.5,1.5) circle (1.8pt)
+	  node[right,font=\small,blue!70!black] {$I'$};
+	\draw[red] (0.7,0) arc (0:45:0.7);
+	\node[red,font=\scriptsize] at (1.15,0.35) {$\tfrac{\alpha}{2}$};
+	\draw[<->,gray] (0,-0.9) -- (1.5,-0.9)
+	  node[midway,below,font=\scriptsize,gray] {$\tfrac12\|\vec u\|$};
+\end{tikzpicture}
+\end{center}
+
+\subsection{Composée de deux rotations}
+
+\begin{theoreme}[Nature de $r_{(I_1,\alpha_1)}\circ r_{(I_2,\alpha_2)}$]
+	Posons $\alpha=\alpha_1+\alpha_2$.
+	\begin{itemize}[label=\textbullet]
+		\item Si $\alpha\not\equiv 0\ [2\pi]$ : la composée est une
+		\textbf{rotation d'angle $\alpha_1+\alpha_2$}, de centre à déterminer.
+		\item Si $\alpha\equiv 0\ [2\pi]$ : la composée est une
+		\textbf{translation} (éventuellement l'identité si $I_1=I_2$).
+	\end{itemize}
+\end{theoreme}
+
+\textbf{Méthode.} On prend pour axe commun la droite $(I_1I_2)$ :
+$$
+r_{(I_2,\alpha_2)} = s_{(I_1I_2)}\circ s_{\Delta},\qquad
+r_{(I_1,\alpha_1)} = s_{\Delta'}\circ s_{(I_1I_2)},
+$$
+avec $\Delta$ passant par $I_2$, $(\Delta,(I_1I_2))=\tfrac{\alpha_2}{2}$ et
+$\Delta'$ passant par $I_1$, $((I_1I_2),\Delta')=\tfrac{\alpha_1}{2}$. Alors
+$$
+r_{(I_1,\alpha_1)}\circ r_{(I_2,\alpha_2)} = s_{\Delta'}\circ s_{\Delta}.
+$$
+Si $\Delta$ et $\Delta'$ sont sécantes, on lit une rotation d'angle
+$\alpha_1+\alpha_2$ ; si elles sont parallèles, une translation.
+
+\begin{astucebac}
+	Cas fréquent au Bac : $r_{(I_1,\alpha)}\circ r_{(I_2,-\alpha)}$
+	(angles opposés) est une \textbf{translation}. Et
+	$s_{I_1}\circ s_{I_2} = t_{2\vect{I_2I_1}}$ (deux symétries centrales).
+\end{astucebac}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{>{\raggedright\arraybackslash}p{3.5cm}
+                >{\raggedright\arraybackslash}p{4.6cm}}
+\hline
+\textbf{Composée} & \textbf{Résultat} \\
+\hline
+$t_{\vec u}\circ t_{\vec v}$ & translation $t_{\vec u+\vec v}$ \\
+$t_{\vec u}\circ r_{(I,\alpha)}$, $\alpha\neq 0$ & rotation d'angle $\alpha$ \\
+$r_{(I,\alpha)}\circ t_{\vec u}$, $\alpha\neq 0$ & rotation d'angle $\alpha$ \\
+$r_{(I_1,\alpha_1)}\circ r_{(I_2,\alpha_2)}$ & rotation d'angle $\alpha_1+\alpha_2$
+  \newline (translation si $\alpha_1+\alpha_2\equiv 0$) \\
+$s_{\Delta}\circ t_{\vec u}$ / $t_{\vec u}\circ s_{\Delta}$ & réflexion ou
+  \textbf{symétrie glissée} \\
+\hline
+\end{tabular}
+\end{center}
+
+
+% ==========================================================
+\section{La symétrie glissée}
+% ==========================================================
+
+\begin{definition}
+	Une \textbf{symétrie glissée} d'axe $\Delta$ et de vecteur $\vec u$
+	(\textbf{non nul} et \textbf{directeur de $\Delta$}) est la transformation
+	$$
+	g = t_{\vec u}\circ s_{\Delta} = s_{\Delta}\circ t_{\vec u}.
+	$$
+	(Ces deux composées sont égales \emph{uniquement} lorsque $\vec u$ dirige
+	$\Delta$ : c'est la \textbf{forme réduite}.)
+\end{definition}
+
+\begin{propriete}{Caractérisation}{prop_sym_glissee}
+	\begin{itemize}[label=\textbullet]
+		\item $g$ est un antidéplacement \textbf{sans point fixe}.
+		\item L'axe $\Delta$ est globalement invariant ; pour tout point $M$, le
+		milieu de $[M\,g(M)]$ appartient à $\Delta$.
+		\item $g\circ g = t_{2\vec u}$.
+		\item Tout antidéplacement est soit une réflexion (s'il a des points
+		fixes : toute une droite), soit une symétrie glissée (sinon).
+	\end{itemize}
+\end{propriete}
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\draw[thick] (-0.6,0) -- (5.2,0) node[right,font=\small] {$\Delta$};
+	\draw[->,red,thick] (0,-0.55) -- (2,-0.55)
+	  node[midway,below,font=\small,red] {$\vec u$};
+	% M
+	\filldraw (1,1.5) circle (1.6pt) node[left,font=\small] {$M$};
+	% s_Delta(M)
+	\filldraw (1,-1.5) circle (1.6pt) node[left,font=\small] {$s_\Delta(M)$};
+	\draw[gray!60,dashed] (1,1.5) -- (1,-1.5);
+	% g(M)
+	\filldraw (3,-1.5) circle (1.6pt) node[right,font=\small] {$g(M)$};
+	\draw[->,gray!70] (1,-1.5) -- (3,-1.5);
+	% segment M g(M) et son milieu
+	\draw[blue!70!black,dashed] (1,1.5) -- (3,-1.5);
+	\filldraw[blue!70!black] (2,0) circle (1.6pt)
+	  node[above right,font=\scriptsize,blue!70!black] {milieu $\in\Delta$};
+\end{tikzpicture}
+\end{center}
 
 \begin{methode}
-	Pour prouver qu'une transformation $f$ est une isométrie via les complexes :
+	\textbf{Réduire un antidéplacement $f$.}
 	\begin{enumerate}
-		\item Si $f(z) = az + b$ avec $|a|=1$ : c'est un déplacement (rotation si $a \neq 1$, translation si $a=1$).
-		\item Si $f(z) = a\overline{z} + b$ avec $|a|=1$ : c'est un antidéplacement.
+		\item Calculer $f\circ f$. C'est une translation $t_{\vec w}$.
+		\item Si $\vec w=\vec 0$ : $f$ est une \textbf{réflexion}. Son axe est
+		l'ensemble des points invariants ($f(M)=M$).
+		\item Si $\vec w\neq\vec 0$ : $f$ est la \textbf{symétrie glissée} de
+		vecteur $\vec u=\tfrac12\vec w$, d'axe la droite
+		$\{M : \vect{M\,f(M)}=\vec u\}$.
+	\end{enumerate}
+\end{methode}
+
+
+% ==========================================================
+\section{Reconnaître une isométrie : arbre de décision}
+% ==========================================================
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=0.72, transform shape,
+	every node/.style={font=\small},
+	box/.style={draw, rounded corners, align=center, inner sep=3pt, fill=gray!8}]
+	\node[box] (o) at (0,0) {Isométrie $f$\\ conserve l'orientation ?};
+	\node[box] (dep) at (-3.4,-1.9) {\textbf{Déplacement}\\ (pair de réflexions)};
+	\node[box] (ant) at (3.4,-1.9) {\textbf{Antidéplacement}\\ (impair)};
+	\node[box] (dep2) at (-3.4,-4.1) {points fixes ?};
+	\node[box] (ant2) at (3.4,-4.1) {points fixes ?};
+	\node[box] (id)  at (-5.6,-6.0) {tout le plan\\ $\Rightarrow$ Identité};
+	\node[box] (rot) at (-3.0,-6.0) {un seul $O$\\ $\Rightarrow$ Rotation};
+	\node[box] (tr)  at (-0.6,-6.9) {aucun\\ $\Rightarrow$ Translation};
+	\node[box] (ref) at (2.6,-6.0) {une droite $\Delta$\\ $\Rightarrow$ Réflexion};
+	\node[box] (sg)  at (5.2,-6.9) {aucun\\ $\Rightarrow$ Sym. glissée};
+	\draw[->] (o) -- (dep) node[midway,above left,font=\scriptsize] {oui};
+	\draw[->] (o) -- (ant) node[midway,above right,font=\scriptsize] {non};
+	\draw[->] (dep) -- (dep2);
+	\draw[->] (ant) -- (ant2);
+	\draw[->] (dep2) -- (id);
+	\draw[->] (dep2) -- (rot);
+	\draw[->] (dep2) -- (tr);
+	\draw[->] (ant2) -- (ref);
+	\draw[->] (ant2) -- (sg);
+\end{tikzpicture}
+\end{center}
+
+
+% ==========================================================
+\section{Isométries et nombres complexes}
+% ==========================================================
+
+Le plan est rapporté à un repère orthonormé direct. On identifie un point à
+son affixe.
+
+\begin{theoreme}[Écriture complexe des déplacements]
+	$f$ est un \textbf{déplacement} si et seulement si
+	$$
+	f(z) = az + b,\qquad |a|=1.
+	$$
+	\begin{itemize}[label=\textbullet]
+		\item Si $a=1$ : $f$ est la \textbf{translation} de vecteur d'affixe $b$.
+		\item Si $a\neq 1$ : $f$ est la \textbf{rotation} d'angle $\arg a$ et de
+		centre $\Omega$ d'affixe $\omega=\dfrac{b}{1-a}$.
+	\end{itemize}
+\end{theoreme}
+
+\begin{theoreme}[Écriture complexe des antidéplacements]
+	$f$ est un \textbf{antidéplacement} si et seulement si
+	$$
+	f(z) = a\bar z + b,\qquad |a|=1.
+	$$
+	On calcule $f\circ f(z) = z + (a\bar b + b)$.
+	\begin{itemize}[label=\textbullet]
+		\item Si $a\bar b + b = 0$ : $f$ est la \textbf{réflexion} d'axe la
+		droite d'équation $z = a\bar z + b$.
+		\item Si $a\bar b + b \neq 0$ : $f$ est la \textbf{symétrie glissée} de
+		vecteur d'affixe $\dfrac{1}{2}(a\bar b + b)$, d'axe
+		$\left\{z : a\bar z + b - z = \dfrac12(a\bar b + b)\right\}$.
+	\end{itemize}
+\end{theoreme}
+
+\begin{methode}
+	\textbf{Identifier une transformation donnée par $z'=\ldots$}
+	\begin{enumerate}
+		\item Forme $az+b$ ou $a\bar z+b$ ? $\Rightarrow$ déplacement ou
+		antidéplacement.
+		\item Calculer $|a|$ : $|a|=1$ isométrie ; $|a|\neq 1$ similitude
+		(voir section suivante).
+		\item Déplacement : $a=1$ translation ; sinon rotation, centre
+		$\omega=\frac{b}{1-a}$, angle $\arg a$.
+		\item Antidéplacement : chercher les points fixes. Une droite entière
+		$\Rightarrow$ réflexion ; aucun $\Rightarrow$ réduire via $f\circ f$.
 	\end{enumerate}
 \end{methode}
 
 \exerciceresolu
-Soit $f$ l'application définie par $f(z) = \ii \overline{z} + 1 + \ii$. Quelle est sa nature ?
+\textbf{Composée par les complexes}
+
+Soit $r$ la rotation de centre $A(1)$ et d'angle $\dfrac{\pi}{2}$, et
+$t$ la translation de vecteur d'affixe $2\ii$.
+Déterminer la nature et les éléments caractéristiques de $f=t\circ r$.
 
 \solution
-Ici $f(z) = a\overline{z} + b$ avec $a = \ii$ et $b = 1+\ii$. Comme $|a|=|\ii|=1$, c'est un antidéplacement.
-On cherche les points invariants : $z = \ii \overline{z} + 1 + \ii$. En posant $z = x + \ii y$, on résout le système et on identifie une symétrie glissée.
+
+Écriture de $r$ : $z' = \ii(z-1)+1 = \ii z + 1 - \ii$.
+
+Écriture de $t$ : $z' = z + 2\ii$.
+
+Donc $f(z) = (\ii z + 1 - \ii) + 2\ii = \ii z + 1 + \ii$.
+
+Ici $a=\ii$, $|a|=1$ et $a\neq 1$ : $f$ est une \textbf{rotation} d'angle
+$\arg(\ii)=\dfrac{\pi}{2}$.
+
+Centre : $\omega = \dfrac{b}{1-a} = \dfrac{1+\ii}{1-\ii}
+= \dfrac{(1+\ii)^2}{(1-\ii)(1+\ii)} = \dfrac{2\ii}{2} = \ii$.
+
+$f$ est la rotation de centre $\Omega(\ii)$ et d'angle $\dfrac{\pi}{2}$
+— ce qui confirme le théorème : $t\circ r$ est bien une rotation d'angle
+$\dfrac{\pi}{2}$, seul le centre a changé.
+
+\exerciceresolu
+\textbf{Reconnaître une symétrie glissée}
+
+Soit $f$ définie par $f(z) = \ii\bar z + 1 + \ii$. Nature de $f$ ?
+
+\solution
+
+Forme $a\bar z + b$ avec $a=\ii$, $b=1+\ii$ : $|a|=1$, c'est un
+\textbf{antidéplacement}.
+
+Points fixes : $z = \ii\bar z + 1 + \ii$. Avec $z=x+\ii y$ :
+$x + \ii y = \ii(x - \ii y) + 1 + \ii = (y+1) + \ii(x+1)$.
+D'où le système $x = y+1$ et $y = x+1$, soit $x-y=1$ et $x-y=-1$ :
+\textbf{aucune} solution. $f$ n'a pas de point fixe.
+
+Réduction : $a\bar b + b = \ii\,\overline{(1+\ii)} + (1+\ii)
+= \ii(1-\ii) + 1 + \ii = (\ii + 1) + 1 + \ii = 2 + 2\ii \neq 0$.
+
+$f$ est la \textbf{symétrie glissée} de vecteur d'affixe
+$\dfrac12(2+2\ii) = 1+\ii$, d'axe la droite
+$\ii\bar z + 1 + \ii - z = 1 + \ii$, c'est-à-dire $\ii\bar z - z = 0$,
+soit (avec $z=x+\ii y$) $y - x + \ii(x - y)=0 \Rightarrow y = x$.
+
+Axe : la droite d'équation $y=x$ ; vecteur $\vec u(1\,;1)$ (bien directeur
+de l'axe).
+
 
 % ==========================================================
-% 3. EXERCICES GRADUÉS
+\section{Au-delà des isométries : homothéties et similitudes}
 % ==========================================================
 
+\begin{definition}
+	L'\textbf{homothétie} de centre $I$ et de rapport $k$ ($k\in\R^*$), notée
+	$h_{(I,k)}$, associe à $M$ le point $M'$ tel que $\vect{IM'}=k\,\vect{IM}$.
+	Écriture complexe : $z' = k(z-\omega)+\omega = kz + (1-k)\omega$.
+\end{definition}
+
+\begin{propriete}{Homothétie et distances}{prop_homothetie}
+	$h_{(I,k)}$ multiplie les distances par $|k|$ et les aires par $k^2$.
+	C'est une isométrie \textbf{seulement} si $k=1$ (identité) ou $k=-1$
+	(symétrie centrale $s_I$).
+\end{propriete}
+
+\begin{theoreme}[Composées avec une homothétie]
+	\begin{itemize}[label=\textbullet]
+		\item Avec $k\neq 1$, les composées
+		$$t_{\vec u}\circ h_{(I,k)} \quad\text{et}\quad h_{(I,k)}\circ t_{\vec u}$$
+		sont des homothéties de \textbf{rapport $k$}, de centre déplacé.
+		\item $h_{(I_1,k_1)}\circ h_{(I_2,k_2)}$ est une homothétie de rapport
+		$k_1k_2$ si $k_1k_2\neq 1$ ; sinon une \textbf{translation} de vecteur
+		parallèle à $(I_1I_2)$.
+		\item Deux homothéties de même centre :
+		$$h_{(I,k_1)}\circ h_{(I,k_2)} = h_{(I,\,k_1k_2)}.$$
+	\end{itemize}
+\end{theoreme}
+
+\begin{definition}
+	Une \textbf{similitude directe} $S$ de rapport $\lambda>0$ et d'angle
+	$\varphi$ a pour écriture complexe
+	$$
+	z' = az + b,\qquad a\in\C^*,\quad \lambda=|a|,\quad \varphi=\arg a.
+	$$
+	Si $a\neq 1$, elle admet un unique centre $\Omega$ d'affixe
+	$\omega=\dfrac{b}{1-a}$, et
+	$$
+	S = h_{(\Omega,\lambda)}\circ r_{(\Omega,\varphi)}
+	  = r_{(\Omega,\varphi)}\circ h_{(\Omega,\lambda)}.
+	$$
+\end{definition}
+
+\begin{propriete}{Cas particuliers de la similitude directe}{prop_simil_cas}
+	\begin{center}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{>{\raggedright\arraybackslash}p{3.4cm}
+	                >{\raggedright\arraybackslash}p{4.6cm}}
+	\hline
+	\textbf{Condition sur $a$} & \textbf{Nature de $z'=az+b$} \\
+	\hline
+	$a=1$ & translation \\
+	$a\in\R_+^*,\ a\neq 1$ & homothétie de rapport $a$ \\
+	$|a|=1,\ a\neq 1$ & rotation d'angle $\arg a$ \\
+	$|a|\neq 1,\ a\notin\R$ & similitude directe « vraie » \\
+	\hline
+	\end{tabular}
+	\end{center}
+\end{propriete}
+
+\begin{propriete}{Composition des similitudes}{prop_simil_compo}
+	Lorsqu'on compose deux similitudes, les \textbf{rapports se multiplient} et
+	les \textbf{angles s'ajoutent} (pour les similitudes directes). La composée
+	de deux similitudes indirectes est une similitude directe.
+\end{propriete}
+
+\begin{astucebac}
+	La \textbf{similitude indirecte} s'écrit $z' = a\bar z + b$ avec
+	$a\in\C^*$ ; son rapport est $|a|$. Si $|a|=1$ on retrouve un
+	antidéplacement (réflexion ou symétrie glissée).
+\end{astucebac}
+
+
+% ==========================================================
+\section{Méthodes et exercices résolus}
+% ==========================================================
+
+\begin{methode}
+	\textbf{Éléments caractéristiques de $f=t_{\vec u}\circ r_{(I,\alpha)}$ par
+	l'axe commun.}
+	\begin{enumerate}
+		\item Annoncer la nature : rotation d'angle $\alpha$ (si $\alpha\neq0$).
+		\item Tracer $\Delta$ : droite par $I$, orthogonale à $\vec u$.
+		\item Tracer $\Delta_1$ : droite par $I$ telle que $(\Delta_1,\Delta)=\tfrac{\alpha}{2}$.
+		\item Tracer $\Delta_3$ : parallèle à $\Delta$, translatée de $\tfrac12\vec u$.
+		\item Le centre est $I'=\Delta_1\cap\Delta_3$.
+	\end{enumerate}
+\end{methode}
+
+\exerciceresolu
+\textbf{Composée $t\circ r$ — méthode géométrique}
+
+$ABC$ est un triangle rectangle isocèle direct en $A$ avec $AB=AC=4$,
+$(\vect{AB},\vect{AC})=\dfrac{\pi}{2}$. Soit $r$ la rotation de centre $A$
+et d'angle $\dfrac{\pi}{2}$, et $t$ la translation de vecteur $\vect{AB}$.
+Déterminer les éléments caractéristiques de $f=t\circ r$.
+
+\solution
+
+$\alpha=\dfrac{\pi}{2}\neq 0$ : $f$ est une \textbf{rotation d'angle
+$\dfrac{\pi}{2}$}.
+
+\textbf{Axe commun.} $\vec u=\vect{AB}$. Soit $\Delta$ la droite passant par
+$A$ et orthogonale à $\vect{AB}$ : c'est la droite $(AC)$.
+
+\textbf{Décomposition de $r$.} $r_{(A,\pi/2)}=s_{\Delta}\circ s_{\Delta_1}$
+avec $\Delta_1$ par $A$ et $(\Delta_1,\Delta)=\dfrac{\pi}{4}$ :
+$\Delta_1$ est la bissectrice de l'angle $\widehat{BAC}$.
+
+\textbf{Décomposition de $t$.} $t_{\vect{AB}}=s_{\Delta_3}\circ s_{\Delta}$
+avec $\Delta_3$ parallèle à $(AC)$ passant par le milieu $J$ de $[AB]$.
+
+\textbf{Simplification.} $f=s_{\Delta_3}\circ s_{\Delta_1}$.
+$\Delta_1$ (bissectrice, angle $\dfrac{\pi}{4}$ avec $(AB)$) et $\Delta_3$
+(parallèle à $(AC)$, donc perpendiculaire à $(AB)$, passant par $J$) se
+coupent en $I'$. Le point $I'$ a pour coordonnées, dans le repère
+$(A\,;\vect{AB},\vect{AC})$ d'unité $4$ : $\Delta_3 : x=\dfrac12$ ;
+$\Delta_1 : y=x$. Donc $I'\left(\dfrac12\,;\dfrac12\right)$, soit le point
+d'affixe $2+2\ii$ dans le repère métrique.
+
+\textbf{Vérification complexe.} $r : z'=\ii z$ (centre $A$ origine).
+$t : z'=z+4$. $f(z)=\ii z + 4$. Centre : $\omega=\dfrac{4}{1-\ii}=2+2\ii$.
+Angle $\arg\ii=\dfrac{\pi}{2}$. \checkmark
+
+\exerciceresolu
+\textbf{Composée de deux rotations}
+
+Soit $r_1$ la rotation de centre $O(0)$ d'angle $\dfrac{\pi}{3}$ et $r_2$
+la rotation de centre $A(2)$ d'angle $\dfrac{\pi}{6}$.
+Nature et éléments de $g=r_1\circ r_2$ ?
+
+\solution
+
+Somme des angles : $\dfrac{\pi}{3}+\dfrac{\pi}{6}=\dfrac{\pi}{2}\not\equiv 0$.
+$g$ est une \textbf{rotation d'angle $\dfrac{\pi}{2}$}.
+
+Par les complexes : $r_2 : z' = \e^{\ii\pi/6}(z-2)+2$ et
+$r_1 : z'=\e^{\ii\pi/3}z$. Donc
+$$
+g(z) = \e^{\ii\pi/3}\left[\e^{\ii\pi/6}(z-2)+2\right]
+= \e^{\ii\pi/2}z + 2\e^{\ii\pi/3} - 2\e^{\ii\pi/2}
+= \ii z + \bigl(1 + \ii\sqrt 3 - 2\ii\bigr).
+$$
+Soit $g(z) = \ii z + 1 + \ii(\sqrt 3 - 2)$.
+
+Centre : en multipliant haut et bas par le conjugué de $1-\ii$,
+$$
+\omega = \frac{1 + \ii(\sqrt 3 - 2)}{1 - \ii}
+= \frac{\bigl[1+\ii(\sqrt3-2)\bigr](1+\ii)}{2}
+= \frac{(3-\sqrt3) + \ii(\sqrt3 - 1)}{2}.
+$$
+
+$g$ est la rotation d'angle $\dfrac{\pi}{2}$ et de centre d'affixe
+$\dfrac{(3-\sqrt3)+\ii(\sqrt3-1)}{2}$.
+
+\exerciceresolu
+\textbf{Décomposer pour identifier}
+
+Soit $s_1$ la réflexion d'axe $(Ox)$ et $s_2$ la réflexion d'axe la droite
+$\Delta$ d'équation $y = x\tan\dfrac{\pi}{6}$ (passant par $O$).
+Identifier $s_2\circ s_1$ puis $s_1\circ s_2$.
+
+\solution
+
+Les deux axes sont sécants en $O$, et $\bigl((Ox),\Delta\bigr)=\dfrac{\pi}{6}$.
+
+$s_2\circ s_1 = r_{(O,\;2\times\pi/6)} = r_{(O,\;\pi/3)}$.
+
+$s_1\circ s_2 = r_{(O,\;-\pi/3)}$ (rotation opposée).
+
+\emph{Contrôle complexe} : $s_1(z)=\bar z$, $s_2(z)=\e^{\ii\pi/3}\bar z$.
+Donc $s_2\circ s_1(z)=\e^{\ii\pi/3}\overline{\bar z}=\e^{\ii\pi/3}z$ :
+rotation de centre $O$, angle $\dfrac{\pi}{3}$. \checkmark
+
+
+% ==========================================================
 \section{Exercices d'entraînement}
-
-\exercice{La valse des points \hfill \facile}
-Soient $A(1;0)$ et $B(0;1)$.
-\begin{enumerate}
-	\item Donner l'expression complexe de la translation de vecteur $\vec{u}(2;3)$.
-	\item Donner l'expression complexe de la rotation de centre $O$ et d'angle $\pi/2$.
-\end{enumerate}
-
-\exercice{Le miroir de Mada \hfill \moyen}
-On considère la réflexion $s$ d'axe la droite d'équation $y = x$.
-\begin{enumerate}
-	\item Déterminer l'image du point $C(2; 4)$ par $s$.
-	\item Montrer que pour tout point $M(x; y)$, son image $M'(x'; y')$ vérifie $x' = y$ et $y' = x$.
-	\item L'application $s$ est-elle un déplacement ou un antidéplacement ? Justifier.
-\end{enumerate}
-
-\exercice{Le zébu en rotation \hfill \difficile}
-Un zébu se déplace dans un enclos selon une rotation $R$ de centre $O$ et d'angle $\pi/3$. 
-\begin{enumerate}
-	\item Déterminer l'image par $R$ d'un point $M$ d'affixe $z$.
-	\item On compose $R$ avec une symétrie axiale $S$ d'axe $(Ox)$. Quelle est la nature de la transformation $T = S \circ R$ ?
-	\item Déterminer l'expression complexe de $T$.
-\end{enumerate}
-
-
-
-
-% ==========================================================
-% BANQUE D'EXERCICES STYLE CIAM - ISOMÉTRIES
 % ==========================================================
 
+\subsection{Échauffement : lire une figure}
 
+\exercice{Le carré \hfill \facile}
+$ABCD$ est un carré direct de centre $O$ et de côté $c$.
 
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (0,0); \coordinate (B) at (2.4,0);
+	\coordinate (C) at (2.4,2.4); \coordinate (D) at (0,2.4);
+	\coordinate (O) at (1.2,1.2);
+	\draw[thick] (A)--(B)--(C)--(D)--cycle;
+	\draw[gray!55,dashed] (A)--(C) (B)--(D);
+	\filldraw (O) circle (1.4pt);
+	\node[below left,font=\small] at (A) {$A$};
+	\node[below right,font=\small] at (B) {$B$};
+	\node[above right,font=\small] at (C) {$C$};
+	\node[above left,font=\small] at (D) {$D$};
+	\node[below right,font=\small] at (O) {$O$};
+\end{tikzpicture}
+\end{center}
 
-
-\exercice{La danse des complexes \hfill \moyen}
-Soit $f$ l'application du plan dans lui-même qui, à tout point $M$ d'affixe $z$, associe le point $M'$ d'affixe $z'$ définie par :
-$$z' = \ii z + 1 - \ii$$
 \begin{enumerate}
-	\item Montrer que $f$ admet un unique point invariant $\Omega$ dont on précisera l'affixe $\omega$.
-	\item Établir que pour tout $z \neq \omega$, $\frac{z' - \omega}{z - \omega} = \ii$.
-	\item En déduire la nature et les éléments caractéristiques de $f$.
-	\item Déterminer l'image par $f$ de la droite $(D)$ d'équation $x = 1$.
+	\item Quelle est la nature de $s_{(AB)}\circ s_{(DC)}$ ? Préciser son
+	vecteur.
+	\item Quelle est la nature de $s_{(AC)}\circ s_{(BD)}$ ?
+	\item Simplifier $r_{\left(O,\frac{\pi}{2}\right)}\circ r_{\left(O,\frac{\pi}{2}\right)}$.
+	\item Décomposer $s_O$ en produit de deux réflexions dont l'un des axes
+	est $(AC)$.
+	\item Simplifier $t_{\vect{AB}}\circ t_{\vect{BC}}$.
+\end{enumerate}
+
+\exercice{Le rectangle \hfill \facile}
+$ABCD$ est un rectangle direct de centre $O$ tel que $AB = 6$ et $BC = 4$.
+On note $(d)$ la médiatrice de $[AB]$ et $(d')$ la médiatrice de $[BC]$.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=0.9]
+	\coordinate (A) at (0,0); \coordinate (B) at (3.6,0);
+	\coordinate (C) at (3.6,2.4); \coordinate (D) at (0,2.4);
+	\coordinate (O) at (1.8,1.2);
+	\draw[thick] (A)--(B)--(C)--(D)--cycle;
+	\draw[blue!60!black,dashed] (1.8,-0.5)--(1.8,2.9) node[above,font=\scriptsize]{$(d)$};
+	\draw[red!70!black,dashed] (-0.5,1.2)--(4.1,1.2) node[right,font=\scriptsize]{$(d')$};
+	\filldraw (O) circle (1.4pt) node[below right,font=\small] {$O$};
+	\node[below left,font=\small] at (A) {$A$};
+	\node[below right,font=\small] at (B) {$B$};
+	\node[above right,font=\small] at (C) {$C$};
+	\node[above left,font=\small] at (D) {$D$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Quelle est la nature de $s_{(d')}\circ s_{(d)}$ ?
+	\item Quelle est la nature de $s_{(d)}\circ s_{(AD)}$ ? Préciser son
+	vecteur.
+	\item Donner une isométrie simple qui transforme le rectangle en lui-même
+	et qui échange $A$ et $C$.
+	\item Que vaut $s_{(AB)}\circ s_{(AB)}$ ? Comment appelle-t-on une telle
+	propriété ?
+\end{enumerate}
+
+\exercice{Le triangle équilatéral \hfill \facile}
+$ABC$ est un triangle équilatéral direct de centre $O$. On note $r$ la
+rotation de centre $O$ et d'angle $\dfrac{2\pi}{3}$, et $\Delta_A$, $\Delta_B$,
+$\Delta_C$ les trois axes de symétrie du triangle (passant respectivement par
+$A$, $B$, $C$).
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (90:1.5); \coordinate (B) at (210:1.5);
+	\coordinate (C) at (330:1.5); \coordinate (O) at (0,0);
+	\coordinate (Mbc) at (0,-0.75);
+	\coordinate (Mac) at (0.6495,0.375);
+	\coordinate (Mab) at (-0.6495,0.375);
+	\draw[thick] (A)--(B)--(C)--cycle;
+	\draw[gray!55,dashed] (A)--(Mbc) (B)--(Mac) (C)--(Mab);
+	\filldraw (O) circle (1.4pt) node[below right,font=\small] {$O$};
+	\node[above,font=\small] at (A) {$A$};
+	\node[below left,font=\small] at (B) {$B$};
+	\node[below right,font=\small] at (C) {$C$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Donner l'image de $A$, puis de $B$, par $r$.
+	\item Quelle est la nature de $r\circ r$ ? de $r\circ r\circ r$ ?
+	\item Sachant que $(\Delta_B,\Delta_A) = \dfrac{\pi}{3}$, identifier
+	$s_{\Delta_A}\circ s_{\Delta_B}$.
+	\item Décomposer $r$ en deux réflexions dont l'un des axes est $\Delta_A$.
+\end{enumerate}
+
+\exercice{Le triangle rectangle isocèle \hfill \moyen}
+$ABC$ est un triangle rectangle isocèle direct en $A$ tel que $AB = AC$ et
+$(\vect{AB},\vect{AC}) = \dfrac{\pi}{2}$.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (0,0); \coordinate (B) at (2.4,0); \coordinate (C) at (0,2.4);
+	\draw[thick] (A)--(B)--(C)--cycle;
+	\draw (0,0.28)--(0.28,0.28)--(0.28,0);
+	\node[below left,font=\small] at (A) {$A$};
+	\node[below right,font=\small] at (B) {$B$};
+	\node[above left,font=\small] at (C) {$C$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Donner l'image de $B$ par la rotation $r_{\left(A,\frac{\pi}{2}\right)}$.
+	\item Quelle est la nature de $t_{\vect{AB}}\circ s_{(AB)}$ ? Préciser son
+	axe et son vecteur.
+	\item Quelle est la nature de $s_{(AB)}\circ s_{(AC)}$ ?
+	\item \textbf{Vrai ou faux} : $s_{(AC)}\circ s_{(AB)} = s_{(AB)}\circ s_{(AC)}$.
+	Justifier.
+\end{enumerate}
+
+\exercice{Vrai ou faux \hfill \facile}
+Répondre par \emph{vrai} ou \emph{faux} en justifiant brièvement.
+\begin{enumerate}
+	\item La composée de deux translations est toujours une translation.
+	\item La composée de deux rotations est toujours une rotation.
+	\item Pour toute droite $\Delta$, $s_\Delta\circ s_\Delta = \mathrm{Id}$.
+	\item Une rotation d'angle $\pi$ est une symétrie centrale.
+	\item La composée de deux réflexions possède toujours au moins un point
+	fixe.
+	\item Une isométrie qui fixe deux points distincts est l'identité ou une
+	réflexion.
+	\item $t_{\vec u}\circ r_{(I,\alpha)}$ a le même angle que $r_{(I,\alpha)}$
+	(pour $\alpha\not\equiv 0$).
+\end{enumerate}
+
+\subsection{Composition et décomposition}
+
+\exercice{Composer deux réflexions \hfill \facile}
+Dans un repère orthonormé, on note $s_1$ la réflexion d'axe la droite
+$x=1$ et $s_2$ la réflexion d'axe la droite $x=4$.
+\begin{enumerate}
+	\item Déterminer l'image du point $M(0\,;2)$ par $s_1$, puis par
+	$s_2\circ s_1$.
+	\item Quelle est la nature de $s_2\circ s_1$ ? Préciser son vecteur.
+	\item Même question pour $s_1\circ s_2$. Comparer.
+	\item Que vaut $(s_2\circ s_1)\circ(s_2\circ s_1)$ ?
+\end{enumerate}
+
+\exercice{Deux axes sécants \hfill \facile}
+$\Delta_1$ et $\Delta_2$ sont deux droites sécantes en $I$ telles que
+$(\Delta_1,\Delta_2)=\dfrac{\pi}{3}$.
+\begin{enumerate}
+	\item Donner la nature et les éléments caractéristiques de
+	$s_{\Delta_2}\circ s_{\Delta_1}$.
+	\item Donner ceux de $s_{\Delta_1}\circ s_{\Delta_2}$.
+	\item Comment choisir $\Delta_2$ pour que $s_{\Delta_2}\circ s_{\Delta_1}$
+	soit la symétrie centrale de centre $I$ ?
+\end{enumerate}
+
+\exercice{Décomposition guidée \hfill \moyen}
+Soit $r$ la rotation de centre $I$ et d'angle $\dfrac{2\pi}{3}$, et $\Delta_1$
+une droite passant par $I$.
+\begin{enumerate}
+	\item Construire la droite $\Delta_2$ telle que $r = s_{\Delta_2}\circ s_{\Delta_1}$.
+	\item Soit $t$ la translation de vecteur $\vec u$. Expliquer pourquoi on ne
+	peut pas décomposer $t$ en utilisant $\Delta_1$ comme premier axe si
+	$\Delta_1$ n'est pas orthogonale à $\vec u$.
+	\item En déduire l'axe qu'il faut choisir comme \emph{axe commun} pour
+	étudier $t\circ r$.
+\end{enumerate}
+
+\exercice{$t\circ r$ par la méthode de l'axe commun \hfill \moyen}
+$ABCD$ est un carré direct de côté $4$, de centre $O$. Soit $r$ la rotation
+de centre $O$ et d'angle $\dfrac{\pi}{2}$, et $t$ la translation de vecteur
+$\vect{AB}$.
+\begin{enumerate}
+	\item Justifier que $f=t\circ r$ est une rotation d'angle $\dfrac{\pi}{2}$.
+	\item En décomposant $r$ et $t$ en deux réflexions d'axe commun bien
+	choisi, construire le centre $I'$ de $f$.
+	\item Retrouver $I'$ à l'aide des nombres complexes (on prendra $O$ pour
+	origine et $\vect{AB}$ pour axe des abscisses adapté).
+\end{enumerate}
+
+\exercice{Deux rotations \hfill \moyen}
+Soit $r_1$ la rotation de centre $A$ et d'angle $\dfrac{\pi}{4}$ et $r_2$
+celle de centre $B$ et d'angle $\dfrac{\pi}{4}$, avec $AB = 3$.
+\begin{enumerate}
+	\item Quelle est la nature de $r_2\circ r_1$ ? Préciser son angle.
+	\item En prenant $(AB)$ comme axe commun, construire son centre.
+	\item Quelle est la nature de $r_2\circ r_1$ si l'on remplace l'angle de
+	$r_2$ par $-\dfrac{\pi}{4}$ ? Préciser alors le vecteur.
+\end{enumerate}
+
+\exercice{Symétrie glissée \hfill \moyen}
+On donne $f(z) = \bar z + 2 + 2\ii$.
+\begin{enumerate}
+	\item Montrer que $f$ est un antidéplacement.
+	\item $f$ admet-elle des points fixes ?
+	\item Calculer $f\circ f$ et en déduire la forme réduite de $f$ (vecteur et
+	axe).
+	\item Construire l'image du point $O$ par $f$.
+\end{enumerate}
+
+\exercice{Reconnaissance par les complexes \hfill \moyen}
+Identifier chacune des transformations suivantes (nature et éléments
+caractéristiques) :
+\begin{enumerate}
+	\item $z' = -z + 4$
+	\item $z' = \ii z + 1 - \ii$
+	\item $z' = \e^{\ii\pi/3}\bar z$
+	\item $z' = 2z + 3$
+	\item $z' = (1+\ii)z - \ii$
+\end{enumerate}
+
+\exercice{Composition d'homothéties et de translations \hfill \moyen}
+Soit $h_1 = h_{(A,2)}$, $h_2 = h_{(B,\frac12)}$ avec $A(0)$, $B(3)$, et
+$t$ la translation de vecteur d'affixe $\ii$.
+\begin{enumerate}
+	\item Déterminer l'écriture complexe de $h_2\circ h_1$. Quelle est sa
+	nature ?
+	\item Déterminer celle de $t\circ h_1$. Préciser son centre.
+	\item Montrer que $h_1\circ h_2$ et $h_2\circ h_1$ n'ont pas le même centre.
+\end{enumerate}
+
+\exercice{Sujet type Bac — synthèse transformations \hfill \difficile}
+Le plan orienté est rapporté à un repère orthonormé direct
+$(A\,;\vect{AB},\vect{AD})$. $ABCD$ est un carré direct de côté $4\,$cm.
+On note :
+\begin{itemize}[label=\textbullet]
+	\item $t$ la translation de vecteur $\vect{AC}$,
+	\item $r$ la rotation de centre $A$ et d'angle $\dfrac{\pi}{2}$,
+	\item $s_{(AB)}$ la réflexion d'axe $(AB)$,
+	\item $f = t\circ r$ et $g = f\circ s_{(AB)}$.
+\end{itemize}
+
+\textbf{Partie A — Étude synthétique}
+\begin{enumerate}
+	\item Justifier que $f$ est une rotation dont on précisera l'angle.
+	\item En décomposant $r$ et $t$ en deux réflexions d'axe commun bien
+	choisi, déterminer et construire le centre $\Omega$ de $f$.
+	\item En décomposant $f$ à son tour en deux réflexions, caractériser $g$.
+\end{enumerate}
+
+\textbf{Partie B — Étude complexe}
+\begin{enumerate}
+	\item Donner les écritures complexes de $t$, $r$ et $s_{(AB)}$.
+	\item En déduire celle de $f$, puis retrouver son centre et son angle.
+	\item Donner l'écriture complexe de $g$ et retrouver sa nature et ses
+	éléments caractéristiques.
+\end{enumerate}
+
+\exercice{Sujet type Bac — similitude et isométries \hfill \difficile}
+$ABC$ est un triangle rectangle direct en $A$ tel que $AB = 4$, $AC = 2$,
+$(\vect{AB},\vect{AC}) = \dfrac{\pi}{2}$. Soit $O$ le milieu de $[BC]$.
+On note $S$ la similitude directe telle que $S(A) = B$ et $S(B) = C$.
+
+\textbf{Partie A}
+\begin{enumerate}
+	\item Déterminer le rapport et l'angle de $S$.
+	\item Soit $r$ la rotation de centre $A$, d'angle $-\dfrac{\pi}{2}$, et $t$
+	la translation de vecteur $\vect{BC}$. Montrer que $t\circ r$ est une
+	rotation dont on précisera l'angle, et construire son centre par la méthode
+	de l'axe commun.
+\end{enumerate}
+
+\textbf{Partie B} — repère $(A\,;\vect{AB},\vect{AC})$ (unités : $4$ et $2$).
+\begin{enumerate}
+	\item Donner les affixes de $B$ et $C$ dans le repère complexe métrique.
+	\item Déterminer l'écriture complexe de $S$ à partir de $S(A)=B$ et
+	$S(B)=C$. En déduire ses éléments caractéristiques.
+	\item Déterminer l'écriture complexe de $r$, celle de $t$, puis celle de
+	$t\circ r$. Retrouver le centre et l'angle obtenus en Partie A.
+	\item Soit $\overline S$ la transformation d'écriture $z' = 2\bar z + 4\ii$.
+	Déterminer sa nature et ses éléments caractéristiques.
 \end{enumerate}
 
 \exercice{Le puzzle des symétries \hfill \difficile}
-On considère deux droites $\Delta_1$ et $\Delta_2$ sécantes en un point $I$, formant un angle orienté de mesure $\theta = \frac{\pi}{4}$.
-Soient $s_1$ et $s_2$ les réflexions d'axes respectifs $\Delta_1$ et $\Delta_2$.
+On considère trois droites $\Delta_1$, $\Delta_2$, $\Delta_3$ deux à deux
+sécantes formant un triangle $I_1 I_2 I_3$.
 \begin{enumerate}
-	\item Rappeler la nature de la composée $r = s_2 \circ s_1$.
-	\item Démontrer que $r$ est une rotation dont on précisera le centre et l'angle.
-	\item Soit $M$ un point du plan. Construire géométriquement l'image $M''$ de $M$ par $s_2 \circ s_1$ à la règle et au compas.
-	\item Que devient la transformation si $\Delta_1$ et $\Delta_2$ sont strictement parallèles ?
+	\item Montrer que $s_{\Delta_3}\circ s_{\Delta_2}\circ s_{\Delta_1}$ est un
+	antidéplacement.
+	\item Justifier que cette composée n'a en général pas de point fixe.
+	\item En déduire sa nature et une méthode pour en trouver l'axe.
+	\item Que se passe-t-il si $\Delta_1$, $\Delta_2$, $\Delta_3$ sont
+	concourantes ?
 \end{enumerate}
 
-\exercice{Sujet Type Bac : Isométries et configuration \hfill \difficile}
-Le plan est rapporté à un repère orthonormé direct $(O, \vec{u}, \vec{v})$. 
-On considère les points $A, B$ et $C$ d'affixes respectives $a = 1$, $b = \ii$ et $c = 1+\ii$.
-
-\textbf{Partie A : Étude d'une transformation}
-Soit $f$ l'application qui à tout point $M(z)$ associe le point $M'(z')$ tel que :
-$$z' = \bar{z} + 1 + \ii$$
-\begin{enumerate}
-	\item Démontrer que $f$ est une isométrie. Est-ce un déplacement ?
-	\item Déterminer l'ensemble des points invariants par $f$. En déduire la nature géométrique de $f$.
-\end{enumerate}
-
-\textbf{Partie B : Synthèse géométrique}
-\begin{enumerate}
-	\item On note $r$ la rotation de centre $A$ et d'angle $\frac{\pi}{2}$. Déterminer l'expression complexe de $r$.
-	\item Calculer l'image du point $B$ par $r$.
-	\item Montrer que le triangle $ABC$ est un triangle isocèle rectangle.
-	\item Déterminer l'image du triangle $ABC$ par la composée $f \circ r$.
-\end{enumerate}
-
-
-
-\exercice{L'aventure des isométries (Sujet Type Bac) \hfill \difficile}
-\textbf{Partie A : Nature des transformations}
-Soient $f_1(z) = z + 1 + \ii$ et $f_2(z) = \e^{\ii \pi/3} z$.
+\exercice{L'aventure des isométries \hfill \difficile}
+\textbf{Partie A — Nature des transformations}
+Soient $f_1(z) = z + 1 + \ii$ et $f_2(z) = \e^{\ii\pi/3}z$.
 \begin{enumerate}
 	\item Identifier $f_1$ et $f_2$.
-	\item Étudier la transformation $g = f_1 \circ f_2$. Est-ce un déplacement ?
+	\item Étudier $g = f_1\circ f_2$. Est-ce un déplacement ? Préciser ses
+	éléments caractéristiques.
+	\item Étudier $h = f_2\circ f_1$ et comparer les centres de $g$ et $h$.
 \end{enumerate}
-\textbf{Partie B : Synthèse}
-Démontrer que toute composition de deux réflexions d'axes sécants est une rotation. En préciser le centre et l'angle.
+\textbf{Partie B — Synthèse}
+\begin{enumerate}
+	\item Démontrer que la composée de deux réflexions d'axes sécants est une
+	rotation, en précisant centre et angle.
+	\item Démontrer que la composée de deux réflexions d'axes strictement
+	parallèles est une translation, en précisant le vecteur.
+	\item En déduire que le carré d'une symétrie glissée est une translation.
+\end{enumerate}
+
+
+\exercice{Triangle équilatéral et double décomposition \hfill \difficile}
+$ABC$ est un triangle équilatéral direct de côté $a$, de centre $O$. On note
+$r_A$, $r_B$, $r_C$ les rotations de centres respectifs $A$, $B$, $C$ et de
+même angle $\dfrac{2\pi}{3}$.
+
+\textbf{Partie A — Étude synthétique}
+\begin{enumerate}
+	\item Justifier que $r_A\circ r_B$ est une rotation et préciser son angle.
+	\item Décomposer $r_B$ puis $r_A$ en deux réflexions en prenant la droite
+	$(AB)$ comme \textbf{axe commun} :
+	$$
+	r_B = s_{(AB)}\circ s_{\Delta},\qquad r_A = s_{\Delta'}\circ s_{(AB)}.
+	$$
+	Préciser $\Delta$ (par $B$) et $\Delta'$ (par $A$) à l'aide de leur angle
+	avec $(AB)$.
+	\item En déduire que $r_A\circ r_B = s_{\Delta'}\circ s_{\Delta}$, puis
+	construire le centre $\Omega$ de $r_A\circ r_B$. Montrer que $\Omega=C$.
+	\item Montrer que $r_C\circ r_B\circ r_A = \mathrm{Id}$.
+	\item Soit $t$ la translation de vecteur $\vect{AB}$ et $f = t\circ r_A$.
+	En choisissant comme axe commun la droite passant par $A$ et orthogonale à
+	$\vect{AB}$, construire le centre $\omega$ de $f$ et montrer qu'il
+	appartient à la médiatrice de $[AB]$.
+\end{enumerate}
+
+\textbf{Partie B — Étude complexe} \emph{(repère orthonormé direct
+$\left(A\,;\dfrac1a\vect{AB},\vec v\right)$, $B$ d'affixe $1$).}
+\begin{enumerate}
+	\item Donner l'affixe de $C$, puis les écritures complexes de $r_A$, $r_B$
+	et $t$.
+	\item Retrouver l'écriture complexe de $r_A\circ r_B$ et vérifier que son
+	centre a pour affixe celle de $C$.
+	\item Retrouver l'écriture complexe de $f=t\circ r_A$ et les éléments
+	obtenus à la question A.5.
+\end{enumerate}
+
+
+\exercice{Réduction d'un produit de trois réflexions \hfill \difficile}
+Le plan est rapporté à un repère orthonormé direct $(O,\vec\imath,\vec\jmath)$.
+On considère les droites
+$$
+\Delta_1 : y = 0,\qquad \Delta_2 : y = x,\qquad \Delta_3 : x = 1,
+$$
+et la transformation $f = s_{\Delta_3}\circ s_{\Delta_2}\circ s_{\Delta_1}$.
+\begin{enumerate}
+	\item Sans calcul, préciser si $f$ est un déplacement ou un
+	antidéplacement.
+	\item Montrer que $s_{\Delta_2}\circ s_{\Delta_1} = r_{\left(O,\;\frac{\pi}{2}\right)}$.
+	\item Décomposer cette rotation sous la forme
+	$r_{\left(O,\frac{\pi}{2}\right)} = s_{b}\circ s_{a}$ où $b$ est la droite
+	\textbf{passant par $O$ et parallèle à $\Delta_3$}. Préciser $a$.
+	\item En déduire que $f = \bigl(s_{\Delta_3}\circ s_{b}\bigr)\circ s_{a}$,
+	puis que $s_{\Delta_3}\circ s_{b}$ est une translation dont on donnera le
+	vecteur.
+	\item Le vecteur obtenu n'est pas directeur de $a$. En le décomposant en
+	une composante parallèle à $a$ et une composante orthogonale à $a$, mettre
+	$f$ sous forme réduite $t_{\vec u}\circ s_{a'}$ (symétrie glissée) : donner
+	l'axe $a'$ et le vecteur $\vec u$.
+	\item Contrôler le résultat en établissant que $f(z) = \ii\bar z + 2$.
+\end{enumerate}
+
+
+\exercice{Composée à paramètre et lieu du centre \hfill \difficile}
+$ABC$ est un triangle rectangle isocèle direct en $A$ tel que $AB = AC = 4$
+et $(\vect{AB},\vect{AC}) = \dfrac{\pi}{2}$ ; $O$ désigne le milieu de $[BC]$.
+Pour tout réel $\lambda$, on note $t_\lambda$ la translation de vecteur
+$\lambda\,\vect{AB}$ et
+$$
+f_\lambda = t_\lambda\circ r,\qquad \text{où } r = r_{\left(A,\;\frac{\pi}{2}\right)}.
+$$
+
+\textbf{Partie A — Étude synthétique}
+\begin{enumerate}
+	\item Montrer que pour tout $\lambda$, $f_\lambda$ est une rotation
+	d'angle $\dfrac{\pi}{2}$.
+	\item En prenant la droite $(AC)$ comme axe commun, décomposer $r$ et
+	$t_\lambda$ en deux réflexions, puis construire le centre $\Omega_\lambda$
+	de $f_\lambda$.
+	\item Donner les coordonnées de $\Omega_\lambda$ dans le repère
+	$(A\,;\vect{AB},\vect{AC})$ (unité $4$).
+	\item En déduire que, lorsque $\lambda$ décrit $\R$, le point
+	$\Omega_\lambda$ décrit une droite $\mathscr D$ que l'on identifiera
+	précisément.
+	\item Déterminer la valeur de $\lambda$ pour laquelle $\Omega_\lambda$
+	appartient à la droite $(BC)$. Que représente alors $\Omega_\lambda$ ?
+\end{enumerate}
+
+\textbf{Partie B — Étude complexe} \emph{(repère $(A\,;\vec u,\vec v)$ avec
+$\vec u = \frac14\vect{AB}$, $\vec v = \frac14\vect{AC}$).}
+\begin{enumerate}
+	\item Donner les écritures complexes de $r$ et de $t_\lambda$, puis celle
+	de $f_\lambda$.
+	\item Retrouver l'affixe de $\Omega_\lambda$ et conclure sur le lieu
+	$\mathscr D$.
+	\item Vérifier la réponse à la question A.5 par le calcul.
+\end{enumerate}

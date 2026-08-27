@@ -25,7 +25,7 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
 |---|---|
 | Algèbre (arithmétique, matrices, complexes) | Terminé |
 | Analyse (limites → équa diff) | Terminé |
-| Géométrie (barycentre → espace) | Terminé |
+| Géométrie (barycentre → espace) | Terminé. Chapitre Isométries refondu (composition/décomposition, axe commun, symétrie glissée, similitudes) le 2026-08-27. |
 | Probabilités (5 sous-chapitres) | Terminé |
 | Sujets officiels Bacc Série S | 2021, 2022, 2023, 2024, 2025, 2026 transcrits. À compléter au fil des sessions envoyées par l'utilisateur (années manquantes : 2027+ à venir, années < 2021 non demandées pour l'instant). |
 | Entrainement (sujets types) | 19 sujets types présents. |
