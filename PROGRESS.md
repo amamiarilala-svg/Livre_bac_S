@@ -6,6 +6,36 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-27 — Chapitre « Équations différentielles » aligné
+
+- `parties/analyse/equadiff.tex` : le cours mathématique était déjà
+  complet et correct ; réaligné sur le modèle type.
+  - ajout d'une **citation** (`citationchapitre`, guillemets « ») et
+    objectifs resserrés ;
+  - nouvelle **méthode « vérifier qu'une fonction est solution »**
+    (au programme) + exemple ;
+  - section **« Équations avec second membre »** : théorème de structure
+    (solution générale = particulière + homogène) + méthode + exercice
+    résolu ;
+  - cours 1er / 2nd ordre présenté en théorèmes + tableau des 3 cas selon
+    Δ ; cas particuliers `y''=±m²y` ;
+  - **échauffement** : figure « faisceau de courbes intégrales » de
+    `y'+y=0` (TikZ, scope clippé) + **Vrai/Faux** (7 items) ;
+  - exercices progressifs : 1er ordre (solution générale, Cauchy,
+    décroissance radioactive), 2nd ordre (équation caractéristique,
+    Cauchy, oscillations) en `multicols` ;
+  - **6 sujets types Bac** : refroidissement (second membre + modèle
+    thermique) ; vérifier que `g` est solution puis résoudre (récupère
+    l'exercice `f_n` retiré du chapitre exponentielle) ; tangente imposée
+    `y''-3y'+2y=0` ; pendule + conservation de l'énergie ; `y''+y=cos x`
+    (solution particulière + intégrale) ; changement d'inconnue
+    `x²y''+3xy'+y=0`.
+- `latexmk -pdf main.tex` : **363 pages**, 0 erreur, aucune référence non
+  résolue, aucun `Overfull`.
+- Branche `chapitre-equadiff` → PR contre `main`.
+- **Tout le bloc analyse est désormais aligné** ; il ne reste que les
+  5 chapitres de probabilités.
+
 ## 2026-08-27 — Chapitre « Suites numériques » aligné
 
 - `parties/analyse/suites.tex` : le chapitre ne contenait que la
