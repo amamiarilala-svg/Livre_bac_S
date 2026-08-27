@@ -1,0 +1,693 @@
+% ============================================================
+%   CHAPITRE : Géométrie dans l'espace
+%   Niveau   : Terminale S / Terminale C
+% ============================================================
+\chapter{Géométrie dans l'espace}
+
+\begin{citationchapitre}
+	« La géométrie n'est pas vraie, elle est avantageuse. »\\[0.4em]
+	— Henri Poincaré
+\end{citationchapitre}
+
+\begin{objectifs}
+	\begin{itemize}[label=\textbullet]
+		\item Repérer points et vecteurs de l'espace ; décomposer un vecteur.
+		\item Calculer un \textbf{produit scalaire} et un \textbf{produit
+		vectoriel} (formes analytique et géométrique) ; caractériser
+		colinéarité, orthogonalité, alignement, coplanarité.
+		\item Déterminer les équations \textbf{cartésiennes} et
+		\textbf{paramétriques} d'une droite et d'un plan.
+		\item Étudier les positions relatives de deux plans, d'un plan et d'une
+		droite, de deux droites.
+		\item Calculer des distances (point–plan, point–droite, entre deux
+		plans) et construire un projeté orthogonal.
+		\item Reconnaître l'équation d'une sphère et son intersection avec un plan.
+	\end{itemize}
+\end{objectifs}
+
+
+% ============================================================
+\section{Vecteurs et repérage dans l'espace}
+% ============================================================
+
+\begin{definition}
+	L'espace est muni d'un \textbf{repère orthonormé direct}
+	$(O\,;\,\vec\imath,\vec\jmath,\vec k)$.
+	\begin{itemize}[label=\textbullet]
+		\item Un point $M$ est repéré par ses coordonnées $M(x\,;\,y\,;\,z)$.
+		\item Un vecteur $\vec u$ est repéré par ses coordonnées $\vec u(x\,;\,y\,;\,z)$,
+		c'est-à-dire $\vec u = x\,\vec\imath + y\,\vec\jmath + z\,\vec k$.
+	\end{itemize}
+\end{definition}
+
+\begin{propriete}{Calculs sur les coordonnées}{esp_coord}
+	Soient $A(x_A;y_A;z_A)$, $B(x_B;y_B;z_B)$ et $\vec u(x;y;z)$, $\vec v(x';y';z')$.
+	\begin{itemize}[label=\textbullet]
+		\item $\vect{AB}\,(x_B - x_A\,;\,y_B - y_A\,;\,z_B - z_A)$.
+		\item $\vec u + \vec v\,(x + x'\,;\,y + y'\,;\,z + z')$ \quad et \quad
+		$\lambda\vec u\,(\lambda x\,;\,\lambda y\,;\,\lambda z)$.
+		\item Norme : $\left\|\vec u\right\| = \sqrt{x^2 + y^2 + z^2}$ \quad ;
+		\quad distance : $AB = \left\|\vect{AB}\right\|$.
+		\item Milieu de $[AB]$ : $I\!\left(\dfrac{x_A+x_B}{2}\,;\,\dfrac{y_A+y_B}{2}\,;\,\dfrac{z_A+z_B}{2}\right)$.
+	\end{itemize}
+\end{propriete}
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	% axes
+	\draw[->] (0,0) -- (-1.5,-1.0) node[below left,font=\small] {$x$};
+	\draw[->] (0,0) -- (3.4,0) node[right,font=\small] {$y$};
+	\draw[->] (0,0) -- (0,3.0) node[above,font=\small] {$z$};
+	\node[below right,font=\small] at (0,0) {$O$};
+	% point M : projection sur (Oy) en (2.2,0), composante x = (-0.9,-0.6), z = (0,1.8)
+	\coordinate (P) at (2.2,0);
+	\coordinate (Q) at (1.3,-0.6);
+	\coordinate (M) at (1.3,1.2);
+	\draw[gray!55,dashed] (0,0) -- (P) -- (Q) -- (M);
+	\draw[gray!55,dashed] (0,0) -- (Q);
+	\draw[->,blue!70!black,thick] (0,0) -- (M);
+	\filldraw[blue!70!black] (M) circle (1.6pt) node[above right,font=\small] {$M(x\,;y\,;z)$};
+\end{tikzpicture}
+\end{center}
+
+
+% ============================================================
+\section{Colinéarité, coplanarité, décomposition}
+% ============================================================
+
+\begin{propriete}{Colinéarité}{esp_colin}
+	$\vec u$ et $\vec v$ ($\vec u \neq \vec 0$) sont \textbf{colinéaires} si et
+	seulement s'il existe $k \in \R$ tel que $\vec v = k\,\vec u$, c'est-à-dire
+	si leurs coordonnées sont \textbf{proportionnelles}.
+
+	Trois points $A$, $B$, $C$ sont \textbf{alignés} $\iff$ $\vect{AB}$ et
+	$\vect{AC}$ sont colinéaires.
+\end{propriete}
+
+\begin{propriete}{Coplanarité et décomposition}{esp_coplan}
+	Soient $\vec u$ et $\vec v$ deux vecteurs \textbf{non colinéaires}.
+	\begin{itemize}[label=\textbullet]
+		\item $\vec w$ est \textbf{coplanaire} avec $\vec u$ et $\vec v$ $\iff$
+		il existe $(a,b) \in \R^2$ tel que $\vec w = a\,\vec u + b\,\vec v$.
+		\item Si $(\vec u,\vec v,\vec w)$ ne sont \textbf{pas} coplanaires, ils
+		forment une \textbf{base} : tout vecteur de l'espace s'écrit de manière
+		unique $a\,\vec u + b\,\vec v + c\,\vec w$.
+	\end{itemize}
+	Quatre points $A$, $B$, $C$, $D$ sont \textbf{coplanaires} $\iff$ il existe
+	$(a,b) \in \R^2$ tel que $\vect{AD} = a\,\vect{AB} + b\,\vect{AC}$
+	(avec $A$, $B$, $C$ non alignés).
+\end{propriete}
+
+\begin{astucebac}
+	Le \textbf{choix d'une décomposition pertinente} est souvent la clé :
+	pour un problème d'alignement ou de coplanarité, on exprime tous les
+	vecteurs utiles dans \textbf{une même base} adaptée à la figure (par
+	exemple $(\vect{AB}, \vect{AD}, \vect{AE})$ pour un cube $ABCDEFGH$).
+\end{astucebac}
+
+
+% ============================================================
+\section{Produit scalaire}
+% ============================================================
+
+\begin{definition}[Deux expressions du produit scalaire]
+	Pour $\vec u(x;y;z)$ et $\vec v(x';y';z')$ :
+	$$
+	\vec u \cdot \vec v = x x' + y y' + z z'
+	\qquad \text{(expression analytique)}
+	$$
+	$$
+	\vec u \cdot \vec v = \left\|\vec u\right\|\,\left\|\vec v\right\|\cos\theta
+	\qquad \text{(expression géométrique, } \theta = (\vec u,\vec v) \text{)}
+	$$
+\end{definition}
+
+\begin{propriete}{Propriétés}{esp_ps}
+	\begin{itemize}[label=\textbullet]
+		\item $\vec u \cdot \vec u = \left\|\vec u\right\|^2$ ; symétrie
+		$\vec u \cdot \vec v = \vec v \cdot \vec u$ ; bilinéarité.
+		\item \textbf{Orthogonalité} : $\vec u \perp \vec v \iff \vec u \cdot \vec v = 0$.
+		\item $\left\|\vec u + \vec v\right\|^2
+		= \left\|\vec u\right\|^2 + 2\,\vec u\cdot\vec v + \left\|\vec v\right\|^2$.
+		\item $\cos\theta = \dfrac{\vec u \cdot \vec v}{\left\|\vec u\right\|\,\left\|\vec v\right\|}$.
+	\end{itemize}
+\end{propriete}
+
+\begin{exemple}
+	$\vec u(1;-2;2)$ et $\vec v(3;0;-1)$ : $\vec u\cdot\vec v = 3 + 0 - 2 = 1$.
+	$\left\|\vec u\right\| = 3$, $\left\|\vec v\right\| = \sqrt{10}$, donc
+	$\cos\theta = \dfrac{1}{3\sqrt{10}}$.
+\end{exemple}
+
+
+% ============================================================
+\section{Produit vectoriel}
+% ============================================================
+
+\begin{definition}[Produit vectoriel]
+	Le \textbf{produit vectoriel} de $\vec u$ et $\vec v$, noté
+	$\vec u \wedge \vec v$, est l'unique vecteur tel que :
+	\begin{itemize}[label=\textbullet]
+		\item $\vec u \wedge \vec v$ est \textbf{orthogonal} à $\vec u$ et à $\vec v$ ;
+		\item $\left\|\vec u \wedge \vec v\right\| = \left\|\vec u\right\|\,\left\|\vec v\right\|\,\left|\sin\theta\right|$ ;
+		\item $(\vec u,\ \vec v,\ \vec u \wedge \vec v)$ est une base \textbf{directe}.
+	\end{itemize}
+
+	\textbf{Expression analytique} : pour $\vec u(x;y;z)$, $\vec v(x';y';z')$,
+	$$
+	\vec u \wedge \vec v =
+	\bigl(\,y z' - z y'\ ;\ z x' - x z'\ ;\ x y' - y x'\,\bigr).
+	$$
+\end{definition}
+
+\begin{propriete}{Propriétés}{esp_pv}
+	\begin{itemize}[label=\textbullet]
+		\item $\vec v \wedge \vec u = -\,\vec u \wedge \vec v$ (antisymétrie) ;
+		bilinéarité.
+		\item $\vec u \wedge \vec v = \vec 0 \iff \vec u$ et $\vec v$ sont
+		\textbf{colinéaires}.
+		\item \textbf{Aire} du triangle $ABC$ :
+		$\mathscr{A} = \dfrac{1}{2}\left\|\vect{AB} \wedge \vect{AC}\right\|$
+		(l'aire du parallélogramme est $\left\|\vect{AB} \wedge \vect{AC}\right\|$).
+		\item \textbf{Volume} du parallélépipède construit sur
+		$\vec u,\vec v,\vec w$ : $V = \left|(\vec u \wedge \vec v)\cdot\vec w\right|$.
+	\end{itemize}
+\end{propriete}
+
+\begin{exemple}
+	$\vec u(1;2;3)$, $\vec v(0;1;-1)$ :
+	$$
+	\vec u \wedge \vec v =
+	\bigl(2\times(-1) - 3\times1\ ;\ 3\times0 - 1\times(-1)\ ;\ 1\times1 - 2\times0\bigr)
+	= (-5\ ;\ 1\ ;\ 1).
+	$$
+	On vérifie : $(-5)(1) + (1)(2) + (1)(3) = 0$ et $(-5)(0)+(1)(1)+(1)(-1) = 0$.
+\end{exemple}
+
+
+% ============================================================
+\section{Le plan}
+% ============================================================
+
+\begin{propriete}{Plan défini par un point et deux vecteurs directeurs}{esp_plan_param}
+	Le plan $(P)$ passant par $A$ et dirigé par $\vec u$, $\vec v$ (non
+	colinéaires) admet la \textbf{représentation paramétrique}
+	$$
+	M \in (P) \iff
+	\begin{cases}
+		x = x_A + s\,x_{\vec u} + t\,x_{\vec v} \\
+		y = y_A + s\,y_{\vec u} + t\,y_{\vec v} \\
+		z = z_A + s\,z_{\vec u} + t\,z_{\vec v}
+	\end{cases}
+	\quad (s,t) \in \R^2.
+	$$
+\end{propriete}
+
+\begin{propriete}{Plan défini par un point et un vecteur normal}{esp_plan_cart}
+	Un vecteur $\vec n \neq \vec 0$ est \textbf{normal} à $(P)$ s'il est
+	orthogonal à tout vecteur de $(P)$.
+	$$
+	M \in (P) \iff \vec n \cdot \vect{AM} = 0.
+	$$
+	Il en résulte une \textbf{équation cartésienne} :
+	$$
+	(P) : ax + by + cz + d = 0,
+	\qquad \text{avec } \vec n\,(a\,;\,b\,;\,c) \text{ normal à } (P).
+	$$
+	Réciproquement, tout plan admet une équation de cette forme, et $\vec n(a;b;c)$
+	en est un vecteur normal.
+\end{propriete}
+
+\begin{methode}
+	\textbf{Équation cartésienne du plan $(ABC)$.}
+	\begin{enumerate}
+		\item Calculer $\vec n = \vect{AB} \wedge \vect{AC}$ (vecteur normal).
+		\item L'équation est $a x + b y + c z + d = 0$ avec $\vec n(a;b;c)$.
+		\item Déterminer $d$ en écrivant que $A \in (P)$.
+	\end{enumerate}
+\end{methode}
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	% plan : parallélogramme
+	\draw[fill=gray!12,draw=black!55] (-1.8,-0.9) -- (2.2,-0.5) -- (2.6,0.9) -- (-1.4,0.5) -- cycle;
+	\node[font=\small] at (2.2,-1.0) {$(P)$};
+	\coordinate (A) at (0.2,-0.1);
+	\filldraw (A) circle (1.6pt) node[below,font=\small] {$A$};
+	% vecteur normal
+	\draw[->,red,thick] (A) -- ++(0.35,1.7) node[above,font=\small,red] {$\vec n$};
+	% deux directeurs
+	\draw[->,blue!70!black] (A) -- ++(1.4,0.15) node[right,font=\scriptsize,blue!70!black] {$\vec u$};
+	\draw[->,blue!70!black] (A) -- ++(-0.5,0.55) node[left,font=\scriptsize,blue!70!black] {$\vec v$};
+\end{tikzpicture}
+\end{center}
+
+
+% ============================================================
+\section{La droite}
+% ============================================================
+
+\begin{propriete}{Représentation paramétrique d'une droite}{esp_droite_param}
+	La droite $(D)$ passant par $A$ et de \textbf{vecteur directeur}
+	$\vec u(\alpha;\beta;\gamma)$ est
+	$$
+	M \in (D) \iff
+	\begin{cases}
+		x = x_A + t\,\alpha \\
+		y = y_A + t\,\beta \\
+		z = z_A + t\,\gamma
+	\end{cases}
+	\quad t \in \R.
+	$$
+\end{propriete}
+
+\remarque
+Une droite de l'espace est l'\textbf{intersection de deux plans} ; elle peut
+donc aussi être décrite par un \textbf{système de deux équations
+cartésiennes}. Un vecteur directeur est alors $\vec n_1 \wedge \vec n_2$.
+
+
+% ============================================================
+\section{Positions relatives}
+% ============================================================
+
+\begin{propriete}{Deux plans}{esp_pos_pp}
+	Soient $(P) : \vec n$ et $(P') : \vec n'$.
+	\begin{itemize}[label=\textbullet]
+		\item $\vec n$ et $\vec n'$ \textbf{colinéaires} : $(P)$ et $(P')$ sont
+		\textbf{parallèles} (confondus ou strictement parallèles).
+		\item sinon : $(P)$ et $(P')$ sont \textbf{sécants} suivant une droite de
+		vecteur directeur $\vec n \wedge \vec n'$.
+	\end{itemize}
+\end{propriete}
+
+\begin{propriete}{Un plan et une droite}{esp_pos_pd}
+	Soient $(D) : \vec u$ et $(P) : \vec n$.
+	\begin{itemize}[label=\textbullet]
+		\item $\vec u \cdot \vec n = 0$ : $(D)$ est \textbf{parallèle} à $(P)$
+		($(D) \subset (P)$ ou strictement parallèle — on teste avec un point).
+		\item $\vec u \cdot \vec n \neq 0$ : $(D)$ et $(P)$ sont \textbf{sécants}
+		en un point (on remplace la paramétrisation de $(D)$ dans l'équation de $(P)$).
+		\item $\vec u$ et $\vec n$ \textbf{colinéaires} : $(D)$ est
+		\textbf{perpendiculaire} à $(P)$.
+	\end{itemize}
+\end{propriete}
+
+\begin{propriete}{Deux droites}{esp_pos_dd}
+	Soient $(D) : A, \vec u$ et $(D') : A', \vec u'$.
+	\begin{itemize}[label=\textbullet]
+		\item Si $\bigl(\vec u,\ \vec u',\ \vect{AA'}\bigr)$ sont
+		\textbf{coplanaires} (produit mixte nul), $(D)$ et $(D')$ sont
+		\textbf{coplanaires} : parallèles si $\vec u,\vec u'$ colinéaires,
+		sécantes sinon.
+		\item Sinon, $(D)$ et $(D')$ sont \textbf{non coplanaires}.
+		\item $\vec u \cdot \vec u' = 0$ : $(D)$ et $(D')$ sont
+		\textbf{orthogonales} (sans être nécessairement sécantes).
+	\end{itemize}
+\end{propriete}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{>{\raggedright\arraybackslash}p{3.0cm}
+                >{\raggedright\arraybackslash}p{2.3cm}
+                >{\raggedright\arraybackslash}p{2.6cm}}
+\hline
+\textbf{Objets} & \textbf{Test} & \textbf{Conclusion} \\
+\hline
+Plan / plan & $\vec n \parallel \vec n'$ & parallèles \\
+ & sinon & sécants (droite) \\
+Droite / plan & $\vec u \cdot \vec n = 0$ & parallèles \\
+ & sinon & sécants (point) \\
+Droite / droite & mixte $= 0$ & coplanaires \\
+ & sinon & non coplanaires \\
+\hline
+\end{tabular}
+\end{center}
+
+
+% ============================================================
+\section{Distances et projeté orthogonal}
+% ============================================================
+
+\begin{propriete}{Distance d'un point à un plan}{esp_dist_pp}
+	Pour $(P) : ax + by + cz + d = 0$ et $M(x_M;y_M;z_M)$ :
+	$$
+	d\bigl(M,(P)\bigr) = \frac{\left|a x_M + b y_M + c z_M + d\right|}{\sqrt{a^2 + b^2 + c^2}}.
+	$$
+	La \textbf{distance entre deux plans parallèles} est la distance d'un point
+	de l'un à l'autre.
+\end{propriete}
+
+\begin{propriete}{Distance d'un point à une droite}{esp_dist_pd}
+	Pour $(D)$ passant par $B$ de vecteur directeur $\vec u$, et un point $A$ :
+	$$
+	d\bigl(A,(D)\bigr) = \frac{\left\|\vect{BA} \wedge \vec u\right\|}{\left\|\vec u\right\|}.
+	$$
+\end{propriete}
+
+\begin{methode}
+	\textbf{Projeté orthogonal.}
+	\begin{itemize}[label=\textbullet]
+		\item de $M$ sur $(P)$ : point d'intersection de $(P)$ avec la droite
+		passant par $M$ de vecteur directeur $\vec n$ (normal à $(P)$) ;
+		\item de $A$ sur $(D)$ : point $H \in (D)$ tel que $\vect{AH} \cdot \vec u = 0$.
+	\end{itemize}
+	La distance cherchée est alors $MH$ (resp. $AH$).
+\end{methode}
+
+
+% ============================================================
+\section{La sphère}
+% ============================================================
+
+\begin{propriete}{Équation d'une sphère}{esp_sphere}
+	La sphère de centre $\Omega(a;b;c)$ et de rayon $R$ a pour équation
+	$$
+	(x - a)^2 + (y - b)^2 + (z - c)^2 = R^2.
+	$$
+	Une équation de la forme
+	$x^2 + y^2 + z^2 - 2a x - 2b y - 2c z + \delta = 0$ est celle d'une sphère
+	de centre $(a;b;c)$ et de rayon $R = \sqrt{a^2 + b^2 + c^2 - \delta}$
+	(si ce nombre est strictement positif).
+\end{propriete}
+
+\begin{propriete}{Intersection sphère–plan}{esp_sphere_plan}
+	Soit $\Omega$ le centre, $R$ le rayon, et $h = d\bigl(\Omega,(P)\bigr)$.
+	\begin{itemize}[label=\textbullet]
+		\item $h < R$ : l'intersection est un \textbf{cercle} de rayon
+		$\sqrt{R^2 - h^2}$, de centre le projeté orthogonal de $\Omega$ sur $(P)$ ;
+		\item $h = R$ : $(P)$ est \textbf{tangent} (un seul point) ;
+		\item $h > R$ : l'intersection est \textbf{vide}.
+	\end{itemize}
+\end{propriete}
+
+
+% ============================================================
+\section{Méthodes et exercices résolus}
+% ============================================================
+
+\exerciceresolu
+\textbf{Plan $(ABC)$ et position d'une droite}
+
+On donne $A(1;0;2)$, $B(2;-1;0)$, $C(0;1;1)$ et la droite $(\Delta)$ de
+représentation paramétrique
+$\begin{cases} x = 1 + 2t \\ y = t \\ z = 3 - t \end{cases}$, $t \in \R$.
+\begin{enumerate}
+	\item Déterminer une équation cartésienne du plan $(ABC)$.
+	\item Étudier la position relative de $(\Delta)$ et de $(ABC)$.
+\end{enumerate}
+
+\solution
+
+\textbf{1.} $\vect{AB}(1;-1;-2)$, $\vect{AC}(-1;1;-1)$.
+$$
+\vec n = \vect{AB} \wedge \vect{AC} =
+\begin{pmatrix}
+	(-1)(-1) - (-2)(1) \\
+	(-2)(-1) - (1)(-1) \\
+	(1)(1) - (-1)(-1)
+\end{pmatrix}
+= \begin{pmatrix} 3 \\ 3 \\ 0 \end{pmatrix}.
+$$
+On prend $\vec n(1;1;0)$ : $(ABC) : x + y + d = 0$. Avec $A$ : $1 + 0 + d = 0$,
+donc $d = -1$.
+$$
+\boxed{(ABC) : x + y - 1 = 0.}
+$$
+
+\textbf{2.} Vecteur directeur de $(\Delta)$ : $\vec u(2;1;-1)$.
+$\vec u \cdot \vec n = 2 + 1 + 0 = 3 \neq 0$ : $(\Delta)$ et $(ABC)$ sont
+\textbf{sécants} en un point. En reportant : $(1 + 2t) + t - 1 = 0$, soit
+$3t = 0$, $t = 0$. Le point d'intersection est $I(1;0;3)$.
+
+\exerciceresolu
+\textbf{Distance et projeté orthogonal}
+
+On donne le point $A(3;1;-1)$ et le plan $(P) : 2x - y + 2z - 3 = 0$.
+Déterminer la distance de $A$ à $(P)$ et les coordonnées du projeté orthogonal
+$H$ de $A$ sur $(P)$.
+
+\solution
+
+\textbf{Distance.}
+$$
+d\bigl(A,(P)\bigr) = \frac{\left|2(3) - 1 + 2(-1) - 3\right|}{\sqrt{4 + 1 + 4}}
+= \frac{\left|6 - 1 - 2 - 3\right|}{3} = \frac{0}{3} = 0.
+$$
+Donc $A \in (P)$ et $H = A$.
+
+\medskip
+\emph{Variante : si on remplace $A$ par $A'(3;1;1)$ :}
+$d\bigl(A',(P)\bigr) = \dfrac{|6 - 1 + 2 - 3|}{3} = \dfrac{4}{3}$.
+La droite par $A'$ dirigée par $\vec n(2;-1;2)$ est
+$(x;y;z) = (3 + 2t\,;\,1 - t\,;\,1 + 2t)$. En reportant dans $(P)$ :
+$2(3+2t) - (1 - t) + 2(1+2t) - 3 = 0 \Rightarrow 4 + 9t = 0 \Rightarrow t = -\dfrac{4}{9}$.
+D'où $H\!\left(\dfrac{19}{9}\,;\,\dfrac{13}{9}\,;\,\dfrac{1}{9}\right)$
+et $A'H = \dfrac{4}{3}$.
+
+\exerciceresolu
+\textbf{Sphère et plan}
+
+On considère la sphère $(S) : x^2 + y^2 + z^2 - 2x + 4y - 6z + 5 = 0$ et le
+plan $(P) : x - 2y + 2z = 1$.
+\begin{enumerate}
+	\item Déterminer le centre $\Omega$ et le rayon $R$ de $(S)$.
+	\item Étudier l'intersection de $(S)$ et de $(P)$.
+\end{enumerate}
+
+\solution
+
+\textbf{1.} $x^2 - 2x = (x-1)^2 - 1$, $y^2 + 4y = (y+2)^2 - 4$,
+$z^2 - 6z = (z-3)^2 - 9$. L'équation devient
+$(x-1)^2 + (y+2)^2 + (z-3)^2 = 9$.
+Donc $\Omega(1;-2;3)$ et $R = 3$.
+
+\textbf{2.} $d\bigl(\Omega,(P)\bigr)
+= \dfrac{\left|1 - 2(-2) + 2(3) - 1\right|}{\sqrt{1 + 4 + 4}}
+= \dfrac{\left|1 + 4 + 6 - 1\right|}{3} = \dfrac{10}{3} > 3 = R$.
+L'intersection est \textbf{vide}.
+
+\exerciceresolu
+\textbf{Deux droites : coplanaires ou non ?}
+
+$(D) : (x;y;z) = (1 + t\,;\,2t\,;\,-t)$ et
+$(D') : (x;y;z) = (2 + s\,;\,1 - s\,;\,s)$.
+\begin{enumerate}
+	\item Ces droites sont-elles parallèles ?
+	\item Sont-elles coplanaires ?
+\end{enumerate}
+
+\solution
+
+\textbf{1.} $\vec u(1;2;-1)$, $\vec u'(1;-1;1)$ : non proportionnels, donc
+non parallèles.
+
+\textbf{2.} $A(1;0;0) \in (D)$, $A'(2;1;0) \in (D')$, $\vect{AA'}(1;1;0)$.
+Produit mixte :
+$$
+(\vec u \wedge \vec u') \cdot \vect{AA'}.
+$$
+$\vec u \wedge \vec u' = (2\cdot1 - (-1)(-1)\ ;\ (-1)(1) - 1\cdot1\ ;\ 1\cdot(-1) - 2\cdot1)
+= (1\ ;\ -2\ ;\ -3)$.
+$(\vec u \wedge \vec u') \cdot \vect{AA'} = 1 - 2 + 0 = -1 \neq 0$.
+Les droites sont \textbf{non coplanaires}.
+
+
+% ============================================================
+\section{Exercices d'entraînement}
+% ============================================================
+
+\subsection{Échauffement : lire une figure}
+
+\exercice{Le cube \hfill \facile}
+$ABCDEFGH$ est un cube d'arête $1$. On munit l'espace du repère orthonormé
+$\left(A\,;\,\vect{AB},\vect{AD},\vect{AE}\right)$.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.7]
+	\coordinate (A) at (0,0);
+	\coordinate (B) at (1,0);
+	\coordinate (C) at (1.5,0.5);
+	\coordinate (D) at (0.5,0.5);
+	\coordinate (E) at (0,1);
+	\coordinate (F) at (1,1);
+	\coordinate (G) at (1.5,1.5);
+	\coordinate (H) at (0.5,1.5);
+	% arêtes visibles
+	\draw[thick] (A)--(B)--(C)--(G)--(H)--(E)--(A);
+	\draw[thick] (B)--(F)--(G) (E)--(F);
+	% arêtes cachées (issues du sommet D)
+	\draw[thick,dashed] (D)--(A) (D)--(C) (D)--(H);
+	\foreach \p/\pos in {A/below left,B/below right,C/right,D/left,E/left,F/above right,G/right,H/above}
+	  \filldraw (\p) circle (0.6pt) node[\pos,font=\scriptsize] {$\p$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Donner les coordonnées des huit sommets.
+	\item Calculer les coordonnées du centre $I$ du cube et du milieu $J$ de $[FG]$.
+	\item Calculer $\vect{AG} \cdot \vect{BH}$. Les droites $(AG)$ et $(BH)$
+	sont-elles orthogonales ?
+	\item Les points $A$, $C$, $F$ sont-ils alignés ? Le point $H$ est-il dans
+	le plan $(ACF)$ ?
+\end{enumerate}
+
+\exercice{Le tétraèdre \hfill \moyen}
+$ABCD$ est un tétraèdre. On donne $A(0;0;0)$, $B(2;0;0)$, $C(0;2;0)$,
+$D(0;0;2)$.
+\begin{enumerate}
+	\item Calculer $\vect{AB} \wedge \vect{AC}$, puis l'aire du triangle $ABC$.
+	\item En déduire une équation cartésienne du plan $(ABC)$, puis du plan $(BCD)$.
+	\item Calculer la distance de $A$ au plan $(BCD)$, puis le volume du
+	tétraèdre.
+\end{enumerate}
+
+\exercice{Vrai ou faux \hfill \facile}
+Répondre par \emph{vrai} ou \emph{faux} en justifiant brièvement.
+\begin{enumerate}
+	\item Si $\vec u \cdot \vec v = 0$ alors $\vec u = \vec 0$ ou $\vec v = \vec 0$.
+	\item $\vec u \wedge \vec v$ est orthogonal à la fois à $\vec u$ et à $\vec v$.
+	\item Deux droites orthogonales de l'espace sont sécantes.
+	\item Le vecteur $\vec n(a;b;c)$ est normal au plan d'équation $ax+by+cz+d=0$.
+	\item Si deux plans ont des vecteurs normaux colinéaires, ils sont confondus.
+	\item Trois points de l'espace sont toujours coplanaires.
+	\item $\left\|\vec u \wedge \vec v\right\|$ est l'aire du parallélogramme
+	construit sur $\vec u$ et $\vec v$.
+\end{enumerate}
+
+\subsection{Vecteurs, produit scalaire et produit vectoriel}
+
+\exercice{Décomposition et colinéarité \hfill \moyen}
+On donne $\vec u(1;2;-1)$, $\vec v(2;-1;3)$, $\vec w(4;3;1)$.
+\begin{enumerate}
+	\item Montrer que $\vec u$ et $\vec v$ ne sont pas colinéaires.
+	\item Le vecteur $\vec w$ est-il coplanaire avec $\vec u$ et $\vec v$ ?
+	Si oui, écrire $\vec w = a\,\vec u + b\,\vec v$.
+	\item Déterminer un vecteur orthogonal à la fois à $\vec u$ et à $\vec v$.
+\end{enumerate}
+
+\exercice{Produit scalaire — les deux expressions \hfill \moyen}
+$A(1;1;0)$, $B(3;0;2)$, $C(2;3;1)$.
+\begin{enumerate}
+	\item Calculer $\vect{AB} \cdot \vect{AC}$ de deux manières
+	(analytique, puis via les longueurs et l'angle).
+	\item En déduire une mesure de l'angle $\widehat{BAC}$ (au degré près).
+	\item Le triangle $ABC$ est-il rectangle ?
+\end{enumerate}
+
+\exercice{Produit vectoriel et aire \hfill \moyen}
+$A(1;0;1)$, $B(0;2;3)$, $C(2;1;0)$.
+\begin{enumerate}
+	\item Calculer $\vect{AB} \wedge \vect{AC}$.
+	\item En déduire l'aire du triangle $ABC$.
+	\item Déterminer une équation cartésienne du plan $(ABC)$.
+\end{enumerate}
+
+\subsection{Droites et plans}
+
+\exercice{Équations d'un plan \hfill \moyen}
+\begin{enumerate}
+	\item Écrire une équation cartésienne du plan passant par $A(2;-1;3)$ de
+	vecteur normal $\vec n(1;2;-2)$.
+	\item Écrire une représentation paramétrique du plan passant par
+	$B(1;0;0)$ dirigé par $\vec u(1;1;0)$ et $\vec v(0;1;1)$.
+	\item Ces deux plans sont-ils parallèles ? sécants ?
+\end{enumerate}
+
+\exercice{Intersection droite–plan \hfill \moyen}
+Soit $(P) : x + 2y - z + 1 = 0$ et $(D)$ passant par $A(1;1;2)$ de vecteur
+directeur $\vec u(2;-1;1)$.
+\begin{enumerate}
+	\item Montrer que $(D)$ et $(P)$ sont sécants.
+	\item Déterminer les coordonnées du point d'intersection.
+	\item Déterminer l'équation du plan contenant $A$ et perpendiculaire à $(D)$.
+\end{enumerate}
+
+\exercice{Positions relatives de deux droites \hfill \difficile}
+$(D) : (x;y;z) = (1 + 2t\,;\,-t\,;\,3 + t)$ et
+$(D') : (x;y;z) = (s\,;\,1 + s\,;\,2 - s)$.
+\begin{enumerate}
+	\item $(D)$ et $(D')$ sont-elles parallèles ?
+	\item Sont-elles coplanaires ? Si oui, sont-elles sécantes ? Préciser le
+	point ou le plan qui les contient.
+	\item Sont-elles orthogonales ?
+\end{enumerate}
+
+\subsection{Sujets types Bac}
+
+\exercice{Sujet type Bac — plan, droite et distance \hfill \difficile}
+L'espace est muni d'un repère orthonormé direct
+$(O\,;\,\vec\imath,\vec\jmath,\vec k)$. On donne
+$A(1;-1;1)$, $B(3;2;1)$ et $C(2;-1;0)$.
+\begin{enumerate}
+	\item Vérifier que le plan $(ABC)$ a pour équation $3x - 2y + 3z - 8 = 0$. \hfill (0,25 pt)
+	\item Écrire une équation cartésienne du plan $(Q)$ contenant $B$, de
+	vecteur normal $\vect{AC}$. \hfill (0,5 pt)
+	\item
+	\begin{enumerate}
+		\item Montrer que $(ABC) \cap (Q)$ est une droite $(D)$ dont on donnera
+		une représentation paramétrique. \hfill (0,75 pt)
+		\item Montrer que $C$ est le projeté orthogonal de $A$ sur $(D)$ et en
+		déduire la distance de $A$ à $(D)$. \hfill (0,75 pt)
+	\end{enumerate}
+	\item Soit $(R) : x - y + z = 1$. Déterminer les coordonnées du point $I$,
+	intersection des trois plans $(ABC)$, $(Q)$ et $(R)$. \hfill (0,75 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — produit vectoriel et parallélisme \hfill \difficile}
+On donne $A(2;3;1)$, $B(-1;1;1)$, $C(-3;1;0)$, $D(4;-1;3)$.
+\begin{enumerate}
+	\item Calculer $\vec n = \vect{AB} \wedge \vect{AC}$. \hfill (0,5 pt)
+	\item En déduire une équation cartésienne du plan $(ABC)$. \hfill (0,5 pt)
+	\item Donner une représentation paramétrique de la droite $(\Delta)$ de
+	vecteur directeur $\vec u(1;2;-1)$ passant par $D$. \hfill (0,5 pt)
+	\item Montrer que $(\Delta)$ est strictement parallèle au plan $(ABC)$. \hfill (0,5 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — deux plans parallèles et orthogonalité \hfill \difficile}
+On donne le point $A(2;2;1)$ et le plan $(P) : 3x + 2y + 6z + 33 = 0$.
+\begin{enumerate}
+	\item Vérifier que $(P)$ est strictement parallèle au plan $(Q)$ contenant
+	$A$, de vecteur normal $\vec n(-3;-2;-6)$. \hfill (0,25 pt)
+	\item Déterminer la distance qui sépare $(P)$ et $(Q)$. \hfill (0,75 pt)
+	\item Soit $H(-1;0;-5)$. Justifier que $H \in (P)$ et que $(AH)$ et $(P)$
+	sont orthogonaux. \hfill (0,75 pt)
+	\item Calculer $\left\|\vect{AH}\right\|$ et retrouver la distance de $A$ à
+	$(P)$. \hfill (0,5 pt)
+\end{enumerate}
+
+\exercice{Sujet type Bac — sphère et droite perpendiculaire à un plan \hfill \difficile}
+On donne $A(1;-1;1)$, $B(-2;1;-1)$, $C(3;2;2)$.
+\begin{enumerate}
+	\item
+	\begin{enumerate}
+		\item Calculer $\vect{AB} \wedge \vect{AC}$. \hfill (0,25 pt)
+		\item En déduire une équation cartésienne du plan $(ABC)$. \hfill (0,5 pt)
+	\end{enumerate}
+	\item Soit $(S) : x^2 + y^2 + z^2 - 4x + 4y - 2z + 8 = 0$. Déterminer le
+	centre $\Omega$ et le rayon $R$ de $(S)$. \hfill (0,5 pt)
+	\item Soit $(\Delta)$ la droite passant par $\Omega$ et perpendiculaire à
+	$(ABC)$.
+	\begin{enumerate}
+		\item Donner une représentation paramétrique de $(\Delta)$. \hfill (0,25 pt)
+		\item Déterminer les coordonnées du point $H$, intersection de
+		$(\Delta)$ et de $(ABC)$. \hfill (0,5 pt)
+		\item $(ABC)$ coupe-t-il la sphère $(S)$ ? Si oui, préciser le rayon du
+		cercle d'intersection. \hfill (0,5 pt)
+	\end{enumerate}
+\end{enumerate}
+
+\exercice{Sujet type Bac — deux droites orthogonales et plan commun \hfill \difficile}
+On donne le point $A(2;-1;3)$ et le vecteur $\vec u(3;-2;1)$.
+\begin{enumerate}
+	\item Écrire une représentation paramétrique de la droite $(D)$ passant par
+	$A$ de vecteur directeur $\vec u$. \hfill (0,25 pt)
+	\item Soit $(D') : (x;y;z) = (4t + 1\,;\,5t - 8\,;\,-2t + 6)$, $t \in \R$.
+	\begin{enumerate}
+		\item Montrer que $(D)$ et $(D')$ sont orthogonales. \hfill (0,75 pt)
+		\item Déterminer les coordonnées du point $I$, intersection de $(D)$ et
+		$(D')$. \hfill (0,5 pt)
+	\end{enumerate}
+	\item Écrire une équation cartésienne du plan $(P)$ contenant $(D)$ et
+	$(D')$. \hfill (0,75 pt)
+\end{enumerate}
