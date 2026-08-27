@@ -76,6 +76,33 @@
 	En particulier, les solutions de $y'=ky$ sont $x\mapsto C\,\e^{kx}$.
 \end{theoreme}
 
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\begin{scope}
+		\clip (-2.3,-2.5) rectangle (3.4,2.6);
+		\foreach \c in {-2,-1,1,2}
+			\draw[gray!55,thick] plot[domain=-2.3:3.4,samples=90]
+			  (\x,{\c*exp(-\x)});
+		\draw[very thick,black] plot[domain=-2.3:3.4,samples=110]
+		  (\x,{exp(1-\x)});
+	\end{scope}
+	\draw[->] (-2.5,0) -- (3.7,0) node[right,font=\small] {$x$};
+	\draw[->] (0,-2.7) -- (0,2.9) node[above,font=\small] {$y$};
+	\draw[gray!60,dashed] (1,0) node[below,font=\scriptsize] {$x_0$}
+	  -- (1,1) -- (0,1) node[left,font=\scriptsize] {$y_0$};
+	\filldraw (1,1) circle (1.6pt) node[above right,font=\scriptsize] {$A$};
+	\node[font=\scriptsize,align=center] at (2.5,1.9)
+	  {solution telle que\\ $y(x_0)=y_0$};
+	\node[font=\scriptsize,gray] at (-1.7,-1.9) {$y=C\,\e^{-ax}$};
+\end{tikzpicture}
+\end{center}
+
+\begin{remarque}
+	L'équation $y'+ay=0$ a une \textbf{infinité} de solutions : une par valeur
+	de $C$ (le \textbf{faisceau} de courbes ci-dessus). Une \textbf{condition
+	initiale} $y(x_0)=y_0$ en sélectionne \textbf{une seule}.
+\end{remarque}
+
 \begin{theoreme}[Équation complète $y'+ay=b$]
 	Soient $a\neq 0$ et $b$ deux réels. Les solutions sur $\R$ de $\;y'+ay=b\;$
 	sont les fonctions
@@ -263,24 +290,53 @@ différentielle $(E):y'+y=0$.
 \begin{tikzpicture}[>=Stealth, scale=0.95]
 	\begin{scope}
 		\clip (-2.7,-2.6) rectangle (2.9,2.6);
-		\draw[thick,domain=-1.0:2.7,samples=100] plot (\x,{exp(-\x)});
-		\draw[thick,domain=-0.35:2.7,samples=100] plot (\x,{2*exp(-\x)});
-		\draw[thick,domain=-2.7:1.0,samples=100] plot (\x,{-exp(-\x)});
+		\draw[thick,domain=-1.4:2.7,samples=110] plot (\x,{exp(-\x)});
+		\draw[thick,domain=-0.35:2.7,samples=110] plot (\x,{3*exp(-\x)});
+		\draw[thick,domain=-2.7:1.4,samples=110] plot (\x,{-exp(-\x)});
 	\end{scope}
 	\draw[->] (-2.9,0) -- (3.1,0) node[right,font=\small] {$x$};
 	\draw[->] (0,-2.8) -- (0,2.9) node[above,font=\small] {$y$};
-	\node[font=\scriptsize] at (2.5,0.55) {$C=1$};
-	\node[font=\scriptsize] at (1.55,1.35) {$C=2$};
-	\node[font=\scriptsize] at (1.55,-0.75) {$C=-1$};
-	\node[font=\scriptsize,gray] at (-1.9,0.3) {$C=0$};
+	\node[font=\scriptsize] at (2.35,0.7) {$C=1$};
+	\node[font=\scriptsize] at (1.35,1.55) {$C=3$};
+	\node[font=\scriptsize] at (1.9,-0.85) {$C=-1$};
+	\node[font=\scriptsize,gray] at (-2.0,0.3) {$C=0$};
 \end{tikzpicture}
 \end{center}
 
 \begin{enumerate}
 	\item Donner la forme générale des solutions de $(E)$.
-	\item Identifier la solution qui vérifie $y(0)=2$.
+	\item Identifier la solution qui vérifie $y(0)=3$.
 	\item Combien de solutions vérifient $y(0)=0$ ?
 	\item Quelle est la limite commune de toutes les solutions en $+\infty$ ?
+\end{enumerate}
+
+\exercice{Un faisceau avec second membre \hfill \facile}
+La figure ci-dessous représente quatre solutions de l'équation
+différentielle $(E):y'+y=2$.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=0.9]
+	\begin{scope}
+		\clip (-2.4,-2.4) rectangle (3.4,4.2);
+		\foreach \c in {-2,-1,1}
+			\draw[thick,domain=-2.4:3.4,samples=110]
+			  plot (\x,{2+\c*exp(-\x)});
+		\draw[thick,domain=-2.4:3.4,samples=110] plot (\x,{2+2.7*exp(-\x)});
+	\end{scope}
+	\draw[->] (-2.6,0) -- (3.7,0) node[right,font=\small] {$x$};
+	\draw[->] (0,-2.5) -- (0,4.4) node[above,font=\small] {$y$};
+	\draw[red!70!black,dashed] (-2.4,2) -- (3.5,2)
+	  node[right,font=\scriptsize,red!70!black] {$y=2$};
+	\node[font=\scriptsize] at (2.7,2.5) {solutions};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Donner la forme générale des solutions de $(E)$.
+	\item Quelle est la limite commune de toutes les solutions en $+\infty$ ?
+	Interpréter la droite $y=2$.
+	\item Identifier la solution constante.
+	\item Déterminer la solution vérifiant $y(0)=0$.
 \end{enumerate}
 
 \exercice{Vrai ou faux \hfill \facile}
