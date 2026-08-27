@@ -6,6 +6,24 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-27 — Refonte du chapitre Isométries du Plan
+
+- Réécriture complète de `parties/geometrie/isometries.tex` autour de la
+  composition et de la décomposition des isométries (demande utilisateur :
+  pas assez d'exercices de ce type).
+- Cours développé : composée de deux réflexions (axes parallèles →
+  translation, axes sécants → rotation) ; décomposition d'une translation
+  et d'une rotation en deux réflexions avec l'axe libre ; méthode de
+  l'axe commun pour $t\circ r$, $r\circ t$, $r_1\circ r_2$ ; symétrie
+  glissée et sa réduction ; écritures complexes (déplacements /
+  antidéplacements) ; extension aux homothéties et similitudes directes
+  (composées, cas particuliers).
+- 6 figures TikZ + 1 arbre de décision + 3 tableaux récapitulatifs.
+- 3 exercices résolus (méthode géométrique + contrôle complexe) et
+  13 exercices gradués, dont 2 sujets types Bac.
+- Compile sans erreur ; aucun `Overfull \hbox` visible (> ~10pt) ajouté.
+- Branche `chapitre-isometries-composition`, PR contre `main`.
+
 ## 2026-08-26 — Passe de relecture globale (débordements de marge)
 
 - Compilation complète du livre et audit systématique de tous les
