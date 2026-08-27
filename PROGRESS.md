@@ -6,6 +6,37 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-27 — Chapitre « Suites numériques » aligné
+
+- `parties/analyse/suites.tex` : le chapitre ne contenait que la
+  récurrence (sans objectifs, sans citation). Refondu selon le modèle
+  type et le programme officiel :
+  - récurrence (domino + figure `resume_recurrence` conservées, méthode
+    de rédaction, exemple résolu, `attention` sur l'hérédité seule) ;
+  - **sens de variation d'une suite : les 4 méthodes** (différence
+    u_{n+1}−u_n ; quotient u_{n+1}/u_n si u_n>0 ; fonction associée
+    u_n=f(n) ; récurrence) — demande utilisateur explicite ;
+  - suites majorées / minorées / bornées ;
+  - **limite : convergence / divergence**, unicité, limites de référence
+    (1/n^α, q^n, croissances comparées), opérations ;
+  - **théorèmes de convergence et de divergence** : limite monotone,
+    comparaison (divergence), gendarmes, comparaison (limite finie),
+    passage à la limite ;
+  - suites u_{n+1}=f(u_n) : méthode (stabilité + monotonie + point fixe)
+    + théorème du point fixe + `attention` ;
+  - suites particulières : arithmétiques / géométriques (table),
+    arithmético-géométriques (méthode v_n=u_n−ℓ), suites adjacentes.
+- Exercices : Vrai/Faux + **batteries multicolonnes** — premiers termes,
+  récurrence (égalités, suites, inégalités dont Bernoulli), sens de
+  variation, limites directes (3 col), **convergente ou divergente ?**,
+  **par les gendarmes**, **limite monotone**, arithmético-géométrique —
+  + **5 sujets types Bac** (suite √ + vitesse |u_n−2|≤2(1/2)^n ;
+  arith.-géo. + somme S_n ; suites adjacentes Σ1/k² ; Héron → √3 ;
+  n!/n^n comparaison + croissances comparées).
+- `latexmk -pdf main.tex` : **361 pages**, 0 erreur, aucune référence non
+  résolue, aucun `Overfull`.
+- Branche `chapitre-suites` → PR contre `main`.
+
 ## 2026-08-27 — Chapitre « Primitives et intégrale » aligné + correctif `\dd`
 
 - `parties/analyse/integrales.tex` refondu selon le modèle type et le

@@ -46,8 +46,13 @@ soit inférieures à ~11pt et vérifiées invisibles au rendu.
     plan d'étude, diagramme des branches infinies, convexité, position
     courbe/droite, identification f/f'/f'' sur figure ; ln/exp uniquement ;
     5 sujets types Bac ; PR `chapitre-etude-fonctions`).
-  - Restent : analyse (suites ; équa diff a déjà 2 sujets bac mais ni
-    citation ni échauffement/V-F), probabilités (5 fichiers).
+  - Restent : équa diff (a déjà 2 sujets bac mais ni citation ni
+    échauffement/V-F), probabilités (5 fichiers).
+    `suites.tex` aligné le 2026-08-27 (PR #23) : récurrence, sens de
+    variation (4 méthodes), majorées/minorées/bornées, convergence /
+    divergence + théorèmes (limite monotone, comparaison, gendarmes),
+    u_{n+1}=f(u_n) + point fixe, arith.-géo. + adjacentes ; nombreuses
+    batteries dont convergence/divergence ; 5 sujets types.
     NB : `logarithme.tex` / `exponentielle.tex` volontairement resserrés
     en chapitres-référence (PR #21) — pas de 5 sujets types (couverts par
     « Limites et continuité », « Dérivabilité », « Étude d'une fonction »).
