@@ -6,6 +6,29 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-27 — Structure : les parties du livre activées
+
+- Les cinq `\part{}` de `main.tex` étaient **écrits mais commentés** : la
+  structure Algèbre / Analyse / Géométrie / Probabilités n'apparaissait ni
+  dans le PDF ni dans la table des matières, le livre se lisant comme une
+  suite plate de 20 chapitres. Ils sont désormais actifs.
+- Ajout d'une 5ᵉ partie **« Sujets et entraînement »** devant
+  `sujet_types` et `entrainement` : sans elle, les annales et les 19 sujets
+  types semblaient appartenir à la partie Probabilités.
+- Ordre des parties **inchangé** (Algèbre → Analyse → Géométrie →
+  Probabilités) : c'est le seul qui respecte toutes les dépendances réelles
+  (Probabilités a besoin d'Intégrales et de `exp` pour les lois à densité ;
+  Isométries a besoin des Complexes ; Équa diff a besoin des racines
+  complexes) et il suit le programme officiel. Ajouter un `\part` ne
+  renumérote aucun chapitre — aucune référence croisée touchée.
+- Vérification : `latexmk -pdf` OK, 394 pages, 5 `\contentsline {part}`
+  dans `main.toc`, et **13 `Overfull \hbox` avant comme après** (baseline
+  `main` recompilée pour comparaison) — zéro régression.
+- Constat au passage : `annexes/formulaire.tex` est **vide (0 octet)**, donc
+  rien à brancher sous le `\appendix` qui reste inutilisé. Voir STATUS.
+
+---
+
 ## 2026-08-27 — Les 5 chapitres de probabilités alignés
 
 - Fin du chantier « modèle type » : `parties/probabilites/probabilites.tex`,
