@@ -6,6 +6,30 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-27 — Chapitres « Logarithme » et « Exponentielle » resserrés
+
+- Demande utilisateur : revoir les contenus (définition, propriétés,
+  théorèmes, dérivée de ln(u) / e^u), ne garder que l'essentiel des
+  **exercices de calcul direct en deux colonnes**, **éviter les doublons**.
+- `parties/analyse/logarithme.tex` : cours compact (def comme primitive de
+  1/x ; variation + signe + courbe ; propriétés algébriques ; limites
+  usuelles en table ; dérivée ln(u), ln|u|, ln(ax+b) ; équations /
+  inéquations / **systèmes** ; **logarithme de base a et décimal** —
+  ajout au programme). Exercices : Vrai/Faux + 5 batteries `multicols{2}`
+  (simplifier, équations, inéquations, dériver, limites directes) + 3
+  synthèses courtes. Renvois « voir Limites et continuité » (FI) et
+  « voir Primitives et intégrale » (u'/u).
+- `parties/analyse/exponentielle.tex` : même structure (def réciproque de
+  ln ; variation + courbe ; propriétés ; limites usuelles ; dérivée e^u,
+  e^{ax+b} ; équations / inéquations / systèmes ; **fonctions a^x et
+  u^v**). Exercices : Vrai/Faux + 5 batteries `multicols{2}` + 3
+  synthèses. **Section « Équations différentielles » supprimée**
+  (doublon avec `equadiff.tex`), ainsi que le gros Problème 2 sur f_n
+  (couvert par « Étude d'une fonction »).
+- `latexmk -pdf main.tex` : **346 pages** (−8), 0 erreur, aucune référence
+  non résolue, aucun `Overfull`.
+- Branche `chapitres-ln-exp` → PR contre `main`.
+
 ## 2026-08-27 — Chapitre « Étude d'une fonction » (ex-« Généralités »)
 
 - `parties/analyse/fonctions.tex` **entièrement recentré** (demande
