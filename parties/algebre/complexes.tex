@@ -35,7 +35,7 @@
 \begin{definition}
 	L'ensemble des \textbf{nombres complexes}, noté $\C$, est un ensemble contenant $\R$
 	et un élément noté $\ii$ vérifiant $\ii^2 = -1$.
-	
+
 	Tout nombre complexe $z$ s'écrit de manière unique sous la forme
 	$$
 	z = a + b\ii, \quad a \in \R,\ b \in \R.
@@ -56,7 +56,7 @@ $z$ est dit \textbf{imaginaire pur} si $\mathrm{Re}(z) = 0$ et $z \neq 0$.
 \end{definition}
 
 \begin{propriete}{Opérations en forme algébrique}{}
-	
+
 	Soient $z = a + b\ii$ et $z' = c + d\ii$ deux nombres complexes.
 	\begin{itemize}[label=\textbullet]
 		\item \textbf{Addition :} $z + z' = (a+c) + (b+d)\ii$
@@ -134,54 +134,54 @@ $z$ est dit \textbf{imaginaire pur} si $\mathrm{Re}(z) = 0$ et $z \neq 0$.
 \begin{figure}[h]
 	\centering
 	\begin{tikzpicture}[>=Stealth, scale=1.1]
-		
+
 		% --- Grille -----------------------------------------------
 		\draw[gray!30, thin] (0,0) grid (6,3);
-		
+
 		% --- Axes -------------------------------------------------
 		\draw[->] (-0.3,0) -- (6.5,0)
 		node[right, font=\small] {Axe des réels};
 		\draw[->] (0,-0.3) -- (0,3.5)
 		node[above, font=\small] {Axe des imaginaires};
-		
+
 		% --- Graduations axe réel ---------------------------------
 		\foreach \x in {1,...,6}{
 			\draw (\x,2pt) -- (\x,-2pt) node[below, font=\small] {\x};
 		}
 		\node[below left, font=\small] at (0,0) {$0$};
-		
+
 		% --- Graduations axe imaginaire ---------------------------
 		\foreach \y in {1,2,3}{
 			\draw (2pt,\y) -- (-2pt,\y) node[left, font=\small] {\y};
 		}
-		
+
 		% --- Vecteurs de base u et v (en rouge) -------------------
 		\draw[->, red, thick] (0,0) -- (1,0)
 		node[below, font=\small, red] {$\vec{u}$};
 		\draw[->, red, thick] (0,0) -- (0,1)
 		node[left,  font=\small, red] {$\vec{v}$};
-		
+
 		% --- Tirets pointillés ------------------------------------
 		\draw[blue!70, dashed, thin] (3.3,0) -- (3.3,2.2);   % vertical
 		\draw[blue!70, dashed, thin] (0,2.2) -- (3.3,2.2);   % horizontal
-		
+
 		% --- Label b sur l'axe imaginaire -------------------------
 		\node[left, font=\small, blue] at (0,2.2) {$b$};
-		
+
 		% --- Label a sur l'axe réel -------------------------------
 		\node[below, font=\small, blue] at (3.3,0) {$a$};
-		
+
 		% --- Vecteur OM = module, label sloped --------------------
 		\draw[->, red, thick] (0,0) -- (3.3,2.2)
 		node[midway, above, sloped, font=\small, red]
 		{$|z|=\sqrt{a^2+b^2}$};
-		
+
 		% --- Point M ----------------------------------------------
 		\filldraw[blue] (3.3,2.2) circle (2pt)
 		node[above right, font=\small, blue] {$M(a+ib)$};
-		
+
 	\end{tikzpicture}
-	
+
 	\smallskip
 	\begin{minipage}{0.85\linewidth}
 		\small
@@ -228,9 +228,9 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 % ============================================================
 
 \begin{definition}[Argument d'un nombre complexe]
-	Dans le plan complexe $(O, \vec{u}, \vec{v});$ 	
+	Dans le plan complexe $(O, \vec{u}, \vec{v});$
 	Soit $M$ un point d'affixe $z\neq 0$.
-	
+
 	On appelle \textbf{argument} de $z$, noté $\arg(z)$, toute mesure, en radians, de l'angle orienté $\left(\vec{u},\overrightarrow{OM}\right)$.
 \end{definition}
 % ============================================================
@@ -241,56 +241,56 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 \begin{figure}[h]
 	\centering
 	\begin{tikzpicture}[>=Stealth, scale=1.1]
-		
+
 		% --- Grille -----------------------------------------------
 		\draw[gray!30, thin] (0,0) grid (5,3);
-		
+
 		% --- Axes -------------------------------------------------
 		\draw[->] (-0.3,0) -- (5.8,0)
 		node[right, font=\small] {Axe des réels};
 		\draw[->] (0,-0.3) -- (0,3.5)
 		node[above, font=\small] {Axe des imaginaires};
-		
+
 		% --- Graduations axe réel ---------------------------------
 		\foreach \x in {1,...,5}{
 			\draw (\x,2pt) -- (\x,-2pt) node[below, font=\small] {\x};
 		}
 		\node[below left, font=\small] at (0,0) {$0$};
-		
+
 		% --- Graduations axe imaginaire ---------------------------
 		\foreach \y in {1,2,3}{
 			\draw (2pt,\y) -- (-2pt,\y) node[left, font=\small] {\y};
 		}
-		
+
 		% --- Vecteurs de base u et v (en rouge) -------------------
 		\draw[->, red, thick] (0,0) -- (1,0)
 		node[below, midway, font=\small, red] {$\vec{u}$};
 		\draw[->, red, thick] (0,0) -- (0,1)
 		node[left, midway, font=\small, red] {$\vec{v}$};
-		
+
 		% --- Tirets pointillés ------------------------------------
 		\draw[gray!60, dashed, thin] (3,0) -- (3,2);
 		\draw[gray!60, dashed, thin] (0,2) -- (3,2);
-		
+
 		% --- Arc de l'argument ------------------------------------
 		% angle = arctan(2/3) ≈ 33.69°
 		\draw[green!60!black, thick]
 		(0.7,0) arc[start angle=0, end angle=33.69, radius=0.7];
-		
+
 		% --- Label arg(z) -----------------------------------------
 		\node[green!60!black, font=\small] at (1.15,0.25)
 		{$\arg(z)$};
-		
+
 		% --- Vecteur OM avec label |z| sloped ---------------------
 		\draw[->, red, thick] (0,0) -- (3,2)
 		node[midway, above, sloped, font=\small, red] {$|z|$};
-		
+
 		% --- Point M ----------------------------------------------
 		\filldraw[blue] (3,2) circle (2pt)
 		node[above right, font=\small, blue] {$M(z)$};
-		
+
 	\end{tikzpicture}
-	
+
 	\caption{Module et argument d'un nombre complexe $z$.}
 	\label{fig:argument}
 \end{figure}
@@ -306,15 +306,15 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 	\end{array}
 	\right.
 	$$
-	
-	
+
+
 	On écrit alors la \textbf{forme trigonométrique} :
 	$$z = |z|\!\left(\cos\theta + i\sin\theta\right)$$.
 
 
 \begin{definition}[Forme exponentielle]
 	On note $\e^{\ii\theta} = \cos\theta + \ii\sin\theta$ (formule d'Euler).
-	
+
 	Tout complexe non nul s'écrit donc
 	$$
 	z = r\,\e^{\ii\theta}, \quad r = \abs{z} > 0,\quad \theta = \arg(z).
@@ -447,7 +447,7 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 
 \begin{exemple}
 	Développer $\cos(2\theta)$ et $\sin(2\theta)$ à l'aide de la formule de Moivre.
-	
+
 	$(\cos\theta + \ii\sin\theta)^2 = \cos^2\theta - \sin^2\theta + 2\ii\cos\theta\sin\theta$,
 	donc en identifiant parties réelle et imaginaire :
 	$$
@@ -610,7 +610,7 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 	\end{cases}
 	$$
 	Les deux premières équations donnent $x^2$ et $y^2$ ; le signe de $\beta$
-	fixe le signe de $xy$. 
+	fixe le signe de $xy$.
 \end{methode}
 
 \begin{exemple}
@@ -783,49 +783,49 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 	\begin{figure}[h]
 		\centering
 		\begin{tikzpicture}[>=Stealth, scale=1.1]
-			
+
 			% --- Grille -----------------------------------------------
 			\draw[gray!30, thin] (0,0) grid (6,3);
-			
+
 			% --- Axes -------------------------------------------------
 			\draw[->] (-0.3,0) -- (6.5,0) node[right, font=\small] {Axe des réels};
 			\draw[->] (0,-0.3) -- (0,3.5) node[above, font=\small] {Axe des imaginaires};
-			
+
 			% --- Graduation axe réel ----------------------------------
 			\foreach \x in {1,...,6}{
 				\draw (\x, 2pt) -- (\x, -2pt) node[below, font=\small] {\x};
 			}
 			% zéro
 			\node[below left, font=\small] at (0,0) {$0$};
-			
+
 			% --- Graduation axe imaginaire ----------------------------
 			\foreach \y in {1,2,3}{
 				\draw (2pt,\y) -- (-2pt,\y) node[left, font=\small] {\y};
 			}
-			
+
 			% --- Vecteurs de base u et v (en rouge) -------------------
 			\draw[->, red, thick] (0,0) -- (1,0)
 			node[below, midway, font=\small, red] {$\vec{u}$};
 			\draw[->, red, thick] (0,0) -- (0,1)
 			node[midway, left,  font=\small, red] {$\vec{v}$};
-			
+
 			% --- Tirets pointillés vers M(3,2) -----------------------
 			\draw[black!60, dashed, thin] (3,0) -- (3,2);
 			\draw[black!60, dashed, thin] (0,2) -- (3,2);
-			
+
 			% --- Vecteur w = affixe 3+2i (en vert) -------------------
 			\draw[->, blue!60!black, thick] (0,0) -- (3,2)
 			node[midway, below right, font=\small, blue!60!black]
 			{$\vec{w}(3+2i)$};
-			
-			
-			
+
+
+
 			% --- Point M ----------------------------------------------
 			\filldraw[blue] (3,2) circle (2pt)
 			node[above right, font=\small, blue] {$M(3+2i)$};
-			
+
 		\end{tikzpicture}
-		
+
 		\smallskip
 		\begin{minipage}{0.85\linewidth}
 			\small
@@ -1075,7 +1075,7 @@ $\mathrm{Re}(z) = k$ / $\mathrm{Im}(z) = k$ & droite verticale / horizontale \\
 
 \begin{astucebac}
 	Pour identifier une transformation à partir de son expression complexe $z' = az + b$ :
-	
+
 	\begin{center}
 		\begin{tikzpicture}[
 			>=Latex,
@@ -1085,36 +1085,36 @@ $\mathrm{Re}(z) = k$ / $\mathrm{Im}(z) = k$ & droite verticale / horizontale \\
 			resultat/.style={draw, rounded corners, minimum width=3.8cm, minimum height=0.9cm, align=center},
 			lab/.style={font=\scriptsize}
 			]
-			
+
 			% --- Etape de départ ---
 			\node[start] (depart) {Calculer $a$\\(module et argument)};
-			
+
 			% --- Décision 1 ---
 			\node[decision, below=0.9cm of depart] (d1) {$a = 1$ ?};
 			\node[resultat, right=1.6cm of d1] (r1) {Translation\\de vecteur d'affixe $b$};
-			
+
 			% --- Décision 2 ---
 			\node[decision, below=1.3cm of d1] (d2) {$\abs{a}=1$ et $a\neq 1$ ?};
 			\node[resultat, right=1.6cm of d2] (r2) {Rotation pure\\(rapport $=1$, angle $\arg(a)$)};
-			
+
 			% --- Décision 3 ---
 			\node[decision, below=1.3cm of d2] (d3) {$a\in\R^*$ et $a\neq 1$ ?};
 			\node[resultat, right=1.6cm of d3] (r3) {Homothétie pure\\(angle $=0$ ou $\pi$)};
-			
+
 			% --- Résultat final ---
 			\node[resultat, below=1.3cm of d3] (r4) {Similitude directe\\de rapport $\abs{a}$ et d'angle $\arg(a)$};
-			
+
 			% --- flèches verticales (chemin "non") ---
 			\draw[->] (depart) -- (d1);
 			\draw[->] (d1) -- node[lab, left]{non} (d2);
 			\draw[->] (d2) -- node[lab, left]{non} (d3);
 			\draw[->] (d3) -- node[lab, left]{non} (r4);
-			
+
 			% --- flèches horizontales (chemin "oui") ---
 			\draw[->] (d1) -- node[lab, above]{oui} (r1);
 			\draw[->] (d2) -- node[lab, above]{oui} (r2);
 			\draw[->] (d3) -- node[lab, above]{oui} (r3);
-			
+
 		\end{tikzpicture}
 	\end{center}
 \end{astucebac}
@@ -1170,11 +1170,11 @@ qu'elle admet une racine imaginaire pure.
 	$$
 	La partie réelle donne $4\alpha(\alpha - 1) = 0$ ; $\alpha = 1$ annule aussi la
 	partie imaginaire. Donc $z_0 = \ii$ est racine.
-	
+
 	\medskip
 	\textbf{Factorisation par la méthode de Horner.} On divise
 	$z^3 - (4+\ii)z^2 + (5+4\ii)z - 5\ii$ par $(z - \ii)$ :
-	
+
 	\begin{center}
 		\begin{tikzpicture}[>=Latex, font=\small]
 			% --- coefficients du polynôme ---
@@ -1182,48 +1182,48 @@ qu'elle admet une racine imaginaire pure.
 			\node (c1) at (2,0)   {$-(4+\ii)$};
 			\node (c2) at (4.4,0) {$5+4\ii$};
 			\node (c3) at (6.4,0) {$-5\ii$};
-			
+
 			% --- racine ---
 			\node[left] at (-1.2,-1) {racine $\ii$};
-			
+
 			% --- ligne des produits (racine x quotient précédent) ---
 			\node (p1) at (2,-1)   {$\ii$};
 			\node (p2) at (4.4,-1) {$-4\ii$};
 			\node (p3) at (6.4,-1) {$5\ii$};
-			
+
 			% --- ligne des résultats (coefficients du quotient + reste) ---
 			\node (q0) at (0,-2)   {$1$};
 			\node (q1) at (2,-2)   {$-4$};
 			\node (q2) at (4.4,-2) {$5$};
 			\node (q3) at (6.4,-2) {$0$};
-			
+
 			% --- traits horizontaux du schéma ---
 			\draw (-0.6,-0.5) -- (7.2,-0.5);
 			\draw (-0.6,-1.5) -- (7.2,-1.5);
-			
+
 			% --- flèches diagonales : "descendre" puis "multiplier par i" ---
 			\draw[->] (c0) -- (p1);
 			\draw[->] (c1) -- (p2);
 			\draw[->] (c2) -- (p3);
-			
+
 			% --- flèches verticales : addition ---
 			\draw[->] (c0) -- (q0);
 			\draw[->] (p1) -- (q1);
 			\draw[->] (p2) -- (q2);
 			\draw[->] (p3) -- (q3);
-			
+
 		\end{tikzpicture}
 	\end{center}
-	
+
 	Le reste est nul, ce qui confirme que $\ii$ est bien racine, et le quotient
 	donne directement :
 	$$
 	z^3 - (4+\ii)z^2 + (5+4\ii)z - 5\ii = (z - \ii)(z^2 - 4z + 5).
 	$$
-	
+
 	\medskip
 	Il reste à résoudre $z^2 - 4z + 5 = 0$ : $\Delta = -4$, donc $z = 2 \pm \ii$.
-	
+
 	\medskip
 	\textbf{Conclusion.} Les trois racines sont $z_0 = \ii$, $z_1 = 2+\ii$,
 	$z_2 = 2-\ii$.
@@ -1307,7 +1307,7 @@ Ce système est contradictoire ($3 \neq -1$), donc \textbf{l'équation n'a pas d
 
 \begin{enumerate}
 	\item Calculer $\abs{z}$ pour $z = \dfrac{(2 + \ii)^2}{1 - \ii\sqrt{3}}$.
-	
+
 	\item Montrer que si $\abs{z} = 1$, alors $\dfrac{z - 1}{z + 1}$ est imaginaire pur
 	(en supposant $z \neq -1$).
 \end{enumerate}
@@ -2070,10 +2070,10 @@ On considère l'application $f : z \mapsto (2 + \ii)\bar{z} - 1 + 3\ii$.
 \begin{enumerate}
 	\item Déterminer l'expression complexe de la rotation de centre $A$ d'affixe
 	$2 - \ii$ et d'angle $\dfrac{3\pi}{4}$.
-	
+
 	\item Déterminer l'expression complexe de l'homothétie de centre $B$ d'affixe
 	$-1 + 2\ii$ et de rapport $-3$.
-	
+
 	\item Déterminer l'expression complexe de la similitude directe de centre $C$
 	d'affixe $\ii$, de rapport $\sqrt{2}$ et d'angle $\dfrac{\pi}{4}$.
 \end{enumerate}
@@ -2088,17 +2088,17 @@ tel que $A$ a pour affixe $z_A = 0$ et $B$ a pour affixe $z_B = 2$.
 
 \begin{enumerate}
 	\item Déterminer les affixes de $C$, $D$ et $\Omega$.
-	
+
 	\item Soit $r$ la rotation de centre $\Omega$ et d'angle $\dfrac{\pi}{2}$.
 	Écrire l'expression complexe de $r$ et vérifier que $r(A) = B$.
-	
+
 	\item Soit $s$ la similitude directe transformant $A$ en $B$ et $B$ en $C$.
 	\begin{enumerate}
 		\item Déterminer l'expression complexe de $s$.
 		\item Préciser la nature, le rapport, l'angle et le centre de $s$.
 		\item Vérifier que le centre de $s$ coïncide avec $\Omega$.
 	\end{enumerate}
-	
+
 	\item Calculer $s^2$, $s^3$ et $s^4$. Que remarque-t-on ?
 \end{enumerate}
 
@@ -2123,7 +2123,7 @@ tel que $A$ a pour affixe $z_A = 0$ et $B$ a pour affixe $z_B = 2$.
 		\task Rotation de centre $1$, angle $\pi/2$
 		\task Homothétie de centre $\ii$, rapport $1$
 	\end{qcm}
-	
+
 	\item L'application $g : z \mapsto 2z - 2 - 4\ii$ est :
 	\begin{qcm}(2)
 		\task Rotation de rapport $2$, angle $0$
@@ -2131,7 +2131,7 @@ tel que $A$ a pour affixe $z_A = 0$ et $B$ a pour affixe $z_B = 2$.
 		\task Similitude de rapport $2$, angle $\pi$
 		\task Translation de vecteur $-2 - 4\ii$
 	\end{qcm}
-	
+
 	\item La similitude $h : z \mapsto (1+\ii)z + 2$ a pour rapport :
 	\begin{qcm}(4)
 		\task $1$
@@ -2139,7 +2139,7 @@ tel que $A$ a pour affixe $z_A = 0$ et $B$ a pour affixe $z_B = 2$.
 		\task $2$
 		\task $1 + \ii$
 	\end{qcm}
-	
+
 	\item Le point fixe de $f : z \mapsto (2+\ii)z - 1 + 3\ii$ a pour affixe :
 	\begin{qcm}(2)
 		\task $(-1+3\ii)/(1+\ii)$
@@ -2205,7 +2205,7 @@ Soit $r$ la rotation de centre $\Omega$ d'affixe $1 + \ii$ et d'angle $\dfrac{\p
 		\task $z' = \ii z - 2$
 		\task $z' = \ii z + (1-\ii)(1-\ii)$
 	\end{qcm}
-	
+
 	\item L'image du point $A$ d'affixe $3 + \ii$ par $r$ est le point d'affixe :
 	\begin{qcm}(4)
 		\task $3 + \ii$
@@ -2213,7 +2213,7 @@ Soit $r$ la rotation de centre $\Omega$ d'affixe $1 + \ii$ et d'angle $\dfrac{\p
 		\task $1 + 3\ii$
 		\task $3 - \ii$
 	\end{qcm}
-	
+
 	\item Le seul point invariant par $r$ est :
 	\begin{qcm}(2)
 		\task L'origine $O$
@@ -2221,7 +2221,7 @@ Soit $r$ la rotation de centre $\Omega$ d'affixe $1 + \ii$ et d'angle $\dfrac{\p
 		\task Le point $\Omega$ d'affixe $1 + \ii$
 		\task Aucun point invariant
 	\end{qcm}
-	
+
 	\item $r^2$ est :
 	\begin{qcm}(2)
 		\task Rotation de centre $\Omega$, angle $\pi$
@@ -2276,17 +2276,17 @@ $z_A = 0$ et $z_B = 2$.
 \begin{enumerate}
 	\item Rappeler que la rotation $r$ de centre $A$ et d'angle $\dfrac{\pi}{3}$
 	transforme $B$ en $C$. En déduire $z_C$.
-	
+
 	\item Soit $f$ la similitude directe telle que $f(A) = B$ et $f(B) = C$.
 	\begin{enumerate}
 		\item Déterminer l'expression complexe de $f$.
 		\item Montrer que le centre $\Omega$ de $f$ est le centre du triangle $ABC$.
 		\item Calculer $f(C)$ et interpréter géométriquement.
 	\end{enumerate}
-	
+
 	\item Soit $g = f \circ f \circ f$. Calculer l'expression complexe de $g$.
 	Quelle est la nature de $g$ ?
-	
+
 	\item En déduire que $f^3 = \mathrm{id}$. Que représente géométriquement
 	cette propriété ?
 \end{enumerate}
@@ -2306,7 +2306,7 @@ $z_A = 0$ et $z_B = 2$.
 		\task $\arg(a) = 0$
 		\task $\abs{a} = 1$, $a \neq 1$
 	\end{qcm}
-	
+
 	\item Si $f$ laisse invariants deux points distincts $A$ et $B$, alors :
 	\begin{qcm}(2)
 		\task Nécessairement l'identité
@@ -2314,7 +2314,7 @@ $z_A = 0$ et $z_B = 2$.
 		\task Une rotation d'angle $2\pi$
 		\task L'identité ou la symétrie d'axe $(AB)$
 	\end{qcm}
-	
+
 	\item La composition de deux rotations de même centre $\Omega$ et d'angles
 	$\alpha$ et $\beta$ est :
 	\begin{qcm}(2)
@@ -2323,7 +2323,7 @@ $z_A = 0$ et $z_B = 2$.
 		\task Une translation si $\alpha + \beta \equiv 0\,[2\pi]$
 		\task Similitude de rapport $2$
 	\end{qcm}
-	
+
 	\item Si $f : z \mapsto az + b$ avec $a \neq 0$ et $a \neq 1$, alors le centre de $f$ :
 	\begin{qcm}(2)
 		\task A pour affixe $b/(1-a)$
@@ -2365,12 +2365,12 @@ où $f^n$ désigne la composée $n$ fois de $f$ avec elle-même.
 \begin{enumerate}
 	\item Montrer que $f$ est une similitude directe de centre $O$,
 	de rapport $r = \dfrac{\sqrt{2}}{2}$ et d'angle $\theta = \dfrac{\pi}{4}$.
-	
+
 	\item Justifier que $O$ est le seul point invariant par $f$.
-	
+
 	\item Calculer $f^2$, $f^4$ et $f^8$.
 	Quelle est la nature de chacune de ces applications ?
-	
+
 	\item Montrer que $f^8$ est une homothétie. Préciser son centre et son rapport.
 \end{enumerate}
 
@@ -2383,17 +2383,17 @@ où $f^n$ désigne la composée $n$ fois de $f$ avec elle-même.
 \begin{enumerate}
 	\item Calculer $z_1$, $z_2$, $z_3$ et $z_4$ sous forme algébrique.
 	Placer les points $O$, $A_0$, $A_1$, $A_2$, $A_3$, $A_4$ dans le plan.
-	
+
 	\item Montrer que $z_n = 4 \times \left(\dfrac{1+\ii}{2}\right)^n$
 	et mettre $z_n$ sous forme exponentielle $r_n\,\e^{\ii\theta_n}$.
-	
+
 	\item \begin{enumerate}
 		\item Montrer que $\abs{z_n} = 4 \times \left(\dfrac{\sqrt{2}}{2}\right)^n$.
 		\item Justifier que les points $A_n$ se rapprochent de $O$ quand $n \to +\infty$.
 		\item Calculer l'angle $\left(\vect{OA_0}, \vect{OA_n}\right)$ et interpréter
 		géométriquement la suite $(A_n)$.
 	\end{enumerate}
-	
+
 	\item Les triangles $OA_nA_{n+1}$ sont-ils tous semblables ?
 	Calculer le rapport $\dfrac{OA_{n+1}}{OA_n}$ et l'angle $\widehat{A_nOA_{n+1}}$.
 \end{enumerate}
@@ -2411,12 +2411,12 @@ où $f^n$ désigne la composée $n$ fois de $f$ avec elle-même.
 	L_n = \sum_{k=0}^{n} A_k A_{k+1}
 	$$
 	en fonction de $n$, où $A_{n+1} = O$ pour le dernier segment.
-	
+
 	\textit{Indication : } $A_kA_{k+1} = \abs{z_{k+1} - z_k}$.
-	
+
 	\item Montrer que la série $\displaystyle\sum_{k=0}^{+\infty} A_k A_{k+1}$ converge
 	et calculer sa somme $L$.
-	
+
 	\item \begin{enumerate}
 		\item Montrer que les triangles $OA_nA_{n+1}$ sont rectangles isocèles.
 		\item En déduire que tous les points $A_n$ appartiennent à des cercles
@@ -2438,22 +2438,22 @@ avec $0 < \rho < 1$ et $\alpha \in \left]0\,;\,2\pi\right[$.
 \begin{enumerate}
 	\item Montrer que la suite $(B_n)$ définie par $w_n = g^n(w_0)$
 	avec $w_0 \in \C^*$ vérifie $w_n = w_0\,\rho^n\,\e^{\ii n\alpha}$.
-	
+
 	\item Montrer que les points $B_n$ s'enroulent autour de $O$ en formant
 	une \textbf{spirale logarithmique} en justifiant que :
 	$$
 	\abs{w_n} = \abs{w_0}\,\rho^n \to 0 \quad \text{et} \quad
 	\arg(w_n) = \arg(w_0) + n\alpha \to +\infty.
 	$$
-	
+
 	\item Pour quelles valeurs de $\rho$ et $\alpha$ la spirale est-elle :
 	\begin{enumerate}
 		\item un cercle ?
 		\item une demi-droite issue de $O$ ?
 		\item une spirale qui se resserre en tournant dans le sens direct ?
 	\end{enumerate}
-	
-	\item \textbf{Question ouverte.} 
+
+	\item \textbf{Question ouverte.}
 	Si $\rho > 1$, décrire qualitativement le comportement de la suite $(B_n)$.
 	La longueur totale $\displaystyle\sum_{k=0}^{+\infty} B_k B_{k+1}$ converge-t-elle encore ?
 \end{enumerate}
@@ -2470,37 +2470,37 @@ $(O, \vec{u}, \vec{v})$.}
 On pose $z_0 = 1 + \ii\sqrt3$.
 \begin{enumerate}
 	\item Calculer $\abs{z_0}$ et un argument de $z_0$, puis écrire $z_0$ sous
-	forme exponentielle. \hfill (0,5 pt)
-	\item En déduire la forme algébrique de $z_0^{\,6}$. \hfill (0,5 pt)
+	forme exponentielle.
+	\item En déduire la forme algébrique de $z_0^{\,6}$.
 	\item Déterminer le plus petit entier $n \geq 1$ tel que $z_0^{\,n}$ soit
-	un réel strictement positif. \hfill (0,5 pt)
+	un réel strictement positif.
 	\item On note $A_k$ le point d'affixe $z_0^{\,k}$ pour $k \in \{0;1;2\}$.
 	Placer $A_0$, $A_1$, $A_2$ et justifier que
-	$\arg\!\left(\dfrac{z_0^{\,2}}{z_0}\right) \equiv \dfrac{\pi}{3}\ [2\pi]$. \hfill (0,5 pt)
+	$\arg\!\left(\dfrac{z_0^{\,2}}{z_0}\right) \equiv \dfrac{\pi}{3}\ [2\pi]$.
 \end{enumerate}
 
 \textbf{Partie B} — \textit{formule de Moivre}
 
 \begin{enumerate}
-	\item Énoncer la formule de Moivre. \hfill (0,25 pt)
+	\item Énoncer la formule de Moivre.
 	\item En développant $(\cos\theta + \ii\sin\theta)^4$ par le binôme de
 	Newton, montrer que
-	$\cos(4\theta) = 8\cos^4\theta - 8\cos^2\theta + 1$. \hfill (1 pt)
+	$\cos(4\theta) = 8\cos^4\theta - 8\cos^2\theta + 1$.
 	\item En déduire les solutions dans $[0\,;\,\pi]$ de l'équation
-	$8\cos^4\theta - 8\cos^2\theta + 1 = 0$. \hfill (0,75 pt)
+	$8\cos^4\theta - 8\cos^2\theta + 1 = 0$.
 \end{enumerate}
 
 \textbf{Partie C} — \textit{linéarisation et intégrale}
 
 \begin{enumerate}
 	\item Rappeler les formules d'Euler donnant $\cos\theta$ et
-	$\sin\theta$. \hfill (0,25 pt)
+	$\sin\theta$.
 	\item Linéariser $\sin^3\theta$, c'est-à-dire l'écrire sous la forme
-	$a\sin\theta + b\sin(3\theta)$ avec $a$, $b$ réels à préciser. \hfill (1 pt)
+	$a\sin\theta + b\sin(3\theta)$ avec $a$, $b$ réels à préciser.
 	\item En déduire la valeur exacte de
-	$\displaystyle I = \int_0^{\pi}\sin^3\theta\dd\theta$. \hfill (0,5 pt)
+	$\displaystyle I = \int_0^{\pi}\sin^3\theta\dd\theta$.
 	\item Vérifier la cohérence du signe de $I$ à l'aide du signe de
-	$\sin\theta$ sur $[0\,;\,\pi]$. \hfill (0,25 pt)
+	$\sin\theta$ sur $[0\,;\,\pi]$.
 \end{enumerate}
 
 \exercice{Sujet type Bac — équation de degré 3 et configuration \hfill \difficile}
@@ -2508,21 +2508,21 @@ Dans l'ensemble $\C$, on considère le polynôme $P(z) = z^3 + z - 10$.
 
 \textbf{Partie A}
 \begin{enumerate}
-	\item Calculer $P(2)$. \hfill (0,25 pt)
+	\item Calculer $P(2)$.
 	\item Déterminer les réels $a$, $b$ tels que
-	$P(z) = (z - 2)(z^2 + az + b)$. \hfill (0,5 pt)
-	\item Résoudre dans $\C$ l'équation $P(z) = 0$. \hfill (0,75 pt)
+	$P(z) = (z - 2)(z^2 + az + b)$.
+	\item Résoudre dans $\C$ l'équation $P(z) = 0$.
 \end{enumerate}
 
 \textbf{Partie B} — \textit{le plan complexe est rapporté à un repère
 orthonormé direct. $A$, $B$, $C$ sont les points d'affixes les solutions de
 $P(z) = 0$, $z_A = 2$ étant réel.}
 \begin{enumerate}
-	\item Placer $A$, $B$, $C$. \hfill (0,5 pt)
+	\item Placer $A$, $B$, $C$.
 	\item Calculer $\dfrac{z_C - z_A}{z_B - z_A}$ et en déduire la nature du
-	triangle $ABC$. \hfill (0,5 pt)
+	triangle $ABC$.
 	\item Déterminer et construire l'ensemble des points $M$ tels que
-	$\abs{z - z_B} = \abs{z - z_C}$. \hfill (0,5 pt)
+	$\abs{z - z_B} = \abs{z - z_C}$.
 \end{enumerate}
 
 \exercice{Sujet type Bac — forme exponentielle et ensemble de points \hfill \difficile}
@@ -2534,20 +2534,20 @@ $$
 
 \textbf{Partie A}
 \begin{enumerate}
-	\item Interpréter géométriquement $\abs{Z}$ et $\arg(Z)$. \hfill (0,5 pt)
+	\item Interpréter géométriquement $\abs{Z}$ et $\arg(Z)$.
 	\item Déterminer et construire l'ensemble $(\Gamma_1)$ des points $M$ tels
-	que $\abs{Z} = 1$. \hfill (0,75 pt)
+	que $\abs{Z} = 1$.
 	\item Déterminer et construire l'ensemble $(\Gamma_2)$ des points $M$ tels
-	que $Z$ soit un réel strictement négatif. \hfill (0,75 pt)
+	que $Z$ soit un réel strictement négatif.
 	\item Déterminer l'ensemble $(\Gamma_3)$ des points $M$ tels que $Z$ soit
-	un imaginaire pur. \hfill (0,5 pt)
+	un imaginaire pur.
 \end{enumerate}
 
 \textbf{Partie B}
 \begin{enumerate}
 	\item On pose $z = x + \ii y$. Écrire $\mathrm{Re}(Z)$ et $\mathrm{Im}(Z)$
-	en fonction de $x$ et $y$. \hfill (0,75 pt)
-	\item Retrouver la nature de $(\Gamma_1)$ et $(\Gamma_3)$ par le calcul. \hfill (0,5 pt)
+	en fonction de $x$ et $y$.
+	\item Retrouver la nature de $(\Gamma_1)$ et $(\Gamma_3)$ par le calcul.
 \end{enumerate}
 
 \exercice{Sujet type Bac — module, argument et lieu \hfill \difficile}
@@ -2557,17 +2557,17 @@ $M'$ d'affixe $z' = \dfrac{z + 1}{z - 1}$.
 
 \textbf{Partie A}
 \begin{enumerate}
-	\item Déterminer les points invariants de $f$. \hfill (0,5 pt)
+	\item Déterminer les points invariants de $f$.
 	\item Montrer que $z'$ est réel si et seulement si $M$ appartient à une
-	droite à préciser. \hfill (0,75 pt)
+	droite à préciser.
 	\item Montrer que $z'$ est imaginaire pur si et seulement si $M$ appartient
-	à un cercle privé de deux points, à préciser. \hfill (0,75 pt)
+	à un cercle privé de deux points, à préciser.
 \end{enumerate}
 
 \textbf{Partie B}
 \begin{enumerate}
-	\item Déterminer l'ensemble des points $M$ tels que $\abs{z'} = 1$. \hfill (0,75 pt)
-	\item Déterminer l'ensemble des points $M$ tels que $\abs{z'} = 2$. \hfill (0,75 pt)
+	\item Déterminer l'ensemble des points $M$ tels que $\abs{z'} = 1$.
+	\item Déterminer l'ensemble des points $M$ tels que $\abs{z'} = 2$.
 \end{enumerate}
 
 \exercice{Sujet type Bac — équation de degré 4 \hfill \difficile}
@@ -2575,20 +2575,20 @@ On considère l'équation $(E) : z^4 - 4z^3 + 12z^2 - 16z + 16 = 0$.
 
 \textbf{Partie A}
 \begin{enumerate}
-	\item Vérifier que $(E)$ s'écrit $(z^2 - 2z + 4)^2 = 0$. \hfill (0,5 pt)
+	\item Vérifier que $(E)$ s'écrit $(z^2 - 2z + 4)^2 = 0$.
 	\item En déduire les solutions de $(E)$ et les mettre sous forme
-	exponentielle. \hfill (0,75 pt)
+	exponentielle.
 \end{enumerate}
 
 \textbf{Partie B} — \textit{$A$ et $B$ sont les points d'affixes
 $z_A = 1 + \ii\sqrt3$ et $z_B = 1 - \ii\sqrt3$ ; $O$ est l'origine.}
 \begin{enumerate}
 	\item Calculer $OA$, $OB$, $AB$ et une mesure de l'angle
-	$\bigl(\vect{OA},\vect{OB}\bigr)$. En déduire la nature de $OAB$. \hfill (0,75 pt)
+	$\bigl(\vect{OA},\vect{OB}\bigr)$. En déduire la nature de $OAB$.
 	\item Déterminer l'affixe du point $C$ tel que $OACB$ soit un losange.
-	Ce losange est-il un carré ? Justifier. \hfill (0,75 pt)
+	Ce losange est-il un carré ? Justifier.
 	\item Déterminer et construire l'ensemble des points $M$ d'affixe $z$ tels
-	que $\abs{z - z_A} = \abs{z - z_B}$. \hfill (0,5 pt)
+	que $\abs{z - z_A} = \abs{z - z_B}$.
 \end{enumerate}
 
 \exercice{Sujet type Bac — système, rotation et ensemble \hfill \difficile}
@@ -2604,17 +2604,16 @@ les points d'affixes $z_A = 1 + \ii$ et $z_B = -1 + 3\ii$.
 		z\,z' = -2
 	\end{cases}
 	$$
-	\hfill (0,75 pt)
 	\item Soit $r$ la rotation de centre $A$ et d'angle $\dfrac{\pi}{2}$.
-	Déterminer l'écriture complexe de $r$, puis l'affixe de $B' = r(B)$. \hfill (0,75 pt)
-	\item Montrer que le triangle $ABB'$ est rectangle isocèle en $A$. \hfill (0,5 pt)
+	Déterminer l'écriture complexe de $r$, puis l'affixe de $B' = r(B)$.
+	\item Montrer que le triangle $ABB'$ est rectangle isocèle en $A$.
 \end{enumerate}
 
 \textbf{Partie B}
 \begin{enumerate}
 	\item Déterminer et construire l'ensemble $(\mathscr{C})$ des points $M$
-	d'affixe $z$ tels que $\abs{z - 1 - \ii} = \abs{z + 1 - 3\ii}$. \hfill (0,75 pt)
+	d'affixe $z$ tels que $\abs{z - 1 - \ii} = \abs{z + 1 - 3\ii}$.
 	\item Déterminer et construire l'ensemble $(\mathscr{D})$ des points $M$
-	tels que $\dfrac{z - z_A}{z - z_B}$ soit un imaginaire pur. \hfill (0,75 pt)
-	\item Préciser l'intersection de $(\mathscr{C})$ et $(\mathscr{D})$. \hfill (0,5 pt)
+	tels que $\dfrac{z - z_A}{z - z_B}$ soit un imaginaire pur.
+	\item Préciser l'intersection de $(\mathscr{C})$ et $(\mathscr{D})$.
 \end{enumerate}
