@@ -6,6 +6,33 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-30 — Isométries : batteries d'exercices sur les composées
+
+Enrichissement du chapitre **Les Isométries du Plan** (12 nouveaux
+exercices, 10 nouvelles pages), autour de deux axes demandés :
+
+- **Nouvel exercice résolu illustré** « Décomposer $r$ et $t$ à partir
+  d'une figure » : la méthode de l'axe commun est cette fois *construite*
+  sur une figure TikZ (carré, axes $\Delta$, $\Delta_1$, $\Delta_3$, centre
+  $\Omega = O$ lu à l'intersection).
+- **§ Batterie : composées d'isométries** (6 exercices) : reconnaissance
+  rapide de 12 composées, enchaînements par les complexes, le groupe des
+  8 isométries du carré (avec figure), produit de trois réflexions,
+  décomposition imposée ($f = t\circ r$ avec centre choisi), composées et
+  points fixes.
+- **§ Décomposer une rotation et une translation sur une figure**
+  (6 exercices, tous accompagnés d'une figure) : rectangle (symétrie
+  centrale), carré et l'ordre des facteurs ($t\circ r$ vs $r\circ t$,
+  centre $r(\Omega)$), triangle équilatéral (le centre est le sommet $C$),
+  hexagone régulier (centres $D$ et $E$), reconnaissance d'une rotation
+  sur un repère quadrillé puis retour à l'axe commun, et une symétrie
+  glissée à réduire (niveau ★★★).
+- Les sujets types Bac existants sont désormais regroupés sous un
+  sous-titre dédié « Sujets types Bac et synthèse ».
+
+Le livre passe de 390 à 398 pages ; aucun nouveau débordement de marge
+(un seul `Overfull` dans le chapitre, préexistant, de 0,8 pt).
+
 ## 2026-08-30 — Audit des autres encadrés (`attention`, `astucebac`, `resume`)
 
 Même vérification que pour `methode`. **Les trois sont sains.**

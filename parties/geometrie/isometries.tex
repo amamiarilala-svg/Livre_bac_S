@@ -263,17 +263,58 @@ essentiel est qu'il reste à chaque fois \textbf{un axe libre}.
 \end{theoreme}
 
 \begin{center}
-\begin{tikzpicture}[>=Stealth, scale=1.0]
-	\coordinate (I) at (0,0);
-	\filldraw (I) circle (1.6pt) node[below,font=\small] {$I$};
-	% Delta1 libre a 20 deg, Delta2 a 60 deg  (alpha/2 = 40 deg, alpha = 80)
-	\draw[thick] (200:2.6) -- (20:2.6) node[right,font=\small] {$\Delta_1$ (libre)};
-	\draw[thick] (240:2.6) -- (60:2.6) node[above right,font=\small] {$\Delta_2$};
-	\draw[red] (20:1) arc (20:60:1);
-	\node[red,font=\small] at (40:1.35) {$\dfrac{\alpha}{2}$};
-	\node[font=\scriptsize,gray,align=center] at (0,-2)
-	  {$r_{(I,\alpha)} = s_{\Delta_2}\circ s_{\Delta_1}$};
-\end{tikzpicture}
+	\begin{tikzpicture}[>=Stealth, scale=1.0]
+		% --- centre de rotation ---
+		\coordinate (I) at (0,0);
+		\filldraw (I) circle (1.6pt) node[below left,font=\small] {$I$};
+		
+		% --- angles clés (en degres) ---
+		% Delta1 a 15°, Delta2 a 55°  => angle(Delta1,Delta2) = 40° = alpha/2, alpha = 80°
+		% M a -40°  => M1 = reflet de M par Delta1 = 2*15-(-40) = 70°
+		%           => M'' = reflet de M1 par Delta2 = 2*55-70  = 40°
+		\def\angD{{15,55}}
+		\def\angM{-40}
+		\def\angMun{70}
+		\def\angMdeux{40}
+		
+		% --- les deux axes ---
+		\draw[thick] (195:2.8) -- (15:2.8) node[right,font=\small] {$\Delta_1$};
+		\draw[thick] (235:2.8) -- (55:2.8) node[above right,font=\small] {$\Delta_2$};
+		
+		% --- rayons pointilles vers M, M1, M'' ---
+		\draw[gray, dashed] (I) -- (\angM:2);
+		\draw[gray, dashed] (I) -- (\angMun:2);
+		\draw[gray, dashed] (I) -- (\angMdeux:2);
+		
+		% --- les trois points ---
+		\filldraw (\angM:2) circle (1.4pt) node[below right,font=\small] {$M$};
+		\filldraw (\angMun:2) circle (1.4pt) node[above,font=\small] {$M_1$};
+		\filldraw (\angMdeux:2) circle (1.4pt) node[above right,font=\small] {$M''$};
+		
+		% --- angle alpha/2 entre les deux axes (rouge) ---
+		\draw[red] (15:1) arc (15:55:1);
+		\node[red,font=\small] at (35:1.3) {$\dfrac{\alpha}{2}$};
+		
+		% --- angles de reflexion egaux autour de Delta1 : (M,Delta1) et (Delta1,M1) ---
+		\draw[blue] (\angM:0.6) arc (\angM:15:0.6);
+		\node[blue,font=\scriptsize] at (-12:0.85) {$\beta$};
+		\draw[blue] (15:0.6) arc (15:\angMun:0.6);
+		\node[blue,font=\scriptsize] at (42:0.85) {$\beta$};
+		
+		% --- angles de reflexion egaux autour de Delta2 : (M1,Delta2) et (Delta2,M'') ---
+		\draw[teal] (55:1.55) arc (55:\angMun:1.55);
+		\node[teal,font=\scriptsize] at (62:1.8) {$\gamma$};
+		\draw[teal] (\angMdeux:1.55) arc (\angMdeux:55:1.55);
+		\node[teal,font=\scriptsize] at (48:1.8) {$\gamma$};
+		
+		% --- angle total alpha entre M et M'' (arc exterieur) ---
+		\draw[gray, dashed] (\angM:2.5) arc (\angM:\angMdeux:2.5);
+		\node[gray,font=\small] at (0:2.85) {$\alpha$};
+		
+		% --- legende ---
+		\node[font=\scriptsize, align=center] at (0,-2.6)
+		{$r_{(I,\alpha)} = s_{\Delta_2}\circ s_{\Delta_1}$ \quad avec \quad $M_1 = s_{\Delta_1}(M)$, \quad $M'' = s_{\Delta_2}(M_1)$};
+	\end{tikzpicture}
 \end{center}
 
 \begin{astucebac}
@@ -749,6 +790,82 @@ $s_1\circ s_2 = r_{(O,\;-\pi/3)}$ (rotation opposée).
 Donc $s_2\circ s_1(z)=\e^{\ii\pi/3}\overline{\bar z}=\e^{\ii\pi/3}z$ :
 rotation de centre $O$, angle $\dfrac{\pi}{3}$. \checkmark
 
+\exerciceresolu
+\textbf{Décomposer $r$ et $t$ à partir d'une figure}
+
+$ABCD$ est un carré direct de côté $4$ et de centre $O$. On note $r$ la
+rotation de centre $A$ et d'angle $\dfrac{\pi}{2}$, $t$ la translation de
+vecteur $\vect{AB}$, et $f = t\circ r$. Construire le centre de $f$
+\emph{sur la figure}.
+
+\solution
+
+\textbf{1. Nature.} $\alpha=\dfrac{\pi}{2}\not\equiv 0$ : $f$ est une
+\textbf{rotation d'angle $\dfrac{\pi}{2}$}.
+
+\textbf{2. Axe commun.} $\vec u=\vect{AB}$ et le centre de $r$ est $A$ :
+l'axe commun est la droite $\Delta$ passant par $A$ et orthogonale à
+$\vect{AB}$, c'est-à-dire $\Delta=(AD)$.
+
+\textbf{3. On décompose $r$ en \emph{finissant} par $\Delta$ :}
+$r=s_{\Delta}\circ s_{\Delta_1}$ avec $\Delta_1$ passant par $A$ et
+$(\Delta_1,\Delta)=\dfrac{\alpha}{2}=\dfrac{\pi}{4}$. Or la droite obtenue en
+faisant tourner $(AC)$ de $\dfrac{\pi}{4}$ autour de $A$ est bien $(AD)$ :
+donc $\Delta_1=(AC)$, la diagonale du carré.
+
+\textbf{4. On décompose $t$ en \emph{commençant} par $\Delta$ :}
+$t=s_{\Delta_3}\circ s_{\Delta}$ avec $\Delta_3=t_{\frac12\vect{AB}}\bigl((AD)\bigr)$ :
+$\Delta_3$ est la parallèle à $(AD)$ passant par le milieu $I$ de $[AB]$,
+c'est-à-dire la \textbf{médiatrice de $[AB]$}.
+
+\textbf{5. Simplification.}
+$$
+f=s_{\Delta_3}\circ\underbrace{s_{\Delta}\circ s_{\Delta}}_{\mathrm{Id}}\circ s_{\Delta_1}
+ = s_{\Delta_3}\circ s_{\Delta_1}.
+$$
+Le centre de $f$ est donc $\Omega=\Delta_1\cap\Delta_3$ : la diagonale $(AC)$
+coupe la médiatrice de $[AB]$ au \textbf{centre $O$ du carré}.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (0,0);   \coordinate (B) at (2.6,0);
+	\coordinate (C) at (2.6,2.6); \coordinate (D) at (0,2.6);
+	\coordinate (O) at (1.3,1.3); \coordinate (I) at (1.3,0);
+	% axe commun Delta = (AD)
+	\draw[thick] (0,-0.7) -- (0,3.3) node[above left,font=\scriptsize] {$\Delta=(AD)$};
+	% Delta3 : mediatrice de [AB]
+	\draw[thick,dashed,blue!60!black] (1.3,-0.7) -- (1.3,3.3)
+	  node[above right,font=\scriptsize,blue!60!black] {$\Delta_3$};
+	% Delta1 = (AC)
+	\draw[thick,teal] (-0.55,-0.55) -- (3.2,3.2)
+	  node[right,font=\scriptsize,teal] {$\Delta_1=(AC)$};
+	% le carre
+	\draw[very thick] (A)--(B)--(C)--(D)--cycle;
+	% vecteur u
+	\draw[->,red,thick] (0,-1.15) -- (2.6,-1.15)
+	  node[midway,below,font=\scriptsize,red] {$\vec u=\vect{AB}$};
+	% angle alpha/2
+	\draw[teal] (0.75,0) arc (0:45:0.75);
+	\node[teal,font=\scriptsize] at (1.15,0.32) {$\tfrac{\pi}{4}$};
+	% points
+	\filldraw (A) circle (1.4pt) node[below left,font=\small] {$A$};
+	\filldraw (B) circle (1.4pt) node[below right,font=\small] {$B$};
+	\filldraw (C) circle (1.4pt) node[above right,font=\small] {$C$};
+	\filldraw (D) circle (1.4pt) node[above left,font=\small] {$D$};
+	\filldraw (I) circle (1.2pt) node[below right,font=\scriptsize] {$I$};
+	\filldraw[blue!70!black] (O) circle (2pt)
+	  node[above right,font=\small,blue!70!black] {$\Omega=O$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{6. Contrôle.} $f(A)=t\bigl(r(A)\bigr)=t(A)=B$, et la rotation de
+centre $O$ et d'angle $\dfrac{\pi}{2}$ envoie bien $A$ sur $B$.
+
+\emph{Contrôle complexe} (repère $(A\,;\frac14\vect{AB},\frac14\vect{AD})$
+d'unité $1$, soit $B(4)$) : $r:z'=\ii z$ et $t:z'=z+4$, donc
+$f(z)=\ii z+4$ et $\omega=\dfrac{4}{1-\ii}=2+2\ii$, l'affixe de $O$.
+\checkmark
+
 
 % ==========================================================
 \section{Exercices d'entraînement}
@@ -972,6 +1089,404 @@ $t$ la translation de vecteur d'affixe $\ii$.
 	\item Déterminer celle de $t\circ h_1$. Préciser son centre.
 	\item Montrer que $h_1\circ h_2$ et $h_2\circ h_1$ n'ont pas le même centre.
 \end{enumerate}
+
+\subsection{Batterie : composées d'isométries}
+
+\exercice{Reconnaître une composée sans calcul \hfill \facile}
+Dans chaque cas, donner la \textbf{nature} de la composée (et ses éléments
+caractéristiques lorsque l'énoncé le permet). $A$ et $B$ sont deux points
+distincts, $\Delta$, $\Delta_1$, $\Delta_2$ des droites.
+\begin{listecol}(2)
+	\task $t_{\vec u}\circ t_{-\vec u}$
+	\task $r_{(A,\frac{\pi}{4})}\circ r_{(A,\frac{\pi}{4})}$
+	\task $r_{(A,\frac{2\pi}{3})}\circ r_{(B,\frac{\pi}{3})}$
+	\task $r_{(A,\frac{\pi}{5})}\circ r_{(B,-\frac{\pi}{5})}$
+	\task $s_A\circ s_B$
+	\task $s_A\circ s_A$
+	\task $s_{\Delta_2}\circ s_{\Delta_1}$ avec $\Delta_1\parallel\Delta_2$
+	\task $s_{\Delta_2}\circ s_{\Delta_1}$ avec $\Delta_1\perp\Delta_2$
+	\task $t_{\vec u}\circ s_{\Delta}$, $\vec u$ directeur de $\Delta$
+	\task $t_{\vec u}\circ s_{\Delta}$, $\vec u$ orthogonal à $\Delta$
+	\task $r_{(A,\pi)}\circ t_{\vec u}$
+	\task $s_{\Delta}\circ r_{(A,\alpha)}$ avec $A\in\Delta$
+\end{listecol}
+
+\exercice{Enchaînements par les complexes \hfill \moyen}
+On donne les transformations d'écritures complexes
+$$
+f(z)=\ii z+2,\qquad g(z)=z+1-\ii,\qquad h(z)=\bar z .
+$$
+\begin{enumerate}
+	\item Identifier $f$, $g$ et $h$ (nature et éléments caractéristiques).
+	\item Déterminer l'écriture complexe de $f\circ g$ et celle de $g\circ f$.
+	Préciser la nature et le centre de chacune : que constate-t-on ?
+	\item Déterminer $f\circ f$ et reconnaître cette transformation.
+	\item Montrer que $f\circ h$ n'a aucun point fixe et en déduire sa nature.
+	\item Même question pour $h\circ f$. Ces deux composées sont-elles égales ?
+\end{enumerate}
+
+\exercice{Le groupe du carré \hfill \moyen}
+$ABCD$ est un carré direct de centre $O$. On note $r$ la rotation de centre
+$O$ et d'angle $\dfrac{\pi}{2}$, $(d)$ la médiatrice de $[AB]$ et $(d')$ celle
+de $[BC]$.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (0,0);   \coordinate (B) at (2.4,0);
+	\coordinate (C) at (2.4,2.4); \coordinate (D) at (0,2.4);
+	\coordinate (O) at (1.2,1.2);
+	\draw[gray!60,dashed] (-0.55,-0.55)--(2.95,2.95)
+	  node[right,font=\scriptsize,gray] {$(AC)$};
+	\draw[gray!60,dashed] (2.95,-0.55)--(-0.55,2.95)
+	  node[left,font=\scriptsize,gray] {$(BD)$};
+	\draw[blue!60!black,dashed] (1.2,-0.55)--(1.2,2.95)
+	  node[above,font=\scriptsize,blue!60!black] {$(d)$};
+	\draw[red!70!black,dashed] (-0.55,1.2)--(2.95,1.2)
+	  node[right,font=\scriptsize,red!70!black] {$(d')$};
+	\draw[very thick] (A)--(B)--(C)--(D)--cycle;
+	\filldraw (O) circle (1.4pt) node[below right,font=\small] {$O$};
+	\node[below left,font=\small] at (A) {$A$};
+	\node[below right,font=\small] at (B) {$B$};
+	\node[above right,font=\small] at (C) {$C$};
+	\node[above left,font=\small] at (D) {$D$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Vérifier que les huit isométries
+	$\mathrm{Id},\ r,\ r^2,\ r^3,\ s_{(AC)},\ s_{(BD)},\ s_{(d)},\ s_{(d')}$
+	transforment le carré en lui-même.
+	\item Montrer que $r=s_{(d)}\circ s_{(AC)}$.
+	\item Identifier chacune des composées suivantes parmi les huit
+	isométries précédentes :
+	\begin{listecol}(2)
+		\task $r^2$
+		\task $s_{(AC)}\circ s_{(BD)}$
+		\task $s_{(d)}\circ s_{(d')}$
+		\task $r\circ s_{(AC)}$
+		\task $s_{(AC)}\circ r$
+		\task $r^2\circ s_{(d)}$
+		\task $s_{(d)}\circ r^3$
+		\task $s_{(BD)}\circ s_{(AC)}$
+	\end{listecol}
+	\item Donner l'isométrie réciproque de chacune des huit transformations.
+	Lesquelles vérifient $f\circ f=\mathrm{Id}$ ?
+	\item Exhiber deux de ces isométries qui ne commutent pas.
+\end{enumerate}
+
+\exercice{Trois réflexions à la suite \hfill \moyen}
+Le plan est rapporté à un repère orthonormé direct. On note $s_1$, $s_2$,
+$s_3$ les réflexions d'axes respectifs
+$$
+\Delta_1 : y=0,\qquad \Delta_2 : y=1,\qquad \Delta_3 : x=0,
+$$
+et $f=s_3\circ s_2\circ s_1$.
+\begin{enumerate}
+	\item Sans calcul, $f$ est-elle un déplacement ou un antidéplacement ?
+	\item Identifier $s_2\circ s_1$ et préciser son vecteur.
+	\item Donner les écritures complexes de $s_1$, $s_2$, $s_3$, puis celle
+	de $f$.
+	\item Montrer que $f$ n'a pas de point fixe.
+	\item Calculer $f\circ f$ et en déduire la forme réduite de $f$ (axe et
+	vecteur).
+\end{enumerate}
+
+\exercice{Choisir la décomposition \hfill \moyen}
+Soit $f$ la transformation d'écriture complexe $f(z)=\ii z+4$.
+\begin{enumerate}
+	\item Déterminer la nature et les éléments caractéristiques de $f$.
+	\item Déterminer le vecteur $\vec u$ tel que
+	$f=t_{\vec u}\circ r_{(O,\frac{\pi}{2})}$, où $O$ est l'origine.
+	\item Déterminer le vecteur $\vec v$ tel que
+	$f=r_{(O,\frac{\pi}{2})}\circ t_{\vec v}$. Comparer $\vec u$ et $\vec v$.
+	\item Soit $A$ le point d'affixe $1$. Déterminer le vecteur $\vec w$ tel
+	que $f=t_{\vec w}\circ r_{(A,\frac{\pi}{2})}$.
+	\item Peut-on écrire $f$ sous la forme $t_{\vec u'}\circ r_{(B,\alpha)}$
+	avec $\alpha\neq\dfrac{\pi}{2}$ ? Justifier.
+\end{enumerate}
+
+\exercice{Composées et points fixes \hfill \moyen}
+Soient $r_1=r_{(A,\frac{\pi}{3})}$, $r_2=r_{(B,\frac{2\pi}{3})}$ avec $AB=6$,
+et $t$ la translation de vecteur $\vect{AB}$.
+\begin{enumerate}
+	\item Quelle est la nature de $r_2\circ r_1$ ? Combien a-t-elle de points
+	fixes ?
+	\item Quelle est la nature de $r_1\circ r_2$ ? A-t-elle le même point fixe
+	que $r_2\circ r_1$ ?
+	\item Montrer que $r_1\circ r_1\circ r_1$ est une symétrie centrale.
+	\item Déterminer la nature de $t\circ r_2\circ r_1$ puis celle de
+	$r_2\circ r_1 \circ t$.
+	\item Que peut-on dire de $r_2\circ r_1\circ r_2^{-1}\circ r_1^{-1}$ ?
+\end{enumerate}
+
+\subsection{Décomposer une rotation et une translation sur une figure}
+
+\begin{astucebac}
+	Dans toute cette série, on suit le même réflexe : \textbf{repérer l'axe
+	commun} $\Delta$ (droite passant par le centre de la rotation et
+	orthogonale au vecteur de la translation), décomposer la rotation en
+	\emph{finissant} par $\Delta$, la translation en \emph{commençant} par
+	$\Delta$, puis lire le centre à l'intersection des deux axes restants.
+\end{astucebac}
+
+\exercice{Le rectangle : première décomposition \hfill \facile}
+$ABCD$ est un rectangle direct tel que $AB=6$ et $AD=4$. On note $I$ le
+milieu de $[AB]$, $s_A$ la symétrie de centre $A$, $t$ la translation de
+vecteur $\vect{AB}$ et $f=t\circ s_A$.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (0,0);   \coordinate (B) at (3.6,0);
+	\coordinate (C) at (3.6,2.4); \coordinate (D) at (0,2.4);
+	\coordinate (I) at (1.8,0);
+	\draw[thick] (0,-0.6)--(0,3.0) node[above left,font=\scriptsize] {$(AD)$};
+	\draw[thick] (-0.6,0)--(4.2,0) node[right,font=\scriptsize] {$(AB)$};
+	\draw[very thick] (A)--(B)--(C)--(D)--cycle;
+	\draw[->,red,thick] (0,-1.0)--(3.6,-1.0)
+	  node[midway,below,font=\scriptsize,red] {$\vect{AB}$};
+	\filldraw (I) circle (1.3pt) node[above right,font=\scriptsize] {$I$};
+	\filldraw (A) circle (1.4pt) node[below left,font=\small] {$A$};
+	\filldraw (B) circle (1.4pt) node[below right,font=\small] {$B$};
+	\filldraw (C) circle (1.4pt) node[above right,font=\small] {$C$};
+	\filldraw (D) circle (1.4pt) node[above left,font=\small] {$D$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Quelle est la nature de $f$ ? Préciser son angle.
+	\item Justifier que $s_A=s_{(AD)}\circ s_{(AB)}$ (on pourra utiliser
+	l'angle des deux axes).
+	\item Décomposer $t$ sous la forme $t=s_{\Delta_3}\circ s_{(AD)}$ :
+	reconnaître $\Delta_3$ sur la figure.
+	\item En déduire que $f=s_{\Delta_3}\circ s_{(AB)}$, puis que $f$ est la
+	symétrie de centre $I$.
+	\item Vérifier ce résultat en construisant les images de $A$, $B$ et $D$
+	par $f$.
+	\item \emph{Contrôle} : dans le repère
+	$\left(A\,;\frac16\vect{AB},\frac14\vect{AD}\right)$ d'unité $1$
+	(donc $B(6)$ et $D(4\ii)$), donner l'écriture complexe de $f$ et
+	retrouver son centre.
+\end{enumerate}
+
+\exercice{Le carré : l'ordre des facteurs \hfill \moyen}
+$ABCD$ est un carré direct de côté $4$ et de centre $O$. On note $r$ la
+rotation de centre $A$ et d'angle $-\dfrac{\pi}{2}$, $t$ la translation de
+vecteur $\vect{AD}$, puis
+$$
+f=t\circ r \qquad\text{et}\qquad g=r\circ t .
+$$
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (0,0);   \coordinate (B) at (2.6,0);
+	\coordinate (C) at (2.6,2.6); \coordinate (D) at (0,2.6);
+	\coordinate (O) at (1.3,1.3);
+	\draw[gray!55,dashed] (A)--(C) (B)--(D);
+	\draw[very thick] (A)--(B)--(C)--(D)--cycle;
+	\draw[->,red,thick] (-0.9,0)--(-0.9,2.6)
+	  node[midway,left,font=\scriptsize,red] {$\vect{AD}$};
+	\filldraw (O) circle (1.4pt) node[below right,font=\small] {$O$};
+	\filldraw (A) circle (1.4pt) node[below left,font=\small] {$A$};
+	\filldraw (B) circle (1.4pt) node[below right,font=\small] {$B$};
+	\filldraw (C) circle (1.4pt) node[above right,font=\small] {$C$};
+	\filldraw (D) circle (1.4pt) node[above left,font=\small] {$D$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Partie A — $f=t\circ r$}
+\begin{enumerate}
+	\item Justifier que $f$ est une rotation d'angle $-\dfrac{\pi}{2}$.
+	\item Quel est l'axe commun $\Delta$ à utiliser ? Le tracer.
+	\item Décomposer $r$ sous la forme $s_{\Delta}\circ s_{\Delta_1}$ :
+	montrer que $\Delta_1$ est la diagonale $(AC)$.
+	\item Décomposer $t$ sous la forme $s_{\Delta_3}\circ s_{\Delta}$ et
+	reconnaître $\Delta_3$.
+	\item En déduire que le centre de $f$ est le centre $O$ du carré, puis
+	vérifier que $f(A)=D$.
+\end{enumerate}
+
+\textbf{Partie B — $g=r\circ t$}
+\begin{enumerate}
+	\item Reprendre la méthode de l'axe commun pour $g$ (cette fois on
+	décompose $t$ en \emph{finissant} par $\Delta$ et $r$ en
+	\emph{commençant} par $\Delta$) et construire le centre $\Omega'$ de $g$.
+	\item À l'aide des écritures complexes dans le repère
+	$\left(A\,;\frac14\vect{AB},\frac14\vect{AD}\right)$, montrer que
+	$\Omega'$ a pour affixe $2-2\ii$.
+	\item Démontrer la propriété générale : si $t\circ r$ est la rotation de
+	centre $\Omega$, alors $r\circ t$ est la rotation de \textbf{même angle}
+	et de centre $r(\Omega)$. Le vérifier sur la figure.
+\end{enumerate}
+
+\exercice{Le triangle équilatéral : le centre est un sommet \hfill \moyen}
+$ABC$ est un triangle équilatéral direct de côté $6$. On note $J$ le milieu de
+$[AB]$, $r$ la rotation de centre $A$ et d'angle $\dfrac{\pi}{3}$, $t$ la
+translation de vecteur $\vect{AB}$, et $f=t\circ r$.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (0,0); \coordinate (B) at (3,0);
+	\coordinate (C) at (1.5,2.598); \coordinate (J) at (1.5,0);
+	\draw[blue!60!black,dashed] (1.5,-0.6)--(1.5,3.15)
+	  node[above,font=\scriptsize,blue!60!black] {médiatrice de $[AB]$};
+	\draw[very thick] (A)--(B)--(C)--cycle;
+	\draw[->,red,thick] (0,-1.0)--(3,-1.0)
+	  node[midway,below,font=\scriptsize,red] {$\vect{AB}$};
+	\filldraw (J) circle (1.3pt) node[below right,font=\scriptsize] {$J$};
+	\filldraw (A) circle (1.4pt) node[below left,font=\small] {$A$};
+	\filldraw (B) circle (1.4pt) node[below right,font=\small] {$B$};
+	\filldraw (C) circle (1.4pt) node[above right,font=\small] {$C$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Donner la nature et l'angle de $f$.
+	\item Tracer l'axe commun $\Delta$ : droite passant par $A$ et orthogonale
+	à $\vect{AB}$.
+	\item Écrire $r=s_{\Delta}\circ s_{\Delta_1}$ et montrer que
+	$\Delta_1=(AC)$.
+	\item Écrire $t=s_{\Delta_3}\circ s_{\Delta}$ et montrer que $\Delta_3$
+	est la médiatrice de $[AB]$.
+	\item En déduire que le centre de $f$ est le sommet $C$.
+	\item Vérifier que $f(A)=B$ par un calcul complexe dans le repère
+	$\left(A\,;\frac16\vect{AB},\vec v\right)$ (donc $B$ d'affixe $1$ et $C$
+	d'affixe $\e^{\ii\pi/3}$).
+	\item Déterminer de même le centre de $g=r\circ t$ et montrer que c'est
+	l'image de $C$ par $r$.
+\end{enumerate}
+
+\exercice{L'hexagone régulier \hfill \moyen}
+$ABCDEF$ est un hexagone régulier direct de centre $O$ et de côté $1$. On note
+$r$ la rotation de centre $O$ et d'angle $\dfrac{\pi}{3}$, $t$ la translation
+de vecteur $\vect{AB}$, puis $f=t\circ r$ et $g=r\circ t$.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (O) at (0,0);
+	\coordinate (A) at (0:1.5);   \coordinate (B) at (60:1.5);
+	\coordinate (C) at (120:1.5); \coordinate (D) at (180:1.5);
+	\coordinate (E) at (240:1.5); \coordinate (F) at (300:1.5);
+	\draw[very thick] (A)--(B)--(C)--(D)--(E)--(F)--cycle;
+	\draw[gray!55,dashed] (A)--(D) (B)--(E) (C)--(F);
+	\draw[->,red,thick] (A)--(B)
+	  node[midway,above right,font=\scriptsize,red] {$\vect{AB}$};
+	\filldraw (O) circle (1.4pt) node[below right,font=\small] {$O$};
+	\filldraw (A) circle (1.4pt) node[right,font=\small] {$A$};
+	\filldraw (B) circle (1.4pt) node[above right,font=\small] {$B$};
+	\filldraw (C) circle (1.4pt) node[above left,font=\small] {$C$};
+	\filldraw (D) circle (1.4pt) node[left,font=\small] {$D$};
+	\filldraw (E) circle (1.4pt) node[below left,font=\small] {$E$};
+	\filldraw (F) circle (1.4pt) node[below right,font=\small] {$F$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Donner les images de $A$, $B$ et $O$ par $r$.
+	\item Justifier que $f$ est une rotation d'angle $\dfrac{\pi}{3}$.
+	\item Montrer que l'axe commun $\Delta$ (droite passant par $O$ et
+	orthogonale à $\vect{AB}$) est la médiatrice de $[AB]$.
+	\item Décomposer $r$ en $s_{\Delta}\circ s_{\Delta_1}$ et montrer que
+	$\Delta_1$ est la diagonale $(AD)$.
+	\item Décomposer $t$ en $s_{\Delta_3}\circ s_{\Delta}$ ; montrer que
+	$\Delta_3$ est la parallèle à $\Delta$ passant par le milieu de $[OC]$.
+	\item En déduire que le centre de $f$ est le sommet $D$. Vérifier en
+	construisant $f(A)$.
+	\item Montrer, par la même méthode ou à l'aide de la propriété
+	$\Omega'=r(\Omega)$, que le centre de $g=r\circ t$ est le sommet $E$.
+	\item \emph{Complexes} : dans le repère d'origine $O$ où $A$ a pour affixe
+	$1$, établir que $f(z)=\e^{\ii\pi/3}z+\e^{2\ii\pi/3}$ et retrouver le
+	centre $D$.
+\end{enumerate}
+
+\exercice{Retrouver la transformation sur une figure \hfill \moyen}
+Le plan est rapporté à un repère orthonormé direct
+$(O\,;\vec\imath,\vec\jmath)$. Le triangle $ABC$ a pour sommets $A(1\,;0)$,
+$B(4\,;0)$, $C(1\,;2)$ ; son image par une transformation $f$ est le triangle
+$A'B'C'$ avec $A'(0\,;1)$, $B'(0\,;4)$, $C'(-2\,;1)$.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=0.55]
+	\draw[gray!30,step=1] (-3,-1) grid (5,5);
+	\draw[->] (-3.3,0)--(5.4,0) node[right,font=\scriptsize] {$x$};
+	\draw[->] (0,-1.3)--(0,5.4) node[above,font=\scriptsize] {$y$};
+	\draw[very thick] (1,0)--(4,0)--(1,2)--cycle;
+	\draw[very thick,blue!65!black] (0,1)--(0,4)--(-2,1)--cycle;
+	\filldraw (1,0) circle (2.4pt) node[below right,font=\scriptsize] {$A$};
+	\filldraw (4,0) circle (2.4pt) node[below right,font=\scriptsize] {$B$};
+	\filldraw (1,2) circle (2.4pt) node[above right,font=\scriptsize] {$C$};
+	\filldraw[blue!65!black] (0,1) circle (2.4pt)
+	  node[below left,font=\scriptsize] {$A'$};
+	\filldraw[blue!65!black] (0,4) circle (2.4pt)
+	  node[above right,font=\scriptsize] {$B'$};
+	\filldraw[blue!65!black] (-2,1) circle (2.4pt)
+	  node[below left,font=\scriptsize] {$C'$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Vérifier que $A'B'=AB$ et $A'C'=AC$ : que peut-on en déduire pour
+	$f$ ?
+	\item En traçant les médiatrices de $[AA']$ et de $[BB']$, déterminer le
+	centre de $f$, puis son angle. Conclure sur sa nature.
+	\item Donner l'écriture complexe de $f$.
+	\item Décomposer $f$ en deux réflexions dont l'un des axes est l'axe des
+	abscisses. Préciser l'équation du second axe.
+	\item Déterminer le vecteur $\vec u$ tel que
+	$f=t_{\vec u}\circ r_{\left(A,\frac{\pi}{2}\right)}$.
+	\item Retrouver le centre de $f$ par la méthode de l'axe commun appliquée
+	à $t_{\vec u}\circ r_{\left(A,\frac{\pi}{2}\right)}$ : tracer $\Delta$,
+	$\Delta_1$, $\Delta_3$ et vérifier qu'elles conduisent bien au point
+	trouvé à la question 2.
+\end{enumerate}
+
+\exercice{Décomposition et symétrie glissée sur un triangle \hfill \difficile}
+$ABC$ est un triangle équilatéral direct de côté $a$. Le plan est rapporté au
+repère orthonormé direct $\left(A\,;\frac1a\vect{AB},\vec v\right)$, dans
+lequel $B$ a pour affixe $1$ et $C$ pour affixe $\e^{\ii\pi/3}$. On pose
+$j=\e^{2\ii\pi/3}$ et
+$$
+f = t_{\vect{BC}}\circ r_{\left(A,\frac{2\pi}{3}\right)}\circ s_{(AB)} .
+$$
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.0]
+	\coordinate (A) at (0,0); \coordinate (B) at (2.6,0);
+	\coordinate (C) at (1.3,2.252);
+	\draw[thick] (-0.9,0)--(3.5,0) node[right,font=\scriptsize] {$(AB)$};
+	\draw[very thick] (A)--(B)--(C)--cycle;
+	\draw[->,red,thick] (B)--(C)
+	  node[midway,right,font=\scriptsize,red] {$\vect{BC}$};
+	\filldraw (A) circle (1.4pt) node[below left,font=\small] {$A$};
+	\filldraw (B) circle (1.4pt) node[below right,font=\small] {$B$};
+	\filldraw (C) circle (1.4pt) node[above right,font=\small] {$C$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Partie A — Nature de $f$}
+\begin{enumerate}
+	\item Justifier que $f$ est un antidéplacement.
+	\item Montrer que $\vect{BC}$ a pour affixe $j$, puis que l'écriture
+	complexe de $f$ est $f(z)=j\bar z+j$.
+	\item Montrer que $f$ n'admet aucun point fixe. Quelle est alors la nature
+	de $f$ ?
+\end{enumerate}
+
+\textbf{Partie B — Forme réduite}
+\begin{enumerate}
+	\item Calculer $f\circ f$ et vérifier que c'est la translation de vecteur
+	$\vect{AC}$.
+	\item En déduire que le vecteur de la symétrie glissée $f$ est
+	$\dfrac12\vect{AC}$.
+	\item Déterminer l'axe $\Delta$ de $f$ : montrer que c'est la parallèle à
+	$(AC)$ passant par le milieu de $\bigl[A\,f(A)\bigr]$, puis donner son
+	équation dans le repère choisi.
+	\item Écrire $f$ sous la forme réduite $t_{\vec u}\circ s_{\Delta}$ et
+	construire l'image du triangle $ABC$ par $f$.
+	\item En décomposant $t_{\vec u}$ en deux réflexions, écrire $f$ comme
+	composée de \textbf{trois} réflexions dont on précisera les axes.
+\end{enumerate}
+
+\subsection{Sujets types Bac et synthèse}
 
 \exercice{Sujet type Bac — synthèse transformations \hfill \difficile}
 Le plan orienté est rapporté à un repère orthonormé direct
