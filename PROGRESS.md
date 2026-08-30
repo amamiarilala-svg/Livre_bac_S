@@ -13,6 +13,9 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
   `config/style.tex` et pilotés par `\ChapAvant`, `\ChapApres` et
   `\ChapNumSize`. Même dessin, ouverture de chapitre deux fois moins
   haute : le livre passe de 398 à 393 pages.
+- Densité du texte : `\linespread` ramené de 1.05 à 1.0 et `\parskip`
+  de 0.4em à 0.3em, après comparaison de six réglages compilés en entier.
+  393 → 381 pages, sans nouveau débordement de marge.
 
 ## 2026-08-30 — Isométries : batteries d'exercices sur les composées
 

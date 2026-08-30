@@ -2,9 +2,14 @@
 % --------    ESPACEMENT  ----------%
 %-----------------------------------%
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.4em}
+% \parindent nul : c'est \parskip qui marque les paragraphes.
+% Mesuré sur le livre entier : 0.4em -> 0.3em fait gagner 6 pages,
+% et \linespread 1.05 -> 1.0 (l'interligne normal de LaTeX) 6 autres.
+% Ne pas descendre plus bas : à 0.25em/0.98 le texte se tasse
+% visiblement contre les encadrés.
+\setlength{\parskip}{0.3em}
 
-\linespread{1.05}
+\linespread{1.0}
 
 
 %--------------------------------------------
