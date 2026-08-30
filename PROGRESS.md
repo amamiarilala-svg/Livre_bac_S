@@ -34,6 +34,12 @@ aucun `Overfull`/`Underfull \vbox`.**
   corrigés (voir le commit dédié).
 - Gains par chapitre : Arithmétique 30 → 28 p, Complexes 44 → 42 p,
   Calcul matriciel 18 → 17 p, etc.
+- **Rédaction des exercices résolus** : audit des 84 exercices résolus du
+  livre. Les 10 enchaînements de formules écrits en `$$` séparés
+  (développement du binôme, algorithme d'Euclide, longueurs d'un triangle,
+  tests de Pythagore, les deux expressions du produit scalaire…) sont
+  regroupés en un seul bloc `aligned` : les « = » s'alignent, la chaîne de
+  calcul se lit d'un coup d'œil, et les blancs intermédiaires disparaissent.
 
 ---
 

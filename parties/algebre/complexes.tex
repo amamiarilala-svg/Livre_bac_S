@@ -1280,13 +1280,11 @@ On pose $z = a + b\ii$ avec $a, b \in \R$, donc $\bar{z} = a - b\ii$.
 
 On substitue :
 $$
-(a + b\ii) + \ii(a - b\ii) = 3 - \ii.
-$$
-$$
-a + b\ii + a\ii - b\ii^2 = 3 - \ii.
-$$
-$$
-(a + b) + (a + b)\ii = 3 - \ii.
+\begin{aligned}
+	(a + b\ii) + \ii(a - b\ii) &= 3 - \ii\\
+	a + b\ii + a\ii - b\ii^2   &= 3 - \ii\\
+	(a + b) + (a + b)\ii       &= 3 - \ii
+\end{aligned}
 $$
 
 En identifiant parties réelle et imaginaire :
@@ -1434,21 +1432,15 @@ $$
 
 On développe le membre gauche par le binôme de Newton :
 $$
-(\cos\theta + \ii\sin\theta)^3
-= \cos^3\theta
-+ 3\cos^2\theta\cdot\ii\sin\theta
-+ 3\cos\theta\cdot(\ii\sin\theta)^2
-+ (\ii\sin\theta)^3.
-$$
-$$
-= \cos^3\theta
-+ 3\ii\cos^2\theta\sin\theta
-- 3\cos\theta\sin^2\theta
-- \ii\sin^3\theta.
-$$
-$$
-= \left(\cos^3\theta - 3\cos\theta\sin^2\theta\right)
-+ \ii\left(3\cos^2\theta\sin\theta - \sin^3\theta\right).
+\begin{aligned}
+	(\cos\theta + \ii\sin\theta)^3
+	&= \cos^3\theta + 3\cos^2\theta\cdot\ii\sin\theta
+	 + 3\cos\theta\cdot(\ii\sin\theta)^2 + (\ii\sin\theta)^3\\
+	&= \cos^3\theta + 3\ii\cos^2\theta\sin\theta
+	 - 3\cos\theta\sin^2\theta - \ii\sin^3\theta\\
+	&= \left(\cos^3\theta - 3\cos\theta\sin^2\theta\right)
+	 + \ii\left(3\cos^2\theta\sin\theta - \sin^3\theta\right)
+\end{aligned}
 $$
 
 En identifiant parties réelle et imaginaire :
@@ -1554,12 +1546,12 @@ Comme $xy = -3 < 0$, on a $y = -\sqrt{3}$, donc $\delta = \sqrt{3} - \sqrt{3}\,\
 
 Les solutions sont :
 $$
-z_1 = \frac{(3+\ii) + (\sqrt{3} - \sqrt{3}\,\ii)}{2}
-= \frac{(3+\sqrt{3}) + (1-\sqrt{3})\ii}{2},
-$$
-$$
-z_2 = \frac{(3+\ii) - (\sqrt{3} - \sqrt{3}\,\ii)}{2}
-= \frac{(3-\sqrt{3}) + (1+\sqrt{3})\ii}{2}.
+\begin{aligned}
+	z_1 &= \frac{(3+\ii) + (\sqrt{3} - \sqrt{3}\,\ii)}{2}
+	     = \frac{(3+\sqrt{3}) + (1-\sqrt{3})\ii}{2},\\
+	z_2 &= \frac{(3+\ii) - (\sqrt{3} - \sqrt{3}\,\ii)}{2}
+	     = \frac{(3-\sqrt{3}) + (1+\sqrt{3})\ii}{2}.
+\end{aligned}
 $$
 
 
@@ -1661,13 +1653,11 @@ et $C$ d'affixe $z_C = 3 - \ii$.
 
 \textbf{1.}
 $$
-AB = \abs{z_B - z_A} = \abs{(-1+\ii)-(2+3\ii)} = \abs{-3-2\ii} = \sqrt{9+4} = \sqrt{13}.
-$$
-$$
-BC = \abs{z_C - z_B} = \abs{(3-\ii)-(-1+\ii)} = \abs{4-2\ii} = \sqrt{16+4} = \sqrt{20} = 2\sqrt{5}.
-$$
-$$
-AC = \abs{z_C - z_A} = \abs{(3-\ii)-(2+3\ii)} = \abs{1-4\ii} = \sqrt{1+16} = \sqrt{17}.
+\begin{aligned}
+	AB &= \abs{z_B - z_A} = \abs{(-1+\ii)-(2+3\ii)} = \abs{-3-2\ii} = \sqrt{13},\\
+	BC &= \abs{z_C - z_B} = \abs{(3-\ii)-(-1+\ii)} = \abs{4-2\ii} = 2\sqrt{5},\\
+	AC &= \abs{z_C - z_A} = \abs{(3-\ii)-(2+3\ii)} = \abs{1-4\ii} = \sqrt{17}.
+\end{aligned}
 $$
 
 \textbf{2.} L'affixe du milieu $I$ est :
@@ -1689,13 +1679,11 @@ Ce rapport n'est pas imaginaire pur, donc $(BC)$ n'est pas perpendiculaire à $(
 
 Vérifions par le théorème de Pythagore :
 $$
-AB^2 + BC^2 = 13 + 20 = 33 \neq 17 = AC^2.
-$$
-$$
-AB^2 + AC^2 = 13 + 17 = 30 \neq 20 = BC^2.
-$$
-$$
-BC^2 + AC^2 = 20 + 17 = 37 \neq 13 = AB^2.
+\begin{aligned}
+	AB^2 + BC^2 &= 33 \neq 17 = AC^2,\\
+	AB^2 + AC^2 &= 30 \neq 20 = BC^2,\\
+	BC^2 + AC^2 &= 37 \neq 13 = AB^2.
+\end{aligned}
 $$
 
 Le triangle $ABC$ \textbf{n'est pas rectangle}.
@@ -1772,10 +1760,10 @@ ni une homothétie pure).
 
 \textbf{2.}
 $$
-\text{Rapport} : r = \abs{a} = \abs{1-\ii} = \sqrt{1+1} = \sqrt{2}.
-$$
-$$
-\text{Angle} : \theta = \arg(1-\ii) = -\frac{\pi}{4}.
+\begin{aligned}
+	\text{Rapport} : r      &= \abs{a} = \abs{1-\ii} = \sqrt{2},\\
+	\text{Angle} : \theta   &= \arg(1-\ii) = -\frac{\pi}{4}.
+\end{aligned}
 $$
 $f$ est une similitude directe de rapport $\sqrt{2}$ et d'angle $-\dfrac{\pi}{4}$.
 
