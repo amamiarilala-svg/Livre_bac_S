@@ -379,6 +379,64 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 	\end{enumerate}
 \end{propriete}
 
+% ------------------------------------------------------------
+\begin{resume}{Forme exponentielle}
+	\textbf{Notation.} $\e^{\ii\theta} = \cos\theta + \ii\sin\theta$, donc tout
+	$z \neq 0$ s'écrit $\boxed{z = r\,\e^{\ii\theta}}$ avec $r = \abs{z} > 0$ et
+	$\theta = \arg(z)$.
+
+	\smallskip
+	\textbf{Calculs.} Les modules se \emph{multiplient}, les arguments s'\emph{ajoutent} :
+	$$
+	r\e^{\ii\theta}\times r'\e^{\ii\theta'} = rr'\,\e^{\ii(\theta+\theta')},
+	\qquad
+	\frac{r\e^{\ii\theta}}{r'\e^{\ii\theta'}} = \frac{r}{r'}\,\e^{\ii(\theta-\theta')},
+	\qquad
+	\bigl(r\e^{\ii\theta}\bigr)^{n} = r^{n}\,\e^{\ii n\theta},
+	$$
+	$$
+	\overline{r\e^{\ii\theta}} = r\,\e^{-\ii\theta},
+	\qquad
+	\frac{1}{r\e^{\ii\theta}} = \frac{1}{r}\,\e^{-\ii\theta},
+	\qquad
+	-r\e^{\ii\theta} = r\,\e^{\ii(\theta+\pi)}.
+	$$
+	\textbf{Égalité.} $r\e^{\ii\theta} = r'\e^{\ii\theta'}
+	\iff r = r'$ et $\theta \equiv \theta'\ [2\pi]$.
+
+	\smallskip
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, scale=1.45]
+			% axes
+			\draw[->] (-1.35,0) -- (1.55,0) node[right, font=\scriptsize] {$\Re$};
+			\draw[->] (0,-1.35) -- (0,1.5) node[above, font=\scriptsize] {$\Im$};
+			% cercle unité
+			\draw[black!65] (0,0) circle (1);
+			% arc de l'argument
+			\draw[green!60!black, thick]
+			(0.32,0) arc[start angle=0, end angle=115, radius=0.32];
+			\node[green!60!black, font=\scriptsize] at (0.60,0.33) {$\theta$};
+			% vecteur générique
+			\draw[->, red, thick] (0,0) -- (115:1);
+			\node[red, font=\scriptsize, above left, inner sep=1pt] at (115:1) {$\e^{\ii\theta}$};
+			% valeurs remarquables
+			\foreach \a/\l/\pos in {%
+				0/{1}/{below right},
+				30/{\e^{\ii\pi/6}}/{right},
+				45/{\e^{\ii\pi/4}}/{right},
+				60/{\e^{\ii\pi/3}}/{above right},
+				90/{\ii}/{above right},
+				180/{-1}/{left},
+				270/{-\ii}/{below}}
+			{
+				\filldraw[blue] (\a:1) circle (0.9pt)
+				node[\pos, font=\scriptsize, blue, inner sep=2pt] {$\l$};
+			}
+		\end{tikzpicture}
+	\end{center}
+	\centerline{\footnotesize $\e^{\ii\theta}$ parcourt le cercle de centre $O$ et de rayon $1$.}
+\end{resume}
+
 \begin{theoreme}[Formule de Moivre]
 	Pour tout $\theta \in \R$ et tout $n \in \Z$ :
 	$$
@@ -396,6 +454,56 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 	$$
 \end{exemple}
 
+% ------------------------------------------------------------
+\begin{resume}{Formule de Moivre}
+	Pour tout $\theta \in \R$ et tout $n \in \Z$ :
+	$$
+	\boxed{(\cos\theta + \ii\sin\theta)^{n} = \cos(n\theta) + \ii\sin(n\theta)}
+	\qquad\text{c'est-à-dire}\qquad
+	\bigl(\e^{\ii\theta}\bigr)^{n} = \e^{\ii n\theta}.
+	$$
+	\textbf{À quoi ça sert :} \emph{développer} $\cos(n\theta)$ et $\sin(n\theta)$
+	en puissances de $\cos\theta$ et $\sin\theta$ --- c'est l'opération inverse de
+	la linéarisation.
+
+	\smallskip
+	\textbf{En 3 gestes.} \textbf{1.} écrire $(\cos\theta+\ii\sin\theta)^{n}$ ;
+	\textbf{2.} développer avec le binôme de Newton ;
+	\textbf{3.} identifier partie réelle et partie imaginaire.
+
+	\smallskip
+	\textbf{Exemple express ($n = 3$).}
+	$\cos 3\theta = 4\cos^{3}\theta - 3\cos\theta$,
+	\quad $\sin 3\theta = 3\sin\theta - 4\sin^{3}\theta$.
+
+	\smallskip
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, scale=1.45]
+			\draw[->] (-1.35,0) -- (1.5,0) node[right, font=\scriptsize] {$\Re$};
+			\draw[->] (0,-1.3) -- (0,1.6) node[above, font=\scriptsize] {$\Im$};
+			\draw[black!65] (0,0) circle (1);
+			% puissances successives de z = e^{i pi/6}
+			\foreach \a/\l/\pos in {%
+				30/{z}/{right},
+				60/{z^{2}}/{above right},
+				90/{z^{3}}/{above right},
+				120/{z^{4}}/{above left}}
+			{
+				\draw[blue!70, thin] (0,0) -- (\a:1);
+				\filldraw[blue] (\a:1) circle (0.9pt)
+				node[\pos, font=\scriptsize, blue, inner sep=2pt] {$\l$};
+			}
+			% arcs de rotation successifs (à l'intérieur du cercle)
+			\foreach \d in {30,60,90}{
+				\draw[->, red, thick]
+				(\d+4:0.52) arc[start angle=\d+4, end angle=\d+26, radius=0.52];
+			}
+			\node[red, font=\scriptsize] at (45:0.70) {$\theta$};
+		\end{tikzpicture}
+	\end{center}
+	\centerline{\footnotesize Avec $z = \e^{\ii\theta}$ : multiplier par $z$, c'est tourner de $\theta$.}
+\end{resume}
+
 \begin{propriete}{Formules d'Euler}{}
 	Pour tout $\theta \in \R$ :
 	$$
@@ -404,6 +512,54 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 	\sin\theta = \frac{\e^{\ii\theta} - \e^{-\ii\theta}}{2\ii}.
 	$$
 \end{propriete}
+
+% ------------------------------------------------------------
+\begin{resume}{Linéarisation}
+	\textbf{But :} transformer un \emph{produit de puissances}
+	$\cos^{p}\theta\,\sin^{q}\theta$ en une \emph{somme} de $\cos(k\theta)$ et
+	$\sin(k\theta)$ --- indispensable pour \textbf{intégrer}.
+
+	\smallskip
+	\textbf{Outils.} $\cos\theta = \dfrac{\e^{\ii\theta}+\e^{-\ii\theta}}{2}$,
+	\quad $\sin\theta = \dfrac{\e^{\ii\theta}-\e^{-\ii\theta}}{2\ii}$,
+	\quad puis on regroupe :
+	$$
+	\e^{\ii k\theta} + \e^{-\ii k\theta} = 2\cos(k\theta),
+	\qquad
+	\e^{\ii k\theta} - \e^{-\ii k\theta} = 2\ii\,\sin(k\theta).
+	$$
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, node distance=4mm,
+			bloc/.style={draw=black!70, rounded corners=1mm, fill=gray!10,
+				align=center, font=\scriptsize, inner sep=2pt, text width=1.85cm,
+				minimum height=1cm}]
+			\node[bloc] (a) {$\cos^{p}\theta\,\sin^{q}\theta$};
+			\node[bloc, right=of a] (b) {\textbf{1.} Euler\\(remplacer)};
+			\node[bloc, right=of b] (c) {\textbf{2.} Binôme\\de Newton};
+			\node[bloc, right=of c] (d) {\textbf{3.} Regrouper\\les conjugués};
+			\node[bloc, right=of d] (e) {$\sum \lambda_{k}\cos(k\theta)$};
+			\draw[->, thick] (a) -- (b);
+			\draw[->, thick] (b) -- (c);
+			\draw[->, thick] (c) -- (d);
+			\draw[->, thick] (d) -- (e);
+		\end{tikzpicture}
+	\end{center}
+
+	\textbf{À connaître par cœur.}
+	$$
+	\cos^{2}\theta = \frac{1+\cos 2\theta}{2},
+	\qquad
+	\sin^{2}\theta = \frac{1-\cos 2\theta}{2},
+	$$
+	$$
+	\cos^{3}\theta = \frac{\cos 3\theta + 3\cos\theta}{4},
+	\qquad
+	\sin^{3}\theta = \frac{3\sin\theta - \sin 3\theta}{4}.
+	$$
+	\textbf{Piège.} Avec le sinus, ne pas oublier le $\ii$ du dénominateur :
+	$(2\ii)^{2} = -4$ et $(2\ii)^{3} = -8\ii$ --- c'est là que naissent les erreurs de signe.
+\end{resume}
 
 \begin{astucebac}
 	\textbf{Applications des formules d'Euler et de Moivre.}

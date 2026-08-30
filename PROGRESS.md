@@ -6,6 +6,33 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-30 — Complexes : trois résumés de cours illustrés
+
+- Nouvel environnement `resume` dans `config/environnements.tex`
+  (`\begin{resume}{Titre}`), même famille visuelle que `methode` /
+  `astucebac` : encadré gris, filet noir à gauche, icône `\faBookmark`.
+  Réutilisable dans tous les chapitres.
+- Trois résumés courts ajoutés au chapitre Complexes, chacun avec sa
+  figure TikZ :
+  - **Forme exponentielle** — notation, les 6 règles de calcul (produit,
+    quotient, puissance, conjugué, inverse, opposé), condition d'égalité ;
+    figure : cercle unité avec $\e^{\ii\theta}$ et les valeurs
+    remarquables ($1$, $\e^{\ii\pi/6}$, $\e^{\ii\pi/4}$,
+    $\e^{\ii\pi/3}$, $\ii$, $-1$, $-\ii$).
+  - **Formule de Moivre** — l'énoncé encadré, à quoi elle sert
+    (développer, l'inverse de la linéarisation), la méthode en 3 gestes,
+    l'exemple $n = 3$ ; figure : $z$, $z^2$, $z^3$, $z^4$ sur le cercle,
+    « multiplier par $z$, c'est tourner de $\theta$ ».
+  - **Linéarisation** — but (intégrer), formules d'Euler, les quatre
+    identités à connaître par cœur, le piège du $\ii$ au dénominateur ;
+    figure : schéma en 4 étapes de la méthode.
+- Vérification : `latexmk -pdf` OK, 395 pages, aucun `Overfull \hbox`
+  significatif ajouté ; les trois encadrés relus au rendu PNG (p. 56–58 du
+  livre) et deux figures retouchées pour que les étiquettes ne se
+  chevauchent pas.
+
+---
+
 ## 2026-08-27 — Structure : les parties du livre activées
 
 - Les cinq `\part{}` de `main.tex` étaient **écrits mais commentés** : la
