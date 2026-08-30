@@ -6,6 +6,52 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-30 — Complexes : trois résumés de cours illustrés
+
+- Nouvel environnement `resume` dans `config/environnements.tex`
+  (`\begin{resume}{Titre}`), même famille visuelle que `methode` /
+  `astucebac` : encadré gris, filet noir à gauche, icône `\faBookmark`.
+  Réutilisable dans tous les chapitres.
+- Trois résumés courts ajoutés au chapitre Complexes, chacun avec sa
+  figure TikZ :
+  - **Forme exponentielle** — notation, les 6 règles de calcul (produit,
+    quotient, puissance, conjugué, inverse, opposé), condition d'égalité ;
+    figure : cercle unité avec $\e^{\ii\theta}$ et les valeurs
+    remarquables ($1$, $\e^{\ii\pi/6}$, $\e^{\ii\pi/4}$,
+    $\e^{\ii\pi/3}$, $\ii$, $-1$, $-\ii$).
+  - **Formule de Moivre** — l'énoncé encadré, à quoi elle sert
+    (développer, l'inverse de la linéarisation), la méthode en 3 gestes,
+    l'exemple $n = 3$ ; figure : $z$, $z^2$, $z^3$, $z^4$ sur le cercle,
+    « multiplier par $z$, c'est tourner de $\theta$ ».
+  - **Linéarisation** — but (intégrer), formules d'Euler, les quatre
+    identités à connaître par cœur, le piège du $\ii$ au dénominateur ;
+    figure : schéma en 4 étapes de la méthode.
+- **Harmonisation avec les exercices et les sujets types** — les trois
+  résumés ne restent pas isolés du reste du chapitre :
+  - deux exercices résolus ajoutés : *calculer une puissance avec la forme
+    exponentielle* ($(1+\ii)^{12}$, $(\sqrt3-\ii)^9$) et *linéariser
+    $\cos^4\theta$ puis calculer $\int_0^{\pi/2}\cos^4\theta\dd\theta$* ;
+  - trois items ajoutés au Vrai/Faux d'échauffement (validité de
+    $(\e^{\ii\theta})^n = \e^{\ii n\theta}$ pour $n$ négatif, égalité de
+    deux exponentielles modulo $2\pi$, identité $\cos^2$) ;
+  - deux exercices d'entraînement progressifs avant l'exercice
+    « Trigonométrie » (★☆☆ *Forme exponentielle : calculer vite*, puis
+    ★★☆ *Puissances et formule de Moivre*), et l'exercice ★★★ complété
+    d'une question d'intégration ;
+  - un **sujet type Bac** dédié au format officiel (Partie A forme
+    exponentielle et puissances / Partie B Moivre / Partie C linéarisation
+    et intégrale, points par question) ;
+  - renvois croisés `\pageref` depuis chaque exercice vers le résumé
+    correspondant (labels `res:cplx_expo`, `res:cplx_moivre`,
+    `res:cplx_linear`).
+- Vérification : `latexmk -pdf` OK, 398 pages, **13 `Overfull \hbox`, soit
+  exactement la baseline de `main`** (le schéma de linéarisation, d'abord
+  trop large de 18,7pt, a été resserré). Résumés, exercices résolus,
+  exercices et sujet type relus au rendu PNG ; deux figures retouchées pour
+  que les étiquettes ne se chevauchent pas.
+
+---
+
 ## 2026-08-27 — Structure : les parties du livre activées
 
 - Les cinq `\part{}` de `main.tex` étaient **écrits mais commentés** : la

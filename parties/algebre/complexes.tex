@@ -379,6 +379,65 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 	\end{enumerate}
 \end{propriete}
 
+% ------------------------------------------------------------
+\begin{resume}{Forme exponentielle}
+	\label{res:cplx_expo}
+	\textbf{Notation.} $\e^{\ii\theta} = \cos\theta + \ii\sin\theta$, donc tout
+	$z \neq 0$ s'écrit $\boxed{z = r\,\e^{\ii\theta}}$ avec $r = \abs{z} > 0$ et
+	$\theta = \arg(z)$.
+
+	\smallskip
+	\textbf{Calculs.} Les modules se \emph{multiplient}, les arguments s'\emph{ajoutent} :
+	$$
+	r\e^{\ii\theta}\times r'\e^{\ii\theta'} = rr'\,\e^{\ii(\theta+\theta')},
+	\qquad
+	\frac{r\e^{\ii\theta}}{r'\e^{\ii\theta'}} = \frac{r}{r'}\,\e^{\ii(\theta-\theta')},
+	\qquad
+	\bigl(r\e^{\ii\theta}\bigr)^{n} = r^{n}\,\e^{\ii n\theta},
+	$$
+	$$
+	\overline{r\e^{\ii\theta}} = r\,\e^{-\ii\theta},
+	\qquad
+	\frac{1}{r\e^{\ii\theta}} = \frac{1}{r}\,\e^{-\ii\theta},
+	\qquad
+	-r\e^{\ii\theta} = r\,\e^{\ii(\theta+\pi)}.
+	$$
+	\textbf{Égalité.} $r\e^{\ii\theta} = r'\e^{\ii\theta'}
+	\iff r = r'$ et $\theta \equiv \theta'\ [2\pi]$.
+
+	\smallskip
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, scale=1.45]
+			% axes
+			\draw[->] (-1.35,0) -- (1.55,0) node[right, font=\scriptsize] {$\Re$};
+			\draw[->] (0,-1.35) -- (0,1.5) node[above, font=\scriptsize] {$\Im$};
+			% cercle unité
+			\draw[black!65] (0,0) circle (1);
+			% arc de l'argument
+			\draw[green!60!black, thick]
+			(0.32,0) arc[start angle=0, end angle=115, radius=0.32];
+			\node[green!60!black, font=\scriptsize] at (0.60,0.33) {$\theta$};
+			% vecteur générique
+			\draw[->, red, thick] (0,0) -- (115:1);
+			\node[red, font=\scriptsize, above left, inner sep=1pt] at (115:1) {$\e^{\ii\theta}$};
+			% valeurs remarquables
+			\foreach \a/\l/\pos in {%
+				0/{1}/{below right},
+				30/{\e^{\ii\pi/6}}/{right},
+				45/{\e^{\ii\pi/4}}/{right},
+				60/{\e^{\ii\pi/3}}/{above right},
+				90/{\ii}/{above right},
+				180/{-1}/{left},
+				270/{-\ii}/{below}}
+			{
+				\filldraw[blue] (\a:1) circle (0.9pt)
+				node[\pos, font=\scriptsize, blue, inner sep=2pt] {$\l$};
+			}
+		\end{tikzpicture}
+	\end{center}
+	\centerline{\footnotesize $\e^{\ii\theta}$ parcourt le cercle de centre $O$ et de rayon $1$.}
+\end{resume}
+
 \begin{theoreme}[Formule de Moivre]
 	Pour tout $\theta \in \R$ et tout $n \in \Z$ :
 	$$
@@ -396,6 +455,57 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 	$$
 \end{exemple}
 
+% ------------------------------------------------------------
+\begin{resume}{Formule de Moivre}
+	\label{res:cplx_moivre}
+	Pour tout $\theta \in \R$ et tout $n \in \Z$ :
+	$$
+	\boxed{(\cos\theta + \ii\sin\theta)^{n} = \cos(n\theta) + \ii\sin(n\theta)}
+	\qquad\text{c'est-à-dire}\qquad
+	\bigl(\e^{\ii\theta}\bigr)^{n} = \e^{\ii n\theta}.
+	$$
+	\textbf{À quoi ça sert :} \emph{développer} $\cos(n\theta)$ et $\sin(n\theta)$
+	en puissances de $\cos\theta$ et $\sin\theta$ --- c'est l'opération inverse de
+	la linéarisation.
+
+	\smallskip
+	\textbf{En 3 gestes.} \textbf{1.} écrire $(\cos\theta+\ii\sin\theta)^{n}$ ;
+	\textbf{2.} développer avec le binôme de Newton ;
+	\textbf{3.} identifier partie réelle et partie imaginaire.
+
+	\smallskip
+	\textbf{Exemple express ($n = 3$).}
+	$\cos 3\theta = 4\cos^{3}\theta - 3\cos\theta$,
+	\quad $\sin 3\theta = 3\sin\theta - 4\sin^{3}\theta$.
+
+	\smallskip
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, scale=1.45]
+			\draw[->] (-1.35,0) -- (1.5,0) node[right, font=\scriptsize] {$\Re$};
+			\draw[->] (0,-1.3) -- (0,1.6) node[above, font=\scriptsize] {$\Im$};
+			\draw[black!65] (0,0) circle (1);
+			% puissances successives de z = e^{i pi/6}
+			\foreach \a/\l/\pos in {%
+				30/{z}/{right},
+				60/{z^{2}}/{above right},
+				90/{z^{3}}/{above right},
+				120/{z^{4}}/{above left}}
+			{
+				\draw[blue!70, thin] (0,0) -- (\a:1);
+				\filldraw[blue] (\a:1) circle (0.9pt)
+				node[\pos, font=\scriptsize, blue, inner sep=2pt] {$\l$};
+			}
+			% arcs de rotation successifs (à l'intérieur du cercle)
+			\foreach \d in {30,60,90}{
+				\draw[->, red, thick]
+				(\d+4:0.52) arc[start angle=\d+4, end angle=\d+26, radius=0.52];
+			}
+			\node[red, font=\scriptsize] at (45:0.70) {$\theta$};
+		\end{tikzpicture}
+	\end{center}
+	\centerline{\footnotesize Avec $z = \e^{\ii\theta}$ : multiplier par $z$, c'est tourner de $\theta$.}
+\end{resume}
+
 \begin{propriete}{Formules d'Euler}{}
 	Pour tout $\theta \in \R$ :
 	$$
@@ -404,6 +514,55 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 	\sin\theta = \frac{\e^{\ii\theta} - \e^{-\ii\theta}}{2\ii}.
 	$$
 \end{propriete}
+
+% ------------------------------------------------------------
+\begin{resume}{Linéarisation}
+	\label{res:cplx_linear}
+	\textbf{But :} transformer un \emph{produit de puissances}
+	$\cos^{p}\theta\,\sin^{q}\theta$ en une \emph{somme} de $\cos(k\theta)$ et
+	$\sin(k\theta)$ --- indispensable pour \textbf{intégrer}.
+
+	\smallskip
+	\textbf{Outils.} $\cos\theta = \dfrac{\e^{\ii\theta}+\e^{-\ii\theta}}{2}$,
+	\quad $\sin\theta = \dfrac{\e^{\ii\theta}-\e^{-\ii\theta}}{2\ii}$,
+	\quad puis on regroupe :
+	$$
+	\e^{\ii k\theta} + \e^{-\ii k\theta} = 2\cos(k\theta),
+	\qquad
+	\e^{\ii k\theta} - \e^{-\ii k\theta} = 2\ii\,\sin(k\theta).
+	$$
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, node distance=3.2mm,
+			bloc/.style={draw=black!70, rounded corners=1mm, fill=gray!10,
+				align=center, font=\scriptsize, inner sep=2pt, text width=1.68cm,
+				minimum height=1cm}]
+			\node[bloc] (a) {$\cos^{p}\theta\,\sin^{q}\theta$};
+			\node[bloc, right=of a] (b) {\textbf{1.} Euler\\(remplacer)};
+			\node[bloc, right=of b] (c) {\textbf{2.} Binôme\\de Newton};
+			\node[bloc, right=of c] (d) {\textbf{3.} Regrouper\\les conjugués};
+			\node[bloc, right=of d] (e) {$\sum \lambda_{k}\cos k\theta$};
+			\draw[->, thick] (a) -- (b);
+			\draw[->, thick] (b) -- (c);
+			\draw[->, thick] (c) -- (d);
+			\draw[->, thick] (d) -- (e);
+		\end{tikzpicture}
+	\end{center}
+
+	\textbf{À connaître par cœur.}
+	$$
+	\cos^{2}\theta = \frac{1+\cos 2\theta}{2},
+	\qquad
+	\sin^{2}\theta = \frac{1-\cos 2\theta}{2},
+	$$
+	$$
+	\cos^{3}\theta = \frac{\cos 3\theta + 3\cos\theta}{4},
+	\qquad
+	\sin^{3}\theta = \frac{3\sin\theta - \sin 3\theta}{4}.
+	$$
+	\textbf{Piège.} Avec le sinus, ne pas oublier le $\ii$ du dénominateur :
+	$(2\ii)^{2} = -4$ et $(2\ii)^{3} = -8\ii$ --- c'est là que naissent les erreurs de signe.
+\end{resume}
 
 \begin{astucebac}
 	\textbf{Applications des formules d'Euler et de Moivre.}
@@ -1225,6 +1384,41 @@ $$
 
 
 % ------------------------------------------------------------
+%  NOTION 4 bis : Puissances avec la forme exponentielle
+% ------------------------------------------------------------
+
+\exerciceresolu
+\textbf{Calculer une puissance avec la forme exponentielle}
+
+Calculer $(1 + \ii)^{12}$ puis $\left(\sqrt{3} - \ii\right)^{9}$.
+
+\solution
+
+\emph{Principe} (résumé p.~\pageref{res:cplx_expo}) : on passe en forme
+exponentielle, car $\bigl(r\e^{\ii\theta}\bigr)^{n} = r^{n}\e^{\ii n\theta}$.
+
+\textbf{1.} $\abs{1+\ii} = \sqrt{2}$ et $\arg(1+\ii) = \dfrac{\pi}{4}$, donc
+$1 + \ii = \sqrt{2}\,\e^{\ii\pi/4}$. Alors
+$$
+(1+\ii)^{12} = \left(\sqrt{2}\right)^{12}\e^{\ii\,12\times\frac{\pi}{4}}
+= 2^{6}\,\e^{3\ii\pi} = 64\,\e^{\ii\pi} = -64.
+$$
+
+\textbf{2.} $\abs{\sqrt3 - \ii} = 2$ et $\arg(\sqrt3-\ii) = -\dfrac{\pi}{6}$,
+donc $\sqrt3 - \ii = 2\,\e^{-\ii\pi/6}$. Alors
+$$
+\left(\sqrt3 - \ii\right)^{9} = 2^{9}\,\e^{-\ii\,9\times\frac{\pi}{6}}
+= 512\,\e^{-\ii\frac{3\pi}{2}} = 512\,\e^{\ii\frac{\pi}{2}} = 512\,\ii.
+$$
+
+\begin{attention}
+	Le calcul direct au binôme est ici hors de portée : c'est la forme
+	exponentielle qui rend l'exercice faisable. Penser à ramener l'angle
+	final dans $]-\pi\,;\,\pi]$ modulo $2\pi$ avant de conclure.
+\end{attention}
+
+
+% ------------------------------------------------------------
 %  NOTION 5 : Formule de Moivre — linéarisation
 % ------------------------------------------------------------
 
@@ -1266,6 +1460,62 @@ $$
 $$
 
 (On a utilisé $\sin^2\theta = 1 - \cos^2\theta$ et $\cos^2\theta = 1 - \sin^2\theta$.)
+
+
+% ------------------------------------------------------------
+%  NOTION 5 bis : Linéarisation et intégration
+% ------------------------------------------------------------
+
+\exerciceresolu
+\textbf{Linéariser $\cos^4\theta$, puis calculer $\displaystyle\int_0^{\pi/2}\cos^4\theta\dd\theta$}
+
+\solution
+
+\textbf{1. Linéarisation} (méthode du résumé p.~\pageref{res:cplx_linear}).
+
+\emph{Étape 1 — Euler.} $\cos\theta = \dfrac{\e^{\ii\theta}+\e^{-\ii\theta}}{2}$, donc
+$$
+\cos^4\theta = \frac{1}{2^4}\left(\e^{\ii\theta}+\e^{-\ii\theta}\right)^{4}.
+$$
+
+\emph{Étape 2 — binôme de Newton.} Avec $a = \e^{\ii\theta}$ et $b = \e^{-\ii\theta}$,
+$ab = 1$ :
+$$
+(a+b)^4 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4
+= \e^{4\ii\theta} + 4\e^{2\ii\theta} + 6 + 4\e^{-2\ii\theta} + \e^{-4\ii\theta}.
+$$
+
+\emph{Étape 3 — regrouper les conjugués.} $\e^{\ii k\theta} + \e^{-\ii k\theta} = 2\cos(k\theta)$ :
+$$
+(a+b)^4 = 2\cos(4\theta) + 8\cos(2\theta) + 6.
+$$
+
+D'où, en divisant par $16$ :
+$$
+\boxed{\cos^4\theta = \frac{\cos(4\theta) + 4\cos(2\theta) + 3}{8}.}
+$$
+
+\emph{Contrôle rapide :} pour $\theta = 0$, le membre de droite vaut
+$\dfrac{1+4+3}{8} = 1 = \cos^4 0$. \checkmark
+
+\textbf{2. Intégration.} La forme linéarisée s'intègre terme à terme :
+$$
+\int_0^{\pi/2}\cos^4\theta\dd\theta
+= \frac{1}{8}\left[\frac{\sin(4\theta)}{4} + 4\cdot\frac{\sin(2\theta)}{2}
++ 3\theta\right]_0^{\pi/2}.
+$$
+Or $\sin(2\pi) = 0$ et $\sin(\pi) = 0$, donc il ne reste que le terme en $\theta$ :
+$$
+\int_0^{\pi/2}\cos^4\theta\dd\theta = \frac{1}{8}\times 3\times\frac{\pi}{2}
+= \frac{3\pi}{16}.
+$$
+
+\begin{astucebac}
+	C'est \emph{la} raison d'être de la linéarisation : $\cos^4\theta$ ne
+	s'intègre pas tel quel, alors que $\cos(4\theta)$, $\cos(2\theta)$ et $3$
+	s'intègrent immédiatement. Réflexe : \emph{une puissance de $\cos$ ou de
+	$\sin$ sous une intégrale $\Rightarrow$ linéariser d'abord}.
+\end{astucebac}
 
 
 % ------------------------------------------------------------
@@ -1614,6 +1864,10 @@ Répondre par \emph{vrai} ou \emph{faux} en justifiant brièvement.
 	$c$ sont réels.
 	\item Les images des racines $n$-ièmes de l'unité forment un polygone
 	régulier.
+	\item $\bigl(\e^{\ii\theta}\bigr)^{n} = \e^{\ii n\theta}$ seulement si
+	$n$ est un entier positif.
+	\item $\e^{\ii\theta} = \e^{\ii\theta'}$ équivaut à $\theta = \theta'$.
+	\item Pour tout réel $\theta$, $\cos^2\theta = \dfrac{1+\cos(2\theta)}{2}$.
 \end{enumerate}
 
 \subsection{Formes, équations et systèmes}
@@ -1649,9 +1903,31 @@ Répondre par \emph{vrai} ou \emph{faux} en justifiant brièvement.
 	\item Déterminer $z$ tel que $z + 2\bar z = 3 - 6\ii$.
 \end{enumerate}
 
+\exercice{Forme exponentielle : calculer vite \hfill \facile}
+\emph{Résumé p.~\pageref{res:cplx_expo}.}
+\begin{enumerate}
+	\item Écrire sous forme exponentielle : $-4$, \ $3\ii$, \ $1 - \ii$, \
+	$-\sqrt3 + 3\ii$.
+	\item Soit $z = 2\e^{\ii\pi/3}$ et $z' = \sqrt2\,\e^{-\ii\pi/4}$.
+	Donner la forme exponentielle de $zz'$, $\dfrac{z}{z'}$, $\bar z$,
+	$\dfrac{1}{z}$ et $-z$.
+	\item En déduire la forme algébrique de $zz'$.
+\end{enumerate}
+
+\exercice{Puissances et formule de Moivre \hfill \moyen}
+\emph{Résumé p.~\pageref{res:cplx_moivre}.}
+\begin{enumerate}
+	\item Calculer $(1 - \ii)^{10}$ et $\left(-1 + \ii\sqrt3\right)^{6}$.
+	\item Exprimer $\sin(4x)$ en fonction de $\cos x$ et $\sin x$.
+	\item Soit $z = \e^{\ii\pi/5}$. Montrer que $z^{10} = 1$, puis déterminer
+	le plus petit entier $n \geq 1$ tel que $z^n$ soit réel.
+\end{enumerate}
+
 \exercice{Trigonométrie \hfill \difficile}
+\emph{Résumés p.~\pageref{res:cplx_moivre} et p.~\pageref{res:cplx_linear}.}
 \begin{enumerate}
 	\item Linéariser $\cos^3 x$ et $\sin^4 x$.
+	\item En déduire $\displaystyle\int_0^{\pi/2}\sin^4 x\dd x$.
 	\item Exprimer $\cos(3x)$ en fonction de $\cos x$.
 	\item Écrire $\cos x + \sqrt3\,\sin x$ sous la forme $R\cos(x - \varphi)$,
 	puis résoudre $\cos x + \sqrt3\,\sin x = 1$.
@@ -2196,6 +2472,48 @@ avec $0 < \rho < 1$ et $\alpha \in \left]0\,;\,2\pi\right[$.
 
 
 \subsection{Sujets types Bac}
+
+\exercice{Sujet type Bac — forme exponentielle, Moivre et linéarisation \hfill \difficile}
+\emph{Le plan complexe est rapporté à un repère orthonormé direct
+$(O, \vec{u}, \vec{v})$.}
+
+\textbf{Partie A} — \textit{forme exponentielle et puissances}
+
+On pose $z_0 = 1 + \ii\sqrt3$.
+\begin{enumerate}
+	\item Calculer $\abs{z_0}$ et un argument de $z_0$, puis écrire $z_0$ sous
+	forme exponentielle. \hfill (0,5 pt)
+	\item En déduire la forme algébrique de $z_0^{\,6}$. \hfill (0,5 pt)
+	\item Déterminer le plus petit entier $n \geq 1$ tel que $z_0^{\,n}$ soit
+	un réel strictement positif. \hfill (0,5 pt)
+	\item On note $A_k$ le point d'affixe $z_0^{\,k}$ pour $k \in \{0;1;2\}$.
+	Placer $A_0$, $A_1$, $A_2$ et justifier que
+	$\arg\!\left(\dfrac{z_0^{\,2}}{z_0}\right) \equiv \dfrac{\pi}{3}\ [2\pi]$. \hfill (0,5 pt)
+\end{enumerate}
+
+\textbf{Partie B} — \textit{formule de Moivre}
+
+\begin{enumerate}
+	\item Énoncer la formule de Moivre. \hfill (0,25 pt)
+	\item En développant $(\cos\theta + \ii\sin\theta)^4$ par le binôme de
+	Newton, montrer que
+	$\cos(4\theta) = 8\cos^4\theta - 8\cos^2\theta + 1$. \hfill (1 pt)
+	\item En déduire les solutions dans $[0\,;\,\pi]$ de l'équation
+	$8\cos^4\theta - 8\cos^2\theta + 1 = 0$. \hfill (0,75 pt)
+\end{enumerate}
+
+\textbf{Partie C} — \textit{linéarisation et intégrale}
+
+\begin{enumerate}
+	\item Rappeler les formules d'Euler donnant $\cos\theta$ et
+	$\sin\theta$. \hfill (0,25 pt)
+	\item Linéariser $\sin^3\theta$, c'est-à-dire l'écrire sous la forme
+	$a\sin\theta + b\sin(3\theta)$ avec $a$, $b$ réels à préciser. \hfill (1 pt)
+	\item En déduire la valeur exacte de
+	$\displaystyle I = \int_0^{\pi}\sin^3\theta\dd\theta$. \hfill (0,5 pt)
+	\item Vérifier la cohérence du signe de $I$ à l'aide du signe de
+	$\sin\theta$ sur $[0\,;\,\pi]$. \hfill (0,25 pt)
+\end{enumerate}
 
 \exercice{Sujet type Bac — équation de degré 3 et configuration \hfill \difficile}
 Dans l'ensemble $\C$, on considère le polynôme $P(z) = z^3 + z - 10$.
