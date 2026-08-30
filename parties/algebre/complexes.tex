@@ -451,7 +451,7 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 	\end{cases}
 	$$
 	Les deux premières équations donnent $x^2$ et $y^2$ ; le signe de $\beta$
-	fixe le signe de $xy$. Il y a deux racines opposées.
+	fixe le signe de $xy$. 
 \end{methode}
 
 \begin{exemple}
@@ -560,53 +560,53 @@ La distance entre les images de $z$ et $z'$ dans le plan complexe est $\abs{z' -
 
 
 % ============================================================
-\section{Systèmes de deux équations à deux inconnues}
-% ============================================================
-
-\subsection{Système somme–produit}
-
-\begin{theoreme}
-	Deux complexes $z$ et $z'$ vérifient
-	$$
-	\begin{cases}
-		z + z' = S \\
-		z\,z' = P
-	\end{cases}
-	$$
-	si et seulement si $z$ et $z'$ sont les deux solutions (éventuellement
-	confondues) de l'équation
-	$$
-	X^2 - S\,X + P = 0.
-	$$
-\end{theoreme}
-
-\begin{exemple}
-	$\begin{cases} z + z' = 4 \\ z\,z' = 5 \end{cases}$ : $X^2 - 4X + 5 = 0$,
-	$\Delta = -4$, donc $\{z, z'\} = \{\,2 + \ii\,;\,2 - \ii\,\}$.
-\end{exemple}
-
-\subsection{Système linéaire à coefficients complexes}
-
-\begin{methode}
-	Pour $\begin{cases} a z + b z' = c \\ a' z + b' z' = c' \end{cases}$
-	($a,b,\ldots \in \C$) : on résout comme dans $\R$ (combinaisons linéaires,
-	substitution), en veillant à ne diviser que par un complexe non nul.
-
-	\textbf{Systèmes faisant intervenir $\bar z$} : quand une équation porte
-	sur $z$ et $\bar z$, on prend le \textbf{conjugué} de l'équation pour
-	obtenir un second lien, puis on résout le système en $(z, \bar z)$.
-\end{methode}
-
-\begin{exemple}
-	$\begin{cases} z + \ii z' = 1 + \ii \\ \ii z + z' = 2 \end{cases}$.
-	En multipliant la première ligne par $\ii$ : $\ii z - z' = \ii - 1$.
-	En soustrayant la seconde : $-2z' = -1 + \ii - 2 = -3 + \ii$, d'où
-	$z' = \dfrac{3 - \ii}{2}$, puis $z = 2 - z' = \dfrac{1 + \ii}{2}$.
-\end{exemple}
-
-
-% ============================================================
-\section{Nombres complexes et géométrie}
+%\section{Systèmes de deux équations à deux inconnues}
+%% ============================================================
+%
+%\subsection{Système somme–produit}
+%
+%\begin{theoreme}
+%	Deux complexes $z$ et $z'$ vérifient
+%	$$
+%	\begin{cases}
+%		z + z' = S \\
+%		z\,z' = P
+%	\end{cases}
+%	$$
+%	si et seulement si $z$ et $z'$ sont les deux solutions (éventuellement
+%	confondues) de l'équation
+%	$$
+%	X^2 - S\,X + P = 0.
+%	$$
+%\end{theoreme}
+%
+%\begin{exemple}
+%	$\begin{cases} z + z' = 4 \\ z\,z' = 5 \end{cases}$ : $X^2 - 4X + 5 = 0$,
+%	$\Delta = -4$, donc $\{z, z'\} = \{\,2 + \ii\,;\,2 - \ii\,\}$.
+%\end{exemple}
+%
+%\subsection{Système linéaire à coefficients complexes}
+%
+%\begin{methode}
+%	Pour $\begin{cases} a z + b z' = c \\ a' z + b' z' = c' \end{cases}$
+%	($a,b,\ldots \in \C$) : on résout comme dans $\R$ (combinaisons linéaires,
+%	substitution), en veillant à ne diviser que par un complexe non nul.
+%
+%	\textbf{Systèmes faisant intervenir $\bar z$} : quand une équation porte
+%	sur $z$ et $\bar z$, on prend le \textbf{conjugué} de l'équation pour
+%	obtenir un second lien, puis on résout le système en $(z, \bar z)$.
+%\end{methode}
+%
+%\begin{exemple}
+%	$\begin{cases} z + \ii z' = 1 + \ii \\ \ii z + z' = 2 \end{cases}$.
+%	En multipliant la première ligne par $\ii$ : $\ii z - z' = \ii - 1$.
+%	En soustrayant la seconde : $-2z' = -1 + \ii - 2 = -3 + \ii$, d'où
+%	$z' = \dfrac{3 - \ii}{2}$, puis $z = 2 - z' = \dfrac{1 + \ii}{2}$.
+%\end{exemple}
+%
+%
+%% ============================================================
+%\section{Nombres complexes et géométrie}
 % ============================================================
 
 \begin{propriete}{Affixe d'un point et d'un vecteur}{}
@@ -903,15 +903,61 @@ $\mathrm{Re}(z) = k$ / $\mathrm{Im}(z) = k$ & droite verticale / horizontale \\
 	\end{itemize}
 \end{exemple}
 
+%\begin{astucebac}
+%	Pour identifier une transformation à partir de son expression complexe $z' = az + b$ :
+%	\begin{enumerate}
+%		\item Calculer $a$ : son module donne le rapport, son argument donne l'angle.
+%		\item Si $a = 1$ : translation de vecteur d'affixe $b$.
+%		\item Si $\abs{a} = 1$ et $a \neq 1$ : rotation pure (rapport $= 1$).
+%		\item Si $a \in \R^*$ et $a \neq 1$ : homothétie pure (angle $= 0$ ou $\pi$).
+%		\item Sinon : similitude directe de rapport $\abs{a}$ et d'angle $\arg(a)$.
+%	\end{enumerate}
+%\end{astucebac}
+
 \begin{astucebac}
 	Pour identifier une transformation à partir de son expression complexe $z' = az + b$ :
-	\begin{enumerate}
-		\item Calculer $a$ : son module donne le rapport, son argument donne l'angle.
-		\item Si $a = 1$ : translation de vecteur d'affixe $b$.
-		\item Si $\abs{a} = 1$ et $a \neq 1$ : rotation pure (rapport $= 1$).
-		\item Si $a \in \R^*$ et $a \neq 1$ : homothétie pure (angle $= 0$ ou $\pi$).
-		\item Sinon : similitude directe de rapport $\abs{a}$ et d'angle $\arg(a)$.
-	\end{enumerate}
+	
+	\begin{center}
+		\begin{tikzpicture}[
+			>=Latex,
+			font=\small,
+			start/.style={draw, rounded corners, minimum width=3.6cm, minimum height=0.8cm, align=center},
+			decision/.style={draw, diamond, aspect=2.2, minimum width=3.4cm, minimum height=1cm, align=center, inner sep=2pt},
+			resultat/.style={draw, rounded corners, minimum width=3.8cm, minimum height=0.9cm, align=center},
+			lab/.style={font=\scriptsize}
+			]
+			
+			% --- Etape de départ ---
+			\node[start] (depart) {Calculer $a$\\(module et argument)};
+			
+			% --- Décision 1 ---
+			\node[decision, below=0.9cm of depart] (d1) {$a = 1$ ?};
+			\node[resultat, right=1.6cm of d1] (r1) {Translation\\de vecteur d'affixe $b$};
+			
+			% --- Décision 2 ---
+			\node[decision, below=1.3cm of d1] (d2) {$\abs{a}=1$ et $a\neq 1$ ?};
+			\node[resultat, right=1.6cm of d2] (r2) {Rotation pure\\(rapport $=1$, angle $\arg(a)$)};
+			
+			% --- Décision 3 ---
+			\node[decision, below=1.3cm of d2] (d3) {$a\in\R^*$ et $a\neq 1$ ?};
+			\node[resultat, right=1.6cm of d3] (r3) {Homothétie pure\\(angle $=0$ ou $\pi$)};
+			
+			% --- Résultat final ---
+			\node[resultat, below=1.3cm of d3] (r4) {Similitude directe\\de rapport $\abs{a}$ et d'angle $\arg(a)$};
+			
+			% --- flèches verticales (chemin "non") ---
+			\draw[->] (depart) -- (d1);
+			\draw[->] (d1) -- node[lab, left]{non} (d2);
+			\draw[->] (d2) -- node[lab, left]{non} (d3);
+			\draw[->] (d3) -- node[lab, left]{non} (r4);
+			
+			% --- flèches horizontales (chemin "oui") ---
+			\draw[->] (d1) -- node[lab, above]{oui} (r1);
+			\draw[->] (d2) -- node[lab, above]{oui} (r2);
+			\draw[->] (d3) -- node[lab, above]{oui} (r3);
+			
+		\end{tikzpicture}
+	\end{center}
 \end{astucebac}
 
 
@@ -934,7 +980,7 @@ $\mathrm{Re}(z) = k$ / $\mathrm{Im}(z) = k$ & droite verticale / horizontale \\
 	\textbf{Résoudre une équation polynomiale de degré $\geqslant 3$.}
 	\begin{enumerate}
 		\item Utiliser (ou chercher) une racine $z_0$.
-		\item Factoriser $P(z) = (z - z_0)\,Q(z)$ par identification.
+		\item Factoriser $P(z) = (z - z_0)\,Q(z)$ par identification ou en utilisant le schéma d'Horner .
 		\item Résoudre $Q(z) = 0$. Pour un degré $4$ : deux racines connues, ou
 		poser $Z = z^2$ si l'équation est bicarrée.
 	\end{enumerate}
@@ -954,67 +1000,75 @@ $\mathrm{Re}(z) = k$ / $\mathrm{Im}(z) = k$ & droite verticale / horizontale \\
 Résoudre dans $\C$ : $z^3 - (4 + \ii)z^2 + (5 + 4\ii)z - 5\ii = 0$, sachant
 qu'elle admet une racine imaginaire pure.
 
-\solution
-
-Soit $z = \ii y$ ($y \in \R$) une racine. En reportant :
-$-\ii y^3 + (4 + \ii)y^2 + (5 + 4\ii)\ii y - 5\ii = 0$, soit après regroupement
-$$
-\bigl(4y^2 - 4y\bigr) + \ii\bigl(-y^3 + y^2 + 5y - 5\bigr) = 0.
-$$
-La partie réelle donne $4y(y - 1) = 0$ ; $y = 1$ annule aussi la partie
-imaginaire. Donc $z_0 = \ii$ est racine.
-
-Factorisation : $z^3 - (4+\ii)z^2 + (5+4\ii)z - 5\ii = (z - \ii)(z^2 - 4z + 5)$.
-
-$z^2 - 4z + 5 = 0$ : $\Delta = -4$, $z = 2 \pm \ii$.
-
-\textbf{Solutions :} $\{\,\ii\,;\,2 + \ii\,;\,2 - \ii\,\}$.
-
-\exerciceresolu
-\textbf{Système somme–produit}
-
-Déterminer les complexes $z$ et $z'$ tels que $z + z' = 2 - 2\ii$ et
-$z\,z' = -2\ii$.
-
-\solution
-
-$z$ et $z'$ sont les solutions de $X^2 - (2 - 2\ii)X - 2\ii = 0$.
-
-$\Delta = (2 - 2\ii)^2 + 8\ii = (4 - 8\ii - 4) + 8\ii = 0$.
-
-Racine double : $X = \dfrac{2 - 2\ii}{2} = 1 - \ii$. Donc $z = z' = 1 - \ii$.
-
-\exerciceresolu
-\textbf{Ensemble de points}
-
-Le plan complexe est rapporté à un repère orthonormé direct. On note $A$ le
-point d'affixe $\ii$ et $B$ celui d'affixe $2$. Déterminer et construire
-l'ensemble $(\Gamma)$ des points $M$ d'affixe $z$ ($z \neq \ii$) tels que
-$$
-Z = \frac{z - 2}{z - \ii} \quad \text{soit un imaginaire pur.}
-$$
-
-\solution
-
-\textbf{Interprétation.} $\arg(Z) = \arg(z - 2) - \arg(z - \ii)
-\equiv \bigl(\vect{AM},\,\vect{BM}\bigr)\ [2\pi]$ n'est défini que si
-$M \neq A, B$. $Z \in \ii\R^*$ signifie
-$\bigl(\vect{MA},\,\vect{MB}\bigr) \equiv \dfrac{\pi}{2}\ [\pi]$, c'est-à-dire
-$\vect{MA} \perp \vect{MB}$.
-
-$(\Gamma)$ est donc le \textbf{cercle de diamètre $[AB]$}, privé des points $A$
-et $B$. (Le cas $Z = 0$, soit $M = B$, est exclu ; $M = A$ est exclu car
-$z \neq \ii$.)
-
-\textbf{Contrôle analytique.} Avec $z = x + \ii y$ :
-$$
-Z = \frac{(x - 2) + \ii y}{x + \ii(y - 1)}
-= \frac{\bigl[(x-2) + \ii y\bigr]\bigl[x - \ii(y-1)\bigr]}{x^2 + (y-1)^2}.
-$$
-$Z$ est imaginaire pur $\iff \mathrm{Re}(Z) = 0 \iff x(x - 2) + y(y - 1) = 0$,
-soit $\left(x - 1\right)^2 + \left(y - \dfrac12\right)^2 = \dfrac54$ : cercle de
-centre $\Omega\!\left(1\,;\dfrac12\right)$ (milieu de $[AB]$) et de rayon
-$\dfrac{\sqrt5}{2} = \dfrac{AB}{2}$.
+\begin{solution}
+	Soit $z = \ii \alpha$ ($\alpha \in \R$) une racine candidate. En reportant :
+	$$
+	-\ii \alpha^3 + (4 + \ii)\alpha^2 + (5 + 4\ii)\ii \alpha - 5\ii = 0,
+	$$
+	soit après regroupement
+	$$
+	\bigl(4\alpha^2 - 4\alpha\bigr) + \ii\bigl(-\alpha^3 + \alpha^2 + 5\alpha - 5\bigr) = 0.
+	$$
+	La partie réelle donne $4\alpha(\alpha - 1) = 0$ ; $\alpha = 1$ annule aussi la
+	partie imaginaire. Donc $z_0 = \ii$ est racine.
+	
+	\medskip
+	\textbf{Factorisation par la méthode de Horner.} On divise
+	$z^3 - (4+\ii)z^2 + (5+4\ii)z - 5\ii$ par $(z - \ii)$ :
+	
+	\begin{center}
+		\begin{tikzpicture}[>=Latex, font=\small]
+			% --- coefficients du polynôme ---
+			\node (c0) at (0,0)   {$1$};
+			\node (c1) at (2,0)   {$-(4+\ii)$};
+			\node (c2) at (4.4,0) {$5+4\ii$};
+			\node (c3) at (6.4,0) {$-5\ii$};
+			
+			% --- racine ---
+			\node[left] at (-1.2,-1) {racine $\ii$};
+			
+			% --- ligne des produits (racine x quotient précédent) ---
+			\node (p1) at (2,-1)   {$\ii$};
+			\node (p2) at (4.4,-1) {$-4\ii$};
+			\node (p3) at (6.4,-1) {$5\ii$};
+			
+			% --- ligne des résultats (coefficients du quotient + reste) ---
+			\node (q0) at (0,-2)   {$1$};
+			\node (q1) at (2,-2)   {$-4$};
+			\node (q2) at (4.4,-2) {$5$};
+			\node (q3) at (6.4,-2) {$0$};
+			
+			% --- traits horizontaux du schéma ---
+			\draw (-0.6,-0.5) -- (7.2,-0.5);
+			\draw (-0.6,-1.5) -- (7.2,-1.5);
+			
+			% --- flèches diagonales : "descendre" puis "multiplier par i" ---
+			\draw[->] (c0) -- (p1);
+			\draw[->] (c1) -- (p2);
+			\draw[->] (c2) -- (p3);
+			
+			% --- flèches verticales : addition ---
+			\draw[->] (c0) -- (q0);
+			\draw[->] (p1) -- (q1);
+			\draw[->] (p2) -- (q2);
+			\draw[->] (p3) -- (q3);
+			
+		\end{tikzpicture}
+	\end{center}
+	
+	Le reste est nul, ce qui confirme que $\ii$ est bien racine, et le quotient
+	donne directement :
+	$$
+	z^3 - (4+\ii)z^2 + (5+4\ii)z - 5\ii = (z - \ii)(z^2 - 4z + 5).
+	$$
+	
+	\medskip
+	Il reste à résoudre $z^2 - 4z + 5 = 0$ : $\Delta = -4$, donc $z = 2 \pm \ii$.
+	
+	\medskip
+	\textbf{Conclusion.} Les trois racines sont $z_0 = \ii$, $z_1 = 2+\ii$,
+	$z_2 = 2-\ii$.
+\end{solution}
 
 \exerciceresolu
 \textbf{Effectuer des calculs en forme algébrique}
@@ -1257,6 +1311,53 @@ $$
 z_2 = \frac{(3+\ii) - (\sqrt{3} - \sqrt{3}\,\ii)}{2}
 = \frac{(3-\sqrt{3}) + (1+\sqrt{3})\ii}{2}.
 $$
+
+
+
+%\exerciceresolu
+%\textbf{Système somme–produit}
+%
+%Déterminer les complexes $z$ et $z'$ tels que $z + z' = 2 - 2\ii$ et
+%$z\,z' = -2\ii$.
+%
+%\solution
+%
+%$z$ et $z'$ sont les solutions de $X^2 - (2 - 2\ii)X - 2\ii = 0$.
+%
+%$\Delta = (2 - 2\ii)^2 + 8\ii = (4 - 8\ii - 4) + 8\ii = 0$.
+%
+%Racine double : $X = \dfrac{2 - 2\ii}{2} = 1 - \ii$. Donc $z = z' = 1 - \ii$.
+
+\exerciceresolu
+\textbf{Ensemble de points}
+
+Le plan complexe est rapporté à un repère orthonormé direct. On note $A$ le
+point d'affixe $\ii$ et $B$ celui d'affixe $2$. Déterminer et construire
+l'ensemble $(\Gamma)$ des points $M$ d'affixe $z$ ($z \neq \ii$) tels que
+$$
+Z = \frac{z - 2}{z - \ii} \quad \text{soit un imaginaire pur.}
+$$
+
+\solution
+
+\textbf{Interprétation.} $\arg(Z) =\bigl(\vect{AM},\,\vect{BM}\bigr)\ [2\pi]$ n'est défini que si
+$M \neq A, B$. $Z \in \ii\R^*$ signifie
+$\bigl(\vect{MA},\,\vect{MB}\bigr) \equiv \dfrac{\pi}{2}\ [\pi]$, c'est-à-dire
+$\vect{MA} \perp \vect{MB}$.
+
+$(\Gamma)$ est donc le \textbf{cercle de diamètre $[AB]$}, privé des points $A$
+et $B$. (Le cas $Z = 0$, soit $M = B$, est exclu ; $M = A$ est exclu car
+$z \neq \ii$.)
+
+\textbf{Contrôle analytique.} Avec $z = x + \ii y$ :
+$$
+Z = \frac{(x - 2) + \ii y}{x + \ii(y - 1)}
+= \frac{\bigl[(x-2) + \ii y\bigr]\bigl[x - \ii(y-1)\bigr]}{x^2 + (y-1)^2}.
+$$
+$Z$ est imaginaire pur $\iff \mathrm{Re}(Z) = 0 \iff x(x - 2) + y(y - 1) = 0$,
+soit $\left(x - 1\right)^2 + \left(y - \dfrac12\right)^2 = \dfrac54$ : cercle de
+centre $\Omega\!\left(1\,;\dfrac12\right)$ (milieu de $[AB]$) et de rayon
+$\dfrac{\sqrt5}{2} = \dfrac{AB}{2}$.
 
 
 % ------------------------------------------------------------
