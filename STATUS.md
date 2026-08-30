@@ -16,7 +16,7 @@ Analyse, Géométrie, Probabilités, les sujets officiels du Bacc Série S
 étrangers). Compile sans erreur avec `latexmk -pdf`, et une passe de
 relecture globale (2026-08-26) a réduit les débordements de marge
 (`Overfull \hbox`) visibles de 27 à 13 occurrences uniques. Le livre fait
-**395 pages** et est organisé en **5 parties** (Algèbre, Analyse,
+**398 pages** et est organisé en **5 parties** (Algèbre, Analyse,
 Géométrie, Probabilités, Sujets et entraînement).
 
 ⚠️ Correction du 2026-08-27 : la note précédente affirmait que tous les
@@ -31,7 +31,7 @@ Les dix autres sont bien < 13pt.
 
 | Partie | État |
 |---|---|
-| Algèbre (arithmétique, matrices, complexes) | Terminé. Complexes enrichi le 2026-08-30 de trois résumés de cours illustrés (forme exponentielle, Moivre, linéarisation), via le nouvel environnement `resume`. Chapitres Complexes, Arithmétique et Calcul matriciel alignés sur le modèle type le 2026-08-27 (matriciel : les 6 sujets types matrices ont quitté `entrainement.tex` pour le chapitre). |
+| Algèbre (arithmétique, matrices, complexes) | Terminé. Complexes enrichi le 2026-08-30 de trois résumés de cours illustrés (forme exponentielle, Moivre, linéarisation), via le nouvel environnement `resume`, **harmonisés avec les exercices** (2 exercices résolus, 3 items Vrai/Faux, 2 exercices progressifs, 1 sujet type Bac dédié, renvois `\pageref` croisés). Chapitres Complexes, Arithmétique et Calcul matriciel alignés sur le modèle type le 2026-08-27 (matriciel : les 6 sujets types matrices ont quitté `entrainement.tex` pour le chapitre). |
 | Analyse (limites → équa diff) | **Terminé et aligné sur le modèle type (2026-08-27).** Fusion « Limites » + Continuité → `limites_continuite.tex` ; ancien ch.5 → « Dérivabilité » ; `fonctions.tex` → « Étude d'une fonction » ; `logarithme.tex` / `exponentielle.tex` resserrés en chapitres-référence ; `integrales.tex` aligné (+ correctif macro `\dd`) ; `suites.tex` aligné (n'était que la récurrence) ; `equadiff.tex` aligné (citation, méthode « vérifier une solution », méthode « second membre », échauffement figure + Vrai/Faux, 6 sujets types). `limites.tex` et `continuite.tex` supprimés. |
 | Géométrie (barycentre → espace) | Terminé. Chapitres Isométries, Barycentre et Géométrie dans l'espace (créé de zéro) alignés sur le modèle type le 2026-08-27. |
 | Probabilités (5 sous-chapitres) | **Terminé et aligné sur le modèle type (2026-08-27).** `probabilites`, `conditionnelles`, `variables_aleatoires`, `binomiale`, `normale` : citation, objectifs étoffés, dénombrement / Bayes / absence de mémoire / seuils ajoutés, section « Méthodes et exercices résolus », échauffement (lecture de figure + Vrai/Faux 7 items), batteries `multicols`, **5 sujets types Bac** par chapitre au format officiel (Partie A/B, points par question). |

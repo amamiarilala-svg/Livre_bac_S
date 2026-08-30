@@ -26,10 +26,29 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
   - **Linéarisation** — but (intégrer), formules d'Euler, les quatre
     identités à connaître par cœur, le piège du $\ii$ au dénominateur ;
     figure : schéma en 4 étapes de la méthode.
-- Vérification : `latexmk -pdf` OK, 395 pages, aucun `Overfull \hbox`
-  significatif ajouté ; les trois encadrés relus au rendu PNG (p. 56–58 du
-  livre) et deux figures retouchées pour que les étiquettes ne se
-  chevauchent pas.
+- **Harmonisation avec les exercices et les sujets types** — les trois
+  résumés ne restent pas isolés du reste du chapitre :
+  - deux exercices résolus ajoutés : *calculer une puissance avec la forme
+    exponentielle* ($(1+\ii)^{12}$, $(\sqrt3-\ii)^9$) et *linéariser
+    $\cos^4\theta$ puis calculer $\int_0^{\pi/2}\cos^4\theta\dd\theta$* ;
+  - trois items ajoutés au Vrai/Faux d'échauffement (validité de
+    $(\e^{\ii\theta})^n = \e^{\ii n\theta}$ pour $n$ négatif, égalité de
+    deux exponentielles modulo $2\pi$, identité $\cos^2$) ;
+  - deux exercices d'entraînement progressifs avant l'exercice
+    « Trigonométrie » (★☆☆ *Forme exponentielle : calculer vite*, puis
+    ★★☆ *Puissances et formule de Moivre*), et l'exercice ★★★ complété
+    d'une question d'intégration ;
+  - un **sujet type Bac** dédié au format officiel (Partie A forme
+    exponentielle et puissances / Partie B Moivre / Partie C linéarisation
+    et intégrale, points par question) ;
+  - renvois croisés `\pageref` depuis chaque exercice vers le résumé
+    correspondant (labels `res:cplx_expo`, `res:cplx_moivre`,
+    `res:cplx_linear`).
+- Vérification : `latexmk -pdf` OK, 398 pages, **13 `Overfull \hbox`, soit
+  exactement la baseline de `main`** (le schéma de linéarisation, d'abord
+  trop large de 18,7pt, a été resserré). Résumés, exercices résolus,
+  exercices et sujet type relus au rendu PNG ; deux figures retouchées pour
+  que les étiquettes ne se chevauchent pas.
 
 ---
 
