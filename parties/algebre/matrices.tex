@@ -239,7 +239,7 @@
 
 \subsection{Déterminant}
 
-\begin{definition}[Déterminant d'ordre 2 et 3]
+\begin{definition}[Déterminant d'ordre 2 et 3] 
 	\textbf{Ordre 2 :}
 	\[
 	\det\begin{pmatrix}a&b\\c&d\end{pmatrix} = ad - bc.
@@ -251,31 +251,42 @@
 	\]
 \end{definition}
 
+
+
 \begin{center}
-	\begin{tikzpicture}[>=stealth, font=\small, scale=0.9]
-		\def\el{{"a","b","c","a","b","d","e","f","d","e","g","h","i","g","h"}}
-		\foreach \s in {0,1,2}{
-			\draw[thick] (\s*0.9+0.0, 0.25) -- (\s*0.9+1.8, -1.65);
-		}
-		\foreach \s in {0,1,2}{
-			\draw[dashed] (\s*0.9+1.8, 0.25) -- (\s*0.9+0.0, -1.65);
-		}
-		\foreach \j in {0,...,4}{
-			\foreach \i in {0,1,2}{
-				\pgfmathsetmacro\idx{int(\j*3+\i)}
-				\pgfmathsetmacro\val{\el[\idx]}
-				\node[fill=white, inner sep=1pt] at (\j*0.9, -\i*0.7) {$\val$};
-			}
-		}
-		\node[right] at (4.1, 0)   {$+aei$};
-		\node[right] at (4.1,-0.35){$+bfg$};
-		\node[right] at (4.1,-0.7) {$+cdh$};
-		\node[right] at (4.1,-1.1) {$-ceg$};
-		\node[right] at (4.1,-1.4) {$-afh$};
-		\node[right] at (4.1,-1.75){$-bdi$};
+	\begin{tikzpicture}[>=stealth, font=\small]
+		% --- pas de la grille ---
+		\def\dx{0.9}
+		\def\dy{0.9}
+		
+		% --- les 3 lignes de la matrice, avec les 2 colonnes répétées (a,b puis d,e puis g,h) ---
+		\foreach \j/\lettre in {0/a, 1/b, 2/c, 3/a, 4/b}
+		\node at (\j*\dx, 0)     {$\lettre$};
+		\foreach \j/\lettre in {0/d, 1/e, 2/f, 3/d, 4/e}
+		\node at (\j*\dx, -\dy)  {$\lettre$};
+		\foreach \j/\lettre in {0/g, 1/h, 2/i, 3/g, 4/h}
+		\node at (\j*\dx, -2*\dy){$\lettre$};
+		
+		% --- diagonales positives (pleines), de haut-gauche vers bas-droite ---
+		\foreach \j in {0,1,2}
+		\draw[thick] (\j*\dx, 0.3) -- ({(\j+2)*\dx}, -2*\dy-0.3);
+		
+		% --- diagonales négatives (pointillées), de haut-droite vers bas-gauche ---
+		\foreach \j in {2,3,4}
+		\draw[dashed] (\j*\dx, 0.3) -- ({(\j-2)*\dx}, -2*\dy-0.3);
+		
+		% --- termes correspondants, alignés à droite ---
+		\node[right] at (5*\dx+0.3, 0)      {$+aei$};
+		\node[right] at (5*\dx+0.3, -0.4)   {$+bfg$};
+		\node[right] at (5*\dx+0.3, -0.8)   {$+cdh$};
+		\node[right] at (5*\dx+0.3, -1.4)   {$-ceg$};
+		\node[right] at (5*\dx+0.3, -1.8)   {$-afh$};
+		\node[right] at (5*\dx+0.3, -2.2)   {$-bdi$};
 	\end{tikzpicture}
 \end{center}
-
+\begin{astucebac}
+	\textbf{Astuce.} Pour la règle de Sarrus, recopie les deux premières colonnes à droite du déterminant : les diagonales descendantes (pleines) donnent les termes positifs, les diagonales montantes (pointillées) donnent les termes négatifs.
+\end{astucebac}
 \begin{propriete}{Propriétés du déterminant}{}
 	\begin{itemize}[label=\textbullet]
 		\item $\det(AB) = \det(A)\cdot\det(B)$.

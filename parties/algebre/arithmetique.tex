@@ -859,11 +859,11 @@ Les seuls diviseurs communs de deux entiers premiers entre eux sont $-1$ et $1$.
 	La fraction $\dfrac{a}{b}$ est \textbf{irréductible} si $a$ et $b$ sont premiers entre eux.
 \end{definition}
 
-\begin{propriete}{}{}
-	Soient $a$ et $b$ deux entiers relatifs non nuls et $d = \mathrm{PGCD}(a\,;b)$.
-	
-	Il existe deux entiers $a'$ et $b'$ tels que $a = da'$, $b = db'$ et $\mathrm{PGCD}(a'\,;b') = 1$.
-\end{propriete}
+%\begin{propriete}{}{}
+%	Soient $a$ et $b$ deux entiers relatifs non nuls et $d = \mathrm{PGCD}(a\,;b)$.
+%	
+%	Il existe deux entiers $a'$ et $b'$ tels que $a = da'$, $b = db'$ et $\mathrm{PGCD}(a'\,;b') = 1$.
+%\end{propriete}
 
 \begin{theoreme}[Théorème de Bézout]
 	Soient $a$ et $b$ deux entiers relatifs non nuls.
@@ -1045,12 +1045,68 @@ avec $\mathrm{A} = 10$, …, $\mathrm{F} = 15$.
 	\end{itemize}
 \end{methode}
 
+%\begin{exemple}
+%	$\overline{2\,\mathrm{A}\,3}^{\,16} = 2\times16^2 + 10\times16 + 3
+%	= 512 + 160 + 3 = 675$.
+%
+%	$675$ en base $8$ : $675 = 84\times 8 + 3$ ; $84 = 10\times 8 + 4$ ;
+%	$10 = 1\times 8 + 2$ ; $1 = 0\times 8 + 1$. Donc $675 = \overline{1243}^{\,8}$.
+%\end{exemple}
 \begin{exemple}
 	$\overline{2\,\mathrm{A}\,3}^{\,16} = 2\times16^2 + 10\times16 + 3
 	= 512 + 160 + 3 = 675$.
-
-	$675$ en base $8$ : $675 = 84\times 8 + 3$ ; $84 = 10\times 8 + 4$ ;
-	$10 = 1\times 8 + 2$ ; $1 = 0\times 8 + 1$. Donc $675 = \overline{1243}^{\,8}$.
+	
+	\medskip
+	$675$ en base $8$ :
+	
+	\begin{center}
+		\begin{tikzpicture}[
+			every node/.style={font=\small},
+			bloc/.style={},
+			arr/.style={-Latex, thick}
+			]
+			
+			% --- Etage 1 : 675 | 8 ---
+			\node (d1) at (0,0) {$675$};
+			\node (v1) at (1.1,0) {$8$};
+			\draw (0.55,0.35) -- (0.55,-0.55);
+			\draw (0,-0.15) -- (1.6,-0.15);
+			\node (r1) at (0,-0.9) {$\mathbf{3}$};
+			\node (q1) at (1.1,-0.9) {$84$};
+			
+			% --- Etage 2 : 84 | 8, décalé bas-droite ---
+			\node (d2) at (2.6,-1.8) {$84$};
+			\node (v2) at (3.7,-1.8) {$8$};
+			\draw (3.15,-1.45) -- (3.15,-2.35);
+			\draw (2.6,-1.95) -- (4.2,-1.95);
+			\node (r2) at (2.6,-2.7) {$\mathbf{4}$};
+			\node (q2) at (3.7,-2.7) {$10$};
+			
+			% --- Etage 3 : 10 | 8 ---
+			\node (d3) at (5.2,-3.6) {$10$};
+			\node (v3) at (6.3,-3.6) {$8$};
+			\draw (5.75,-3.25) -- (5.75,-4.15);
+			\draw (5.2,-3.75) -- (6.8,-3.75);
+			\node (r3) at (5.2,-4.5) {$\mathbf{2}$};
+			\node (q3) at (6.3,-4.5) {$1$};
+			
+			% --- Etage 4 : 1 | 8 ---
+			\node (d4) at (7.8,-5.4) {$1$};
+			\node (v4) at (8.9,-5.4) {$8$};
+			\draw (8.35,-5.05) -- (8.35,-5.95);
+			\draw (7.8,-5.55) -- (9.4,-5.55);
+			\node (r4) at (7.8,-6.3) {$\mathbf{1}$};
+			\node (q4) at (8.9,-6.3) {$0$};
+			
+			% --- flèches : le quotient devient le dividende suivant ---
+			\draw[arr] (q1) -- (d2);
+			\draw[arr] (q2) -- (d3);
+			\draw[arr] (q3) -- (d4);
+			
+		\end{tikzpicture}
+	\end{center}
+	
+	En lisant les restes du \textbf{dernier vers le premier} : $675 = \overline{1243}^{\,8}$.
 \end{exemple}
 
 \begin{propriete}{Critères de divisibilité (base 10)}{arith_criteres}
@@ -1070,7 +1126,7 @@ avec $\mathrm{A} = 10$, …, $\mathrm{F} = 15$.
 
 \exercice{Divisibilité, division euclidienne, bases \hfill \facile}
 \begin{enumerate}
-	\item Donner tous les diviseurs positifs de $36$, puis $D(36) \cap D(24)$.
+	\item Donner tous les diviseurs positifs de $36$ et de $24$, puis $D(36) \cap D(24)$.
 	\item Effectuer la division euclidienne de $-31$ par $5$, puis de $2026$
 	par $7$.
 	\item Écrire $429$ en base $2$ et en base $16$.
@@ -1297,13 +1353,6 @@ $$
 n \equiv 2\ [3], \qquad n \equiv 3\ [5], \qquad 0 \leqslant n \leqslant 50.
 $$
 
-\begin{enumerate}
-	\item À l'aide de la première congruence, écrire $n$ sous la forme $n = 3k + 2$ avec $k \in \Z$.
-	\item Substituer dans la deuxième congruence et résoudre en $k$.
-	\item Lister toutes les solutions dans $\{0, 1, \ldots, 50\}$.
-\end{enumerate}
-
-
 % ------------------------------------------------------------
 \exercice{Congruences et puissances \hfill \etoilepleine\etoilepleine\etoilepleine}
 % ------------------------------------------------------------
@@ -1370,29 +1419,29 @@ $$
 Soient $a$ et $b$ deux entiers naturels non nuls, $d = \mathrm{PGCD}(a\,;b)$
 et $m = \mathrm{PPCM}(a\,;b)$.
 
-\begin{enumerate}
-	\item On sait que $d$ divise $a$ et $b$. En posant $a = da'$ et $b = db'$
-	avec $\mathrm{PGCD}(a'\,;b') = 1$, montrer que
-	$$
-	m = da'b' = \frac{ab}{d}.
-	$$
-	
-	\item Soit $n$ un entier naturel non nul. Montrer que
-	$$
-	\mathrm{PGCD}(na\,;\,nb) = n\,\mathrm{PGCD}(a\,;b)
-	\quad \text{et} \quad
-	$$
-	$$
-	\mathrm{PPCM}(na\,;\,nb) = n\,\mathrm{PPCM}(a\,;b).
-	$$
-	
-	\item On donne $\mathrm{PGCD}(a\,;b) = 12$ et $\mathrm{PPCM}(a\,;b) = 360$.
-	\begin{enumerate}
-		\item Calculer $a \times b$.
-		\item Sachant de plus que $a < b$ et que $a$ divise $120$,
-		déterminer les valeurs possibles du couple $(a\,;b)$.
-	\end{enumerate}
-\end{enumerate}
+%\begin{enumerate}
+%	\item On sait que $d$ divise $a$ et $b$. En posant $a = da'$ et $b = db'$
+%	avec $\mathrm{PGCD}(a'\,;b') = 1$, montrer que
+%	$$
+%	m = da'b' = \frac{ab}{d}.
+%	$$
+%	
+%	\item Soit $n$ un entier naturel non nul. Montrer que
+%	$$
+%	\mathrm{PGCD}(na\,;\,nb) = n\,\mathrm{PGCD}(a\,;b)
+%	\quad \text{et} \quad
+%	$$
+%	$$
+%	\mathrm{PPCM}(na\,;\,nb) = n\,\mathrm{PPCM}(a\,;b).
+%	$$
+%	
+%	\item On donne $\mathrm{PGCD}(a\,;b) = 12$ et $\mathrm{PPCM}(a\,;b) = 360$.
+%	\begin{enumerate}
+%		\item Calculer $a \times b$.
+%		\item Sachant de plus que $a < b$ et que $a$ divise $120$,
+%		déterminer les valeurs possibles du couple $(a\,;b)$.
+%	\end{enumerate}
+%\end{enumerate}
 
 
 % ------------------------------------------------------------
