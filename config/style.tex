@@ -43,7 +43,63 @@
 %-------------------------------------------------------
 %------------PERSONALISATION CHAPITRES ----------------%
 %-------------------------------------------------------
-\ChNumVar{\fontsize{60}{62}\selectfont}
+% Le style « Glenn » de fncychap code ses espacements en dur :
+% 50 pt au-dessus du bandeau et 80 pt sous le titre, avec un numéro
+% en corps 60. Sur du A5, l'en-tête occupait ~7 cm sur 17,6 cm utiles.
+% On garde le même dessin (filets + numéro + titre à droite) mais les
+% trois réglages ci-dessous rendent sa hauteur ajustable.
+
+\newlength{\ChapAvant}   \setlength{\ChapAvant}{4pt}    % espace au-dessus du bandeau
+\newlength{\ChapApres}   \setlength{\ChapApres}{20pt}   % espace entre le titre et le texte
+\newcommand{\ChapNumSize}{\fontsize{34}{36}\selectfont} % corps du numéro de chapitre
+
+\ChNumVar{\ChapNumSize}
+
+\makeatletter
+% --- chapitres numérotés (mainmatter) ---
+\renewcommand{\DOTI}[1]{%
+	\addtolength{\pyy}{-4pt}%
+	\settoheight{\myhi}{\CTV\FmTi{#1}}%
+	\addtolength{\myhi}{\py}%
+	\addtolength{\myhi}{-1\RW}%
+	\vskip -1\pyy
+	\rule{2\RW}{\myhi}\mghrulefill{\RW}\hskip 2pt
+	\raggedleft\CTV\FmTi{#1}\par\nobreak
+	\vskip \ChapApres}
+
+% --- chapitres non numérotés (frontmatter, \chapter*) ---
+\renewcommand{\DOTIS}[1]{%
+	\setlength{\py}{18pt}%
+	\setlength{\pyy}{\py}%
+	\setlength{\backskip}{\py}%
+	\addtolength{\backskip}{2pt}%
+	\addtolength{\pyy}{\RW}%
+	\setlength{\myhi}{\baselineskip}%
+	\addtolength{\myhi}{\pyy}%
+	\mghrulefill{\RW}\rule[-1\py]{2\RW}{\pyy}\par\nobreak
+	\vskip -1\backskip
+	\rule{2\RW}{\myhi}\mghrulefill{\RW}\hskip 3pt
+	\raggedleft\CTV\FmTi{#1}\par\nobreak
+	\vskip \ChapApres}
+
+% --- remplace les \vspace*{50pt} figés de fncychap ---
+\def\@makechapterhead#1{%
+	\vspace*{\ChapAvant}%
+	{\parindent \z@ \raggedright \normalfont
+		\ifnum \c@secnumdepth >\m@ne
+			\if@mainmatter\DOCH\fi
+		\fi
+		\interlinepenalty\@M
+		\if@mainmatter\DOTI{#1}\else\DOTIS{#1}\fi
+	}}
+
+\def\@makeschapterhead#1{%
+	\vspace*{\ChapAvant}%
+	{\parindent \z@ \raggedright \normalfont
+		\interlinepenalty\@M
+		\DOTIS{#1}%
+	}}
+\makeatother
 
 \renewcommand{\chaptermark}[1]{%
 	\markboth{#1}{}

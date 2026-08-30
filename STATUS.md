@@ -16,7 +16,7 @@ Analyse, Géométrie, Probabilités, les sujets officiels du Bacc Série S
 étrangers). Compile sans erreur avec `latexmk -pdf`, et une passe de
 relecture globale (2026-08-26) a réduit les débordements de marge
 (`Overfull \hbox`) visibles de 27 à 13 occurrences uniques. Le livre fait
-**398 pages** et est organisé en **5 parties** (Algèbre, Analyse,
+**393 pages** et est organisé en **5 parties** (Algèbre, Analyse,
 Géométrie, Probabilités, Sujets et entraînement).
 
 ⚠️ Correction du 2026-08-27 : la note précédente affirmait que tous les
@@ -28,6 +28,12 @@ faux — il en reste **trois significatifs**, à traiter un jour :
 Les dix autres sont bien < 13pt.
 
 ## Mise en page — conventions
+
+Depuis le 2026-08-30, l'en-tête de chapitre est compact : les
+espacements figés du style « Glenn » de `fncychap` sont redéfinis dans
+`config/style.tex` via trois réglages (`\ChapAvant`, `\ChapApres`,
+`\ChapNumSize`). Le dessin est inchangé, mais l'ouverture de chapitre
+occupe ~3 cm au lieu de ~7 cm (398 → 393 pages).
 
 Depuis le 2026-08-30, trois réglages globaux (dans
 `config/environnements.tex`) tiennent la densité du livre : listes
