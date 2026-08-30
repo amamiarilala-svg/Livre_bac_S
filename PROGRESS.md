@@ -6,6 +6,36 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-30 — `methode` : le saut de page forcé, vérifié et corrigé
+
+**Vérification.** Contrairement à ce qu'on pouvait craindre, l'option
+`breakable` de la boîte `methode` **fonctionne** : un test dédié montre
+qu'une boîte au contenu textuel se coupe normalement d'une page à l'autre.
+Elle ne « force » donc pas un saut de page en général.
+
+**Vraie cause.** La boîte saute entière à la page suivante uniquement quand
+son contenu est un **bloc insécable**. Sur les 68 blocs `methode` du livre,
+**4** étaient dans ce cas : ceux dont le contenu est un `tabular`
+(`limites_continuite`, `fonctions`, `integrales`, `suites`). Un `tabular` ne
+peut pas être coupé, donc la boîte non plus.
+
+**Conséquence mesurée.** Page 119 (chapitre Limites et continuité) perdait
+**222 pt de blanc**, soit un tiers de page, et le titre de section
+« Méthodes et exercices résolus » restait seul en bas de page.
+
+**Correctif.** Nouvel environnement `tabmethode` dans
+`config/environnements.tex` : même rendu à deux colonnes alignées avec filets,
+mais construit ligne par ligne (`\ligne{gauche}{droite}`, en `parbox`), donc
+**sécable entre deux lignes**. Les 4 tableaux y sont convertis.
+
+**Résultat.** Le trou de 222 pt a disparu : le titre de section et la boîte
+entière tiennent maintenant en page 119. Les deux autres blancs signalés par
+la détection (p. 157 et p. 284) ne viennent pas de `methode` : ce sont des
+titres de section reportés en début de page, comportement normal et
+souhaitable. 390 pages, 12 `Overfull` inchangés, aucun `vbox`.
+
+---
+
 ## 2026-08-30 — Économie de pages sur tout le livre
 
 Objectif demandé : gagner un maximum de pages sans nuire à la lisibilité.

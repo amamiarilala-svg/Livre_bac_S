@@ -38,6 +38,25 @@ utiliser `\begin{listecol}(2)` (ou `multicols`), et pour un QCM
 symboles. Ne pas utiliser `\dfrac` dans une proposition de QCM : la
 hauteur de ligne double.
 
+## Encadrés `methode` et blocs insécables
+
+`methode` est bien `breakable` et se coupe normalement — **sauf si son
+contenu est un bloc insécable** (`tabular`, `tikzpicture`, `includegraphics`).
+Dans ce cas la boîte saute entière à la page suivante et peut laisser
+jusqu'à un tiers de page de blanc (c'était le cas p. 119 avant le
+2026-08-30). Pour un tableau « Situation → Réflexe » dans un encadré,
+utiliser `tabmethode` (sécable) et non `tabular` :
+
+```latex
+\begin{tabmethode}[0.45]{Situation}{Réflexe}
+    \ligne{situation}{réflexe}
+\end{tabmethode}
+```
+
+L'argument optionnel est la largeur de la colonne de gauche (fraction de la
+largeur disponible, 0.40 par défaut). Une figure TikZ dans un encadré reste
+insécable : la placer plutôt hors de l'encadré si elle est haute.
+
 ## Barèmes de points
 
 Depuis le 2026-08-30 : **pas de barème dans les sujets types** (chapitres et

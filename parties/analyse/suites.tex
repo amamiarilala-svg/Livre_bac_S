@@ -398,25 +398,18 @@ Comme $\ell\geq u_0=0$, $\ell=2$.
 
 \begin{methode}
 	\textbf{Comment prouver qu'une suite converge / diverge ?}
-	\begin{center}
-	\renewcommand{\arraystretch}{1.4}
-	\begin{tabular}{>{\raggedright\arraybackslash}p{4.4cm}
-	                >{\raggedright\arraybackslash}p{3.8cm}}
-	\hline
-	\textbf{Situation} & \textbf{Outil} \\
-	\hline
-	$u_n=f(n)$, $f$ a une limite en $+\infty$ & limite de $f$ \\
-	quotient / différence de puissances de $n$ & terme dominant \\
-	$u_n$ contient $q^{n}$ & limite de $q^{n}$ / croissances comparées \\
-	terme borné ou oscillant & gendarmes \\
-	$\bigl|u_n-\ell\bigr|\leq v_n\to 0$ & comparaison \\
-	$u_n\leq v_n$, $\lim v_n=-\infty$ & comparaison (divergence) \\
-	$(u_n)$ monotone et bornée & limite monotone \\
-	$u_{n+1}=g(u_n)$ & stabilité + monotonie + point fixe \\
-	deux suites adjacentes & théorème des suites adjacentes \\
-	\hline
-	\end{tabular}
-	\end{center}
+	\begin{tabmethode}[0.52]{Situation}{Outil}
+		\ligne{$u_n=f(n)$, $f$ a une limite en $+\infty$}{limite de $f$}
+		\ligne{quotient / différence de puissances de $n$}{terme dominant}
+		\ligne{$u_n$ contient $q^{n}$}
+		      {limite de $q^{n}$ / croissances comparées}
+		\ligne{terme borné ou oscillant}{gendarmes}
+		\ligne{$\bigl|u_n-\ell\bigr|\leq v_n\to 0$}{comparaison}
+		\ligne{$u_n\leq v_n$, $\lim v_n=-\infty$}{comparaison (divergence)}
+		\ligne{$(u_n)$ monotone et bornée}{limite monotone}
+		\ligne{$u_{n+1}=g(u_n)$}{stabilité + monotonie + point fixe}
+		\ligne{deux suites adjacentes}{théorème des suites adjacentes}
+	\end{tabmethode}
 \end{methode}
 
 \exerciceresolu
