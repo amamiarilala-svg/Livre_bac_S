@@ -1,3 +1,19 @@
+% --------- ESPACEMENT DES FORMULES CENTREES (economie de pages) ---------
+% Le livre compte plusieurs centaines de formules en display ; l'air par
+% defaut (~10pt au-dessus et au-dessous) represente a lui seul plusieurs
+% pages. On le reduit sans toucher a la taille des formules.
+\AtBeginDocument{%
+	\setlength{\abovedisplayskip}{4pt plus 2pt minus 2pt}%
+	\setlength{\belowdisplayskip}{4pt plus 2pt minus 2pt}%
+	\setlength{\abovedisplayshortskip}{2pt plus 1pt minus 1pt}%
+	\setlength{\belowdisplayshortskip}{2pt plus 1pt minus 1pt}%
+}
+
+% --------- ESPACEMENT DES LISTES (economie de pages) ---------
+% Reduit l'air autour et entre les items de toutes les listes
+% (enumerate, itemize, description) sans toucher au corps de texte.
+\setlist{topsep=2pt, itemsep=1pt, parsep=0pt, partopsep=0pt}
+
 
 \newtheoremstyle{mazavatheoreme}
 {1em}
@@ -128,6 +144,31 @@ number within=chapter
 }
 
 
+%-------------------  QCM (propositions en colonnes) -------------------
+% Usage :  \begin{qcm}(2) \task ... \task ... \end{qcm}
+% Le nombre entre parenthèses est le nombre de colonnes (2 par défaut) :
+%   (4) pour des propositions très courtes, (2) sinon, (1) si très longues.
+% Objectif : une question de QCM tient sur 1 ou 2 lignes au lieu de 4.
+\settasks{
+	label            = (\Alph*),
+	label-width      = 1.6em,
+	item-indent      = 1.9em,
+	column-sep       = 0.4em,
+	before-skip      = 2pt,
+	after-skip       = 2pt,
+	after-item-skip  = 1pt
+}
+\NewTasksEnvironment{qcm}[\task](2)
+
+% Liste numérotée en colonnes, pour les questions courtes d'un exercice :
+%   \begin{listecol}(2) \task ... \end{listecol}
+\NewTasksEnvironment[
+	label       = \arabic*.,
+	label-width = 1.4em,
+	item-indent = 1.8em
+]{listecol}[\task](2)
+
+
 %-------------------  RESUME DE COURS -------------------
 % Usage : \begin{resume}{Titre court} ... \end{resume}
 \newtcolorbox{resume}[1]{
@@ -171,7 +212,7 @@ number within=chapter
 \renewcommand{\theexercice}{\arabic{exercice}}
 \newcommand{\exercice}[1]{
 	\refstepcounter{exercice}
-	\bigskip 
+	\medskip 
 	
 	\noindent
 	%	\textbf{Exercice \theexercice \hfill #1}

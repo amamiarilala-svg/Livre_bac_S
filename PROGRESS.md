@@ -6,6 +6,49 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-30 — Économie de pages sur tout le livre
+
+Objectif demandé : gagner un maximum de pages sans nuire à la lisibilité.
+**Résultat : 398 → 390 pages (−8), 13 `Overfull \hbox` (baseline inchangée),
+aucun `Overfull`/`Underfull \vbox`.**
+
+- **Trois réglages globaux** dans `config/environnements.tex` :
+  - listes resserrées : `\setlist{topsep=2pt, itemsep=1pt, parsep=0pt,
+    partopsep=0pt}` ;
+  - air autour des formules centrées réduit (`abovedisplayskip` /
+    `belowdisplayskip` 10pt → 4pt) — **c'est le plus gros gisement** :
+    le livre compte plus de 250 formules en display ;
+  - moins d'air avant chaque titre d'exercice (`\bigskip` → `\medskip`).
+  Les formules gardent leur taille : on enlève de l'air, pas du contenu.
+- **Deux environnements réutilisables** (paquet `tasks`) :
+  - `qcm` : propositions (A)(B)(C)(D) en colonnes ;
+  - `listecol` : liste numérotée courte en colonnes.
+- **Chapitre Complexes** : les 12 blocs de propositions de QCM passent de
+  4 lignes à 2 (ou 1) ; libellés resserrés ; `\dfrac` remplacé par des
+  quotients en ligne dans les propositions de QCM (ils doublaient la
+  hauteur des lignes).
+- **Reste du livre** : seules 6 listes courtes étaient encore en une seule
+  colonne (arithmétique, complexes, barycentre, isométries) — les batteries
+  d'exercices d'analyse et de probabilités utilisaient déjà `multicols`.
+- Trois QCM du chapitre Complexes avaient **plusieurs réponses correctes** ;
+  corrigés (voir le commit dédié).
+- Gains par chapitre : Arithmétique 30 → 28 p, Complexes 44 → 42 p,
+  Calcul matriciel 18 → 17 p, etc.
+- **Barèmes retirés des sujets types** : les 507 mentions de points
+  (« \hfill (0,5 pt) » et « \hfill \mbox{(0,75~pt)} », plus 4 barèmes
+  composites du chapitre Barycentre) disparaîssent des sujets types des
+  17 chapitres et de `entrainement.tex`. **Les annales officielles
+  (`parties/annales/`) ne sont pas touchées** : le barème y fait partie du
+  document original, de même que le « N points » en tête de chaque exercice.
+- **Rédaction des exercices résolus** : audit des 84 exercices résolus du
+  livre. Les 10 enchaînements de formules écrits en `$$` séparés
+  (développement du binôme, algorithme d'Euclide, longueurs d'un triangle,
+  tests de Pythagore, les deux expressions du produit scalaire…) sont
+  regroupés en un seul bloc `aligned` : les « = » s'alignent, la chaîne de
+  calcul se lit d'un coup d'œil, et les blancs intermédiaires disparaissent.
+
+---
+
 ## 2026-08-30 — Complexes : trois résumés de cours illustrés
 
 - Nouvel environnement `resume` dans `config/environnements.tex`

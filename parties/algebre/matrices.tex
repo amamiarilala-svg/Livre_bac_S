@@ -239,7 +239,7 @@
 
 \subsection{Déterminant}
 
-\begin{definition}[Déterminant d'ordre 2 et 3] 
+\begin{definition}[Déterminant d'ordre 2 et 3]
 	\textbf{Ordre 2 :}
 	\[
 	\det\begin{pmatrix}a&b\\c&d\end{pmatrix} = ad - bc.
@@ -258,7 +258,7 @@
 		% --- pas de la grille ---
 		\def\dx{0.9}
 		\def\dy{0.9}
-		
+
 		% --- les 3 lignes de la matrice, avec les 2 colonnes répétées (a,b puis d,e puis g,h) ---
 		\foreach \j/\lettre in {0/a, 1/b, 2/c, 3/a, 4/b}
 		\node at (\j*\dx, 0)     {$\lettre$};
@@ -266,15 +266,15 @@
 		\node at (\j*\dx, -\dy)  {$\lettre$};
 		\foreach \j/\lettre in {0/g, 1/h, 2/i, 3/g, 4/h}
 		\node at (\j*\dx, -2*\dy){$\lettre$};
-		
+
 		% --- diagonales positives (pleines), de haut-gauche vers bas-droite ---
 		\foreach \j in {0,1,2}
 		\draw[thick] (\j*\dx, 0.3) -- ({(\j+2)*\dx}, -2*\dy-0.3);
-		
+
 		% --- diagonales négatives (pointillées), de haut-droite vers bas-gauche ---
 		\foreach \j in {2,3,4}
 		\draw[dashed] (\j*\dx, 0.3) -- ({(\j-2)*\dx}, -2*\dy-0.3);
-		
+
 		% --- termes correspondants, alignés à droite ---
 		\node[right] at (5*\dx+0.3, 0)      {$+aei$};
 		\node[right] at (5*\dx+0.3, -0.4)   {$+bfg$};
@@ -700,25 +700,25 @@ $$
 \begin{enumerate}
 	\item
 	\begin{enumerate}
-		\item Calculer $\det A$. Conclure. \hfill (0,5 pt)
+		\item Calculer $\det A$. Conclure.
 		\item Vérifier que $2A - A^2 = I_3$. En déduire la matrice $P$ telle que
-		$A \times P = I_3$. \hfill (0,5 pt)
+		$A \times P = I_3$.
 	\end{enumerate}
 	\item On pose $D = ABP$. Montrer par récurrence que, pour tout
-	$n \in \N^*$, $D^n = AB^nP$. \hfill (1 pt)
+	$n \in \N^*$, $D^n = AB^nP$.
 \end{enumerate}
 
 \exercice{Sujet type Bac — opérations, trace et transposée \hfill \difficile}
 On considère $A = \begin{pmatrix}2&1\\0&3\end{pmatrix}$ et
 $B = \begin{pmatrix}1&-1\\2&0\end{pmatrix}$.
 \begin{enumerate}
-	\item Calculer $A + B$ et $2A - 3B$. \hfill (0,75 pt)
-	\item Calculer $AB$ et $BA$. Que remarque-t-on ? \hfill (1 pt)
+	\item Calculer $A + B$ et $2A - 3B$.
+	\item Calculer $AB$ et $BA$. Que remarque-t-on ?
 	\item Calculer $\operatorname{tr}(A)$, $\operatorname{tr}(B)$,
 	$\operatorname{tr}(AB)$ et $\operatorname{tr}(BA)$. Vérifier que
-	$\operatorname{tr}(AB) = \operatorname{tr}(BA)$ bien que $AB \neq BA$. \hfill (1 pt)
+	$\operatorname{tr}(AB) = \operatorname{tr}(BA)$ bien que $AB \neq BA$.
 	\item Déterminer ${}^{t}\!A$ et vérifier que
-	$\operatorname{tr}({}^{t}\!A) = \operatorname{tr}(A)$. \hfill (0,5 pt)
+	$\operatorname{tr}({}^{t}\!A) = \operatorname{tr}(A)$.
 \end{enumerate}
 
 \exercice{Sujet type Bac — système $2\times 2$ par la matrice inverse \hfill \difficile}
@@ -728,36 +728,34 @@ $$
 (S) : \begin{cases} 3x + 2y = 7 \\ 4x + 3y = 10 \end{cases}
 $$
 \begin{enumerate}
-	\item Calculer $\det A$. La matrice $A$ est-elle inversible ? \hfill (0,5 pt)
-	\item Déterminer $A^{-1}$. \hfill (1 pt)
-	\item Écrire $(S)$ sous la forme matricielle $AX = B$. \hfill (0,5 pt)
-	\item En utilisant $A^{-1}$, résoudre $(S)$. \hfill (1 pt)
+	\item Calculer $\det A$. La matrice $A$ est-elle inversible ?
+	\item Déterminer $A^{-1}$.
+	\item Écrire $(S)$ sous la forme matricielle $AX = B$.
+	\item En utilisant $A^{-1}$, résoudre $(S)$.
 \end{enumerate}
 
 \exercice{Sujet type Bac — puissance par décomposition \hfill \difficile}
 On considère la matrice $A = \begin{pmatrix}3&-1\\1&1\end{pmatrix}$.
 \begin{enumerate}
-	\item Calculer $A^2$ et vérifier que $A^2 = 4A - 4\,I_2$. \hfill (1 pt)
-	\item On pose $N = A - 2\,I_2$. Calculer $N^2$. \hfill (0,75 pt)
+	\item Calculer $A^2$ et vérifier que $A^2 = 4A - 4\,I_2$.
+	\item On pose $N = A - 2\,I_2$. Calculer $N^2$.
 	\item Démontrer par récurrence que, pour tout entier $n \geqslant 1$,
 	$$
 	A^n = 2^n I_2 + n\,2^{n-1} N.
 	$$
-	\hfill (1,5 pt)
-	\item Calculer $A^3$ à l'aide de la formule, puis vérifier directement. \hfill (0,75 pt)
+	\item Calculer $A^3$ à l'aide de la formule, puis vérifier directement.
 \end{enumerate}
 
 \exercice{Sujet type Bac — inverse par relation et système $3\times 3$ \hfill \difficile}
 On considère la matrice $C = \begin{pmatrix}0&1&1\\1&0&1\\1&1&0\end{pmatrix}$.
 \begin{enumerate}
-	\item Calculer $C^2$. \hfill (1 pt)
-	\item Vérifier que $C^2 - C = 2\,I_3$. \hfill (0,5 pt)
-	\item En déduire que $C$ est inversible et déterminer $C^{-1}$. \hfill (1 pt)
+	\item Calculer $C^2$.
+	\item Vérifier que $C^2 - C = 2\,I_3$.
+	\item En déduire que $C$ est inversible et déterminer $C^{-1}$.
 	\item En déduire les solutions du système
 	$$
 	(S) : \begin{cases} y + z = 2 \\ x + z = 0 \\ x + y = 4 \end{cases}
 	$$
-	\hfill (1 pt)
 \end{enumerate}
 
 \exercice{Sujet type Bac — déterminant, trace et inversibilité \hfill \difficile}
@@ -765,11 +763,11 @@ On donne deux matrices carrées d'ordre $3$, $M$ et $N$, telles que
 $\det(M) = 3$ et $\det(N) = -2$, ainsi que deux matrices carrées d'ordre $2$,
 $A$ et $B$, telles que $\operatorname{tr}(A) = 5$ et $\operatorname{tr}(B) = -1$.
 \begin{enumerate}
-	\item Calculer $\det(MN)$, $\det(M^2 N^3)$ et $\det({}^{t}\!M)$. \hfill (1 pt)
-	\item La matrice $M$ est-elle inversible ? Justifier. \hfill (0,5 pt)
+	\item Calculer $\det(MN)$, $\det(M^2 N^3)$ et $\det({}^{t}\!M)$.
+	\item La matrice $M$ est-elle inversible ? Justifier.
 	\item Peut-on avoir $MN = NM = I_3$ (c'est-à-dire $N = M^{-1}$) ? Justifier
-	à l'aide des déterminants. \hfill (1 pt)
-	\item Calculer $\operatorname{tr}(A + B)$ et $\operatorname{tr}(2A - 3B)$. \hfill (0,75 pt)
+	à l'aide des déterminants.
+	\item Calculer $\operatorname{tr}(A + B)$ et $\operatorname{tr}(2A - 3B)$.
 	\item On donne $AB = \begin{pmatrix}2&1\\0&3\end{pmatrix}$. Donner
-	$\operatorname{tr}(BA)$ sans calculer $BA$. \hfill (0,5 pt)
+	$\operatorname{tr}(BA)$ sans calculer $BA$.
 \end{enumerate}

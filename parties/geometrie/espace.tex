@@ -113,12 +113,12 @@
 \begin{definition}[Deux expressions du produit scalaire]
 	Pour $\vec u(x;y;z)$ et $\vec v(x';y';z')$ :
 	$$
-	\vec u \cdot \vec v = x x' + y y' + z z'
-	\qquad \text{(expression analytique)}
-	$$
-	$$
-	\vec u \cdot \vec v = \left\|\vec u\right\|\,\left\|\vec v\right\|\cos\theta
-	\qquad \text{(expression géométrique, } \theta = (\vec u,\vec v) \text{)}
+	\begin{aligned}
+		\vec u \cdot \vec v &= x x' + y y' + z z'
+		&&\text{(expression analytique)}\\
+		\vec u \cdot \vec v &= \left\|\vec u\right\|\,\left\|\vec v\right\|\cos\theta
+		&&\text{(expression géométrique, } \theta = (\vec u,\vec v) \text{)}
+	\end{aligned}
 	$$
 \end{definition}
 
@@ -620,40 +620,40 @@ L'espace est muni d'un repère orthonormé direct
 $(O\,;\,\vec\imath,\vec\jmath,\vec k)$. On donne
 $A(1;-1;1)$, $B(3;2;1)$ et $C(2;-1;0)$.
 \begin{enumerate}
-	\item Vérifier que le plan $(ABC)$ a pour équation $3x - 2y + 3z - 8 = 0$. \hfill (0,25 pt)
+	\item Vérifier que le plan $(ABC)$ a pour équation $3x - 2y + 3z - 8 = 0$.
 	\item Écrire une équation cartésienne du plan $(Q)$ contenant $B$, de
-	vecteur normal $\vect{AC}$. \hfill (0,5 pt)
+	vecteur normal $\vect{AC}$.
 	\item
 	\begin{enumerate}
 		\item Montrer que $(ABC) \cap (Q)$ est une droite $(D)$ dont on donnera
-		une représentation paramétrique. \hfill (0,75 pt)
+		une représentation paramétrique.
 		\item Montrer que $C$ est le projeté orthogonal de $A$ sur $(D)$ et en
-		déduire la distance de $A$ à $(D)$. \hfill (0,75 pt)
+		déduire la distance de $A$ à $(D)$.
 	\end{enumerate}
 	\item Soit $(R) : x - y + z = 1$. Déterminer les coordonnées du point $I$,
-	intersection des trois plans $(ABC)$, $(Q)$ et $(R)$. \hfill (0,75 pt)
+	intersection des trois plans $(ABC)$, $(Q)$ et $(R)$.
 \end{enumerate}
 
 \exercice{Sujet type Bac — produit vectoriel et parallélisme \hfill \difficile}
 On donne $A(2;3;1)$, $B(-1;1;1)$, $C(-3;1;0)$, $D(4;-1;3)$.
 \begin{enumerate}
-	\item Calculer $\vec n = \vect{AB} \wedge \vect{AC}$. \hfill (0,5 pt)
-	\item En déduire une équation cartésienne du plan $(ABC)$. \hfill (0,5 pt)
+	\item Calculer $\vec n = \vect{AB} \wedge \vect{AC}$.
+	\item En déduire une équation cartésienne du plan $(ABC)$.
 	\item Donner une représentation paramétrique de la droite $(\Delta)$ de
-	vecteur directeur $\vec u(1;2;-1)$ passant par $D$. \hfill (0,5 pt)
-	\item Montrer que $(\Delta)$ est strictement parallèle au plan $(ABC)$. \hfill (0,5 pt)
+	vecteur directeur $\vec u(1;2;-1)$ passant par $D$.
+	\item Montrer que $(\Delta)$ est strictement parallèle au plan $(ABC)$.
 \end{enumerate}
 
 \exercice{Sujet type Bac — deux plans parallèles et orthogonalité \hfill \difficile}
 On donne le point $A(2;2;1)$ et le plan $(P) : 3x + 2y + 6z + 33 = 0$.
 \begin{enumerate}
 	\item Vérifier que $(P)$ est strictement parallèle au plan $(Q)$ contenant
-	$A$, de vecteur normal $\vec n(-3;-2;-6)$. \hfill (0,25 pt)
-	\item Déterminer la distance qui sépare $(P)$ et $(Q)$. \hfill (0,75 pt)
+	$A$, de vecteur normal $\vec n(-3;-2;-6)$.
+	\item Déterminer la distance qui sépare $(P)$ et $(Q)$.
 	\item Soit $H(-1;0;-5)$. Justifier que $H \in (P)$ et que $(AH)$ et $(P)$
-	sont orthogonaux. \hfill (0,75 pt)
+	sont orthogonaux.
 	\item Calculer $\left\|\vect{AH}\right\|$ et retrouver la distance de $A$ à
-	$(P)$. \hfill (0,5 pt)
+	$(P)$.
 \end{enumerate}
 
 \exercice{Sujet type Bac — sphère et droite perpendiculaire à un plan \hfill \difficile}
@@ -661,19 +661,19 @@ On donne $A(1;-1;1)$, $B(-2;1;-1)$, $C(3;2;2)$.
 \begin{enumerate}
 	\item
 	\begin{enumerate}
-		\item Calculer $\vect{AB} \wedge \vect{AC}$. \hfill (0,25 pt)
-		\item En déduire une équation cartésienne du plan $(ABC)$. \hfill (0,5 pt)
+		\item Calculer $\vect{AB} \wedge \vect{AC}$.
+		\item En déduire une équation cartésienne du plan $(ABC)$.
 	\end{enumerate}
 	\item Soit $(S) : x^2 + y^2 + z^2 - 4x + 4y - 2z + 8 = 0$. Déterminer le
-	centre $\Omega$ et le rayon $R$ de $(S)$. \hfill (0,5 pt)
+	centre $\Omega$ et le rayon $R$ de $(S)$.
 	\item Soit $(\Delta)$ la droite passant par $\Omega$ et perpendiculaire à
 	$(ABC)$.
 	\begin{enumerate}
-		\item Donner une représentation paramétrique de $(\Delta)$. \hfill (0,25 pt)
+		\item Donner une représentation paramétrique de $(\Delta)$.
 		\item Déterminer les coordonnées du point $H$, intersection de
-		$(\Delta)$ et de $(ABC)$. \hfill (0,5 pt)
+		$(\Delta)$ et de $(ABC)$.
 		\item $(ABC)$ coupe-t-il la sphère $(S)$ ? Si oui, préciser le rayon du
-		cercle d'intersection. \hfill (0,5 pt)
+		cercle d'intersection.
 	\end{enumerate}
 \end{enumerate}
 
@@ -681,13 +681,13 @@ On donne $A(1;-1;1)$, $B(-2;1;-1)$, $C(3;2;2)$.
 On donne le point $A(2;-1;3)$ et le vecteur $\vec u(3;-2;1)$.
 \begin{enumerate}
 	\item Écrire une représentation paramétrique de la droite $(D)$ passant par
-	$A$ de vecteur directeur $\vec u$. \hfill (0,25 pt)
+	$A$ de vecteur directeur $\vec u$.
 	\item Soit $(D') : (x;y;z) = (4t + 1\,;\,5t - 8\,;\,-2t + 6)$, $t \in \R$.
 	\begin{enumerate}
-		\item Montrer que $(D)$ et $(D')$ sont orthogonales. \hfill (0,75 pt)
+		\item Montrer que $(D)$ et $(D')$ sont orthogonales.
 		\item Déterminer les coordonnées du point $I$, intersection de $(D)$ et
-		$(D')$. \hfill (0,5 pt)
+		$(D')$.
 	\end{enumerate}
 	\item Écrire une équation cartésienne du plan $(P)$ contenant $(D)$ et
-	$(D')$. \hfill (0,75 pt)
+	$(D')$.
 \end{enumerate}

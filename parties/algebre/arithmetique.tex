@@ -2,7 +2,7 @@
 
 \begin{citationchapitre}
 	« Dieu a créé les nombres entiers ; tout le reste est l'œuvre de l'homme. »
-	
+
 	--- Leopold Kronecker
 \end{citationchapitre}
 
@@ -30,88 +30,88 @@ $\{0;1;2;\ldots\}$ ;
 $\mathbb Z$ celui des entiers relatifs
 $\{\ldots;-2;-1;0;1;2;\ldots\}$.
 	\begin{definition}
-		
+
 		Soient $a$ et $b$ deux entiers relatifs avec $b\neq 0$.
-		
+
 		On dit que $b$ divise $a$, ou que $b$ est un diviseur de $a$,
 		s'il existe un entier relatif $k$ tel que
 		$$
 		a=bk.
 		$$
-		
+
 		On dit aussi que $a$ est un multiple de $b$.
-		
+
 	\end{definition}
-	
-\remarque		
+
+\remarque
 		$0$ est un multiple de n'importe quel entier relatif $b$
 		(car $0=b\times 0$).
-		
+
 		En revanche, $0$ n'est un diviseur d'aucun nombre.
-		
-	
+
+
 	\begin{exemple}
-		
+
 		$4$ divise $24$ car $24=4\times6$;
-		$-4$ divise aussi $24$ car $24=(-4)\times(-6)$. 		
+		$-4$ divise aussi $24$ car $24=(-4)\times(-6)$.
 		Ainsi, $24$ est un multiple de $4$ et de $-4$.
-		
+
 	\end{exemple}
-	
+
 	\begin{propriete}{}{}
-		
+
 		Soient $a$ et $b$ deux entiers relatifs avec $b\neq0$.
-		
+
 		\begin{itemize}[label=\textbullet]
 			\item Si $b\mid a$, alors tout multiple de $a$ est un multiple de $b$.
 			\item Si $b\mid a$, alors tout diviseur de $b$ est un diviseur de $a$.
 		\end{itemize}
-		
+
 	\end{propriete}
-		
+
 	\begin{propriete}{}{}
-		
+
 		Soient $a,b\in\mathbb Z$ avec $b\neq0$.
-		
+
 		$b\mid a\iff -b\mid a\iff b\mid(-a)\iff -b\mid(-a).$
-		
+
 	\end{propriete}
-	
+
 	\consequence
 	$a$ et $-a$ ont les mêmes diviseurs dans $\mathbb Z$. Les diviseurs de $-a$ étant les opposés des diviseurs positifs de $a$, on restreindra souvent l'étude à la divisibilité dans $\mathbb N$.
-	
+
 	\begin{propriete}{}{}
-		
+
 		\begin{enumerate}
 			\item $a\mid b$ et $b\mid c \Rightarrow a\mid c$.
-			
+
 			\item $a\mid b$ et $a\mid c \Rightarrow a\mid(bu+cv)$ pour tous
 			$u,v\in\mathbb Z$.
-			
+
 		\end{enumerate}
-		
+
 	\end{propriete}
 	\begin{exemple}
-		
+
 		Si $a$ divise deux entiers consécutifs $n$ et $n+1$, alors
-		
+
 		$a\mid((n+1)-n)$.
-		
+
 		Ainsi, $a\mid1$ et donc $a=1$ ou $a=-1$.
-		
+
 	\end{exemple}
-	
+
 	\exerciceresolu
 	\textbf{Caractériser la divisibilité}
-	
+
 	\begin{enumerate}
 		\item Montrer que $14p^2-35q$ est divisible par $7$ quels que soient les entiers relatifs $p$ et $q$.
-		
+
 		\item Déterminer les entiers naturels $n$ tels que $4$ divise $n+13$.
 	\end{enumerate}
-	
+
 	\solution
-	
+
 	\begin{enumerate}
 		\item Il faut montrer qu'il existe un entier $k$ tel que
 		$$
@@ -122,7 +122,7 @@ $\{\ldots;-2;-1;0;1;2;\ldots\}$.
 		14p^2-35q=7(2p^2-5q).
 		$$
 		Comme $2p^2-5q\in\mathbb Z$, on conclut que $14p^2-35q$ est divisible par $7$.
-		
+
 		\item Si $4$ divise $n+13$, alors il existe $k\in\mathbb N$ tel que
 		$$
 		n+13=4k.
@@ -145,16 +145,16 @@ $\{\ldots;-2;-1;0;1;2;\ldots\}$.
 		$$
 		\{3,7,11,\ldots\}.
 		$$
-		
+
 	\end{enumerate}
 	\exerciceresolu
-	
+
 	\textbf{Utiliser un raisonnement par l'absurde : }
 	Montrer que, quel que soit l'entier relatif $n$, $2n+5$ n'est jamais divisible par $2$.
-	
+
 	\solution
 	Supposons que $2n+5$ soit divisible par $2$.
-	
+
 	Il existe alors $k\in\mathbb Z$ tel que
 	$$
 	2n+5=2k.
@@ -165,44 +165,44 @@ $\{\ldots;-2;-1;0;1;2;\ldots\}$.
 	$$
 	Ainsi, $5$ serait divisible par $2$, ce qui est impossible.
 	Donc $2$ ne divise jamais $2n+5$.
-	
+
 	\exerciceresolu
 	\textbf{Déterminer et utiliser la liste des diviseurs d'un nombre :}
-	
+
 	Déterminer dans $\mathbb Z$ la liste des diviseurs de $7$ et en déduire les entiers relatifs $n$ tels que $4n+1$ divise $7$.
-	
+
 	\solution
 	$$
 	D(7)=\{-7,-1,1,7\}.
 	$$
-	
+
 	Si $4n+1$ divise $7$, alors
 	$$
 	4n+1\in D(7).
 	$$
 	On résout successivement :
-	
+
 	$4n+1=7 \Longrightarrow n=\frac32$(pas de solution dans $\mathbb Z$),
-	
+
 	$4n+1=-7 \Longrightarrow n=-2,$
 	$4n+1=1 \Longrightarrow n=0,$
-	
+
 	$4n+1=-1 \Longrightarrow n=-\frac12$	(pas de solution dans $\mathbb Z$).
-	
+
 	Les solutions sont donc	$n=-2 \quad\text{ou}\quad n=0.$\\
 
-	
+
 	\exerciceresolu
 	\textbf{Utiliser une combinaison linéaire :}
-	
+
 	Déterminer les entiers relatifs $n$ tels que $2n+1$ divise $n+13$.
-	
+
 	\solution : On cherche une combinaison linéaire de $2n+1$ et de $n+13$ indépendante de $n$ :
 	$$
 	(2n+1)-2(n+13)=-25.
 	$$
 	Ainsi, si $2n+1$ divise $n+13$, alors $2n+1$ divise $25$.
-	
+
 	Or
 	$$
 	D(25)=\{-25,-5,-1,1,5,25\}.
@@ -217,13 +217,13 @@ $\{\ldots;-2;-1;0;1;2;\ldots\}$.
 	$$
 	\boxed{\{-13,-3,-1,0,2,12\}}.
 	$$
-	
-	
+
+
 \section{Division euclidienne}
 
 \begin{theoreme}
 	Soient $a$ un entier relatif et $b$ un entier naturel non nul.
-	
+
 	Il existe un unique couple $(q,r)\in\mathbb Z\times\mathbb N$ tel que
 	$$
 	a=bq+r
@@ -237,40 +237,40 @@ $\{\ldots;-2;-1;0;1;2;\ldots\}$.
 On encadre $a$ par deux multiples consécutifs de $b$. \\
 \begin{center}
 	\begin{tikzpicture}[scale=0.9]
-		
+
 		% Axe
 		\draw[thick] (0,0)--(10,0);
-		
+
 		% Points
 		\fill[red] (0.5,0) circle (1.2pt);
 		\fill[red] (2.5,0) circle (1.2pt);
 		\fill[blue] (6,0) circle (1.2pt);
 		\fill[green!60!black] (7.3,0) circle (1.2pt);
 		\fill[blue] (9,0) circle (1.2pt);
-		
+
 		% Labels
 		\node[below] at (0.5,0) {$b$};
 		\node[below] at (2.5,0) {$2b$};
 		\node[below] at (6,0) {$qb$};
 		\node[below,green!60!black] at (7.3,0) {$a$};
 		\node[below] at (9,0) {$(q+1)b$};
-		
+
 		\node at (4,0) {$\cdots$};
-		
+
 		% Arc r
 		\draw[->,thick]
 		(6,0.25) to[bend left=35] node[above] {$+r$} (7.3,0.25);
-		
+
 		% Arc b
 		\draw[->,thick]
 		(6,0.7) to[bend left=35] node[above] {$+b$} (9,0.7);
-		
+
 	\end{tikzpicture}
 \end{center}
 
 
 \begin{exemple}
-	
+
 	La division euclidienne de $114$ par $8$ est
 	$$
 	114=8\times14+2,
@@ -281,20 +281,20 @@ On encadre $a$ par deux multiples consécutifs de $b$. \\
 \remarque
 	\begin{itemize}[label=\textbullet]
 		\item Dans la division euclidienne par $b$, il y a $b$ restes possibles : $0,1,2,\ldots b-1$.
-		
+
 		\item Il existe plusieurs écritures de la forme $a=bq+r$, mais une seule vérifie $0\le r<b$.
 		Par exemple :
 		$$
 		56=17\times3+5=17\times2+22.
 		$$
 		Comme $22>17$, la seconde égalité n'est pas une division euclidienne.
-		
+
 	\end{itemize}
-	
+
 \begin{propriete}{}{}
-	
+
 	Soient $a\in\mathbb Z$ et $b\in\mathbb N^*$.
-	
+
 	$b$ divise $a$ si et seulement si le reste de la division euclidienne de $a$ par $b$ est nul.
 \end{propriete}
 
@@ -306,13 +306,13 @@ On encadre $a$ par deux multiples consécutifs de $b$. \\
 	Ainsi, $6$ est un diviseur de $-36$.
 \end{exemple}
 \begin{propriete}{}{}
-	
+
 	Soit $b\ge2$ un entier naturel.
-	
+
 	Tout entier relatif s'écrit sous l'une des formes
 	$$
 	bq,\ bq+1,\ bq+2,\ \ldots,\ bq+(b-1)q
-	$$ 	
+	$$
 	où $q\in\mathbb Z$.
 \end{propriete}
 \begin{exemple}
@@ -320,21 +320,21 @@ On encadre $a$ par deux multiples consécutifs de $b$. \\
 	On utilise la propriété précédente pour raisonner par disjonction de cas.\\
 	Tout entier s'écrit sous l'une des formes
 	$3q$, $3q+1$ ou $3q+2$.
-	
+
 	\begin{itemize}[label=\textbullet]
-		
+
 		\item Si $n=3q$, $n^2+1=(3q)^2+1=9q^2+1 \neq 3k.$
-		
+
 		\item Si $n=3q+1$, $n^2+1=(3q+1)^2+1=9q^2+6q+2 \neq 3k.
-		$		
+		$
 		\item Si $n=3q+2, n^2+1=(3q+2)^2+1=9q^2+12q+5 \neq 3k.$
-		
+
 	\end{itemize}
-	
+
 	Dans les trois cas, $n^2+1$ n'est pas divisible par $3$.
-	
+
 \end{exemple}
-	
+
 \exerciceresolu
 \textbf{Raisonner par disjonction des cas :}
 
@@ -346,7 +346,7 @@ $(n-1)n(n+1)$ est divisible par $3$.
 Tout entier s'écrit sous l'une des formes $3q$, $3q+1$ ou $3q+2$.
 
 \begin{itemize}[label=\textbullet]
-	
+
 	\item Si $n=3q$, alors
 	$$
 	(n-1)n(n+1)=(3q-1)\times3q\times(3q+1)
@@ -362,11 +362,11 @@ Tout entier s'écrit sous l'une des formes $3q$, $3q+1$ ou $3q+2$.
 	(n-1)n(n+1)=(3q+1)(3q+2)(3q+3)
 	=3(3q+1)(3q+2)(q+1).
 	$$
-	
+
 \end{itemize}
 
 Dans les trois cas, $(n-1)n(n+1)$ est divisible par $3$.
-	
+
 \exerciceresolu
 \textbf{Conjecturer une divisibilité :}
 
@@ -409,7 +409,7 @@ Donc $n^2-1$ est divisible par $8$.
 
 \begin{definition}
 	Soient $a$ et $b$ deux entiers relatifs et $n$ un entier naturel non nul.
-	
+
 	On dit que $a$ est \textbf{congru à $b$ modulo $n$}, et on note
 	$$
 	a \equiv b \pmod{n} \quad \text{ou} \quad a \equiv b\ [n],
@@ -435,7 +435,7 @@ $a \equiv b\ [n] \iff b \equiv a\ [n]$. On dit aussi que $a$ et $b$ sont \textbf
 
 \begin{exemple}
 	$11 = 4 \times 2 + 3$ et $7 = 4 \times 1 + 3$, avec $0 \leqslant 3 < 4$.
-	
+
 	Donc $11$ et $7$ ont tous deux le reste $3$ dans la division par $4$, et donc $11 \equiv 7\ [4]$.
 \end{exemple}
 
@@ -463,20 +463,20 @@ $a \equiv b\ [n] \iff b \equiv a\ [n]$. On dit aussi que $a$ et $b$ sont \textbf
 
 \begin{propriete}{Compatibilité avec les opérations}{}
 	Soient $a$, $b$, $c$, $d$ des entiers relatifs et $n$ un entier naturel non nul.
-	
+
 	\begin{enumerate}
 		\item Si $a \equiv b\ [n]$, alors $a + c \equiv b + c\ [n]$.
-		
+
 		\item Si $a \equiv b\ [n]$ et $c \equiv d\ [n]$, alors $a + c \equiv b + d\ [n]$.
-		
+
 		On dit que \textbf{l'addition est compatible avec les congruences}.
-		
+
 		\item Si $a \equiv b\ [n]$, alors $ac \equiv bc\ [n]$.
-		
+
 		\item Si $a \equiv b\ [n]$ et $c \equiv d\ [n]$, alors $ac \equiv bd\ [n]$.
-		
+
 		On dit que \textbf{la multiplication est compatible avec les congruences}.
-		
+
 		\item Si $a \equiv b\ [n]$, alors pour tout entier naturel non nul $p$,
 		$$
 		a^p \equiv b^p\ [n].
@@ -494,7 +494,7 @@ $a \equiv b\ [n] \iff b \equiv a\ [n]$. On dit aussi que $a$ et $b$ sont \textbf
 
 \begin{attention}
 	La division n'est pas compatible avec les congruences.
-	
+
 	Par exemple, $5 \times 4 \equiv 5 \times 6\ [10]$ (car $20 \equiv 30\ [10]$), mais $4 \not\equiv 6\ [10]$.
 \end{attention}
 
@@ -506,11 +506,11 @@ $a \equiv b\ [n] \iff b \equiv a\ [n]$. On dit aussi que $a$ et $b$ sont \textbf
 \textbf{Résoudre des équations avec des congruences}
 
 Résoudre les équations suivantes dans $\Z$ :
-\begin{enumerate}
-	\item $x + 3 \equiv 2\ [7]$
-	\item $3x \equiv 2\ [5]$
-	\item $x^2 \equiv 0\ [4]$
-\end{enumerate}
+\begin{listecol}(2)
+	\task $x + 3 \equiv 2\ [7]$
+	\task $3x \equiv 2\ [5]$
+	\task $x^2 \equiv 0\ [4]$
+\end{listecol}
 
 \solution
 
@@ -522,7 +522,7 @@ Résoudre les équations suivantes dans $\Z$ :
 	\iff x \equiv -1\ [7].
 	$$
 	Les solutions sont donc les entiers de la forme $7k - 1$ avec $k \in \Z$.
-	
+
 	\item On utilise un tableau de congruences modulo $5$ :
 	\[
 	\begin{array}{|c|c|c|c|c|c|}
@@ -534,9 +534,9 @@ Résoudre les équations suivantes dans $\Z$ :
 	\end{array}
 	\]
 	Le seul cas qui convient est $x \equiv 4\ [5]$.
-	
+
 	Les solutions sont donc les entiers de la forme $5k + 4$ avec $k \in \Z$.
-	
+
 	\item On raisonne par disjonction des cas modulo $4$ :
 	\[
 	\begin{array}{|c|c|c|c|c|}
@@ -548,7 +548,7 @@ Résoudre les équations suivantes dans $\Z$ :
 	\end{array}
 	\]
 	Deux cas conviennent : $x \equiv 0\ [4]$ et $x \equiv 2\ [4]$.
-	
+
 	Les solutions sont donc les entiers de la forme $4k$ ou $4k + 2$ avec $k \in \Z$.
 \end{enumerate}
 
@@ -565,13 +565,13 @@ Résoudre les équations suivantes dans $\Z$ :
 
 \begin{enumerate}
 	\item On a $2^3 = 8$ et $8 = 7 + 1$, donc $8 \equiv 1\ [7]$, c'est-à-dire $2^3 \equiv 1\ [7]$.
-	
+
 	Par compatibilité avec les puissances :
 	$$
 	2^{3n} = \left(2^3\right)^n \equiv 1^n \equiv 1\ [7].
 	$$
 	Donc $2^{3n} - 1 \equiv 0\ [7]$, ce qui signifie que $2^{3n} - 1$ est bien un multiple de $7$.
-	
+
 	\item On utilise un tableau de congruences modulo $4$ :
 	\[
 	\begin{array}{|c|c|c|c|c|}
@@ -702,11 +702,11 @@ Comme $0 \leqslant 1 < 3$, le reste de la division euclidienne de $11^{2020}$ pa
 
 \begin{definition}
 	Soient $a$ et $b$ deux entiers naturels non tous les deux nuls.
-	
+
 	L'ensemble $D(a\,;b) = D(a) \cap D(b)$ des diviseurs communs de $a$ et $b$ admet
 	un plus grand élément, noté $\mathrm{PGCD}(a\,;b)$, appelé \textbf{plus grand commun diviseur}
 	de $a$ et de $b$.
-	
+
 	Par convention, si $a \in \N^*$, alors $\mathrm{PGCD}(a\,;0) = a$.
 \end{definition}
 
@@ -737,13 +737,11 @@ Déterminer $\mathrm{PGCD}(1\,551\,;\,132)$.
 
 On effectue les divisions euclidiennes successives :
 $$
-1\,551 = 11 \times 132 + 99
-$$
-$$
-132 = 1 \times 99 + 33
-$$
-$$
-99 = 3 \times 33 + 0
+\begin{aligned}
+	1\,551 &= 11 \times 132 + 99\\
+	   132 &= 1 \times 99 + 33\\
+	    99 &= 3 \times 33 + 0
+\end{aligned}
 $$
 Le dernier reste non nul est $33$, donc $\mathrm{PGCD}(1\,551\,;\,132) = 33$.
 
@@ -846,7 +844,7 @@ $$
 
 \begin{definition}
 	Soient $a$ et $b$ deux entiers relatifs non nuls.
-	
+
 	On dit que $a$ et $b$ sont \textbf{premiers entre eux} lorsque $\mathrm{PGCD}(a\,;b) = 1$.
 \end{definition}
 
@@ -855,19 +853,19 @@ Les seuls diviseurs communs de deux entiers premiers entre eux sont $-1$ et $1$.
 
 \begin{definition}
 	Soient $a$ un entier relatif et $b$ un entier naturel non nul.
-	
+
 	La fraction $\dfrac{a}{b}$ est \textbf{irréductible} si $a$ et $b$ sont premiers entre eux.
 \end{definition}
 
 %\begin{propriete}{}{}
 %	Soient $a$ et $b$ deux entiers relatifs non nuls et $d = \mathrm{PGCD}(a\,;b)$.
-%	
+%
 %	Il existe deux entiers $a'$ et $b'$ tels que $a = da'$, $b = db'$ et $\mathrm{PGCD}(a'\,;b') = 1$.
 %\end{propriete}
 
 \begin{theoreme}[Théorème de Bézout]
 	Soient $a$ et $b$ deux entiers relatifs non nuls.
-	
+
 	$a$ et $b$ sont premiers entre eux si et seulement s'il existe deux entiers relatifs $u$ et $v$ tels que
 	$$
 	au + bv = 1.
@@ -884,7 +882,7 @@ On peut les calculer en « remontant » les étapes de l'algorithme d'Euclide.
 
 \begin{theoreme}[Bézout généralisé]
 	Soient $a$ et $b$ deux entiers relatifs non nuls.
-	
+
 	$\mathrm{PGCD}(a\,;b) = d$ si et seulement si $d$ divise $a$ et $b$, et s'il existe deux entiers
 	relatifs $u$ et $v$ tels que $au + bv = d$.
 \end{theoreme}
@@ -900,7 +898,7 @@ Par exemple $5 = 3 \times 1 + 2 \times 1$, mais $5$ n'est pas le PGCD de $3$ et 
 
 \begin{theoreme}[Théorème de Gauss]
 	Soient $a$, $b$ et $c$ trois entiers relatifs non nuls.
-	
+
 	Si $a$ divise $bc$ et si $a$ et $b$ sont premiers entre eux, alors $a$ divise $c$.
 \end{theoreme}
 
@@ -910,7 +908,7 @@ Par exemple, $4$ divise $12 = 2 \times 6$, mais $4$ ne divise ni $2$ ni $6$.
 
 \begin{corollaire}
 	Soient $a$, $b$ et $c$ trois entiers relatifs non nuls.
-	
+
 	Si $a$ divise $c$, si $b$ divise $c$, et si $a$ et $b$ sont premiers entre eux,
 	alors $ab$ divise $c$.
 \end{corollaire}
@@ -940,7 +938,7 @@ Par exemple, $4$ divise $12 = 2 \times 6$, mais $4$ ne divise ni $2$ ni $6$.
 
 \begin{propriete}{Condition d'existence des solutions}{}
 	Soient $a$, $b$ et $c$ trois entiers relatifs non nuls.
-	
+
 	L'équation $ax + by = c$ admet des solutions dans $\Z^2$ si et seulement si
 	$\mathrm{PGCD}(a\,;b)$ divise $c$.
 \end{propriete}
@@ -1055,17 +1053,17 @@ avec $\mathrm{A} = 10$, …, $\mathrm{F} = 15$.
 \begin{exemple}
 	$\overline{2\,\mathrm{A}\,3}^{\,16} = 2\times16^2 + 10\times16 + 3
 	= 512 + 160 + 3 = 675$.
-	
+
 	\medskip
 	$675$ en base $8$ :
-	
+
 	\begin{center}
 		\begin{tikzpicture}[
 			every node/.style={font=\small},
 			bloc/.style={},
 			arr/.style={-Latex, thick}
 			]
-			
+
 			% --- Etage 1 : 675 | 8 ---
 			\node (d1) at (0,0) {$675$};
 			\node (v1) at (1.1,0) {$8$};
@@ -1073,7 +1071,7 @@ avec $\mathrm{A} = 10$, …, $\mathrm{F} = 15$.
 			\draw (0,-0.15) -- (1.6,-0.15);
 			\node (r1) at (0,-0.9) {$\mathbf{3}$};
 			\node (q1) at (1.1,-0.9) {$84$};
-			
+
 			% --- Etage 2 : 84 | 8, décalé bas-droite ---
 			\node (d2) at (2.6,-1.8) {$84$};
 			\node (v2) at (3.7,-1.8) {$8$};
@@ -1081,7 +1079,7 @@ avec $\mathrm{A} = 10$, …, $\mathrm{F} = 15$.
 			\draw (2.6,-1.95) -- (4.2,-1.95);
 			\node (r2) at (2.6,-2.7) {$\mathbf{4}$};
 			\node (q2) at (3.7,-2.7) {$10$};
-			
+
 			% --- Etage 3 : 10 | 8 ---
 			\node (d3) at (5.2,-3.6) {$10$};
 			\node (v3) at (6.3,-3.6) {$8$};
@@ -1089,7 +1087,7 @@ avec $\mathrm{A} = 10$, …, $\mathrm{F} = 15$.
 			\draw (5.2,-3.75) -- (6.8,-3.75);
 			\node (r3) at (5.2,-4.5) {$\mathbf{2}$};
 			\node (q3) at (6.3,-4.5) {$1$};
-			
+
 			% --- Etage 4 : 1 | 8 ---
 			\node (d4) at (7.8,-5.4) {$1$};
 			\node (v4) at (8.9,-5.4) {$8$};
@@ -1097,15 +1095,15 @@ avec $\mathrm{A} = 10$, …, $\mathrm{F} = 15$.
 			\draw (7.8,-5.55) -- (9.4,-5.55);
 			\node (r4) at (7.8,-6.3) {$\mathbf{1}$};
 			\node (q4) at (8.9,-6.3) {$0$};
-			
+
 			% --- flèches : le quotient devient le dividende suivant ---
 			\draw[arr] (q1) -- (d2);
 			\draw[arr] (q2) -- (d3);
 			\draw[arr] (q3) -- (d4);
-			
+
 		\end{tikzpicture}
 	\end{center}
-	
+
 	En lisant les restes du \textbf{dernier vers le premier} : $675 = \overline{1243}^{\,8}$.
 \end{exemple}
 
@@ -1188,7 +1186,7 @@ Répondre par \emph{vrai} ou \emph{faux} en justifiant brièvement.
 	5^{2n+1} + 3^{n+2}
 	$$
 	est divisible par $8$.
-	
+
 	\item Montrer que pour tout entier naturel $n$,
 	$$
 	7^n + 2 \times 4^n
@@ -1203,9 +1201,9 @@ Répondre par \emph{vrai} ou \emph{faux} en justifiant brièvement.
 
 \begin{enumerate}
 	\item Déterminer le reste de la division euclidienne de $7^{2025}$ par $6$.
-	
+
 	\item Déterminer le reste de la division euclidienne de $3^{100}$ par $8$.
-	
+
 	\item En déduire le reste de la division euclidienne de $3^{100} + 7^{2025}$ par $8$.
 \end{enumerate}
 
@@ -1216,11 +1214,11 @@ Répondre par \emph{vrai} ou \emph{faux} en justifiant brièvement.
 
 Résoudre dans $\Z/5\Z$ les équations suivantes.
 
-\begin{enumerate}
-	\item $\bar{2}x + \bar{3} = \bar{1}$
-	\item $x^2 + \bar{2}x = \bar{3}$
-	\item $x^2 + \bar{4}x + \bar{4} = \bar{0}$
-\end{enumerate}
+\begin{listecol}(2)
+	\task $\bar{2}x + \bar{3} = \bar{1}$
+	\task $x^2 + \bar{2}x = \bar{3}$
+	\task $x^2 + \bar{4}x + \bar{4} = \bar{0}$
+\end{listecol}
 
 
 % ------------------------------------------------------------
@@ -1229,9 +1227,9 @@ Résoudre dans $\Z/5\Z$ les équations suivantes.
 
 \begin{enumerate}
 	\item Résoudre dans $\Z/6\Z$ l'équation $\bar{3}x = \bar{3}$.
-	
+
 	\item Résoudre dans $\Z/8\Z$ l'équation $x^2 = \bar{1}$.
-	
+
 	\item Résoudre dans $\Z/8\Z$ l'équation $x^2 + \bar{2}x = \bar{0}$.
 \end{enumerate}
 
@@ -1244,9 +1242,9 @@ Résoudre dans $\Z/5\Z$ les équations suivantes.
 
 \begin{enumerate}
 	\item Calculer $\mathrm{PGCD}(252\,;\,180)$ à l'aide de l'algorithme d'Euclide.
-	
+
 	\item En déduire l'ensemble $D(252\,;\,180)$ des diviseurs communs de $252$ et $180$.
-	
+
 	\item Soit $n$ un entier naturel. On pose $a = 3n + 2$ et $b = 2n + 1$.
 	Montrer que $\mathrm{PGCD}(a\,;b)$ divise $1$, puis en déduire que $a$ et $b$
 	sont premiers entre eux.
@@ -1275,14 +1273,14 @@ Soit $n$ un entier naturel. On pose $A = n^5 - n$.
 
 \begin{enumerate}
 	\item Montrer que $A = n(n-1)(n+1)(n^2+1)$.
-	
+
 	\item
 	\begin{enumerate}
 		\item Montrer que $2 \mid A$.
 		\item Montrer que $3 \mid A$.
 		\item Montrer que $5 \mid A$ en utilisant un tableau de congruences modulo $5$.
 	\end{enumerate}
-	
+
 	\item Comme $\mathrm{PGCD}(2\,;3) = \mathrm{PGCD}(3\,;5) = \mathrm{PGCD}(2\,;5) = 1$,
 	en déduire que $30 \mid A$.
 \end{enumerate}
@@ -1297,16 +1295,16 @@ On considère l'équation $(E) : 37x - 43y = 1$ où $(x\,;y) \in \Z^2$.
 \begin{enumerate}
 	\item En appliquant l'algorithme d'Euclide aux entiers $37$ et $43$,
 	montrer que $\mathrm{PGCD}(37\,;\,43) = 1$.
-	
+
 	\item En remontant les étapes de l'algorithme, trouver une solution
 	particulière $(x_0\,;y_0)$ de $(E)$.
-	
+
 	\item Montrer que si $(x\,;y)$ est une solution de $(E)$, alors
 	$37(x - x_0) = 43(y - y_0)$.
 	En déduire, à l'aide du théorème de Gauss, que $43 \mid (x - x_0)$.
-	
+
 	\item Déterminer l'ensemble de toutes les solutions de $(E)$.
-	
+
 	\item En déduire toutes les solutions de l'équation $37x - 43y = 5$.
 \end{enumerate}
 
@@ -1359,10 +1357,10 @@ $$
 
 \begin{enumerate}
 	\item Montrer que $2^4 \equiv 1\ [5]$, puis déterminer le reste de $2^{2025}$ dans la division par $5$.
-	
+
 	\item Montrer que $10^2 \equiv -1\ [101]$, puis déterminer le reste de $10^{2024}$
 	dans la division par $101$.
-	
+
 	\item Montrer que pour tout entier naturel $n$,
 	$$
 	6^n + (-1)^{n+1} \equiv 0\ [7].
@@ -1425,7 +1423,7 @@ et $m = \mathrm{PPCM}(a\,;b)$.
 %	$$
 %	m = da'b' = \frac{ab}{d}.
 %	$$
-%	
+%
 %	\item Soit $n$ un entier naturel non nul. Montrer que
 %	$$
 %	\mathrm{PGCD}(na\,;\,nb) = n\,\mathrm{PGCD}(a\,;b)
@@ -1434,7 +1432,7 @@ et $m = \mathrm{PPCM}(a\,;b)$.
 %	$$
 %	\mathrm{PPCM}(na\,;\,nb) = n\,\mathrm{PPCM}(a\,;b).
 %	$$
-%	
+%
 %	\item On donne $\mathrm{PGCD}(a\,;b) = 12$ et $\mathrm{PPCM}(a\,;b) = 360$.
 %	\begin{enumerate}
 %		\item Calculer $a \times b$.
@@ -1457,7 +1455,7 @@ Soient $a$, $b$ et $c$ trois entiers naturels non nuls.
 		(utiliser le théorème de Gauss).
 		\item Montrer que dans le cas général, $\mathrm{PPCM}(a\,;b) \mid c$.
 	\end{enumerate}
-	
+
 	\item On donne trois entiers $a$, $b$, $c$ vérifiant
 	$$
 	\mathrm{PGCD}(a\,;b) = 6, \quad \mathrm{PPCM}(a\,;b) = 180, \quad c = \mathrm{PPCM}(a\,;b\,;36).
@@ -1471,7 +1469,7 @@ Soient $a$, $b$ et $c$ trois entiers naturels non nuls.
 		$$
 		puis en déduire une valeur possible de $c$.
 	\end{enumerate}
-	
+
 	\item Soit $n$ un entier naturel non nul. On pose $a = n(n+1)$ et $b = (n+1)(n+2)$.
 	\begin{enumerate}
 		\item Montrer que $\mathrm{PGCD}(a\,;b) = n+1$.
@@ -1492,13 +1490,13 @@ Soient $a$, $b$ et $c$ trois entiers naturels non nuls.
 	$$
 	7^{2n+1} + 4^{2n+1}
 	$$
-	est divisible par $11$. \hfill (1 pt)
-	\item Résoudre dans $\Z/5\Z$ l'équation $x^2 + \bar{2}\,x = \bar{3}$. \hfill (0,75 pt)
+	est divisible par $11$.
+	\item Résoudre dans $\Z/5\Z$ l'équation $x^2 + \bar{2}\,x = \bar{3}$.
 	\item Soit $(E)$ l'équation dans $\Z \times \Z$ : $29x - 11y = 1$.
 	\begin{enumerate}
 		\item En utilisant l'algorithme d'Euclide appliqué à $29$ et $11$,
-		trouver une solution particulière de $(E)$. \hfill (0,75 pt)
-		\item Résoudre $(E)$ dans $\Z \times \Z$. \hfill (0,75 pt)
+		trouver une solution particulière de $(E)$.
+		\item Résoudre $(E)$ dans $\Z \times \Z$.
 	\end{enumerate}
 \end{enumerate}
 
@@ -1511,8 +1509,7 @@ Soient $a$, $b$ et $c$ trois entiers naturels non nuls.
 		x + y = 150
 	\end{cases}
 	$$
-	\hfill (1 pt)
-	\item Effectuer la division euclidienne de $-47$ par $6$. \hfill (0,5 pt)
+	\item Effectuer la division euclidienne de $-47$ par $6$.
 	\item Résoudre dans $\Z/5\Z \times \Z/5\Z$ le système
 	$$
 	\begin{cases}
@@ -1520,21 +1517,20 @@ Soient $a$, $b$ et $c$ trois entiers naturels non nuls.
 		3x - y = \bar{0}
 	\end{cases}
 	$$
-	\hfill (1 pt)
 \end{enumerate}
 
 \exercice{Sujet type Bac — restes de puissances et diophantienne \hfill \difficile}
 \begin{enumerate}
 	\item Déterminer le reste de la division euclidienne de $5 \times 2^{2024}$
-	par $7$. \hfill (0,75 pt)
+	par $7$.
 	\item
 	\begin{enumerate}
-		\item Donner une solution particulière de l'équation $19x - 8y = 1$. \hfill (0,5 pt)
+		\item Donner une solution particulière de l'équation $19x - 8y = 1$.
 		\item En déduire la résolution dans $\Z \times \Z$ de l'équation
-		$19x - 8y = 3$. \hfill (1 pt)
+		$19x - 8y = 3$.
 	\end{enumerate}
 	\item Déterminer l'ensemble des entiers relatifs $n$ tels que
-	$2n + 3 \equiv 0\ [7]$. \hfill (0,5 pt)
+	$2n + 3 \equiv 0\ [7]$.
 \end{enumerate}
 
 \exercice{Sujet type Bac — systèmes de numération \hfill \difficile}
@@ -1542,22 +1538,22 @@ Un entier naturel $N$ s'écrit $\overline{ab}^{\,7}$ en base $7$ et
 $\overline{ba}^{\,5}$ en base $5$ (les chiffres $a$ et $b$ étant échangés).
 \begin{enumerate}
 	\item Écrire $N$ en base $10$ de deux manières et en déduire la relation
-	$3a = 2b$. \hfill (0,75 pt)
-	\item Déterminer les chiffres $a$ et $b$, puis la valeur de $N$. \hfill (0,75 pt)
-	\item Écrire $N$ en base $2$ et en base $16$. \hfill (0,5 pt)
-	\item Quel est le reste de la division euclidienne de $N^{2026}$ par $9$ ? \hfill (0,5 pt)
+	$3a = 2b$.
+	\item Déterminer les chiffres $a$ et $b$, puis la valeur de $N$.
+	\item Écrire $N$ en base $2$ et en base $16$.
+	\item Quel est le reste de la division euclidienne de $N^{2026}$ par $9$ ?
 \end{enumerate}
 
 \exercice{Sujet type Bac — PGCD de deux expressions et Gauss \hfill \difficile}
 Pour tout entier naturel $n$, on pose $a_n = 2n + 3$ et $b_n = 5n + 7$.
 \begin{enumerate}
-	\item Vérifier que $5\,a_n - 2\,b_n = 1$. \hfill (0,5 pt)
-	\item En déduire que $a_n$ et $b_n$ sont premiers entre eux pour tout $n$. \hfill (0,5 pt)
+	\item Vérifier que $5\,a_n - 2\,b_n = 1$.
+	\item En déduire que $a_n$ et $b_n$ sont premiers entre eux pour tout $n$.
 	\item
 	\begin{enumerate}
-		\item Montrer que $\mathrm{PGCD}(2n + 3\,;\,n + 1) = 1$. \hfill (0,5 pt)
+		\item Montrer que $\mathrm{PGCD}(2n + 3\,;\,n + 1) = 1$.
 		\item Montrer que $n^2 + 1 = (n + 1)(n - 1) + 2$, puis que
-		$\mathrm{PGCD}(n^2 + 1\,;\,n + 1)$ vaut $1$ ou $2$ selon la parité de $n$. \hfill (1 pt)
+		$\mathrm{PGCD}(n^2 + 1\,;\,n + 1)$ vaut $1$ ou $2$ selon la parité de $n$.
 	\end{enumerate}
-	\item Résoudre dans $\Z^2$ l'équation $a_n\,x + b_n\,y = 4$ pour $n = 1$. \hfill (0,5 pt)
+	\item Résoudre dans $\Z^2$ l'équation $a_n\,x + b_n\,y = 4$ pour $n = 1$.
 \end{enumerate}

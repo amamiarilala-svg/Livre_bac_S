@@ -16,7 +16,7 @@ Analyse, Géométrie, Probabilités, les sujets officiels du Bacc Série S
 étrangers). Compile sans erreur avec `latexmk -pdf`, et une passe de
 relecture globale (2026-08-26) a réduit les débordements de marge
 (`Overfull \hbox`) visibles de 27 à 13 occurrences uniques. Le livre fait
-**398 pages** et est organisé en **5 parties** (Algèbre, Analyse,
+**390 pages** et est organisé en **5 parties** (Algèbre, Analyse,
 Géométrie, Probabilités, Sujets et entraînement).
 
 ⚠️ Correction du 2026-08-27 : la note précédente affirmait que tous les
@@ -26,6 +26,25 @@ faux — il en reste **trois significatifs**, à traiter un jour :
 `parties/probabilites/conditionnelles.tex` l. 364–367 (31,5pt),
 `parties/probabilites/variables_aleatoires.tex` l. 185 (26,4pt).
 Les dix autres sont bien < 13pt.
+
+## Mise en page — conventions
+
+Depuis le 2026-08-30, trois réglages globaux (dans
+`config/environnements.tex`) tiennent la densité du livre : listes
+resserrées, air réduit autour des formules centrées, et `\medskip` avant
+les titres d'exercices. Pour toute nouvelle batterie de questions courtes,
+utiliser `\begin{listecol}(2)` (ou `multicols`), et pour un QCM
+`\begin{qcm}(2)` — 4 colonnes si les propositions tiennent en un ou deux
+symboles. Ne pas utiliser `\dfrac` dans une proposition de QCM : la
+hauteur de ligne double.
+
+## Barèmes de points
+
+Depuis le 2026-08-30 : **pas de barème dans les sujets types** (chapitres et
+`entrainement.tex`). Le barème est réservé aux **annales officielles**
+(`parties/annales/`), où il fait partie du document reproduit, avec le
+« N points » en tête d'exercice. Ne pas en réintroduire dans un nouveau
+sujet type.
 
 ## Chapitres — état
 
