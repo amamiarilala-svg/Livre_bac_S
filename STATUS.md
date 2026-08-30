@@ -54,8 +54,16 @@ utiliser `tabmethode` (sécable) et non `tabular` :
 ```
 
 L'argument optionnel est la largeur de la colonne de gauche (fraction de la
-largeur disponible, 0.40 par défaut). Une figure TikZ dans un encadré reste
-insécable : la placer plutôt hors de l'encadré si elle est haute.
+largeur disponible, 0.40 par défaut).
+
+Audit du 2026-08-30 : `attention` (25 blocs), `astucebac` (34) et `resume`
+(3) sont sains — aucun ne provoque de trou notable, même les quelques-uns
+qui contiennent une figure ou une petite table, car la boîte peut se couper
+autour. **La règle vaut surtout pour les figures hors encadré** : une
+`tikzpicture` posée en plein texte dans un `center` est insécable et peut
+laisser plus de 100 pt de blanc en bas de page. Pour une figure haute,
+préférer un flottant `\begin{figure}[htbp]`, qui laisse le texte combler
+le bas de page.
 
 ## Barèmes de points
 

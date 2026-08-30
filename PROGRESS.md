@@ -6,6 +6,36 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-30 — Audit des autres encadrés (`attention`, `astucebac`, `resume`)
+
+Même vérification que pour `methode`. **Les trois sont sains.**
+
+| Encadré | Blocs | Contenu insécable | Trou constaté |
+|---|---|---|---|
+| `attention` | 25 | 0 | aucun |
+| `astucebac` | 34 | 2 | 4,6 pt et 18 pt — négligeables |
+| `resume` | 3 | 3 (figures TikZ) | ≤ 10 pt, les boîtes se coupent bien |
+| `objectifs` | 20 | 0 | aucun |
+
+Les deux `astucebac` à contenu insécable (organigramme TikZ des
+transformations, petite table de la loi normale) ne posent pas de problème :
+ils sont entourés de texte dans la boîte, qui peut donc se couper autour.
+Les trois `resume` contiennent une figure TikZ mais se coupent correctement,
+la figure passant en bloc à la page suivante.
+
+**Trouvé en revanche : un vrai trou de 109 pt** en page 213 (Barycentre),
+causé non pas par un encadré mais par une **figure TikZ posée en plein
+texte** (`\begin{center}\begin{tikzpicture}`), donc insécable. Passée en
+flottant `[htbp]` : la figure reste juste après la propriété qu'elle
+illustre (haut de la page suivante) et le bas de page est désormais rempli.
+
+Restent 4 blancs > 45 pt dans le livre, tous **normaux** : ce sont des
+titres de section ou de sous-section que LaTeX refuse de laisser seuls en
+bas de page (p. 73, 157, 284), plus un cas limite à 54 pt où l'encadré ne
+tient réellement pas (p. 168). 390 pages, 12 `Overfull` inchangés.
+
+---
+
 ## 2026-08-30 — `methode` : le saut de page forcé, vérifié et corrigé
 
 **Vérification.** Contrairement à ce qu'on pouvait craindre, l'option
