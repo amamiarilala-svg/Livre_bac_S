@@ -609,28 +609,19 @@
 
 \begin{methode}
 	\textbf{Choisir la bonne technique de levée d'indétermination.}
-	\begin{center}
-	\renewcommand{\arraystretch}{1.4}
-	\begin{tabular}{>{\raggedright\arraybackslash}p{3.7cm}
-	                >{\raggedright\arraybackslash}p{4.4cm}}
-	\hline
-	\textbf{Situation} & \textbf{Réflexe} \\
-	\hline
-	$\e^x$, $x^n$, $\ln x$ mélangés en $\pm\infty$
-	& mettre en facteur le terme dominant \\
-	quotient $\dfrac{\infty}{\infty}$
-	& diviser haut et bas par le terme dominant \\
-	$\dfrac{\e^{\square}-1}{\square}$, $\dfrac{\ln(1+\square)}{\square}$, $\dfrac{\ln x}{x-1}$
-	& faire apparaître la limite usuelle ($=1$) \\
-	expression en $\dfrac{1}{x}$ ou $\sqrt{x}$
-	& changement de variable \\
-	$u(x)^{v(x)}$
-	& passer à $\e^{v(x)\ln u(x)}$ \\
-	terme borné / oscillant, ou inégalité connue
-	& comparaison / gendarmes \\
-	\hline
-	\end{tabular}
-	\end{center}
+	\begin{tabmethode}[0.45]{Situation}{Réflexe}
+		\ligne{$\e^x$, $x^n$, $\ln x$ mélangés en $\pm\infty$}
+		      {mettre en facteur le terme dominant}
+		\ligne{quotient $\dfrac{\infty}{\infty}$}
+		      {diviser haut et bas par le terme dominant}
+		\ligne{$\dfrac{\e^{\square}-1}{\square}$, $\dfrac{\ln(1+\square)}{\square}$, $\dfrac{\ln x}{x-1}$}
+		      {faire apparaître la limite usuelle ($=1$)}
+		\ligne{expression en $\dfrac{1}{x}$ ou $\sqrt{x}$}
+		      {changement de variable}
+		\ligne{$u(x)^{v(x)}$}{passer à $\e^{v(x)\ln u(x)}$}
+		\ligne{terme borné / oscillant, ou inégalité connue}
+		      {comparaison / gendarmes}
+	\end{tabmethode}
 \end{methode}
 
 \exerciceresolu

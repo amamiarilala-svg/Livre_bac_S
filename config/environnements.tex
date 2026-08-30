@@ -144,6 +144,45 @@ number within=chapter
 }
 
 
+%-------------------  TABLEAU-METHODE (secable) -------------------
+% Tableau « Situation -> Reflexe » a deux colonnes alignees, mais construit
+% ligne par ligne : LaTeX peut donc couper entre deux lignes en fin de page.
+%
+% Un `tabular` en est incapable (bloc insecable) : place dans une boite
+% `methode`, il empeche la boite de se couper, la fait sauter entiere a la
+% page suivante et laisse un trou pouvant atteindre un tiers de page.
+%
+%   \begin{tabmethode}[0.45]{En-tete gauche}{En-tete droite}
+%       \ligne{situation}{reflexe}
+%   \end{tabmethode}
+%
+% L'argument optionnel est la largeur de la colonne de gauche, en fraction
+% de la largeur disponible (0.40 par defaut).
+\newlength{\tabmethodegauche}
+\newlength{\tabmethodedroite}
+\newcommand{\ligne}[2]{%
+	\par\noindent
+	\parbox[t]{\tabmethodegauche}{\raggedright\strut #1}%
+	\hspace{0.03\linewidth}%
+	\parbox[t]{\tabmethodedroite}{\raggedright\strut #2}%
+	\par\vspace{2.5pt}%
+}
+\newenvironment{tabmethode}[3][0.40]{%
+	\setlength{\tabmethodegauche}{#1\linewidth}%
+	\setlength{\tabmethodedroite}{\dimexpr\linewidth-\tabmethodegauche-0.035\linewidth\relax}%
+	\par\smallskip
+	\noindent\rule{\linewidth}{0.4pt}\par\nobreak\vspace{2pt}
+	\noindent
+	\parbox[t]{\tabmethodegauche}{\raggedright\strut\textbf{#2}}%
+	\hspace{0.03\linewidth}%
+	\parbox[t]{\tabmethodedroite}{\raggedright\strut\textbf{#3}}%
+	\par\nobreak\vspace{2pt}
+	\noindent\rule{\linewidth}{0.4pt}\par\nobreak\vspace{3pt}
+}{%
+	\par\vspace{0.5pt}\noindent\rule{\linewidth}{0.4pt}\par\smallskip
+}
+
+
 %-------------------  QCM (propositions en colonnes) -------------------
 % Usage :  \begin{qcm}(2) \task ... \task ... \end{qcm}
 % Le nombre entre parenthèses est le nombre de colonnes (2 par défaut) :
