@@ -6,6 +6,34 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-31 — Maquette : rubriques d'illustration (Probabilités conditionnelles)
+
+Essai, sur un seul chapitre, de rubriques destinées à aérer le cours et à
+donner au livre une identité propre. Trois environnements ajoutés dans
+`config/environnements.tex` :
+
+- **`vraievie`** (encadré, une seule par chapitre) : un fait réel mis en
+  équation avec la notion du chapitre. Ici « Un test positif, est-on
+  vraiment malade ? » — TDR du paludisme, sensibilité et spécificité à
+  95 %, prévalence 2 % : $\Prob(T) = 0{,}068$ puis Bayes donne
+  $\Prob_T(M) \approx 0{,}28$. Pictogramme TikZ des 68 tests positifs
+  pour 1 000 consultants (19 malades / 49 non-malades), et rappel que le
+  résultat tient à la prévalence : à $\Prob(M) = 0{,}4$ on remonte à 0,93.
+- **`reperehisto`** (note courte, filet à gauche, sans cadre) : Thomas
+  Bayes, texte lu à la Royal Society en 1763 par Richard Price, portée
+  générale donnée par Laplace vers 1774. Placée sous le théorème.
+- **`clindoeil`** (même style, en italique) : « indépendants » et
+  « incompatibles » ne sont pas synonymes mais presque contraires.
+  Placée sous l'encadré `attention` correspondant.
+
+Commande `\reserve{}` pour signaler, en fin d'encadré `vraievie`, les
+hypothèses et arrondis du modèle — les maths des encadrés doivent rester
+honnêtes.
+
+Coût mesuré : chapitre 14 → 15 pages, livre **381 → 382 pages**, soit
+exactement le budget visé d'une page par chapitre. Aucun nouveau
+débordement de marge.
+
 ## 2026-08-30 — En-tête de chapitre compact
 
 - Les espacements figés du style « Glenn » de `fncychap` (50 pt avant,

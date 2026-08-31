@@ -16,7 +16,7 @@ Analyse, Géométrie, Probabilités, les sujets officiels du Bacc Série S
 étrangers). Compile sans erreur avec `latexmk -pdf`, et une passe de
 relecture globale (2026-08-26) a réduit les débordements de marge
 (`Overfull \hbox`) visibles de 27 à 13 occurrences uniques. Le livre fait
-**381 pages** et est organisé en **5 parties** (Algèbre, Analyse,
+**382 pages** et est organisé en **5 parties** (Algèbre, Analyse,
 Géométrie, Probabilités, Sujets et entraînement).
 
 ⚠️ Correction du 2026-08-27 : la note précédente affirmait que tous les
@@ -47,6 +47,35 @@ utiliser `\begin{listecol}(2)` (ou `multicols`), et pour un QCM
 `\begin{qcm}(2)` — 4 colonnes si les propositions tiennent en un ou deux
 symboles. Ne pas utiliser `\dfrac` dans une proposition de QCM : la
 hauteur de ligne double.
+
+## Rubriques d'illustration (maquette du 2026-08-31)
+
+Trois rubriques, définies dans `config/environnements.tex`, testées pour
+l'instant sur le **seul chapitre Probabilités conditionnelles** :
+
+| Rubrique | Usage | Quantité |
+|---|---|---|
+| `citationchapitre` (existante) | 2 lignes sous le titre du chapitre | 1 |
+| `vraievie{Titre}` | un fait réel mis en équation avec la notion | **1 par chapitre**, ½ à 1 page |
+| `reperehisto{Nom}` / `clindoeil` | notes de 3–5 lignes, filet à gauche, sans cadre | 2 au maximum |
+
+Budget mesuré : **+1 page par chapitre**, toutes rubriques confondues
+(chapitre conditionnelles 14 → 15 pages ; livre 381 → 382).
+
+Règles :
+- les maths d'un encadré `vraievie` doivent être **honnêtes** — tout
+  modèle simplifié, tout arrondi est annoncé via `\reserve{}` en fin
+  d'encadré ;
+- pas de citation apocryphe (« d'après X » si la formulation est
+  reconstituée) ;
+- l'humour passe par l'**erreur classique** commentée, pas par la blague :
+  ça vieillit mieux et ça sert à quelque chose ;
+- ne pas dépasser deux notes courtes par chapitre, sinon l'élève en
+  révision ne sait plus ce qu'il doit lire.
+
+**Décision en attente de l'utilisateur** : généraliser ou non aux
+19 autres chapitres (coût estimé : ~+20 pages, soit exactement ce qui a
+été gagné le 2026-08-30 en compactant la mise en page).
 
 ## Encadrés `methode` et blocs insécables
 

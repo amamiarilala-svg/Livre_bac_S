@@ -175,6 +175,13 @@ Chaque \textbf{chemin} correspond à une intersection d'événements.
 	\]
 \end{theoreme}
 
+\begin{reperehisto}{Thomas Bayes (1702--1761)}
+	Ce pasteur presbytérien anglais n'a jamais publié son théorème : son texte
+	a été lu devant la Royal Society en 1763, deux ans après sa mort, par son
+	ami Richard Price. La formule ne prendra sa portée générale qu'avec
+	Laplace, qui la redécouvre indépendamment vers 1774.
+\end{reperehisto}
+
 \begin{methode}
 	\textbf{« Inverser » un arbre (Bayes) :} on connaît les $\Prob_{A_i}(B)$
 	(sens de l'arbre) et l'on cherche $\Prob_B(A_i)$ :
@@ -193,6 +200,63 @@ Chaque \textbf{chemin} correspond à une intersection d'événements.
 	$\Prob_D(B)=\dfrac{0{,}3\times 0{,}05}{0{,}029}=\dfrac{0{,}015}{0{,}029}
 	\approx 0{,}52$.
 \end{exemple}
+
+\begin{vraievie}{Un test positif, est-on vraiment malade ?}
+	Sur le terrain, le paludisme se dépiste par un \textbf{TDR} (test de
+	diagnostic rapide). Deux nombres caractérisent un tel test :
+	\begin{itemize}[label=\textbullet]
+		\item la \textbf{sensibilité} : probabilité qu'un malade soit détecté,
+		ici $\Prob_M(T) = 0{,}95$ ;
+		\item la \textbf{spécificité} : probabilité qu'un non-malade ait un
+		test négatif, ici $\Prob_{\overline{M}}(\overline{T}) = 0{,}95$, donc
+		$\Prob_{\overline{M}}(T) = 0{,}05$ (les « faux positifs »).
+	\end{itemize}
+	Dans un dispensaire où, en saison sèche, $2\,\%$ des consultants fiévreux
+	sont réellement impaludés, $\Prob(M) = 0{,}02$. Probabilités totales :
+	\[
+	\Prob(T) = 0{,}02\times 0{,}95 + 0{,}98\times 0{,}05
+	= 0{,}019 + 0{,}049 = 0{,}068,
+	\]
+	puis Bayes :
+	\[
+	\Prob_T(M) = \frac{0{,}019}{0{,}068} \approx 0{,}28.
+	\]
+
+	\begin{center}
+		\begin{tikzpicture}[x=0.45cm, y=0.45cm, font=\scriptsize]
+			\node at (9,1.6) {Les $68$ tests positifs, sur $1\,000$ consultants};
+			\foreach \i in {0,...,18}{%
+				\pgfmathtruncatemacro{\cx}{mod(\i,5)}%
+				\pgfmathtruncatemacro{\cy}{-div(\i,5)}%
+				\fill[black!75] (\cx,\cy) circle (0.3);
+			}
+			\foreach \i in {0,...,48}{%
+				\pgfmathtruncatemacro{\cx}{mod(\i,13)+6}%
+				\pgfmathtruncatemacro{\cy}{-div(\i,13)}%
+				\draw[black!45] (\cx,\cy) circle (0.3);
+			}
+			\draw[decorate, decoration={brace, mirror, amplitude=4pt}]
+			(-0.4,-3.7) -- (4.4,-3.7)
+			node[midway, below=5pt] {$19$ malades};
+			\draw[decorate, decoration={brace, mirror, amplitude=4pt}]
+			(5.6,-3.7) -- (18.4,-3.7)
+			node[midway, below=5pt] {$49$ non-malades};
+		\end{tikzpicture}
+	\end{center}
+
+	Moins d'un test positif sur trois correspond donc à un malade --- et ce
+	n'est pas la faute du test. Il ne se trompe que $5$ fois sur $100$, mais
+	il s'applique à $980$ personnes saines : $5\,\%$ d'un grand groupe
+	dépasse $95\,\%$ d'un petit.
+
+	En zone de forte transmission, où $\Prob(M) = 0{,}4$, le même test donne
+	$\Prob_T(M) \approx 0{,}93$ : la conclusion tient autant à la prévalence
+	qu'à la qualité du test.
+
+	\reserve{Sensibilité, spécificité et prévalence sont ici arrondies pour
+	le calcul ; elles varient fortement selon le test employé, la région et
+	la saison. C'est le raisonnement qu'il faut retenir, pas ces chiffres.}
+\end{vraievie}
 
 
 % ============================================================
@@ -221,6 +285,13 @@ Chaque \textbf{chemin} correspond à une intersection d'événements.
 	($A\cap B=\emptyset$). Deux événements incompatibles de probabilités non
 	nulles ne sont \textbf{jamais} indépendants.
 \end{attention}
+
+\begin{clindoeil}
+	« Indépendants » et « incompatibles » ne sont pas synonymes : ce sont
+	presque des contraires. Si deux événements ne peuvent pas se produire
+	ensemble, apprendre que l'un s'est réalisé change tout pour l'autre --- on
+	sait qu'il n'a pas eu lieu.
+\end{clindoeil}
 
 
 % ============================================================
