@@ -48,6 +48,24 @@ utiliser `\begin{listecol}(2)` (ou `multicols`), et pour un QCM
 symboles. Ne pas utiliser `\dfrac` dans une proposition de QCM : la
 hauteur de ligne double.
 
+## Citations de chapitre (`citationchapitre`)
+
+Les 19 chapitres ont chacun une citation. Trois ont été corrigées le
+2026-08-31 après audit (attribution non vérifiable ou trop incertaine) :
+Complexes (Gauss → Leibniz, sur les nombres imaginaires), Isométries
+(Pascal → Hermann Weyl, *Symmetry*, sur la symétrie), Barycentre
+(Poincaré, attribution incertaine → Archimède, sur le levier — plus
+juste thématiquement en plus d'être mieux sourcée). Les 16 autres ont
+été vérifiées et jugées solides (Kronecker, Laplace ×2, Bernoulli,
+Huygens, Poincaré ×2, etc.). `Matrices` reste avec un aphorisme non
+attribué (donc sans risque de fausse citation, mais pas une vraie
+citation historique) — non corrigé, signalé comme optionnel si
+l'utilisateur veut une cohérence totale.
+
+Règle pour toute future citation ajoutée : vérifiable ou explicitement
+préfixée « d'après » si c'est une reformulation/paraphrase plutôt
+qu'une citation exacte.
+
 ## Rubriques d'illustration
 
 Trois rubriques, définies dans `config/environnements.tex` :
