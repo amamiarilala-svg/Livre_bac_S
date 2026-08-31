@@ -6,6 +6,43 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-31 — Encadré « Dans la vraie vie » : fonction sigmoïde (Étude d'une fonction)
+
+Deuxième chapitre à recevoir un encadré `vraievie`, sur demande
+explicite de l'utilisateur (pas de généralisation automatique aux
+19 chapitres — décision actée, voir STATUS.md). Angle choisi parmi
+plusieurs brouillons proposés (arithmétique/clé RIB, suites/microcrédit,
+intégrales/barrage, isométries/tissages, loi normale/vanille, et deux
+angles « IA » : sigmoïde et descente de gradient) : la **fonction
+sigmoïde** $\sigma(x)=\dfrac{1}{1+e^{-x}}$, utilisée dans ce chapitre
+« Étude d'une fonction » car elle s'y étudie entièrement avec les outils
+du chapitre (limites en $\pm\infty$ → deux asymptotes horizontales
+$y=0$/$y=1$, dérivée $\sigma'=\sigma(1-\sigma)$, centre de symétrie
+$(0\,;\,\frac12)$) et illustre le mécanisme réel des classificateurs
+(filtre anti-spam, reconnaissance faciale) : $\sigma$ transforme un
+score réel quelconque en une probabilité.
+
+Inséré juste après la section « Diagramme d'étude des branches infinies »
+(le contenu sur les asymptotes horizontales prépare directement
+l'exemple). Figure TikZ (courbe + asymptote $y=1$ + point de symétrie)
+sur le même principe `\draw[domain=...] plot` que le reste du chapitre
+(pas de `pgfplots`, pour rester cohérent avec le style du livre).
+
+Piège de mise en page rencontré : le premier jet de la figure plaçait
+le label du point $(0\,;\,\frac12)$ et le label de l'asymptote $y=0$
+en collision avec les flèches des axes. Corrigé en ne labellisant que
+l'asymptote non triviale ($y=1$, à gauche, au-dessus de la ligne
+pointillée) et en décalant le point de symétrie plus loin de l'axe des
+ordonnées.
+
+Résultat : chapitre +1 page, livre entier **380 → 381 pages**. Aucun
+`Overfull \hbox` introduit (17 avertissements Overfull/Underfull
+préexistants dans le livre, inchangé).
+
+Cinq autres chapitres ont un brouillon de contenu validé en conversation
+mais pas encore écrit (voir STATUS.md pour le détail et les angles
+retenus) : à reprendre au cas par cas, sur demande.
+
 ## 2026-08-31 — Arbres pondérés compactés (Probabilités conditionnelles)
 
 Les 5 arbres pondérés du chapitre (arbre générique, tirages avec/sans
