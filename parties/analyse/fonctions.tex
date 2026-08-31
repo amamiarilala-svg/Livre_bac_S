@@ -231,6 +231,57 @@ En $+\infty$, $\dfrac{f(x)}{x}=\dfrac{(x-1)\e^{x}}{x}\to+\infty$ :
 	\end{itemize}
 \end{exemple}
 
+\begin{vraievie}{La fonction qui décide « spam ou pas spam »}
+	Un filtre anti-spam, un système de reconnaissance faciale, un moteur de
+	recommandation : tous doivent, à un moment, transformer un nombre réel
+	quelconque en une \textbf{probabilité} --- un nombre entre $0$ et $1$. La
+	fonction qui fait ce travail, dans la quasi-totalité des systèmes de
+	classification, porte un nom : la \textbf{fonction sigmoïde}.
+	\[
+	\sigma(x) = \frac{1}{1+\e^{-x}}
+	\]
+	C'est une fonction que ce chapitre permet d'étudier entièrement :
+	\begin{itemize}[label=\textbullet]
+		\item \textbf{Limites} : $\displaystyle\lim_{x\to-\infty}\sigma(x)=0$ et
+		$\displaystyle\lim_{x\to+\infty}\sigma(x)=1$ --- deux asymptotes
+		horizontales, $y=0$ et $y=1$. Quel que soit $x$, le résultat reste
+		toujours strictement entre $0$ et $1$ : c'est ce qui rend $\sigma$
+		utilisable comme probabilité.
+		\item \textbf{Dérivée} : $\sigma'(x)=\sigma(x)\bigl(1-\sigma(x)\bigr) > 0$
+		sur $\R$, donc $\sigma$ est strictement croissante.
+		\item \textbf{Symétrie} : $\sigma(x)+\sigma(-x)=1$, donc $\mathcal C_\sigma$
+		admet le point $\left(0\,;\,\frac12\right)$ comme centre de symétrie ---
+		c'est aussi là que la pente est maximale, $\sigma'(0)=\frac14$.
+	\end{itemize}
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, scale=0.9]
+			\draw[gray!55, dashed] (-4.4,1) -- (4.3,1);
+			\node[above, font=\scriptsize] at (-3.5,1) {$y=1$};
+			\draw[->] (-4.4,0) -- (4.5,0) node[right, font=\small] {$x$};
+			\draw[->] (0,-0.2) -- (0,1.3) node[above, font=\small] {$y$};
+			\draw[thick, domain=-4.2:4.2, samples=100] plot (\x,{1/(1+exp(-\x))});
+			\fill (0,0.5) circle (1.3pt);
+			\node[right, font=\scriptsize] at (0.35,0.72) {$\left(0\,;\,\frac12\right)$};
+		\end{tikzpicture}
+	\end{center}
+
+	\textbf{Exemple.} Un filtre anti-spam calcule, à partir des mots d'un
+	message, un score $z$ (positif si le message ressemble à du spam). Pour
+	$z=2{,}3$ :
+	\[
+	\sigma(2{,}3) = \frac{1}{1+\e^{-2{,}3}} \approx 0{,}909.
+	\]
+	Le message est classé spam avec $90{,}9\,\%$ de confiance. Pour
+	$z=-1{,}5$, $\sigma(-1{,}5)\approx 0{,}182$ : message probablement
+	légitime.
+
+	\reserve{Un vrai filtre calcule $z$ à partir de dizaines de milliers de
+	mots pondérés, appris sur des millions d'exemples --- ici, $z$ est fixé
+	arbitrairement pour illustrer le rôle de $\sigma$, pas pour reproduire un
+	filtre réel.}
+\end{vraievie}
+
 
 % ================================================================
 \section{Convexité, concavité et points d'inflexion}

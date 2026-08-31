@@ -16,7 +16,7 @@ Analyse, Géométrie, Probabilités, les sujets officiels du Bacc Série S
 étrangers). Compile sans erreur avec `latexmk -pdf`, et une passe de
 relecture globale (2026-08-26) a réduit les débordements de marge
 (`Overfull \hbox`) visibles de 27 à 13 occurrences uniques. Le livre fait
-**380 pages** et est organisé en **5 parties** (Algèbre, Analyse,
+**381 pages** et est organisé en **5 parties** (Algèbre, Analyse,
 Géométrie, Probabilités, Sujets et entraînement).
 
 ⚠️ Correction du 2026-08-27 : la note précédente affirmait que tous les
@@ -48,10 +48,9 @@ utiliser `\begin{listecol}(2)` (ou `multicols`), et pour un QCM
 symboles. Ne pas utiliser `\dfrac` dans une proposition de QCM : la
 hauteur de ligne double.
 
-## Rubriques d'illustration (maquette du 2026-08-31)
+## Rubriques d'illustration
 
-Trois rubriques, définies dans `config/environnements.tex`, testées pour
-l'instant sur le **seul chapitre Probabilités conditionnelles** :
+Trois rubriques, définies dans `config/environnements.tex` :
 
 | Rubrique | Usage | Quantité |
 |---|---|---|
@@ -59,8 +58,26 @@ l'instant sur le **seul chapitre Probabilités conditionnelles** :
 | `vraievie{Titre}` | un fait réel mis en équation avec la notion | **1 par chapitre**, ½ à 1 page |
 | `reperehisto{Nom}` / `clindoeil` | notes de 3–5 lignes, filet à gauche, sans cadre | 2 au maximum |
 
-Budget mesuré : **+1 page par chapitre**, toutes rubriques confondues
-(chapitre conditionnelles 14 → 15 pages ; livre 381 → 382).
+**Décision de l'utilisateur (2026-08-31)** : pas de généralisation
+systématique aux 19 chapitres — l'utilisateur choisit lui-même, au cas
+par cas, les chapitres qui reçoivent un `vraievie`. Chapitres traités
+jusqu'ici :
+
+| Chapitre | Encadré `vraievie` | Poids mesuré |
+|---|---|---|
+| Probabilités conditionnelles | « Un test positif, est-on vraiment malade ? » (TDR paludisme, sensibilité/spécificité, Bayes) | +1 page |
+| Étude d'une fonction | « La fonction qui décide "spam ou pas spam" » (fonction sigmoïde $\sigma(x)=1/(1+e^{-x})$, limites/dérivée/symétrie, filtre anti-spam) | +1 page |
+
+Cinq autres chapitres ont un brouillon de contenu déjà rédigé et
+validé en conversation, mais pas encore écrit dans les fichiers —
+à reprendre sur demande de l'utilisateur :
+Arithmétique (clé RIB, mod 97), Suites numériques (remboursement d'un
+microcrédit, suite arithmético-géométrique), Intégrales (force
+hydrostatique sur un barrage), Isométries (frises des tissages
+malgaches, symétrie glissée), Loi normale (calibrage des gousses de
+vanille à l'export). Un brouillon pour Suites existe aussi sur le thème
+IA (descente de gradient $u_{n+1}=u_n-\alpha f'(u_n)$), non retenu au
+profit de la sigmoïde pour ce chapitre-ci mais réutilisable ailleurs.
 
 Règles :
 - les maths d'un encadré `vraievie` doivent être **honnêtes** — tout
@@ -71,11 +88,10 @@ Règles :
 - l'humour passe par l'**erreur classique** commentée, pas par la blague :
   ça vieillit mieux et ça sert à quelque chose ;
 - ne pas dépasser deux notes courtes par chapitre, sinon l'élève en
-  révision ne sait plus ce qu'il doit lire.
-
-**Décision en attente de l'utilisateur** : généraliser ou non aux
-19 autres chapitres (coût estimé : ~+20 pages, soit exactement ce qui a
-été gagné le 2026-08-30 en compactant la mise en page).
+  révision ne sait plus ce qu'il doit lire ;
+- teinte de fond `gray!6` (pas `gray!3` comme les autres encadrés, pour
+  se distinguer du cours ordinaire, ni `gray!8` comme `attention`, qui
+  porte un sens d'avertissement).
 
 ## Arbres pondérés compacts (style `arbrepondere`)
 
