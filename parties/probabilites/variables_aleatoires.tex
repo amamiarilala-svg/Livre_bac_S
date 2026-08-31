@@ -211,11 +211,12 @@ On considère, comme fil rouge, l'expérience suivante : on lance deux pièces
 	\textbf{loi de Bernoulli} de paramètre $p$, notée $\mathscr{B}(p)$.
 \end{definition}
 
+
 \begin{center}
 	\begin{tikzpicture}[>=stealth, grow=right, level distance=3cm, sibling distance=1.6cm, font=\small]
 		\node {}
-		child { node {$1$ (succès)} edge from parent node[above] {$p$} }
-		child { node {$0$ (échec)} edge from parent node[below] {$1-p$} };
+		child { node {$0$ (échec)} edge from parent node[below] {$1-p$} }
+		child { node {$1$ (succès)} edge from parent node[above] {$p$} };
 	\end{tikzpicture}
 \end{center}
 
@@ -228,7 +229,52 @@ On considère, comme fil rouge, l'expérience suivante : on lance deux pièces
 	répéter $n$ fois, de façon \textbf{identique et indépendante}, la même
 	épreuve de Bernoulli de paramètre $p$.
 \end{definition}
-
+\begin{center}
+	\begin{tikzpicture}[
+		>=stealth,
+		grow=right,
+		level distance=2cm,
+		level 1/.style={sibling distance=1.8cm},
+		level 2/.style={sibling distance=1cm},
+		level 3/.style={sibling distance=0.5cm},
+		font=\scriptsize
+		]
+		\node {}
+		child { node {$E$}
+			child { node {$E$}
+				child { node {$\ldots$} edge from parent node[below] {$1-p$} }
+				child { node {$\ldots$} edge from parent node[above] {$p$} }
+				edge from parent node[below] {$1-p$}
+			}
+			child { node {$S$}
+				child { node {$\ldots$} edge from parent node[below] {$1-p$} }
+				child { node {$\ldots$} edge from parent node[above] {$p$} }
+				edge from parent node[above] {$p$}
+			}
+			edge from parent node[below] {$1-p$}
+		}
+		child { node {$S$}
+			child { node {$E$}
+				child { node {$\ldots$} edge from parent node[below] {$1-p$} }
+				child { node {$\ldots$} edge from parent node[above] {$p$} }
+				edge from parent node[below] {$1-p$}
+			}
+			child { node {$S$}
+				child { node {$\ldots$} edge from parent node[below] {$1-p$} }
+				child { node {$\ldots$} edge from parent node[above] {$p$} }
+				edge from parent node[above] {$p$}
+			}
+			edge from parent node[above] {$p$}
+		};
+		
+		% Repères "Épreuve k"
+		\node[above=0.3cm] at (1,1.38) {Épreuve 1};
+		\node[above=0.3cm] at (3,1.38) {Épreuve 2};
+		\node[above=0.3cm] at (5,1.38) {Épreuve 3};
+		\node[above=0.3cm] at (6.5,1.38) {Épreuve $n$};
+		
+	\end{tikzpicture}
+\end{center}
 \begin{exemple}
 	On lance $n$ fois un dé équilibré, succès = « obtenir un $6$ »
 	($p=\frac16$). Le nombre total de succès suivra une \textbf{loi
