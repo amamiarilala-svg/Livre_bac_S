@@ -357,6 +357,35 @@
 	\]
 \end{exemple}
 
+\begin{vraievie}{Pourquoi un barrage est-il plus épais à la base ?}
+	La pression de l'eau croît avec la profondeur : $P(y)=\rho g y$, où
+	$\rho$ est la masse volumique de l'eau et $g$ l'accélération de la
+	pesanteur. Sur une paroi de largeur $L$ constante et de hauteur $H$,
+	chaque tranche horizontale d'épaisseur $\dd y$, à la profondeur $y$,
+	subit une force $P(y)\times L\,\dd y$. La force totale exercée par
+	l'eau est donc
+	\[
+	F=\int_0^{H}\rho g\,y\,L\,\dd y=\rho g L\,\Bigl[\frac{y^2}{2}\Bigr]_0^H
+	=\frac{\rho g L H^2}{2}.
+	\]
+	Avec $L=50$ m, $H=20$ m, $\rho=1\,000$ kg/m$^3$, $g\approx 9{,}8$
+	m/s$^2$ :
+	\[
+	F=\frac{1\,000\times 9{,}8\times 50\times 20^2}{2}=98\,000\,000
+	\text{ N},
+	\]
+	soit près de $10\,000$ tonnes de poussée sur le mur --- pour une
+	paroi de seulement $20$ m de haut. C'est cette accumulation, tranche
+	après tranche, que l'intégrale calcule en une seule formule ; c'est
+	aussi pourquoi un barrage doit être bien plus épais à sa base, où la
+	pression cumulée est maximale, qu'à son sommet.
+
+	\reserve{Paroi rectangulaire pour simplifier le calcul --- la
+	géométrie réelle d'un barrage (parement incliné, forme voûtée) est
+	plus complexe, mais le principe --- intégrer la pression sur la
+	hauteur --- reste le même.}
+\end{vraievie}
+
 
 % ================================================================
 \section{Méthodes et exercices résolus}

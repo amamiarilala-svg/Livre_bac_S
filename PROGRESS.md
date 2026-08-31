@@ -6,6 +6,62 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-31 — Cinq encadrés « Dans la vraie vie » supplémentaires
+
+Sur demande explicite (« fais les 5 »), les cinq brouillons validés en
+conversation sont écrits dans leurs chapitres respectifs :
+
+- **Arithmétique dans $\Z$** — « Le chiffre qui protège votre compte
+  bancaire » : clé RIB calculée par congruence modulo 97
+  ($k\equiv 97-N\ [97]$), exemple chiffré avec $N=123\,456\,789$,
+  insérée en fin de section Congruences (avant $\Z/n\Z$).
+- **Suites numériques** — « Rembourser un petit crédit » : remboursement
+  d'un micro-crédit de 500 000 Ar sur 6 mois modélisé par la suite
+  arithmético-géométrique $C_{n+1}=1{,}02\,C_n-m$, résolue avec
+  exactement la méthode (point fixe, $v_n=u_n-\ell$) qui précède dans le
+  chapitre. Insérée juste après l'exemple type de suite
+  arithmético-géométrique.
+- **Primitives et intégrale** — « Pourquoi un barrage est-il plus épais
+  à la base ? » : force hydrostatique $F=\int_0^H \rho g y L\,dy =
+  \rho g L H^2/2$, calcul chiffré (≈98 000 000 N, ~10 000 tonnes) sur une
+  paroi rectangulaire simplifiée. Insérée après l'exemple de volume de
+  révolution, avant Méthodes et exercices résolus.
+- **Les Isométries du Plan** — « La grammaire cachée des tissages
+  malgaches » : les motifs répétés d'un lamba/d'une natte comme frise
+  engendrée par translation + symétrie glissée, avec un motif en zigzag
+  dessiné en TikZ et la classification à 7 groupes de frises. Insérée en
+  fin de section « La symétrie glissée », juste après la méthode de
+  réduction d'un antidéplacement.
+- **Lois continues et loi normale** — « Pourquoi une gousse de vanille
+  sur cinq est classée "extra" » : longueur d'une gousse modélisée par
+  $\mathcal N(15\,;\,1{,}2^2)$, seuil extra à 16 cm,
+  $\Prob(L\geqslant16)\approx0{,}202$. Insérée juste après la figure de
+  la règle 68-95-99,7.
+
+Chaque insertion a été choisie pour prolonger directement la notion qui
+la précède immédiatement dans le cours (pas de section dédiée aux
+`vraievie` en fin de chapitre), sur le même principe que les deux
+premiers chapitres traités.
+
+Vérification : les 5 chapitres isolés compilent sans erreur
+(`apercu_arithmetique.tex`, `apercu_suites.tex`, `apercu_integrales.tex`,
+`apercu_isometries.tex`, `apercu_normale.tex`, tous ajoutés au dépôt sur
+le modèle de `apercu_conditionnelles.tex`). Les quelques `Overfull`
+détectés dans ces logs (arithmétique ×5, isométries ×2, normale ×1) ont
+tous été vérifiés comme pré-existants, loin des points d'insertion —
+`suites.tex` et `integrales.tex` compilent sans aucun avertissement.
+
+Résultat : livre entier **381 → 383 pages** pour les 5 nouveaux
+encadrés (moins que le forfait d'1 page/chapitre estimé au départ —
+plusieurs encadrés tiennent dans du blanc de fin de page déjà présent).
+17 avertissements Overfull/Underfull au total dans le livre,
+strictement inchangé par rapport à avant ces 5 ajouts : aucune
+régression.
+
+7 chapitres sur 19 ont désormais un `vraievie` ; les 12 autres n'en ont
+pas et aucune généralisation systématique n'est prévue (décision de
+l'utilisateur, voir STATUS.md).
+
 ## 2026-08-31 — Encadré « Dans la vraie vie » : fonction sigmoïde (Étude d'une fonction)
 
 Deuxième chapitre à recevoir un encadré `vraievie`, sur demande

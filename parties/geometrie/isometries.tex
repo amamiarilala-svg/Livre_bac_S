@@ -484,6 +484,45 @@ $s_{\Delta}\circ t_{\vec u}$ / $t_{\vec u}\circ s_{\Delta}$ & réflexion ou
 	\end{enumerate}
 \end{methode}
 
+\begin{vraievie}{La grammaire cachée des tissages malgaches}
+	Les motifs tissés le long d'un lamba ou d'une natte en raphia se
+	répètent selon un rythme régulier : c'est ce qu'on appelle une
+	\textbf{frise}. Mathématiquement, une frise est engendrée par une
+	\textbf{translation} de base, éventuellement combinée à une réflexion
+	ou --- l'isométrie étudiée ci-dessus --- une \textbf{symétrie
+	glissée}.
+
+	\begin{center}
+		\begin{tikzpicture}[>=Stealth, scale=0.62]
+			\foreach \i in {0,1,2,3}{
+				\begin{scope}[xshift=\i*2.2cm]
+					\draw[thick] (0,0) -- (0.7,0.9) -- (1.4,0);
+					\draw[thick] (1.4,0) -- (2.1,-0.9) -- (2.8,0);
+				\end{scope}
+			}
+			\draw[gray!55,dashed] (-0.3,0) -- (9.4,0);
+			\draw[->,red,thick] (0,-1.3) -- (2.8,-1.3)
+			  node[midway,below,font=\small,red] {$\vec u$};
+		\end{tikzpicture}
+	\end{center}
+
+	Sur ce motif en zigzag, typique de nombreux tissages, le triangle
+	pointant vers le haut et celui pointant vers le bas ne se déduisent
+	pas d'une simple translation : il faut \textbf{translater puis
+	réfléchir} par rapport à la ligne médiane --- exactement la
+	composée $g=t_{\vec u}\circ s_\Delta$ étudiée dans cette section.
+
+	Ce type de classification (par le groupe d'isométries qui engendre le
+	motif) est connu depuis le \textsc{xix}\textsuperscript{e} siècle : il
+	n'existe que \textbf{7 façons} de combiner translations, réflexions
+	et symétries glissées pour engendrer une frise.
+
+	\reserve{Motif stylisé pour l'illustration ; les tissages traditionnels
+	malgaches combinent souvent plusieurs frises superposées ou des
+	pavages du plan (motifs à deux directions de répétition), plus
+	riches que la frise à une seule direction étudiée ici.}
+\end{vraievie}
+
 
 % ==========================================================
 \section{Reconnaître une isométrie : arbre de décision}
