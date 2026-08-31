@@ -6,6 +6,39 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-31 — Audit des citations de chapitre
+
+Les 19 chapitres avaient déjà une citation ; audit sur demande de
+l'utilisateur pour repérer les attributions à risque (citations
+inventées/mal sourcées attribuées à un mathématicien connu). Trois
+corrigées :
+
+- **Complexes** : « Les nombres complexes sont une réalité aussi
+  solide... » — Carl Friedrich Gauss (formulation moderne fleurie, sans
+  source vérifiable) → « L'imaginaire est un beau et merveilleux
+  refuge de l'esprit divin, presque un amphibie entre l'être et le
+  non-être. » — Gottfried Wilhelm Leibniz (citation historique réelle
+  et très souvent reprise dans les ouvrages d'histoire des maths).
+- **Isométries** : « Une figure et huit vers de raisonnement... » —
+  d'après Blaise Pascal (jeu de chiffres ne correspondant à rien de
+  documenté chez Pascal) → « La symétrie est l'idée par laquelle
+  l'homme, à travers les âges, a tenté de comprendre et de créer
+  l'ordre, la beauté et la perfection. » — Hermann Weyl, *Symmetry*
+  (citation authentique et en plein sur le sujet du chapitre).
+- **Barycentre** : « La géométrie est la science du raisonnement
+  correct... » — Henri Poincaré (attribution directe, sourcing
+  incertain) → « Donnez-moi un point d'appui et un levier, et je
+  soulèverai le monde. » — d'après Archimède (mieux sourcée, et
+  thématiquement plus juste : Archimède a fondé la théorie
+  mathématique des centres de gravité).
+
+`Matrices` reste avec un aphorisme non attribué à personne (donc sans
+risque de fausse citation, mais pas une vraie citation historique) —
+laissé tel quel, signalé comme optionnel dans STATUS.md.
+
+Vérifié : livre entier toujours 383 pages, 17 avertissements
+Overfull/Underfull inchangés, rendu visuel des trois pages confirmé.
+
 ## 2026-08-31 — Cinq encadrés « Dans la vraie vie » supplémentaires
 
 Sur demande explicite (« fais les 5 »), les cinq brouillons validés en
