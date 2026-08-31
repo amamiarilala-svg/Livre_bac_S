@@ -16,7 +16,7 @@ Analyse, Géométrie, Probabilités, les sujets officiels du Bacc Série S
 étrangers). Compile sans erreur avec `latexmk -pdf`, et une passe de
 relecture globale (2026-08-26) a réduit les débordements de marge
 (`Overfull \hbox`) visibles de 27 à 13 occurrences uniques. Le livre fait
-**382 pages** et est organisé en **5 parties** (Algèbre, Analyse,
+**380 pages** et est organisé en **5 parties** (Algèbre, Analyse,
 Géométrie, Probabilités, Sujets et entraînement).
 
 ⚠️ Correction du 2026-08-27 : la note précédente affirmait que tous les
@@ -76,6 +76,85 @@ Règles :
 **Décision en attente de l'utilisateur** : généraliser ou non aux
 19 autres chapitres (coût estimé : ~+20 pages, soit exactement ce qui a
 été gagné le 2026-08-30 en compactant la mise en page).
+
+## Arbres pondérés compacts (style `arbrepondere`)
+
+Depuis le 2026-08-31, tout nouvel arbre pondéré à 2 niveaux doit utiliser
+le style TikZ `arbrepondere` (défini dans `config/environnements.tex`) et
+la syntaxe `child { ... }` imbriquée, **jamais** le positionnement manuel
+`\path (Noeud) ++(x,y) node {...}` (ancienne méthode, ~7 cm de haut par
+arbre — voir `parties/probabilites/conditionnelles.tex` avant le
+2026-08-31 dans l'historique git pour l'ancien style à ne pas reproduire).
+
+```latex
+\begin{tikzpicture}[arbrepondere]
+	\node {}
+	child { node {B}
+		child { node {A}     edge from parent node[above, pos=0.75] {p} }
+		child { node {non A} edge from parent node[below, pos=0.75] {p} }
+		edge from parent node[above, pos=0.65] {p}
+	}
+	child { ... };
+\end{tikzpicture}
+```
+
+**Toujours préciser `pos=0.65` (niveau 1) / `pos=0.75` (niveau 2) sur
+chaque étiquette `edge from parent`.** Au `pos` par défaut (0.5, le
+milieu du segment), les deux étiquettes d'un même nœud (branche du
+dessus et branche du dessous) tombent trop près l'une de l'autre et se
+chevauchent silencieusement — aucun `Overfull`/`Underfull`, juste des
+chiffres illisibles superposés une fois le PDF ouvert. Toujours vérifier
+un nouvel arbre par un rendu PNG zoomé (`pdftoppm -r 300`), pas seulement
+par l'absence de warning de compilation.
+
+Ne pas essayer de resserrer davantage `level distance` / `sibling
+distance` pour un arbre à libellés courts (fractions, décimales à 2
+chiffres) en espérant une variante « compacte » : testé et abandonné le
+2026-08-31, le même bug de chevauchement revient dès que le niveau 2 est
+resserré sans réajuster `pos`. Un seul style, correctement positionné,
+suffit pour tous les libellés (courts ou longs comme
+`\Prob_{\overline B}(\overline A)`).
+
+### Arbre + énoncé côte à côte (`minipage`)
+
+Pour un exercice où un arbre pondéré est suivi de questions courtes,
+mettre l'arbre et le texte côte à côte dans deux `minipage[t]` plutôt
+que de les empiler économise encore de la hauteur. Patron à réutiliser :
+
+```latex
+\noindent
+\begin{minipage}[t]{0.43\linewidth}
+	\centering
+	\begin{tikzpicture}[arbrepondere, baseline=(current bounding box.north)]
+		...
+	\end{tikzpicture}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.54\linewidth}
+	texte / \begin{enumerate} ... \end{enumerate}
+\end{minipage}
+```
+
+Deux pièges :
+
+- **Sans `baseline=(current bounding box.north)`, l'alignement `[t]` est
+  cassé.** Un `tikzpicture` nu place sa « ligne de base » au BAS de son
+  dessin (hauteur = tout le contenu, profondeur = 0) ; `minipage[t]`
+  aligne alors le haut du texte voisin sur le BAS de l'arbre, pas sur
+  son sommet — la colonne de texte se retrouve entièrement sous l'arbre
+  au lieu d'à côté, sans aucun message d'erreur. Ne jamais mettre un
+  arbre `arbrepondere` dans une `minipage[t]` sans cette option.
+  Utiliser aussi `\centering` plutôt que
+  `\begin{center}...\end{center}` autour du `tikzpicture` : `center`
+  ajoute de l'espace vertical avant le contenu qui fausse à nouveau
+  l'alignement.
+- **Une colonne de texte trop étroite fait déborder les lignes sur
+  2–3 lignes**, ce qui peut rendre le texte plus haut que l'arbre et
+  annuler le gain — voire faire sauter tout le bloc (les deux
+  `minipage` forment un seul bloc insécable) à la page suivante en
+  laissant un grand blanc. Prévoir environ 0,43 pour l'arbre (il a
+  besoin d'environ 5 cm de large pour ne pas déborder de son cadre) et
+  0,54 pour le texte, plutôt qu'un partage 60/40 trop serré côté texte.
 
 ## Encadrés `methode` et blocs insécables
 
