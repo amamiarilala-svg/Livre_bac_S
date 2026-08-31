@@ -6,6 +6,44 @@ Nouvelle entrée en haut, format : `## AAAA-MM-JJ — Titre court`.
 
 ---
 
+## 2026-08-31 — Arbres pondérés compactés (Probabilités conditionnelles)
+
+Les 5 arbres pondérés du chapitre (arbre générique, tirages avec/sans
+remise, exercice résolu M1/M2, échauffement) occupaient jusqu'à
+**7,2 cm de haut** chacun : positionnement manuel (`\path ... ++(x,y)`)
+avec des espacements choisis très larges (`sibling distance` 3,4 à
+4,2 cm, second niveau décalé de ±1,1 à ±1,5 cm).
+
+Remplacés par un style `tikz` commun (`arbrepondere`, dans
+`config/environnements.tex`) utilisant la syntaxe `child { ... }`
+imbriquée native de TikZ, qui laisse le moteur calculer l'encombrement
+réel de l'arbre : hauteur ramenée à **~4,2 cm** (perte ~42 %), largeur
+inchangée.
+
+Piège rencontré et documenté dans `environnements.tex` : au `pos`
+par défaut (0.5, le milieu du segment), les deux étiquettes d'un même
+nœud (branche du dessus et branche du dessous) tombent trop près l'une
+de l'autre et se **chevauchent silencieusement** — aucune erreur de
+compilation, juste des chiffres illisibles superposés. Repéré d'abord
+sur l'arbre M1/M2 (labels `0,92`/`0,08` fusionnés), confirmé ensuite
+même sur l'arbre générique aux libellés `\Prob_B(A)`. Corrigé en
+poussant les étiquettes vers l'extrémité de la branche où elle diverge
+(`pos=0.65` niveau 1, `pos=0.75` niveau 2) plutôt qu'en élargissant
+l'arbre. Une tentative intermédiaire avec deux styles (un large, un
+« compact ») a été abandonnée : le style compact réapparaissait avec le
+même bug de chevauchement dès que le niveau 2 était resserré sans
+corriger le `pos` — un seul style unifié, correctement positionné, est
+plus sûr que deux tailles à surveiller séparément.
+
+Un `\enlargethispage{1.5cm}` a été ajouté avant l'arbre de l'exercice
+résolu M1/M2 : même compact, l'arbre ne tenait pas dans l'espace restant
+en bas de page et sautait entier à la page suivante en laissant un grand
+blanc (piège déjà documenté plus bas — bloc `tikzpicture` insécable dans
+un `center`).
+
+Résultat : chapitre 14 → 13 pages, livre entier **382 → 380 pages**.
+Aucun `Overfull \hbox` introduit.
+
 ## 2026-08-31 — Maquette : rubriques d'illustration (Probabilités conditionnelles)
 
 Essai, sur un seul chapitre, de rubriques destinées à aérer le cours et à

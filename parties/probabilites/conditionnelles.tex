@@ -102,20 +102,18 @@ Un \textbf{arbre pondéré} représente une expérience à plusieurs étapes.
 Chaque \textbf{chemin} correspond à une intersection d'événements.
 
 \begin{center}
-	\begin{tikzpicture}[>=stealth, grow=right, level distance=2.6cm, sibling distance=4.2cm, font=\small]
-		\node (R) at (0,3) {}
-		child { node (B1) {$B$} edge from parent node[above] {$\Prob(B)$} }
-		child { node (B2) {$\overline{B}$} edge from parent node[below] {$\Prob(\overline{B})$} };
-		\begin{scope}
-			\path (B1) ++(2.6,1.5) node (A11) {$A$};
-			\path (B1) ++(2.6,-1.5) node (A12) {$\overline{A}$};
-			\draw[->] (B1) -- (A11) node[above, midway] {$\Prob_B(A)$};
-			\draw[->] (B1) -- (A12) node[below, midway] {$\Prob_B(\overline{A})$};
-			\path (B2) ++(2.6,1.5) node (A21) {$A$};
-			\path (B2) ++(2.6,-1.5) node (A22) {$\overline{A}$};
-			\draw[->] (B2) -- (A21) node[above, midway] {$\Prob_{\overline{B}}(A)$};
-			\draw[->] (B2) -- (A22) node[below, midway] {$\Prob_{\overline{B}}(\overline{A})$};
-		\end{scope}
+	\begin{tikzpicture}[arbrepondere]
+		\node {}
+		child { node {$B$}
+			child { node {$A$} edge from parent node[above, pos=0.75] {$\Prob_B(A)$} }
+			child { node {$\overline{A}$} edge from parent node[below, pos=0.75] {$\Prob_B(\overline{A})$} }
+			edge from parent node[above, pos=0.65] {$\Prob(B)$}
+		}
+		child { node {$\overline{B}$}
+			child { node {$A$} edge from parent node[above, pos=0.75] {$\Prob_{\overline{B}}(A)$} }
+			child { node {$\overline{A}$} edge from parent node[below, pos=0.75] {$\Prob_{\overline{B}}(\overline{A})$} }
+			edge from parent node[below, pos=0.65] {$\Prob(\overline{B})$}
+		};
 	\end{tikzpicture}
 \end{center}
 
@@ -308,20 +306,18 @@ La boule est remise : la composition ne change pas, les deux tirages sont
 \textbf{indépendants}.
 
 \begin{center}
-	\begin{tikzpicture}[>=stealth, grow=right, level distance=2.6cm, sibling distance=4.2cm, font=\small]
-		\node (R) at (0,3) {}
-		child { node (B1) {$R_1$} edge from parent node[above] {$\frac35$} }
-		child { node (B2) {$B_1$} edge from parent node[below] {$\frac25$} };
-		\begin{scope}
-			\path (B1) ++(2.8,1.5) node (A11) {$R_2$};
-			\path (B1) ++(2.8,-1.5) node (A12) {$B_2$};
-			\draw[->] (B1) -- (A11) node[above, midway] {$\frac35$};
-			\draw[->] (B1) -- (A12) node[below, midway] {$\frac25$};
-			\path (B2) ++(2.8,1.5) node (A21) {$R_2$};
-			\path (B2) ++(2.8,-1.5) node (A22) {$B_2$};
-			\draw[->] (B2) -- (A21) node[above, midway] {$\frac35$};
-			\draw[->] (B2) -- (A22) node[below, midway] {$\frac25$};
-		\end{scope}
+	\begin{tikzpicture}[arbrepondere]
+		\node {}
+		child { node {$R_1$}
+			child { node {$R_2$} edge from parent node[above, pos=0.75] {$\frac35$} }
+			child { node {$B_2$} edge from parent node[below, pos=0.75] {$\frac25$} }
+			edge from parent node[above, pos=0.65] {$\frac35$}
+		}
+		child { node {$B_1$}
+			child { node {$R_2$} edge from parent node[above, pos=0.75] {$\frac35$} }
+			child { node {$B_2$} edge from parent node[below, pos=0.75] {$\frac25$} }
+			edge from parent node[below, pos=0.65] {$\frac25$}
+		};
 	\end{tikzpicture}
 \end{center}
 
@@ -331,20 +327,18 @@ La boule n'est pas remise : la composition change, les tirages sont
 \textbf{dépendants}.
 
 \begin{center}
-	\begin{tikzpicture}[>=stealth, grow=right, level distance=2.6cm, sibling distance=4.2cm, font=\small]
-		\node (R) at (0,3) {}
-		child { node (B1) {$R_1$} edge from parent node[above] {$\frac35$} }
-		child { node (B2) {$B_1$} edge from parent node[below] {$\frac25$} };
-		\begin{scope}
-			\path (B1) ++(2.8,1.5) node (A11) {$R_2$};
-			\path (B1) ++(2.8,-1.5) node (A12) {$B_2$};
-			\draw[->] (B1) -- (A11) node[above, midway] {$\frac24$};
-			\draw[->] (B1) -- (A12) node[below, midway] {$\frac24$};
-			\path (B2) ++(2.8,1.5) node (A21) {$R_2$};
-			\path (B2) ++(2.8,-1.5) node (A22) {$B_2$};
-			\draw[->] (B2) -- (A21) node[above, midway] {$\frac34$};
-			\draw[->] (B2) -- (A22) node[below, midway] {$\frac14$};
-		\end{scope}
+	\begin{tikzpicture}[arbrepondere]
+		\node {}
+		child { node {$R_1$}
+			child { node {$R_2$} edge from parent node[above, pos=0.75] {$\frac24$} }
+			child { node {$B_2$} edge from parent node[below, pos=0.75] {$\frac24$} }
+			edge from parent node[above, pos=0.65] {$\frac35$}
+		}
+		child { node {$B_1$}
+			child { node {$R_2$} edge from parent node[above, pos=0.75] {$\frac34$} }
+			child { node {$B_2$} edge from parent node[below, pos=0.75] {$\frac14$} }
+			edge from parent node[below, pos=0.65] {$\frac25$}
+		};
 	\end{tikzpicture}
 \end{center}
 
@@ -391,21 +385,20 @@ au hasard ; $D$ : « il est défectueux ».
 \textbf{1.} $\Prob(M_1)=0{,}65$, $\Prob(M_2)=0{,}35$,
 $\Prob_{M_1}(D)=0{,}03$, $\Prob_{M_2}(D)=0{,}08$.
 
+\enlargethispage{1.5cm}
 \begin{center}
-	\begin{tikzpicture}[>=stealth, grow=right, level distance=2.6cm, sibling distance=3.8cm, font=\small]
-		\node (R) at (0,3) {}
-		child { node (B1) {$M_1$} edge from parent node[above] {$0{,}65$} }
-		child { node (B2) {$M_2$} edge from parent node[below] {$0{,}35$} };
-		\begin{scope}
-			\path (B1) ++(2.6,1.3) node (A11) {$D$};
-			\path (B1) ++(2.6,-1.3) node (A12) {$\overline{D}$};
-			\draw[->] (B1) -- (A11) node[above, midway] {$0{,}03$};
-			\draw[->] (B1) -- (A12) node[below, midway] {$0{,}97$};
-			\path (B2) ++(2.6,1.3) node (A21) {$D$};
-			\path (B2) ++(2.6,-1.3) node (A22) {$\overline{D}$};
-			\draw[->] (B2) -- (A21) node[above, midway] {$0{,}08$};
-			\draw[->] (B2) -- (A22) node[below, midway] {$0{,}92$};
-		\end{scope}
+	\begin{tikzpicture}[arbrepondere]
+		\node {}
+		child { node {$M_1$}
+			child { node {$D$} edge from parent node[above, pos=0.75] {$0{,}03$} }
+			child { node {$\overline{D}$} edge from parent node[below, pos=0.75] {$0{,}97$} }
+			edge from parent node[above, pos=0.65] {$0{,}65$}
+		}
+		child { node {$M_2$}
+			child { node {$D$} edge from parent node[above, pos=0.75] {$0{,}08$} }
+			child { node {$\overline{D}$} edge from parent node[below, pos=0.75] {$0{,}92$} }
+			edge from parent node[below, pos=0.65] {$0{,}35$}
+		};
 	\end{tikzpicture}
 \end{center}
 
@@ -468,20 +461,18 @@ $\Prob(A)\Prob(C)=\dfrac12\times\dfrac23=\dfrac13$ : \textbf{indépendants}
 
 \exercice{Lire un arbre pondéré \hfill \facile}
 \begin{center}
-	\begin{tikzpicture}[>=stealth, grow=right, level distance=2.6cm, sibling distance=3.4cm, font=\small]
-		\node (R) at (0,2) {}
-		child { node (B1) {$A$} edge from parent node[above] {$0{,}4$} }
-		child { node (B2) {$\overline{A}$} edge from parent node[below] {$0{,}6$} };
-		\begin{scope}
-			\path (B1) ++(2.6,1.1) node (A11) {$B$};
-			\path (B1) ++(2.6,-1.1) node (A12) {$\overline{B}$};
-			\draw[->] (B1) -- (A11) node[above, midway] {$0{,}3$};
-			\draw[->] (B1) -- (A12) node[below, midway] {$0{,}7$};
-			\path (B2) ++(2.6,1.1) node (A21) {$B$};
-			\path (B2) ++(2.6,-1.1) node (A22) {$\overline{B}$};
-			\draw[->] (B2) -- (A21) node[above, midway] {$0{,}5$};
-			\draw[->] (B2) -- (A22) node[below, midway] {$0{,}5$};
-		\end{scope}
+	\begin{tikzpicture}[arbrepondere]
+		\node {}
+		child { node {$A$}
+			child { node {$B$} edge from parent node[above, pos=0.75] {$0{,}3$} }
+			child { node {$\overline{B}$} edge from parent node[below, pos=0.75] {$0{,}7$} }
+			edge from parent node[above, pos=0.65] {$0{,}4$}
+		}
+		child { node {$\overline{A}$}
+			child { node {$B$} edge from parent node[above, pos=0.75] {$0{,}5$} }
+			child { node {$\overline{B}$} edge from parent node[below, pos=0.75] {$0{,}5$} }
+			edge from parent node[below, pos=0.65] {$0{,}6$}
+		};
 	\end{tikzpicture}
 \end{center}
 \begin{enumerate}

@@ -15,6 +15,42 @@
 \setlist{topsep=2pt, itemsep=1pt, parsep=0pt, partopsep=0pt}
 
 
+% --------- STYLE COMMUN : ARBRE PONDERE A 2 NIVEAUX ---------
+% Usage :
+%   \begin{tikzpicture}[arbrepondere]
+%       \node {}
+%       child { node {B}
+%           child { node {A}     edge from parent node[above, pos=0.75] {p} }
+%           child { node {non A} edge from parent node[below, pos=0.75] {p} }
+%           edge from parent node[above, pos=0.65] {p}
+%       }
+%       child { ... };
+%   \end{tikzpicture}
+% Remplace le positionnement manuel (\path ... ++(x,y)) : la syntaxe
+% imbriquee laisse TikZ calculer l'encombrement reel de l'arbre, ce qui
+% coupe la hauteur d'un facteur ~1,7 par rapport a un espacement fixe
+% choisi a la main (7,2 cm -> 4,2 cm sur l'arbre a 2 niveaux du chapitre
+% Probabilites conditionnelles).
+%
+% IMPORTANT : toujours preciser pos=0.65 (niveau 1) / pos=0.75 (niveau 2)
+% sur CHAQUE etiquette "edge from parent". Au pos par defaut (0.5,
+% le milieu du segment), les deux etiquettes d'un meme noeud (celle du
+% dessus et celle du dessous) tombent trop pres l'une de l'autre pres du
+% noeud parent et se chevauchent -- une etiquette peut alors litteralement
+% masquer l'autre sans qu'aucun message de compilation ne le signale.
+% Deplacer les etiquettes vers l'extremite ou divergent les branches
+% (pos plus grand) regle le probleme sans agrandir l'arbre.
+\tikzset{
+	arbrepondere/.style={
+		>=stealth, grow=right,
+		level distance=2.3cm,
+		level 1/.style={sibling distance=2.4cm},
+		level 2/.style={sibling distance=1.8cm},
+		font=\small
+	}
+}
+
+
 \newtheoremstyle{mazavatheoreme}
 {1em}
 {1em}
