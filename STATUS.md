@@ -115,6 +115,47 @@ resserré sans réajuster `pos`. Un seul style, correctement positionné,
 suffit pour tous les libellés (courts ou longs comme
 `\Prob_{\overline B}(\overline A)`).
 
+### Arbre + énoncé côte à côte (`minipage`)
+
+Pour un exercice où un arbre pondéré est suivi de questions courtes,
+mettre l'arbre et le texte côte à côte dans deux `minipage[t]` plutôt
+que de les empiler économise encore de la hauteur. Patron à réutiliser :
+
+```latex
+\noindent
+\begin{minipage}[t]{0.43\linewidth}
+	\centering
+	\begin{tikzpicture}[arbrepondere, baseline=(current bounding box.north)]
+		...
+	\end{tikzpicture}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.54\linewidth}
+	texte / \begin{enumerate} ... \end{enumerate}
+\end{minipage}
+```
+
+Deux pièges :
+
+- **Sans `baseline=(current bounding box.north)`, l'alignement `[t]` est
+  cassé.** Un `tikzpicture` nu place sa « ligne de base » au BAS de son
+  dessin (hauteur = tout le contenu, profondeur = 0) ; `minipage[t]`
+  aligne alors le haut du texte voisin sur le BAS de l'arbre, pas sur
+  son sommet — la colonne de texte se retrouve entièrement sous l'arbre
+  au lieu d'à côté, sans aucun message d'erreur. Ne jamais mettre un
+  arbre `arbrepondere` dans une `minipage[t]` sans cette option.
+  Utiliser aussi `\centering` plutôt que
+  `\begin{center}...\end{center}` autour du `tikzpicture` : `center`
+  ajoute de l'espace vertical avant le contenu qui fausse à nouveau
+  l'alignement.
+- **Une colonne de texte trop étroite fait déborder les lignes sur
+  2–3 lignes**, ce qui peut rendre le texte plus haut que l'arbre et
+  annuler le gain — voire faire sauter tout le bloc (les deux
+  `minipage` forment un seul bloc insécable) à la page suivante en
+  laissant un grand blanc. Prévoir environ 0,43 pour l'arbre (il a
+  besoin d'environ 5 cm de large pour ne pas déborder de son cadre) et
+  0,54 pour le texte, plutôt qu'un partage 60/40 trop serré côté texte.
+
 ## Encadrés `methode` et blocs insécables
 
 `methode` est bien `breakable` et se coupe normalement — **sauf si son

@@ -44,6 +44,44 @@ un `center`).
 Résultat : chapitre 14 → 13 pages, livre entier **382 → 380 pages**.
 Aucun `Overfull \hbox` introduit.
 
+## 2026-08-31 — Énoncé/arbre côte à côte (deux `minipage`)
+
+Sur demande, les deux exercices du chapitre où un arbre pondéré est
+directement suivi de questions courtes (échauffement « Lire un arbre
+pondéré », exercice résolu M1/M2) passent d'un empilement vertical
+(arbre puis liste de questions) à deux `minipage[t]` côte à côte
+(arbre à gauche ~0,43 largeur, texte à droite ~0,54).
+
+Piège TikZ rencontré : un `tikzpicture` placé tel quel dans une
+`minipage[t]` ne s'aligne PAS par le haut avec sa colonne voisine — par
+défaut, la « ligne de base » d'une image TikZ est calée sur le BAS de
+son cadre (hauteur = tout le dessin, profondeur = 0), donc `minipage[t]`
+aligne le haut du texte voisin sur le bas de l'arbre, pas sur son haut.
+Résultat observé : la liste de questions apparaissait entièrement sous
+l'arbre au lieu d'à côté. Corrigé avec l'option TikZ
+`baseline=(current bounding box.north)`, qui cale le point de référence
+sur le sommet du dessin ; le `\begin{center}...\end{center}` autour de
+l'arbre a aussi été remplacé par `\centering` (le premier ajoute de
+l'espace vertical avant le contenu, ce qui aurait faussé à nouveau
+l'alignement).
+
+Second piège : une colonne de texte trop étroite (~0,53 de largeur)
+fait déborder les lignes calculées sur 2–3 lignes au lieu d'une seule,
+ce qui peut rendre le bloc texte plus haut que l'arbre lui-même et
+annuler le gain d'espace, voire faire sauter tout le bloc (minipages
+côte à côte = un seul bloc insécable) à la page suivante en laissant un
+grand blanc. Équilibre retenu après plusieurs essais : arbre 0,43,
+texte 0,54 (proche de moitié-moitié, l'arbre ayant besoin d'environ
+5 cm de large pour ne pas déborder de son cadre).
+
+Résultat : le chapitre passe à 13 pages (contre 13 déjà après la
+compaction des arbres seule — le gain se voit surtout en confort de
+lecture et en marge de sécurité pour de futurs ajouts, la compaction
+des arbres avait déjà absorbé l'essentiel du gain de pages). Le même
+patron (`minipage[t]` + `baseline=(current bounding box.north)` +
+`\centering`) est réutilisable pour tout futur exercice associant un
+schéma TikZ à un énoncé ou une liste de questions courte.
+
 ## 2026-08-31 — Maquette : rubriques d'illustration (Probabilités conditionnelles)
 
 Essai, sur un seul chapitre, de rubriques destinées à aérer le cours et à

@@ -382,12 +382,10 @@ au hasard ; $D$ : « il est défectueux ».
 
 \solution
 
-\textbf{1.} $\Prob(M_1)=0{,}65$, $\Prob(M_2)=0{,}35$,
-$\Prob_{M_1}(D)=0{,}03$, $\Prob_{M_2}(D)=0{,}08$.
-
-\enlargethispage{1.5cm}
-\begin{center}
-	\begin{tikzpicture}[arbrepondere]
+\noindent
+\begin{minipage}[t]{0.43\linewidth}
+	\centering
+	\begin{tikzpicture}[arbrepondere, baseline=(current bounding box.north)]
 		\node {}
 		child { node {$M_1$}
 			child { node {$D$} edge from parent node[above, pos=0.75] {$0{,}03$} }
@@ -400,13 +398,18 @@ $\Prob_{M_1}(D)=0{,}03$, $\Prob_{M_2}(D)=0{,}08$.
 			edge from parent node[below, pos=0.65] {$0{,}35$}
 		};
 	\end{tikzpicture}
-\end{center}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.54\linewidth}
+	\textbf{1.} $\Prob(M_1)=0{,}65$, $\Prob(M_2)=0{,}35$,
+	$\Prob_{M_1}(D)=0{,}03$, $\Prob_{M_2}(D)=0{,}08$.
 
-\textbf{2.} $\Prob(D) = 0{,}65\times 0{,}03 + 0{,}35\times 0{,}08
-= 0{,}0195 + 0{,}028 = 0{,}0475$.
+	\textbf{2.} $\Prob(D) = 0{,}65\times 0{,}03 + 0{,}35\times 0{,}08
+	= 0{,}0195 + 0{,}028 = 0{,}0475$.
 
-\textbf{3.} $\Prob_D(M_2) = \dfrac{\Prob(M_2\cap D)}{\Prob(D)}
-= \dfrac{0{,}028}{0{,}0475} \approx 0{,}589$.
+	\textbf{3.} $\Prob_D(M_2) = \dfrac{\Prob(M_2\cap D)}{\Prob(D)}
+	= \dfrac{0{,}028}{0{,}0475} \approx 0{,}589$.
+\end{minipage}
 
 \exerciceresolu
 \textbf{Tirages sans remise}
@@ -460,8 +463,10 @@ $\Prob(A)\Prob(C)=\dfrac12\times\dfrac23=\dfrac13$ : \textbf{indépendants}
 % --------------------------------------------------
 
 \exercice{Lire un arbre pondéré \hfill \facile}
-\begin{center}
-	\begin{tikzpicture}[arbrepondere]
+\noindent
+\begin{minipage}[t]{0.43\linewidth}
+	\centering
+	\begin{tikzpicture}[arbrepondere, baseline=(current bounding box.north)]
 		\node {}
 		child { node {$A$}
 			child { node {$B$} edge from parent node[above, pos=0.75] {$0{,}3$} }
@@ -474,13 +479,16 @@ $\Prob(A)\Prob(C)=\dfrac12\times\dfrac23=\dfrac13$ : \textbf{indépendants}
 			edge from parent node[below, pos=0.65] {$0{,}6$}
 		};
 	\end{tikzpicture}
-\end{center}
-\begin{enumerate}
-	\item Donner $\Prob(A)$ et $\Prob_A(B)$.
-	\item Calculer $\Prob(A\cap B)$ et $\Prob(\overline{A}\cap B)$.
-	\item En déduire $\Prob(B)$.
-	\item Calculer $\Prob_B(A)$.
-\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.54\linewidth}
+	\begin{enumerate}
+		\item Donner $\Prob(A)$ et $\Prob_A(B)$.
+		\item Calculer $\Prob(A\cap B)$ et $\Prob(\overline{A}\cap B)$.
+		\item En déduire $\Prob(B)$.
+		\item Calculer $\Prob_B(A)$.
+	\end{enumerate}
+\end{minipage}
 
 \exercice{Vrai ou faux \hfill \facile}
 Répondre par \emph{vrai} ou \emph{faux} en justifiant.
