@@ -325,3 +325,76 @@ number within=chapter
 
 
 
+
+
+%========================================================================
+%   RUBRIQUES D'ILLUSTRATION  (maquette)
+%------------------------------------------------------------------------
+%   Trois rubriques recurrentes, a placement fixe dans le gabarit de
+%   chapitre, pour aerer le cours sans le diluer :
+%
+%     1. \begin{citationchapitre} ... \end{citationchapitre}
+%        (deja definie plus haut) : 2 lignes sous le titre du chapitre.
+%
+%     2. \begin{vraievie}{Titre court} ... \end{vraievie}
+%        Un fait reel mis en equation avec la notion du chapitre.
+%        UNE SEULE par chapitre, une demi-page a une page maximum,
+%        placee juste apres la notion qu'elle illustre.
+%        Regle : les maths doivent etre honnetes. Tout modele simplifie
+%        est annonce comme tel, via \reserve en fin d'encadre.
+%
+%     3. \begin{reperehisto}{Nom} ... \end{reperehisto}
+%        \begin{clindoeil} ... \end{clindoeil}
+%        Notes courtes (3 a 5 lignes), sans cadre : un simple filet a
+%        gauche, titre en ligne, petit corps. Cout vertical minimal.
+%        Au plus deux par chapitre, sinon l'eleve en revision ne sait
+%        plus ce qu'il doit lire.
+%
+%   Budget vise : environ une page par chapitre, toutes rubriques
+%   confondues.
+%========================================================================
+
+%------------------  DANS LA VRAIE VIE  ------------------
+\newtcolorbox{vraievie}[1]{
+	enhanced,
+	breakable,
+	colback=gray!3,
+	colframe=black!70,
+	boxrule=0.5pt,
+	arc=2mm,
+	left=3mm,
+	right=3mm,
+	top=2mm,
+	bottom=2mm,
+	fonttitle=\bfseries\sffamily,
+	title={\faGlobeAfrica\quad Dans la vraie vie --- #1},
+	borderline west={2mm}{0pt}{black!70}
+}
+
+% Mention des hypotheses et des arrondis, en fin d'encadre \vraievie.
+\newcommand{\reserve}[1]{%
+	\par\smallskip
+	{\footnotesize\itshape #1\par}%
+}
+
+%------------------  NOTES COURTES  ------------------
+% Style commun : pas de cadre, un filet a gauche, titre en ligne.
+\newtcolorbox{reperehisto}[1]{
+	enhanced,
+	breakable,
+	blanker,
+	borderline west={1.2mm}{0pt}{black!45},
+	left=3mm, right=0mm, top=1.5mm, bottom=1.5mm,
+	fontupper=\small,
+	before upper={\textbf{\sffamily\faLandmark\ \ Repère historique --- #1.}\ }
+}
+
+\newtcolorbox{clindoeil}{
+	enhanced,
+	breakable,
+	blanker,
+	borderline west={1.2mm}{0pt}{black!45},
+	left=3mm, right=0mm, top=1.5mm, bottom=1.5mm,
+	fontupper=\small\itshape,
+	before upper={{\upshape\textbf{\sffamily\faSmileWink\ \ Clin d'œil.}}\ }
+}
