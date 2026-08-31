@@ -380,6 +380,30 @@ Comme $\ell\geq u_0=0$, $\ell=2$.
 	$v_n=2\left(\dfrac13\right)^{n}$ et $u_n=3+2\left(\dfrac13\right)^{n}\to 3$.
 \end{exemple}
 
+\begin{vraievie}{Rembourser un petit crédit}
+	Un commerçant emprunte $C_0 = 500\,000$ Ar auprès d'une institution de
+	microfinance, remboursables en $6$ mensualités \textbf{constantes} $m$,
+	au taux mensuel de $2\,\%$. Après chaque remboursement, le capital
+	restant dû vérifie
+	\[
+	C_{n+1} = 1{,}02\,C_n - m,
+	\]
+	une suite arithmético-géométrique --- exactement le type étudié
+	ci-dessus. Le point fixe est $\ell = \dfrac{-m}{1-1{,}02} = \dfrac{m}{0{,}02}$,
+	et $C_n = \ell + (C_0-\ell)\times 1{,}02^{\,n}$.
+
+	Le crédit est intégralement remboursé quand $C_6=0$, ce qui impose
+	\[
+	m = \frac{C_0\times 0{,}02}{1-1{,}02^{-6}} \approx 89\,300 \text{ Ar}.
+	\]
+	Sur les $6$ mois, le commerçant reverse au total $6\times 89\,300
+	\approx 535\,800$ Ar, soit environ $35\,800$ Ar d'intérêts pour un
+	emprunt de $500\,000$ Ar.
+
+	\reserve{Taux et durée choisis pour l'illustration ; les conditions
+	réelles varient selon l'institution de microfinance.}
+\end{vraievie}
+
 \begin{definition}
 	Deux suites $(u_n)$ et $(v_n)$ sont \textbf{adjacentes} si l'une est
 	croissante, l'autre décroissante, et $\displaystyle\lim(v_n-u_n)=0$.

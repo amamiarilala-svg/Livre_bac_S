@@ -16,7 +16,7 @@ Analyse, Géométrie, Probabilités, les sujets officiels du Bacc Série S
 étrangers). Compile sans erreur avec `latexmk -pdf`, et une passe de
 relecture globale (2026-08-26) a réduit les débordements de marge
 (`Overfull \hbox`) visibles de 27 à 13 occurrences uniques. Le livre fait
-**381 pages** et est organisé en **5 parties** (Algèbre, Analyse,
+**383 pages** et est organisé en **5 parties** (Algèbre, Analyse,
 Géométrie, Probabilités, Sujets et entraînement).
 
 ⚠️ Correction du 2026-08-27 : la note précédente affirmait que tous les
@@ -61,23 +61,27 @@ Trois rubriques, définies dans `config/environnements.tex` :
 **Décision de l'utilisateur (2026-08-31)** : pas de généralisation
 systématique aux 19 chapitres — l'utilisateur choisit lui-même, au cas
 par cas, les chapitres qui reçoivent un `vraievie`. Chapitres traités
-jusqu'ici :
+jusqu'ici (7 sur 19) :
 
-| Chapitre | Encadré `vraievie` | Poids mesuré |
+| Chapitre | Encadré `vraievie` | Placement |
 |---|---|---|
-| Probabilités conditionnelles | « Un test positif, est-on vraiment malade ? » (TDR paludisme, sensibilité/spécificité, Bayes) | +1 page |
-| Étude d'une fonction | « La fonction qui décide "spam ou pas spam" » (fonction sigmoïde $\sigma(x)=1/(1+e^{-x})$, limites/dérivée/symétrie, filtre anti-spam) | +1 page |
+| Probabilités conditionnelles | « Un test positif, est-on vraiment malade ? » (TDR paludisme, sensibilité/spécificité, Bayes) | après la formule de Bayes |
+| Étude d'une fonction | « La fonction qui décide "spam ou pas spam" » (sigmoïde $\sigma(x)=1/(1+e^{-x})$, filtre anti-spam) | après la section branches infinies |
+| Arithmétique dans $\Z$ | « Le chiffre qui protège votre compte bancaire » (clé RIB, congruence mod 97) | fin de la section Congruences, avant $\Z/n\Z$ |
+| Suites numériques | « Rembourser un petit crédit » (microcrédit, suite arithmético-géométrique) | après l'exemple de suite arithmético-géométrique |
+| Primitives et intégrale | « Pourquoi un barrage est-il plus épais à la base ? » (force hydrostatique $F=\int_0^H\rho g y L\,dy$) | après l'exemple de volume de révolution |
+| Les Isométries du Plan | « La grammaire cachée des tissages malgaches » (frises, symétrie glissée, classification à 7 groupes) | fin de la section symétrie glissée |
+| Lois continues et loi normale | « Pourquoi une gousse de vanille sur cinq est classée "extra" » (calibrage export, loi normale) | après la figure règle 68-95-99,7 |
 
-Cinq autres chapitres ont un brouillon de contenu déjà rédigé et
-validé en conversation, mais pas encore écrit dans les fichiers —
-à reprendre sur demande de l'utilisateur :
-Arithmétique (clé RIB, mod 97), Suites numériques (remboursement d'un
-microcrédit, suite arithmético-géométrique), Intégrales (force
-hydrostatique sur un barrage), Isométries (frises des tissages
-malgaches, symétrie glissée), Loi normale (calibrage des gousses de
-vanille à l'export). Un brouillon pour Suites existe aussi sur le thème
-IA (descente de gradient $u_{n+1}=u_n-\alpha f'(u_n)$), non retenu au
-profit de la sigmoïde pour ce chapitre-ci mais réutilisable ailleurs.
+Poids mesuré : **+2 pages pour les 5 derniers** (livre 381 → 383 ;
+moins que le forfait d'1 page/chapitre estimé au départ, plusieurs
+boîtes tenant dans du blanc de fin de page déjà présent). Un brouillon
+alternatif pour Suites existe sur le thème IA (descente de gradient
+$u_{n+1}=u_n-\alpha f'(u_n)$), non retenu au profit du microcrédit mais
+réutilisable ailleurs (par exemple dans un futur chapitre sur la
+dérivation, si l'utilisateur le souhaite).
+
+12 chapitres restent sans `vraievie` — aucune demande en attente.
 
 Règles :
 - les maths d'un encadré `vraievie` doivent être **honnêtes** — tout
